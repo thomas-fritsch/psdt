@@ -4,26 +4,24 @@
 package de.tfritsch.psdt.ui.labeling
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.postscript.PSFile
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
 /**
  * Provides labels for a EObjects.
  * 
  * see http://www.eclipse.org/Xtext/documentation.html#labelProvider
  */
-class PostscriptLabelProvider extends org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider {
+class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
-	new(org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider delegate) {
+	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
-	// Labels and icons can be computed like this:
-	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
+	def image(PSFile it) {
+		"postscript.png"
+	}
+
 }

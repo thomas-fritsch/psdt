@@ -10,6 +10,7 @@
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="ps,eps"
+            icon="icons/postscript.png"
             id="de.tfritsch.psdt.Postscript"
             name="Postscript Editor">
         </editor>
