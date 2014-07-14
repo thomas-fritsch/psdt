@@ -1,0 +1,681 @@
+%   Copyright (C) 2003 Nigel A. Hathaway.  All rights reserved.
+
+%  This program is free software; you can redistribute it and/or modify it
+%  under the terms of the GNU General Public License as published by the
+%  Free Software Foundation; either version 2 of the License, or (at your
+%  option) any later version.
+
+%  This program is distributed in the hope that it will be useful, but
+%  WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+%  General Public License for more details.
+
+%  You should have received a copy of the GNU General Public License along
+%  with this program; if not, write to the Free Software Foundation, Inc.,
+%  59 Temple Place, Suite 330, Boston, MA, 02111-1307.
+
+% $Id: psdebug.ps,v 1.1 2003/07/17 09:19:49 nhathaway Exp $
+
+% PostScript debugger - designed for use with the IdePS development environment
+% (or it can be used stand-alone, details follow).
+
+% The debugger works using instrumented code, that is, the original code with
+% extra operations added in which do calls into the debugger. The operations
+% are designed to have zero side effects (except for making the program run
+% slower) and hence their presence is transparent. In essence, these calls
+% allow the debugger to suspend on breakpoints.
+
+% The instrumentation consists of 2-token sequences and can be placed before
+% any or every operator/token in the code being debugged. This sequence is:
+
+% <ref> @@$
+
+% where <ref> is a unique position reference number, which refers to a
+% potential breakpoint. The @@$ operator consumes the reference so the operand
+% stack is unaffected.
+
+% The debugger uses a dictionary in globaldict called @@breakpoints. This
+% dictionary has as its keys position reference numbers, and values which are
+% unused by the debugger, but which can hold any data which you might want to
+% associate with the breakpoints. The reference numbers are the currently
+% active breakpoints, and each time @@$ executes, it checks this dictionary for
+% the presence of its operand and suspends if it is found.
+
+% When the decision is made to suspend on a breakpoint, the following line is
+% output on the standard error device (%stderr):
+
+% @@break <level> [<ref> <value>]
+
+% where <level> is the breakpoint nesting level starting at 1, <ref> is the
+% position reference, and <value> is the string representation of the value
+% associated with <ref> in @@breakpoints. <ref> and <value> only appear when
+% the breakpoint is encountered.
+
+% It then executes input from the console (%statementedit device) repeatedly
+% until the resume operator, @@resume, is executed somewhere in the entered
+% statement. If an error occurs, @@error is printed, and the $error object
+% should then be interrogated. If @@resume is not encountered, then @@break
+% with just <level> is printed just before it waits for console input.
+
+% As well as being able to set breakpoints, there are also facilities for
+% seeing the path of execution prior to a breakpoint (trace) and for coverage
+% analysis to help ensure that a program has been fully exercised on test.
+
+% Breaks can be nested. That is, if a breakpoint is encountered in code which
+% is executed when execution is suspended, then it will re-suspend at the
+% breakpoint, and return to the original breakpoint on resumption.
+
+% The breakpoint nesting level is the number of times a has happened without a
+% corresponding resume, i.e. when a breakpoint it triggered as a result of
+% code entered when at a breakpoint, this level increases by 1.
+
+% A full state of the VM and all its stacks can be sent to standard error
+% using @@status. The format of each line of the output consists of one or more 
+% '+' characters, a space and then printable data in the format <name>: <value>.
+% It is hierarchical and the total number of +'s indicates the level in the
+% hierarchy. The whole sequence starts with @@status + on a line on its own and
+% ends with @@status - on a line on its own.
+
+% The debugger also includes operators for setting single-step mode 
+% (@@singlestep), printing the trace and coverage
+
+% In single step mode, breakpoints are ignored, and execution is suspended
+% each time @@$ executes. The execution suspended is set each time a
+% breakpoint is encountered, and reset by @@resume. (@@& is in globaldict.)
+
+% For ease of observing particular variables repeatedly at breakpoints, watches
+% are provided. Watches are set up by passing an array of names to the
+% @@watches operator, and the results are provided as part of @@status. The
+% names are looked up each time using the standard PostScript name lookup,
+% which searches from the top of the dictionary stack downwards.
+
+% The following is a summary of the operators:
+
+%   <num> @@$              - query-break at breakpoint <num>
+%   @@resume               - resume execution after break: @@resume
+%   <bool> @@singlestep    - set singlestep mode on/off
+%   @@trace                - print trace buffer (newest first): @@trace <n> ...
+%   @@coverage             - print coverage: @@coverage 1010111010...
+%   <num1> <num2> @@reset  - reset trace, size <num1>; coverage, size <num2>
+%   <name array> @@watches - set up the watch point array
+%   @@status               - print hierarchical state of VM (very big: >500k)
+%   <bool1> <bool2>
+%      <bool3> @@stathide  - on @@status hide chosen permanent dictionaries:
+%                                <bool1> - systemdict
+%                                <bool2> - globaldict
+%                                <bool3> - userdict
+%   @@error                - print error information (from a stopped context):
+%                                @@error <error> <command> <mode>
+
+%   Breakpoints are maintained in @@breakpoints dictionary (see above)
+
+% Important: the trace buffer must always have at least 1 element
+
+% Note: all printing is on stderr.
+
+% Side effects: the debugger and its data resides in the global dictionary.
+% The outermost save/restore also affects changes made in global mode.
+% Therefore the debugger performs an outermost save on installation (i.e. when
+% this file is run) so that save/restore operations in programs being debugged
+% do not affect the debugger's data. This means that a program expecting to
+% have control over the outermost save object (i.e. saving and restoring of
+% changes made in global mode) will not behave as expected.
+% However, this save object is stored in @@globalsave and is thus not lost.
+
+%-----------------------------------------------------------------------------
+
+currentpacking true setpacking
+currentglobal true setglobal
+globaldict begin
+
+/@@breakpoints 20 dict def   % breakpoints
+/@@~ [] def                  % coverage flag array
+/@@= [] def                  % watches name array
+
+/@@* 64 array def            % trace buffer (starts full of nulls)
+
+/@@+ 0 def                   % current break level
+/@@- 0 def                   % new break level
+
+/@@& false def               % single step mode
+
+/@@: 0 def                   % status-hide bit pattern
+
+/@@! 8 def                   % maximum recursion level of @@?
+
+/@@$ {                       % query-break
+  globaldict begin
+  dup @@~ length lt {
+    dup @@~ exch true put
+  } if
+  @@* 1 @@* 0 @@* length 1 sub getinterval putinterval
+  dup @@* exch 0 exch put
+  dup @@breakpoints exch known
+  @@& or {
+    /@@+ @@+ 1 add def
+    /@@- @@- 1 add def
+    (%stderr) (w) file
+    dup (@@break ) writestring
+    dup @@+ =string cvs writestring
+    dup ( ) writestring
+    dup 2 index =string cvs writestring
+    dup ( ) writestring
+    dup 3 -1 roll dup @@breakpoints exch known {
+      @@breakpoints exch get =string cvs
+    } {
+      pop (--null--)
+    } ifelse
+    writestring
+    dup (\n) writestring
+    flushfile
+    {
+      end
+      {(%statementedit) (r) file cvx exec} stopped {
+        flush globaldict begin @@error
+      } {
+        flush globaldict begin
+      } ifelse
+      @@- @@+ lt {exit} if
+      (%stderr) (w) file
+      dup (@@break ) writestring
+      dup @@+ =string cvs writestring
+      dup (\n) writestring
+      flushfile
+    } loop
+    /@@+ @@+ 1 sub def
+  } { %else
+    pop
+  } ifelse
+  end
+} bind def
+
+/@@resume {                  % resume
+  globaldict begin
+  @@- 0 gt {
+    (%stderr) (w) file
+    dup (@@resume\n) writestring
+    flushfile
+    /@@- @@- 1 sub def
+  } if
+  end
+} bind def
+
+/@@singlestep {              % set single step mode
+  globaldict begin
+  {true} {false} ifelse      % ensure correct type
+  /@@& exch def
+  end
+} bind def
+
+/@@trace {                   % print trace buffer (most recent first)
+  (%stderr) (w) file
+  dup (@@trace) writestring
+  @@* {
+    dup type /nulltype eq {
+      pop exit
+    } if
+    exch dup
+    dup ( ) writestring
+    3 1 roll exch
+    =string cvs writestring
+  } forall
+  dup (\n) writestring
+  flushfile
+} bind def
+
+/@@coverage {                % print coverage array
+  (%stderr) (w) file
+  dup (@@coverage ) writestring
+  @@~ {
+    null eq { (0) } { (1) } ifelse
+    exch dup 3 -1 roll writestring
+  } forall
+  dup (\n) writestring
+  flushfile
+} bind def
+
+/@@reset {                   % reset trace and coverage
+  currentglobal true setglobal
+  3 1 roll
+  globaldict begin           % <trace size> <coverage size>
+  /@@~ exch array def
+  /@@* exch array def
+  end
+  setglobal
+} bind def
+
+/@@watches {                 % define watches
+  currentglobal true setglobal
+  exch
+  globaldict begin
+  dup length array copy
+  /@@= exch def
+  end
+  setglobal
+} bind def
+
+/@@? {                       % recursive object print (part of status dump)
+  (%stderr) (w) file         % <+'s count> <object> <name> <stderr>
+  3 index -1 1 {
+    pop dup (+) writestring
+  } for
+  dup ( ) writestring
+  dup 3 -1 roll writestring
+  dup (: ) writestring
+  exch dup type              % <+'s count> <stderr> <object> <type>
+  dup dup /arraytype eq exch /packedarraytype eq or {
+    pop dup xcheck {
+      write== pop            % list a proc
+    } {
+      dup rcheck {
+        2 index @@! lt {
+          exch (--array--\n) writestring
+          exch 1 add exch 0 exch { % <+'s count> <n> <item>
+            dup type /marktype eq {
+              false []
+            } {
+              counttomark [ exch 1 add copy pop pop pop pop ] false exch
+            } ifelse
+            dup length 1 sub 2 exch 3 exch { % check for recursive references
+              1 index exch get
+              3 index dup type dup dup
+              /dicttype eq exch /arraytype eq or
+              exch /packedarraytype eq or {
+                dup rcheck {
+                  eq {
+                    exch pop true exch exit
+                  } if 0 0
+                } if
+              } if
+              pop pop
+            } for
+            1 dict begin pop {
+                /@@! 0 def    % temporarily suspend further recursion
+            } if
+            dup 3 index exch
+            (00000) 5 string copy dup  % convert number with leading zeros
+            5 index =string cvs
+            dup length 5 exch sub dup 0 lt {
+              pop exch pop exch pop
+            } {
+              exch putinterval
+            } ifelse @@?
+            pop 1 add
+            end
+          } forall
+        } {
+          exch (--array-- (not shown)\n) writestring
+        } ifelse
+      } {
+        exch (--array-- (no access)\n) writestring
+      } ifelse
+      pop pop
+    } ifelse
+  } {
+    dup dup dup dup dup dup
+    /marktype eq exch
+    /booleantype eq or exch
+    /realtype eq or exch
+    /nametype eq or exch
+    /integertype eq or exch
+    /operatortype eq or {
+      pop write== pop
+    } {
+      dup /dicttype eq {
+        pop dup systemdict eq {
+          1 index (--systemdict--) writestring
+          @@: 4 and 0 eq
+        } {
+          dup globaldict eq {
+            1 index (--globaldict--) writestring
+            @@: 2 and 0 eq
+          } {
+            dup userdict eq {
+              1 index (--userdict--) writestring
+              @@: 1 and 0 eq
+            } {
+              1 index (--dict--) writestring
+              true
+            } ifelse
+          } ifelse
+        } ifelse {
+          dup rcheck {
+            2 index @@! lt {
+              exch (\n) writestring
+              exch 1 add exch { % <+'s count> <name> <item>
+                dup type /marktype eq {
+                  false []
+                } {
+                  counttomark [ exch 1 add copy pop pop pop pop ] false exch
+                } ifelse
+                dup length 1 sub 2 exch 3 exch {  % check for recursive references
+                  1 index exch get
+                  3 index dup type dup dup
+                  /dicttype eq exch /arraytype eq or
+                  exch /packedarraytype eq or {
+                    dup rcheck {
+                      eq {
+                        exch pop true exch exit
+                      } if 0 0
+                    } if
+                  } if
+                  pop pop
+                } for
+                1 dict begin pop {
+                  /@@! 0 def    % temporarily suspend further recursion
+                } if
+                2 copy
+                exch =string cvs
+                4 index 3 1 roll @@?
+                pop pop
+                end
+              } forall
+              pop
+            } {
+              exch ( (not shown)\n) writestring
+              pop pop
+            } ifelse
+          } {
+            exch ( (no access)\n) writestring
+            pop pop
+          } ifelse
+        } {
+          exch ( (hidden)\n) writestring
+          pop pop
+        } ifelse
+      } {
+        dup /stringtype eq {
+          pop dup rcheck {
+            write== pop
+          } {
+            exch ( (no access)\n) writestring
+            pop pop
+          } ifelse
+        } {
+          =string cvs exch pop  % (xxxxtype)
+          dup length 4 sub 0 exch getinterval
+          exch dup (--) writestring
+          dup 3 -1 roll writestring
+          (--\n) writestring
+          pop
+        } ifelse
+      } ifelse
+    } ifelse
+  } ifelse
+} bind def
+
+/@@status {                  % status dump
+  currentglobal false setglobal 
+  (%stderr) (w) file
+  dup (@@status +\n) writestring
+  mark
+  count dup 3 sub array exch 1 add copy  4 1 roll pop pop pop astore % operand stack as an array
+  1 dict begin /@@: 7 def    % disable showing of major dicts
+  1 exch (operandstack) @@?
+  1 countexecstack array execstack dup length 10 sub 0 exch getinterval
+  (execstack) @@?
+  end
+  0 0 systemdict             % prevents extra showings of these 3 dicts
+  0 0 globaldict
+  0 3 userdict               % 3 is used later for dictstack
+  1 0 array (dictstack) @@?
+  2 systemdict (00000) @@?
+  2 globaldict (00001) @@?
+  2 userdict (00002) @@?
+  countdictstack dup array dictstack  % non-permanent dict stack
+  1 dict begin /@@: 7 def    % disable showing of major dicts
+  exch 3 sub 3 exch getinterval {
+    2 exch
+    (00000) 5 string copy dup  % convert number with leading zeros
+    5 index =string cvs
+    dup length 5 exch sub dup 0 lt {
+      pop exch pop exch pop
+    } {
+      exch putinterval
+    } ifelse @@?
+    exch 1 add exch
+  } forall
+  1 @@= length dict            % watches
+  @@= {
+    dup where {
+      1 index get
+    } {
+      /undefined
+    } ifelse
+    2 index 3 1 roll put
+  } forall
+  (watches) @@?
+  end
+  1
+  <</currentglobal 15 index
+    /currentpacking currentpacking
+    /currentlinewidth currentlinewidth
+    /currentlinecap currentlinecap
+    /currentlinejoin currentlinejoin
+    /currentmiterlimit currentmiterlimit
+    /currentstrokeadjust currentstrokeadjust
+    /currentdash <</array currentdash /offset exch>>
+    /currentcolorspace currentcolorspace
+    /currentcolor [currentcolor]
+    /currentgray currentgray
+    /currenthsbcolor <</hue currenthsbcolor /saturation 3 1 roll
+                       /brightness exch>>
+    /currentrgbcolor <</red currentrgbcolor /green 3 1 roll /blue exch>>
+    /currentcmykcolor <</cyan currentcmykcolor /magenta 4 1 roll
+                        /yellow 3 1 roll /black exch>>
+    /defaultmatrix matrix defaultmatrix
+    /currentmatrix matrix currentmatrix
+    [{}{}{}{} pathforall] length 0 gt {
+      /currentpoint <</x currentpoint /y exch>>
+      /pathbbox [pathbbox]
+    } {
+      /currentpoint null
+      /pathbbox null
+    } ifelse
+    /currentpagedevice currentpagedevice
+    /currentfont currentfont begin <</FontType FontType /FontName FontName
+                                     /FontMatrix FontMatrix>> end
+    /currentobjectformat currentobjectformat
+    /$error $error
+  >> (state) @@?
+  cleartomark
+  dup (@@status -\n) writestring
+  flushfile
+  setglobal
+} bind def
+
+/@@stathide {                % status hide
+  globaldict begin           % <X systemdict> <X globaldict> <X userdict>
+  0 exch {
+    1 or
+  } if
+  exch {
+    2 or
+  } if
+  exch {
+    4 or
+  } if
+  /@@: exch def
+  end
+} bind def
+
+/@@error {
+  $error begin
+  newerror {
+    (%stderr) (w) file
+    dup (@@error ) writestring
+    dup errorname =string cvs writestring
+    dup ( ) writestring
+    dup currentdict/command get =string cvs writestring
+    dup ( ) writestring
+    dup globalmode {
+      (global)
+    } {
+      (local)
+    } ifelse =string cvs writestring
+    dup (\n) writestring
+    flushfile
+	.clearerror
+  } if
+  end
+} bind def
+
+/@@globalsave save def       % 1st save affects global, subsequent don't
+
+end
+setglobal
+setpacking
+
+%===========================================================================
+
+% Test code for the above. Use the following command line (on Unix/bash):
+
+% gs -s@@test=1 psdebug.ps 2>stderr.txt
+
+/@@test where {
+  0 @@$     pop
+  1 @@$     @@breakpoints 12 3456 put
+  2 @@$     2 dict begin
+  3 @@$     /hello (world) def
+  4 @@$     /again (people) def
+  5 @@$     3 dict begin
+  6 @@$     @@trace @@coverage
+  7 @@$     1 12 @@reset          % trace buffer must have at least 1 element
+  8 @@$     /nextone (down) def
+  10 @@$    (zero) [1] 4 dict dup /two 2 put dup /mymark mark put globaldict
+  11 @@$    (Type @@resume) = flush
+  12 @@$    @@trace @@coverage
+  true setglobal
+  @@status
+  false setglobal
+  true true true @@stathide
+  0 0 moveto
+  [/hello /zilch /nextone] @@watches
+  mark
+  @@status
+  pop pop pop pop end end
+  {gobbledegook} stopped {@@error} if
+  (OK. Now check the stderr output.) = flush
+  quit
+} if
+
+% Expected results:
+
+% @@trace 6 5 4 3 2 1 0
+% @@coverage 
+% @@break 1 12 3456
+% @@resume
+% @@trace 12
+% @@coverage 000000001011
+% @@status +
+% + operandstack: --array--
+% ++ 00000: (zero)
+% ++ 00001: --array--
+% +++ 00000: 1
+% ++ 00002: --dict--
+% +++ two: 2
+% +++ mymark: -mark-
+% ++ 00003: --globaldict-- (hidden)
+% + execstack: --array--
+% ++ 00000: --%interp_exit--
+% ++ 00001: .runexec2
+% ++ 00002: --file--
+% ++ 00003: {--dup-- null --ne-- {--exec-- true} {--pop-- false} --ifelse--}
+% ++ 00004: --null--
+% ++ 00005: 2
+% ++ 00006: --%stopped_push--
+% ++ 00007: --file--
+% ++ 00008: {{/execute0 --cvx-- 1 --.quit--} --if--}
+% ++ 00009: {$error /newerror --get-- --and-- {handleerror --flush-- true} {false} --ifelse--}
+% ++ 00010: false
+% ++ 00011: 1
+% ++ 00012: --%stopped_push--
+% ++ 00013: 1
+% ++ 00014: 3
+% ++ 00015: --%oparray_pop--
+% ++ 00016: 1
+% ++ 00017: 3
+% ++ 00018: --%oparray_pop--
+% ++ 00019: .runexec2
+% ++ 00020: --file--
+% ++ 00021: {--dup-- null --ne-- {--exec-- true} {--pop-- false} --ifelse--}
+% ++ 00022: --null--
+% ++ 00023: 2
+% ++ 00024: --%stopped_push--
+% ++ 00025: --file--
+% ++ 00026: {false setglobal true true true @@stathide 0 0 moveto [ /hello /zilch /nextone ] @@watches mark @@status pop pop pop pop end end {gobbledegook} stopped {@@error} if (OK. Now check the stderr output.) = flush quit}
+% + dictstack: --array--
+% ++ 00000: --systemdict--
+% .....
+% .....    - lots of data (omittted here)
+% .....
+% ++ 00003: --dict--
+% +++ hello: (world)
+% +++ again: (people)
+% ++ 00004: --dict--
+% +++ nextone: (down)
+% + watches: --dict--
+% + state: --dict--
+% ++ currentfont: --dict--
+% .....
+% .....    - not so much data (omittted here)
+% .....
+% @@status -
+% @@status +
+% + operandstack: --array--
+% ++ 00000: (zero)
+% ++ 00001: --array--
+% +++ 00000: 1
+% ++ 00002: --dict--
+% +++ two: 2
+% +++ mymark: -mark-
+% ++ 00003: --globaldict-- (hidden)
+% ++ 00004: mark
+% + execstack: --array--
+% ++ 00000: --%interp_exit--
+% ++ 00001: .runexec2
+% ++ 00002: --file--
+% ++ 00003: {--dup-- null --ne-- {--exec-- true} {--pop-- false} --ifelse--}
+% ++ 00004: --null--
+% ++ 00005: 2
+% ++ 00006: --%stopped_push--
+% ++ 00007: --file--
+% ++ 00008: {{/execute0 --cvx-- 1 --.quit--} --if--}
+% ++ 00009: {$error /newerror --get-- --and-- {handleerror --flush-- true} {false} --ifelse--}
+% ++ 00010: false
+% ++ 00011: 1
+% ++ 00012: --%stopped_push--
+% ++ 00013: 1
+% ++ 00014: 3
+% ++ 00015: --%oparray_pop--
+% ++ 00016: 1
+% ++ 00017: 3
+% ++ 00018: --%oparray_pop--
+% ++ 00019: .runexec2
+% ++ 00020: --file--
+% ++ 00021: {--dup-- null --ne-- {--exec-- true} {--pop-- false} --ifelse--}
+% ++ 00022: --null--
+% ++ 00023: 2
+% ++ 00024: --%stopped_push--
+% ++ 00025: --file--
+% ++ 00026: {pop pop pop pop end end {gobbledegook} stopped {@@error} if (OK. Now check the stderr output.) = flush quit}
+% + dictstack: --array--
+% ++ 00000: --systemdict-- (hidden)
+% ++ 00001: --globaldict-- (hidden)
+% ++ 00002: --userdict-- (hidden)
+% ++ 00003: --dict--
+% +++ hello: (world)
+% +++ again: (people)
+% ++ 00004: --dict--
+% +++ nextone: (down)
+% + watches: --dict--
+% ++ nextone: (down)
+% ++ hello: (world)
+% ++ zilch: /undefined
+% + state: --dict--
+% ++ currentfont: --dict--
+% .....
+% .....    - not so much data (omittted here)
+% .....
+% @@status -
+% @@error undefined gobbledegook local
