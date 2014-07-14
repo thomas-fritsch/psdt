@@ -4,12 +4,25 @@
 package de.tfritsch.psdt.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+
+import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptAntlrTokenToAttributeIdMapper;
+import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration;
 
 /**
  * Use this class to register components to be used within the IDE.
  */
-public class PostscriptUiModule extends de.tfritsch.psdt.ui.AbstractPostscriptUiModule {
+public class PostscriptUiModule extends AbstractPostscriptUiModule {
 	public PostscriptUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
+		return PostscriptAntlrTokenToAttributeIdMapper.class;
+	}
+
+	public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return PostscriptHighlightingConfiguration.class;
 	}
 }
