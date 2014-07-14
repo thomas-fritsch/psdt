@@ -1,0 +1,9 @@
+grammar de.tfritsch.psdt.Postscript with org.eclipse.xtext.common.Terminals
+
+generate postscript "http://www.tfritsch.de/psdt/Postscript"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
