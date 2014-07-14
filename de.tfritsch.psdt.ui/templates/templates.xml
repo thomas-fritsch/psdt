@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<templates>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="definition" enabled="true" id="def" name="def"
+>/${name} ${value} def
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="for loop" enabled="true" id="for" name="for"
+>${start} ${step} ${end} {&#13;	${cursor}&#13;} for
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="if statement" enabled="true" id="if"
+		name="if"
+>${condition:false} {&#13;	${cursor}&#13;} if
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		description="if else statement" enabled="true" id="ifelse" name="ifelse"
+>${condition:false} {&#13;	${cursor}&#13;} {&#13;} ifelse</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="setpagedevice" enabled="true" id="setpagedevice"
+		name="setpagedevice"
+>&lt;&lt;&#13;	/PageSize [600 800]&#13;&gt;&gt; setpagedevice
+	</template>
+</templates>
