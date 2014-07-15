@@ -5,6 +5,7 @@ package de.tfritsch.psdt.ui.labeling
 
 import com.google.inject.Inject
 import de.tfritsch.psdt.postscript.PSFile
+import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
@@ -32,4 +33,9 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	def text(PSProcedure it) {
 		"{...}" // better than "<unnamed>"
 	}
+
+	def image(PSObject it) {
+		"defaultoutlinenode.gif"
+	}
+
 }
