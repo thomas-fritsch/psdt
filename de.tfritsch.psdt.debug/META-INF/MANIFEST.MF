@@ -1,16 +1,14 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %Bundle.name
+Bundle-Name: Postscript Debugger
 Bundle-SymbolicName: de.tfritsch.psdt.debug;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.tfritsch.psdt.debug.PSPlugin
-Bundle-Vendor: %Bundle.vendor
-Bundle-Localization: plugin
+Bundle-Vendor: Thomas Fritsch
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.variables,
  org.eclipse.debug.core,
  org.eclipse.debug.ui,
- org.eclipse.jface.text,
  org.eclipse.ui,
  org.eclipse.ui.editors,
  org.eclipse.ui.ide

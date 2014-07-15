@@ -9,7 +9,6 @@ import org.eclipse.ui.IWorkbench;
 
 import de.tfritsch.psdt.debug.IPSConstants;
 import de.tfritsch.psdt.debug.PSPlugin;
-import de.tfritsch.psdt.debug.ui.Messages;
 
 /**
  * This class represents a preference page that
@@ -49,7 +48,7 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage
     @Override
 	public void createFieldEditors() {
 		FileFieldEditor editor = new FileFieldEditor(
-				IPSConstants.PREF_INTERPRETER, Messages.GhostscriptPreferencePage_interpreter, true,
+				IPSConstants.PREF_INTERPRETER, "&Interpreter:", true,
 				getFieldEditorParent());
 		String os = Platform.getOS();
 		if (os.equals(Platform.OS_WIN32)) {

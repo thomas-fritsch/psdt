@@ -25,7 +25,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWebBrowser;
 
 import de.tfritsch.psdt.debug.IPSConstants;
-import de.tfritsch.psdt.debug.ui.Messages;
 
 /**
  * 
@@ -53,7 +52,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
             }
         });
         Link link = new Link(group, SWT.NONE);
-        link.setText(Messages.GhostscriptArgumentsBlock_link);
+        link.setText("See <A>'Text Editors'</A> for the general text editor preferences.");
         link.addSelectionListener(new SelectionAdapter() {
 			
 			@Override
@@ -91,7 +90,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		String arguments = fArgumentsText.getText();
 		for (String s : DebugPlugin.parseArguments(arguments)) {
 			if (!s.startsWith("-") || s.equals("-")) { //$NON-NLS-1$ //$NON-NLS-2$
-				setErrorMessage(NLS.bind(Messages.GhostscriptArgumentsBlock_invalidOption, s));
+				setErrorMessage(NLS.bind("{0} is not a valid option", s));
 				return false;
 			}
 		}
@@ -106,7 +105,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	//@Override
 	public String getName() {
-		return Messages.GhostscriptArgumentsBlock_name;
+		return "Ghostscript interpreter:";
 	}
 
 }

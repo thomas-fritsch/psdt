@@ -24,7 +24,6 @@ import org.eclipse.swt.widgets.Text;
 import de.tfritsch.psdt.debug.IPSConstants;
 import de.tfritsch.psdt.debug.PSPlugin;
 import de.tfritsch.psdt.debug.model.PSProcessFactory;
-import de.tfritsch.psdt.debug.ui.Messages;
 
 /**
  * Tab to specify the PostScript program to run/debug.
@@ -37,7 +36,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 
     //@Override
 	public String getName() {
-        return Messages.PSMainTab_name;
+        return "Main";
     }
 
     @Override

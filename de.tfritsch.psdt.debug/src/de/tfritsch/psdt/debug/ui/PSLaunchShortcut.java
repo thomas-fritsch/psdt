@@ -25,7 +25,6 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import de.tfritsch.psdt.debug.IPSConstants;
 import de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate;
 import de.tfritsch.psdt.debug.model.PSProcessFactory;
-import de.tfritsch.psdt.debug.ui.Messages;
 
 /**
  * Matches plugin.xml
@@ -115,8 +114,8 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 		ElementListSelectionDialog dialog = new ElementListSelectionDialog(
 				getShell(), labelProvider);
 		dialog.setElements(configs);
-		dialog.setTitle(Messages.PSLaunchShortcut_dialogTitle);
-		dialog.setMessage(Messages.PSLaunchShortcut_dialogMessage);
+		dialog.setTitle("Select PostScript Application");
+		dialog.setMessage("Select existing configuration:");
 		dialog.setMultipleSelection(false);
 		int result = dialog.open();
 		labelProvider.dispose();

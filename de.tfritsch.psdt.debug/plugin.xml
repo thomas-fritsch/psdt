@@ -12,7 +12,7 @@
             class="de.tfritsch.psdt.debug.model.PSLineBreakpoint"
             id="de.tfritsch.psdt.debug.lineBreakpoint"
             markerType="de.tfritsch.psdt.debug.lineBreakpointMarker"
-            name="%PSLineBreakpoint.name">
+            name="PostScript Breakpoint">
       </breakpoint>
    </extension>
    <extension point="org.eclipse.debug.core.processFactories">
@@ -24,7 +24,7 @@
    <extension point="org.eclipse.debug.core.launchConfigurationTypes">
       <launchConfigurationType
             id="de.tfritsch.psdt.debug.launchConfigurationType"
-            name="%PSLaunchConfigurationDelegate.name"
+            name="PostScript Application"
             delegate="de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate"
             sourceLocatorId="de.tfritsch.psdt.debug.sourceLocator"
             modes="run,debug">
@@ -32,7 +32,7 @@
    </extension>
    <extension point="org.eclipse.debug.core.sourceLocators">
       <sourceLocator
-            name="%PSSourceLocator.name"
+            name="PostScript Source Locator"
             class="de.tfritsch.psdt.debug.model.PSSourceLocator"
             id="de.tfritsch.psdt.debug.sourceLocator">
       </sourceLocator>
@@ -49,10 +49,10 @@
             id="de.tfritsch.psdt.debug.launchConfigurationTabGroup"
             type="de.tfritsch.psdt.debug.launchConfigurationType">
          <launchMode mode="run"
-               description="%PSTabGroup.run.description"/>
+               description="Run a PostScript application"/>
          <launchMode mode="debug"
                perspective="org.eclipse.debug.ui.DebugPerspective"
-               description="%PSTabGroup.debug.description"/>
+               description="Debug a PostScript application"/>
       </launchConfigurationTabGroup>
    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTypeImages">
@@ -67,7 +67,7 @@
             class="de.tfritsch.psdt.debug.ui.PSLaunchShortcut"
             icon="icons/ps_app.gif"
             id="de.tfritsch.postscript.shortcut"
-            label="%PSLaunchShortcut.name"
+            label="PostScript Application"
             modes="run,debug">
          <contextualLaunch>
             <enablement>
@@ -92,7 +92,7 @@
             targetID="de.tfritsch.psdt.Postscript">
          <action
                id="de.tfritsch.psdt.debug.toggleBreakpointAction"
-               label="%RulerToggleBreakpointActionDelegate.label"
+               label="Not used"
                class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
                actionID="RulerDoubleClick"/>
       </editorContribution>
@@ -103,13 +103,13 @@
            targetID="#TextRulerContext">
          <action
                id="de.tfritsch.psdt.debug.enableDisableBreakpointAction"
-               label="%RulerEnableDisableBreakpointActionDelegate.label"
+               label="Not used"
                class="org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
                menubarPath="debug">
          </action>
          <action
                id="de.tfritsch.psdt.debug.toggleBreakpointAction"
-               label="%RulerToggleBreakpointActionDelegate.label"
+               label="Not used"
                class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
                menubarPath="debug"
                icon="icons/brkp_obj.gif">
@@ -117,7 +117,7 @@
       </viewerContribution>
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
-      <page name="%GhostscriptPreferencePage.name"
+      <page name="Ghostscript"
             id="de.tfritsch.psdt.debug.ghostscriptPreferencePage"
             class="de.tfritsch.psdt.debug.ui.GhostscriptPreferencePage"
             category="de.tfritsch.psdt.Postscript">
