@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-   <extension point="org.eclipse.core.resources.markers"
-         id="lineBreakpointMarker">
-      <super type="org.eclipse.debug.core.lineBreakpointMarker"/>
-      <persistent value="true"/>
-      <attribute name="de.tfritsch.psdt.debug.model.string"/>
-   </extension>
-   <extension point="org.eclipse.debug.core.breakpoints">
-      <breakpoint
-            class="de.tfritsch.psdt.debug.model.PSLineBreakpoint"
-            id="de.tfritsch.psdt.debug.lineBreakpoint"
-            markerType="de.tfritsch.psdt.debug.lineBreakpointMarker"
-            name="PostScript Breakpoint">
-      </breakpoint>
-   </extension>
    <extension point="org.eclipse.debug.core.processFactories">
       <processFactory
             class="de.tfritsch.psdt.debug.model.PSProcessFactory"
@@ -85,36 +71,6 @@
             </enablement>
          </contextualLaunch>
       </shortcut>
-   </extension>
-   <extension point="org.eclipse.ui.editorActions">
-      <editorContribution
-            id="de.tfritsch.postscript.rulerActions"
-            targetID="de.tfritsch.psdt.Postscript">
-         <action
-               id="de.tfritsch.psdt.debug.toggleBreakpointAction"
-               label="Not used"
-               class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-               actionID="RulerDoubleClick"/>
-      </editorContribution>
-   </extension>
-   <extension point="org.eclipse.ui.popupMenus">
-      <viewerContribution
-           id="de.tfritsch.postscript.rulerPopupActions"
-           targetID="#TextRulerContext">
-         <action
-               id="de.tfritsch.psdt.debug.enableDisableBreakpointAction"
-               label="Not used"
-               class="org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
-               menubarPath="debug">
-         </action>
-         <action
-               id="de.tfritsch.psdt.debug.toggleBreakpointAction"
-               label="Not used"
-               class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-               menubarPath="debug"
-               icon="icons/brkp_obj.gif">
-         </action>
-      </viewerContribution>
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
       <page name="Ghostscript"
