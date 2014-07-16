@@ -11,6 +11,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 
 import de.tfritsch.psdt.debug.PSPlugin;
+import de.tfritsch.psdt.ui.internal.PostscriptActivator;
 
 /**
  * Renders PostScript debug elements.
@@ -64,7 +65,7 @@ public class PSDebugModelPresentation extends LabelProvider implements
 	public String getEditorId(IEditorInput input, Object element) {
 		if (element instanceof IFile || 
 			element instanceof IStorage) {
-			return "de.tfritsch.psdt.Postscript";
+			return PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT;
 		    // return "org.eclipse.ui.DefaultTextEditor"; //$NON-NLS-1$
 		}
 		return null;
