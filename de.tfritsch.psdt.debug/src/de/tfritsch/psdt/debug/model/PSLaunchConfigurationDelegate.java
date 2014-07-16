@@ -54,8 +54,8 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
         if (mode.equals(ILaunchManager.RUN_MODE)) {
         	cmdLineList.add(psFile);
         } else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
-            cmdLineList.add(PSPlugin.getFileInPlugin("psdebug.ps").getPath()); //$NON-NLS-1$
-            cmdLineList.add(PSPlugin.getFileInPlugin("stdin.ps").getPath()); //$NON-NLS-1$
+            cmdLineList.add(PSPlugin.getFile("psdebug.ps").getPath()); //$NON-NLS-1$
+            cmdLineList.add(PSPlugin.getFile("stdin.ps").getPath()); //$NON-NLS-1$
         } else {
             abort(NLS.bind("invalid launch mode \"{0}\"", mode), null);
         }
@@ -79,7 +79,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
     }
     
     private void abort(String message, Throwable e) throws CoreException {
-        IStatus status = new Status(IStatus.ERROR, PSPlugin.ID, 0, message, e);
+        IStatus status = new Status(IStatus.ERROR, PSPlugin.ID, message, e);
         throw new CoreException(status);
     }
     
