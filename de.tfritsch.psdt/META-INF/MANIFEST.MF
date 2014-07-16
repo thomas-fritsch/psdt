@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: de.tfritsch.psdt
-Bundle-Vendor: My Company
+Bundle-Name: Postscript Language
+Bundle-Vendor: Thomas Fritsch
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: de.tfritsch.psdt; singleton:=true
 Bundle-ActivationPolicy: lazy
