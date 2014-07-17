@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="de.tfritsch.psdt.sdk"
-	label="Postscript SDK Feature "
-	version="1.0.0.qualifier">
-	<plugin
-			id="de.tfritsch.psdt"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="de.tfritsch.psdt.ui"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
-	<plugin
-			id="de.tfritsch.psdt.debug"
-			download-size="0"
-			install-size="0"
-			version="0.0.0"
-			unpack="false"/>
+<feature
+      id="de.tfritsch.psdt.sdk"
+      label="Postscript SDK"
+      version="1.0.0.qualifier"
+      provider-name="Thomas Fritsch">
+
+   <description>
+      Postscript Development Tools
+   </description>
+
+   <copyright>
+      (c) Thomas Fritsch
+   </copyright>
+
+   <license url="http://opensource.org/licenses/EPL-1.0">
+      Eclipse Public License 1.0
+   </license>
+
+   <plugin
+         id="de.tfritsch.psdt"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.tfritsch.psdt.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="de.tfritsch.psdt.debug"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
