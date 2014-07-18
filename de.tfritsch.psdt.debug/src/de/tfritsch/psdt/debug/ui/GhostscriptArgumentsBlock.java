@@ -52,7 +52,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
             }
         });
         Link link = new Link(group, SWT.NONE);
-        link.setText("See <A>'Text Editors'</A> for the general text editor preferences.");
+        link.setText("Show <A>Ghostscript documentation</A> in web browser");
         link.addSelectionListener(new SelectionAdapter() {
 			
 			@Override
