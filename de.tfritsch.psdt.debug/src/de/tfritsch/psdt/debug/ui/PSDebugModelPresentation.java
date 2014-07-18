@@ -8,10 +8,11 @@ import org.eclipse.debug.ui.IValueDetailListener;
 import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.part.FileEditorInput;
 
 import de.tfritsch.psdt.debug.PSPlugin;
-import de.tfritsch.psdt.ui.internal.PostscriptActivator;
 
 /**
  * Renders PostScript debug elements.
@@ -63,11 +64,10 @@ public class PSDebugModelPresentation extends LabelProvider implements
 
 	//@Override
 	public String getEditorId(IEditorInput input, Object element) {
-		if (element instanceof IFile || 
-			element instanceof IStorage) {
-			return PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT;
-		    // return "org.eclipse.ui.DefaultTextEditor"; //$NON-NLS-1$
+		try {
+			return IDE.getEditorDescriptor(input.getName()).getId();
+		} catch (PartInitException e) {
+		    return null;
 		}
-		return null;
 	}
 }
