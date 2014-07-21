@@ -3,14 +3,18 @@
  */
 package de.tfritsch.psdt.ui;
 
+import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget;
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
+import de.tfritsch.psdt.debug.ui.PSToggleBreakpointsTarget;
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
+import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptAntlrTokenToAttributeIdMapper;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration;
 
@@ -41,4 +45,12 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 		return PostscriptAutoEditStrategyProvider.class;
 	}
 
+	public Class<? extends XtextEditor> bindXtextEditor() {
+		return PostscriptEditor.class;
+	}
+	
+	public Class<? extends IToggleBreakpointsTarget> bindIToggleBreakpointsTarget() {
+		return PSToggleBreakpointsTarget.class;
+	}
+	
 }

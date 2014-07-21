@@ -79,4 +79,28 @@
             category="de.tfritsch.psdt.Postscript">
       </page>
    </extension>
+   <extension point="org.eclipse.ui.editorActions">
+      <editorContribution targetID="de.tfritsch.psdt.Postscript" 
+                          id="de.tfritsch.psdt.Postscript.ide.rulerActions">
+	     <action
+	             label="Not Used"
+	             class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+	             style="push"
+	             actionID="RulerDoubleClick"
+	             id="de.tfritsch.psdt.Postscript.doubleClickBreakpointAction"/>
+	  </editorContribution>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus">
+      <viewerContribution
+         targetID="#TextRulerContext"
+         id="de.tfritsch.psdt.Postscript.ide.RulerPopupActions">
+         <action
+               class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
+               icon="icons/brkp_obj.gif"
+               id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.toggleBreakpointAction"
+               label="Toggle Breakpoint"
+               menubarPath="debug">
+         </action>
+      </viewerContribution>
+   </extension>
 </plugin>
