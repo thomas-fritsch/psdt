@@ -10,6 +10,7 @@ public class PostscriptEditor extends XtextEditor {
 	@Inject
 	private IToggleBreakpointsTarget fToggleBreakpointsTarget;
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Class adapter) {
 		if (IToggleBreakpointsTarget.class.equals(adapter)) {
@@ -17,5 +18,10 @@ public class PostscriptEditor extends XtextEditor {
 		}
 		return super.getAdapter(adapter);
 	}
-
+	
+	@Override
+	protected void initializeEditor() {
+		super.initializeEditor();
+		setRulerContextMenuId("#PostscriptRulerContext"); //$NON-NLS-1$
+	}
 }
