@@ -95,6 +95,12 @@
          targetID="#PostscriptRulerContext"
          id="de.tfritsch.psdt.Postscript.ide.RulerPopupActions">
          <action
+               class="org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
+               id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.enableDisableBreakpointAction"
+               label="Not used"
+               menubarPath="debug">
+         </action>
+         <action
                class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
                icon="icons/brkp_obj.gif"
                id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.toggleBreakpointAction"
