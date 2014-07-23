@@ -18,10 +18,4 @@ public class PostscriptEditor extends XtextEditor {
 		}
 		return super.getAdapter(adapter);
 	}
-	
-	@Override
-	protected void initializeEditor() {
-		super.initializeEditor();
-		setRulerContextMenuId("#PostscriptRulerContext"); //$NON-NLS-1$
-	}
 }

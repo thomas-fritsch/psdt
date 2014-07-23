@@ -92,7 +92,7 @@
    </extension>
    <extension point="org.eclipse.ui.popupMenus">
       <viewerContribution
-         targetID="#PostscriptRulerContext"
+         targetID="de.tfritsch.psdt.Postscript.RulerContext"
          id="de.tfritsch.psdt.Postscript.ide.RulerPopupActions">
          <action
                class="org.eclipse.debug.ui.actions.RulerEnableDisableBreakpointActionDelegate"
