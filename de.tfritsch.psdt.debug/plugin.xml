@@ -108,5 +108,15 @@
                menubarPath="debug">
          </action>
       </viewerContribution>
+      <viewerContribution
+         targetID="de.tfritsch.psdt.Postscript.EditorContext"
+         id="de.tfritsch.psdt.Postscript.ide.EditorPopupActions">
+         <action
+               class="org.eclipse.debug.ui.actions.RunToLineActionDelegate"
+               id="de.tfritsch.psdt.Postscript.ide.editorContextMenu.runToLineAction"
+               label="Not used"
+               menubarPath="additions">
+         </action>
+      </viewerContribution>
    </extension>
 </plugin>
