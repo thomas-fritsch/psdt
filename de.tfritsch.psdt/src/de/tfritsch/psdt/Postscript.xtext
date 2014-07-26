@@ -8,17 +8,25 @@ PSFile:
 	objects+=PSObject*;
 
 PSObject:
-	PSLiteralName | PSExecutableName | PSNumber | PSString | PSProcedure;
+	PSLiteralName | PSExecutableName | PSNumber | PSString | PSProcedure | PSArray | PSDictionary;
 
 PSProcedure:
 	{PSProcedure}
 	'{' objects+=PSObject* '}';
 
+PSArray:
+	{PSArray}
+	'[' objects+=PSObject* ']';
+
+PSDictionary:
+	{PSDictionary}
+	'<<' objects+=PSObject* '>>';
+
 PSLiteralName:
 	name=LITERAL_ID;
 
 PSExecutableName:
-	name=ID | name='[' | name=']' | name='<<' | name='>>';
+	name=ID;
 
 PSNumber:
 	n=NUMBER;
