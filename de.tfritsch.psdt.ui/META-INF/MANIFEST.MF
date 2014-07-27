@@ -20,5 +20,6 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.tfritsch.psdt.ui.quickfix,
  de.tfritsch.psdt.ui.contentassist,
  de.tfritsch.psdt.ui.contentassist.antlr,
- de.tfritsch.psdt.ui.internal
+ de.tfritsch.psdt.ui.internal,
+ de.tfritsch.psdt.ui.editor
 Bundle-Activator: de.tfritsch.psdt.ui.internal.PostscriptActivator
