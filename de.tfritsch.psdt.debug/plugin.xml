@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
+   <extension point="org.eclipse.core.runtime.adapters">
+      <factory
+            adaptableType="de.tfritsch.psdt.ui.editor.PostscriptEditor"
+            class="de.tfritsch.psdt.debug.PSAdapterFactory">
+         <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
+         <adapter type="org.eclipse.debug.ui.actions.IRunToLineTarget"/>
+      </factory>
+   </extension>
    <extension point="org.eclipse.debug.core.processFactories">
       <processFactory
             class="de.tfritsch.psdt.debug.model.PSProcessFactory"
