@@ -1,10 +1,14 @@
 package de.tfritsch.psdt.debug.ui;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab;
 import org.eclipse.debug.ui.ILaunchConfigurationDialog;
 import org.eclipse.debug.ui.ILaunchConfigurationTab;
+import org.eclipse.debug.ui.WorkingDirectoryBlock;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridLayout;
@@ -25,7 +29,13 @@ public class GhostscriptTab extends AbstractLaunchConfigurationTab {
     	fBlocks = new ILaunchConfigurationTab[] {
     	    	new GhostscriptInterpreterBlock(),
     	    	new GhostscriptArgumentsBlock(),
-    	        new PSWorkingDirectoryBlock(),  	
+    	        new WorkingDirectoryBlock(DebugPlugin.ATTR_WORKING_DIRECTORY) {
+					@Override
+					protected IProject getProject(ILaunchConfiguration configuration)
+							throws CoreException {
+						return null;
+					}
+    	    	}
     	};
     }
 
