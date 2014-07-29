@@ -108,12 +108,12 @@ class PSThread extends PSDebugElement implements IThread {
 
 	//@Override
 	public boolean canResume() {
-		return isSuspended();
+		return getDebugTarget().canResume();
 	}
 
 	//@Override
 	public boolean canSuspend() {
-		return !isSuspended();
+		return getDebugTarget().canSuspend();
 	}
 
 	//@Override

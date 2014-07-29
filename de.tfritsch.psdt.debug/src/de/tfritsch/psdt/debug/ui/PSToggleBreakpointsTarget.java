@@ -17,7 +17,7 @@ public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 	public boolean canToggleLineBreakpoints(IWorkbenchPart part,
 			ISelection selection) {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 
 	//@Override

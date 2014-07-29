@@ -294,7 +294,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 
 	//@Override
 	public boolean canSuspend() {
-		return !isTerminated() && !isSuspended();
+		return false; // not supported
 	}
 
 	//@Override
@@ -353,7 +353,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 
 	//@Override
 	public boolean canDisconnect() {
-		return false;
+		return false; // not supported
 	}
 
 	//@Override
