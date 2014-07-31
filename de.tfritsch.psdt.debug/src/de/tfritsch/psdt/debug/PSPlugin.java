@@ -8,7 +8,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.swt.graphics.Image;
@@ -68,8 +67,7 @@ public class PSPlugin extends AbstractUIPlugin {
 		ImageRegistry registry = INSTANCE.getImageRegistry();
 		Image image = registry.get(path);
 		if (image == null) {
-			URL url = INSTANCE.getBundle().getEntry(path);
-			image = ImageDescriptor.createFromURL(url).createImage();
+			image = imageDescriptorFromPlugin(ID, path).createImage();
 			registry.put(path, image);
 		}
 		return image;
