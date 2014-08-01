@@ -1,12 +1,13 @@
 package de.tfritsch.psdt.debug;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.FileLocator;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -46,18 +47,17 @@ public class PSPlugin extends AbstractUIPlugin {
 	}
 
 	/**
-	 * Return a <code>java.io.File</code> object from within this plug-in.
+	 * Return a file from within this plug-in.
 	 */
-	public static File getFile(String path) throws CoreException {
+	public static IPath getFile(String path) throws CoreException {
 		URL url = INSTANCE.getBundle().getEntry(path);
         try {
             url = FileLocator.toFileURL(url);
         } catch (IOException e) {
-            IStatus status = new Status(IStatus.ERROR, PSPlugin.ID, e.getMessage(), e);
+            IStatus status = new Status(IStatus.ERROR, ID, e.getMessage(), e);
             throw new CoreException(status);
         }
-        String s = url.getPath().replace('/', File.separatorChar);
-        return new File(s);
+        return new Path(url.getFile());
 	}
 
 	/**
