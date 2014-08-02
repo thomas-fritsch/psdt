@@ -55,7 +55,8 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
         	cmdLineList.add(psFile);
         } else if (mode.equals(ILaunchManager.DEBUG_MODE)) {
             cmdLineList.add(PSPlugin.getFile("psdebug.ps").toOSString()); //$NON-NLS-1$
-            cmdLineList.add(PSPlugin.getFile("stdin.ps").toOSString()); //$NON-NLS-1$
+            cmdLineList.add("-c"); //$NON-NLS-1$
+            cmdLineList.add("(%stdin) (r) file cvx exec"); //$NON-NLS-1$
         } else {
             abort(NLS.bind("invalid launch mode \"{0}\"", mode), null);
         }
