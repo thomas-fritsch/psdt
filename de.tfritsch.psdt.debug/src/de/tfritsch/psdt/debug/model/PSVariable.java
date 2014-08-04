@@ -42,6 +42,12 @@ class PSVariable extends PSDebugElement implements IVariable, Comparable<PSVaria
 		return fName;
 	}
 
+	// convenience for Java debugging
+	@Override
+	public String toString() {
+		return getName() + "=" + getValue();
+	}
+
 	//@Override
 	public String getReferenceTypeName() throws DebugException {
 		return getValue().getReferenceTypeName();

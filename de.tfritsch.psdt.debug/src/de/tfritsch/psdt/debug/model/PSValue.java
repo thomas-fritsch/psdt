@@ -36,6 +36,12 @@ class PSValue extends PSDebugElement implements IValue {
 		return fValueString;
 	}
 
+	// convenience for Java debugging
+	@Override
+	public String toString() {
+		return getValueString();
+	}
+
 	//@Override
 	public IVariable[] getVariables() {
 		if (fVariables == null)
