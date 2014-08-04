@@ -31,6 +31,12 @@
             id="de.tfritsch.psdt.debug.sourceLocator">
       </sourceLocator>
    </extension>
+   <extension point="org.eclipse.debug.core.watchExpressionDelegates">
+      <watchExpressionDelegate
+            debugModel="de.tfritsch.psdt.debug.debugModel"
+            delegateClass="de.tfritsch.psdt.debug.model.PSWatchExpressionDelegate">
+      </watchExpressionDelegate>
+   </extension>
    <extension point="org.eclipse.debug.ui.debugModelPresentations">
       <debugModelPresentation
             class="de.tfritsch.psdt.debug.ui.PSDebugModelPresentation"
