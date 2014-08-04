@@ -10,7 +10,6 @@ import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 
-import de.tfritsch.psdt.debug.PSPlugin;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 
 /**
@@ -21,14 +20,6 @@ import de.tfritsch.psdt.ui.editor.PostscriptEditor;
  */
 public class PSDebugModelPresentation extends LabelProvider implements
 		IDebugModelPresentation {
-
-    /**
-     * Unique identifier for the PostScript debug model (value 
-     * <code>{@value}</code>).
-     * Matches plugin.xml
-     * extension[@point="org.eclipse.debug.ui.debugModelPresentations"]/debugModelPresentation/@id
-     */
-    public final static String ID = PSPlugin.ID + ".debugModel"; //$NON-NLS-1$
 
     //@Override
 	public void setAttribute(String attribute, Object value) {

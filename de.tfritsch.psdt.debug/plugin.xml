@@ -33,14 +33,14 @@
    </extension>
    <extension point="org.eclipse.debug.core.watchExpressionDelegates">
       <watchExpressionDelegate
-            debugModel="de.tfritsch.psdt.debug.debugModel"
+            debugModel="de.tfritsch.psdt.debug"
             delegateClass="de.tfritsch.psdt.debug.model.PSWatchExpressionDelegate">
       </watchExpressionDelegate>
    </extension>
    <extension point="org.eclipse.debug.ui.debugModelPresentations">
       <debugModelPresentation
             class="de.tfritsch.psdt.debug.ui.PSDebugModelPresentation"
-            id="de.tfritsch.psdt.debug.debugModel">
+            id="de.tfritsch.psdt.debug">
       </debugModelPresentation>
    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
