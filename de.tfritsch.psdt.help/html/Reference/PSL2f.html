@@ -1,0 +1,590 @@
+<HTML>
+<HEAD>
+    <TITLE>Postscript Level 2</TITLE>
+</HEAD>
+<BODY BACKGROUND="A23.GIF">
+<H1><CENTER>Postscript Operators 'f'</CENTER>
+</H1>
+<IMG SRC="Rule33.GIF" WIDTH="940" HEIGHT="11" ALIGN="BOTTOM" NATURALSIZEFLAG=
+"3"><BR>
+<BR>
+<A NAME="false"></A><B>false</B> - false false <BR>
+pushes a boolean object whose value is false on the operand stack.<BR>
+false is not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+associated with the boolean value false. <BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackoverflow">stackoverflow</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2t.html#true">true</A>, <A HREF="PSL2a.html#and">and</A>,
+<A HREF="PSL2no.html#or">or</A>, <A HREF="PSL2no.html#not">not</A>, <A HREF="PSL2xy.html#xor">xor</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="file"></A><BR>
+<B>file</B> filename access file file <BR>
+<BR>
+creates a file object for the file identified by filename, accessing it
+as specified by access. Both operands are strings. Conventions for both
+file names and access specifications depend on the operating system environment
+in which the PostScript interpreter is running. <BR>
+<BR>
+Once created and opened, the file object remains valid until the file is
+closed either explicitly (by executing <A HREF="PSL2c.html#closefile">closefile</A>)
+or implicitly (by encountering end-offile while reading or executing the
+file). A file is also closed by <A HREF="PSL2qr.html#restore">restore</A>
+if the file object was created more recently than the <A HREF="PSL2s.html#save">save</A>
+snapshot being restored, or is closed by garbage collection if the file
+object is no longer accessible. There is a limit on the number of files
+that can be open simultaneously. <BR>
+<BR>
+If the specified filename is malformed or if the file doesn't exist and
+access does not permit creating a new file, file executes an <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+error. If access is malformed or the requested access is not permitted by
+the device, an <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>
+error occurs. If the number of files opened by the current context exceeds
+an implementation limit, a <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+error occurs. If an environmentdependent error is detected, an <A HREF="PSL2ik.html#ioerror">ioerror</A>
+occurs. <BR>
+<BR>
+EXAMPLE:<BR>
+(%stdin) (r) file -&gt; % standard input file object<BR>
+(myfile) (w) file -&gt; % output file object, writing to named file <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
+<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A><BR>
+<BR>
+SEE ALSO: <A HREF="PSL2c.html#closefile">closefile</A>, <A HREF="PSL2c.html#currentfile">currentfile</A>,
+<A HREF="#filter">filter</A>, <A HREF="PSL2s.html#status">status</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="filenameforall"></A><BR>
+<B>filenameforall</B> template proc scratch filenameforall - LEVEL 2<BR>
+<BR>
+enumerates all files whose names match the specified template string. For
+each matching file, filenameforall copies the file's name into the supplied
+scratch string, pushes a string object designating the substring of scratch
+actually used, and calls proc. filenameforall does not return any results
+of its own, but proc may do so. <BR>
+<BR>
+The details of template matching are device dependent, but the following
+convention is typical. All characters in the template are treated literally
+and are case sensitive, except the following special characters: <BR>
+<BR>
+* matches zero or more consecutive characters. <BR>
+<BR>
+? matches exactly one character. <BR>
+<BR>
+causes the next character of the template to be treated literally, even
+if it is *, ?, or /. <BR>
+<BR>
+If template does not begin with %, it is matched against device relative
+file names of all devices in the search order. When a match occurs, the
+file name passed to proc<BR>
+is likewise device relative-in other words, it does not have a %device%
+prefix. <BR>
+<BR>
+If template does begin with %, it is matched against complete file names
+in the form %device%file. Template matching can be performed on the device,
+the file, or both parts of the name. When a match occurs, the file name
+passed to proc is likewise in the complete form %device%file.<BR>
+<BR>
+The order of enumeration is unspecified and device dependent. There are
+no restrictions on what proc can do. However, if proc causes new files to
+be created, it is unspecified whether or not those files will be encountered
+later in the same enumeration. Likewise, the set of file names considered
+for template matching is device dependent.<BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
+<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
+<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<BR>
+<BR>
+SEE ALSO: <A HREF="#file">file</A>, <A HREF="PSL2s.html#status">status</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="fileposition"></A><BR>
+<B>fileposition</B> file fileposition position LEVEL 2 <BR>
+<BR>
+returns the current position in an existing open file. The result is a non-negative
+integer interpreted as number of bytes from the beginning of the file. If
+the file object is not valid or the underlying file is not positionable,
+an <A HREF="PSL2ik.html#ioerror">ioerror</A> occurs. <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2s.html#setfileposition">setfileposition</A>, <A HREF="#file">file</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="fill"></A><BR>
+<B>fill</B> - fill <BR>
+- paints the area enclosed by the current path with the current color.<BR>
+Any previous contents of that area on the current page are obscured, so
+areas may be erased by filling with color set to white. <BR>
+<BR>
+Before painting, fill implicitly closes any open subpaths of the current
+path. The inside of the current path is determined by the normal non-zero
+winding number rule . <BR>
+<BR>
+fill implicitly performs a newpath after it has finished filling the current
+path. To preserve the current path across a fill operation, use the sequence:
+<BR>
+<BR>
+gsave fill grestore <BR>
+<BR>
+ERRORS: <A HREF="PSL2l.html#limitcheck">limitcheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2c.html#clip">clip</A>, <A HREF="PSL2e.html#eofill">eofill</A>,
+<A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="PSL2u.html#ufill">ufill</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="filter"></A><BR>
+<B>filter</B> source/target param1 ... paramn name filter file LEVEL 2 <BR>
+<BR>
+creates and returns a filtered file. <BR>
+<BR>
+The source/target operand specifies the underlying data source or data target
+that the filter is to read or write. It can be a file, procedure, or string.
+<BR>
+<BR>
+The param1 ... paramn operands are additional parameters that control how
+the filter is to operate. The number and types of these operands depend
+on the filter name. Most filters require no additional parameters.<BR>
+<BR>
+The name operand identifies the data transformation that the filter is to
+perform. The standard filter names are: 
+<DL>
+  <DD>ASCIIHexEncode ASCIIHexDecode 
+  <DD>ASCII85Encode ASCII85Decode 
+  <DD>LZWEncode LZWDecode 
+  <DD>RunLengthEncode RunLengthDecode 
+  <DD>CCITTFaxEncode CCITTFaxDecode 
+  <DD>DCTEncode DCTDecode 
+  <DD>NullEncode SubFileDecode 
+</DL>
+<BR>
+An encoding filter is an output (writable) file. A decoding filter is an
+input (readable) file. The file object returned by the filter can be used
+as an operand of normal file input and output operators, such as read and
+write. Reading from an input filtered file causes the filter to read from
+the underlying data source and transform the data. Similarly, writing to
+an output filtered file causes the filter to transform the data and write
+it to the underlying data target.<BR>
+<BR>
+ERRORS: <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
+<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A><BR>
+<BR>
+SEE ALSO: <A HREF="#file">file</A>, <A HREF="PSL2c.html#closefile">closefile</A>,
+<A HREF="PSL2qr.html#resourceforall">resourceforall</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="findencoding"></A><BR>
+<B>findencoding</B> key findencoding array LEVEL 2 <BR>
+<BR>
+obtains an encoding vector identified by the specified key and pushes it
+onto the operand stack. <BR>
+<BR>
+findencoding is a special case of findresource applied to the Encoding category
+. If the encoding array specified by key does not exist or cannot be found,
+findencoding executes the <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+error. <BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
+<A HREF="PSL2u.html#undefinedresource">undefinedresource</A> <BR>
+<BR>
+SEE ALSO: <A HREF="#findresource">findresource</A>, <A HREF="PSL2s.html#StandardEncoding">StandardEncoding</A>,
+<A HREF="PSL2ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="findfont"></A><BR>
+<B>findfont</B> key findfont font <BR>
+<BR>
+obtains a font dictionary identified by the specified key and pushes it
+on the operand stack . key may be a key previously passed to <A HREF="PSL2d.html#definefont">definefont</A>,
+in which case the font dictionary associated with key (in the font directory)
+is returned. <BR>
+<BR>
+If key is not registered as a font in VM, findfont takes an action that
+varies according to the environment in which the PostScript interpreter
+is operating. In some environments, findfont may attempt to read a font
+definition from an external source, such as a file. In other environments,
+findfont substitutes a default font or executes the error <A HREF="PSL2ik.html#invalidfont">invalidfont</A>.
+findfont is a special case of <A HREF="#findresource">findresource</A> applied
+to the Font category. <BR>
+<BR>
+findfont, like <A HREF="#findresource">findresource</A>, normally looks
+first for fonts defined in local VM, then for fonts defined in global VM.
+However, if the current VM allocation mode is global, findfont considers
+only fonts defined in global VM. If findfont needs to load a font into VM,
+it may use either local or global VM, depending on the font. Generally,
+Type 1 fonts are loaded into global VM; fonts of other types are loaded
+in to local VM. <BR>
+<BR>
+findfont is not an operator, but rather a built-in procedure. It may be
+redefined by a PostScript language program that requires different strategies
+for finding fonts. <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2s.html#scalefont">scalefont</A>, <A HREF="PSL2m.html#makefont">makefont</A>,
+<A HREF="PSL2s.html#setfont">setfont</A>, <A HREF="PSL2s.html#selectfont">selectfont</A>,
+<A HREF="PSL2d.html#definefont">definefont</A>, <A HREF="#findresource">findresource</A>,
+<A HREF="#FontDirectory">FontDirectory</A>, <A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="findresource"></A><BR>
+<B>findresource</B> key category findresource instance LEVEL 2 <BR>
+<BR>
+attempts to obtain a named resource instance in a specified category. category
+is a name object that identifies a resource category, such as Font . key
+is a name or string object that identifies the resource instance. (Names
+and strings are interchangeable; other types of keys are permitted but are
+not recommended.) If it succeeds, findresource pushes the resource instance
+on the operand stack; this is an object whose type depends on the resource
+category. <BR>
+<BR>
+findresource first attempts to obtain a resource instance that has previously
+been defined in VM by defineresource. If the current VM allocation mode
+is local, findresource considers local resource definitions first, then
+global definitions (see <A HREF="PSL2d.html#defineresource">defineresource</A>).
+However, if the current VM allocation mode is global, findresource considers
+only global resource definitions.<BR>
+<BR>
+If the requested resource instance is not currently defined in VM, findresource
+attempts to obtain it from an external source. The way this is done is not
+specified by the PostScript language; it varies among different implementations
+and different resource categories. The effect of this action is to create
+an object in VM and execute defineresource. findresource then returns the
+newly created object. If key is not a name or string, findresource will
+not attempt to obtain an external resource. <BR>
+<BR>
+When findresource loads an object into VM, it ordinarily attempts to use
+global VM, regardless of the current VM allocation mode. In other words,
+it sets the VM allocation mode to global (true setglobal) while loading
+the resource instance and executing defineresource. However, certain resource
+instances do not function correctly when loaded into global VM; findresource
+uses local VM instead. This always occurs for type 3 font definitions and
+for any resource instance whose definition includes an explicit false setglobal.
+<BR>
+<BR>
+During its execution, findresource may remove the definitions of resource
+instances that were previously loaded into VM by findresource. The mechanisms
+and policies for this depend on the category and the implementation; reclamation
+of resources may occur at times other than during execution of findresource.
+However, resource definitions that were made by explicit execution of <A HREF="PSL2d.html#defineresource">defineresource</A>
+are never disturbed by automatic reclamation.<BR>
+<BR>
+If the specified resource category does not exist, an <A HREF="PSL2u.html#undefined">undefined</A>
+error occurs. If the category exists but there is no instance whose name
+is key, an <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+error occurs. <BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
+<A HREF="PSL2u.html#undefined">undefined</A>, <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+<BR>
+<BR>
+SEE ALSO: <A HREF="PSL2d.html#defineresource">defineresource</A>, <A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>,
+<A HREF="PSL2qr.html#resourceforall">resourceforall</A>, <A HREF="PSL2u.html#undefineresource">undefineresource</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="flattenpath"></A><BR>
+<B>flattenpath</B> - flattenpath <BR>
+- replaces the current path with an equivalent path that preserves all straight
+line segments, but has all <A HREF="PSL2c.html#curveto">curveto</A> segments
+replaced by sequences of <A HREF="PSL2l.html#lineto">lineto</A> (straight
+line) segments that approximate the curves. If the current path does not
+contain any <A HREF="PSL2c.html#curveto">curveto</A> segments, flattenpath
+leaves it unchanged. <BR>
+<BR>
+This &quot;flattening&quot; of curves to straight line segments is done
+automatically when a path is used to control painting (for example, by <A HREF="PSL2s.html#stroke">stroke</A>,
+<A HREF="#fill">fill</A>, or <A HREF="PSL2c.html#clip">clip</A>). Only rarely
+does a program need to flatten a path explicitly (see <A HREF="PSL2p.html#pathbbox">pathbbox</A>).
+The accuracy of the approximation to the curve is controlled by the current
+flatness parameter in the graphics state (see <A HREF="PSL2s.html#setflat">setflat</A>).<BR>
+<BR>
+ERRORS: <A HREF="PSL2l.html#limitcheck">limitcheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2s.html#setflat">setflat</A>, <A HREF="PSL2c.html#curveto">curveto</A>,
+<A HREF="PSL2l.html#lineto">lineto</A>, <A HREF="PSL2p.html#pathbbox">pathbbox</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="floor"></A><BR>
+<B>floor</B> num1 floor num2 <BR>
+<BR>
+returns the greatest integer value less than or equal to num1. The type
+of the result is the same as the type of the operand. <BR>
+<BR>
+EXAMPLE:<BR>
+3.2 floor -&gt; 3.0 <BR>
+-4.8 floor -&gt; -5.0 <BR>
+99 floor -&gt; 99 <BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<BR>
+<BR>
+SEE ALSO: <A HREF="PSL2c.html#ceiling">ceiling</A>, <A HREF="PSL2qr.html#round">round</A>,
+<A HREF="PSL2t.html#truncate">truncate</A>, <A HREF="PSL2c.html#cvi">cvi</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="flush"></A><BR>
+<B>flush</B> - flush <BR>
+<BR>
+- causes any buffered characters for the standard output file to be delivered
+immediately. In general, a program requiring output to be sent immediately,
+such as during real-time, two-way interactions, should call flush after
+generating that output. <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#ioerror">ioerror</A> <BR>
+<BR>
+SEE ALSO: <A HREF="#flushfile">flushfile</A>, <A HREF="PSL2p.html#print">print</A>
+<BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="flushfile"></A><BR>
+<B>flushfile</B> file flushfile <BR>
+<BR>
+- If file is an output file, flushfile causes any buffered characters for
+that file to be delivered immediately. In general, a program requiring output
+to be sent immediately, such as during real-time, two-way interactions,
+should call flushfile after generating that output. <BR>
+<BR>
+If file is an input file, flushfile reads and discards data from file until
+the end-offile indication is encountered. This is useful during error recovery,
+and the PostScript job server uses it for that purpose. flushfile does not
+close the file, unless it is a decoding filter file. <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="#flush">flush</A>, <A HREF="PSL2qr.html#read">read</A>,
+<A HREF="PSL2w.html#write">write</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="FontDirectory"></A><BR>
+<B>FontDirectory</B> - FontDirectory dict <BR>
+<BR>
+pushes a dictionary of defined fonts on the operand stack. FontDirectory
+is not an operator; it is a name in systemdict associated with the dictionary
+object. <BR>
+<BR>
+The FontDirectory dictionary associates font names with font dictionaries.
+definefont places entries in FontDirectory, and findfont looks there first.
+The dictionary is read-only; only definefont and undefinefont can change
+it. <BR>
+<BR>
+Although FontDirectory contains all fonts that are currently defined in
+VM, it does not necessarily describe all the fonts available to a PostScript
+language program. This is because the findfont operator<BR>
+can sometimes obtain fonts from an external source and load them into VM
+dynamically. Consequently, examining FontDirectory is not a reliable method
+of inquiring about available fonts. The preferred method is to use the <A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>
+and <A HREF="PSL2qr.html#resourceforall">resourceforall</A> operators, which
+are Level 2 features, to inquire about the Font resource category. <BR>
+<BR>
+In Level 2, when global VM allocation mode is in effect, the name FontDirectory
+is temporarily<BR>
+rebound to the value of GlobalFontDirectory, which contains only those fonts
+that have been defined in global VM. This ensures the correct behavior of
+fonts that are defined in terms of other fonts. <BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackoverflow">stackoverflow</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2d.html#definefont">definefont</A>, <A HREF="PSL2u.html#undefinefont">undefinefont</A>,
+<A HREF="#findfont">findfont</A>, <A HREF="#findresource">findresource</A>,
+<A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="for"></A><BR>
+<B>for</B> initial increment limit proc for - <BR>
+<BR>
+executes proc repeatedly, passing it a sequence of values from initial by
+steps of increment to limit. The for operator expects initial, increment,
+and limit to be numbers. It maintains a temporary internal variable, known
+as the control variable, which it first sets to initial. Then, before each
+repetition, it compares the control variable with the termination value
+limit. If limit has not been exceeded, it pushes the control variable on
+the operand stack, executes proc, and adds increment to the control variable.
+<BR>
+<BR>
+The termination condition depends on whether increment is positive or negative.
+If increment is positive, for terminates when the control variable becomes
+greater than limit. If increment is negative, for terminates when the control
+variable becomes less than limit. If initial meets the termination condition,
+for does not execute proc at all. If proc executes the <A HREF="PSL2e.html#exit">exit</A>
+operator, for terminates prematurely. <BR>
+<BR>
+Usually, proc will use the value on the operand stack for some purpose.
+However, if proc does not remove the value, it will remain there. Successive
+executions of proc will cause successive values of the control variable
+to accumulate on the operand stack. <BR>
+<BR>
+EXAMPLE:<BR>
+0 1 1 4 {add} for -&gt; 10 <BR>
+1 2 6 { } for -&gt; 1 3 5 <BR>
+3 -.5 1 {-&gt; } for -&gt; 3.0 2.5 2.0 1.5 1.0 <BR>
+<BR>
+In the first example, the value of the control variable is added to whatever
+is on the stack, so 1, 2, 3, and 4 are added in turn to a running sum whose
+initial value is 0. The second example has an empty procedure, so the successive
+values of the control variable are left on the stack. The last example counts
+backward from 3 to 1 by halves, leaving the successive values on the stack.
+<BR>
+<BR>
+Beware of using reals instead of integers for any of the first three operands.
+Most real numbers are not represented exactly. This can cause an error to
+accumulate in the value of the control variable, with possibly surprising
+results. In particular, if the difference between initial and limit is a
+multiple of increment, as in the third line of the example, the control
+variable may not achieve the limit value.<BR>
+<BR>
+ERRORS: <A HREF="PSL2s.html#stackoverflow">stackoverflow</A> <A HREF="PSL2s.html#stackunderflow">stackunderflow,</A>
+<A HREF="PSL2t.html#typecheck">typecheck</A> <BR>
+<BR>
+SEE ALSO: <A HREF="PSL2qr.html#repeat">repeat</A>, <A HREF="PSL2l.html#loop">loop</A>,
+<A HREF="#forall">forall</A>, <A HREF="PSL2e.html#exit">exit</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="forall"></A><BR>
+<B>forall</B> array proc forall <BR>
+packedarray proc forall <BR>
+dict proc forall <BR>
+string proc forall - <BR>
+<BR>
+enumerates the elements of the first operand, executing the procedure proc
+for each element. If the first operand is an array, string, or packed array,
+forall pushes an element on the operand stack and executes proc for each
+element in the array, string, or packed array, beginning with the element
+whose index is 0 and continuing sequentially. The objects pushed on the
+operand stack are the array, packed array, or string elements. In the case
+of a string, these elements are integers in the range 0 to 255, not one-character
+strings. <BR>
+<BR>
+If the first operand is a dictionary, forall pushes a key and a value on
+the operand stack and executes proc for each key-value pair in the dictionary.
+The order in which forall enumerates the entries in the dictionary is arbitrary.
+New entries put in the dictionary during execution of proc may or may not
+be included in the enumeration. <BR>
+<BR>
+If the first operand is empty (i.e., has length 0), forall does not execute
+proc at all. If proc executes the <A HREF="PSL2e.html#exit">exit</A> operator,
+forall terminates prematurely. <BR>
+<BR>
+Although forall does not leave any results on the operand stack when it
+is finished, the execution of proc may leave arbitrary results there. If
+proc does not remove each enumerated element from the operand stack, the
+elements will accumulate there. <BR>
+<BR>
+EXAMPLE:<BR>
+0 [13 29 3 -8 21] {add} forall -&gt; 58 <BR>
+/d 2 dict def <BR>
+d /abc 123 put <BR>
+d /xyz (test) put <BR>
+d {} forall -&gt; /xyz (test) /abc 123 <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<A HREF="PSL2s.html#stackunderflow">stackunderflow,</A> <A HREF="PSL2t.html#typecheck">typecheck</A>
+<BR>
+<BR>
+SEE ALSO: <A HREF="#for">for</A>, <A HREF="PSL2qr.html#repeat">repeat</A>,
+<A HREF="PSL2l.html#loop">loop</A>, <A HREF="PSL2e.html#exit">exit</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<HR><A NAME="fork"></A><BR>
+<B>fork</B> mark obj1 ... objn proc fork context DPS <BR>
+<BR>
+creates a new execution context using the same local and global VM as the
+current context. The new context begins execution concurrent with continued
+execution of the current context. Which context executes first is unpredictable.
+<BR>
+<BR>
+The new context's environment is formed by copying the dictionary and graphics
+state stacks of the current context. The initial operand stack consists
+of obj1 through objn, pushed in the same order (obj1 through objn are objects
+of any type other than <A HREF="PSL2m.html#mark">mark</A>). fork consumes
+all operands down to and including the topmost mark. It then pushes an integer
+that uniquely identifies the new context. The forked context inherits its
+object format from the current context; other percontext parameters are
+initialized to default values. <BR>
+<BR>
+When the new context begins execution, it executes the procedure proc. If
+proc runs to completion and returns, the context ordinarily will suspend
+until some other context executes a join on context. However, if the context
+has been detached, it will terminate immediately (see <A HREF="PSL2ik.html#join">join</A>
+and <A HREF="PSL2d.html#detach">detach</A>). <BR>
+<BR>
+If proc executes a stop that causes the execution of proc to end prematurely,
+the context will terminate immediately. proc is effectively called as follows:
+<BR>
+<BR>
+proc stopped {handleerror quit} if <BR>
+% ...Wait for join or detach... <BR>
+quit <BR>
+<BR>
+In other words, if proc stops due to an error, the context invokes the error
+handler in the usual way to report the error. Then it terminates regardless
+of whether it has been detached. <BR>
+<BR>
+It is illegal to execute fork if there has been any previous save not yet
+matched by a restore. Attempting to do so will cause an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
+error. <BR>
+<BR>
+ERRORS: <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>,
+<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A><BR>
+<BR>
+SEE ALSO: <A HREF="PSL2ik.html#join">join</A>, <A HREF="PSL2d.html#detach">detach</A>,
+<A HREF="PSL2c.html#currentcontext">currentcontext</A> <BR>
+<HR><IMG SRC="bullet.gif" WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG=
+"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
+WIDTH="30" HEIGHT="30" ALIGN="MIDDLE" NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
+Index</A><BR>
+<BR>
+<IMG SRC="Rule33.GIF" WIDTH="940" HEIGHT="11" ALIGN="BOTTOM" NATURALSIZEFLAG=
+"3"><BR>
+<BR>
+<EM>Original file name: PSL2f</EM> 
+</BODY>
+</HTML>
