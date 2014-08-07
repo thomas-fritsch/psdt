@@ -16,24 +16,25 @@ public class PostscriptEObjectDocumentationProvider implements
 
 	public String getDocumentation(EObject o) {
 		if (o instanceof PSExecutableName) {
-			String name = ((PSExecutableName) o).getName();
 			IContext context = HelpSystem
 					.getContext("de.tfritsch.psdt.help.Reference");
 			if (context == null)
 				return null;
-			String href = getHref(context, name);
+			String href = getHref(context, ((PSExecutableName) o).getName());
 			if (href == null)
 				return null;
 			InputStream input = HelpSystem.getHelpContent(href);
 			if (input == null)
 				return null;
+			int posHash = href.indexOf('#');
+			String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
 			String full = "";
 			try {
 				full = toString(input);
 				input.close();
 			} catch (IOException e) {
 			}
-			return getBetween(full, "<A NAME=\"" + name + "\"></A>", "<HR>");
+			return getBetween(full, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
 		}
 		return null;
 	}

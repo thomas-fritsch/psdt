@@ -1,6 +1,13 @@
 <contexts>
 	<context id="Reference">
 		<description>Reference</description>
+		<topic label="["                        href="html/Reference/PSL2.html#mark1"/>
+		<topic label="]"                        href="html/Reference/PSL2.html#mark2"/>
+		<topic label="&lt;&lt;"                 href="html/Reference/PSL2.html#mark2LT"/>
+		<topic label="&gt;&gt;"                 href="html/Reference/PSL2.html#marktwoGT"/>
+		<topic label="="                        href="html/Reference/PSL2.html#equals"/>
+		<topic label="=="                       href="html/Reference/PSL2.html#twoequals"/>
+		<topic label="$error"                   href="html/Reference/PSL2.html#$error"/>
 		<topic label="abs"                      href="html/Reference/PSL2a.html#abs" />
 		<topic label="add"                      href="html/Reference/PSL2a.html#add" />
 		<topic label="aload"                    href="html/Reference/PSL2a.html#aload" />
