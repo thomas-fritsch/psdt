@@ -4,6 +4,7 @@
 
    <extension  point="org.eclipse.help.toc">
       <toc file="toc.xml" primary="true"/>
+      <toc file="toc_reference.xml"/>
    </extension>
 
   <extension point="org.eclipse.help.contexts">

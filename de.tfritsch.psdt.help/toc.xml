@@ -3,33 +3,6 @@
 
 <toc label="Postscript User Guide">
 	<topic label="Reference">
-		<topic label="symbol">
-			<topic label="["  href="html/Reference/PSL2.html#mark1"/>
-			<topic label="]"  href="html/Reference/PSL2.html#mark2"/>
-			<topic label="&lt;&lt;" href="html/Reference/PSL2.html#mark2LT"/>
-			<topic label="&gt;&gt;" href="html/Reference/PSL2.html#marktwoGT"/>
-			<topic label="="  href="html/Reference/PSL2.html#equals"/>
-			<topic label="==" href="html/Reference/PSL2.html#twoequals"/>
-			<topic label="$error" href="html/Reference/PSL2.html#$error"/>
-		</topic>
-		<topic label="a"     href="html/Reference/PSL2a.html"/>
-		<topic label="b"     href="html/Reference/PSL2b.html"/>
-		<topic label="c"     href="html/Reference/PSL2c.html"/>
-		<topic label="d"     href="html/Reference/PSL2d.html"/>
-		<topic label="e"     href="html/Reference/PSL2e.html"/>
-		<topic label="f"     href="html/Reference/PSL2f.html"/>
-		<topic label="g h"   href="html/Reference/PSL2gh.html"/>
-		<topic label="i j k" href="html/Reference/PSL2ik.html"/>
-		<topic label="l"     href="html/Reference/PSL2l.html"/>
-		<topic label="m"     href="html/Reference/PSL2m.html"/>
-		<topic label="n o"   href="html/Reference/PSL2no.html"/>
-		<topic label="p"     href="html/Reference/PSL2p.html"/>
-		<topic label="q r"   href="html/Reference/PSL2qr.html"/>
-		<topic label="s"     href="html/Reference/PSL2s.html"/>
-		<topic label="t"     href="html/Reference/PSL2t.html"/>
-		<topic label="u"     href="html/Reference/PSL2u.html"/>
-		<topic label="v"     href="html/Reference/PSL2v.html"/>
-		<topic label="w"     href="html/Reference/PSL2w.html"/>
-		<topic label="x y z" href="html/Reference/PSL2xy.html"/>
+		<link toc="toc_reference.xml" />
 	</topic>
 </toc>
