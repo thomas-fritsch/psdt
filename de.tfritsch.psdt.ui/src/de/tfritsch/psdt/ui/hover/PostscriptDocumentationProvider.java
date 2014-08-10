@@ -14,7 +14,7 @@ import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import de.tfritsch.psdt.postscript.PSExecutableName;
 
 @SuppressWarnings("restriction")
-public class PostscriptEObjectDocumentationProvider implements
+public class PostscriptDocumentationProvider implements
 		IEObjectDocumentationProvider {
 
 	public String getDocumentation(EObject o) {

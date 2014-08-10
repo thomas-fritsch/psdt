@@ -15,8 +15,8 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
-import de.tfritsch.psdt.ui.hover.PostscriptEObjectDocumentationProvider;
-import de.tfritsch.psdt.ui.hover.PostscriptEObjectHoverProvider;
+import de.tfritsch.psdt.ui.hover.PostscriptDocumentationProvider;
+import de.tfritsch.psdt.ui.hover.PostscriptHoverProvider;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptAntlrTokenToAttributeIdMapper;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration;
 
@@ -52,10 +52,10 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 	}
 
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
-        return PostscriptEObjectDocumentationProvider.class;
+        return PostscriptDocumentationProvider.class;
     }
 
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
-		return PostscriptEObjectHoverProvider.class;
+		return PostscriptHoverProvider.class;
 	}
 }

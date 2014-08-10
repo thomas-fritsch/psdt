@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 import de.tfritsch.psdt.postscript.PSExecutableName;
 
-public class PostscriptEObjectHoverProvider extends DefaultEObjectHoverProvider {
+public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 
 	/**
 	 * Documentation hover only for executable names.
