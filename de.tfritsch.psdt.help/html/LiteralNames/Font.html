@@ -1,0 +1,113 @@
+<HTML>
+
+<A NAME="FontType"></A>
+<DL>
+<DT>Key<DD><B>FontType</B>
+<DT>Type<DD>integer
+<DT>Value<DD><I>(Required)</I> The font type; see Table 5.1. Indicates where the glyph descriptions
+are to be found and how they are represented.
+</DL>
+<HR>
+<A NAME="FontMatrix"></A>
+<DL>
+<DT>Key<DD><B>FontMatrix</B>
+<DT>Type<DD>array
+<DT>Value<DD><I>(Required)</I> An array that transforms the <I>glyph coordinate system</I> into the user
+coordinate system (see Section 5.4, "Glyph Metric Information"). For
+example, Type 1 font programs from Adobe are usually defined in terms of a
+1000-unit glyph coordinate system, and their initial font matrix is
+[0.001 0 0 0.001 0 0]. When a font is derived by the scalefont or makefont
+operator, the new matrix is concatenated with the existing font matrix to
+yield a new copy of the font with a different font matrix.
+</DL>
+<HR>
+<A NAME="FontName"></A>
+<DL>
+<DT>Key<DD><B>FontName</B>
+<DT>Type<DD>name
+<DT>Value<DD><I>(Optional)</I> The name of the font. This entry is for information only; it is not
+used by the PostScript interpreter. Ordinarily, it is the same as the key passed
+to definefont, but it need not be.
+</DL>
+<HR>
+<A NAME="FontInfo"></A>
+<DL>
+<DT>Key<DD><B>FontInfo</B>
+<DT>Type<DD>dictionary
+<DT>Value<DD><I>(Optional)</I> A dictionary containing font information that is not accessed by
+the PostScript interpreter; see Table 5.5 on page 327.
+</DL>
+<HR>
+<A NAME="LanguageLevel"></A>
+<DL>
+<DT>Key<DD><B>LanguageLevel</B>
+<DT>Type<DD>integer
+<DT>Value<DD><I>(Optional)</I> The minimum LanguageLevel required for correct behavior of the
+font. For example, any font that uses LanguageLevel 2 features for rendering
+glyphs (such as a glyph description that uses rectfill or glyphshow) should
+specify a LanguageLevel value of 2. On the other hand, the presence of
+higher-LanguageLevel information that an interpreter can safely ignore does
+not require LanguageLevel to be set to the higher LanguageLevel. For
+example, an XUID entry in the font dictionary—LanguageLevel 2 information
+that a LanguageLevel 1 interpreter can ignore—does not require setting
+LanguageLevel to 2. Default value: 1.
+</DL>
+<HR>
+<A NAME="WMode"></A>
+<DL>
+<DT>Key<DD><B>WMode</B>
+<DT>Type<DD>integer
+<DT>Value<DD><I>(Optional; LanguageLevel 2)</I> The writing mode, which determines which of
+two sets of metrics will be used when glyphs are shown from the font. Mode 0
+specifies horizontal writing; mode 1 specifies vertical writing (see Section 5.4,
+"Glyph Metric Information"). LanguageLevel 1 implementations lacking
+composite font extensions ignore this entry. Default value: 0.
+</DL>
+<HR>
+<A NAME="Encoding"></A>
+<DL>
+<DT>Key<DD><B>Encoding</B>
+<DT>Type<DD>array
+<DT>Value<DD><I>(Required)</I> An array of character names to which character codes are
+mapped. See Section 5.3, "Character Encoding."
+</DL>
+<HR>
+<A NAME="FontBBox"></A>
+<DL>
+<DT>Key<DD><B>FontBBox</B>
+<DT>Type<DD>array
+<DT>Value<DD><I>(Required)</I> An array of four numbers in the glyph coordinate system giving
+the left, bottom, right, and top coordinates, respectively, of the font bounding
+box. The font bounding box is the smallest rectangle enclosing the shape that
+would result if all of the glyphs of the font were placed with their origins coincident,
+and then painted. This information is used in making decisions
+about glyph caching and clipping. If all four values are 0, the PostScript interpreter
+makes no assumptions based on the font bounding box.<BR>
+If any value is nonzero, it is essential that the font bounding box be accurate;
+if any glyph's marks fall outside this bounding box, incorrect behavior may
+result.<BR>
+In many Type 1 fonts, the FontBBox array is executable, though there is no
+good reason for this to be so. Programs that access FontBBox should invoke
+an explicit get or load operator to avoid unintended execution.
+</DL>
+<HR>
+<A NAME="BuildGlyph"></A>
+<DL>
+<DT>Key<DD><B>BuildGlyph</B>
+<DT>Type<DD>procedure
+<DT>Value<DD><I>(Optional; LanguageLevel 2)</I> A procedure that constructs the requested glyph.
+The font dictionary, followed by the character name, is on the stack when the
+procedure is called. See Section 5.7.1, "BuildGlyph."
+</DL>
+<HR>
+<A NAME="BuildChar"></A>
+<DL>
+<DT>Key<DD><B>BuildChar</B>
+<DT>Type<DD>procedure
+<DT>Value<DD><I>(Required for LanguageLevel 1 or if BuildGlyph is absent)</I> A procedure that
+constructs the requested glyph (only if no BuildGlyph entry is present, in
+LanguageLevel 2 or 3). The font dictionary, followed by the character code, is
+on the stack when the procedure is called. See Section 5.7.2, "BuildChar."
+</DL>
+<HR>
+</HTML>

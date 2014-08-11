@@ -10,22 +10,43 @@ import org.eclipse.help.IContext;
 import org.eclipse.help.IHelpResource;
 import org.eclipse.jface.internal.text.html.HTMLPrinter;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
+import org.eclipse.xtext.util.PolymorphicDispatcher;
+
+import com.google.inject.Singleton;
 
 import de.tfritsch.psdt.postscript.PSExecutableName;
+import de.tfritsch.psdt.postscript.PSLiteralName;
 
+@Singleton
 @SuppressWarnings("restriction")
 public class PostscriptDocumentationProvider implements
 		IEObjectDocumentationProvider {
 
+	private PolymorphicDispatcher<String> documentationDispatcher =
+			PolymorphicDispatcher.createForSingleTarget("_documentation", this);
+			
 	public String getDocumentation(EObject o) {
-		if (o instanceof PSExecutableName) {
-			return doGetDocumentation((PSExecutableName) o);
-		}
+		return documentationDispatcher.invoke(o);
+	}
+
+	protected String _documentation(EObject o) {
 		return null;
 	}
 
-	protected String doGetDocumentation(PSExecutableName o) {
+	protected String _documentation(PSExecutableName o) {
 		String href = getHref("de.tfritsch.psdt.help.Reference", o.getName());
+		if (href == null)
+			return null;
+		String content = getContent(href);
+		if (content == null)
+			return null;
+		int posHash = href.indexOf('#');
+		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
+		return getBetween(content, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
+	}
+
+	protected String _documentation(PSLiteralName o) {
+		String href = getHref("de.tfritsch.psdt.help.LiteralNames", o.getName());
 		if (href == null)
 			return null;
 		String content = getContent(href);
