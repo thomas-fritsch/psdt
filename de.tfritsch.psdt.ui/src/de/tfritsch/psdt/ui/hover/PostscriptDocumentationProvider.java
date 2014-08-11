@@ -24,7 +24,7 @@ public class PostscriptDocumentationProvider implements
 
 	private PolymorphicDispatcher<String> documentationDispatcher =
 			PolymorphicDispatcher.createForSingleTarget("_documentation", this);
-			
+
 	public String getDocumentation(EObject o) {
 		return documentationDispatcher.invoke(o);
 	}
@@ -54,7 +54,10 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		return getBetween(content, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
+		String tableRow = getBetween(content, "<a name=\"" + fragment
+				+ "\"></a>", "<a name=");
+		return "<table border=\"1\"><tr><th>Key</th><th>Type</th><th>Value</th></tr>"
+				+ tableRow + "</table><br><br><br>";
 	}
 
 	private String getHref(String contextId, String label) {

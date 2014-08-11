@@ -1,82 +1,75 @@
-<HTML>
-
-<A NAME="FontType"></A>
-<DL>
-<DT>Key<DD><B>FontType</B>
-<DT>Type<DD>integer
-<DT>Value<DD><I>(Required)</I> The font type; see Table 5.1. Indicates where the glyph descriptions
+<html>
+<p/>
+<table border="1">
+<tr><th colspan="3">Table 5.2: Entries common to all font dictionaries</th></tr>
+<tr><th>Key</th><th>Type</th><th>Value</th></tr>
+<a name="FontType"></a>
+<tr><td><b>FontType</b></td><td>integer</td><td>
+<i>(Required)</i> The font type; see Table 5.1. Indicates where the glyph descriptions
 are to be found and how they are represented.
-</DL>
-<HR>
-<A NAME="FontMatrix"></A>
-<DL>
-<DT>Key<DD><B>FontMatrix</B>
-<DT>Type<DD>array
-<DT>Value<DD><I>(Required)</I> An array that transforms the <I>glyph coordinate system</I> into the user
+</td></tr>
+<a name="FontMatrix"></a>
+<tr><td><b>FontMatrix</b></td><td>array</td><td>
+<i>(Required)</i> An array that transforms the <i>glyph coordinate system</i> into the user
 coordinate system (see Section 5.4, "Glyph Metric Information"). For
 example, Type 1 font programs from Adobe are usually defined in terms of a
 1000-unit glyph coordinate system, and their initial font matrix is
-[0.001 0 0 0.001 0 0]. When a font is derived by the scalefont or makefont
+[0.001 0 0 0.001 0 0]. When a font is derived by the <b>scalefont</b> or <b>makefont</b>
 operator, the new matrix is concatenated with the existing font matrix to
 yield a new copy of the font with a different font matrix.
-</DL>
-<HR>
-<A NAME="FontName"></A>
-<DL>
-<DT>Key<DD><B>FontName</B>
-<DT>Type<DD>name
-<DT>Value<DD><I>(Optional)</I> The name of the font. This entry is for information only; it is not
+</td></tr>
+<a name="FontName"></a>
+<tr><td><b>FontName</b></td><td>name</td><td>
+<i>(Optional)</i> The name of the font. This entry is for information only; it is not
 used by the PostScript interpreter. Ordinarily, it is the same as the key passed
-to definefont, but it need not be.
-</DL>
-<HR>
-<A NAME="FontInfo"></A>
-<DL>
-<DT>Key<DD><B>FontInfo</B>
-<DT>Type<DD>dictionary
-<DT>Value<DD><I>(Optional)</I> A dictionary containing font information that is not accessed by
+to <b>definefont</b>, but it need not be.
+</td></tr>
+<a name="FontInfo"></a>
+<tr><td><b>FontInfo</b></td><td>dictionary</td><td>
+<i>(Optional)</i> A dictionary containing font information that is not accessed by
 the PostScript interpreter; see Table 5.5 on page 327.
-</DL>
-<HR>
-<A NAME="LanguageLevel"></A>
-<DL>
-<DT>Key<DD><B>LanguageLevel</B>
-<DT>Type<DD>integer
-<DT>Value<DD><I>(Optional)</I> The minimum LanguageLevel required for correct behavior of the
+</td></tr>
+<a name="LanguageLevel"></a>
+<tr><td><b>LanguageLevel</b></td><td>integer</td><td>
+<i>(Optional)</i> The minimum LanguageLevel required for correct behavior of the
 font. For example, any font that uses LanguageLevel 2 features for rendering
-glyphs (such as a glyph description that uses rectfill or glyphshow) should
-specify a LanguageLevel value of 2. On the other hand, the presence of
+glyphs (such as a glyph description that uses <b>rectfill</b> or <b>glyphshow</b>) should
+specify a <b>LanguageLevel</b> value of 2. On the other hand, the presence of
 higher-LanguageLevel information that an interpreter can safely ignore does
 not require LanguageLevel to be set to the higher LanguageLevel. For
-example, an XUID entry in the font dictionary—LanguageLevel 2 information
-that a LanguageLevel 1 interpreter can ignore—does not require setting
-LanguageLevel to 2. Default value: 1.
-</DL>
-<HR>
-<A NAME="WMode"></A>
-<DL>
-<DT>Key<DD><B>WMode</B>
-<DT>Type<DD>integer
-<DT>Value<DD><I>(Optional; LanguageLevel 2)</I> The writing mode, which determines which of
+example, an <b>XUID</b> entry in the font dictionary&mdash;LanguageLevel 2 information
+that a LanguageLevel 1 interpreter can ignore&mdash;does not require setting
+<b>LanguageLevel</b> to 2. Default value: 1.
+</td></tr>
+<a name="WMode"></a>
+<tr><td><b>WMode</b></td><td>integer</td><td>
+<i>(Optional; LanguageLevel 2)</i> The writing mode, which determines which of
 two sets of metrics will be used when glyphs are shown from the font. Mode 0
 specifies horizontal writing; mode 1 specifies vertical writing (see Section 5.4,
 "Glyph Metric Information"). LanguageLevel 1 implementations lacking
 composite font extensions ignore this entry. Default value: 0.
-</DL>
-<HR>
-<A NAME="Encoding"></A>
-<DL>
-<DT>Key<DD><B>Encoding</B>
-<DT>Type<DD>array
-<DT>Value<DD><I>(Required)</I> An array of character names to which character codes are
+</td></tr>
+<a name="FID"></a>
+<tr><td><b>FID</b></td><td>fontID</td><td>
+<i>(Inserted by <b>definefont</b>)</i> A special object of type fontID that serves internal
+purposes in the font machinery. The <b>definefont</b> operator inserts this entry. In
+LanguageLevel 1, an <b>FID</b> entry must not previously exist in the dictionary
+presented to definefont; the dictionary must have sufficient space to insert
+this entry.</td></tr>
+<a name="_bottomOfTable"></a>
+</table>
+<p/>
+<table border="1">
+<tr><th colspan="3">Table 5.3: Additional entries common to all base fonts</th></tr>
+<tr><th>Key</th><th>Type</th><th>Value</th></tr>
+<a name="Encoding"></a>
+<tr><td><b>Encoding</b></td><td>array</td><td>
+<i>(Required)</i> An array of character names to which character codes are
 mapped. See Section 5.3, "Character Encoding."
-</DL>
-<HR>
-<A NAME="FontBBox"></A>
-<DL>
-<DT>Key<DD><B>FontBBox</B>
-<DT>Type<DD>array
-<DT>Value<DD><I>(Required)</I> An array of four numbers in the glyph coordinate system giving
+</td></tr>
+<a name="FontBBox"></a>
+<tr><td><b>FontBBox</b></td><td>array</td><td>
+<i>(Required)</i> An array of four numbers in the glyph coordinate system giving
 the left, bottom, right, and top coordinates, respectively, of the font bounding
 box. The font bounding box is the smallest rectangle enclosing the shape that
 would result if all of the glyphs of the font were placed with their origins coincident,
@@ -86,28 +79,29 @@ makes no assumptions based on the font bounding box.<BR>
 If any value is nonzero, it is essential that the font bounding box be accurate;
 if any glyph's marks fall outside this bounding box, incorrect behavior may
 result.<BR>
-In many Type 1 fonts, the FontBBox array is executable, though there is no
-good reason for this to be so. Programs that access FontBBox should invoke
-an explicit get or load operator to avoid unintended execution.
-</DL>
-<HR>
-<A NAME="BuildGlyph"></A>
-<DL>
-<DT>Key<DD><B>BuildGlyph</B>
-<DT>Type<DD>procedure
-<DT>Value<DD><I>(Optional; LanguageLevel 2)</I> A procedure that constructs the requested glyph.
+In many Type 1 fonts, the <b>FontBBox</b> array is executable, though there is no
+good reason for this to be so. Programs that access <b>FontBBox</b> should invoke
+an explicit <b>get</b> or <b>load</b> operator to avoid unintended execution.
+</td></tr>
+<a name="_bottomOfTable"></a>
+</table>
+<p/>
+<table border="1">
+<tr><th colspan="3">Table 5.6: Additional entries specific to Type 3 fonts</th></tr>
+<tr><th>Key</th><th>Type</th><th>Value</th></tr>
+<a name="BuildGlyph"></a>
+<tr><td><b>BuildGlyph</b></td><td>procedure</td><td>
+<i>(Optional; LanguageLevel 2)</i> A procedure that constructs the requested glyph.
 The font dictionary, followed by the character name, is on the stack when the
 procedure is called. See Section 5.7.1, "BuildGlyph."
-</DL>
-<HR>
-<A NAME="BuildChar"></A>
-<DL>
-<DT>Key<DD><B>BuildChar</B>
-<DT>Type<DD>procedure
-<DT>Value<DD><I>(Required for LanguageLevel 1 or if BuildGlyph is absent)</I> A procedure that
-constructs the requested glyph (only if no BuildGlyph entry is present, in
+</td></tr>
+<a name="BuildChar"></a>
+<tr><td><b>BuildChar</b></td><td>procedure</td><td>
+<i>(Required for LanguageLevel 1 or if <b>BuildGlyph</b> is absent)</i> A procedure that
+constructs the requested glyph (only if no <b>BuildGlyph</b> entry is present, in
 LanguageLevel 2 or 3). The font dictionary, followed by the character code, is
 on the stack when the procedure is called. See Section 5.7.2, "BuildChar."
-</DL>
-<HR>
-</HTML>
+</td></tr>
+<a name="_bottomOfTable"></a>
+</table>
+</html>
