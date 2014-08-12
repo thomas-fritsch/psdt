@@ -3,13 +3,10 @@
 <HEAD>
     <TITLE>Postscript Level 2</TITLE>
 </HEAD>
-<BODY BACKGROUND="A23.GIF">
-<H1></H1>
+<BODY>
 <H1><CENTER>Postscript Operators 't'</CENTER>
 </H1>
-<BR>
-<IMG SRC="Rule33.GIF" WIDTH="620" HEIGHT="11" ALIGN=bottom NATURALSIZEFLAG=
-"3"><BR>
+<HR>
 <BR>
 <A NAME="timeout"></A><BR>
 <B>timeout</B> (error) <BR>
@@ -27,10 +24,6 @@ The PostScript language does not define any standard causes for timeout
 errors. However, a PostScript interpreter running in a particular environment
 may provide a set of timeout facilities appropriate for that environment.
 <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="token"></A><BR>
 <B>token</B> file token any true (if found)<BR>
 false (if not found)<BR>
@@ -84,10 +77,6 @@ ERRORS: <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.h
 <BR>
 SEE ALSO: <A HREF="PSL2s.html#search">search</A>, <A HREF="PSL2a.html#anchorsearch">anchorsearch</A>,
 <A HREF="PSL2qr.html#read">read</A> <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="transform"></A><BR>
 <B>transform</B> x y transform x' y'<BR>
 x y matrix transform x' y' <BR>
@@ -102,10 +91,6 @@ ERRORS: <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#sta
 <BR>
 SEE ALSO: <A HREF="PSL2ik.html#itransform">itransform</A>, <A HREF="PSL2d.html#dtransform">dtransform</A>,
 <A HREF="PSL2ik.html#idtransform">idtransform</A> <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="translate"></A><BR>
 <B>translate</B> tx ty translate <BR>
 - tx ty matrix translate matrix <BR>
@@ -128,10 +113,6 @@ ERRORS: <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#sta
 SEE ALSO: <A HREF="PSL2qr.html#rotate">rotate</A>, <A HREF="PSL2s.html#scale">scale</A>,
 <A HREF="PSL2c.html#concat">concat</A>, <A HREF="PSL2s.html#setmatrix">setmatrix</A>
 <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="true"></A><B>true</B> - true true <BR>
 <BR>
 pushes a boolean object whose value is true on the operand stack. true is
@@ -143,10 +124,6 @@ ERRORS: <A HREF="PSL2s.html#stackoverflow">stackoverflow</A> <BR>
 SEE ALSO: <A HREF="PSL2f.html#false">false</A>, <A HREF="PSL2a.html#and">and</A>,
 <A HREF="PSL2no.html#or">or</A>, <A HREF="PSL2no.html#not">not</A>, <A HREF="PSL2xy.html#xor">xor</A>
 <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="truncate"></A><B>truncate</B> num1 truncate num2<BR>
 <BR>
 truncates num1 toward zero by removing its fractional part. The type of
@@ -164,10 +141,6 @@ ERRORS: <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="#typech
 SEE ALSO: <A HREF="PSL2c.html#ceiling">ceiling</A>, <A HREF="PSL2f.html#floor">floor</A>,
 <A HREF="PSL2qr.html#round">round</A>, <A HREF="PSL2c.html#cvi">cvi</A>
 <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="type"></A><B>type</B> any type name <BR>
 returns a name object that identifies the type of the object any. The possible
 names that type can return are as follows: 
@@ -198,10 +171,6 @@ A program that examines the types of arbitrary objects should be prepared
 to behave reasonably if type returns a name that is not in this list. <BR>
 <BR>
 ERRORS: <A HREF="PSL2s.html#stackunderflow">stackunderflow</A> <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
 <HR><A NAME="typecheck"></A><B>typecheck</B> (error) <BR>
 <BR>
 Some operand's type is different from what an operator expects. This is
@@ -214,16 +183,6 @@ Certain operators require dictionaries or other composite objects as operands,
 constructed according to specific rules (for example, pattern dictionaries
 or user paths). A typecheck error can occur if the contents of such objects
 are of incorrect type or are otherwise malformed. <BR>
-<HR><IMG SRC="bullet.gif" WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG=
-"3"><A HREF="PStrIDX.html">Troubleshooting index</A> <IMG SRC="bullet.gif"
-WIDTH="24" HEIGHT="23" ALIGN=middle NATURALSIZEFLAG="3"><A HREF="Index.html">Postscript
-Index</A><BR>
-<BR>
-<IMG SRC="Rule33.GIF" WIDTH="620" HEIGHT="11" ALIGN=bottom NATURALSIZEFLAG=
-"3"><BR>
-<BR>
-<EM>Original file name: PSL2t.html<BR>
-<BR>
-</EM>
+<HR>
 </BODY>
 </HTML>
