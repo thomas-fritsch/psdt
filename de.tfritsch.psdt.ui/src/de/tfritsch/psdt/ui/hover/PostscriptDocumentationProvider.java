@@ -42,7 +42,8 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		return getBetween(content, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
+		content = getBetween(content, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
+		return content;
 	}
 
 	protected String _documentation(PSLiteralName o) {
@@ -54,10 +55,12 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		String tableRow = getBetween(content, "<a name=\"" + fragment
-				+ "\"></a>", "<a name=");
-		return "<table border=\"1\"><tr><th>Key</th><th>Type</th><th>Value</th></tr>"
-				+ tableRow + "</table><br><br><br>";
+		content = getBetween(content, "<a name=\"" + fragment + "\"></a>", "<a name=");
+		if (content == null)
+			return null;
+		content = "<table border=\"1\"><tr><th>Key</th><th>Type</th><th>Value</th></tr>"
+				+ content  + "</table><br><br><br>";
+		return content;
 	}
 
 	private String getHref(String contextId, String label) {
@@ -92,7 +95,7 @@ public class PostscriptDocumentationProvider implements
 		pos1 += begin.length();
 		int pos2 = full.indexOf(end, pos1);
 		if (pos2 < 0)
-			pos2 = full.length();
+			return null;
 		return full.substring(pos1, pos2);
 	}
 }
