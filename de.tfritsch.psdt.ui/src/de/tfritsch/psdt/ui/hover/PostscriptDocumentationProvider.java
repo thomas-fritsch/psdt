@@ -3,6 +3,7 @@ package de.tfritsch.psdt.ui.hover;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.help.HelpSystem;
@@ -55,9 +56,9 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		content = getBetween(content, "<a name=\"" + fragment + "\"></a>", "<a name=");
-		if (content == null)
-			return null;
+		content = Pattern.compile(".*<a name=\""+ fragment + "\"></a>\\s*(<tr>.*?</tr>).*", Pattern.DOTALL)
+				.matcher(content)
+				.replaceFirst("$1");
 		content = "<table border=\"1\"><tr><th>Key</th><th>Type</th><th>Value</th></tr>"
 				+ content  + "</table><br><br><br>";
 		return content;
