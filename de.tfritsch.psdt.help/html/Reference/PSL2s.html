@@ -240,7 +240,7 @@ of rendering it. For example, stroking the path may place marks outside the
 bounding box without causing an error.
 <P>
 Although the setbbox operator can be used for any path, its main use is in defining
-user paths, where it is mandatory (see Section 4.6, “User Paths”). Any user
+user paths, where it is mandatory (see Section 4.6, "User Paths"). Any user
 path procedure passed to one of the user path rendering operators (such as ufill)
 must begin with a setbbox operation (optionally preceded by ucache). The
 bounding box information enables the user path rendering operator to optimize
@@ -289,7 +289,7 @@ the font machinery to transfer the results of those operators both into the font
 cache, if possible, and onto the current page.
 <P>
 The operands to setcachedevice are all numbers interpreted in the glyph coordinate
-system (see Section 5.4, “Glyph Metric Information”). wx and wy define the
+system (see Section 5.4, "Glyph Metric Information"). wx and wy define the
 basic width vector for this glyph—in other words, the normal position of the origin
 of the next glyph relative to origin of this one.
 <P>
@@ -308,7 +308,7 @@ setcachedevice2 installs separate metrics.
 <P>
 After execution of setcachedevice and until the termination of the BuildGlyph,
 BuildChar, or CharStrings procedure, invocation of color-setting operators or the
-image operator is not allowed; see Section 4.8, “Color Spaces.” Note that use of
+image operator is not allowed; see Section 4.8, "Color Spaces." Note that use of
 the imagemask operator is permitted.
 <P>
 After execution of setcachedevice and until the termination of the BuildGlyph
@@ -326,8 +326,8 @@ operator is permitted.
 <B>setcachedevice2</B> LEVEL 2
 <PRE>w0x w0y llx lly urx ury w1x w1y vx vy setcachedevice2 -</PRE>
 <P>
-passes two sets of glyph metrics to the font machinery (see Section 5.4, “Glyph
-Metric Information”). w0x and w0y are the distances from the current point to the
+passes two sets of glyph metrics to the font machinery (see Section 5.4, "Glyph
+Metric Information"). w0x and w0y are the distances from the current point to the
 new current point when showing text in writing mode 0. llx , lly and urx , ury are the
 distances from origin 0 to the lower-left and upper-right corners of the glyph
 bounding box. w1x and w1y are the distances from the current point to the new
@@ -454,7 +454,7 @@ The appropriate form of the operator depends on the current color space. All
 color spaces except Pattern use the first form, in which the operands comp1
 through compn specify the values of the color components describing the desired
 color. The number of components and the valid ranges of their values depend on
-the specific characteristics of the color space; see Section 4.8, “Color Spaces.” (In
+the specific characteristics of the color space; see Section 4.8, "Color Spaces." (In
 the case of an Indexed color space, the single operand comp1 is actually an index
 into the space’s color table rather than a true color component.) If the wrong
 number of components is specified, an error will occur, such as stackunderflow or
@@ -531,8 +531,8 @@ the spot functions. This form sets all the halftone screens for all four compone
 identically, using the grayfreq, grayang, and grayhalftone operands in the same
 manner as setscreen; the first nine operands (redfreq through bluehalftone) are ignored.
 In LanguageLevel 3, the behavior of setcolorscreen can be altered by the user
-parameters AccurateScreens (see "“Type 1 Halftone Dictionaries" on page 487),
-HalftoneMode (“Halftone Setting” on page 757), and MaxSuperScreen (Section
+parameters AccurateScreens (see "Type 1 Halftone Dictionaries" on page 487),
+HalftoneMode ("Halftone Setting" on page 757), and MaxSuperScreen (Section
 7.4.8, "Supercells").
 <P>
 Because the effect of the halftone screen is device-dependent, setcolorscreen
@@ -590,7 +590,7 @@ to specifying it by a one-element array containing just that name with no
 other parameters
 <P>
 Execution of this operator is not permitted in certain circumstances; see
-Section 4.8.1, “Types of Color Space.”
+Section 4.8.1, "Types of Color Space."
 <P>
 <B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
 <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>
@@ -610,7 +610,7 @@ in the range 0.0 to 1.0 on the operand stack and will return a number in the sam
 range.
 <P>
 These procedures adjust the values of device color components (see Section 7.3,
-“Transfer Functions”). A device’s output will be affected only by those transfer
+"Transfer Functions"). A device’s output will be affected only by those transfer
 functions corresponding to color components that the device supports. For example,
 redproc, greenproc, and blueproc will have no effect on a black-and-white
 device, while grayproc will have no effect on an RGB device. On a device whose
@@ -651,7 +651,7 @@ The ends of each dash are treated with the current line cap, and corners within 
 dash are treated with the current line join. stroke takes no measures to coordinate
 the dash pattern with features of the path itself; it simply dispenses dashes along
 the path in the pattern defined by array.
-The offset operand can be thought of as the “phase” of the dash pattern relative to
+The offset operand can be thought of as the "phase" of the dash pattern relative to
 the start of the path. It is interpreted as a distance into the dash pattern (measured
 in user space units) at which to start the pattern. Before beginning to stroke a
 path, the stroke operator cycles through the elements of array, adding up distances
@@ -1192,8 +1192,8 @@ dictionary as an implicit part of the graphics state. The effects of setpagedevi
 are subject to save and restore, gsave and grestore, and setgstate.
 <P>
 setpagedevice can be used by system administrators to establish a default state for
-a device by invoking it as part of an unencapsulated job (see Section 3.7.7, “Job
-Execution Environment”). This default state persists until the next restart of the
+a device by invoking it as part of an unencapsulated job (see Section 3.7.7, "Job
+Execution Environment"). This default state persists until the next restart of the
 PostScript interpreter. Some PostScript implementations store some of the device
 parameters in persistent storage when setpagedevice is executed as part of an unencapsulated
 job, making those parameters persist through interpreter restart.
@@ -1247,7 +1247,7 @@ color space is already a Pattern space, setpattern simply leaves it unchanged.
 setpattern then invokes setcolor to establish the specified pattern as the current
 color in the graphics state, passing it the same operand values that were supplied
 to setpattern itself. The pattern operand is a pattern dictionary constructed as
-specified in Section 4.9, “Patterns,” and instantiated by makepattern. The need
+specified in Section 4.9, "Patterns," and instantiated by makepattern. The need
 for the remaining operands depends on the value of the pattern dictionary’s
 PatternType and PaintType entries:
 <UL>
@@ -1298,7 +1298,7 @@ Execution of this operator is not permitted in certain circumstances.
 <PRE>frequency angle proc setscreen -
   num1 num2 halftone setscreen -</PRE>
 <P>
-sets the halftone screen parameter in the graphics state (see Section 7.4, “Halftones”)
+sets the halftone screen parameter in the graphics state (see Section 7.4, "Halftones")
 as specified by the operands. setscreen sets the screen identically for all
 four primary color components of the output device (red, green, blue, and gray);
 this distinguishes it from setcolorscreen, which sets the four screens independently.
@@ -1325,14 +1325,14 @@ A rangecheck error occurs if proc returns a result outside the range -1.0 to 1.0
 limitcheck error occurs if the size of the screen cell exceeds implementation limits.
 <P>
 In LanguageLevel 3, the behavior of setscreen can be altered by the user
-parameters AccurateScreens (see “Type 1 Halftone Dictionaries” on page 487),
-HalftoneMode (“Halftone Setting” on page 757), and MaxSuperScreen
-(Section 7.4.8, “Supercells”).
+parameters AccurateScreens (see "Type 1 Halftone Dictionaries" on page 487),
+HalftoneMode ("Halftone Setting" on page 757), and MaxSuperScreen
+(Section 7.4.8, "Supercells").
 <P>
 Because the effect of the halftone screen is device-dependent, setscreen should
 not be used in a page description that is intended to be device-independent. Execution
 of this operator is not permitted in certain circumstances; see
-Section 4.8.1, “Types of Color Space.”
+Section 4.8.1, "Types of Color Space."
 <P>
 <B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
 <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
@@ -1398,7 +1398,7 @@ names.
 <P>
 Permission to alter system parameters is controlled by a password. The dictionary
 usually must contain an entry named Password whose value is a string or integer
-equal to the system parameter password (see Section C.1.2, “System Parameters”).
+equal to the system parameter password (see Section C.1.2, "System Parameters").
 If the password is incorrect, an invalidaccess error occurs and
 setsystemparams does not alter any parameters.
 <P>
@@ -1638,16 +1638,16 @@ composed.
 <P>
 If the current device is a page device that was installed by setpagedevice
 (LanguageLevel 2), the precise behavior of showpage is determined by the values
-of parameters in the page device dictionary (see Sections 6.1.1, “Page Device Dictionary,”
-and 6.2, “Page Device Parameters”). Parameters affecting the behavior
+of parameters in the page device dictionary (see Sections 6.1.1, "Page Device Dictionary,"
+and 6.2, "Page Device Parameters"). Parameters affecting the behavior
 of showpage include NumCopies, Collate, Duplex, and perhaps others as well.
 <P>
 The main actions of showpage are as follows:
 <OL>
 <LI>Executes the EndPage procedure in the page device dictionary, passing an integer
 page count on the operand stack along with a reason code indicating that
-the procedure was called from showpage; see Section 6.2.6, “Device Initialization
-and Page Setup,” for more information.
+the procedure was called from showpage; see Section 6.2.6, "Device Initialization
+and Page Setup," for more information.
 <LI>If the boolean result returned by the EndPage procedure is true, transmits the
 page’s contents to the current output device and performs the equivalent of an
 erasepage operation, clearing the contents of raster memory in preparation
@@ -1787,7 +1787,7 @@ effect of executing it explicitly is undefined.
 <PRE>bool password startjob bool</PRE>
 <P>
 conditionally starts a new job whose execution may alter the initial virtual memory
-for subsequent jobs (see Section 3.7.7, “Job Execution Environment”). bool1
+for subsequent jobs (see Section 3.7.7, "Job Execution Environment"). bool1
 specifies whether the new job’s side effects are to be persistent.
 The behavior of startjob depends on whether the following three conditions are
 true:
