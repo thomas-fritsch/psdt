@@ -391,9 +391,6 @@
 		<topic label="xyshow"                   href="html/Reference/operators/xy.html#xyshow" />
 		<topic label="yield"                    href="html/Reference/operators/xy.html#yield" />
 		<topic label="yshow"                    href="html/Reference/operators/xy.html#yshow" />
-	</context>
-	<context id="LiteralNames">
-		<description>Literal Names</description>
 		<topic label="/Encoding"                href="html/Reference/fonts.html#Encoding" />
 		<topic label="/FID"                     href="html/Reference/fonts.html#FID" />
 		<topic label="/BuildChar"               href="html/Reference/fonts.html#BuildChar" />

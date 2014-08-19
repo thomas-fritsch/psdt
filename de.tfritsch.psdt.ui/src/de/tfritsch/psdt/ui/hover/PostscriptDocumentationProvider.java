@@ -3,6 +3,7 @@ package de.tfritsch.psdt.ui.hover;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
@@ -35,7 +36,7 @@ public class PostscriptDocumentationProvider implements
 	}
 
 	protected String _documentation(PSExecutableName o) {
-		String href = getHref("de.tfritsch.psdt.help.Reference", o.getName());
+		String href = getHref(o.getName());
 		if (href == null)
 			return null;
 		String content = getContent(href);
@@ -43,12 +44,16 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		content = getBetween(content, "<A NAME=\"" + fragment + "\"></A>", "<HR>");
+		Matcher matcher = Pattern.compile(".*<a name=\""+ fragment + "\"></a>(.*?)<hr>.*",
+				Pattern.CASE_INSENSITIVE | Pattern.DOTALL).matcher(content);
+		if (!matcher.matches())
+			return null;
+		content = matcher.group(1);
 		return content;
 	}
 
 	protected String _documentation(PSLiteralName o) {
-		String href = getHref("de.tfritsch.psdt.help.LiteralNames", o.getName());
+		String href = getHref(o.getName());
 		if (href == null)
 			return null;
 		String content = getContent(href);
@@ -56,16 +61,17 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		content = Pattern.compile(".*<a name=\""+ fragment + "\"></a>\\s*(<tr>.*?</tr>).*", Pattern.DOTALL)
-				.matcher(content)
-				.replaceFirst("$1");
-		content = "<table border=\"1\"><tr><th>Key</th><th>Type</th><th>Value</th></tr>"
-				+ content  + "</table><br><br><br>";
-		return content;
+		Matcher matcher = Pattern.compile(".*(<tr>\\s*<th>.*</th>\\s*</tr>).*<a name=\""+ fragment + "\"></a>\\s*(<tr>.*?</tr>).*",
+				Pattern.CASE_INSENSITIVE | Pattern.DOTALL).matcher(content);
+		if (!matcher.matches())
+			return null;
+		String headerRow = matcher.group(1);
+		String dataRow = matcher.group(2);
+		return "<table border=\"1\">" + headerRow + dataRow  + "</table><br><br><br>";
 	}
 
-	private String getHref(String contextId, String label) {
-		IContext context = HelpSystem.getContext(contextId);
+	private String getHref(String label) {
+		IContext context = HelpSystem.getContext("de.tfritsch.psdt.help.Reference");
 		if (context == null)
 			return null;
 		IHelpResource[] topics = context.getRelatedTopics();
@@ -87,16 +93,5 @@ public class PostscriptDocumentationProvider implements
 		} catch (IOException e) {
 		}
 		return content;
-	}
-
-	private String getBetween(String full, String begin, String end) {
-		int pos1 = full.indexOf(begin);
-		if (pos1 < 0)
-			return null;
-		pos1 += begin.length();
-		int pos2 = full.indexOf(end, pos1);
-		if (pos2 < 0)
-			return null;
-		return full.substring(pos1, pos2);
 	}
 }
