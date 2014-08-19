@@ -15,7 +15,7 @@ resides in global VM. It returns false if the operand is composite and its
 value resides in local VM. In other words, gcheck returns true if one could
 legally store its operand as an element of another object in global VM.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <HR>
 <A NAME="ge"></A>
 <B>ge</B>
@@ -29,7 +29,7 @@ both operands are strings, ge compares them element by element, treating
 the elements as integers in the range 0 to 255, to determine whether the
 first string is lexically greater than or equal to the second.
 If the operands are of other types or one is a string and the other is a
-number, ge executes the <A HREF="PSL2t.html#typecheck">typecheck</A> error.
+number, ge executes the <A HREF="t.html#typecheck">typecheck</A> error.
 <P>
 <B>Examples</B>
 <PRE>
@@ -39,11 +39,11 @@ number, ge executes the <A HREF="PSL2t.html#typecheck">typecheck</A> error.
 (aba)(aba) ge &rArr; true
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#gt">gt</A>, <A HREF="PSL2e.html#eq">eq</A>, <A HREF="PSL2no.html#ne">ne</A>,
-<A HREF="PSL2l.html#le">le</A>, <A HREF="PSL2l.html#lt">lt</A>
+<B>See Also:</B> <A HREF="#gt">gt</A>, <A HREF="e.html#eq">eq</A>, <A HREF="no.html#ne">ne</A>,
+<A HREF="l.html#le">le</A>, <A HREF="l.html#lt">lt</A>
 <HR>
 <A NAME="get"></A>
 <B>get</B>
@@ -59,11 +59,11 @@ If the first operand is an array, packed array, or string, get treats the
 second operand as an index and returns the element identified by the index,
 counting from zero. index must be in the range 0 to n-1, where n is the
 length of the array, packed array, or string. If it is outside this range,
-get will execute a <A HREF="PSL2qr.html#rangecheck">rangecheck</A> error.
+get will execute a <A HREF="qr.html#rangecheck">rangecheck</A> error.
 <P>
 If the first operand is a dictionary, get looks up the second operand as
 a key in the dictionary and returns the associated value. If the key is
-not present in the dictionary, get executes the <A HREF="PSL2u.html#undefined">undefined</A>
+not present in the dictionary, get executes the <A HREF="u.html#undefined">undefined</A>
 error.
 <P>
 <B>Examples</B>
@@ -79,11 +79,11 @@ currentdict /mykey get         &rArr; (myvalue)
 (a) 0 get                      &rArr; 97
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2p.html#put">put</A>, <A HREF="#getinterval">getinterval</A>
+<B>See Also:</B> <A HREF="p.html#put">put</A>, <A HREF="#getinterval">getinterval</A>
 <HR>
 <A NAME="getinterval"></A>
 <B>getinterval</B>
@@ -113,22 +113,22 @@ than the length of the original object.
 (abcde) 0 0 getinterval     &rArr; ()       % An empty string
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#get">get</A>, <A HREF="PSL2p.html#putinterval">putinterval</A>
+<B>See Also:</B> <A HREF="#get">get</A>, <A HREF="p.html#putinterval">putinterval</A>
 <HR>
 <A NAME="globaldict"></A>
 <B>globaldict</B> LEVEL 2
 <PRE>- globaldict dict</PRE>
 <P>
 pushes the dictionary object globaldict on the operand stack . globaldict
-is not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+is not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the dictionary object.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#systemdict">systemdict</A>, <A HREF="PSL2u.html#userdict">userdict</A>
+<B>See Also:</B> <A HREF="s.html#systemdict">systemdict</A>, <A HREF="u.html#userdict">userdict</A>
 <HR>
 <A NAME="GlobalFontDirectory"></A>
 <B>GlobalFontDirectory</B> LEVEL 2
@@ -136,12 +136,12 @@ associated with the dictionary object.
 <P>
 pushes a dictionary of defined fonts on the operand stack. Its contents
 are limited to those fonts that have been defined in global VM. GlobalFontDirectory
-is not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+is not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the dictionary object.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#FontDirectory">FontDirectory</A>
+<B>See Also:</B> <A HREF="f.html#FontDirectory">FontDirectory</A>
 <HR>
 <A NAME="glyphshow"></A>
 <B>glyphshow</B> LEVEL 2
@@ -166,20 +166,20 @@ for an occurrence of name. If it finds one, it pushes the font dictionary
 and the array index on the operand stack, then invokes BuildChar in the
 usual way. If name is not present in the encoding, glyphshow substitutes
 the name .notdef and repeats the search. If .notdef isn't present either,
-an <A HREF="PSL2ik.html#invalidfont">invalidfont</A> error occurs.
+an <A HREF="ik.html#invalidfont">invalidfont</A> error occurs.
 <P>
 Like show, glyphshow can access characters that are already in the font
 cache. glyphshow does not always need to execute the character's description.
 <P>
 glyphshow operates only with base fonts. If the current font is composite
-(FontType 0), an <A HREF="PSL2ik.html#invalidfont">invalidfont</A> error
+(FontType 0), an <A HREF="ik.html#invalidfont">invalidfont</A> error
 occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#show">show</A>
+<B>See Also:</B> <A HREF="s.html#show">show</A>
 <HR>
 <A NAME="grestore"></A>
 <B>grestore</B>
@@ -199,7 +199,7 @@ state from the top of the graphics state stack.
 <B>Errors:</B> (none)
 <P>
 <B>See Also:</B> <A HREF="#gsave">gsave</A>, <A HREF="#grestoreall">grestoreall</A>,
-<A HREF="PSL2s.html#setgstate">setgstate</A>
+<A HREF="s.html#setgstate">setgstate</A>
 <HR>
 <A NAME="grestoreall"></A>
 <B>grestoreall</B>
@@ -213,7 +213,7 @@ current graphics state from that saved one.
 <B>Errors:</B> (none)
 <P>
 <B>See Also:</B> <A HREF="#gsave">gsave</A>, <A HREF="#grestore">grestore</A>,
-<A HREF="PSL2s.html#setgstate">setgstate</A>
+<A HREF="s.html#setgstate">setgstate</A>
 <HR>
 <A NAME="gsave"></A>
 <B>gsave</B>
@@ -228,17 +228,17 @@ The save operator implicitly performs a gsave, but restoring a graphics
 state saved by save is slightly different from restoring one saved by gsave
 (see the descriptions of <A HREF="#grestore">grestore</A> and <A HREF="#grestoreall">grestoreall</A>).
 <P>
-Note that, unlike <A HREF="PSL2s.html#save">save</A>, gsave does not return
+Note that, unlike <A HREF="s.html#save">save</A>, gsave does not return
 a save object on the operand stack to represent the saved state. gsave and
 <A HREF="#grestore">grestore</A> work strictly in a stack-like fashion,
-except for the wholesale restoration performed by <A HREF="PSL2qr.html#restore">restore</A>
+except for the wholesale restoration performed by <A HREF="qr.html#restore">restore</A>
 and <A HREF="#grestoreall">grestoreall</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
 <B>See Also:</B> <A HREF="#grestore">grestore</A>, <A HREF="#grestoreall">grestoreall</A>,
-<A HREF="PSL2qr.html#restore">restore</A>, <A HREF="PSL2s.html#save">save</A>,
-<A HREF="#gstate">gstate</A>, <A HREF="PSL2c.html#currentgstate">currentgstate</A>
+<A HREF="qr.html#restore">restore</A>, <A HREF="s.html#save">save</A>,
+<A HREF="#gstate">gstate</A>, <A HREF="c.html#currentgstate">currentgstate</A>
 <HR>
 <A NAME="gstate"></A>
 <B>gstate</B> LEVEL 2
@@ -257,10 +257,10 @@ in local VM. Such objects might include the current font, screen function,
 halftone dictionary, transfer function, or dash pattern. In general, allocating
 gstate objects in global VM is risky and should be avoided.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentgstate">currentgstate</A>, <A HREF="PSL2s.html#setgstate">setgstate</A>
+<B>See Also:</B> <A HREF="c.html#currentgstate">currentgstate</A>, <A HREF="s.html#setgstate">setgstate</A>
 <HR>
 <A NAME="gt"></A>
 <B>gt</B>
@@ -273,22 +273,22 @@ both operands are numbers, gt compares their mathematical values. If both
 operands are strings, gt compares them element by element, treating the
 elements as integers in the range 0 to 255, to determine whether the first
 string is lexically greater than the second. If the operands are of other
-types or one is a string and the other is a number, gt executes the <A HREF="PSL2t.html#typecheck">typecheck</A>
+types or one is a string and the other is a number, gt executes the <A HREF="t.html#typecheck">typecheck</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#ge">ge</A>, <A HREF="PSL2e.html#eq">eq</A>, <A HREF="PSL2no.html#ne">ne</A>,
-<A HREF="PSL2l.html#le">le</A>, <A HREF="PSL2l.html#lt">lt</A>
+<B>See Also:</B> <A HREF="#ge">ge</A>, <A HREF="e.html#eq">eq</A>, <A HREF="no.html#ne">ne</A>,
+<A HREF="l.html#le">le</A>, <A HREF="l.html#lt">lt</A>
 <HR>
 <A NAME="handleerror"></A>
 <B>handleerror</B> (error)
 <P>
 is looked up in errordict and executed to report error information saved
 by the default error handlers . There is also a procedure named handleerror
-in <A HREF="PSL2s.html#systemdict">systemdict</A>; it merely calls the procedure
-in <A HREF="PSL2e.html#errordict">errordict</A>.
+in <A HREF="s.html#systemdict">systemdict</A>; it merely calls the procedure
+in <A HREF="e.html#errordict">errordict</A>.
 <HR>
 </BODY>
 </HTML>

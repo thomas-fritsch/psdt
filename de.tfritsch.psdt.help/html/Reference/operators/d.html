@@ -17,7 +17,7 @@ def simply replaces its value. Otherwise, def creates a new entry for key
 and stores value with it.
 <P>
 If the current dictionary is in global VM and value is a composite object
-whose value is in local VM, an <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>
+whose value is in local VM, an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs.
 <P>
 <B>Examples</B>
@@ -26,11 +26,11 @@ error occurs.
 /ncnt ncnt 1 add def      % ncnt now has value 2
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#dictfull">dictfull</A>, <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>,
-<A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>, <A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="d.html#dictfull">dictfull</A>, <A HREF="ik.html#invalidaccess">invalidaccess</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#store">store</A>, <A HREF="PSL2p.html#put">put</A>
+<B>See Also:</B> <A HREF="s.html#store">store</A>, <A HREF="p.html#put">put</A>
 <HR><A NAME="defaultmatrix"></A>
 <B>defaultmatrix</B>
 <PRE>matrix defaultmatrix matrix</PRE>
@@ -39,11 +39,11 @@ replaces the value of matrix with the default transformation matrix for
 the current output device and pushes this modified matrix back on the operand
 stack.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#rangecheck">rangecheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentmatrix">currentmatrix</A>, <A HREF="PSL2ik.html#initmatrix">initmatrix</A>,
-<A HREF="PSL2s.html#setmatrix">setmatrix</A>
+<B>See Also:</B> <A HREF="c.html#currentmatrix">currentmatrix</A>, <A HREF="ik.html#initmatrix">initmatrix</A>,
+<A HREF="s.html#setmatrix">setmatrix</A>
 <HR>
 <A NAME="definefont"></A>
 <B>definefont</B>
@@ -69,20 +69,20 @@ must have been registered by definefont previously.
 Subsequent invocation of findfont with key will return font. Font registration
 is subject to the normal semantics of VM . In particular, the lifetime of
 the definition depends on the VM allocation mode at the time definefont
-is executed. A local definition can be undone by a subsequent <A HREF="PSL2qr.html#restore">restore</A>.
+is executed. A local definition can be undone by a subsequent <A HREF="qr.html#restore">restore</A>.
 <P>
 definefont is actually a special case of <A HREF="#defineresource">defineresource</A>
 operating on the Font category.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#dictfull">dictfull</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#invalidaccess">invalidaccess</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="d.html#dictfull">dictfull</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="ik.html#invalidaccess">invalidaccess</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#makefont">makefont</A>, <A HREF="PSL2s.html#scalefont">scalefont</A>,
-<A HREF="PSL2s.html#setfont">setfont</A>, <A HREF="#defineresource">defineresource</A>,
-<A HREF="PSL2f.html#FontDirectory">FontDirectory</A>, <A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A>,
-<A HREF="PSL2s.html#setglobal">setglobal</A>
+<B>See Also:</B> <A HREF="m.html#makefont">makefont</A>, <A HREF="s.html#scalefont">scalefont</A>,
+<A HREF="s.html#setfont">setfont</A>, <A HREF="#defineresource">defineresource</A>,
+<A HREF="f.html#FontDirectory">FontDirectory</A>, <A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>,
+<A HREF="s.html#setglobal">setglobal</A>
 <HR>
 <A NAME="defineresource"></A>
 <B>defineresource</B> LEVEL 2
@@ -103,9 +103,9 @@ already restricted.
 <P>
 The lifetime of the definition depends on the VM allocation mode in effect
 at the time defineresource is executed. If local VM allocation is in effect
-(<A HREF="PSL2c.html#currentglobal">currentglobal</A> returns false), the
-effect of defineresource is undone by the next nonnested <A HREF="PSL2qr.html#restore">restore</A>.
-If global VM allocation is in effect (<A HREF="PSL2c.html#currentglobal">currentglobal</A>
+(<A HREF="c.html#currentglobal">currentglobal</A> returns false), the
+effect of defineresource is undone by the next nonnested <A HREF="qr.html#restore">restore</A>.
+If global VM allocation is in effect (<A HREF="c.html#currentglobal">currentglobal</A>
 returns true), the effect of defineresource persists until global VM is
 restored at the end of the job. If the current job is not encapsulated,
 the effect of a global defineresource persists indefinitely, and may be
@@ -130,20 +130,20 @@ replacing an existing global definition if there is one.
 It is permissible to use defineresource multiple times to associate a given
 resource instance with more than one key.
 <P>
-If the category name is unknown, an <A HREF="PSL2u.html#undefined">undefined</A>
+If the category name is unknown, an <A HREF="u.html#undefined">undefined</A>
 error occurs. If the instance is of the wrong type for the specified category,
-a <A HREF="PSerrors.html#typecheck">typecheck</A> error occurs. If the instance
-is in local VM but the current VM allocation mode is global, an <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>
+a <A HREF="t.html#typecheck">typecheck</A> error occurs. If the instance
+is in local VM but the current VM allocation mode is global, an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs. This is analogous to storing a local object into a global
 dictionary. Other errors can occur for specific categories. For example,
-when dealing with the Font category, defineresource can execute an <A HREF="PSL2ik.html#invalidfont">invalidfont</A>
+when dealing with the Font category, defineresource can execute an <A HREF="ik.html#invalidfont">invalidfont</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>, <A HREF="PSerrors.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2u.html#undefinedresource">undefineresource</A>, <A HREF="PSL2f.html#findresource">findresource</A>,
-<A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>, <A HREF="PSL2qr.html#resourceforall">resourceforall</A>
+<B>See Also:</B> <A HREF="u.html#undefinedresource">undefineresource</A>, <A HREF="f.html#findresource">findresource</A>,
+<A HREF="qr.html#resourcestatus">resourcestatus</A>, <A HREF="qr.html#resourceforall">resourceforall</A>
 <HR>
 <A NAME="defineusername"></A>
 <B>defineusername</B> DPS
@@ -164,20 +164,20 @@ remaining lifetime of the local VM.
 <P>
 The specified index must previously be unused in the name table or must
 already be associated with the same name. Changing an existing association
-is not permitted (an <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>
+is not permitted (an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error will occur). There may be an implementation limit on index values.
 Assigning index values sequentially starting at zero is strongly recommended.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#limitcheck">limitcheck</A>,
-<A HREF="PSerrors.html#rangecheck">rangecheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <HR>
 <A NAME="defineuserobject"></A>
 <B>defineuserobject</B> LEVEL 2
 <PRE>index any defineuserobject -</PRE>
 <P>
 establishes an association between the non-negative integer index and the
-object any in the <A HREF="PSL2u.html#UserObjects">UserObjects</A> array.
+object any in the <A HREF="u.html#UserObjects">UserObjects</A> array.
 First, it creates a UserObjects array in userdict if one is not already
 present. It extends an existing UserObjects array if necessary. It then
 executes the equivalent of
@@ -195,35 +195,35 @@ the array in local VM, regardless of the current VM allocation mode.
 The behavior of defineuserobject obeys normal PostScript language semantics
 in all respects. In particular, the modification to the UserObjects array
 and to userdict, if any, is immediately visible to all contexts that share
-the same local VM. It can be undone by a subsequent <A HREF="PSL2qr.html#restore">restore</A>
+the same local VM. It can be undone by a subsequent <A HREF="qr.html#restore">restore</A>
 according to the usual VM rules. index values must be within the range permitted
 for arrays; a large index value may cause allocation of an array that would
 exhaust VM resources. Assigning index values sequentially starting at zero
 is strongly recommended.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#execuserobject">execuserobject</A>, <A HREF="PSL2u.html#undefineuserobject">undefineuserobject</A>,
-<A HREF="PSL2u.html#UserObjects">UserObjects</A>
+<B>See Also:</B> <A HREF="e.html#execuserobject">execuserobject</A>, <A HREF="u.html#undefineuserobject">undefineuserobject</A>,
+<A HREF="u.html#UserObjects">UserObjects</A>
 <HR>
 <A NAME="deletefile"></A>
 <B>deletefile</B> LEVEL 2
 <PRE>filename deletefile -</PRE>
 <P>
 removes the specified file from its storage device. If no such file exists,
-an <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A> error occurs.
-If the device does not allow this operation, an <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>
-error occurs. If an environment dependent error is detected, an <A HREF="PSL2ik.html#ioerror">ioerror</A>
+an <A HREF="u.html#undefinedfilename">undefinedfilename</A> error occurs.
+If the device does not allow this operation, an <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>
+error occurs. If an environment dependent error is detected, an <A HREF="ik.html#ioerror">ioerror</A>
 occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="PSerrors.html#ioerror">ioerror</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
-, <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
+, <A HREF="u.html#undefinedfilename">undefinedfilename</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#file">file</A>, <A HREF="PSL2qr.html#renamefile">renamefile</A>,
-<A HREF="PSL2s.html#status">status</A>
+<B>See Also:</B> <A HREF="f.html#file">file</A>, <A HREF="qr.html#renamefile">renamefile</A>,
+<A HREF="s.html#status">status</A>
 <HR>
 <A NAME="detach"></A>
 <B>detach</B> DPS
@@ -234,16 +234,16 @@ to terminate immediately when it finishes executing its top-level procedure,
 whereas ordinarily it would wait for a join. If the context is already waiting
 for a join, detach causes it to terminate immediately.
 <P>
-detach executes an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
+detach executes an <A HREF="ik.html#invalidcontext">invalidcontext</A>
 error if context is not a valid context identifier or if the context has
 already been joined or detached. It is permissible for context to identify
 the current context.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidcontext">invalidcontext</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcontext">currentcontext</A>, <A HREF="PSL2f.html#fork">fork</A>,
-<A HREF="PSL2ik.html#join">join</A>
+<B>See Also:</B> <A HREF="c.html#currentcontext">currentcontext</A>, <A HREF="f.html#fork">fork</A>,
+<A HREF="ik.html#join">join</A>
 <HR>
 <A NAME="deviceinfo"></A>
 <B>deviceinfo</B> DPS
@@ -255,10 +255,10 @@ of the device. The information in the dictionary may not be meaningful for
 a page-oriented or other non-display device.
 <P>
 The use of deviceinfo after a setcachedevice operation within the scope
-of a BuildChar procedure is not permitted. An <A HREF="PSerrors.html#undefined">undefined</A>
+of a BuildChar procedure is not permitted. An <A HREF="u.html#undefined">undefined</A>
 error results.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>, <A HREF="PSerrors.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="u.html#undefined">undefined</A>
 <HR>
 <A NAME="dict"></A>
 <B>dict</B>
@@ -286,14 +286,14 @@ space. If a program knows how large a dictionary it needs, it should create
 one of that size initially. On the other hand, if a program cannot predict
 how large the dictionary will eventually grow, it should choose a small
 initial allocation sufficient for its immediate needs. The built-in writable
-dictionaries (for example, <A HREF="PSL2u.html#userdict">userdict</A>) follow
+dictionaries (for example, <A HREF="u.html#userdict">userdict</A>) follow
 the latter convention.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>, <A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2b.html#begin">begin</A>, <A HREF="PSL2e.html#end">end</A>,
-<A HREF="PSL2l.html#length">length</A>, <A HREF="PSL2m.html#maxlength">maxlength</A>
+<B>See Also:</B> <A HREF="b.html#begin">begin</A>, <A HREF="e.html#end">end</A>,
+<A HREF="l.html#length">length</A>, <A HREF="m.html#maxlength">maxlength</A>
 <P>
 <HR>
 <A NAME="dictfull"></A>
@@ -306,7 +306,7 @@ has a fixed limit on the number of entries with distinct keys it can hold.
 This limit is established by the operand to the dict operator that creates
 the dictionary.
 <P>
-<B>See Also:</B> <A HREF="#def">def</A>, <A HREF="PSL2p.html#put">put</A>, <A HREF="PSL2s.html#store">store</A>,
+<B>See Also:</B> <A HREF="#def">def</A>, <A HREF="p.html#put">put</A>, <A HREF="s.html#store">store</A>,
 <A HREF="#dict">dict</A>
 <HR>
 <A NAME="dictstack"></A>
@@ -318,13 +318,13 @@ describing the initial n-element subarray of array, where n is the current
 depth of the dictionary stack. dictstack copies the topmost dictionary into
 element n-1 of array and the bottommost one into element 0 of array. The
 dictionary stack itself is unchanged. If the length of array is less than
-the depth of the dictionary stack, dictstack executes a <A HREF="PSerrors.html#rangecheck">rangecheck</A>
+the depth of the dictionary stack, dictstack executes a <A HREF="qr.html#rangecheck">rangecheck</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#countdictstack">countdictstack</A>
+<B>See Also:</B> <A HREF="c.html#countdictstack">countdictstack</A>
 <HR>
 <A NAME="dictstackoverflow"></A>
 <B>dictstackoverflow</B> (error)
@@ -338,8 +338,8 @@ all elements of the dictionary stack stored as if by <A HREF="#dictstack">dictst
 pushes this array on the operand stack, and resets the dictionary stack
 to contain only the permanent entries.
 <P>
-<B>See Also:</B> <A HREF="PSL2b.html#begin">begin</A>, <A HREF="PSL2c.html#countdictstack">countdictstack</A>,
-<A HREF="PSL2c.html#cleardictstack">cleardictstack</A>
+<B>See Also:</B> <A HREF="b.html#begin">begin</A>, <A HREF="c.html#countdictstack">countdictstack</A>,
+<A HREF="c.html#cleardictstack">cleardictstack</A>
 <HR>
 <A NAME="dictstackunderflow"></A>
 <B>dictstackunderflow</B> (error)
@@ -348,7 +348,7 @@ An attempt has been made to remove (end) the bottommost instance of userdict
 from the dictionary stack. This occurs if an end is executed for which there
 was no corresponding begin.
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#end">end</A>
+<B>See Also:</B> <A HREF="e.html#end">end</A>
 <HR>
 <A NAME="div"></A>
 <B>div</B>
@@ -363,11 +363,11 @@ operands are integers. Use idiv if an integer result is desired.
 4 2 div  &rArr;  2.0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#idiv">idiv</A>, <A HREF="PSL2a.html#add">add</A>,
-<A HREF="PSL2m.html#mul">mul</A>, <A HREF="PSL2s.html#sub">sub</A>, <A HREF="PSL2m.html#mod">mod</A>
+<B>See Also:</B> <A HREF="ik.html#idiv">idiv</A>, <A HREF="a.html#add">add</A>,
+<A HREF="m.html#mul">mul</A>, <A HREF="s.html#sub">sub</A>, <A HREF="m.html#mod">mod</A>
 <HR>
 <A NAME="dtransform"></A>
 <B>dtransform</B>
@@ -384,11 +384,11 @@ components (tx and ty) of the transformation matrix are not used, making
 the distance vectors positionless in both user space and device space. This
 is useful for determining how distances map from user space to device space.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#rangecheck">rangecheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#idtransform">idtransform</A>, <A HREF="PSL2t.html#transform">transform</A>,
-<A HREF="PSL2ik.html#itransform">itransform</A>
+<B>See Also:</B> <A HREF="ik.html#idtransform">idtransform</A>, <A HREF="t.html#transform">transform</A>,
+<A HREF="ik.html#itransform">itransform</A>
 <HR>
 <A NAME="dup"></A>
 <B>dup</B>
@@ -397,9 +397,9 @@ is useful for determining how distances map from user space to device space.
 duplicates the top element on the operand stack. Note that dup copies only
 the object. The value of a composite object is not copied but is shared.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#copy">copy</A>, <A HREF="PSL2ik.html#index">index</A>
+<B>See Also:</B> <A HREF="c.html#copy">copy</A>, <A HREF="ik.html#index">index</A>
 <HR>
 </BODY>
 </HTML>

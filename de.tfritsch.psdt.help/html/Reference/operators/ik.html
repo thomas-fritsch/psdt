@@ -17,11 +17,11 @@ replaces the value of matrix with the value of the identity matrix
 and pushes this modified matrix back on the operand stack. The identity
 matrix transforms any coordinate to itself.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#matrix">matrix</A>, <A HREF="PSL2c.html#currentmatrix">currentmatrix</A>,
-<A HREF="PSL2d.html#defaultmatrix">defaultmatrix</A>, <A HREF="#initmatrix">initmatrix</A>
+<B>See Also:</B> <A HREF="m.html#matrix">matrix</A>, <A HREF="c.html#currentmatrix">currentmatrix</A>,
+<A HREF="d.html#defaultmatrix">defaultmatrix</A>, <A HREF="#initmatrix">initmatrix</A>
 <HR>
 <A NAME="idiv"></A>
 <B>idiv</B>
@@ -38,12 +38,12 @@ the result is an integer.
 -5 2 idiv &rArr; -2
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#div">div</A>, <A HREF="PSL2a.html#add">add</A>,
-<A HREF="PSL2m.html#mul">mul</A>, <A HREF="PSL2s.html#sub">sub</A>, <A HREF="PSL2m.html#mod">mod</A>,
-<A HREF="PSL2c.html#cvi">cvi</A>
+<B>See Also:</B> <A HREF="d.html#div">div</A>, <A HREF="a.html#add">add</A>,
+<A HREF="m.html#mul">mul</A>, <A HREF="s.html#sub">sub</A>, <A HREF="m.html#mod">mod</A>,
+<A HREF="c.html#cvi">cvi</A>
 <HR>
 <A NAME="idtransform"></A>
 <B>idtransform</B>
@@ -60,14 +60,14 @@ by the inverse of matrix rather than by the inverse of CTM.
 A delta transformation is similar to a normal transformation, but the translation
 components (tx and ty) of the transformation matrix are not used, making
 the distance vectors be positionless in both user space and device space.
-idtransform is the inverse of <A HREF="PSL2d.html#dtransform">dtransform</A>.
+idtransform is the inverse of <A HREF="d.html#dtransform">dtransform</A>.
 It is useful for determining how distances map from device space to user
 space.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#dtransform">dtransform</A>, <A HREF="PSL2t.html#transform">transform</A>,
+<B>See Also:</B> <A HREF="d.html#dtransform">dtransform</A>, <A HREF="t.html#transform">transform</A>,
 <A HREF="#itransform">itransform</A>
 <HR>
 <A NAME="if"></A>
@@ -83,7 +83,7 @@ proc may do so.
 3 4 lt {(3 is less than 4)} if &rArr; (3 is less than 4)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#ifelse">ifelse</A>
 <HR>
@@ -103,7 +103,7 @@ its own on the operand stack, but the procedure it executes may do so.
 ifelse           &rArr; (FalsePart)    % Since 4 is not less than 3
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#if">if</A>
 <HR>
@@ -152,12 +152,12 @@ prematurely. The sample values are assumed to be received in a fixed order:
 <P>
 Execution of this operator is not permitted in certain circumstances.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="#invalidaccess">invalidaccess</A>,
-<A HREF="#ioerror">ioerror</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="#invalidaccess">invalidaccess</A>,
+<A HREF="#ioerror">ioerror</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="#imagemask">imagemask</A>, <A HREF="PSL2c.html#colorimage">colorimage</A>
+<B>See Also:</B> <A HREF="#imagemask">imagemask</A>, <A HREF="c.html#colorimage">colorimage</A>
 <HR>
 <A NAME="imagemask"></A>
 <B>imagemask</B>
@@ -219,11 +219,11 @@ true                            % Set polarity to paint the 1 bits
 imagemask
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
 <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="#ioerror">ioerror</A>
 <P>
-<B>See Also:</B> <A HREF="#image">image</A>, <A HREF="PSL2c.html#colorimage">colorimage</A>
+<B>See Also:</B> <A HREF="#image">image</A>, <A HREF="c.html#colorimage">colorimage</A>
 <HR>
 <A NAME="index"></A>
 <B>index</B>
@@ -239,11 +239,11 @@ on the stack.
 (a)(b)(c)(d) 3 index &rArr; (a)(b)(c)(d)(a)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#copy">copy</A>, <A HREF="PSL2d.html#dup">dup</A>,
-<A HREF="PSL2qr.html#roll">roll</A>
+<B>See Also:</B> <A HREF="c.html#copy">copy</A>, <A HREF="d.html#dup">dup</A>,
+<A HREF="qr.html#roll">roll</A>
 <HR>
 <A NAME="ineofill"></A>
 <B>ineofill</B> LEVEL 2
@@ -251,13 +251,13 @@ on the stack.
 userpath ineofill bool</PRE>
 <P>
 is similar to <A HREF="#infill">infill</A>, but its &quot;insideness&quot;
-test is based on <A HREF="PSL2e.html#eofill">eofill</A> instead of <A HREF="PSL2f.html#fill">fill</A>.
+test is based on <A HREF="e.html#eofill">eofill</A> instead of <A HREF="f.html#fill">fill</A>.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#eofill">eofill</A>, <A HREF="#infill">infill</A>
+<B>See Also:</B> <A HREF="e.html#eofill">eofill</A>, <A HREF="#infill">infill</A>
 <HR>
 <A NAME="infill"></A>
 <B>infill</B> LEVEL 2
@@ -288,11 +288,11 @@ grestore
 x y infill and
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fill">fill</A>, <A HREF="#ineofill">ineofill</A>
+<B>See Also:</B> <A HREF="f.html#fill">fill</A>, <A HREF="#ineofill">ineofill</A>
 <HR>
 <A NAME="initclip"></A>
 <B>initclip</B>
@@ -305,7 +305,7 @@ For a pageoriented output device, its dimensions are those established by
 the setpagedevice operator. For a display device, the clipping region established
 by initclip is not well defined. Display PostScript applications should
 not make the assumption that the clipping region corresponds to the window
-boundary (see <A HREF="PSL2v.html#viewclippath">viewclippath</A>).
+boundary (see <A HREF="v.html#viewclippath">viewclippath</A>).
 <P>
 There are few situations in which a PostScript language program should execute
 initclip explicitly. A page description that executes initclip usually produces
@@ -313,8 +313,8 @@ incorrect results if it is embedded within another, composite page.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#clip">clip</A>, <A HREF="PSL2e.html#eoclip">eoclip</A>,
-<A HREF="PSL2c.html#clippath">clippath</A>, <A HREF="#initgraphics">initgraphics</A>
+<B>See Also:</B> <A HREF="c.html#clip">clip</A>, <A HREF="e.html#eoclip">eoclip</A>,
+<A HREF="c.html#clippath">clippath</A>, <A HREF="#initgraphics">initgraphics</A>
 <HR>
 <A NAME="initgraphics"></A>
 <B>initgraphics</B>
@@ -372,7 +372,7 @@ that the default state prevailed initially.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#grestoreall">grestoreall</A>, hideinstance,
+<B>See Also:</B> <A HREF="gh.html#grestoreall">grestoreall</A>, hideinstance,
 newinstance, setalpha, setinstance
 <HR>
 <A NAME="initmatrix"></A>
@@ -383,7 +383,7 @@ sets the current transformation matrix (CTM) to the default matrix for the
 current output device. This matrix transforms the default user coordinate
 system to device space. For a page-oriented device, the default matrix is
 initially established
-by the <A HREF="PSL2s.html#setpagedevice">setpagedevice</A> operator.
+by the <A HREF="s.html#setpagedevice">setpagedevice</A> operator.
 <P>
 There are few situations in which a PostScript language program should execute
 initmatrix explicitly. A page description that executes initmatrix usually
@@ -391,8 +391,8 @@ produces incorrect results if it is embedded within another, composite page.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defaultmatrix">defaultmatrix</A>, <A HREF="PSL2c.html#currentmatrix">currentmatrix</A>,
-<A HREF="PSL2s.html#setmatrix">setmatrix</A>
+<B>See Also:</B> <A HREF="d.html#defaultmatrix">defaultmatrix</A>, <A HREF="c.html#currentmatrix">currentmatrix</A>,
+<A HREF="s.html#setmatrix">setmatrix</A>
 <HR>
 <A NAME="initviewclip"></A>
 <B>initviewclip</B> DPS
@@ -403,7 +403,7 @@ clipping path exists.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2v.html#viewclip">viewclip</A>, <A HREF="PSL2v.html#viewclippath">viewclippath</A>
+<B>See Also:</B> <A HREF="v.html#viewclip">viewclip</A>, <A HREF="v.html#viewclippath">viewclippath</A>
 <HR>
 <A NAME="instroke"></A>
 <B>instroke</B> LEVEL 2
@@ -431,12 +431,12 @@ state: line width, line cap, line join, miter limit, dash pattern, and stroke
 adjust. If the current line width is zero, the set of pixels considered
 to be part of the stroke is device dependent.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#infill">infill</A>, <A HREF="#inustroke">inustroke</A>,
-<A HREF="PSL2s.html#stroke">stroke</A>
+<A HREF="s.html#stroke">stroke</A>
 <HR>
 <A NAME="internaldict"></A>
 <B>internaldict</B>
@@ -452,8 +452,8 @@ at any time.
 <P>
 This operator is not present in some PostScript interpreters.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="u.html#undefined">undefined</A>
 <HR>
 <A NAME="interrupt"></A>
 <B>interrupt</B> (error)
@@ -461,7 +461,7 @@ This operator is not present in some PostScript interpreters.
 processes an external request to interrupt execution of a PostScript language
 program. When the interpreter receives an interrupt request, it executes
 interrupt as if it were an error-in other words, it looks up the name interrupt
-in <A HREF="PSL2e.html#errordict">errordict</A>. Execution of interrupt
+in <A HREF="e.html#errordict">errordict</A>. Execution of interrupt
 is sandwiched between execution of two objects being interpreted in normal
 sequence.
 <P>
@@ -481,26 +481,26 @@ computation. The default definition of interrupt executes a stop.
 userpath1 userpath2 inueofill bool</PRE>
 <P>
 is similar to <A HREF="#inufill">inufill</A>, but its &quot;insideness&quot;
-test is based on <A HREF="PSL2u.html#ueofill">ueofill</A> instead of <A HREF="PSL2u.html#ufill">ufill</A>.
+test is based on <A HREF="u.html#ueofill">ueofill</A> instead of <A HREF="u.html#ufill">ufill</A>.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#inufill">inufill</A>, <A HREF="PSL2e.html#eofill">eofill</A>
+<B>See Also:</B> <A HREF="#inufill">inufill</A>, <A HREF="e.html#eofill">eofill</A>
 <HR>
 <A NAME="inufill"></A>
 <B>inufill</B> LEVEL 2
 <PRE>       x y userpath inufill bool
 userpath1 userpath2 inufill bool</PRE>
 <P>
-The first form returns <A HREF="PSL2t.html#true">true</A> if the device
-pixel containing the point (x, y) in user space would be painted by a <A HREF="PSL2u.html#ufill">ufill</A>
-of the specified userpath . Otherwise, it returns <A HREF="PSL2f.html#false">false</A>.
+The first form returns <A HREF="t.html#true">true</A> if the device
+pixel containing the point (x, y) in user space would be painted by a <A HREF="u.html#ufill">ufill</A>
+of the specified userpath . Otherwise, it returns <A HREF="f.html#false">false</A>.
 <P>
 In the second form, the device pixels that would be painted by filling userpath1
 become an &quot;aperture.&quot; inufill returns true if any of the pixels
-in the aperture would be painted by a <A HREF="PSL2u.html#ufill">ufill</A>
+in the aperture would be painted by a <A HREF="u.html#ufill">ufill</A>
 of userpath2. Otherwise, it returns false.
 <P>
 This operator does not place any marks on the current page nor does it disturb
@@ -517,16 +517,16 @@ gsave
 grestore
 </PRE>
 <P>
-However, when used with a user path that specifies <A HREF="PSL2u.html#ucache">ucache</A>,
+However, when used with a user path that specifies <A HREF="u.html#ucache">ucache</A>,
 inufill can access the user path cache, potentially resulting in improved
 performance.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#inueofill">inueofill</A>, <A HREF="#infill">infill</A>,
-<A HREF="PSL2u.html#ufill">ufill</A>
+<A HREF="u.html#ufill">ufill</A>
 <HR>
 <A NAME="inustroke"></A>
 <B>inustroke </B> LEVEL 2
@@ -535,17 +535,17 @@ performance.
        userpath1 userpath2 inustroke bool
 userpath1 userpath2 matrix inustroke bool</PRE>
 <P>
-The first form returns <A HREF="PSL2t.html#true">true</A> if the device
-pixel containing the point (x, y) in user space would be painted by a <A HREF="PSL2u.html#ustroke">ustroke</A>
-applied to the same operands. Otherwise it returns <A HREF="PSL2f.html#false">false</A>.
+The first form returns <A HREF="t.html#true">true</A> if the device
+pixel containing the point (x, y) in user space would be painted by a <A HREF="u.html#ustroke">ustroke</A>
+applied to the same operands. Otherwise it returns <A HREF="f.html#false">false</A>.
 <P>
 In the second form, inustroke concatenates matrix to the CTM after interpreting
-the user paths, but before computing the stroke (see <A HREF="PSL2u.html#ustroke">ustroke</A>
+the user paths, but before computing the stroke (see <A HREF="u.html#ustroke">ustroke</A>
 operator).
 <P>
 In the third and fourth forms, the device pixels that would be painted by
 filling userpath1 become an &quot;aperture.&quot; inustroke returns true
-if any of the pixels in the aperture would be painted by a <A HREF="PSL2u.html#ustroke">ustroke</A>
+if any of the pixels in the aperture would be painted by a <A HREF="u.html#ustroke">ustroke</A>
 of userpath2. Otherwise it returns false.
 <P>
 This operator does not place any marks on the current page nor does it disturb
@@ -556,11 +556,11 @@ As with <A HREF="#inufill">inufill</A>, if userpath is already present in
 the user path cache, inustroke can take advantage of the cached information
 to optimize execution.
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="PSL2u.html#ustroke">ustroke</A>,
+<B>See Also:</B> <A HREF="s.html#stroke">stroke</A>, <A HREF="u.html#ustroke">ustroke</A>,
 <A HREF="#instroke">instroke</A>
 <HR>
 <A NAME="invalidaccess"></A>
@@ -576,8 +576,8 @@ object in global VM.
 protected font. 
 </UL>
 <P>
-<B>See Also:</B> rcheck, <A HREF="PSL2w.html#wcheck">wcheck</A>, gcheck, <A HREF="PSL2qr.html#readonly">readonly</A>,
-<A HREF="PSL2e.html#executeonly">executeonly</A>, <A HREF="PSL2no.html#noaccess">noaccess</A>
+<B>See Also:</B> rcheck, <A HREF="w.html#wcheck">wcheck</A>, gcheck, <A HREF="qr.html#readonly">readonly</A>,
+<A HREF="e.html#executeonly">executeonly</A>, <A HREF="no.html#noaccess">noaccess</A>
 <P>
 <HR>
 <A NAME="invalidcontext"></A>
@@ -602,15 +602,15 @@ is generated.
 <B>invalidexit</B> (error)
 <P>
 An exit has been executed for which there is no dynamically enclosing looping
-context (for example, <A HREF="PSL2f.html#for">for</A>, <A HREF="PSL2l.html#loop">loop</A>,
-<A HREF="PSL2qr.html#repeat">repeat</A>, or <A HREF="PSL2p.html#pathforall">pathforall</A>)
+context (for example, <A HREF="f.html#for">for</A>, <A HREF="l.html#loop">loop</A>,
+<A HREF="qr.html#repeat">repeat</A>, or <A HREF="p.html#pathforall">pathforall</A>)
 or it has attempted to leave the context of a run or stopped operator.
 <HR>
 <A NAME="invalidfileaccess"></A>
 <B>invalidfileaccess</B> (error)
 <P>
 The access string specification to the file operator is unacceptable or
-a file operation has been attempted (for example, <A HREF="PSL2d.html#deletefile">deletefile</A>)
+a file operation has been attempted (for example, <A HREF="d.html#deletefile">deletefile</A>)
 that is not permitted by the storage device.
 <HR>
 <A NAME="invalidfont"></A>
@@ -637,13 +637,13 @@ only by window system specific operators and not by any standard operator.
 <P>
 An improper restore has been attempted. One or more of the operand, dictionary,
 or execution stacks contains composite objects whose values were created
-more recently than the <A HREF="PSL2s.html#save">save</A> whose context
-is being restored. Since <A HREF="PSL2qr.html#restore">restore</A> would
-destroy those values, but the stacks are unaffected by <A HREF="PSL2qr.html#restore">restore</A>,
-the outcome would be <A HREF="PSL2u.html#undefined">undefined</A> and cannot
+more recently than the <A HREF="s.html#save">save</A> whose context
+is being restored. Since <A HREF="qr.html#restore">restore</A> would
+destroy those values, but the stacks are unaffected by <A HREF="qr.html#restore">restore</A>,
+the outcome would be <A HREF="u.html#undefined">undefined</A> and cannot
 be allowed.
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#restore">restore</A>, <A HREF="PSL2s.html#save">save</A>
+<B>See Also:</B> <A HREF="qr.html#restore">restore</A>, <A HREF="s.html#save">save</A>
 <HR>
 <A NAME="invertmatrix"></A>
 <B>invertmatrix</B>
@@ -654,8 +654,8 @@ the modified matrix2 back on the operand stack. The result of inverting
 a matrix is that if matrix1 transforms a coordinate (x, y) to (x', y') then
 matrix2 transforms (x', y') to (x, y).
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A> , <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A> , <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
 <B>See Also:</B> <A HREF="#itransform">itransform</A>, <A HREF="#idtransform">idtransform</A>
 <HR>
@@ -668,7 +668,7 @@ but may include such events as parity or checksum errors, or broken network
 connections. Attempting to write to an input file or to a file that has
 been closed will also cause an ioerror. Occurrence of an ioerror does not
 cause the file to become closed unless it was already closed or the error
-occurs during <A HREF="PSL2c.html#closefile">closefile</A>.
+occurs during <A HREF="c.html#closefile">closefile</A>.
 <HR>
 <A NAME="ISOLatin1Encoding"></A>
 <B>ISOLatin1Encoding</B> LEVEL 2
@@ -677,16 +677,16 @@ occurs during <A HREF="PSL2c.html#closefile">closefile</A>.
 pushes the ISO Latin-1 encoding vector on the operand stack. This is a 256-element
 literal array object, indexed by character codes whose values are the character
 names for those codes. ISOLatin1Encoding is not an operator; it is a name
-in <A HREF="PSL2s.html#systemdict">systemdict</A> associated with the array
+in <A HREF="s.html#systemdict">systemdict</A> associated with the array
 object.
 <P>
 Roman text fonts produced by Adobe usually use the StandardEncoding encoding
 vector. However, they contain all the characters needed to support the use
 of ISOLatin1Encoding.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#StandardEncoding">StandardEncoding</A>, <A HREF="PSL2f.html#findencoding">findencoding</A>
+<B>See Also:</B> <A HREF="s.html#StandardEncoding">StandardEncoding</A>, <A HREF="f.html#findencoding">findencoding</A>
 <HR>
 <A NAME="itransform"></A>
 <B>itransform</B>
@@ -699,10 +699,10 @@ user space coordinate (x, y). If the matrix operand is supplied, itransform
 transforms (x', y') by the inverse of matrix rather than by the inverse
 of CTM.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A> , <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A> , <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2t.html#transform">transform</A>, <A HREF="PSL2d.html#dtransform">dtransform</A>,
+<B>See Also:</B> <A HREF="t.html#transform">transform</A>, <A HREF="d.html#dtransform">dtransform</A>,
 <A HREF="#idtransform">idtransform</A>, <A HREF="#invertmatrix">invertmatrix</A>
 <HR>
 <A NAME="join"></A>
@@ -710,7 +710,7 @@ of CTM.
 <PRE>context join mark obj1 ... objn</PRE>
 <P>
 waits for the execution context identified by the integer context to finish
-executing its top-level procedure (the proc operand of <A HREF="PSL2f.html#fork">fork</A>).
+executing its top-level procedure (the proc operand of <A HREF="f.html#fork">fork</A>).
 It then pushes a mark followed by the entire contents of that context's
 operand stack onto the current context's operand stack. Finally, it causes
 the other context to terminate.
@@ -727,15 +727,15 @@ also occurs if the context has already been joined or detached, if context
 identifies the current context, or if the context does not share the current
 context's local and global VM.
 <P>
-It is illegal to execute join if there has been any previous <A HREF="PSL2s.html#save">save</A>
-not yet matched by a <A HREF="PSL2qr.html#restore">restore</A>. Attempting
+It is illegal to execute join if there has been any previous <A HREF="s.html#save">save</A>
+not yet matched by a <A HREF="qr.html#restore">restore</A>. Attempting
 to do so will cause an <A HREF="#invalidcontext">invalidcontext</A> error.
 <P>
-<B>Errors:</B> <A HREF="#invalidcontext">invalidcontext</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidcontext">invalidcontext</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fork">fork</A>, <A HREF="PSL2d.html#detach">detach</A>,
-<A HREF="PSL2c.html#currentcontext">currentcontext</A>
+<B>See Also:</B> <A HREF="f.html#fork">fork</A>, <A HREF="d.html#detach">detach</A>,
+<A HREF="c.html#currentcontext">currentcontext</A>
 <HR>
 <A NAME="known"></A>
 <B>known</B>
@@ -753,11 +753,11 @@ mydict /total known   &rArr; true
 mydict /badname known &rArr; false
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2w.html#where">where</A>, <A HREF="PSL2l.html#load">load</A>,
-<A HREF="PSL2gh.html#get">get</A>
+<B>See Also:</B> <A HREF="w.html#where">where</A>, <A HREF="l.html#load">load</A>,
+<A HREF="gh.html#get">get</A>
 <HR>
 <A NAME="kshow"></A>
 <B>kshow</B>
@@ -791,13 +791,13 @@ kshow can be applied only to base fonts. If the current font is composite,
 kshow issues an <A HREF="#invalidfont">invalidfont</A> error.
 <P>
 <B>Errors:</B> <A HREF="#invalidaccess">invalidaccess</A>, <A HREF="#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#show">show</A>, <A HREF="PSL2a.html#ashow">ashow</A>,
-<A HREF="PSL2a.html#awidthshow">awidthshow</A>, <A HREF="PSL2w.html#widthshow">widthshow</A>,
-<A HREF="PSL2xy.html#xshow">xshow</A>, <A HREF="PSL2xy.html#xyshow">xyshow</A>,
-<A HREF="PSL2xy.html#yshow">yshow</A>, <A HREF="PSL2c.html#cshow">cshow</A>
+<B>See Also:</B> <A HREF="s.html#show">show</A>, <A HREF="a.html#ashow">ashow</A>,
+<A HREF="a.html#awidthshow">awidthshow</A>, <A HREF="w.html#widthshow">widthshow</A>,
+<A HREF="xy.html#xshow">xshow</A>, <A HREF="xy.html#xyshow">xyshow</A>,
+<A HREF="xy.html#yshow">yshow</A>, <A HREF="c.html#cshow">cshow</A>
 <HR>
 </BODY>
 </HTML>

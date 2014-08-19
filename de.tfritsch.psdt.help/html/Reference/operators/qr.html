@@ -18,34 +18,34 @@ the machine, and so on.
 <P>
 In an interpreter that supports multiple execution contexts , the quit operator
 causes termination of the current context only. Termination is immediate,
-even if the context was created by <A HREF="PSL2f.html#fork">fork</A> in
-the expectation of a subsequent <A HREF="PSL2ik.html#join">join</A>.
+even if the context was created by <A HREF="f.html#fork">fork</A> in
+the expectation of a subsequent <A HREF="ik.html#join">join</A>.
 <P>
 In a context that is under the control of a job server , the definition
-of the quit operator in <A HREF="PSL2s.html#systemdict">systemdict</A> is
-masked by another definition of quit in <A HREF="PSL2u.html#userdict">userdict</A>,
-which usually is searched before <A HREF="PSL2s.html#systemdict">systemdict</A>.
-The default definition of quit in <A HREF="PSL2u.html#userdict">userdict</A>
-is the same as <A HREF="PSL2s.html#stop">stop</A>, which terminates the
-current job, but not the interpreter as a whole. The quit operator in <A HREF="PSL2s.html#systemdict">systemdict</A>
+of the quit operator in <A HREF="s.html#systemdict">systemdict</A> is
+masked by another definition of quit in <A HREF="u.html#userdict">userdict</A>,
+which usually is searched before <A HREF="s.html#systemdict">systemdict</A>.
+The default definition of quit in <A HREF="u.html#userdict">userdict</A>
+is the same as <A HREF="s.html#stop">stop</A>, which terminates the
+current job, but not the interpreter as a whole. The quit operator in <A HREF="s.html#systemdict">systemdict</A>
 can be executed only by an unencapsulated job; in an encapsulated job, it
-causes an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A> error.
+causes an <A HREF="ik.html#invalidaccess">invalidaccess</A> error.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#stop">stop</A>, <A HREF="PSL2s.html#start">start</A>
+<B>See Also:</B> <A HREF="s.html#stop">stop</A>, <A HREF="s.html#start">start</A>
 <HR>
 <A NAME="rand"></A>
 <B>rand</B>
 <PRE>- rand int</PRE>
 <P>
 returns a random integer in the range 0 to 231 - 1, produced by a pseudo-random
-number generator. The random number generator's state can be reset by <A HREF="PSL2s.html#srand">srand</A>
+number generator. The random number generator's state can be reset by <A HREF="s.html#srand">srand</A>
 and interrogated by <A HREF="#rrand">rrand</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#srand">srand</A>, <A HREF="#rrand">rrand</A>
+<B>See Also:</B> <A HREF="s.html#srand">srand</A>, <A HREF="#rrand">rrand</A>
 <HR>
 <A NAME="rangecheck"></A>
 <B>rangecheck</B> (error)
@@ -68,10 +68,10 @@ by PostScript operators.
 rcheck returns true if the operand's access is unlimited or readonly, false
 otherwise.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#executeonly">executeonly</A>, <A HREF="PSL2no.html#noaccess">noaccess</A>,
-<A HREF="#readonly">readonly</A>, <A HREF="PSL2w.html#wcheck">wcheck</A>
+<B>See Also:</B> <A HREF="e.html#executeonly">executeonly</A>, <A HREF="no.html#noaccess">noaccess</A>,
+<A HREF="#readonly">readonly</A>, <A HREF="w.html#wcheck">wcheck</A>
 <HR>
 <A NAME="rcurveto"></A>
 <B>rcurveto</B>
@@ -82,14 +82,14 @@ the same manner as curveto. However, the three number pairs are interpreted
 as displacements relative to the current point (x0, y0) rather than as absolute
 coordinates. That is, rcurveto constructs a curve from (x0, y0) to (x0+dx3,
 y0+dy3), using (x0+dx1, y0+dy1) and (x0+dx2, y0+dy2) as Bezier control points.
-See the description of <A HREF="PSL2c.html#curveto">curveto</A> for complete
+See the description of <A HREF="c.html#curveto">curveto</A> for complete
 information.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
-, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
+, <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#curveto">curveto</A>, <A HREF="#rlineto">rlineto</A>,
+<B>See Also:</B> <A HREF="c.html#curveto">curveto</A>, <A HREF="#rlineto">rlineto</A>,
 <A HREF="#rmoveto">rmoveto</A>
 <HR>
 <A NAME="read"></A>
@@ -102,14 +102,14 @@ as an integer, and pushes true as an indication of success.
 If an end-of-file indication is encountered before a character has been
 read, read closes the file and returns false.
 If some other error indication is encountered (for example, parity or checksum
-error), read executes <A HREF="PSL2ik.html#ioerror">ioerror</A>.
+error), read executes <A HREF="ik.html#ioerror">ioerror</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#readhexstring">readhexstring</A>, <A HREF="#readline">readline</A>,
-<A HREF="#readstring">readstring</A>, <A HREF="PSL2b.html#bytesavailable">bytesavailable</A>
+<A HREF="#readstring">readstring</A>, <A HREF="b.html#bytesavailable">bytesavailable</A>
 <HR>
 <A NAME="readhexstring"></A>
 <B>readhexstring</B>
@@ -129,12 +129,12 @@ readhexstring ignores any characters that are not valid hexadecimal digits,
 so the data in file may be interspersed with spaces, newlines, etc., without
 changing the interpretation of the data.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#read">read</A>, <A HREF="#readline">readline</A>, <A HREF="#readstring">readstring</A>,
-<A HREF="PSL2f.html#filter">filter</A>
+<A HREF="f.html#filter">filter</A>
 <HR>
 <A NAME="readline"></A>
 <B>readline</B>
@@ -155,9 +155,9 @@ The terminating newline character is not stored into string or included
 at the end of the returned substring. If readline completely fills string
 before encountering a newline character, it executes the error <A HREF="#rangecheck">rangecheck</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#read">read</A>, <A HREF="#readhexstring">readhexstring</A>,
 <A HREF="#readonly">readonly</A>
@@ -170,11 +170,11 @@ packedarray readonly packedarray
        file readonly file
      string readonly string</PRE>
 <P>
-reduces the access attribute of an <A HREF="PSL2a.html#array">array</A>,
-<A HREF="PSL2p.html#packedarray">packed array</A>, dictionary, <A HREF="PSL2f.html#file">file</A>,
+reduces the access attribute of an <A HREF="a.html#array">array</A>,
+<A HREF="p.html#packedarray">packed array</A>, dictionary, <A HREF="f.html#file">file</A>,
 or string object to read-only. Access can only be reduced this way, never
 increased. When an object is read-only, its value cannot be modified by
-PostScript operators (an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+PostScript operators (an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error will result), but it can still be read by operators or executed by
 the PostScript interpreter.
 <P>
@@ -184,11 +184,11 @@ that share the same value, their access attributes are unaffected. However,
 in the case of a dictionary, readonly affects the value of the object, so
 all dictionary objects sharing the same dictionary are affected.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#executeonly">executeonly</A>, <A HREF="PSL2no.html#noaccess">noaccess</A>,
-<A HREF="#rcheck">rcheck</A>, <A HREF="PSL2w.html#wcheck">wcheck</A>
+<B>See Also:</B> <A HREF="e.html#executeonly">executeonly</A>, <A HREF="no.html#noaccess">noaccess</A>,
+<A HREF="#rcheck">rcheck</A>, <A HREF="w.html#wcheck">wcheck</A>
 <HR>
 <A NAME="readstring"></A>
 <B>readstring</B>
@@ -205,9 +205,9 @@ There are no special characters (in particular, the newline character is
 not treated specially). However, the communication channel may usurp certain
 control characters.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#read">read</A>, <A HREF="#readhexstring">readhexstring</A>,
 <A HREF="#readline">readline</A>
@@ -224,9 +224,9 @@ changes is implementation dependent. As the time value becomes greater than
 the largest integer allowed in a particular implementation, it &quot;wraps&quot;
 to the smallest (most negative) integer.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2u.html#usertime">usertime</A>
+<B>See Also:</B> <A HREF="u.html#usertime">usertime</A>
 <HR>
 <A NAME="rectclip"></A>
 <B>rectclip</B> LEVEL 2
@@ -237,9 +237,9 @@ to the smallest (most negative) integer.
 intersects the inside of the current clipping path with a rectangular path
 the operands describe. In the first form, the operands are four numbers
 that describe a single rectangle. In the other two forms, the operand is
-an <A HREF="PSL2a.html#array">array</A> or an encoded number string that
+an <A HREF="a.html#array">array</A> or an encoded number string that
 describes an arbitrary number of rectangles. After computing the new clipping
-path, rectclip resets the current path to empty, as if by <A HREF="PSL2no.html#newpath">newpath</A>.
+path, rectclip resets the current path to empty, as if by <A HREF="no.html#newpath">newpath</A>.
 <P>
 In the first form, assuming width and height are positive, rectclip is
 equivalent to:
@@ -260,10 +260,10 @@ clip operation. The &quot;inside&quot; of this combined path is the union
 of all the rectangular subpaths, because the paths are all drawn in the
 same direction and the non-zero winding number rule is used.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#clip">clip</A>, <A HREF="#rectfill">rectfill</A>,
+<B>See Also:</B> <A HREF="c.html#clip">clip</A>, <A HREF="#rectfill">rectfill</A>,
 <A HREF="#rectstroke">rectstroke</A>
 <HR>
 <A NAME="rectfill"></A>
@@ -292,10 +292,10 @@ gsave
 grestore
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fill">fill</A>, <A HREF="#rectclip">rectclip</A>,
+<B>See Also:</B> <A HREF="f.html#fill">fill</A>, <A HREF="#rectclip">rectclip</A>,
 <A HREF="#rectstroke">rectstroke</A>
 <HR>
 <A NAME="rectstroke"></A>
@@ -332,10 +332,10 @@ gsave
 grestore
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="#rectclip">rectclip</A>,
+<B>See Also:</B> <A HREF="s.html#stroke">stroke</A>, <A HREF="#rectclip">rectclip</A>,
 <A HREF="#rectfill">rectfill</A>
 <HR>
 <A NAME="rectviewclip"></A>
@@ -355,15 +355,15 @@ Except for the manner in which the path is defined, rectviewclip behaves
 the same as viewclip.
 Note that if the second or third form is used to specify multiple rectangles,
 the rectangles are treated together as a single path and used for a single
-<A HREF="PSL2v.html#viewclip">viewclip</A> operation. The &quot;inside&quot;
+<A HREF="v.html#viewclip">viewclip</A> operation. The &quot;inside&quot;
 of this combined path is the union of all the rectangular subpaths, because
 the paths are all drawn in the same direction and the nonzero winding number
 rule is used.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#rectclip">rectclip</A>, <A HREF="PSL2v.html#viewclip">viewclip</A>
+<B>See Also:</B> <A HREF="#rectclip">rectclip</A>, <A HREF="v.html#viewclip">viewclip</A>
 <HR>
 <A NAME="renamefile"></A>
 <B>renamefile</B>  LEVEL 2
@@ -372,21 +372,21 @@ rule is used.
 changes the name of a file from old to new, where old and new are strings
 that specify file names on the same storage device.
 <P>
-If no such file exists, an <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+If no such file exists, an <A HREF="u.html#undefinedfilename">undefinedfilename</A>
 error occurs.
-If the device does not allow this operation, an <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>
+If the device does not allow this operation, an <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>
 error occurs.
-If an environment-dependent error is detected, an <A HREF="PSL2ik.html#ioerror">ioerror</A>
+If an environment-dependent error is detected, an <A HREF="ik.html#ioerror">ioerror</A>
 occurs.
 Whether or not an error occurs if a file named new already exists is environment
 dependent.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedfilename">undefinedfilename</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#file">file</A>, <A HREF="PSL2d.html#deletefile">deletefile</A>,
-<A HREF="PSL2s.html#status">status</A>
+<B>See Also:</B> <A HREF="f.html#file">file</A>, <A HREF="d.html#deletefile">deletefile</A>,
+<A HREF="s.html#status">status</A>
 <HR>
 <A NAME="repeat"></A>
 <B>repeat</B>
@@ -408,11 +408,11 @@ mark 0 {(won't happen)} repeat &rArr; mark
 In the last example, a zero repeat count meant that the procedure is not
 executed at all, hence the mark is still topmost on the stack.
 <P>
-<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#for">for</A>, <A HREF="PSL2l.html#loop">loop</A>,
-<A HREF="PSL2f.html#forall">forall</A>, <A HREF="PSL2e.html#exit">exit</A>
+<B>See Also:</B> <A HREF="f.html#for">for</A>, <A HREF="l.html#loop">loop</A>,
+<A HREF="f.html#forall">forall</A>, <A HREF="e.html#exit">exit</A>
 <HR>
 <A NAME="resetfile"></A>
 <B>resetfile</B> LEVEL 2
@@ -428,10 +428,10 @@ underlying file. For example, it may restart communication via a channel
 that was blocked waiting for buffer space to become available. resetfile
 never waits for characters to be received or transmitted.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#file">file</A>, <A HREF="PSL2c.html#closefile">closefile</A>,
-<A HREF="PSL2f.html#flushfile">flushfile</A>
+<B>See Also:</B> <A HREF="f.html#file">file</A>, <A HREF="c.html#closefile">closefile</A>,
+<A HREF="f.html#flushfile">flushfile</A>
 <HR>
 <A NAME="resourceforall"></A>
 <B>resourceforall</B> LEVEL 2
@@ -495,19 +495,19 @@ may or may not appear later in the same enumeration.
 Like resourcestatus, resourceforall considers both local and global definitions
 if the current VM allocation mode is local, but only global definitions
 if the current VM allocation mode is global (see <A HREF="#resourcestatus">resourcestatus</A>
-and <A HREF="PSL2d.html#defineresource">defineresource</A>).
+and <A HREF="d.html#defineresource">defineresource</A>).
 <P>
-If the specified resource category does not exist, an <A HREF="PSL2u.html#undefined">undefined</A>
+If the specified resource category does not exist, an <A HREF="u.html#undefined">undefined</A>
 error occurs. However, no error occurs if there are no instances whose names
 match the template. Of course, the proc that is called can generate errors
 of its own.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineresource">defineresource</A>, <A HREF="PSL2u.html#undefineresource">undefineresource</A>,
-<A HREF="PSL2f.html#findresource">findresource</A>, <A HREF="#resourcestatus">resourcestatus</A>
+<B>See Also:</B> <A HREF="d.html#defineresource">defineresource</A>, <A HREF="u.html#undefineresource">undefineresource</A>,
+<A HREF="f.html#findresource">findresource</A>, <A HREF="#resourcestatus">resourcestatus</A>
 <HR>
 <A NAME="resourcestatus"></A>
 <B>resourcestatus</B> LEVEL 2
@@ -543,19 +543,19 @@ a status 0 resource. A size value of 0 is returned for implicit resources,
 whose instances do not occupy VM.
 <P>
 If the current VM allocation mode is local, resourcestatus considers both
-local and global resource definitions, in that order (see <A HREF="PSL2d.html#defineresource">defineresource</A>).
+local and global resource definitions, in that order (see <A HREF="d.html#defineresource">defineresource</A>).
 However, if the current VM allocation mode is global, only global resource
 definitions are visible to resourcestatus. Resource instances in external
 storage are visible without regard to the current VM allocation mode.
 <P>
-If the specified resource category does not exist, an <A HREF="PSL2u.html#undefined">undefined</A>
+If the specified resource category does not exist, an <A HREF="u.html#undefined">undefined</A>
 error occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineresource">defineresource</A>, <A HREF="PSL2u.html#undefineresource">undefineresource</A>,
-<A HREF="PSL2f.html#findresource">findresource</A>, <A HREF="#resourceforall">resourceforall</A>
+<B>See Also:</B> <A HREF="d.html#defineresource">defineresource</A>, <A HREF="u.html#undefineresource">undefineresource</A>,
+<A HREF="f.html#findresource">findresource</A>, <A HREF="#resourceforall">resourceforall</A>
 <HR>
 <A NAME="restore"></A>
 <B>restore</B>
@@ -597,11 +597,11 @@ to their state at the time of save. These include:
 <LI>All user interpreter parameters (see setuserparams). 
 </UL>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidrestore">invalidrestore</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidrestore">invalidrestore</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#save">save</A>, <A HREF="PSL2gh.html#grestoreall">grestoreall</A>,
-<A HREF="PSL2v.html#vmstatus">vmstatus</A>, <A HREF="PSL2s.html#startjob">startjob</A>
+<B>See Also:</B> <A HREF="s.html#save">save</A>, <A HREF="gh.html#grestoreall">grestoreall</A>,
+<A HREF="v.html#vmstatus">vmstatus</A>, <A HREF="s.html#startjob">startjob</A>
 <HR>
 <A NAME="reversepath"></A>
 <B>reversepath</B>
@@ -612,7 +612,7 @@ in the reverse order. Precisely, reversepath reverses the directions and
 order of segments within each subpath of the current path. However, it does
 not alter the order of the subpaths in the path with respect to each other.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <HR>
 <A NAME="revision"></A>
 <B>revision</B> LEVEL 2
@@ -621,33 +621,33 @@ not alter the order of the subpaths in the path with respect to each other.
 is an integer designating the current revision level of the product in which
 the PostScript interpreter is running. Each product has its own numbering
 system for revisions, independent of those of any other product. This is
-distinct from the value of <A HREF="PSL2v.html#version">version</A> in <A HREF="PSL2s.html#systemdict">systemdict</A>,
+distinct from the value of <A HREF="v.html#version">version</A> in <A HREF="s.html#systemdict">systemdict</A>,
 which is the revision level of the PostScript interpreter, without regard
 to the product in which it is running.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#languagelevel">languagelevel</A>, <A HREF="PSL2p.html#product">product</A>,
-<A HREF="PSL2s.html#serialnumber">serialnumber</A>, <A HREF="PSL2v.html#version">version</A>
+<B>See Also:</B> <A HREF="l.html#languagelevel">languagelevel</A>, <A HREF="p.html#product">product</A>,
+<A HREF="s.html#serialnumber">serialnumber</A>, <A HREF="v.html#version">version</A>
 <HR>
 <A NAME="rlineto"></A>
 <B>rlineto</B>
 <PRE>dx dy rlineto -</PRE>
 <P>
 (relative lineto) appends a straight line segment to the current path
-in the same manner as <A HREF="PSL2l.html#lineto">lineto</A>. However, the
+in the same manner as <A HREF="l.html#lineto">lineto</A>. However, the
 number pair is interpreted as a displacement relative to the current point
 (x, y) rather than as an absolute coordinate. That is, rlineto constructs
 a line from (x, y) to (x + dx, y + dy) and makes (x + dx, y + dy) the new
 current point.
 <P>
 If the current point is undefined because the current path is empty, rlineto
-executes the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
+executes the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#lineto">lineto</A>, <A HREF="#rmoveto">rmoveto</A>,
+<B>See Also:</B> <A HREF="l.html#lineto">lineto</A>, <A HREF="#rmoveto">rmoveto</A>,
 <A HREF="#rcurveto">rcurveto</A>
 <HR>
 <A NAME="rmoveto"></A>
@@ -655,18 +655,18 @@ executes the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
 <PRE>dx dy rmoveto -</PRE>
 <P>
 (relative moveto) starts a new subpath of the current path in the same
-manner as <A HREF="PSL2m.html#moveto">moveto</A>. However, the number pair
+manner as <A HREF="m.html#moveto">moveto</A>. However, the number pair
 is interpreted as a displacement relative to the current point (x, y) rather
 than as an absolute coordinate. That is, rmoveto makes (x + dx, y + dy)
 the new current point, without connecting it to the previous point.
 <P>
 If the current point is undefined because the current path is empty, rmoveto
-executes the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
+executes the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#moveto">moveto</A>, <A HREF="#rlineto">rlineto</A>,
+<B>See Also:</B> <A HREF="m.html#moveto">moveto</A>, <A HREF="#rlineto">rlineto</A>,
 <A HREF="#rcurveto">rcurveto</A>
 <HR>
 <A NAME="roll"></A>
@@ -695,27 +695,27 @@ one level lower on the stack.
 (a)(b)(c) 3 0 roll  &rArr; (a)(b)(c)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#exch">exch</A>, <A HREF="PSL2ik.html#index">index</A>,
-<A HREF="PSL2c.html#copy">copy</A>, <A HREF="PSL2p.html#pop">pop</A>
+<B>See Also:</B> <A HREF="e.html#exch">exch</A>, <A HREF="ik.html#index">index</A>,
+<A HREF="c.html#copy">copy</A>, <A HREF="p.html#pop">pop</A>
 <HR>
 <A NAME="rootfont"></A>
 <B>rootfont</B> LEVEL 2
 <PRE>- rootfont font</PRE>
 <P>
 returns the font that has been selected most recently by setfont or selectfont.
-Normally, rootfont returns the same result as <A HREF="PSL2c.html#currentfont">currentfont</A>.
+Normally, rootfont returns the same result as <A HREF="c.html#currentfont">currentfont</A>.
 If the current font is a composite font and rootfont is invoked from a descendant
 font's BuildGlyph or BuildChar procedure or from cshow, rootfont returns
-the root composite font, whereas <A HREF="PSL2c.html#currentfont">currentfont</A>
+the root composite font, whereas <A HREF="c.html#currentfont">currentfont</A>
 would return the currently selected base font.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setfont">setfont</A>, <A HREF="PSL2s.html#selectfont">selectfont</A>,
-<A HREF="PSL2c.html#currentfont">currentfont</A>
+<B>See Also:</B> <A HREF="s.html#setfont">setfont</A>, <A HREF="s.html#selectfont">selectfont</A>,
+<A HREF="c.html#currentfont">currentfont</A>
 <HR>
 <A NAME="rotate"></A>
 <B>rotate</B>
@@ -734,11 +734,11 @@ If the matrix operand is supplied, rotate replaces the value of matrix by
 R and pushes the modified matrix back on the operand stack. In this case,
 rotate does not affect the CTM.
 <P>
-<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#scale">scale</A>, <A HREF="PSL2t.html#translate">translate</A>,
-<A HREF="PSL2c.html#concat">concat</A>
+<B>See Also:</B> <A HREF="s.html#scale">scale</A>, <A HREF="t.html#translate">translate</A>,
+<A HREF="c.html#concat">concat</A>
 <HR>
 <A NAME="round"></A>
 <B>round</B><PRE>num1 round num2</PRE>
@@ -756,23 +756,23 @@ the result is the same as the type of the operand.
  99  round &rArr;  99
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#ceiling">ceiling</A>, <A HREF="PSL2f.html#floor">floor</A>,
-<A HREF="PSL2t.html#truncate">truncate</A>, <A HREF="PSL2c.html#cvi">cvi</A>
+<B>See Also:</B> <A HREF="c.html#ceiling">ceiling</A>, <A HREF="f.html#floor">floor</A>,
+<A HREF="t.html#truncate">truncate</A>, <A HREF="c.html#cvi">cvi</A>
 <HR>
 <A NAME="rrand"></A>
 <B>rrand</B>
 <PRE>- rrand int</PRE>
 <P>
 returns an integer representing the current state of the random number generator
-used by rand. This may later be presented as an operand to <A HREF="PSL2s.html#srand">srand</A>
+used by rand. This may later be presented as an operand to <A HREF="s.html#srand">srand</A>
 to reset the random number generator to the current position in the sequence
 of numbers produced.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="#rand">rand</A>, <A HREF="PSL2s.html#srand">srand</A>
+<B>See Also:</B> <A HREF="#rand">rand</A>, <A HREF="s.html#srand">srand</A>
 <HR>
 <A NAME="run"></A>
 <B>run</B>
@@ -792,11 +792,11 @@ a run cannot be left by executing exit; an attempt to do so produces the
 error invalidexit. The run operator leaves no results on the operand stack,
 but the program executed by run may alter the stacks arbitrarily.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedfilename">undefinedfilename</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#exec">exec</A>, <A HREF="PSL2f.html#file">file</A>
+<B>See Also:</B> <A HREF="e.html#exec">exec</A>, <A HREF="f.html#file">file</A>
 <HR>
 </BODY>
 </HTML>

@@ -13,12 +13,12 @@
 <P>
 pops two objects from the operand stack and pushes the boolean value false
 if they are equal, true if not. What it means for objects to be equal is
-presented in the description of the <A HREF="PSL2e.html#eq">eq</A> operator.
+presented in the description of the <A HREF="e.html#eq">eq</A> operator.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#eq">eq</A>, <A HREF="PSL2gh.html#ge">ge</A>,
-<A HREF="PSL2gh.html#gt">gt</A>, <A HREF="PSL2l.html#le">le</A>, <A HREF="PSL2l.html#lt">lt</A>
+<B>See Also:</B> <A HREF="e.html#eq">eq</A>, <A HREF="gh.html#ge">ge</A>,
+<A HREF="gh.html#gt">gt</A>, <A HREF="l.html#le">le</A>, <A HREF="l.html#lt">lt</A>
 <HR>
 <A NAME="neg"></A>
 <B>neg</B>
@@ -34,9 +34,9 @@ result is a real.
 -3   neg  &rArr;   3
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#abs">abs</A>
+<B>See Also:</B> <A HREF="a.html#abs">abs</A>
 <HR>
 <A NAME="newpath"></A>
 <B>newpath</B>
@@ -47,8 +47,8 @@ become undefined.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#closepath">closepath</A>, <A HREF="PSL2s.html#stroke">stroke</A>,
-<A HREF="PSL2f.html#fill">fill</A>
+<B>See Also:</B> <A HREF="c.html#closepath">closepath</A>, <A HREF="s.html#stroke">stroke</A>,
+<A HREF="f.html#fill">fill</A>
 <HR>
 <A NAME="noaccess"></A>
 <B>noaccess</B>
@@ -70,22 +70,22 @@ that share the same value, their access attributes are unaffected. However,
 in the case of a dictionary, noaccess affects the value of the object, so
 all dictionary objects sharing the same dictionary are affected.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> rcheck, <A HREF="PSL2w.html#wcheck">wcheck</A>, <A HREF="PSL2xy.html#xcheck">xcheck</A>,
-<A HREF="PSL2qr.html#readonly">readonly</A>, <A HREF="PSL2e.html#executeonly">executeonly</A>
+<B>See Also:</B> rcheck, <A HREF="w.html#wcheck">wcheck</A>, <A HREF="xy.html#xcheck">xcheck</A>,
+<A HREF="qr.html#readonly">readonly</A>, <A HREF="e.html#executeonly">executeonly</A>
 <HR>
 <A NAME="nocurrentpoint"></A>
 <B>nocurrentpoint</B> (error)
 <P>
 The current path is empty, and thus there is no current point, but an operator
-requiring a current point has been executed (for example, <A HREF="PSL2l.html#lineto">lineto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>, <A HREF="PSL2c.html#currentpoint">currentpoint</A>,
-<A HREF="PSL2s.html#show">show</A>). The most common cause of this error
-is neglecting to perform an initial <A HREF="PSL2m.html#moveto">moveto</A>.
+requiring a current point has been executed (for example, <A HREF="l.html#lineto">lineto</A>,
+<A HREF="c.html#curveto">curveto</A>, <A HREF="c.html#currentpoint">currentpoint</A>,
+<A HREF="s.html#show">show</A>). The most common cause of this error
+is neglecting to perform an initial <A HREF="m.html#moveto">moveto</A>.
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#moveto">moveto</A>
+<B>See Also:</B> <A HREF="m.html#moveto">moveto</A>
 <HR>
 <A NAME="not"></A>
 <B>not</B>
@@ -104,10 +104,10 @@ false not  &rArr;  true
 52 not     &rArr;  -53
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#and">and</A>, <A HREF="#or">or</A>, <A HREF="PSL2xy.html#xor">xor</A>,
-<A HREF="PSL2ik.html#if">if</A>
+<B>See Also:</B> <A HREF="a.html#and">and</A>, <A HREF="#or">or</A>, <A HREF="xy.html#xor">xor</A>,
+<A HREF="ik.html#if">if</A>
 <HR>
 <A NAME="notify"></A>
 <B>notify</B> DPS
@@ -116,26 +116,26 @@ false not  &rArr;  true
 resumes execution of all contexts, if any, that are suspended in a wait
 for condition.
 Ordinarily, notify should be invoked only within the execution of a monitor
-that references the same <A HREF="PSL2l.html#lock">lock</A> used in the
-<A HREF="PSL2w.html#wait">wait</A> for condition. This ensures that notifications
+that references the same <A HREF="l.html#lock">lock</A> used in the
+<A HREF="w.html#wait">wait</A> for condition. This ensures that notifications
 cannot be lost due to a race between a context executing notify and one
-executing <A HREF="PSL2w.html#wait">wait</A>. However, this recommendation
+executing <A HREF="w.html#wait">wait</A>. However, this recommendation
 is not enforced by the language.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2w.html#wait">wait</A>, <A HREF="PSL2m.html#monitor">monitor</A>,
-<A HREF="PSL2c.html#condition">condition</A>
+<B>See Also:</B> <A HREF="w.html#wait">wait</A>, <A HREF="m.html#monitor">monitor</A>,
+<A HREF="c.html#condition">condition</A>
 <HR>
 <A NAME="null"></A>
 <B>null</B>
 <PRE>- null null</PRE>
 <P>
 pushes a literal null object on the operand stack. null is not an operator;
-it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A> associated
+it is a name in <A HREF="s.html#systemdict">systemdict</A> associated
 with the null object.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <HR>
 <A NAME="nulldevice"></A>
 <B>nulldevice</B>
@@ -144,16 +144,16 @@ with the null object.
 installs the &quot;null device&quot; as the current output device. The null
 device corresponds to no physical output device and has no raster memory
 associated with it. Marks placed on the current page by painting operators
-(for example, <A HREF="PSL2s.html#show">show</A> or <A HREF="PSL2s.html#stroke">stroke</A>)
-are discarded; output operators (<A HREF="PSL2s.html#showpage">showpage</A>
-and <A HREF="PSL2c.html#copypage">copypage</A>) do nothing. However, in
+(for example, <A HREF="s.html#show">show</A> or <A HREF="s.html#stroke">stroke</A>)
+are discarded; output operators (<A HREF="s.html#showpage">showpage</A>
+and <A HREF="c.html#copypage">copypage</A>) do nothing. However, in
 all other respects the null device behaves like a real raster output device:
 the graphics operators have their normal side-effects on the graphics state,
 the character operators invoke the font machinery, and so on.
 <P>
 nulldevice sets the default transformation matrix to be the identity transform
 [1.0 0.0 0.0 1.0 0.0 0.0]. A PostScript language program may change this
-to any other matrix (using <A HREF="PSL2s.html#setmatrix">setmatrix</A>)
+to any other matrix (using <A HREF="s.html#setmatrix">setmatrix</A>)
 if it desires to simulate the device coordinate system of some real device.
 nulldevice also establishes the clipping path as a degenerate path consisting
 of a single point at the origin.
@@ -162,13 +162,13 @@ The null device is useful for exercising the PostScript interpreter's graphics
 and font machinery for such purposes as operating on paths, computing bounding
 boxes for graphical shapes, and performing coordinate transformations using
 CTM without generating output. Such manipulations should be bracketed by
-<A HREF="PSL2gh.html#gsave">gsave</A> and <A HREF="PSL2gh.html#grestore">grestore</A>
+<A HREF="gh.html#gsave">gsave</A> and <A HREF="gh.html#grestore">grestore</A>
 so the former device can be reinstated and the other side effects of nulldevice
 undone.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>
+<B>See Also:</B> <A HREF="s.html#setpagedevice">setpagedevice</A>
 <HR>
 <A NAME="or"></A>
 <B>or</B>
@@ -189,9 +189,9 @@ false false or  &rArr; false
 17 5 or         &rArr; 21
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#and">and</A>, <A HREF="#not">not</A>, <A HREF="PSL2xy.html#xor">xor</A>
+<B>See Also:</B> <A HREF="a.html#and">and</A>, <A HREF="#not">not</A>, <A HREF="xy.html#xor">xor</A>
 <HR>
 </BODY>
 </HTML>

@@ -15,9 +15,9 @@ tests whether the operand has the executable or literal attribute, returning
 true if it is executable or false if it is literal. This has nothing to
 do with the object's access attribute-for example, execute-only.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#cvx">cvx</A>, <A HREF="PSL2c.html#cvlit">cvlit</A>
+<B>See Also:</B> <A HREF="c.html#cvx">cvx</A>, <A HREF="c.html#cvlit">cvlit</A>
 <HR>
 <A NAME="xor"></A>
 <B>xor</B>
@@ -38,10 +38,10 @@ false false xor &rArr; false
 12 3 xor        &rArr; 15
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2no.html#or">or</A>, <A HREF="PSL2a.html#and">and</A>,
-<A HREF="PSL2no.html#not">not</A>
+<B>See Also:</B> <A HREF="no.html#or">or</A>, <A HREF="a.html#and">and</A>,
+<A HREF="no.html#not">not</A>
 <HR>
 <A NAME="xshow"></A>
 <B>xshow</B> LEVEL 2
@@ -53,18 +53,18 @@ shown, xshow extracts only one number from numarray or numstring. It uses
 that number as the x displacement and the value zero as the y displacement.
 In all other respects, xshow behaves the same as <A HREF="#xyshow">xyshow</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#xyshow">xyshow</A>, <A HREF="PSL2s.html#show">show</A>
+<B>See Also:</B> <A HREF="#xyshow">xyshow</A>, <A HREF="s.html#show">show</A>
 <HR>
 <A NAME="xyshow"></A>
 <B>xyshow</B> LEVEL 2
 <PRE>string numarray  xyshow -
 string numstring xyshow -</PRE>
 <P>
-paints successive characters of string in a manner similar to <A HREF="PSL2s.html#show">show</A>.
+paints successive characters of string in a manner similar to <A HREF="s.html#show">show</A>.
 After painting each character, it extracts two successive numbers from the
 array numarray or the encoded number string numstring. These two numbers,
 interpreted in user space, determine the position of the origin of the next
@@ -72,14 +72,14 @@ character relative to the origin of the character just shown. The first
 number is the x displacement and the second number is the y displacement.
 In other words, the two numbers override the character's normal width. If
 numarray or numstring is exhausted before all the characters of string have
-been shown, a <A HREF="PSL2qr.html#rangecheck">rangecheck</A> error will
+been shown, a <A HREF="qr.html#rangecheck">rangecheck</A> error will
 occur.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#xshow">xshow</A>, <A HREF="#yshow">yshow</A>, <A HREF="PSL2s.html#show">show</A>
+<B>See Also:</B> <A HREF="#xshow">xshow</A>, <A HREF="#yshow">yshow</A>, <A HREF="s.html#show">show</A>
 <HR>
 <A NAME="yield"></A>
 <B>yield</B> DPS
@@ -103,11 +103,11 @@ shown, yshow extracts only one number from numarray or numstring. It uses
 that number as the y displacement and the value zero as the x displacement.
 In all other respects, it behaves the same as xyshow.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#xyshow">xyshow</A>, <A HREF="PSL2s.html#show">show</A>
+<B>See Also:</B> <A HREF="#xyshow">xyshow</A>, <A HREF="s.html#show">show</A>
 <HR>
 </BODY>
 </HTML>

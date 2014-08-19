@@ -20,9 +20,9 @@ See the restore operator for a detailed description of what is saved in
 the snapshot.
 <P>
 save also saves the current graphics state by pushing a copy
-of it on the graphics state stack in a manner similar to <A HREF="PSL2gh.html#gsave">gsave</A>.
-This saved graphics state is restored by <A HREF="PSL2qr.html#restore">restore</A>
-and <A HREF="PSL2gh.html#grestoreall">grestoreall</A>.
+of it on the graphics state stack in a manner similar to <A HREF="gh.html#gsave">gsave</A>.
+This saved graphics state is restored by <A HREF="qr.html#restore">restore</A>
+and <A HREF="gh.html#grestoreall">grestoreall</A>.
 <P>
 <B>Example</B>
 <PRE>
@@ -31,10 +31,10 @@ and <A HREF="PSL2gh.html#grestoreall">grestoreall</A>.
 saveobj restore                    % Restore saved VM state
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#restore">restore</A>, <A HREF="PSL2gh.html#gsave">gsave</A>,
-<A HREF="PSL2gh.html#grestoreall">grestoreall</A>, <A HREF="PSL2v.html#vmstatus">vmstatus</A>
+<B>See Also:</B> <A HREF="qr.html#restore">restore</A>, <A HREF="gh.html#gsave">gsave</A>,
+<A HREF="gh.html#grestoreall">grestoreall</A>, <A HREF="v.html#vmstatus">vmstatus</A>
 <HR>
 <A NAME="scale"></A>
 <B>scale</B>
@@ -50,11 +50,11 @@ orientation of the axes are unchanged. If the matrix operand is supplied,
 scale replaces the value of matrix by S and pushes the modified matrix back
 on the operand stack In this case, scale does not affect the CTM.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rotate">rotate</A>, <A HREF="PSL2t.html#translate">translate</A>,
-<A HREF="PSL2c.html#concat">concat</A>
+<B>See Also:</B> <A HREF="qr.html#rotate">rotate</A>, <A HREF="t.html#translate">translate</A>,
+<A HREF="c.html#concat">concat</A>
 <HR>
 <A NAME="scalefont"></A>
 <B>scalefont</B>
@@ -83,7 +83,7 @@ is usually more efficient for a PostScript language program to apply scalefont
 only once for each font that it needs and to keep track of the resulting
 font dictionaries on its own.
 <P>
-The <A HREF="PSL2m.html#makefont">makefont</A>, scalefont, and <A HREF="#selectfont">selectfont</A>
+The <A HREF="m.html#makefont">makefont</A>, scalefont, and <A HREF="#selectfont">selectfont</A>
 operators produce a font dictionary derived from an original font dictionary,
 but with the FontMatrix entry altered. The derived font dictionary is allocated
 in local or global VM according to whether the original font dictionary
@@ -101,11 +101,11 @@ This produces a 12-unit high font (i.e., a 12-point font in default user
 space) whose characters have the same proportions as those in the original
 font.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#makefont">makefont</A>, <A HREF="#setfont">setfont</A>,
-<A HREF="PSL2f.html#findfont">findfont</A>, <A HREF="#selectfont">selectfont</A>
+<B>See Also:</B> <A HREF="m.html#makefont">makefont</A>, <A HREF="#setfont">setfont</A>,
+<A HREF="f.html#findfont">findfont</A>, <A HREF="#selectfont">selectfont</A>
 <HR>
 <A NAME="scheck"></A>
 <B>scheck</B> LEVEL 2
@@ -116,7 +116,7 @@ with existing Display PostScript applications.
 <P>
 <B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#gcheck">gcheck</A>
+<B>See Also:</B> <A HREF="gh.html#gcheck">gcheck</A>
 <HR>
 <A NAME="search"></A>
 <B>search</B>
@@ -142,10 +142,10 @@ find a match, it pushes the original string and the boolean false.
 (abbc) (B) search   &rArr;  (abbc) false
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackoverflow">stackoverflow</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackoverflow">stackoverflow</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#anchorsearch">anchorsearch</A>, <A HREF="PSL2t.html#token">token</A>
+<B>See Also:</B> <A HREF="a.html#anchorsearch">anchorsearch</A>, <A HREF="t.html#token">token</A>
 <HR>
 <A NAME="selectfont"></A>
 <B>selectfont</B> LEVEL 2
@@ -157,23 +157,23 @@ and establishes it as the current font dictionary in the graphics state.
 selectfont is equivalent to one of the following, according to whether the
 second operand is a number or a matrix:
 <PRE>
-key <A HREF="PSL2f.html#findfont">findfont</A> <A HREF="#scale">scale</A> <A HREF="#scalefont">scalefont</A> <A HREF="#setfont">setfont</A>
-key <A HREF="PSL2f.html#findfont">findfont</A> <A HREF="PSL2m.html#matrix">matrix</A> <A HREF="PSL2m.html#makefont">makefont</A> <A HREF="#setfont">setfont</A>
+key <A HREF="f.html#findfont">findfont</A> <A HREF="#scale">scale</A> <A HREF="#scalefont">scalefont</A> <A HREF="#setfont">setfont</A>
+key <A HREF="f.html#findfont">findfont</A> <A HREF="m.html#matrix">matrix</A> <A HREF="m.html#makefont">makefont</A> <A HREF="#setfont">setfont</A>
 </PRE>
 <P>
 If the font named by key is already defined in VM, selectfont obtains the
 font dictionary directly and does not execute findfont. However, if the
 font is not defined, selectfont invokes findfont in the normal way. In the
-latter case, it actually executes the name object <A HREF="PSL2f.html#findfont">findfont</A>,
+latter case, it actually executes the name object <A HREF="f.html#findfont">findfont</A>,
 so it uses the current definition of that name in the environment of the
 dictionary stack.
-On the other hand, redefining <A HREF="PSL2e.html#exch">exch</A>, <A HREF="#scalefont">scalefont</A>,
-<A HREF="PSL2m.html#makefont">makefont</A>, or <A HREF="#setfont">setfont</A>
+On the other hand, redefining <A HREF="e.html#exch">exch</A>, <A HREF="#scalefont">scalefont</A>,
+<A HREF="m.html#makefont">makefont</A>, or <A HREF="#setfont">setfont</A>
 would not alter the behavior of selectfont.
 <P>
 selectfont can give rise to
 any of the errors possible for the component operations, including arbitrary
-errors from a user-defined <A HREF="PSL2f.html#findfont">findfont</A> procedure.
+errors from a user-defined <A HREF="f.html#findfont">findfont</A> procedure.
 <P>
 <B>Example</B>
 <PRE>
@@ -190,10 +190,10 @@ The derived font dictionary is allocated in local or global VM according
 to whether the original font dictionary is in local or global VM. This is
 independent of the current VM allocation mode.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#findfont">findfont</A>, <A HREF="PSL2m.html#makefont">makefont</A>,
+<B>See Also:</B> <A HREF="f.html#findfont">findfont</A>, <A HREF="m.html#makefont">makefont</A>,
 <A HREF="#scalefont">scalefont</A>, <A HREF="#setfont">setfont</A>
 <HR>
 <A NAME="serialnumber"></A>
@@ -206,8 +206,8 @@ number (including any claim of its uniqueness) is product dependent.
 <P>
 <B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#languagelevel">languagelevel</A>, <A HREF="PSL2p.html#product">product</A>,
-<A HREF="PSL2qr.html#revision">revision</A>, <A HREF="PSL2v.html#version">version</A>
+<B>See Also:</B> <A HREF="l.html#languagelevel">languagelevel</A>, <A HREF="p.html#product">product</A>,
+<A HREF="qr.html#revision">revision</A>, <A HREF="v.html#version">version</A>
 <HR>
 <A NAME="setbbox"></A>
 <B>setbbox</B>
@@ -253,10 +253,10 @@ within a user path definition, but could conceivably arise in building up a sing
 current path by concatenating several user paths with multiple invocations of
 uappend.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2p.html#pathbbox">pathbbox</A>
+<B>See Also:</B> <A HREF="p.html#pathbbox">pathbbox</A>
 <HR>
 <A NAME="setblackgeneration"></A>
 <B>setblackgeneration</B> LEVEL 2
@@ -272,8 +272,8 @@ dependent. It should not be used in a page description that is intended
 to be device independent.
 Execution of this operator is not permitted in certain circumstances.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
 <B>See Also:</B> <A HREF="#setundercolorremoval">setundercolorremoval</A>
 <HR><A NAME="setcachedevice"></A>
@@ -313,14 +313,14 @@ the imagemask operator is permitted.
 <P>
 After execution of setcachedevice and until the termination of the BuildGlyph
 or BuildChar procedure, execution of color setting operators or image is
-not allowed. Note that use of the <A HREF="PSL2ik.html#imagemask">imagemask</A>
+not allowed. Note that use of the <A HREF="ik.html#imagemask">imagemask</A>
 operator is permitted.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
 <B>See Also:</B> <A HREF="#setcachedevice2">setcachedevice2</A>, <A HREF="#setcharwidth">setcharwidth</A>,
-<A HREF="#setcachelimit">setcachelimit</A>, <A HREF="PSL2c.html#cachestatus">cachestatus</A>
+<A HREF="#setcachelimit">setcachelimit</A>, <A HREF="c.html#cachestatus">cachestatus</A>
 <HR>
 <A NAME="setcachedevice2"></A>
 <B>setcachedevice2</B> LEVEL 2
@@ -337,11 +337,11 @@ from origin 0 to origin 1.
 Aside from its interpretation of the operands, setcachedevice2 works the same as
 setcachedevice in all respects.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
 <B>See Also:</B> <A HREF="#setcachedevice">setcachedevice</A>, <A HREF="#setcharwidth">setcharwidth</A>,
-<A HREF="#setcachelimit">setcachelimit</A>, <A HREF="PSL2c.html#cachestatus">cachestatus</A>
+<A HREF="#setcachelimit">setcachelimit</A>, <A HREF="c.html#cachestatus">cachestatus</A>
 <HR>
 <A NAME="setcachelimit"></A>
 <B>setcachelimit</B>
@@ -367,10 +367,10 @@ for each context.
 The parameter set by setcachelimit is the same as the MaxFontItem user parameter
 set by setuserparams (see Appendix C).
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#cachestatus">cachestatus</A>, <A HREF="#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="c.html#cachestatus">cachestatus</A>, <A HREF="#setuserparams">setuserparams</A>
 <HR>
 <A NAME="setcacheparams"></A>
 <B>setcacheparams</B> LEVEL 2
@@ -395,10 +395,10 @@ Changing the font cache size is allowed only in a system administrator job, sinc
 is equivalent to changing a system parameter. If size is not specified, the font cache
 size is unchanged.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#unmatchedmark">unmatchedmark</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcacheparams">currentcacheparams</A>,
+<B>See Also:</B> <A HREF="c.html#currentcacheparams">currentcacheparams</A>,
 <A HREF="#setcachelimit">setcachelimit</A>, <A HREF="#setsystemparams">setsystemparams</A>,
 <A HREF="#setuserparams">setuserparams</A>
 <HR>
@@ -418,8 +418,8 @@ Another use of setcharwidth is in defining glyphs that intentionally change thei
 behavior based on the environment in which they execute. Such glyphs must not
 be cached, because that would subvert the intended variable behavior.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
 <B>See Also:</B> <A HREF="#setcachedevice">setcachedevice</A>, <A HREF="#setcachedevice2">setcachedevice2</A>
 <HR>
@@ -438,11 +438,11 @@ DeviceCMYK").
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
 <B>See Also:</B> <A HREF="#setcolorspace">setcolorspace</A>, <A HREF="#setcolor">setcolor</A>,
-<A HREF="PSL2c.html#currentcmykcolor">currentcmykcolor</A>
+<A HREF="c.html#currentcmykcolor">currentcmykcolor</A>
 <HR>
 <A NAME="setcolor"></A>
 <B>setcolor</B> LEVEL 2
@@ -481,10 +481,10 @@ the specific color space selected.
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcolor">currentcolor</A>, <A HREF="#setcolorspace">setcolorspace</A>
+<B>See Also:</B> <A HREF="c.html#currentcolor">currentcolor</A>, <A HREF="#setcolorspace">setcolorspace</A>
 <HR>
 <A NAME="setcolorrendering"></A>
 <B>setcolorrendering</B> LEVEL 2
@@ -504,11 +504,11 @@ device-dependent.
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcolorrendering">currentcolorrendering</A>
+<B>See Also:</B> <A HREF="c.html#currentcolorrendering">currentcolorrendering</A>
 <HR>
 <A NAME="setcolorscreen"></A>
 <B>setcolorscreen</B> LEVEL 2
@@ -558,10 +558,10 @@ This example establishes 50-line dot screens angled at 75 degrees for cyan, 15 d
 for magenta, 0 degrees for yellow, and 45 degrees for black, which are commonly
 used for color printing.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcolorscreen">currentcolorscreen</A>,
+<B>See Also:</B> <A HREF="c.html#currentcolorscreen">currentcolorscreen</A>,
 <A HREF="#setscreen">setscreen</A>, <A HREF="#sethalftone">sethalftone</A>
 <HR>
 <A NAME="setcolorspace"></A>
@@ -592,10 +592,10 @@ other parameters
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcolorspace">currentcolorspace</A>,
+<B>See Also:</B> <A HREF="c.html#currentcolorspace">currentcolorspace</A>,
 <A HREF="#setcolor">setcolor</A>
 <HR>
 <A NAME="setcolortransfer"></A>
@@ -624,10 +624,10 @@ setcolortransfer should not be used in a page description that is intended to be
 device-independent. Execution of this operator is not permitted in certain circumstances;
 see Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentcolortransfer">currentcolortransfer</A>,
+<B>See Also:</B> <A HREF="c.html#currentcolortransfer">currentcolortransfer</A>,
 <A HREF="#settransfer">settransfer</A>
 <HR>
 <A NAME="setdash"></A>
@@ -670,10 +670,10 @@ pattern is restarted and the offset reapplied at the beginning of each subpath.
 [3 5] 6 setdash     % 2 off, 3 on, 5 off, 3 on, 5 off, …
 [2 3] 11 setdash    % 1 on, 3 off, 2 on, 3 off, 2 on, …</PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentdash">currentdash</A>, <A HREF="#stroke">stroke</A>
+<B>See Also:</B> <A HREF="c.html#currentdash">currentdash</A>, <A HREF="#stroke">stroke</A>
 <HR>
 <A NAME="setdevparams"></A>
 <B>setdevparams</B> LEVEL 2
@@ -721,12 +721,12 @@ strings (noted in Appendix B) or an implementation-dependent limit specific
 to that parameter, a limitcheck error occurs.
 </UL>
 <P>
-<B>Errors:</B> <A HREF="PSL2c.html#configurationerror">configurationerror</A>,
-<A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="c.html#configurationerror">configurationerror</A>,
+<A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentdevparams">currentdevparams</A>, <A HREF="#setsystemparams">setsystemparams</A>,
+<B>See Also:</B> <A HREF="c.html#currentdevparams">currentdevparams</A>, <A HREF="#setsystemparams">setsystemparams</A>,
 <A HREF="#setuserparams">setuserparams</A>
 <HR>
 <A NAME="setfileposition"></A>
@@ -737,21 +737,21 @@ repositions an existing open file to a new position so the next read or
 write operation will commence at that position. The position operand is
 a non-negative integer interpreted as number of bytes from the beginning
 of the file. For an output file, setfileposition first performs an implicit
-<A HREF="PSL2f.html#flushfile">flushfile</A> . The result of positioning
+<A HREF="f.html#flushfile">flushfile</A> . The result of positioning
 beyond end-of-file for both reading and writing depends on the behavior
 of the underlying file system. Typically, positioning beyond the existing
 end-of-file will lengthen the file if it is open for writing and the file's
 access permits. The storage appended to the file has unspecified contents.
-If lengthening the file is not permitted, an <A HREF="PSL2ik.html#ioerror">ioerror</A>
+If lengthening the file is not permitted, an <A HREF="ik.html#ioerror">ioerror</A>
 occurs. Possible causes of an ioerror are: the file object is not valid,
 the underlying file is not positionable, the specified position is invalid
 for the file, or a device-dependent error condition is detected.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
-, <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
+, <A HREF="u.html#undefinedfilename">undefinedfilename</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fileposition">fileposition</A>, <A HREF="PSL2f.html#file">file</A>
+<B>See Also:</B> <A HREF="f.html#fileposition">fileposition</A>, <A HREF="f.html#file">file</A>
 <HR>
 <A NAME="setflat"></A>
 <B>setflat</B>
@@ -778,10 +778,10 @@ of the individual device and is suitable for most applications.
 setflat sets a graphics state parameter whose effect is device-dependent. It should
 not be used in a page description that is intended to be device-independent.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentflat">currentflat</A>, <A HREF="PSL2f.html#flattenpath">flattenpath</A>,
-<A HREF="#stroke">stroke</A>, <A HREF="PSL2f.html#fill">fill</A>
+<B>See Also:</B> <A HREF="c.html#currentflat">currentflat</A>, <A HREF="f.html#flattenpath">flattenpath</A>,
+<A HREF="#stroke">stroke</A>, <A HREF="f.html#fill">fill</A>
 <HR>
 <A NAME="setfont"></A>
 <B>setfont</B>
@@ -802,11 +802,11 @@ Helvetica font 10 scalefont    % Scale it to 10-unit size
 setfont                        % Establish it as current font
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentfont">currentfont</A>, <A HREF="#scalefont">scalefont</A>,
-<A HREF="PSL2m.html#makefont">makefont</A>, <A HREF="PSL2f.html#findfont">findfont</A>,
+<B>See Also:</B> <A HREF="c.html#currentfont">currentfont</A>, <A HREF="#scalefont">scalefont</A>,
+<A HREF="m.html#makefont">makefont</A>, <A HREF="f.html#findfont">findfont</A>,
 <A HREF="#selectfont">selectfont</A>
 <HR>
 <A NAME="setglobal"></A>
@@ -817,15 +817,15 @@ sets the VM allocation mode: true denotes global, false denotes local. This
 controls the VM region in which the values of new composite objects are
 to be allocated. It applies to objects created implicitly by the scanner
 and to those created explicitly by PostScript operators. Modifications to
-the VM allocation mode are subject to <A HREF="#save">save</A> and <A HREF="PSL2qr.html#restore">restore</A>.
+the VM allocation mode are subject to <A HREF="#save">save</A> and <A HREF="qr.html#restore">restore</A>.
 In a Display PostScript system, which supports multiple execution contexts,
 the VM allocation mode is maintained separately for each context. The standard
-error handlers in <A HREF="PSL2e.html#errordict">errordict</A> execute false
+error handlers in <A HREF="e.html#errordict">errordict</A> execute false
 setglobal, reverting to local VM allocation mode if an error occurs.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentglobal">currentglobal</A>
+<B>See Also:</B> <A HREF="c.html#currentglobal">currentglobal</A>
 <HR><A NAME="setgray"></A>
 <B>setgray</B>
 <PRE>num setgray -</PRE>
@@ -837,10 +837,10 @@ this range, the nearest valid value is substituted without error indication.
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentgray">currentgray</A>, <A HREF="#setcolorspace">setcolorspace</A>,
+<B>See Also:</B> <A HREF="c.html#currentgray">currentgray</A>, <A HREF="#setcolorspace">setcolorspace</A>,
 <A HREF="#setcolor">setcolor</A>
 <HR>
 <A NAME="setgstate"></A>
@@ -851,14 +851,14 @@ replaces the current graphics state by the value of the gstate object. This
 is a copying operation, so subsequent modifications to the value of gstate
 will not affect the current graphics state or vice versa. Note that this
 is a wholesale replacement of all components of the graphics state; in particular,
-the current clipping path is replaced by the value in <A HREF="PSL2gh.html#gstate">gstate</A>,
+the current clipping path is replaced by the value in <A HREF="gh.html#gstate">gstate</A>,
 not intersected with it.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#gstate">gstate</A>, <A HREF="PSL2c.html#currentgstate">currentgstate</A>,
-<A HREF="PSL2gh.html#gsave">gsave</A>, <A HREF="PSL2gh.html#grestore">grestore</A>
+<B>See Also:</B> <A HREF="gh.html#gstate">gstate</A>, <A HREF="c.html#currentgstate">currentgstate</A>,
+<A HREF="gh.html#gsave">gsave</A>, <A HREF="gh.html#grestore">grestore</A>
 <HR><A NAME="sethalftone"></A>
 <B>sethalftone</B> LEVEL 2
 <PRE>halftone sethalftone -</PRE>
@@ -866,16 +866,16 @@ not intersected with it.
 establishes halftone as the halftone parameter in the graphics state. Once
 established, the halftone dictionary should be treated as readonly. If the
 halftone dictionary's HalftoneType value is out of bounds or is not supported
-by the PostScript interpreter, a <A HREF="PSL2qr.html#rangecheck">rangecheck</A>
+by the PostScript interpreter, a <A HREF="qr.html#rangecheck">rangecheck</A>
 error occurs. If a required entry is missing or its value is of the wrong
-type, a <A HREF="PSL2t.html#typecheck">typecheck</A> error occurs. sethalftone
+type, a <A HREF="t.html#typecheck">typecheck</A> error occurs. sethalftone
 sets a graphics state parameter whose effect is device dependent. It should
 not be used in a page description that is intended to be device independent.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currenthalftone">currenthalftone</A>, <A HREF="#setscreen">setscreen</A>,
+<B>See Also:</B> <A HREF="c.html#currenthalftone">currenthalftone</A>, <A HREF="#setscreen">setscreen</A>,
 <A HREF="#setcolorscreen">setcolorscreen</A>
 <HR>
 <A NAME="sethalftonephase"></A>
@@ -888,9 +888,9 @@ sethalftonephase sets a graphics state parameter whose effect is device
 dependent. It should not be used in a page description that is intended
 to be device independent.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currenthalftonephase">currenthalftonephase</A>
+<B>See Also:</B> <A HREF="c.html#currenthalftonephase">currenthalftonephase</A>
 <HR>
 <A NAME="sethsbcolor"></A>
 <B>sethsbcolor</B>
@@ -906,10 +906,10 @@ merely an alternate way of specifying color values in the DeviceRGB color space.
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currenthsbcolor">currenthsbcolor</A>, <A HREF="#setrgbcolor">setrgbcolor</A>,
+<B>See Also:</B> <A HREF="c.html#currenthsbcolor">currenthsbcolor</A>, <A HREF="#setrgbcolor">setrgbcolor</A>,
 <A HREF="#setcolorspace">setcolorspace</A>, <A HREF="#setcolor">setcolor</A>
 <HR>
 <A NAME="setlinecap"></A>
@@ -930,10 +930,10 @@ is drawn around the endpoint and filled in.
 the path for a distance equal to half the line width and is squared off.
 </OL>
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentlinecap">currentlinecap</A>, <A HREF="#setlinejoin">setlinejoin</A>,
+<B>See Also:</B> <A HREF="c.html#currentlinecap">currentlinecap</A>, <A HREF="#setlinejoin">setlinejoin</A>,
 <A HREF="#stroke">stroke</A>
 <HR>
 <A NAME="setlinejoin"></A>
@@ -968,10 +968,10 @@ values of the flatness parameter (see <A HREF="#setflat">setflat</A>), the
 corners are so shallow that the difference between join styles is not visible.
 </OL>
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentlinejoin">currentlinejoin</A>, <A HREF="#setlinecap">setlinecap</A>,
+<B>See Also:</B> <A HREF="c.html#currentlinejoin">currentlinejoin</A>, <A HREF="#setlinecap">setlinecap</A>,
 <A HREF="#stroke">stroke</A>, <A HREF="#setmiterlimit">setmiterlimit</A>
 <HR>
 <A NAME="setlinewidth"></A>
@@ -1001,9 +1001,9 @@ depending on the positions of lines with respect to the pixel grid. One
 can enable automatic stroke adjustment (by <A HREF="#setstrokeadjust">setstrokeadjust</A>)
 to assure uniform line width.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentlinewidth">currentlinewidth</A>, <A HREF="#stroke">stroke</A>,
+<B>See Also:</B> <A HREF="c.html#currentlinewidth">currentlinewidth</A>, <A HREF="#stroke">stroke</A>,
 <A HREF="#setstrokeadjust">setstrokeadjust</A>
 <HR>
 <A NAME="setmatrix"></A>
@@ -1015,17 +1015,17 @@ by the value of matrix.
 This establishes an arbitrary transformation from user space to device space
 without reference to the former CTM. Except in device setup procedures,
 use of setmatrix should be very rare. PostScript language programs should
-ordinarily modify the CTM (by use of the <A HREF="PSL2t.html#translate">translate</A>,
-<A HREF="#scale">scale</A>, <A HREF="PSL2qr.html#rotate">rotate</A>, and
-<A HREF="PSL2c.html#concat">concat</A> operators) rather than replace it.
+ordinarily modify the CTM (by use of the <A HREF="t.html#translate">translate</A>,
+<A HREF="#scale">scale</A>, <A HREF="qr.html#rotate">rotate</A>, and
+<A HREF="c.html#concat">concat</A> operators) rather than replace it.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentmatrix">currentmatrix</A>, <A HREF="PSL2d.html#defaultmatrix">defaultmatrix</A>,
-<A HREF="PSL2ik.html#initmatrix">initmatrix</A>, <A HREF="PSL2qr.html#rotate">rotate</A>,
-<A HREF="#scale">scale</A>, <A HREF="PSL2t.html#translate">translate</A>,
-<A HREF="PSL2c.html#concat">concat</A>
+<B>See Also:</B> <A HREF="c.html#currentmatrix">currentmatrix</A>, <A HREF="d.html#defaultmatrix">defaultmatrix</A>,
+<A HREF="ik.html#initmatrix">initmatrix</A>, <A HREF="qr.html#rotate">rotate</A>,
+<A HREF="#scale">scale</A>, <A HREF="t.html#translate">translate</A>,
+<A HREF="c.html#concat">concat</A>
 <HR>
 <A NAME="setmiterlimit"></A>
 <B>setmiterlimit</B>
@@ -1062,10 +1062,10 @@ The default value of the miter limit is 10. Setting the miter limit to 1
 cuts off miters at all angles so that bevels are always produced even when
 miters are specified.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentmiterlimit">currentmiterlimit</A>,
+<B>See Also:</B> <A HREF="c.html#currentmiterlimit">currentmiterlimit</A>,
 <A HREF="#stroke">stroke</A>, <A HREF="#setlinejoin">setlinejoin</A>
 <HR>
 <A NAME="setobjectformat"></A>
@@ -1102,11 +1102,11 @@ Modifications to the object format parameter are subject to save and restore. In
 an interpreter that supports multiple contexts, this parameter is maintained separately
 for each context.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentobjectformat">currentobjectformat</A>,
-<A HREF="PSL2p.html#printobject">printobject</A>, <A HREF="PSL2w.html#writeobject">writeobject</A>
+<B>See Also:</B> <A HREF="c.html#currentobjectformat">currentobjectformat</A>,
+<A HREF="p.html#printobject">printobject</A>, <A HREF="w.html#writeobject">writeobject</A>
 <HR>
 <A NAME="setoverprint"></A>
 <B>setoverprint</B> bool setoverprint - LEVEL 2
@@ -1126,9 +1126,9 @@ may be a combined result of several painting operations in different colorants.
 Because the effect of the overprint parameter is device-dependent, setoverprint
 should not be used in a program that is intended to be device-independent.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentoverprint">currentoverprint</A>, <A HREF="#setcolorspace">setcolorspace</A>
+<B>See Also:</B> <A HREF="c.html#currentoverprint">currentoverprint</A>, <A HREF="#setcolorspace">setcolorspace</A>
 <HR>
 <A NAME="setpacking"></A>
 <B>setpacking</B> LEVEL 2
@@ -1164,9 +1164,9 @@ by the arbitrary procedure definitions are defined as packed arrays; otherwise,
 they are defined as ordinary arrays. The example is careful to preserve the
 array packing mode in effect before its execution.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentpacking">currentpacking</A>, <A HREF="PSL2p.html#packedarray">packedarray</A>
+<B>See Also:</B> <A HREF="c.html#currentpacking">currentpacking</A>, <A HREF="p.html#packedarray">packedarray</A>
 <HR>
 <A NAME="setpagedevice"></A>
 <B>setpagedevice</B> LEVEL 2
@@ -1212,14 +1212,14 @@ parameters from dict. The contents of this dictionary are implementationdependen
 If a device’s BeginPage or EndPage procedure invokes setpagedevice, an
 undefined error occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2c.html#configurationerror">configurationerror</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+<B>Errors:</B> <A HREF="c.html#configurationerror">configurationerror</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="ik.html#invalidaccess">invalidaccess</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentpagedevice">currentpagedevice</A>,
-<A HREF="PSL2no.html#nulldevice">nulldevice</A>, <A HREF="PSL2gh.html#gsave">gsave</A>,
-<A HREF="PSL2gh.html#grestore">grestore</A>
+<B>See Also:</B> <A HREF="c.html#currentpagedevice">currentpagedevice</A>,
+<A HREF="no.html#nulldevice">nulldevice</A>, <A HREF="gh.html#gsave">gsave</A>,
+<A HREF="gh.html#grestore">grestore</A>
 <HR>
 <A NAME="setpattern"></A>
 <B>setpattern</B> LEVEL 2
@@ -1264,11 +1264,11 @@ does not have an underlying color space, a rangecheck error occurs.
 Execution of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>,
-<A HREF="PSL2ik.html#invalidid">invalidid</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefined">undefined</A>,
+<A HREF="ik.html#invalidid">invalidid</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#findresource">findresource</A>, <A HREF="PSL2m.html#makepattern">makepattern</A>,
+<B>See Also:</B> <A HREF="f.html#findresource">findresource</A>, <A HREF="m.html#makepattern">makepattern</A>,
 <A HREF="#setcolor">setcolor</A>, <A HREF="#setcolorspace">setcolorspace</A>
 <HR>
 <A NAME="setrgbcolor"></A>
@@ -1286,10 +1286,10 @@ legal value.
 <P>
 Execution of this operator is not permitted in certain circumstances.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentrgbcolor">currentrgbcolor</A>, <A HREF="#setgray">setgray</A>,
+<B>See Also:</B> <A HREF="c.html#currentrgbcolor">currentrgbcolor</A>, <A HREF="#setgray">setgray</A>,
 <A HREF="#sethsbcolor">sethsbcolor</A>, <A HREF="#setcolorspace">setcolorspace</A>,
 <A HREF="#setcolor">setcolor</A>
 <HR>
@@ -1334,10 +1334,10 @@ not be used in a page description that is intended to be device-independent. Exe
 of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentscreen">currentscreen</A>, <A HREF="#sethalftone">sethalftone</A>
+<B>See Also:</B> <A HREF="c.html#currentscreen">currentscreen</A>, <A HREF="#sethalftone">sethalftone</A>
 <HR>
 <A NAME="setshared"></A>
 <B>setshared</B> LEVEL 2
@@ -1346,7 +1346,7 @@ Section 4.8.1, "Types of Color Space."
 has the same semantics as setglobal. This operator is defined for compatibility
 with existing Display PostScript applications.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#setglobal">setglobal</A>
 <HR>
@@ -1364,9 +1364,9 @@ it is true for displays and false for printers. It is set to false when a font�
 BuildChar, BuildGlyph, or CharStrings procedure is called, but the procedure can
 change it. It is not altered by initgraphics.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentstrokeadjust">currentstrokeadjust</A>,
+<B>See Also:</B> <A HREF="c.html#currentstrokeadjust">currentstrokeadjust</A>,
 <A HREF="#stroke">stroke</A>
 <HR>
 <A NAME="setsystemparams"></A>
@@ -1417,10 +1417,10 @@ No error occurs if parameters cannot be stored permanently.
 This attempts to set the MaxFontCache system parameter to 500000 and to
 set the default value of the MaxFontItem user parameter to 7500.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentsystemparams">currentsystemparams</A>,
+<B>See Also:</B> <A HREF="c.html#currentsystemparams">currentsystemparams</A>,
 <A HREF="#setuserparams">setuserparams</A>, <A HREF="#setdevparams">setdevparams</A>
 <HR>
 <A NAME="settransfer"></A>
@@ -1441,9 +1441,9 @@ not be used in a page description that is intended to be device-independent. Exe
 of this operator is not permitted in certain circumstances; see
 Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currenttransfer">currenttransfer</A>, <A HREF="#setcolortransfer">setcolortransfer</A>,
+<B>See Also:</B> <A HREF="c.html#currenttransfer">currenttransfer</A>, <A HREF="#setcolortransfer">setcolortransfer</A>,
 <A HREF="#sethalftone">sethalftone</A>
 <HR>
 <A NAME="setucacheparams"></A>
@@ -1472,10 +1472,10 @@ for each context.
 The parameter that setucacheparams sets is the same as the MaxUPathItem user
 parameter set by setuserparams (see Appendix C).
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#unmatchedmark">unmatchedmark</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2u.html#ucachestatus">ucachestatus</A>, <A HREF="#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="u.html#ucachestatus">ucachestatus</A>, <A HREF="#setuserparams">setuserparams</A>
 <HR>
 <A NAME="setundercolorremoval"></A>
 <B>setundercolorremoval</B> LEVEL 2
@@ -1496,10 +1496,10 @@ setundercolorremoval should not be used in a page description that is intended t
 be device-independent. Execution of this operator is not permitted in certain circumstances;
 see Section 4.8.1, "Types of Color Space."
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentundercolorremoval">currentundercolorremoval</A>,
+<B>See Also:</B> <A HREF="c.html#currentundercolorremoval">currentundercolorremoval</A>,
 <A HREF="#setblackgeneration">setblackgeneration</A>
 <HR>
 <A NAME="setuserparams"></A>
@@ -1540,10 +1540,10 @@ separately for each context.
 </PRE>
 This example attempts to set the MaxFontItem user parameter to 7500.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentuserparams">currentuserparams</A>,
+<B>See Also:</B> <A HREF="c.html#currentuserparams">currentuserparams</A>,
 <A HREF="#setsystemparams">setsystemparams</A>, <A HREF="#setdevparams">setdevparams</A>
 <HR>
 <A NAME="setvmthreshold"></A>
@@ -1564,7 +1564,7 @@ separately for each context.
 The parameter specified by setvmthreshold is the same as the VMThreshold user
 parameter set by setuserparams (see Appendix C).
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#setuserparams">setuserparams</A>
 <HR>
@@ -1577,7 +1577,7 @@ with earlier PostScript interpreter implementations.
 <P>
 <B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#globaldict">globaldict</A>
+<B>See Also:</B> <A HREF="gh.html#globaldict">globaldict</A>
 <HR>
 <A NAME="SharedFontDirectory"></A>
 <B>SharedFontDirectory</B> LEVEL 2
@@ -1588,7 +1588,7 @@ defined for compatibility with earlier PostScript interpreter implementations.
 <P>
 <B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
+<B>See Also:</B> <A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
 <HR>
 <A NAME="show"></A>
 <B>show</B>
@@ -1610,15 +1610,15 @@ error occurs.
 See Chapter 5 for complete information about the definition, manipulation, and
 rendition of fonts.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#ashow">ashow</A>, <A HREF="PSL2a.html#awidthshow">awidthshow</A>,
-<A HREF="PSL2w.html#widthshow">widthshow</A>, <A HREF="PSL2ik.html#kshow">kshow</A>,
-<A HREF="PSL2c.html#cshow">cshow</A>, <A HREF="PSL2xy.html#xshow">xshow</A>,
-<A HREF="PSL2xy.html#yshow">yshow</A>, <A HREF="PSL2xy.html#xyshow">xyshow</A>,
-<A HREF="PSL2c.html#charpath">charpath</A>, <A HREF="PSL2m.html#moveto">moveto</A>,
+<B>See Also:</B> <A HREF="a.html#ashow">ashow</A>, <A HREF="a.html#awidthshow">awidthshow</A>,
+<A HREF="w.html#widthshow">widthshow</A>, <A HREF="ik.html#kshow">kshow</A>,
+<A HREF="c.html#cshow">cshow</A>, <A HREF="xy.html#xshow">xshow</A>,
+<A HREF="xy.html#yshow">yshow</A>, <A HREF="xy.html#xyshow">xyshow</A>,
+<A HREF="c.html#charpath">charpath</A>, <A HREF="m.html#moveto">moveto</A>,
 <A HREF="#setfont">setfont</A>
 <HR>
 <A NAME="showpage"></A>
@@ -1677,7 +1677,7 @@ the graphics state.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#copypage">copypage</A>, <A HREF="PSL2e.html#erasepage">erasepage</A>,
+<B>See Also:</B> <A HREF="c.html#copypage">copypage</A>, <A HREF="e.html#erasepage">erasepage</A>,
 <A HREF="#setpagedevice">setpagedevice</A>
 <HR>
 <A NAME="sin"></A>
@@ -1687,9 +1687,9 @@ the graphics state.
 returns the sine of angle, which is interpreted as an angle in degrees.
 The result is a real.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#cos">cos</A>, <A HREF="PSL2a.html#atan">atan</A>
+<B>See Also:</B> <A HREF="c.html#cos">cos</A>, <A HREF="a.html#atan">atan</A>
 <HR>
 <A NAME="sqrt"></A>
 <B>sqrt</B>
@@ -1698,10 +1698,10 @@ The result is a real.
 returns the square root of num, which must be a non-negative number. The
 result is a real.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#exp">exp</A>
+<B>See Also:</B> <A HREF="e.html#exp">exp</A>
 <HR>
 <A NAME="srand"></A>
 <B>srand</B>
@@ -1711,9 +1711,9 @@ initializes the random number generator with the seed int, which may be
 any integer value. Executing srand with a particular value causes subsequent
 invocations of rand to generate a reproducible sequence of results.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rand">rand</A>, <A HREF="PSL2qr.html#rrand">rrand</A>
+<B>See Also:</B> <A HREF="qr.html#rand">rand</A>, <A HREF="qr.html#rrand">rrand</A>
 <HR>
 <A NAME="stack"></A>
 <B>stack</B>
@@ -1721,14 +1721,14 @@ invocations of rand to generate a reproducible sequence of results.
 <P>
 writes text representations of every object on the stack to the
 standard output file, but leaves the stack unchanged. stack applies the
-<A HREF="PSL2.html#equals">=</A> operator to each element of the stack,
-starting with the topmost element. See the <A HREF="PSL2.html#equals">=</A>
+<A HREF="@.html#equals">=</A> operator to each element of the stack,
+starting with the topmost element. See the <A HREF="@.html#equals">=</A>
 operator for a description of its effects.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2p.html#pstack">pstack</A>, <A HREF="PSL2.html#equals">=</A>,
-<A HREF="PSL2.html#twoequals">==</A>, <A HREF="PSL2c.html#count">count</A>
+<B>See Also:</B> <A HREF="p.html#pstack">pstack</A>, <A HREF="@.html#equals">=</A>,
+<A HREF="@.html#twoequals">==</A>, <A HREF="c.html#count">count</A>
 <HR>
 <A NAME="stackoverflow"></A>
 <B>stackoverflow</B> (error)
@@ -1736,7 +1736,7 @@ operator for a description of its effects.
 The operand stack has grown too large. Too many objects have been pushed
 on the stack and not popped off. Before invoking this error, the interpreter
 creates an array containing all elements of the operand stack (stored as
-if by <A HREF="PSL2a.html#astore">astore</A>), resets the operand stack
+if by <A HREF="a.html#astore">astore</A>), resets the operand stack
 to empty, and pushes the array on the operand stack.
 <HR>
 <A NAME="stackunderflow"></A><B>stackunderflow</B> (error)
@@ -1761,8 +1761,8 @@ than define its own private array.
 <P>
 <B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A>,
-<A HREF="PSL2f.html#findencoding">findencoding</A>
+<B>See Also:</B> <A HREF="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A>,
+<A HREF="f.html#findencoding">findencoding</A>
 <HR>
 <A NAME="start"></A>
 <B>start</B>
@@ -1780,7 +1780,7 @@ effect of executing it explicitly is undefined.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#quit">quit</A>
+<B>See Also:</B> <A HREF="qr.html#quit">quit</A>
 <HR>
 <A NAME="startjob"></A>
 <B>startjob</B> LEVEL 2
@@ -1819,11 +1819,11 @@ job. If password is an integer, it is first converted to a string, as if by the 
 operator. It is compared to the StartJobPassword and SystemParamsPassword
 system parameters; see Section C.3.1, "Passwords," for details.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#exitserver">exitserver</A>, <A HREF="#setsystemparams">setsystemparams</A>,
-<A HREF="#save">save</A>, <A HREF="PSL2qr.html#restore">restore</A>
+<B>See Also:</B> <A HREF="e.html#exitserver">exitserver</A>, <A HREF="#setsystemparams">setsystemparams</A>,
+<A HREF="#save">save</A>, <A HREF="qr.html#restore">restore</A>
 <HR>
 <A NAME="status"></A>
 <B>status</B>
@@ -1850,11 +1850,11 @@ can make is that larger values indicate later times.
 or writing. 
 </DL>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackoverflow">stackoverflow</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="#stackoverflow">stackoverflow</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#file">file</A>, <A HREF="PSL2c.html#closefile">closefile</A>,
-<A HREF="PSL2f.html#filenameforall">filenameforall</A>
+<B>See Also:</B> <A HREF="f.html#file">file</A>, <A HREF="c.html#closefile">closefile</A>,
+<A HREF="f.html#filenameforall">filenameforall</A>
 <HR>
 <A NAME="statusdict"></A>
 <B>statusdict</B>
@@ -1883,7 +1883,7 @@ statusdict is not necessarily
 defined in all products. Any reference to statusdict in a PostScript language
 program impairs the portability of that program.
 <P>
-<B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>, <A HREF="u.html#undefined">undefined</A>
 <HR>
 <A NAME="stop"></A>
 <B>stop</B>
@@ -1902,12 +1902,12 @@ stop does not affect the operand or dictionary stacks.
 Any objects pushed on those stacks during the execution of the stopped context
 remain after the context is terminated. If stop is executed when there is
 no enclosing stopped context, the interpreter prints an error message and
-executes the built-in operator <A HREF="PSL2qr.html#quit">quit</A>. This
+executes the built-in operator <A HREF="qr.html#quit">quit</A>. This
 never occurs during execution of ordinary user programs.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="#stopped">stopped</A>, <A HREF="PSL2e.html#exit">exit</A>
+<B>See Also:</B> <A HREF="#stopped">stopped</A>, <A HREF="e.html#exit">exit</A>
 <HR>
 <A NAME="stopped"></A>
 <B>stopped</B>
@@ -1947,7 +1947,7 @@ with the topmost (current) dictionary. If key is found in some dictionary,
 store replaces its value by the value operand. If key is not found in any
 dictionary on the dictionary stack, store creates a new entry with key and
 value in the current dictionary. If the chosen dictionary is in global VM
-and value is a composite object whose value is in local VM, an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+and value is a composite object whose value is in local VM, an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs.
 <P>
 <B>Example</B>
@@ -1959,11 +1959,11 @@ error occurs.
 </PRE>
 The two code fragments above have the same effect.
 <P>
-<B>Errors:</B> <A HREF="PSL2d.html#dictfull">dictfull</A>, <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="d.html#dictfull">dictfull</A>, <A HREF="ik.html#invalidaccess">invalidaccess</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#def">def</A>, <A HREF="PSL2p.html#put">put</A>,
-<A HREF="PSL2w.html#where">where</A>, <A HREF="PSL2l.html#load">load</A>
+<B>See Also:</B> <A HREF="d.html#def">def</A>, <A HREF="p.html#put">put</A>,
+<A HREF="w.html#where">where</A>, <A HREF="l.html#load">load</A>
 <HR><A NAME="string"></A>
 <B>string</B>
 <PRE>int string string</PRE>
@@ -1974,11 +1974,11 @@ The int operand must be a non-negative integer not greater than the maximum
 allowable string length . The string is allocated in local or global VM
 according to the current VM allocation mode.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#length">length</A>, <A HREF="PSL2t.html#type">type</A>
+<B>See Also:</B> <A HREF="l.html#length">length</A>, <A HREF="t.html#type">type</A>
 <HR>
 <A NAME="stringwidth"></A>
 <B>stringwidth</B>
@@ -1999,12 +1999,12 @@ painting anything into the current page.
 <P>
 Note that the &quot;width&quot;
 of a string is defined as movement of the current point. It has nothing
-to do with the dimensions of the character outlines (see <A HREF="PSL2c.html#charpath">charpath</A>
-and <A HREF="PSL2p.html#pathbbox">pathbbox</A>).
+to do with the dimensions of the character outlines (see <A HREF="c.html#charpath">charpath</A>
+and <A HREF="p.html#pathbbox">pathbbox</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#show">show</A>, <A HREF="#setfont">setfont</A>
 <HR>
@@ -2039,12 +2039,12 @@ gsave
 grestore
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
 <B>See Also:</B> <A HREF="#setlinewidth">setlinewidth</A>, <A HREF="#setlinejoin">setlinejoin</A>,
 <A HREF="#setmiterlimit">setmiterlimit</A>, <A HREF="#setlinecap">setlinecap</A>,
 <A HREF="#setdash">setdash</A>, <A HREF="#setstrokeadjust">setstrokeadjust</A>,
-<A HREF="PSL2u.html#ustroke">ustroke</A>
+<A HREF="u.html#ustroke">ustroke</A>
 <HR>
 <A NAME="strokepath"></A>
 <B>strokepath</B>
@@ -2057,11 +2057,11 @@ In general, this path is not suitable for stroke, as it may contain interior
 segments or disconnected subpaths produced by strokepath's stroke to outline
 conversion process.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fill">fill</A>, <A HREF="PSL2c.html#clip">clip</A>,
-<A HREF="#stroke">stroke</A>, <A HREF="PSL2p.html#pathbbox">pathbbox</A>,
-<A HREF="PSL2c.html#charpath">charpath</A>
+<B>See Also:</B> <A HREF="f.html#fill">fill</A>, <A HREF="c.html#clip">clip</A>,
+<A HREF="#stroke">stroke</A>, <A HREF="p.html#pathbbox">pathbbox</A>,
+<A HREF="c.html#charpath">charpath</A>
 <HR>
 <A NAME="sub"></A>
 <B>sub</B>
@@ -2071,11 +2071,11 @@ difference returns the result of subtracting num2 from num1. If both operands
 are integers and the result is within integer range, the result is an integer.
 Otherwise, the result is a real.
 <P>
-<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#add">add</A>, <A HREF="PSL2d.html#div">div</A>,
-<A HREF="PSL2m.html#mul">mul</A>, <A HREF="PSL2ik.html#idiv">idiv</A>, <A HREF="PSL2m.html#mod">mod</A>
+<B>See Also:</B> <A HREF="a.html#add">add</A>, <A HREF="d.html#div">div</A>,
+<A HREF="m.html#mul">mul</A>, <A HREF="ik.html#idiv">idiv</A>, <A HREF="m.html#mod">mod</A>
 <HR>
 <A NAME="syntaxerror"></A>
 <B>syntaxerror</B> (error)
@@ -2098,10 +2098,10 @@ by &lt;~...~&gt;.
   <LI>A binary token or binary object sequence has incorrect structure.
 </UL>
 Erroneous tokens, such as malformed numbers, do not produce a syntaxerror;
-such tokens are instead treated as name objects (often producing an <A HREF="PSL2u.html#undefined">undefined</A>
+such tokens are instead treated as name objects (often producing an <A HREF="u.html#undefined">undefined</A>
 error when executed).
 Tokens that exceed implementation limits, such as names that are too long
-or numbers whose values are too large, produce a <A HREF="PSL2l.html#limitcheck">limitcheck</A>.
+or numbers whose values are too large, produce a <A HREF="l.html#limitcheck">limitcheck</A>.
 <HR>
 <A NAME="systemdict"></A>
 <B>systemdict</B>
@@ -2113,8 +2113,8 @@ object.
 <P>
 <B>Errors:</B> <A HREF="#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#errordict">errordict</A>, <A HREF="PSL2gh.html#globaldict">globaldict</A>,
-<A HREF="PSL2u.html#userdict">userdict</A>
+<B>See Also:</B> <A HREF="e.html#errordict">errordict</A>, <A HREF="gh.html#globaldict">globaldict</A>,
+<A HREF="u.html#userdict">userdict</A>
 <HR>
 </BODY>
 </HTML>

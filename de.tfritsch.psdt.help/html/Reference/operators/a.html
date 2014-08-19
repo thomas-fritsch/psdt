@@ -22,9 +22,9 @@ most negative integer, in which case the result is a real.
  0 abs    &rArr;  0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2no.html#neg">neg</A>
+<B>See Also:</B> <A HREF="no.html#neg">neg</A>
 <HR>
 <A NAME="add"></A>
 <B>add</B>
@@ -40,12 +40,12 @@ result is an integer; otherwise, the result is a real.
 9.9 1.1 add  &rArr;  11.0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#div">div</A>, <A HREF="PSL2m.html#mul">mul</A>,
-<A HREF="PSL2s.html#sub">sub</A> , <A HREF="PSL2ik.html#idiv">idiv</A>.
-<A HREF="PSL2m.html#mod">mod</A>
+<B>See Also:</B> <A HREF="d.html#div">div</A>, <A HREF="m.html#mul">mul</A>,
+<A HREF="s.html#sub">sub</A> , <A HREF="ik.html#idiv">idiv</A>.
+<A HREF="m.html#mod">mod</A>
 <HR>
 <A NAME="aload"></A>
 <B>aload</B>
@@ -61,11 +61,11 @@ itself.
 [23 (ab) -6] aload  &rArr;  23 (ab) -6 [23 (ab) -6]
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#astore">astore</A>, <A HREF="PSL2gh.html#get">get</A>,
-<A HREF="PSL2gh.html#getinterval">getinterval</A>
+<B>See Also:</B> <A HREF="#astore">astore</A>, <A HREF="gh.html#get">get</A>,
+<A HREF="gh.html#getinterval">getinterval</A>
 <HR>
 <A NAME="anchorsearch"></A>
 <B>anchorsearch</B>
@@ -77,9 +77,9 @@ determines if the string seek matches the initial substring of string
 are equal).
 If it matches, anchorsearch splits string into two segments: match, the
 portion of string that matches seek, and post, the remainder of string;
-it then pushes the string objects post and match and the boolean <A HREF="PSL2t.html#true">true</A>.
+it then pushes the string objects post and match and the boolean <A HREF="t.html#true">true</A>.
 If not, anchorsearch pushes the original string and the boolean false. anchorsearch
-is a special case of the <A HREF="PSL2s.html#search">search</A> operator.
+is a special case of the <A HREF="s.html#search">search</A> operator.
 <P>
 <B>Examples</B>
 <PRE>
@@ -89,10 +89,10 @@ is a special case of the <A HREF="PSL2s.html#search">search</A> operator.
 (abbc) (B) anchorsearch   &rArr;  (abbc) false
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#search">search</A>, <A HREF="PSL2t.html#token">token</A>
+<B>See Also:</B> <A HREF="s.html#search">search</A>, <A HREF="t.html#token">token</A>
 <HR>
 <A NAME="and"></A>
 <B>and</B>
@@ -108,16 +108,16 @@ true true and    &rArr;  true       % A complete truth table
 true false and   &rArr;  false
 false true and   &rArr;  false
 false false and  &rArr;  false
-<P>
+
 99 1 and         &rArr;  1
 52 7 and         &rArr;  4
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2no.html#or">or</A> , <A HREF="PSL2xy.html#xor">xor</A>,
-<A HREF="PSL2no.html#not">not</A> , <A HREF="PSL2t.html#true">true</A>,
-<A HREF="PSL2f.html#false">false</A>
+<B>See Also:</B> <A HREF="no.html#or">or</A> , <A HREF="xy.html#xor">xor</A>,
+<A HREF="no.html#not">not</A> , <A HREF="t.html#true">true</A>,
+<A HREF="f.html#false">false</A>
 <HR>
 <A NAME="arc"></A>
 <B>arc</B>
@@ -144,7 +144,7 @@ The operators that produce arcs (<A HREF="#arc">arc</A>, <A HREF="#arcn">arcn</A
 <A HREF="#arct">arct</A>, and <A HREF="#arcto">arcto</A> represent them
 internally as one or more Bezier cubic curves. This is done with sufficient
 accuracy that a faithful rendition of an arc is produced. However, a program
-that reads the constructed path using pathforall will encounter <A HREF="PSL2c.html#curveto">curveto</A>
+that reads the constructed path using pathforall will encounter <A HREF="c.html#curveto">curveto</A>
 segments where arcs were specified originally.
 <P>
 <B>Example</B>
@@ -156,11 +156,11 @@ closepath
 </PRE>
 This constructs a 1-unit radius, 45-degree &quot;pie slice.&quot;
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#arcn">arcn</A>, <A HREF="#arct">arct</A>, <A HREF="#arcto">arcto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>
+<A HREF="c.html#curveto">curveto</A>
 <HR>
 <A NAME="arcn"></A>
 <B>arcn</B>
@@ -179,11 +179,11 @@ closepath
 This constructs a 2-unit radius, 1-unit wide, 90-degree &quot;windshield
 wiper swath.&quot;
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A> , <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A> , <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#arc">arc</A>, <A HREF="#arct">arct</A>, <A HREF="#arcto">arcto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>
+<A HREF="c.html#curveto">curveto</A>
 <HR>
 <A NAME="arct"></A>
 <B>arct</B> LEVEL 2
@@ -193,7 +193,7 @@ appends an arc of a circle to the current path, possibly preceded by a straight
 line segment. The arc is defined by a radius r and two tangent lines.The
 tangent lines are those drawn from the current point, here called (x0, y0),
 to (x1, y1), and from (x1, y1) to (x2, y2). If the current point is undefined,
-arct executes the error <A HREF="PSerrors.html#nocurrentpoint">nocurrentpoint</A>.
+arct executes the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
 The center of the arc is located within the inner angle between the tangent
 lines. It is the only point located at distance r in a direction perpendicular
@@ -224,12 +224,12 @@ newpath
 This constructs a 4-unit wide, 4-unit high right angle with a 1-unit radius
 &quot;rounded corner.&quot;
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
 <B>See Also:</B> <A HREF="#arc">arc</A>, <A HREF="#arcn">arcn</A>, <A HREF="#arcto">arcto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>
+<A HREF="c.html#curveto">curveto</A>
 <HR>
 <A NAME="arcto"></A>
 <B>arcto</B>
@@ -239,12 +239,12 @@ produces the same effect as arct. It also returns the two tangent point
 coordinates (xt1, yt1) and (xt2, yt2) in user space.
 arcto is not allowed as an element of a user path, whereas arct is allowed.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
 <B>See Also:</B> <A HREF="#arc">arc</A>, <A HREF="#arcn">arcn</A>, <A HREF="#arcto">arcto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>
+<A HREF="c.html#curveto">curveto</A>
 <HR>
 <A NAME="array"></A>
 <B>array</B>
@@ -261,18 +261,18 @@ VM allocation mode.
 3 array  &rArr;  [null null null]
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#limitcheck">limitcheck</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
 <B>See Also:</B> [, ], <A HREF="#aload">aload</A>, <A HREF="#astore">astore</A>,
-<A HREF="PSL2p.html#packedarray">packedarray</A>
+<A HREF="p.html#packedarray">packedarray</A>
 <HR>
 <A NAME="ashow"></A>
 <B>ashow</B>
 <PRE>ax ay string ashow -</PRE>
 <P>
-paints the characters of string in a manner similar to <A HREF="PSL2s.html#show">show</A>.
+paints the characters of string in a manner similar to <A HREF="s.html#show">show</A>.
 But while doing so, ashow adjusts the width of each character shown by adding
 ax to the character's x width and ay to its y width, thus modifying the
 spacing between characters. The numbers ax and ay are x and y displacements
@@ -288,14 +288,14 @@ by adjusting all the spaces between characters by a uniform amount.
 14 47 moveto 4 0 (Wide spacing) ashow
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#invalidfont">invalidfont</A>,
-<A HREF="PSerrors.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#show">show</A>, <A HREF="#awidthshow">awidthshow</A>,
-<A HREF="PSL2c.html#cshow">cshow</A>, <A HREF="PSL2ik.html#kshow">kshow</A>,
-<A HREF="PSL2w.html#widthshow">widthshow</A>, <A HREF="PSL2xy.html#xshow">xshow</A>,
-<A HREF="PSL2xy.html#xyshow">xyshow</A>, <A HREF="PSL2xy.html#yshow">yshow</A>
+<B>See Also:</B> <A HREF="s.html#show">show</A>, <A HREF="#awidthshow">awidthshow</A>,
+<A HREF="c.html#cshow">cshow</A>, <A HREF="ik.html#kshow">kshow</A>,
+<A HREF="w.html#widthshow">widthshow</A>, <A HREF="xy.html#xshow">xshow</A>,
+<A HREF="xy.html#xyshow">xyshow</A>, <A HREF="xy.html#yshow">yshow</A>
 <HR>
 <A NAME="astore"></A>
 <B>astore</B>
@@ -306,11 +306,11 @@ where n is the length of array. The astore operator first removes the array
 operand from the stack and determines its length. It then removes that number
 of objects from the stack, storing the topmost one into element n - 1 of
 array and the bottommost one into element 0 of array. Finally, it pushes
-array back on the stack. Note that astore cannot be performed on <A HREF="PSL2p.html#packedarray">packed
+array back on the stack. Note that astore cannot be performed on <A HREF="p.html#packedarray">packed
 arrays</A>.
 <P>
 If the value of array is in global VM and any of any0 ... anyn-1 are composite
-objects whose values are in local VM, an <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>
+objects whose values are in local VM, an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs.
 <P>
 <B>Example</B>
@@ -322,11 +322,11 @@ This example creates a three element array, stores the strings (a), (bcd), and (
 into it as elements 0, 1, and 2, and leaves the array object on the operand
 stack.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#aload">aload</A>, <A HREF="PSL2p.html#put">put</A>,
-<A HREF="PSL2p.html#putinterval">putinterval</A>
+<B>See Also:</B> <A HREF="#aload">aload</A>, <A HREF="p.html#put">put</A>,
+<A HREF="p.html#putinterval">putinterval</A>
 <HR>
 <A NAME="atan"></A>
 <B>atan</B>
@@ -346,10 +346,10 @@ x plane. The result is a real.
 4 4 atan     &rArr;  45.0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>,
-<A HREF="PSerrors.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#cos">cos</A>, <A HREF="PSL2s.html#sin">sin</A>
+<B>See Also:</B> <A HREF="c.html#cos">cos</A>, <A HREF="s.html#sin">sin</A>
 <HR>
 <A NAME="awidthshow"></A>
 <B>awidthshow</B>
@@ -360,7 +360,7 @@ the special effects of ashow and widthshow. awidthshow adjusts the width
 of each character shown by adding ax to its x width and ay to its y width,
 thus modifying the spacing between characters. Furthermore, awidthshow modifies
 the width of each occurrence of the character char by an additional amount
-(cx, cy). The interpretation of char is as described for the <A HREF="PSL2w.html#widthshow">widthshow</A>
+(cx, cy). The interpretation of char is as described for the <A HREF="w.html#widthshow">widthshow</A>
 operator.
 <P>
 This operator enables fitting a string of text to a specific width by adjusting
@@ -374,14 +374,14 @@ controlling the width of some specific character, such as the space character.
 30 46 moveto 6 0 8#040 .5 0 (Wide spacing) awidthshow
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#invalidfont">invalidfont</A>,
-<A HREF="PSerrors.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#stackunderflow">stackunderflow</A>, <A HREF="PSerrors.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#ashow">ashow</A>, <A HREF="PSL2c.html#cshow">cshow</A>,
-<A HREF="PSL2ik.html#kshow">kshow</A>, <A HREF="PSL2s.html#show">show, </A><A HREF="PSL2w.html#widthshow">widthshow</A>,
-<A HREF="PSL2xy.html#xshow">xshow</A>, <A HREF="PSL2xy.html#xyshow">xyshow</A>,
-<A HREF="PSL2xy.html#yshow">yshow</A>
+<B>See Also:</B> <A HREF="#ashow">ashow</A>, <A HREF="c.html#cshow">cshow</A>,
+<A HREF="ik.html#kshow">kshow</A>, <A HREF="s.html#show">show, </A><A HREF="w.html#widthshow">widthshow</A>,
+<A HREF="xy.html#xshow">xshow</A>, <A HREF="xy.html#xyshow">xyshow</A>,
+<A HREF="xy.html#yshow">yshow</A>
 <HR>
 </BODY>
 </HTML>

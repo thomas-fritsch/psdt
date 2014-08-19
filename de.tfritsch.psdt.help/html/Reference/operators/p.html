@@ -11,7 +11,7 @@
 <B>packedarray</B> LEVEL 2
 <PRE>any0 ... anyn-1 n packedarray packedarray</PRE>
 <P>
-creates a packed <A HREF="PSL2a.html#array">array</A> object of length n
+creates a packed <A HREF="a.html#array">array</A> object of length n
 containing the objects any0 through anyn-1 as elements. packedarray first
 removes the non-negative integer n from the operand stack. It then removes
 that number of objects from the operand stack, creates a packed array containing
@@ -23,15 +23,15 @@ and readonly access. In all other respects, its behavior is identical to
 that of an ordinary array object.
 <P>
 v The packed array is allocated in local or global VM according to the current
-VM allocation mode. An <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+VM allocation mode. An <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs if the packed array is in global VM and any of any0 ... anyn-1
 are in local VM.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#aload">aload</A>
+<B>See Also:</B> <A HREF="a.html#aload">aload</A>
 <HR>
 <A NAME="pathbbox"></A>
 <B>pathbbox</B>
@@ -42,7 +42,7 @@ system. The results are four real numbers: lower-left x, lower-left y, upper-rig
 x, and upper-right y. These coordinates describe a rectangle, oriented with
 its sides parallel to the x and y axes in user space, that completely encloses
 all elements of the path. If the current path is empty, pathbbox executes
-the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
+the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
 pathbbox first computes the bounding box of the current path in device space.
 It then transforms these coordinates to user space by the inverse of CTM
@@ -53,19 +53,19 @@ or skewed, pathbbox may return a bounding box that is larger than expected.
 If the path includes curve segments, the bounding box encloses the control
 points of the curves as well as the curves themselves. To obtain a bounding
 box that fits the path more tightly, one should first &quot;flatten&quot;
-the curve segments by executing <A HREF="PSL2f.html#flattenpath">flattenpath</A>.
+the curve segments by executing <A HREF="f.html#flattenpath">flattenpath</A>.
 <P>
 In Level 2 implementations of the PostScript language, if the current path
-ends with a <A HREF="PSL2m.html#moveto">moveto</A>, the bounding box does
+ends with a <A HREF="m.html#moveto">moveto</A>, the bounding box does
 not necessarily include it, unless the moveto is the only element of the
-path. If an explicit bounding box has been established by <A HREF="PSL2s.html#setbbox">setbbox</A>,
+path. If an explicit bounding box has been established by <A HREF="s.html#setbbox">setbbox</A>,
 pathbbox returns a result derived from that bounding box, not from the actual
 path.
 <P>
-<B>Errors:</B> <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#flattenpath">flattenpath</A>, <A HREF="PSL2c.html#clippath">clippath</A>,
-<A HREF="PSL2c.html#charpath">charpath</A>, <A HREF="PSL2s.html#setbbox">setbbox</A>
+<B>See Also:</B> <A HREF="f.html#flattenpath">flattenpath</A>, <A HREF="c.html#clippath">clippath</A>,
+<A HREF="c.html#charpath">charpath</A>, <A HREF="s.html#setbbox">setbbox</A>
 <HR>
 <A NAME="pathforall"></A>
 <B>pathforall</B>
@@ -74,12 +74,12 @@ path.
 removes four operands from the stack, all of which must be procedures.
 pathforall then enumerates the current path in order, executing one of the
 four procedures for each element in the path. The four basic kinds of elements
-in a path are <A HREF="PSL2m.html#moveto">moveto</A>, <A HREF="PSL2l.html#lineto">lineto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>, and <A HREF="PSL2c.html#closepath">closepath</A>.
-The relative variants <A HREF="PSL2qr.html#rmoveto">rmoveto</A>, <A HREF="PSL2qr.html#rlineto">rlineto</A>,
-and <A HREF="PSL2qr.html#rcurveto">rcurveto</A> are converted to the corresponding
-absolute forms; <A HREF="PSL2a.html#arc">arc</A>, <A HREF="PSL2a.html#arcn">arcn</A>,
-and <A HREF="PSL2a.html#arcto">arcto</A> are converted to sequences of <A HREF="PSL2c.html#curveto">curveto</A>.
+in a path are <A HREF="m.html#moveto">moveto</A>, <A HREF="l.html#lineto">lineto</A>,
+<A HREF="c.html#curveto">curveto</A>, and <A HREF="c.html#closepath">closepath</A>.
+The relative variants <A HREF="qr.html#rmoveto">rmoveto</A>, <A HREF="qr.html#rlineto">rlineto</A>,
+and <A HREF="qr.html#rcurveto">rcurveto</A> are converted to the corresponding
+absolute forms; <A HREF="a.html#arc">arc</A>, <A HREF="a.html#arcn">arcn</A>,
+and <A HREF="a.html#arcto">arcto</A> are converted to sequences of <A HREF="c.html#curveto">curveto</A>.
 For each element in the path, pathforall pushes the element's coordinates
 on the operand stack and executes one of the four procedures as follows:
 <DL>
@@ -103,17 +103,17 @@ pathforall enumerates the current path existing at the time it begins execution.
 If any of the procedures change the current path, such changes do not alter
 the behavior of pathforall.
 <P>
-If <A HREF="PSL2c.html#charpath">charpath</A> was used to construct any
+If <A HREF="c.html#charpath">charpath</A> was used to construct any
 portion of the current path from a font whose outlines are protected, pathforall
-is not allowed. Its execution will produce an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
-error (see <A HREF="PSL2c.html#charpath">charpath</A>).
+is not allowed. Its execution will produce an <A HREF="ik.html#invalidaccess">invalidaccess</A>
+error (see <A HREF="c.html#charpath">charpath</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#moveto">moveto</A>, <A HREF="PSL2l.html#lineto">lineto,</A>
-<A HREF="PSL2c.html#curveto">curveto</A>, <A HREF="PSL2c.html#closepath">closepath</A>,
-<A HREF="PSL2c.html#charpath">charpath</A>
+<B>See Also:</B> <A HREF="m.html#moveto">moveto</A>, <A HREF="l.html#lineto">lineto,</A>
+<A HREF="c.html#curveto">curveto</A>, <A HREF="c.html#closepath">closepath</A>,
+<A HREF="c.html#charpath">charpath</A>
 <HR>
 <A NAME="pop"></A>
 <B>pop</B>
@@ -127,9 +127,9 @@ removes the top element from the operand stack and discards it.
 1 2 3 pop pop  &rArr;  1
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#clear">clear</A>, <A HREF="PSL2d.html#dup">dup</A>
+<B>See Also:</B> <A HREF="c.html#clear">clear</A>, <A HREF="d.html#dup">dup</A>
 <HR>
 <A NAME="print"></A>
 <B>print</B>
@@ -138,14 +138,14 @@ removes the top element from the operand stack and discards it.
 writes the characters of string to the standard output file. The print
 operator provides the simplest means to send text to an application or an
 interactive user. Note that print is a file operator that has nothing to
-do with painting character shapes on the current page (see <A HREF="PSL2s.html#show">show</A>)
-or with sending the current page to a raster output device (see <A HREF="PSL2s.html#showpage">showpage</A>).
+do with painting character shapes on the current page (see <A HREF="s.html#show">show</A>)
+or with sending the current page to a raster output device (see <A HREF="s.html#showpage">showpage</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2w.html#write">write</A>, <A HREF="PSL2f.html#flush">flush</A>,
-<A HREF="PSL2.html#equals">=</A>, <A HREF="PSL2.html#twoequals">==</A>,
+<B>See Also:</B> <A HREF="w.html#write">write</A>, <A HREF="f.html#flush">flush</A>,
+<A HREF="@.html#equals">=</A>, <A HREF="@.html#twoequals">==</A>,
 <A HREF="#printobject">printobject</A>
 <HR>
 <A NAME="printobject"></A>
@@ -167,12 +167,12 @@ The binary object sequence uses the number representation established by
 the most recent execution of setobjectformat. The token type given as the
 first byte of the binary object sequence reflects the number representation
 that was used. If the object format parameter has been set to zero, printobject
-executes an <A HREF="PSL2u.html#undefined">undefined</A> error.
+executes an <A HREF="u.html#undefined">undefined</A> error.
 <P>
 The object obj and its components must be of type null, integer, real, name,
 boolean, string, array, or mark. Appearance of an object of any other type,
 including packed array, will result in a typecheck error. If arrays are
-nested too deeply or are cyclical, a <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+nested too deeply or are cyclical, a <A HREF="l.html#limitcheck">limitcheck</A>
 error occurs.
 <P>
 printobject always encodes a name object as a reference to a text name in
@@ -185,13 +185,13 @@ To ensure immediate transmission, a flush is required. This is particularly
 important in situations where the output produced by printobject is the
 response to a query from the application.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="#print">print</A>, <A HREF="PSL2s.html#setobjectformat">setobjectformat</A>,
-<A HREF="PSL2w.html#writeobject">writeobject</A>
+<B>See Also:</B> <A HREF="#print">print</A>, <A HREF="s.html#setobjectformat">setobjectformat</A>,
+<A HREF="w.html#writeobject">writeobject</A>
 <HR>
 <A NAME="product"></A>
 <B>product</B> LEVEL 2
@@ -202,10 +202,10 @@ PostScript interpreter is running. The value of this string is typically
 a manufacturer defined trademark; it has no direct connection with specific
 features of the PostScript language.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#languagelevel">languagelevel</A>, <A HREF="PSL2qr.html#revision">revision</A>,
-<A HREF="PSL2s.html#serialnumber">serialnumber</A>, <A HREF="PSL2v.html#version">version</A>
+<B>See Also:</B> <A HREF="l.html#languagelevel">languagelevel</A>, <A HREF="qr.html#revision">revision</A>,
+<A HREF="s.html#serialnumber">serialnumber</A>, <A HREF="v.html#version">version</A>
 <HR>
 <A NAME="prompt"></A>
 <B>prompt</B>
@@ -213,29 +213,29 @@ features of the PostScript language.
 <P>
 is a procedure executed by executive whenever it is ready for the user
 to enter a new statement. The standard definition of prompt is &quot;(PS&gt;)
-print flush&quot; and is defined in <A HREF="PSL2s.html#systemdict">systemdict</A>;
-it can be overridden by defining prompt in <A HREF="PSL2u.html#userdict">userdict</A>
+print flush&quot; and is defined in <A HREF="s.html#systemdict">systemdict</A>;
+it can be overridden by defining prompt in <A HREF="u.html#userdict">userdict</A>
 or some other dictionary higher on the dictionary stack. prompt is not
 defined in products that do not support executive.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#executive">executive</A>
+<B>See Also:</B> <A HREF="e.html#executive">executive</A>
 <HR>
 <A NAME="pstack"></A>
 <B>pstack</B>
 <PRE>any1 ... anyn pstack any1 ... anyn</PRE>
 <P>
 writes text representations of every object on the stack to the standard
-output file, but leaves the stack unchanged. pstack applies the <A HREF="PSL2.html#twoequals">==
+output file, but leaves the stack unchanged. pstack applies the <A HREF="@.html#twoequals">==
 </A>operator to each element of the stack, starting with the topmost element.
-See the <A HREF="PSL2.html#twoequals">==</A> operator for a description
+See the <A HREF="@.html#twoequals">==</A> operator for a description
 of its effects.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#stack">stack</A>, <A HREF="PSL2.html#equals">=</A>,
-<A HREF="PSL2.html#twoequals">==</A>
+<B>See Also:</B> <A HREF="s.html#stack">stack</A>, <A HREF="@.html#equals">=</A>,
+<A HREF="@.html#twoequals">==</A>
 <HR>
 <A NAME="put"></A>
 <B>put</B>
@@ -249,17 +249,17 @@ If the first operand is an array or string, put treats the second operand
 as an index and stores the third operand at the position identified by the
 index, counting from zero. index must be in the range 0 to n-1,where n is
 the length of the array or string. If it is outside this range, put will
-execute a <A HREF="PSL2qr.html#rangecheck">rangecheck</A> error.
+execute a <A HREF="qr.html#rangecheck">rangecheck</A> error.
 <P>
 If the first operand is a dictionary, put uses the second operand as a key
 and the third operand as a value, and it stores this key-value pair into
 dict. If key is already present as a key in dict, put simply replaces its
 value by any. Otherwise, put creates a new entry for key and associates
 any with it. In Level 1 implementations, if dict is already full, put executes
-the error <A HREF="PSL2d.html#dictfull">dictfull</A>.
+the error <A HREF="d.html#dictfull">dictfull</A>.
 <P>
 If the value of array or dict is in global VM and any is a composite object
-whose value is in local VM, an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+whose value is in local VM, an <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs.
 <P>
 <B>Examples</B>
@@ -277,11 +277,11 @@ st 0 65 put          % 65 is ASCII code for character &quot;A&quot;
 st                   &rArr; (Abc)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2d.html#dictfull">dictfull</A>, <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="d.html#dictfull">dictfull</A>, <A HREF="ik.html#invalidaccess">invalidaccess</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#get">get</A>, <A HREF="#putinterval">putinterval</A>
+<B>See Also:</B> <A HREF="gh.html#get">get</A>, <A HREF="#putinterval">putinterval</A>
 <HR>
 <A NAME="putinterval"></A>
 <B>putinterval</B>
@@ -305,7 +305,7 @@ length of array1 or string1.
 <P>
 If the value of array1 is in global VM and any of the elements copied from
 array2 or packedarray2 are composite objects whose values are in local VM,
-an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A> error occurs.
+an <A HREF="ik.html#invalidaccess">invalidaccess</A> error occurs.
 <P>
 <B>Examples</B>
 <PRE>
@@ -318,10 +318,10 @@ st 1 (de) putinterval
 st                               &rArr;  (ade)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#getinterval">getinterval</A>, <A HREF="#put">put</A>
+<B>See Also:</B> <A HREF="gh.html#getinterval">getinterval</A>, <A HREF="#put">put</A>
 <HR>
 </BODY>
 </HTML>

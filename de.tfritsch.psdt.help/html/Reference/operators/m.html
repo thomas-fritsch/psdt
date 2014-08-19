@@ -18,7 +18,7 @@ the existing FontMatrix with matrix. It inserts two additional entries,
 OrigFont and ScaleMatrix, whose purpose is internal to the implementation.
 Finally, it returns the result as font'.
 <P>
-The makefont, <A HREF="PSL2s.html#scalefont">scalefont</A>, and <A HREF="PSL2s.html#selectfont">selectfont</A>
+The makefont, <A HREF="s.html#scalefont">scalefont</A>, and <A HREF="s.html#selectfont">selectfont</A>
 operators produce a font dictionary derived from an original font dictionary,
 but with the FontMatrix entry altered. The derived font dictionary is allocated
 in local or global VM according to whether the original font dictionary
@@ -37,8 +37,8 @@ same matrix. makefont is essentially a convenience operator that permits
 the desired transformation to be encapsulated in the font description. The
 most common transformation is to scale a font by a uniform factor in both
 x and y. scalefont is a special case of the more general makefont and should
-be used for such uniform scaling. Another operator, <A HREF="PSL2s.html#selectfont">selectfont</A>,
-combines the effects of <A HREF="PSL2f.html#findfont">findfont</A> and makefont.
+be used for such uniform scaling. Another operator, <A HREF="s.html#selectfont">selectfont</A>,
+combines the effects of <A HREF="f.html#findfont">findfont</A> and makefont.
 <P>
 The interpreter keeps track of font dictionaries recently created by makefont.
 Calling makefont multiple times with the same font and matrix will usually
@@ -58,12 +58,12 @@ the y dimension. This produces a 12-unit high font (i.e., a 12-point font
 in default user space) whose characters are &quot;condensed&quot; in the
 x dimension by a ratio of 10/12.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2v.html#VMerror">VMerror</A>
+<B><B>Errors:</B></B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#scalefont">scalefont</A>, <A HREF="PSL2s.html#setfont">setfont</A>,
-<A HREF="PSL2f.html#findfont">findfont</A>, <A HREF="PSL2s.html#selectfont">selectfont</A>
+<B>See Also:</B> <A HREF="s.html#scalefont">scalefont</A>, <A HREF="s.html#setfont">setfont</A>,
+<A HREF="f.html#findfont">findfont</A>, <A HREF="s.html#selectfont">selectfont</A>
 <HR>
 <A NAME="makepattern"></A>
 <B>makepattern</B> LEVEL 2
@@ -89,14 +89,14 @@ by the BBox entry in the pattern dictionary.
 </UL>
 Finally, makepattern makes the new dictionary read-only and pushes it on
 the operand stack. The resulting pattern dictionary is suitable for use
-as an operand of <A HREF="PSL2s.html#setpattern">setpattern</A> or as a
+as an operand of <A HREF="s.html#setpattern">setpattern</A> or as a
 &quot;color value&quot; in the Pattern color space.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined,</A> <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined,</A> <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setpattern">setpattern</A>, <A HREF="PSL2f.html#findresource">findresource</A>
+<B>See Also:</B> <A HREF="s.html#setpattern">setpattern</A>, <A HREF="f.html#findresource">findresource</A>
 <HR>
 <A NAME="mark"></A>
 <B>mark</B>
@@ -108,17 +108,17 @@ contain any number of them at once.
 <P>
 The primary use of marks is to indicate the stack position of the beginning
 of an indefinitely long list of operands being passed to an operator or
-procedure. The <A HREF="PSL2.html#mark2">] </A>operator (array construction)
+procedure. The <A HREF="@.html#mark2">] </A>operator (array construction)
 is the most common operator that works this way. It treats as operands all
-elements of the stack down to a mark that was pushed by the <A HREF="PSL2.html#mark1">[
-</A>operator ( <A HREF="PSL2.html#mark1">[</A> is a synonym for mark). It
+elements of the stack down to a mark that was pushed by the <A HREF="@.html#mark1">[
+</A>operator ( <A HREF="@.html#mark1">[</A> is a synonym for mark). It
 is possible to define procedures that work similarly. Operators such as
 counttomark and cleartomark are useful within such procedures.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B><B>Errors:</B></B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#counttomark">counttomark</A>, <A HREF="PSL2c.html#cleartomark">cleartomark</A>,
-<A HREF="PSL2p.html#pop">pop</A>
+<B>See Also:</B> <A HREF="c.html#counttomark">counttomark</A>, <A HREF="c.html#cleartomark">cleartomark</A>,
+<A HREF="p.html#pop">pop</A>
 <HR>
 <A NAME="matrix"></A>
 <B>matrix</B>
@@ -139,11 +139,11 @@ matrix               &rArr;  [1 0 0 1 0 0]
 <P>
 The two lines in the example yield identical results.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B><B>Errors:</B></B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#currentmatrix">currentmatrix</A>, <A HREF="PSL2d.html#defaultmatrix">defaultmatrix</A>,
-<A HREF="PSL2ik.html#initmatrix">initmatrix</A>, <A HREF="PSL2s.html#setmatrix">setmatrix</A>,
-<A HREF="PSL2a.html#array">array</A>
+<B>See Also:</B> <A HREF="c.html#currentmatrix">currentmatrix</A>, <A HREF="d.html#defaultmatrix">defaultmatrix</A>,
+<A HREF="ik.html#initmatrix">initmatrix</A>, <A HREF="s.html#setmatrix">setmatrix</A>,
+<A HREF="a.html#array">array</A>
 <HR>
 <A NAME="maxlength"></A>
 <B>maxlength</B>
@@ -153,7 +153,7 @@ returns the capacity of dict-in other words, the maximum number of key-value
 pairs that dict can hold using the VM currently allocated to it. In Level
 1 implementations, maxlength returns the length operand of the dict operator
 that created the dictionary; this is the dictionary's maximum capacity (exceeding
-it causes a <A HREF="PSL2d.html#dictfull">dictfull</A> error). In a Level
+it causes a <A HREF="d.html#dictfull">dictfull</A> error). In a Level
 2 implementation, which permits a dictionary to grow beyond its initial
 capacity, maxlength returns its current capacity, a number at least as large
 as that returned by length.
@@ -165,10 +165,10 @@ mydict length       &rArr; 0
 mydict maxlength    &rArr; 5
 </PRE>
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B><B>Errors:</B></B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#length">length</A>, <A HREF="PSL2d.html#dict">dict</A>
+<B>See Also:</B> <A HREF="l.html#length">length</A>, <A HREF="d.html#dict">dict</A>
 <HR>
 <A NAME="mod"></A>
 <B>mod</B>
@@ -188,34 +188,34 @@ must be integers. The result is an integer.
 The last line of the example demonstrates that mod is a remainder operation
 rather than a true modulo operation.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B><B>Errors:</B></B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#idiv">idiv</A>, <A HREF="PSL2d.html#div">div</A>
+<B>See Also:</B> <A HREF="ik.html#idiv">idiv</A>, <A HREF="d.html#div">div</A>
 <HR>
 <A NAME="monitor"></A>
 <B>monitor</B> DPS
 <PRE>lock proc monitor</PRE>
 <P>
-acquires <A HREF="PSL2l.html#lock">lock</A>, first waiting if necessary
+acquires <A HREF="l.html#lock">lock</A>, first waiting if necessary
 for it to become free, then executes proc, and finally releases lock again.
 The release of lock occurs whether proc runs to completion or terminates
 prematurely for any reason.
 <P>
-If <A HREF="PSL2l.html#lock">lock</A> is already held by the current context,
-monitor executes an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
-error without disturbing the <A HREF="PSL2l.html#lock">lock</A>. If the
+If <A HREF="l.html#lock">lock</A> is already held by the current context,
+monitor executes an <A HREF="ik.html#invalidcontext">invalidcontext</A>
+error without disturbing the <A HREF="l.html#lock">lock</A>. If the
 current context has previously executed a save not yet matched by a restore
 and lock is already held by another context sharing the same local VM as
-the current context, an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
+the current context, an <A HREF="ik.html#invalidcontext">invalidcontext</A>
 error results. These restrictions prevent the most straightforward cases
 of a context deadlocking with itself.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B><B>Errors:</B></B> <A HREF="ik.html#invalidcontext">invalidcontext</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#lock">lock</A>, <A HREF="PSL2f.html#fork">fork</A>,
-<A HREF="PSL2w.html#wait">wait</A>
+<B>See Also:</B> <A HREF="l.html#lock">lock</A>, <A HREF="f.html#fork">fork</A>,
+<A HREF="w.html#wait">wait</A>
 <HR>
 <A NAME="moveto"></A>
 <B>moveto</B>
@@ -226,15 +226,15 @@ in the graphics state to the user space coordinate (x, y) without adding
 any line segments to the current path.
 <P>
 If the previous path operation in the current path was also a moveto or
-<A HREF="PSL2qr.html#rmoveto">rmoveto</A>, that point is deleted from the
+<A HREF="qr.html#rmoveto">rmoveto</A>, that point is deleted from the
 current path and the new moveto point replaces it.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rmoveto">rmoveto</A>, <A HREF="PSL2l.html#lineto">lineto</A>,
-<A HREF="PSL2c.html#curveto">curveto</A>, <A HREF="PSL2a.html#arc">arc</A>,
-<A HREF="PSL2c.html#closepath">closepath</A>
+<B>See Also:</B> <A HREF="qr.html#rmoveto">rmoveto</A>, <A HREF="l.html#lineto">lineto</A>,
+<A HREF="c.html#curveto">curveto</A>, <A HREF="a.html#arc">arc</A>,
+<A HREF="c.html#closepath">closepath</A>
 <HR>
 <A NAME="mul"></A>
 <B>mul</B>
@@ -244,11 +244,11 @@ returns the product of num1 and num2. If both operands are integers and
 the result is within integer range, the result is an integer. Otherwise,
 the result is a real.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B><B>Errors:</B></B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#div">div</A>, <A HREF="PSL2ik.html#idiv">idiv</A>,
-<A HREF="PSL2a.html#add">add</A>, <A HREF="PSL2s.html#sub">sub</A>, <A HREF="#mod">mod</A>
+<B>See Also:</B> <A HREF="d.html#div">div</A>, <A HREF="ik.html#idiv">idiv</A>,
+<A HREF="a.html#add">add</A>, <A HREF="s.html#sub">sub</A>, <A HREF="#mod">mod</A>
 <HR>
 </BODY>
 </HTML>

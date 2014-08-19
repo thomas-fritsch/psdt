@@ -11,13 +11,13 @@
 <PRE>- false false</PRE>
 <P>
 pushes a boolean object whose value is false on the operand stack.
-false is not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+false is not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the boolean value false.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2t.html#true">true</A>, <A HREF="PSL2a.html#and">and</A>,
-<A HREF="PSL2no.html#or">or</A>, <A HREF="PSL2no.html#not">not</A>, <A HREF="PSL2xy.html#xor">xor</A>
+<B>See Also:</B> <A HREF="t.html#true">true</A>, <A HREF="a.html#and">and</A>,
+<A HREF="no.html#or">or</A>, <A HREF="no.html#not">not</A>, <A HREF="xy.html#xor">xor</A>
 <HR>
 <A NAME="file"></A>
 <B>file</B>
@@ -29,21 +29,21 @@ file names and access specifications depend on the operating system environment
 in which the PostScript interpreter is running.
 <P>
 Once created and opened, the file object remains valid until the file is
-closed either explicitly (by executing <A HREF="PSL2c.html#closefile">closefile</A>)
+closed either explicitly (by executing <A HREF="c.html#closefile">closefile</A>)
 or implicitly (by encountering end-offile while reading or executing the
-file). A file is also closed by <A HREF="PSL2qr.html#restore">restore</A>
-if the file object was created more recently than the <A HREF="PSL2s.html#save">save</A>
+file). A file is also closed by <A HREF="qr.html#restore">restore</A>
+if the file object was created more recently than the <A HREF="s.html#save">save</A>
 snapshot being restored, or is closed by garbage collection if the file
 object is no longer accessible. There is a limit on the number of files
 that can be open simultaneously.
 <P>
 If the specified filename is malformed or if the file doesn't exist and
-access does not permit creating a new file, file executes an <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+access does not permit creating a new file, file executes an <A HREF="u.html#undefinedfilename">undefinedfilename</A>
 error. If access is malformed or the requested access is not permitted by
-the device, an <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>
+the device, an <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>
 error occurs. If the number of files opened by the current context exceeds
-an implementation limit, a <A HREF="PSL2l.html#limitcheck">limitcheck</A>
-error occurs. If an environmentdependent error is detected, an <A HREF="PSL2ik.html#ioerror">ioerror</A>
+an implementation limit, a <A HREF="l.html#limitcheck">limitcheck</A>
+error occurs. If an environmentdependent error is detected, an <A HREF="ik.html#ioerror">ioerror</A>
 occurs.
 <P>
 <B>Examples</B>
@@ -52,12 +52,12 @@ occurs.
 (myfile) (w) file  &rArr;  % output file object, writing to named file
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedfilename">undefinedfilename</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefinedfilename">undefinedfilename</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#closefile">closefile</A>, <A HREF="PSL2c.html#currentfile">currentfile</A>,
-<A HREF="#filter">filter</A>, <A HREF="PSL2s.html#status">status</A>
+<B>See Also:</B> <A HREF="c.html#closefile">closefile</A>, <A HREF="c.html#currentfile">currentfile</A>,
+<A HREF="#filter">filter</A>, <A HREF="s.html#status">status</A>
 <HR>
 <A NAME="filenameforall"></A>
 <B>filenameforall</B> LEVEL 2
@@ -96,11 +96,11 @@ be created, it is unspecified whether or not those files will be encountered
 later in the same enumeration. Likewise, the set of file names considered
 for template matching is device dependent.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="PSL2s.html#status">status</A>
+<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="s.html#status">status</A>
 <HR>
 <A NAME="fileposition"></A>
 <B>fileposition</B> LEVEL 2
@@ -109,12 +109,12 @@ for template matching is device dependent.
 returns the current position in an existing open file. The result is a non-negative
 integer interpreted as number of bytes from the beginning of the file. If
 the file object is not valid or the underlying file is not positionable,
-an <A HREF="PSL2ik.html#ioerror">ioerror</A> occurs.
+an <A HREF="ik.html#ioerror">ioerror</A> occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setfileposition">setfileposition</A>, <A HREF="#file">file</A>
+<B>See Also:</B> <A HREF="s.html#setfileposition">setfileposition</A>, <A HREF="#file">file</A>
 <HR>
 <A NAME="fill"></A>
 <B>fill</B>
@@ -132,10 +132,10 @@ path. To preserve the current path across a fill operation, use the sequence:
 <P>
 gsave fill grestore
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#clip">clip</A>, <A HREF="PSL2e.html#eofill">eofill</A>,
-<A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="PSL2u.html#ufill">ufill</A>
+<B>See Also:</B> <A HREF="c.html#clip">clip</A>, <A HREF="e.html#eofill">eofill</A>,
+<A HREF="s.html#stroke">stroke</A>, <A HREF="u.html#ufill">ufill</A>
 <P>
 <HR>
 <A NAME="filter"></A>
@@ -170,12 +170,12 @@ the underlying data source and transform the data. Similarly, writing to
 an output filtered file causes the filter to transform the data and write
 it to the underlying data target.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="u.html#undefined">undefined</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="ik.html#invalidaccess">invalidaccess</A>
 <P>
-<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="PSL2c.html#closefile">closefile</A>,
-<A HREF="PSL2qr.html#resourceforall">resourceforall</A>
+<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="c.html#closefile">closefile</A>,
+<A HREF="qr.html#resourceforall">resourceforall</A>
 <HR>
 <A NAME="findencoding"></A>
 <B>findencoding</B> LEVEL 2
@@ -186,21 +186,21 @@ onto the operand stack.
 <P>
 findencoding is a special case of findresource applied to the Encoding category.
 If the encoding array specified by key does not exist or cannot be found,
-findencoding executes the <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+findencoding executes the <A HREF="u.html#undefinedresource">undefinedresource</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefinedresource">undefinedresource</A>
 <P>
-<B>See Also:</B> <A HREF="#findresource">findresource</A>, <A HREF="PSL2s.html#StandardEncoding">StandardEncoding</A>,
-<A HREF="PSL2ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A>
+<B>See Also:</B> <A HREF="#findresource">findresource</A>, <A HREF="s.html#StandardEncoding">StandardEncoding</A>,
+<A HREF="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A>
 <HR>
 <A NAME="findfont"></A>
 <B>findfont</B>
 <PRE>key findfont font</PRE>
 <P>
 obtains a font dictionary identified by the specified key and pushes it
-on the operand stack . key may be a key previously passed to <A HREF="PSL2d.html#definefont">definefont</A>,
+on the operand stack . key may be a key previously passed to <A HREF="d.html#definefont">definefont</A>,
 in which case the font dictionary associated with key (in the font directory)
 is returned.
 <P>
@@ -208,7 +208,7 @@ If key is not registered as a font in VM, findfont takes an action that
 varies according to the environment in which the PostScript interpreter
 is operating. In some environments, findfont may attempt to read a font
 definition from an external source, such as a file. In other environments,
-findfont substitutes a default font or executes the error <A HREF="PSL2ik.html#invalidfont">invalidfont</A>.
+findfont substitutes a default font or executes the error <A HREF="ik.html#invalidfont">invalidfont</A>.
 findfont is a special case of <A HREF="#findresource">findresource</A> applied
 to the Font category.
 <P>
@@ -224,13 +224,13 @@ findfont is not an operator, but rather a built-in procedure. It may be
 redefined by a PostScript language program that requires different strategies
 for finding fonts.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidfont">invalidfont</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#scalefont">scalefont</A>, <A HREF="PSL2m.html#makefont">makefont</A>,
-<A HREF="PSL2s.html#setfont">setfont</A>, <A HREF="PSL2s.html#selectfont">selectfont</A>,
-<A HREF="PSL2d.html#definefont">definefont</A>, <A HREF="#findresource">findresource</A>,
-<A HREF="#FontDirectory">FontDirectory</A>, <A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
+<B>See Also:</B> <A HREF="s.html#scalefont">scalefont</A>, <A HREF="m.html#makefont">makefont</A>,
+<A HREF="s.html#setfont">setfont</A>, <A HREF="s.html#selectfont">selectfont</A>,
+<A HREF="d.html#definefont">definefont</A>, <A HREF="#findresource">findresource</A>,
+<A HREF="#FontDirectory">FontDirectory</A>, <A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
 <HR>
 <A NAME="findresource"></A>
 <B>findresource</B> LEVEL 2
@@ -247,7 +247,7 @@ category.
 findresource first attempts to obtain a resource instance that has previously
 been defined in VM by defineresource. If the current VM allocation mode
 is local, findresource considers local resource definitions first, then
-global definitions (see <A HREF="PSL2d.html#defineresource">defineresource</A>).
+global definitions (see <A HREF="d.html#defineresource">defineresource</A>).
 However, if the current VM allocation mode is global, findresource considers
 only global resource definitions.
 <P>
@@ -271,41 +271,41 @@ During its execution, findresource may remove the definitions of resource
 instances that were previously loaded into VM by findresource. The mechanisms
 and policies for this depend on the category and the implementation; reclamation
 of resources may occur at times other than during execution of findresource.
-However, resource definitions that were made by explicit execution of <A HREF="PSL2d.html#defineresource">defineresource</A>
+However, resource definitions that were made by explicit execution of <A HREF="d.html#defineresource">defineresource</A>
 are never disturbed by automatic reclamation.<P>
 <P>
-If the specified resource category does not exist, an <A HREF="PSL2u.html#undefined">undefined</A>
+If the specified resource category does not exist, an <A HREF="u.html#undefined">undefined</A>
 error occurs. If the category exists but there is no instance whose name
-is key, an <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+is key, an <A HREF="u.html#undefinedresource">undefinedresource</A>
 error occurs.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>, <A HREF="PSL2u.html#undefinedresource">undefinedresource</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>, <A HREF="u.html#undefinedresource">undefinedresource</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineresource">defineresource</A>, <A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>,
-<A HREF="PSL2qr.html#resourceforall">resourceforall</A>, <A HREF="PSL2u.html#undefineresource">undefineresource</A>
+<B>See Also:</B> <A HREF="d.html#defineresource">defineresource</A>, <A HREF="qr.html#resourcestatus">resourcestatus</A>,
+<A HREF="qr.html#resourceforall">resourceforall</A>, <A HREF="u.html#undefineresource">undefineresource</A>
 <HR>
 <A NAME="flattenpath"></A>
 <B>flattenpath</B>
 <PRE>- flattenpath -</PRE>
 replaces the current path with an equivalent path that preserves all straight
-line segments, but has all <A HREF="PSL2c.html#curveto">curveto</A> segments
-replaced by sequences of <A HREF="PSL2l.html#lineto">lineto</A> (straight
+line segments, but has all <A HREF="c.html#curveto">curveto</A> segments
+replaced by sequences of <A HREF="l.html#lineto">lineto</A> (straight
 line) segments that approximate the curves. If the current path does not
-contain any <A HREF="PSL2c.html#curveto">curveto</A> segments, flattenpath
+contain any <A HREF="c.html#curveto">curveto</A> segments, flattenpath
 leaves it unchanged.
 <P>
 This &quot;flattening&quot; of curves to straight line segments is done
-automatically when a path is used to control painting (for example, by <A HREF="PSL2s.html#stroke">stroke</A>,
-<A HREF="#fill">fill</A>, or <A HREF="PSL2c.html#clip">clip</A>). Only rarely
-does a program need to flatten a path explicitly (see <A HREF="PSL2p.html#pathbbox">pathbbox</A>).
+automatically when a path is used to control painting (for example, by <A HREF="s.html#stroke">stroke</A>,
+<A HREF="#fill">fill</A>, or <A HREF="c.html#clip">clip</A>). Only rarely
+does a program need to flatten a path explicitly (see <A HREF="p.html#pathbbox">pathbbox</A>).
 The accuracy of the approximation to the curve is controlled by the current
-flatness parameter in the graphics state (see <A HREF="PSL2s.html#setflat">setflat</A>).
+flatness parameter in the graphics state (see <A HREF="s.html#setflat">setflat</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setflat">setflat</A>, <A HREF="PSL2c.html#curveto">curveto</A>,
-<A HREF="PSL2l.html#lineto">lineto</A>, <A HREF="PSL2p.html#pathbbox">pathbbox</A>
+<B>See Also:</B> <A HREF="s.html#setflat">setflat</A>, <A HREF="c.html#curveto">curveto</A>,
+<A HREF="l.html#lineto">lineto</A>, <A HREF="p.html#pathbbox">pathbbox</A>
 <HR>
 <A NAME="floor"></A>
 <B>floor</B>
@@ -321,10 +321,10 @@ of the result is the same as the type of the operand.
 99 floor   &rArr; 99
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#ceiling">ceiling</A>, <A HREF="PSL2qr.html#round">round</A>,
-<A HREF="PSL2t.html#truncate">truncate</A>, <A HREF="PSL2c.html#cvi">cvi</A>
+<B>See Also:</B> <A HREF="c.html#ceiling">ceiling</A>, <A HREF="qr.html#round">round</A>,
+<A HREF="t.html#truncate">truncate</A>, <A HREF="c.html#cvi">cvi</A>
 <HR>
 <A NAME="flush"></A>
 <B>flush</B>
@@ -335,9 +335,9 @@ immediately. In general, a program requiring output to be sent immediately,
 such as during real-time, two-way interactions, should call flush after
 generating that output.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>
 <P>
-<B>See Also:</B> <A HREF="#flushfile">flushfile</A>, <A HREF="PSL2p.html#print">print</A>
+<B>See Also:</B> <A HREF="#flushfile">flushfile</A>, <A HREF="p.html#print">print</A>
 <HR>
 <A NAME="flushfile"></A>
 <B>flushfile</B>
@@ -353,11 +353,11 @@ the end-offile indication is encountered. This is useful during error recovery,
 and the PostScript job server uses it for that purpose. flushfile does not
 close the file, unless it is a decoding filter file.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#flush">flush</A>, <A HREF="PSL2qr.html#read">read</A>,
-<A HREF="PSL2w.html#write">write</A>
+<B>See Also:</B> <A HREF="#flush">flush</A>, <A HREF="qr.html#read">read</A>,
+<A HREF="w.html#write">write</A>
 <HR>
 <A NAME="FontDirectory"></A>
 <B>FontDirectory</B>
@@ -377,8 +377,8 @@ VM, it does not necessarily describe all the fonts available to a PostScript
 language program. This is because the findfont operator
 can sometimes obtain fonts from an external source and load them into VM
 dynamically. Consequently, examining FontDirectory is not a reliable method
-of inquiring about available fonts. The preferred method is to use the <A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>
-and <A HREF="PSL2qr.html#resourceforall">resourceforall</A> operators, which
+of inquiring about available fonts. The preferred method is to use the <A HREF="qr.html#resourcestatus">resourcestatus</A>
+and <A HREF="qr.html#resourceforall">resourceforall</A> operators, which
 are Level 2 features, to inquire about the Font resource category.
 <P>
 In Level 2, when global VM allocation mode is in effect, the name FontDirectory
@@ -387,11 +387,11 @@ rebound to the value of GlobalFontDirectory, which contains only those fonts
 that have been defined in global VM. This ensures the correct behavior of
 fonts that are defined in terms of other fonts.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#definefont">definefont</A>, <A HREF="PSL2u.html#undefinefont">undefinefont</A>,
+<B>See Also:</B> <A HREF="d.html#definefont">definefont</A>, <A HREF="u.html#undefinefont">undefinefont</A>,
 <A HREF="#findfont">findfont</A>, <A HREF="#findresource">findresource</A>,
-<A HREF="PSL2gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
+<A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
 <HR>
 <A NAME="for"></A>
 <B>for</B>
@@ -409,7 +409,7 @@ The termination condition depends on whether increment is positive or negative.
 If increment is positive, for terminates when the control variable becomes
 greater than limit. If increment is negative, for terminates when the control
 variable becomes less than limit. If initial meets the termination condition,
-for does not execute proc at all. If proc executes the <A HREF="PSL2e.html#exit">exit</A>
+for does not execute proc at all. If proc executes the <A HREF="e.html#exit">exit</A>
 operator, for terminates prematurely.
 <P>
 Usually, proc will use the value on the operand stack for some purpose.
@@ -437,11 +437,11 @@ results. In particular, if the difference between initial and limit is a
 multiple of increment, as in the third line of the example, the control
 variable may not achieve the limit value.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A> <A HREF="PSL2s.html#stackunderflow">stackunderflow,</A>
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A> <A HREF="s.html#stackunderflow">stackunderflow,</A>
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#repeat">repeat</A>, <A HREF="PSL2l.html#loop">loop</A>,
-<A HREF="#forall">forall</A>, <A HREF="PSL2e.html#exit">exit</A>
+<B>See Also:</B> <A HREF="qr.html#repeat">repeat</A>, <A HREF="l.html#loop">loop</A>,
+<A HREF="#forall">forall</A>, <A HREF="e.html#exit">exit</A>
 <HR>
 <A NAME="forall"></A>
 <B>forall</B>
@@ -466,7 +466,7 @@ New entries put in the dictionary during execution of proc may or may not
 be included in the enumeration.
 <P>
 If the first operand is empty (i.e., has length 0), forall does not execute
-proc at all. If proc executes the <A HREF="PSL2e.html#exit">exit</A> operator,
+proc at all. If proc executes the <A HREF="e.html#exit">exit</A> operator,
 forall terminates prematurely.
 <P>
 Although forall does not leave any results on the operand stack when it
@@ -484,11 +484,11 @@ d /xyz (test) put
 d {} forall                    &rArr; /xyz (test) /abc 123
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
-<A HREF="PSL2s.html#stackunderflow">stackunderflow,</A> <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>
+<A HREF="s.html#stackunderflow">stackunderflow,</A> <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#for">for</A>, <A HREF="PSL2qr.html#repeat">repeat</A>,
-<A HREF="PSL2l.html#loop">loop</A>, <A HREF="PSL2e.html#exit">exit</A>
+<B>See Also:</B> <A HREF="#for">for</A>, <A HREF="qr.html#repeat">repeat</A>,
+<A HREF="l.html#loop">loop</A>, <A HREF="e.html#exit">exit</A>
 <HR>
 <A NAME="fork"></A>
 <B>fork</B> DPS
@@ -501,7 +501,7 @@ execution of the current context. Which context executes first is unpredictable.
 The new context's environment is formed by copying the dictionary and graphics
 state stacks of the current context. The initial operand stack consists
 of obj1 through objn, pushed in the same order (obj1 through objn are objects
-of any type other than <A HREF="PSL2m.html#mark">mark</A>). fork consumes
+of any type other than <A HREF="m.html#mark">mark</A>). fork consumes
 all operands down to and including the topmost mark. It then pushes an integer
 that uniquely identifies the new context. The forked context inherits its
 object format from the current context; other percontext parameters are
@@ -510,8 +510,8 @@ initialized to default values.
 When the new context begins execution, it executes the procedure proc. If
 proc runs to completion and returns, the context ordinarily will suspend
 until some other context executes a join on context. However, if the context
-has been detached, it will terminate immediately (see <A HREF="PSL2ik.html#join">join</A>
-and <A HREF="PSL2d.html#detach">detach</A>).
+has been detached, it will terminate immediately (see <A HREF="ik.html#join">join</A>
+and <A HREF="d.html#detach">detach</A>).
 <P>
 If proc executes a stop that causes the execution of proc to end prematurely,
 the context will terminate immediately. proc is effectively called as follows:
@@ -526,15 +526,15 @@ handler in the usual way to report the error. Then it terminates regardless
 of whether it has been detached.
 <P>
 It is illegal to execute fork if there has been any previous save not yet
-matched by a restore. Attempting to do so will cause an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
+matched by a restore. Attempting to do so will cause an <A HREF="ik.html#invalidcontext">invalidcontext</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidcontext">invalidcontext</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#unmatchedmark">unmatchedmark</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#join">join</A>, <A HREF="PSL2d.html#detach">detach</A>,
-<A HREF="PSL2c.html#currentcontext">currentcontext</A>
+<B>See Also:</B> <A HREF="ik.html#join">join</A>, <A HREF="d.html#detach">detach</A>,
+<A HREF="c.html#currentcontext">currentcontext</A>
 <HR>
 </BODY>
 </HTML>

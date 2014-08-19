@@ -69,14 +69,14 @@ characters.
 ( ) token                   &rArr;  false
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2s.html#syntaxerror">syntaxerror</A>,
-<A HREF="#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>,
-<A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="s.html#syntaxerror">syntaxerror</A>,
+<A HREF="#typecheck">typecheck</A>, <A HREF="u.html#undefinedresult">undefinedresult</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#search">search</A>, <A HREF="PSL2a.html#anchorsearch">anchorsearch</A>,
-<A HREF="PSL2qr.html#read">read</A>
+<B>See Also:</B> <A HREF="s.html#search">search</A>, <A HREF="a.html#anchorsearch">anchorsearch</A>,
+<A HREF="qr.html#read">read</A>
 <HR>
 <A NAME="transform"></A>
 <B>transform</B>
@@ -88,11 +88,11 @@ y) by CTM to produce the corresponding device space coordinate (x', y').
 If the matrix operand is supplied, transform transforms (x, y) by matrix
 rather than by CTM.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
 <A HREF="#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#itransform">itransform</A>, <A HREF="PSL2d.html#dtransform">dtransform</A>,
-<A HREF="PSL2ik.html#idtransform">idtransform</A>
+<B>See Also:</B> <A HREF="ik.html#itransform">itransform</A>, <A HREF="d.html#dtransform">dtransform</A>,
+<A HREF="ik.html#idtransform">idtransform</A>
 <HR>
 <A NAME="translate"></A>
 <B>translate</B>
@@ -110,24 +110,24 @@ If the matrix operand is supplied, translate replaces the value of matrix
 by T and pushes the modified matrix back on the operand stack. In this case,
 translate does not affect the CTM.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
 <A HREF="#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rotate">rotate</A>, <A HREF="PSL2s.html#scale">scale</A>,
-<A HREF="PSL2c.html#concat">concat</A>, <A HREF="PSL2s.html#setmatrix">setmatrix</A>
+<B>See Also:</B> <A HREF="qr.html#rotate">rotate</A>, <A HREF="s.html#scale">scale</A>,
+<A HREF="c.html#concat">concat</A>, <A HREF="s.html#setmatrix">setmatrix</A>
 <HR>
 <A NAME="true"></A>
 <B>true</B>
 <PRE>- true true</PRE>
 <P>
 pushes a boolean object whose value is true on the operand stack. true is
-not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the boolean value true.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#false">false</A>, <A HREF="PSL2a.html#and">and</A>,
-<A HREF="PSL2no.html#or">or</A>, <A HREF="PSL2no.html#not">not</A>, <A HREF="PSL2xy.html#xor">xor</A>
+<B>See Also:</B> <A HREF="f.html#false">false</A>, <A HREF="a.html#and">and</A>,
+<A HREF="no.html#or">or</A>, <A HREF="no.html#not">not</A>, <A HREF="xy.html#xor">xor</A>
 <HR>
 <A NAME="truncate"></A>
 <B>truncate</B>
@@ -143,10 +143,10 @@ the result is the same as the type of the operand.
  99  truncate  &rArr;   99
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#ceiling">ceiling</A>, <A HREF="PSL2f.html#floor">floor</A>,
-<A HREF="PSL2qr.html#round">round</A>, <A HREF="PSL2c.html#cvi">cvi</A>
+<B>See Also:</B> <A HREF="c.html#ceiling">ceiling</A>, <A HREF="f.html#floor">floor</A>,
+<A HREF="qr.html#round">round</A>, <A HREF="c.html#cvi">cvi</A>
 <HR>
 <A NAME="type"></A>
 <B>type</B>
@@ -173,14 +173,14 @@ other dictionary.
 The returned name has the executable attribute. This makes it convenient
 to perform type-dependent processing of an object simply by executing the
 name returned by type in the context of a dictionary that defines all the
-type names to have procedure values (this is how <A HREF="PSL2.html#twoequals">==</A>
+type names to have procedure values (this is how <A HREF="@.html#twoequals">==</A>
 works).
 <P>
 The set of types is subject to enlargement in future revisions of the language.
 A program that examines the types of arbitrary objects should be prepared
 to behave reasonably if type returns a name that is not in this list.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <HR>
 <A NAME="typecheck"></A>
 <B>typecheck</B> (error)

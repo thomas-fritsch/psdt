@@ -15,10 +15,10 @@ being used. This identification does not include information about the language
 features or the hardware or operating system environment in which the PostScript
 interpreter is running.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#languagelevel">languagelevel</A>, <A HREF="PSL2p.html#product">product</A>,
-<A HREF="PSL2qr.html#revision">revision</A>, <A HREF="PSL2s.html#serialnumber">serialnumber</A>
+<B>See Also:</B> <A HREF="l.html#languagelevel">languagelevel</A>, <A HREF="p.html#product">product</A>,
+<A HREF="qr.html#revision">revision</A>, <A HREF="s.html#serialnumber">serialnumber</A>
 <HR>
 <A NAME="viewclip"></A>
 <B>viewclip</B> - viewclip
@@ -28,18 +28,18 @@ in the graphics state. The inside of the current path is determined by the
 normal non-zero winding number rule. viewclip implicitly closes any open
 subpaths of the view clipping path. After setting the view clip, viewclip
 resets the current path to empty, as if by newpath. viewclip is similar
-to <A HREF="PSL2c.html#clip">clip</A> in that it causes subsequent painting
+to <A HREF="c.html#clip">clip</A> in that it causes subsequent painting
 operations to affect only those areas of the current page that lie inside
 the new view clipping path. However, it differs from clip in three important
 respects: 
 <UL>
 <LI>The view clipping path is independent of the current clipping path,
-which is unaffected. A subsequent <A HREF="PSL2c.html#clippath">clippath</A>
+which is unaffected. A subsequent <A HREF="c.html#clippath">clippath</A>
 returns the current clipping path, uninfluenced by the additional clipping
 imposed by the view clip.
 <LI>viewclip entirely replaces the current view clipping path, whereas clip
 computes the intersection of the current and new clipping paths.
-<LI>viewclip performs an implicit <A HREF="PSL2no.html#newpath">newpath</A>
+<LI>viewclip performs an implicit <A HREF="no.html#newpath">newpath</A>
 at the end of its execution, whereas clip leaves the current path unchanged.
 </UL>
 <P>
@@ -50,10 +50,10 @@ user path. This is accomplished by: newpath userpath uappend viewclip If
 userpath specifies ucache, this operation may take advantage of information
 in the user path cache.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#initviewclip">initviewclip</A>, <A HREF="#viewclippath">viewclippath</A>,
-<A HREF="PSL2c.html#clip">clip</A>
+<B>See Also:</B> <A HREF="ik.html#initviewclip">initviewclip</A>, <A HREF="#viewclippath">viewclippath</A>,
+<A HREF="c.html#clip">clip</A>
 <HR>
 <A NAME="viewclippath"></A>
 <B>viewclippath</B> - viewclippath - DPS
@@ -72,8 +72,8 @@ of the window.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="#viewclip">viewclip</A>, <A HREF="PSL2ik.html#initviewclip">initviewclip</A>,
-<A HREF="PSL2c.html#clippath">clippath</A>
+<B>See Also:</B> <A HREF="#viewclip">viewclip</A>, <A HREF="ik.html#initviewclip">initviewclip</A>,
+<A HREF="c.html#clippath">clippath</A>
 <HR>
 <A NAME="VMerror"></A>
 <B>VMerror</B> (error)
@@ -131,10 +131,10 @@ a program to run out of memory and fail with a VMerror. Executing vmreclaim
 with an operand of 0, -1, or -2 has the same effect as setting the VMReclaim
 user parameter to the same value by means of setuserparams.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setvmthreshold">setvmthreshold</A>, <A HREF="PSL2s.html#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="s.html#setvmthreshold">setvmthreshold</A>, <A HREF="s.html#setuserparams">setuserparams</A>
 <HR>
 <A NAME="vmstatus"></A>
 <B>vmstatus</B> - vmstatus level used maximum
@@ -149,7 +149,7 @@ in use and maximum is the maximum available capacity.
 <P>
 VM consumption is monitored separately for local and global VM.
 The used and maximum values apply to either local or global VM according
-to the current VM allocation mode (see <A HREF="PSL2s.html#setglobal">setglobal</A>).
+to the current VM allocation mode (see <A HREF="s.html#setglobal">setglobal</A>).
 <P>
 The used value is meaningful only immediately after a garbage collection
 has taken place (see <A HREF="#vmreclaim">vmreclaim</A>). At other times,
@@ -165,9 +165,9 @@ interpreter can obtain more memory from the operating system. In this case,
 memory is essentially inexhaustible and the maximum value is meaningless-it
 is an extremely large number.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="s.html#setuserparams">setuserparams</A>
 <HR>
 </BODY>
 </HTML>

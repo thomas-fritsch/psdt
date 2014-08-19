@@ -15,13 +15,13 @@ releases lock, waits for condition to be notified by some other execution
 <P>
 context, and finally reacquires lock. The lock must originally have been
 acquired by the current context, which means that wait can be invoked only
-within the execution of a monitor that references the same <A HREF="PSL2l.html#lock">lock</A>.
+within the execution of a monitor that references the same <A HREF="l.html#lock">lock</A>.
 <P>
 If lock is initially held by some other context or is not held by any context,
-wait executes an <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>
+wait executes an <A HREF="ik.html#invalidcontext">invalidcontext</A>
 error. On the other hand, during the wait for condition, the lock can be
 acquired by some other context. After condition is notified, wait will wait
-an arbitrary length of time to reacquire <A HREF="PSL2l.html#lock">lock</A>.
+an arbitrary length of time to reacquire <A HREF="l.html#lock">lock</A>.
 <P>
 If the current context has previously executed a save not yet matched by
 a restore, wait executes invalidcontext unless both lock and condition are
@@ -29,11 +29,11 @@ in global VM. The latter case is permitted under the assumption that the
 wait is synchronizing with some context whose local VM is different from
 that of the current context.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidcontext">invalidcontext</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidcontext">invalidcontext</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2c.html#condition">condition</A>, <A HREF="PSL2l.html#lock">lock</A>,
-<A HREF="PSL2m.html#monitor">monitor</A>, <A HREF="PSL2no.html#notify">notify</A>
+<B>See Also:</B> <A HREF="c.html#condition">condition</A>, <A HREF="l.html#lock">lock</A>,
+<A HREF="m.html#monitor">monitor</A>, <A HREF="no.html#notify">notify</A>
 <HR>
 <A NAME="wcheck"></A>
 <B>wcheck</B>
@@ -46,13 +46,13 @@ packedarray wcheck false
 tests whether the operand's access permits its value to be written explicitly
 by PostScript operators.
 <P>
-wcheck returns <A HREF="PSL2t.html#true">true</A> if the operand's access
-is unlimited, <A HREF="PSL2f.html#false">false</A> otherwise.
+wcheck returns <A HREF="t.html#true">true</A> if the operand's access
+is unlimited, <A HREF="f.html#false">false</A> otherwise.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> rcheck, <A HREF="PSL2qr.html#readonly">readonly</A>, <A HREF="PSL2e.html#executeonly">executeonly</A>,
-<A HREF="PSL2no.html#noaccess">noaccess</A>
+<B>See Also:</B> rcheck, <A HREF="qr.html#readonly">readonly</A>, <A HREF="e.html#executeonly">executeonly</A>,
+<A HREF="no.html#noaccess">noaccess</A>
 <HR>
 <A NAME="where"></A>
 <B>where</B>
@@ -66,17 +66,17 @@ is found in some dictionary, where returns that dictionary object and the
 boolean true. If key is not found in any dictionary on the dictionary stack,
 where simply returns false.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#known">known</A>, <A HREF="PSL2l.html#load">load</A>,
-<A HREF="PSL2gh.html#get">get</A>
+<B>See Also:</B> <A HREF="ik.html#known">known</A>, <A HREF="l.html#load">load</A>,
+<A HREF="gh.html#get">get</A>
 <HR>
 <A NAME="widthshow"></A>
 <B>widthshow</B>
 <PRE>cx cy char string widthshow -</PRE>
 <P>
-paints the characters of string in a manner similar to <A HREF="PSL2s.html#show">show</A>.
+paints the characters of string in a manner similar to <A HREF="s.html#show">show</A>.
 But while doing so, widthshow adjusts the width of each occurrence of the
 character char by adding cx to its x width and cy to its y width, thus modifying
 the spacing between it and the next character. char is an integer used as
@@ -100,14 +100,14 @@ for all other FMapType values, it is (f x 256) + c.
 14 46 moveto 6 0 8#040 (Wide word spacing) widthshow
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#invalidfont">invalidfont</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidfont">invalidfont</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#show">show</A>, <A HREF="PSL2a.html#ashow">ashow</A>,
-<A HREF="PSL2a.html#awidthshow">awidthshow</A>, <A HREF="PSL2ik.html#kshow">kshow</A>,
-<A HREF="PSL2xy.html#xshow">xshow</A>, <A HREF="PSL2xy.html#yshow">yshow</A>,
-<A HREF="PSL2xy.html#xyshow">xyshow</A>, <A HREF="PSL2s.html#stringwidth">stringwidth</A>
+<B>See Also:</B> <A HREF="s.html#show">show</A>, <A HREF="a.html#ashow">ashow</A>,
+<A HREF="a.html#awidthshow">awidthshow</A>, <A HREF="ik.html#kshow">kshow</A>,
+<A HREF="xy.html#xshow">xshow</A>, <A HREF="xy.html#yshow">yshow</A>,
+<A HREF="xy.html#xyshow">xyshow</A>, <A HREF="s.html#stringwidth">stringwidth</A>
 <HR>
 <A NAME="write"></A>
 <B>write</B>
@@ -120,14 +120,14 @@ file or some error is encountered, write executes ioerror.
 <P>
 As is the case for all operators that write to files, the output produced
 by write may accumulate in a buffer instead of being transmitted immediately.
-To ensure immediate transmission, a <A HREF="PSL2f.html#flushfile">flushfile</A>
+To ensure immediate transmission, a <A HREF="f.html#flushfile">flushfile</A>
 is required.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#read">read</A>, <A HREF="#writehexstring">writehexstring</A>,
-<A HREF="#writestring">writestring</A>, <A HREF="PSL2f.html#file">file</A>
+<B>See Also:</B> <A HREF="qr.html#read">read</A>, <A HREF="#writehexstring">writehexstring</A>,
+<A HREF="#writestring">writestring</A>, <A HREF="f.html#file">file</A>
 <HR>
 <A NAME="writehexstring"></A>
 <B>writehexstring</B>
@@ -142,35 +142,35 @@ writes the six characters 61627a to the standard output file.
 <P>
 As is the case for all operators that write to files, the output produced
 by writehexstring may accumulate in a buffer instead of being transmitted
-immediately. To ensure immediate transmission, a <A HREF="PSL2f.html#flushfile">flushfile</A>
+immediately. To ensure immediate transmission, a <A HREF="f.html#flushfile">flushfile</A>
 is required.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#readhexstring">readhexstring</A>, <A HREF="#write">write</A>,
-<A HREF="#writestring">writestring</A>, <A HREF="PSL2f.html#file">file</A>,
-<A HREF="PSL2f.html#filter">filter</A>
+<B>See Also:</B> <A HREF="qr.html#readhexstring">readhexstring</A>, <A HREF="#write">write</A>,
+<A HREF="#writestring">writestring</A>, <A HREF="f.html#file">file</A>,
+<A HREF="f.html#filter">filter</A>
 <HR>
 <A NAME="writeobject"></A>
 <B>writeobject</B> LEVEL 2
 <PRE>file obj tag writeobject -</PRE>
 <P>
 writes a binary object sequence to file. Except for taking an explicit file
-operand, writeobject is identical to <A HREF="PSL2p.html#printobject">printobject</A>
+operand, writeobject is identical to <A HREF="p.html#printobject">printobject</A>
 in all respects.
 <P>
 As is the case for all operators that write to files, the output produced
 by writeobject may accumulate in a buffer instead of being transmitted immediately.
-To ensure immediate transmission, a <A HREF="PSL2f.html#flushfile">flushfile</A>
+To ensure immediate transmission, a <A HREF="f.html#flushfile">flushfile</A>
 is required.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
-, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
+, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2p.html#printobject">printobject</A>, <A HREF="PSL2s.html#setobjectformat">setobjectformat</A>
+<B>See Also:</B> <A HREF="p.html#printobject">printobject</A>, <A HREF="s.html#setobjectformat">setobjectformat</A>
 <HR>
 <A NAME="writestring"></A>
 <B>writestring</B>
@@ -183,15 +183,15 @@ certain control characters or impose other restrictions.
 <P>
 As is the case for all operators that write to files, the output produced
 by writestring may accumulate in a buffer instead of being transmitted immediately.
-To ensure immediate transmission, a <A HREF="PSL2f.html#flushfile">flushfile</A>
+To ensure immediate transmission, a <A HREF="f.html#flushfile">flushfile</A>
 is required.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#readstring">readstring</A>, <A HREF="#write">write</A>,
-<A HREF="#writehexstring">writehexstring</A>, <A HREF="PSL2f.html#file">file</A>,
-<A HREF="PSL2f.html#filter">filter</A>
+<B>See Also:</B> <A HREF="qr.html#readstring">readstring</A>, <A HREF="#write">write</A>,
+<A HREF="#writehexstring">writehexstring</A>, <A HREF="f.html#file">file</A>,
+<A HREF="f.html#filter">filter</A>
 <HR>
 <A NAME="wtranslation"></A>
 <B>wtranslation</B> DPS
@@ -208,7 +208,7 @@ resolution and orientation; they differ only in the positions of their origins.
 The translation from one origin to the other may change as windows are moved
 and resized. The precise behavior is window system specific.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <HR>
 </BODY>
 </HTML>

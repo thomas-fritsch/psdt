@@ -32,16 +32,16 @@ A ucache appearing in userpath may or may not have an effect, depending
 on the environment in which uappend is executed. If the current path is
 initially empty and no path construction operators are executed after uappend,
 a subsequent painting operator may access the user path cache. Otherwise,
-it definitely will not. This is particularly useful in the case of <A HREF="PSL2c.html#clip">clip</A>
-and <A HREF="PSL2v.html#viewclip">viewclip</A>.
+it definitely will not. This is particularly useful in the case of <A HREF="c.html#clip">clip</A>
+and <A HREF="v.html#viewclip">viewclip</A>.
 <P>
 uappend performs a temporary adjustment to the current transformation matrix
 as part of its execution. This adjustment consists of rounding the tx and
 ty components of the CTM to the nearest integer values.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#upath">upath</A>, <A HREF="#ucache">ucache</A>
 <HR>
@@ -52,7 +52,7 @@ ty components of the CTM to the nearest integer values.
 notifies the PostScript interpreter that the enclosing user path is to be
 retained in the cache if it is not already there. If present, this operator
 must appear as the first element of a user path definition (before the mandatory
-<A HREF="PSL2s.html#setbbox">setbbox</A>).
+<A HREF="s.html#setbbox">setbbox</A>).
 <P>
 The ucache operator has no effect of its own when executed; if executed
 outside a user path definition, it does nothing. It is useful only with
@@ -78,44 +78,44 @@ reduced paths (rsize and rmax).
 It also reports the limit on the number of bytes occupied by a single reduced
 path (blimit)-reduced paths that are larger than this are not cached. All
 ucachestatus results except blimit are for information only. A PostScript
-language program can change blimit (see <A HREF="PSL2s.html#setucacheparams">setucacheparams</A>).
+language program can change blimit (see <A HREF="s.html#setucacheparams">setucacheparams</A>).
 <P>
 The number of values pushed on the operand stack is variable. Future versions
 of the PostScript interpreter may push additional values between mark and
 bsize. The purpose of the mark is to delimit the values returned by ucachestatus.
-This enables a program to determine how many values were returned (by <A HREF="PSL2c.html#counttomark">counttomark</A>)
-and to discard any unused ones (by <A HREF="PSL2c.html#cleartomark">cleartomark</A>).
+This enables a program to determine how many values were returned (by <A HREF="c.html#counttomark">counttomark</A>)
+and to discard any unused ones (by <A HREF="c.html#cleartomark">cleartomark</A>).
 <P>
 The bsize, bmax, and blimit parameters reported by ucachestatus are the
 same as the CurUPathCache and MaxUPathCache system parameters and MaxUPathItem
-user parameter reported by <A HREF="PSL2c.html#currentsystemparams">currentsystemparams</A>
-and <A HREF="PSL2c.html#currentuserparams">currentuserparams</A>, respectively.
+user parameter reported by <A HREF="c.html#currentsystemparams">currentsystemparams</A>
+and <A HREF="c.html#currentuserparams">currentuserparams</A>, respectively.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setucacheparams">setucacheparams</A>, <A HREF="PSL2s.html#setsystemparams">setsystemparams</A>,
-<A HREF="PSL2s.html#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="s.html#setucacheparams">setucacheparams</A>, <A HREF="s.html#setsystemparams">setsystemparams</A>,
+<A HREF="s.html#setuserparams">setuserparams</A>
 <HR>
 <A NAME="ueofill"></A>
 <B>ueofill</B> LEVEL 2
 <PRE>userpath ueofill -</PRE>
 <P>
-is similar to <A HREF="#ufill">ufill</A>, but does <A HREF="PSL2e.html#eofill">eofill</A>
-instead of <A HREF="PSL2f.html#fill">fill</A>.
+is similar to <A HREF="#ufill">ufill</A>, but does <A HREF="e.html#eofill">eofill</A>
+instead of <A HREF="f.html#fill">fill</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#eofill">eofill</A>, <A HREF="#ufill">ufill</A>
+<B>See Also:</B> <A HREF="e.html#eofill">eofill</A>, <A HREF="#ufill">ufill</A>
 <HR>
 <A NAME="ufill"></A>
 <B>ufill</B> LEVEL 2
 <PRE>userpath ufill -</PRE>
 <P>
 interprets a user path definition and fills the resulting path as if by
-fill. The entire operation is effectively enclosed by <A HREF="PSL2gh.html#gsave">gsave</A>
-and <A HREF="PSL2gh.html#grestore">grestore</A>, so ufill has no lasting
+fill. The entire operation is effectively enclosed by <A HREF="gh.html#gsave">gsave</A>
+and <A HREF="gh.html#grestore">grestore</A>, so ufill has no lasting
 effect on the graphics state.
 <P>
 ufill is equivalent to:
@@ -127,9 +127,9 @@ gsave
 grestore
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> fill, <A HREF="#uappend">uappend</A>, <A HREF="#ueofill">ueofill</A>
 <HR>
@@ -147,31 +147,31 @@ That is, if key was present in dict at the time of the matching save, restore
 will reinstate key and its former value.
 But if dict is in global VM, the effect of undef is permanent.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#def">def</A>, <A HREF="PSL2p.html#put">put</A>,
+<B>See Also:</B> <A HREF="d.html#def">def</A>, <A HREF="p.html#put">put</A>,
 <A HREF="#undefinefont">undefinefont</A>
 <HR>
 <A NAME="undefined"></A>
 <B>undefined</B> (error)
 <P>
 A name used as a dictionary key in some context cannot be found. This occurs
-if a name is looked up explicitly in a specified dictionary (<A HREF="PSL2gh.html#get">get</A>)
-or in the current dictionary stack (<A HREF="PSL2l.html#load">load</A>)
+if a name is looked up explicitly in a specified dictionary (<A HREF="gh.html#get">get</A>)
+or in the current dictionary stack (<A HREF="l.html#load">load</A>)
 and is not found. It also occurs if an executable name is encountered by
 the interpreter and is not found in any dictionary on the dictionary stack.
 <P>
 A few PostScript operators are disabled in certain contexts-for example,
 it is illegal to execute image, or operators that specify colors or set
-color-related parameters in the graphics state, after a <A HREF="PSL2s.html#setcachedevice">setcachedevice</A>
-or <A HREF="PSL2s.html#setcachedevice2">setcachedevice2</A> in a BuildChar
+color-related parameters in the graphics state, after a <A HREF="s.html#setcachedevice">setcachedevice</A>
+or <A HREF="s.html#setcachedevice2">setcachedevice2</A> in a BuildChar
 or BuildGlyph procedure. Attempting to execute such disabled operators results
 in an <A HREF="#undefined">undefined</A> error.
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#known">known</A>, <A HREF="PSL2w.html#where">where</A>,
-<A HREF="PSL2l.html#load">load</A>, <A HREF="PSL2e.html#exec">exec</A>,
-<A HREF="PSL2gh.html#get">get</A>
+<B>See Also:</B> <A HREF="ik.html#known">known</A>, <A HREF="w.html#where">where</A>,
+<A HREF="l.html#load">load</A>, <A HREF="e.html#exec">exec</A>,
+<A HREF="gh.html#get">get</A>
 <HR>
 <A NAME="undefinedfilename"></A>
 <B>undefinedfilename</B> (error)
@@ -190,7 +190,7 @@ arises only in the case of findresource with a defined resource category.
 If the category itself is not defined, resource operators execute the <A HREF="#undefined">undefined</A>
 error.
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#findresource">findresource</A>
+<B>See Also:</B> <A HREF="f.html#findresource">findresource</A>
 <HR>
 <A NAME="undefinedresult"></A>
 <B>undefinedresult</B> (error) 
@@ -206,13 +206,13 @@ error if the CTM is not invertible (scaled by zero, for instance).
 <PRE>key undefinefont -</PRE>
 <P>
 removes key and its associated value (a font dictionary) from the font directory,
-reversing the effect of a previous <A HREF="PSL2d.html#definefont">definefont</A>.
+reversing the effect of a previous <A HREF="d.html#definefont">definefont</A>.
 undefinefont is a special case of the <A HREF="#undefineresource">undefineresource</A>
 operator applied to the Font category.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#definefont">definefont</A>, <A HREF="#undefineresource">undefineresource</A>
+<B>See Also:</B> <A HREF="d.html#definefont">definefont</A>, <A HREF="#undefineresource">undefineresource</A>
 <HR>
 <A NAME="undefineresource"></A>
 <B>undefineresource</B> LEVEL 2
@@ -220,7 +220,7 @@ operator applied to the Font category.
 <P>
 removes the named resource instance identified by key from the specified
 category.
-This undoes the effect of a previous <A HREF="PSL2d.html#defineresource">defineresource</A>.
+This undoes the effect of a previous <A HREF="d.html#defineresource">defineresource</A>.
 If no such resource instance exists in VM, undefineresource does nothing;
 no error occurs. However, the resource category must exist, or else an <A HREF="#undefined">undefined</A>
 error occurs.
@@ -250,14 +250,14 @@ collection.
 <P>
 undefineresource removes the resource instance definition from VM only.
 If the resource instance also exists in external storage, it can still be
-found by <A HREF="PSL2f.html#findresource">findresource</A>, <A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>,
-and <A HREF="PSL2qr.html#resourceforall">resourceforall</A>.
+found by <A HREF="f.html#findresource">findresource</A>, <A HREF="qr.html#resourcestatus">resourcestatus</A>,
+and <A HREF="qr.html#resourceforall">resourceforall</A>.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
 <A HREF="#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineresource">defineresource</A>, <A HREF="PSL2f.html#findresource">findresource</A>,
-<A HREF="PSL2qr.html#resourcestatus">resourcestatus</A>, <A HREF="PSL2qr.html#resourceforall">resourceforall</A>
+<B>See Also:</B> <A HREF="d.html#defineresource">defineresource</A>, <A HREF="f.html#findresource">findresource</A>,
+<A HREF="qr.html#resourcestatus">resourcestatus</A>, <A HREF="qr.html#resourceforall">resourceforall</A>
 <HR>
 <A NAME="undefineuserobject"></A>
 <B>undefineuserobject</B> LEVEL 2
@@ -275,26 +275,26 @@ exch null put
 undefineuserobject does not take any other actions such as shrinking the
 <A HREF="#UserObjects">UserObjects</A> array.
 If index is not a valid index for the existing <A HREF="#UserObjects">UserObjects</A>
-array, a <A HREF="PSL2qr.html#rangecheck">rangecheck</A> error occurs.
+array, a <A HREF="qr.html#rangecheck">rangecheck</A> error occurs.
 <P>
-There is no need to execute undefineuserobject prior to executing a <A HREF="PSL2d.html#defineuserobject">defineuserobject</A>
+There is no need to execute undefineuserobject prior to executing a <A HREF="d.html#defineuserobject">defineuserobject</A>
 that reuses the same index.
 The purpose of undefineuserobject is to eliminate references to objects
 that are no longer needed.
 This may enable the garbage collector to reclaim such objects.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineuserobject">defineuserobject</A>, <A HREF="#UserObjects">UserObjects</A>
+<B>See Also:</B> <A HREF="d.html#defineuserobject">defineuserobject</A>, <A HREF="#UserObjects">UserObjects</A>
 <HR>
 <A NAME="unmatchedmark"></A>
 <B>unmatchedmark</B> (error)
 <P>
-A mark object is sought on the operand stack by the <A HREF="PSL2.html#mark1">]</A>,
-<A HREF="PSL2.html#marktwoGT">&gt;&gt;</A>, <A HREF="PSL2c.html#cleartomark">cleartomark</A>,
-<A HREF="PSL2c.html#counttomark">counttomark</A>, <A HREF="PSL2f.html#fork">fork</A>,
-<A HREF="PSL2s.html#setcacheparams">setcacheparams</A>, or <A HREF="PSL2s.html#setucacheparams">setucacheparams</A>
+A mark object is sought on the operand stack by the <A HREF="@.html#mark1">]</A>,
+<A HREF="@.html#marktwoGT">&gt;&gt;</A>, <A HREF="c.html#cleartomark">cleartomark</A>,
+<A HREF="c.html#counttomark">counttomark</A>, <A HREF="f.html#fork">fork</A>,
+<A HREF="s.html#setcacheparams">setcacheparams</A>, or <A HREF="s.html#setucacheparams">setucacheparams</A>
 operator, but none is present.
 <HR>
 <A NAME="unregistered"></A>
@@ -334,27 +334,27 @@ upath is equivalent to:
 <P>
 If charpath was used to construct any portion of the current path from a
 font whose outlines are protected, upath is not allowed. Its execution will
-produce an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A> error (see
-<A HREF="PSL2c.html#charpath">charpath</A>).
+produce an <A HREF="ik.html#invalidaccess">invalidaccess</A> error (see
+<A HREF="c.html#charpath">charpath</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
 <B>See Also:</B> <A HREF="#uappend">uappend</A>, <A HREF="#ucache">ucache</A>,
-<A HREF="PSL2p.html#pathforall">pathforall</A>
+<A HREF="p.html#pathforall">pathforall</A>
 <HR>
 <A NAME="userdict"></A>
 <B>userdict</B>
 <PRE>- userdict dict</PRE>
 <P>
 pushes the dictionary object userdict on the operand stack. userdict is
-not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the dictionary object.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#systemdict">systemdict</A>, <A HREF="PSL2gh.html#globaldict">globaldict</A>,
-<A HREF="PSL2e.html#errordict">errordict</A>
+<B>See Also:</B> <A HREF="s.html#systemdict">systemdict</A>, <A HREF="gh.html#globaldict">globaldict</A>,
+<A HREF="e.html#errordict">errordict</A>
 <HR>
 <A NAME="UserObjects"></A>
 <B>UserObjects</B> LEVEL 2
@@ -362,10 +362,10 @@ associated with the dictionary object.
 <P>
 returns the current UserObjects array defined in <A HREF="#userdict">userdict</A>.
 UserObjects is not an operator; it is simply a name associated with an array
-in userdict. This array is created and managed by the operators <A HREF="PSL2d.html#defineuserobject">defineuserobject</A>,
-<A HREF="#undefineuserobject">undefineuserobject</A>, and <A HREF="PSL2e.html#execuserobject">execuserobject</A>.
+in userdict. This array is created and managed by the operators <A HREF="d.html#defineuserobject">defineuserobject</A>,
+<A HREF="#undefineuserobject">undefineuserobject</A>, and <A HREF="e.html#execuserobject">execuserobject</A>.
 It defines a mapping from small integers (used as array indices) to arbitrary
-objects (the elements of the <A HREF="PSL2a.html#array">array</A>).
+objects (the elements of the <A HREF="a.html#array">array</A>).
 <P>
 The UserObjects entry in userdict is present only if defineuserobject has
 been executed at least once by the current execution context or a context
@@ -382,10 +382,10 @@ Although UserObjects is an ordinary array object, it should be manipulated
 only by the user object operators. Improper direct alteration of UserObjects
 can subsequently cause the user object operators to malfunction.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="#undefined">undefined</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#defineuserobject">defineuserobject</A>, <A HREF="#undefineuserobject">undefineuserobject</A>,
-<A HREF="PSL2e.html#execuserobject">execuserobject</A>
+<B>See Also:</B> <A HREF="d.html#defineuserobject">defineuserobject</A>, <A HREF="#undefineuserobject">undefineuserobject</A>,
+<A HREF="e.html#execuserobject">execuserobject</A>
 <HR>
 <A NAME="usertime"></A>
 <B>usertime</B>
@@ -407,9 +407,9 @@ the PostScript interpreter must perform an operating system call whenever
 it switches control to and from that context. Therefore, one should not
 execute usertime gratuitously.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#realtime">realtime</A>
+<B>See Also:</B> <A HREF="qr.html#realtime">realtime</A>
 <HR>
 <A NAME="ustroke"></A>
 <B>ustroke</B> LEVEL 2
@@ -417,8 +417,8 @@ execute usertime gratuitously.
 userpath matrix ustroke -</PRE>
 <P>
 interprets a user path definition and strokes the resulting path as if by
-<A HREF="PSL2s.html#stroke">stroke</A>. The entire operation is effectively
-enclosed by <A HREF="PSL2gh.html#gsave">gsave</A> and <A HREF="PSL2gh.html#grestore">grestore</A>,
+<A HREF="s.html#stroke">stroke</A>. The entire operation is effectively
+enclosed by <A HREF="gh.html#gsave">gsave</A> and <A HREF="gh.html#grestore">grestore</A>,
 so ustroke has no lasting effect on the graphics state
 <P>
 In the first form (with no matrix operand), ustroke is equivalent to:
@@ -448,11 +448,11 @@ in line width and dash pattern that occur if the CTM has been scaled by
 different amounts in x and y. This is accomplished by defining matrix to
 be the inverse of the unequal scaling transformation.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="#uappend">uappend</A>
+<B>See Also:</B> <A HREF="s.html#stroke">stroke</A>, <A HREF="#uappend">uappend</A>
 <HR>
 <A NAME="ustrokepath"></A>
 <B>ustrokepath</B> LEVEL 2
@@ -461,9 +461,9 @@ userpath matrix ustrokepath - </PRE>
 <P>
 replaces the current path with one enclosing the shape that would result
 if the ustroke operator were applied to the same operands. The path resulting
-from ustrokepath is suitable as the implicit operand to a subsequent <A HREF="PSL2f.html#fill">fill</A>,
-<A HREF="PSL2c.html#clip">clip</A>, or <A HREF="PSL2p.html#pathbbox">pathbbox</A>.
-In general, this path is not suitable for <A HREF="PSL2s.html#stroke">stroke</A>,
+from ustrokepath is suitable as the implicit operand to a subsequent <A HREF="f.html#fill">fill</A>,
+<A HREF="c.html#clip">clip</A>, or <A HREF="p.html#pathbbox">pathbbox</A>.
+In general, this path is not suitable for <A HREF="s.html#stroke">stroke</A>,
 as it may contain interior segments or disconnected subpaths produced by
 ustrokepath's stroke to outline conversion process.
 <P>
@@ -485,11 +485,11 @@ exch
 setmatrix                 % Restore original CTM
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#ustroke">ustroke</A>, <A HREF="PSL2s.html#strokepath">strokepath</A>
+<B>See Also:</B> <A HREF="#ustroke">ustroke</A>, <A HREF="s.html#strokepath">strokepath</A>
 <HR>
 </BODY>
 </HTML>

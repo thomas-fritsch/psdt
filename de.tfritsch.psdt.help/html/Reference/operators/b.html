@@ -12,15 +12,15 @@
 <P>
 pushes dict on the dictionary stack, making it the current dictionary
 and installing it as the first of the dictionaries consulted during implicit
-name lookup and by <A HREF="PSL2d.html#def">def</A>, <A HREF="PSL2l.html#load">load</A>,
-<A HREF="PSL2s.html#store">store</A>, and <A HREF="PSL2w.html#where">where</A>.
+name lookup and by <A HREF="d.html#def">def</A>, <A HREF="l.html#load">load</A>,
+<A HREF="s.html#store">store</A>, and <A HREF="w.html#where">where</A>.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#dictstackoverflow">dictstackoverflow</A>,
-<A HREF="PSerrors.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="d.html#dictstackoverflow">dictstackoverflow</A>,
+<A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#end">end</A>, <A HREF="PSL2c.html#countdictstack">countdictstack</A>,
-<A HREF="PSL2d.html#dictstack">dictstack</A>
+<B>See Also:</B> <A HREF="e.html#end">end</A>, <A HREF="c.html#countdictstack">countdictstack</A>,
+<A HREF="d.html#dictstack">dictstack</A>
 <HR>
 <A NAME="bind"></A>
 <B>bind</B>
@@ -28,7 +28,7 @@ name lookup and by <A HREF="PSL2d.html#def">def</A>, <A HREF="PSL2l.html#load">l
 <P>
 replaces executable operator names in proc by their values. For each element
 of proc that is an executable name, bind looks up the name in the context
-of the current dictionary stack as if by <A HREF="PSL2l.html#load">load</A>.
+of the current dictionary stack as if by <A HREF="l.html#load">load</A>.
 If the name is found and its value is an operator object, bind replaces
 the name by the operator in proc. If the name is not found or its value
 is not an operator, bind does not make a change.
@@ -47,9 +47,9 @@ nested in proc to any depth become &quot;tightly bound&quot; to the operators
 themselves. During subsequent execution of proc, the interpreter encounters
 the operators themselves rather than the names of operators.
 <P>
-<B>Errors:</B> <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#load">load</A>
+<B>See Also:</B> <A HREF="l.html#load">load</A>
 <HR>
 <A NAME="bitshift"></A>
 <B>bitshift</B>
@@ -67,10 +67,10 @@ int1 and shift must be integers.
 142 -3 bitshift &rArr; 17
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#and">and</A>, <A HREF="PSL2no.html#or">or</A>,
-<A HREF="PSL2xy.html#xor">xor</A>, <A HREF="PSL2no.html#not">not</A>
+<B>See Also:</B> <A HREF="a.html#and">and</A>, <A HREF="no.html#or">or</A>,
+<A HREF="xy.html#xor">xor</A>, <A HREF="no.html#not">not</A>
 <HR>
 <A NAME="bytesavailable"></A>
 <B>bytesavailable</B>
@@ -81,11 +81,11 @@ file without waiting.
 The result is -1 if end-of-file has been encountered or if the number of
 bytes available cannot be determined for other reasons.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#read">read</A>, <A HREF="PSL2qr.html#readhexstring">readhexstring</A>,
-<A HREF="PSL2qr.html#readline">readline</A>, <A HREF="PSL2qr.html#readstring">readstring</A>
+<B>See Also:</B> <A HREF="qr.html#read">read</A>, <A HREF="qr.html#readhexstring">readhexstring</A>,
+<A HREF="qr.html#readline">readline</A>, <A HREF="qr.html#readstring">readstring</A>
 <HR>
 </BODY>
 </HTML>

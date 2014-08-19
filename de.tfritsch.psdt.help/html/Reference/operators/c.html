@@ -18,9 +18,9 @@ and cmax). It also reports the limit on the number of bytes occupied by
 a single cached character (blimit). Characters whose bitmaps are larger
 than this are not cached.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcachelimit">setcachelimit</A>, <A HREF="PSL2s.html#setsystemparams">setsystemparams</A>
+<B>See Also:</B> <A HREF="s.html#setcachelimit">setcachelimit</A>, <A HREF="s.html#setsystemparams">setsystemparams</A>
 <HR>
 <A NAME="ceiling"></A>
 <B>ceiling</B>
@@ -36,11 +36,11 @@ The type of the result is the same as the type of the operand.
  99 ceiling   &rArr;   99
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A 
-HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A 
+HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#floor">floor</A>, <A HREF="PSL2qr.html#round">round</A>,
-<A HREF="PSL2t.html#truncate">truncate</A>, <A HREF="#cvi">cvi</A>
+<B>See Also:</B> <A HREF="f.html#floor">floor</A>, <A HREF="qr.html#round">round</A>,
+<A HREF="t.html#truncate">truncate</A>, <A HREF="#cvi">cvi</A>
 <HR>
 <A NAME="charpath"></A>
 <B>charpath</B>
@@ -52,9 +52,9 @@ charpath appends the path to the current path. This yields a result suitable
 for general filling, stroking, or clipping
 <P>
 The bool operand determines what happens if the character path is designed
-to be stroked rather than filled or outlined. If bool is <A HREF="PSL2f.html#false">false</A>,
+to be stroked rather than filled or outlined. If bool is <A HREF="f.html#false">false</A>,
 charpath simply appends the character path to the current path; the result
-is suitable only for stroking. If bool is <A HREF="PSL2t.html#true">true</A>,
+is suitable only for stroking. If bool is <A HREF="t.html#true">true</A>,
 charpath applies the strokepath operator to the character path; the result
 is suitable for filling or clipping, but not for stroking. charpath does
 not produce results for portions of a character defined as images or masks
@@ -63,15 +63,15 @@ rather than as paths.
 The outlines of some fonts are protected. (In Level 1 implementations, this
 applies to all fonts; in Level 2, only to certain special fonts and not
 to ordinary Type 1 or Type 3 fonts.) If the current font is protected, using
-charpath to obtain its outlines causes the <A HREF="PSL2p.html#pathforall">pathforall</A>
-and <A HREF="PSL2u.html#upath">upath</A> operators to be disabled for as
+charpath to obtain its outlines causes the <A HREF="p.html#pathforall">pathforall</A>
+and <A HREF="u.html#upath">upath</A> operators to be disabled for as
 long as those outlines remain in the current path.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#show">show</A>, <A HREF="PSL2f.html#flattenpath">flattenpath</A>,
-<A HREF="PSL2p.html#pathbbox">pathbbox</A>, <A HREF="#clip">clip</A>
+<B>See Also:</B> <A HREF="s.html#show">show</A>, <A HREF="f.html#flattenpath">flattenpath</A>,
+<A HREF="p.html#pathbbox">pathbbox</A>, <A HREF="#clip">clip</A>
 <HR>
 <A NAME="clear"></A>
 <B>clear</B>
@@ -82,7 +82,7 @@ pops all objects from the operand stack and discards them.
 <B>Errors:</B> (none)
 <P>
 <B>See Also:</B> <A HREF="#count">count</A>, <A HREF="#cleartomark">cleartomark</A>,
-<A HREF="PSL2p.html#pop">pop</A>
+<A HREF="p.html#pop">pop</A>
 <HR>
 <A NAME="cleardictstack"></A>
 <B>cleardictstack</B>
@@ -90,14 +90,14 @@ pops all objects from the operand stack and discards them.
 <P>
 pops all dictionaries off the dictionary stack except for the permanent
 entries. In Level 1 implementations the permanent entries are systemdict
-and userdict; in Level 2 they are <A HREF="PSL2s.html#systemdict">systemdict</A>,
-<A HREF="PSL2gh.html#globaldict">globaldict</A>, and <A HREF="PSL2u.html#userdict">userdict</A>.
+and userdict; in Level 2 they are <A HREF="s.html#systemdict">systemdict</A>,
+<A HREF="gh.html#globaldict">globaldict</A>, and <A HREF="u.html#userdict">userdict</A>.
 (In Level 1 implementations, cleardictstack is a procedure defined in userdict
 instead of an operator defined in systemdict.)
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2b.html#begin">begin</A>, <A HREF="PSL2e.html#end">end</A>
+<B>See Also:</B> <A HREF="b.html#begin">begin</A>, <A HREF="e.html#end">end</A>
 <HR>
 <A NAME="cleartomark"></A>
 <B>cleartomark</B>
@@ -107,10 +107,10 @@ pops the operand stack repeatedly until it encounters a mark, which it also
 pops from the stack
 (obj1 through objn are any objects other than marks).
 <P>
-<B>Errors:</B> <A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A>
+<B>Errors:</B> <A HREF="u.html#unmatchedmark">unmatchedmark</A>
 <P>
-<B>See Also:</B> <A HREF="#clear">clear</A>, <A HREF="PSL2m.html#mark">mark</A>,
-<A HREF="#counttomark">counttomark</A>, <A HREF="PSL2p.html#pop">pop</A>
+<B>See Also:</B> <A HREF="#clear">clear</A>, <A HREF="m.html#mark">mark</A>,
+<A HREF="#counttomark">counttomark</A>, <A HREF="p.html#pop">pop</A>
 <HR>
 <A NAME="clip"></A>
 <B>clip</B>
@@ -131,25 +131,25 @@ it does not actually alter the path itself. It is permissible for the current
 path to be empty. The result of executing clip is always a non-empty clipping
 path, though it may enclose zero area.
 <P>
-There is no way to enlarge the current clipping path (other than by <A HREF="PSL2ik.html#initclip">initclip</A>
-or <A HREF="PSL2ik.html#initgraphics">initgraphics</A>) or to set a new
+There is no way to enlarge the current clipping path (other than by <A HREF="ik.html#initclip">initclip</A>
+or <A HREF="ik.html#initgraphics">initgraphics</A>) or to set a new
 clipping path without reference to the current one. The recommended way
 of using clip is to bracket the clip and the sequence of graphics to be
-clipped with <A HREF="PSL2gh.html#gsave">gsave</A> and <A HREF="PSL2gh.html#grestore">grestore</A>.
+clipped with <A HREF="gh.html#gsave">gsave</A> and <A HREF="gh.html#grestore">grestore</A>.
 The grestore will restore the clipping path that was in effect before the
-gsave. The <A HREF="PSL2s.html#setgstate">setgstate</A> operator can also
+gsave. The <A HREF="s.html#setgstate">setgstate</A> operator can also
 be used to reset the clipping path to an earlier state.
 <P>
-Unlike <A HREF="PSL2f.html#fill">fill</A> and <A HREF="PSL2s.html#stroke">stroke</A>,
-clip does not implicitly perform a <A HREF="PSL2no.html#newpath">newpath</A>
+Unlike <A HREF="f.html#fill">fill</A> and <A HREF="s.html#stroke">stroke</A>,
+clip does not implicitly perform a <A HREF="no.html#newpath">newpath</A>
 after it has finished using the current path. Any subsequent path construction
 operators will append to the current path unless newpath is executed explicitly.
 This can cause unexpected behavior.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#eoclip">eoclip</A>, <A HREF="#clippath">clippath</A>,
-<A HREF="PSL2ik.html#initclip">initclip</A>, <A HREF="PSL2qr.html#rectclip">rectclip</A>
+<B>See Also:</B> <A HREF="e.html#eoclip">eoclip</A>, <A HREF="#clippath">clippath</A>,
+<A HREF="ik.html#initclip">initclip</A>, <A HREF="qr.html#rectclip">rectclip</A>
 <HR>
 <A NAME="clippath"></A>
 <B>clippath</B><PRE>- clippath -</PRE>
@@ -159,7 +159,7 @@ This operator is useful for determining the exact extent of the imaging
 area on the current output device.
 <P>
 If the current clipping path is the result of application of the <A HREF="#clip">clip</A>
-or <A HREF="PSL2e.html#eoclip">eoclip</A> operator, the path set by clippath
+or <A HREF="e.html#eoclip">eoclip</A> operator, the path set by clippath
 is generally suitable only for filling or clipping. It is not suitable for
 stroking because it may contain interior segments or disconnected subpaths
 produced by the clipping process.
@@ -173,8 +173,8 @@ This erases (fills with white) the interior of the current clipping path.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="#clip">clip</A>, <A HREF="PSL2e.html#eoclip">eoclip</A>,
-<A HREF="PSL2ik.html#initclip">initclip</A>, <A HREF="PSL2qr.html#rectclip">rectclip</A>
+<B>See Also:</B> <A HREF="#clip">clip</A>, <A HREF="e.html#eoclip">eoclip</A>,
+<A HREF="ik.html#initclip">initclip</A>, <A HREF="qr.html#rectclip">rectclip</A>
 <HR>
 <A NAME="closefile"></A>
 <B>closefile</B>
@@ -182,15 +182,15 @@ This erases (fills with white) the interior of the current clipping path.
 <P>
 closes file-in other words, breaks the association between the file object
 and the underlying file. For an output file, closefile first performs a
-<A HREF="PSL2f.html#flushfile">flushfile</A>. It may also take device-dependent
+<A HREF="f.html#flushfile">flushfile</A>. It may also take device-dependent
 actions, such as truncating a disk file to the current position or transmitting
 an end-of-file indication.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#ioerror">ioerror</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#file">file</A>, <A HREF="PSL2f.html#filter">filter</A>,
-<A HREF="PSL2s.html#status">status</A>
+<B>See Also:</B> <A HREF="f.html#file">file</A>, <A HREF="f.html#filter">filter</A>,
+<A HREF="s.html#status">status</A>
 <HR>
 <A NAME="closepath"></A>
 <B>closepath</B>
@@ -198,7 +198,7 @@ an end-of-file indication.
 <P>
 closes the current subpath by appending a straight line segment connecting
 the current point to the subpath's starting point-generally, the point most
-recently specified by <A HREF="PSL2m.html#moveto">moveto</A>. If the current
+recently specified by <A HREF="m.html#moveto">moveto</A>. If the current
 subpath is already closed or the current path is empty, closepath does not
 do anything.
 <P>
@@ -206,10 +206,10 @@ closepath terminates the current subpath. Appending another segment to the
 current path will begin a new subpath, even if it is drawn from the endpoint
 reached by the closepath.
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2no.html#newpath">newpath</A>, <A HREF="PSL2m.html#moveto">moveto</A>,
-<A HREF="PSL2l.html#lineto">lineto</A>
+<B>See Also:</B> <A HREF="no.html#newpath">newpath</A>, <A HREF="m.html#moveto">moveto</A>,
+<A HREF="l.html#lineto">lineto</A>
 <HR>
 <A NAME="colorimage"></A>
 <B>colorimage</B>LEVEL 2
@@ -220,7 +220,7 @@ The description here only summarizes the colorimage operator.
 <P>
 The sampled image is a rectangular array of width x height sample values.
 colorimage interprets the width, height, and matrix operands in the same
-way as does <A HREF="PSL2ik.html#image">image</A>.
+way as does <A HREF="ik.html#image">image</A>.
 <P>
 Each image sample consists of 1, 3, or 4 color components, as specified
 by the ncomp operand. Each component consists of bits/comp bits (1, 2, 4,
@@ -242,7 +242,7 @@ sources, datasrc0 ... datasrcn-1, one for each component. The data sources
 can be procedures, strings, or files, including filtered files. They must
 all be of the same type.
 <P>
-Unlike <A HREF="PSL2ik.html#image">image</A> and <A HREF="PSL2ik.html#imagemask">imagemask</A>,
+Unlike <A HREF="ik.html#image">image</A> and <A HREF="ik.html#imagemask">imagemask</A>,
 colorimage does not have an alternate form in which the parameters are bundled
 into a single image dictionary operand. In Level 2 implementations, given
 the appropriate image dictionary, the image operator can do anything that
@@ -252,13 +252,13 @@ DeviceRGB, and DeviceCMYK color spaces.
 <P>
 Execution of this operator is not permitted in certain circumstances.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2ik.html#ioerror">ioerror</A>,
-<A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>,
-<A HREF="PSL2u.html#undefined">undefined</A>, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="ik.html#ioerror">ioerror</A>,
+<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
+<A HREF="u.html#undefined">undefined</A>, <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2ik.html#image">image</A>, <A HREF="PSL2ik.html#imagemask">imagemask</A>
+<B>See Also:</B> <A HREF="ik.html#image">image</A>, <A HREF="ik.html#imagemask">imagemask</A>
 <HR>
 <A NAME="concat"></A>
 <B>concat</B>
@@ -277,12 +277,12 @@ Examples
 <P>
 The two examples have the same effect on the current transformation.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#concatmatrix">concatmatrix</A>, <A HREF="PSL2m.html#matrix">matrix</A>,
-<A HREF="PSL2qr.html#rotate">rotate</A>, <A HREF="PSL2s.html#scale">scale</A>,
-<A HREF="PSL2s.html#setmatrix">setmatrix</A>, <A HREF="PSL2t.html#translate">translate</A>
+<B>See Also:</B> <A HREF="#concatmatrix">concatmatrix</A>, <A HREF="m.html#matrix">matrix</A>,
+<A HREF="qr.html#rotate">rotate</A>, <A HREF="s.html#scale">scale</A>,
+<A HREF="s.html#setmatrix">setmatrix</A>, <A HREF="t.html#translate">translate</A>
 <P>
 <HR>
 <A NAME="concatmatrix"></A>
@@ -293,12 +293,12 @@ replaces the value of matrix3 by the result of multiplying matrix1 x matrix2,
 and pushes the modified matrix3 back on the operand stack. This operator
 does not affect the CTM.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#concat">concat</A>, <A HREF="PSL2m.html#matrix">matrix</A>,
-<A HREF="PSL2qr.html#rotate">rotate</A>, <A HREF="PSL2s.html#scale">scale</A>,
-<A HREF="PSL2s.html#setmatrix">setmatrix</A>, <A HREF="PSL2t.html#translate">translate</A>
+<B>See Also:</B> <A HREF="#concat">concat</A>, <A HREF="m.html#matrix">matrix</A>,
+<A HREF="qr.html#rotate">rotate</A>, <A HREF="s.html#scale">scale</A>,
+<A HREF="s.html#setmatrix">setmatrix</A>, <A HREF="t.html#translate">translate</A>
 <HR>
 <A NAME="condition"></A>
 <B>condition</B> DPS
@@ -310,26 +310,26 @@ has no contexts waiting on it . Since a condition is a composite object,
 creating one consumes VM. The condition's value is allocated in local or
 global VM according to the current VM allocation mode.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A 
-HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A 
+HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2w.html#wait">wait</A>, <A HREF="PSL2no.html#notify">notify</A>
+<B>See Also:</B> <A HREF="w.html#wait">wait</A>, <A HREF="no.html#notify">notify</A>
 <HR>
 <A NAME="configurationerror"></A>
 <B>configurationerror</B> (error) LEVEL 2
 <P>
-occurs when <A HREF="PSL2s.html#setpagedevice">setpagedevice</A> or <A HREF="PSL2s.html#setdevparams">setdevparams</A>
+occurs when <A HREF="s.html#setpagedevice">setpagedevice</A> or <A HREF="s.html#setdevparams">setdevparams</A>
 has been executed with a request for a feature that either is not available
 in the interpreter implementation or is not currently available because
-of the state of the hardware. For <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>,
+of the state of the hardware. For <A HREF="s.html#setpagedevice">setpagedevice</A>,
 this error is generated only if the PolicyDict entry in a page device dictionary
 specifies that an error should be generated.
 <P>
 When a configurationerror is generated, a two-element array called errorinfo
-is placed in <A HREF="PSL2.html#$error">$error</A>. This array contains
+is placed in <A HREF="@.html#$error">$error</A>. This array contains
 the key and value of the request that could not be met.
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>, <A HREF="PSL2s.html#setdevparams">setdevparams</A>
+<B>See Also:</B> <A HREF="s.html#setpagedevice">setpagedevice</A>, <A HREF="s.html#setdevparams">setdevparams</A>
 <HR>
 <A NAME="copy"></A>
 <B>copy</B>
@@ -359,7 +359,7 @@ In the other instances, copy copies all the elements of the first composite
 object into the second. The composite object operands must be of the same
 type, except that a packed array can be copied into an array. This form
 of copy copies the value of a composite object. This is quite different
-from <A HREF="PSL2d.html#dup">dup</A> and other operators that copy only
+from <A HREF="d.html#dup">dup</A> and other operators that copy only
 the objects themselves . However, copy performs only one level of copying.
 It does not apply recursively to elements that are themselves composite
 objects; instead, the values of those elements become shared.
@@ -382,7 +382,7 @@ the access attribute of dict2 is copied from that of dict1.
 <P>
 If the value of the destination object is in global VM and any of the elements
 copied from the source object are composite objects whose values are in
-local VM, an <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A> error
+local VM, an <A HREF="ik.html#invalidaccess">invalidaccess</A> error
 occurs.
 <P>
 <B>Example</B>
@@ -391,12 +391,12 @@ occurs.
 a1 dup length array copy  &rArr;  [1 2 3]
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#dup">dup</A>, <A HREF="PSL2gh.html#get">get</A>,
-<A HREF="PSL2p.html#put">put</A>, <A HREF="PSL2p.html#putinterval">putinterval</A>
+<B>See Also:</B> <A HREF="d.html#dup">dup</A>, <A HREF="gh.html#get">get</A>,
+<A HREF="p.html#put">put</A>, <A HREF="p.html#putinterval">putinterval</A>
 <HR>
 <A NAME="copypage"></A>
 <B>copypage</B>
@@ -404,20 +404,20 @@ a1 dup length array copy  &rArr;  [1 2 3]
 <P>
 transmits one copy of the current page to the current output device without
 erasing the current page or changing the graphics state. This is in contrast
-to showpage, which performs the equivalent of an <A HREF="PSL2e.html#erasepage">erasepage</A>
-and an <A HREF="PSL2ik.html#initgraphics">initgraphics</A>. Aside from these
-differences, the behavior of copypage is identical to that of <A HREF="PSL2s.html#showpage">showpage</A>.
+to showpage, which performs the equivalent of an <A HREF="e.html#erasepage">erasepage</A>
+and an <A HREF="ik.html#initgraphics">initgraphics</A>. Aside from these
+differences, the behavior of copypage is identical to that of <A HREF="s.html#showpage">showpage</A>.
 <P>
 copypage is intended primarily as a debugging aid or as a means of printing
 successive pages with incrementally accumulated contents. Routine use of
 copypage as a substitute for showpage may severely degrade the page throughput
 of some PostScript printers. To print multiple copies of the same page,
-use the #copies implicit parameter of <A HREF="PSL2s.html#showpage">showpage</A>
-or the NumCopies parameter of <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>.
+use the #copies implicit parameter of <A HREF="s.html#showpage">showpage</A>
+or the NumCopies parameter of <A HREF="s.html#setpagedevice">setpagedevice</A>.
 <P>
 <B>Errors:</B> (none)
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#showpage">showpage</A>, <A HREF="PSL2e.html#erasepage">erasepage</A>
+<B>See Also:</B> <A HREF="s.html#showpage">showpage</A>, <A HREF="e.html#erasepage">erasepage</A>
 <HR>
 <A NAME="cos"></A>
 <B>cos</B>
@@ -432,10 +432,10 @@ The result is a real.
 90 cos  &rArr;  0.0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A 
-HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A 
+HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#atan">atan</A>, <A HREF="PSL2s.html#sin">sin</A>
+<B>See Also:</B> <A HREF="a.html#atan">atan</A>, <A HREF="s.html#sin">sin</A>
 <HR>
 <A NAME="count"></A>
 <B>count</B>
@@ -450,7 +450,7 @@ clear count        &rArr;  0
 clear 1 2 3 count  &rArr;  1 2 3 3
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
 <B>See Also:</B> <A HREF="#counttomark">counttomark</A>
 <HR>
@@ -461,10 +461,10 @@ clear 1 2 3 count  &rArr;  1 2 3 3
 counts the number of dictionaries currently on the dictionary stack and
 pushes this count on the operand stack.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2d.html#dictstack">dictstack</A>, <A HREF="PSL2b.html#begin">begin</A>,
-<A HREF="PSL2e.html#end">end</A>
+<B>See Also:</B> <A HREF="d.html#dictstack">dictstack</A>, <A HREF="b.html#begin">begin</A>,
+<A HREF="e.html#end">end</A>
 <HR>
 <A NAME="countexecstack"></A>
 <B>countexecstack</B>
@@ -473,9 +473,9 @@ pushes this count on the operand stack.
 counts the number of objects on the execution stack and pushes this count
 on the operand stack.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#execstack">execstack</A>
+<B>See Also:</B> <A HREF="e.html#execstack">execstack</A>
 <HR>
 <A NAME="counttomark"></A>
 <B>counttomark</B>
@@ -491,9 +491,9 @@ obj1 through objn are any objects other than marks.
 1 mark counttomark      &rArr;  1 mark 0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2u.html#unmatchedmark">unmatchedmark</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="u.html#unmatchedmark">unmatchedmark</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#mark">mark</A>, <A HREF="#count">count</A>
+<B>See Also:</B> <A HREF="m.html#mark">mark</A>, <A HREF="#count">count</A>
 <HR>
 <A NAME="cshow"></A>
 <B>cshow</B> LEVEL 2
@@ -515,14 +515,14 @@ cshow is intended primarily for use with composite fonts . However, it can
 also be used with a base font. The mapping algorithm for a base font simply
 selects consecutive characters from the string.
 <P>
-<B>Errors:</B> invalidfont, <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>,
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> invalidfont, <A HREF="ik.html#invalidaccess">invalidaccess</A>,
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2a.html#ashow">ashow</A>, <A HREF="PSL2a.html#awidthshow">awidthshow</A>,
-<A HREF="PSL2ik.html#kshow">kshow</A>, <A HREF="PSL2s.html#show">show ,</A><A HREF="PSL2w.html#widthshow">widthshow</A>,
-<A HREF="PSL2xy.html#xshow">xshow</A>, <A HREF="PSL2xy.html#xyshow">xyshow</A>,
-<A HREF="PSL2xy.html#yshow">yshow</A>
+<B>See Also:</B> <A HREF="a.html#ashow">ashow</A>, <A HREF="a.html#awidthshow">awidthshow</A>,
+<A HREF="ik.html#kshow">kshow</A>, <A HREF="s.html#show">show ,</A><A HREF="w.html#widthshow">widthshow</A>,
+<A HREF="xy.html#xshow">xshow</A>, <A HREF="xy.html#xyshow">xyshow</A>,
+<A HREF="xy.html#yshow">yshow</A>
 <HR>
 <A NAME="currentblackgeneration"></A>
 <B>currentblackgeneration</B> LEVEL 2
@@ -530,21 +530,21 @@ selects consecutive characters from the string.
 <P>
 returns the current black generation function in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setblackgeneration">setblackgeneration</A>
+<B>See Also:</B> <A HREF="s.html#setblackgeneration">setblackgeneration</A>
 <HR>
 <A NAME="currentcacheparams"></A>
 <B>currentcacheparams</B> LEVEL 2
 <PRE>- currentcacheparams mark size lower upper</PRE>
 <P>
 pushes a mark object followed by the current cache parameters on the operand
-stack. The number of cache parameters returned is variable (see <A HREF="PSL2s.html#setcacheparams">setcacheparams</A>).
+stack. The number of cache parameters returned is variable (see <A HREF="s.html#setcacheparams">setcacheparams</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcacheparams">setcacheparams</A>, <A HREF="PSL2s.html#setsystemparams">setsystemparams</A>,
-<A HREF="PSL2s.html#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="s.html#setcacheparams">setcacheparams</A>, <A HREF="s.html#setsystemparams">setsystemparams</A>,
+<A HREF="s.html#setuserparams">setuserparams</A>
 <HR>
 <A NAME="currentcmykcolor"></A>
 <B>currentcmykcolor</B> LEVEL 2
@@ -557,9 +557,9 @@ If the current color space is DeviceRGB or DeviceGray, currentcmykcolor
 converts the current color to CMYK. For any other color space, currentcmykcolor
 returns 0.0 0.0 0.0 1.0.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcmykcolor">setcmykcolor</A>
+<B>See Also:</B> <A HREF="s.html#setcmykcolor">setcmykcolor</A>
 <HR>
 <A NAME="currentcolor"></A>
 <B>currentcolor</B> LEVEL 2
@@ -568,9 +568,9 @@ returns 0.0 0.0 0.0 1.0.
 returns the components, in the current color space, of the color specified
 by the current color parameters in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolor">setcolor</A>, <A HREF="PSL2s.html#setcolorspace">setcolorspace</A>
+<B>See Also:</B> <A HREF="s.html#setcolor">setcolor</A>, <A HREF="s.html#setcolorspace">setcolorspace</A>
 <P>
 <HR>
 <A NAME="currentcolorrendering"></A>
@@ -580,9 +580,9 @@ by the current color parameters in the graphics state.
 returns the value of the CIE based color rendering dictionary parameter
 in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolorrendering">setcolorrendering</A>
+<B>See Also:</B> <A HREF="s.html#setcolorrendering">setcolorrendering</A>
 <HR>
 <A NAME="currentcolorscreen"></A>
 <B>currentcolorscreen</B> LEVEL 2
@@ -591,20 +591,20 @@ in the graphics state.
                      bluefreq blueang blueproc
                      grayfreq grayang grayproc</PRE>
 <P>
-If the current halftone screen was specified by <A HREF="PSL2s.html#setcolorscreen">setcolorscreen</A>,
+If the current halftone screen was specified by <A HREF="s.html#setcolorscreen">setcolorscreen</A>,
 currentcolorscreen returns all 12 current halftone screen parameters in
 the graphics state.
-If the current screen was specified by <A HREF="PSL2s.html#setscreen">setscreen</A>,
+If the current screen was specified by <A HREF="s.html#setscreen">setscreen</A>,
 currentcolorscreen returns the three screen parameters repeated four times.
 <P>
-If the current screen was specified by <A HREF="PSL2s.html#sethalftone">sethalftone</A>,
+If the current screen was specified by <A HREF="s.html#sethalftone">sethalftone</A>,
 currentcolorscreen returns 60, 0, and the halftone dictionary, repeated
 four times. 
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolorscreen">setcolorscreen</A>, <A HREF="PSL2s.html#setscreen">setscreen</A>,
-<A HREF="PSL2s.html#sethalftone">sethalftone</A>
+<B>See Also:</B> <A HREF="s.html#setcolorscreen">setcolorscreen</A>, <A HREF="s.html#setscreen">setscreen</A>,
+<A HREF="s.html#sethalftone">sethalftone</A>
 <HR>
 <A NAME="currentcolorspace"></A>
 <B>currentcolorspace</B> LEVEL 2
@@ -615,9 +615,9 @@ space in the graphics state. currentcolorspace always returns an array,
 even if the color space has no parameters and was selected by presenting
 just a name to setcolorspace.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolorspace">setcolorspace</A>, <A HREF="PSL2s.html#setcolor">setcolor</A>
+<B>See Also:</B> <A HREF="s.html#setcolorspace">setcolorspace</A>, <A HREF="s.html#setcolor">setcolor</A>
 <HR>
 <A NAME="currentcolortransfer"></A>
 <B>currentcolortransfer</B> LEVEL 2
@@ -625,14 +625,14 @@ just a name to setcolorspace.
 <P>
 returns the current transfer functions in the graphics state for all four
 color components.
-If the current transfer functions were specified by <A HREF="PSL2s.html#setcolortransfer">setcolortransfer</A>,
+If the current transfer functions were specified by <A HREF="s.html#setcolortransfer">setcolortransfer</A>,
 currentcolortransfer returns those four operands.
-If <A HREF="PSL2s.html#settransfer">settransfer</A> was used, currentcolortransfer
+If <A HREF="s.html#settransfer">settransfer</A> was used, currentcolortransfer
 returns the single transfer function, repeated four times.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolortransfer">setcolortransfer</A>, <A HREF="PSL2s.html#settransfer">settransfer</A>
+<B>See Also:</B> <A HREF="s.html#setcolortransfer">setcolortransfer</A>, <A HREF="s.html#settransfer">settransfer</A>
 <HR>
 <A NAME="currentcontext"></A>
 <B>currentcontext</B> DPS
@@ -640,10 +640,10 @@ returns the single transfer function, repeated four times.
 <P>
 returns an integer that identifies the current execution context.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#fork">fork</A>, <A HREF="PSL2ik.html#join">join</A>,
-<A HREF="PSL2d.html#detach">detach</A>
+<B>See Also:</B> <A HREF="f.html#fork">fork</A>, <A HREF="ik.html#join">join</A>,
+<A HREF="d.html#detach">detach</A>
 <HR>
 <A NAME="currentdash"></A>
 <B>currentdash</B>
@@ -651,9 +651,9 @@ returns an integer that identifies the current execution context.
 <P>
 returns the current dash array and offset in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setdash">setdash</A>, <A HREF="PSL2s.html#stroke">stroke</A>
+<B>See Also:</B> <A HREF="s.html#setdash">setdash</A>, <A HREF="s.html#stroke">stroke</A>
 <P>
 <HR>
 <A NAME="currentdevparams"></A>
@@ -665,9 +665,9 @@ for the device identified by string. The returned dictionary is merely a
 container for key-value pairs. Each execution of currentdevparams allocates
 and returns a new dictionary.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setdevparams">setdevparams</A>
+<B>See Also:</B> <A HREF="s.html#setdevparams">setdevparams</A>
 <HR>
 <A NAME="currentdict"></A>
 <B>currentdict</B>
@@ -677,9 +677,9 @@ pushes the current dictionary (the dictionary on top of the dictionary stack)
 on the operand stack. currentdict does not pop the dictionary stack; it
 just pushes a duplicate of its top element on the operand stack.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2b.html#begin">begin</A>, <A HREF="PSL2d.html#dictstack">dictstack</A>
+<B>See Also:</B> <A HREF="b.html#begin">begin</A>, <A HREF="d.html#dictstack">dictstack</A>
 <P>
 <HR>
 <A NAME="currentfile"></A>
@@ -718,9 +718,9 @@ pop /textline exch def
 After execution of this example, the name /textline
 is associated with the string &quot;here is a line of text&quot;.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#exec">exec</A>, <A HREF="PSL2qr.html#run">run</A>
+<B>See Also:</B> <A HREF="e.html#exec">exec</A>, <A HREF="qr.html#run">run</A>
 <P>
 <HR>
 <A NAME="currentflat"></A>
@@ -729,10 +729,10 @@ is associated with the string &quot;here is a line of text&quot;.
 <P>
 returns the current value of the flatness parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setflat">setflat</A>, <A HREF="PSL2f.html#flattenpath">flattenpath</A>,
-<A HREF="PSL2s.html#stroke">stroke</A>, <A HREF="PSL2f.html#fill">fill</A>
+<B>See Also:</B> <A HREF="s.html#setflat">setflat</A>, <A HREF="f.html#flattenpath">flattenpath</A>,
+<A HREF="s.html#stroke">stroke</A>, <A HREF="f.html#fill">fill</A>
 <HR>
 <A NAME="currentfont"></A>
 <B>currentfont</B>
@@ -744,10 +744,10 @@ when executed inside a font's BuildGlyph or BuildChar procedure or a procedure
 invoked by <A HREF="#cshow">cshow</A>, currentfont returns the currently
 selected base font (descendant of a composite font).
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rootfont">rootfont</A>, <A HREF="PSL2s.html#selectfont">selectfont</A>,
-<A HREF="PSL2s.html#setfont">setfont</A>
+<B>See Also:</B> <A HREF="qr.html#rootfont">rootfont</A>, <A HREF="s.html#selectfont">selectfont</A>,
+<A HREF="s.html#setfont">setfont</A>
 <HR>
 <A NAME="currentglobal"></A>
 <B>currentglobal</B> LEVEL 2
@@ -755,9 +755,9 @@ selected base font (descendant of a composite font).
 <P>
 returns the VM allocation mode currently in effect.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setglobal">setglobal</A>
+<B>See Also:</B> <A HREF="s.html#setglobal">setglobal</A>
 <HR>
 <A NAME="currentgray"></A>
 <B>currentgray</B>
@@ -769,9 +769,9 @@ value most recently specified to setgray or setcolor. If the current color
 space is DeviceRGB or DeviceCMYK, currentgray converts the current color
 to a gray value. For any other color space, currentgray returns 0.0.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setgray">setgray</A>, <A HREF="#currentcolor">currentcolor</A>,
+<B>See Also:</B> <A HREF="s.html#setgray">setgray</A>, <A HREF="#currentcolor">currentcolor</A>,
 <A HREF="#currentcolorspace">currentcolorspace</A>, <A HREF="#currenthsbcolor">currenthsbcolor</A>,
 <A HREF="#currentrgbcolor">currentrgbcolor</A>
 <HR>
@@ -787,11 +787,11 @@ include the current font, screen function, halftone dictionary, transfer
 function, or dash pattern. In general, allocating gstate objects in global
 VM is risky and should be avoided.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2gh.html#gstate">gstate</A>, <A HREF="PSL2s.html#setgstate">setgstate</A>
+<B>See Also:</B> <A HREF="gh.html#gstate">gstate</A>, <A HREF="s.html#setgstate">setgstate</A>
 <P>
 <HR>
 <A NAME="currenthalftone"></A>
@@ -803,10 +803,10 @@ halftone was defined by setscreen or setcolorscreen instead of by sethalftone,
 currenthalftone fabricates and returns a halftone dictionary (type 1 or
 2) that contains the screen parameters.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setscreen">setscreen</A>, <A HREF="PSL2s.html#setcolorscreen">setcolorscreen</A>,
-<A HREF="PSL2s.html#sethalftone">sethalftone</A>
+<B>See Also:</B> <A HREF="s.html#setscreen">setscreen</A>, <A HREF="s.html#setcolorscreen">setcolorscreen</A>,
+<A HREF="s.html#sethalftone">sethalftone</A>
 <HR>
 <A NAME="currenthalftonephase"></A>
 <B>currenthalftonephase</B> DPS
@@ -816,9 +816,9 @@ returns the current values of the halftone phase parameters in the graphics
 state. If sethalftonephase has not been executed, zero is returned for both
 values.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#sethalftonephase">sethalftonephase</A>
+<B>See Also:</B> <A HREF="s.html#sethalftonephase">sethalftonephase</A>
 <HR>
 <A NAME="currenthsbcolor"></A>
 <B>currenthsbcolor</B>
@@ -826,16 +826,16 @@ values.
 <P>
 returns the current color parameter in the graphics state according to the
 huesaturation-brightness model. If the current color space is DeviceRGB,
-currenthsbcolor returns the color values most recently specified by <A HREF="PSL2s.html#sethsbcolor">sethsbcolor</A>,
-<A HREF="PSL2s.html#setrgbcolor">setrgbcolor</A>, or <A HREF="PSL2s.html#setcolor">setcolor</A>,
+currenthsbcolor returns the color values most recently specified by <A HREF="s.html#sethsbcolor">sethsbcolor</A>,
+<A HREF="s.html#setrgbcolor">setrgbcolor</A>, or <A HREF="s.html#setcolor">setcolor</A>,
 converting them from RGB to HSB coordinates if necessary. If the current
 color space is DeviceGray or DeviceCMYK, currenthsbcolor first converts
 the current color to RGB.
 For any other color space, currenthsbcolor returns 0.0 0.0 0.0
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#sethsbcolor">sethsbcolor</A>, <A HREF="#currentcolor">currentcolor</A>,
+<B>See Also:</B> <A HREF="s.html#sethsbcolor">sethsbcolor</A>, <A HREF="#currentcolor">currentcolor</A>,
 <A HREF="#currentgray">currentgray</A>, <A HREF="#currentrgbcolor">currentrgbcolor</A>
 <HR>
 <A NAME="currentlinecap"></A>
@@ -844,9 +844,9 @@ For any other color space, currenthsbcolor returns 0.0 0.0 0.0
 <P>
 returns the current value of the line cap parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setlinecap">setlinecap</A>, <A HREF="PSL2s.html#stroke">stroke</A>,
+<B>See Also:</B> <A HREF="s.html#setlinecap">setlinecap</A>, <A HREF="s.html#stroke">stroke</A>,
 <A HREF="#currentlinejoin">currentlinejoin</A>
 <HR>
 <A NAME="currentlinejoin"></A>
@@ -855,9 +855,9 @@ returns the current value of the line cap parameter in the graphics state.
 <P>
 returns the current value of the line join parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setlinejoin">setlinejoin</A>, <A HREF="PSL2s.html#stroke">stroke</A>,
+<B>See Also:</B> <A HREF="s.html#setlinejoin">setlinejoin</A>, <A HREF="s.html#stroke">stroke</A>,
 <A HREF="#currentlinecap">currentlinecap</A>
 <HR>
 <A NAME="currentlinewidth"></A>
@@ -866,9 +866,9 @@ returns the current value of the line join parameter in the graphics state.
 <P>
 returns the current value of the line width parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setlinewidth">setlinewidth</A>, <A HREF="PSL2s.html#stroke">stroke</A>
+<B>See Also:</B> <A HREF="s.html#setlinewidth">setlinewidth</A>, <A HREF="s.html#stroke">stroke</A>
 <HR>
 <A NAME="currentmatrix"></A>
 <B>currentmatrix</B>
@@ -878,12 +878,12 @@ replaces the value of matrix with the value of the current transformation
 matrix (CTM) in the graphics state, and pushes the modified matrix back
 on the operand stack.
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setmatrix">setmatrix</A>, <A HREF="PSL2d.html#defaultmatrix">defaultmatrix</A>,
-<A HREF="PSL2ik.html#initmatrix">initmatrix</A>, <A HREF="PSL2qr.html#rotate">rotate</A>,
-<A HREF="PSL2s.html#scale">scale</A>, <A HREF="PSL2t.html#translate">translate</A>
+<B>See Also:</B> <A HREF="s.html#setmatrix">setmatrix</A>, <A HREF="d.html#defaultmatrix">defaultmatrix</A>,
+<A HREF="ik.html#initmatrix">initmatrix</A>, <A HREF="qr.html#rotate">rotate</A>,
+<A HREF="s.html#scale">scale</A>, <A HREF="t.html#translate">translate</A>
 <HR>
 <A NAME="currentmiterlimit"></A>
 <B>currentmiterlimit</B>
@@ -891,9 +891,9 @@ on the operand stack.
 <P>
 returns the current value of the miter limit parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setmiterlimit">setmiterlimit</A>, <A HREF="PSL2s.html#stroke">stroke</A>
+<B>See Also:</B> <A HREF="s.html#setmiterlimit">setmiterlimit</A>, <A HREF="s.html#stroke">stroke</A>
 <HR>
 <A NAME="currentobjectformat"></A>
 <B>currentobjectformat</B> LEVEL 2
@@ -901,9 +901,9 @@ returns the current value of the miter limit parameter in the graphics state.
 <P>
 returns the object format parameter currently in effect.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setobjectformat">setobjectformat</A>
+<B>See Also:</B> <A HREF="s.html#setobjectformat">setobjectformat</A>
 <HR>
 <A NAME="currentoverprint"></A>
 <B>currentoverprint</B>LEVEL 2
@@ -911,9 +911,9 @@ returns the object format parameter currently in effect.
 <P>
 returns the value of the overprint parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setoverprint">setoverprint</A>
+<B>See Also:</B> <A HREF="s.html#setoverprint">setoverprint</A>
 <HR>
 <A NAME="currentpacking"></A>
 <B>currentpacking</B> LEVEL 2
@@ -921,9 +921,9 @@ returns the value of the overprint parameter in the graphics state.
 <P>
 returns the array packing mode currently in effect.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setpacking">setpacking</A>, <A HREF="PSL2p.html#packedarray">packedarray</A>
+<B>See Also:</B> <A HREF="s.html#setpacking">setpacking</A>, <A HREF="p.html#packedarray">packedarray</A>
 <P>
 <HR>
 <A NAME="currentpagedevice"></A>
@@ -935,16 +935,16 @@ in the current graphics state. currentpagedevice creates a new dictionary
 if necessary. If the device in the current graphics state is not a page
 device, currentpagedevice returns an empty dictionary (length of 0).
 Changes made to the hardware state of the output device since the last execution
-of <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>, such as changing
+of <A HREF="s.html#setpagedevice">setpagedevice</A>, such as changing
 paper trays or switches, are not immediately reflected in this dictionary.
 If the current context is under the control of a job server, the server
 sets up a device that matches the hardware state before starting each job.
 At the beginning of each job, therefore, the dictionary currentpagedevice
 returns matches the current hardware state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setpagedevice">setpagedevice</A>
+<B>See Also:</B> <A HREF="s.html#setpagedevice">setpagedevice</A>
 <HR>
 <A NAME="currentpoint"></A>
 <B>currentpoint</B>
@@ -953,7 +953,7 @@ returns matches the current hardware state.
 returns the x and y coordinates of the current point in the graphics state
 (i.e., the trailing endpoint of the current path). If the current point
 is undefined because the current path is empty, currentpoint executes the
-<A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A> error.
+<A HREF="no.html#nocurrentpoint">nocurrentpoint</A> error.
 The current point is reported in the user coordinate system. Points entered
 into a path are immediately converted to device coordinates by the current
 transformation matrix (CTM); existing points are not changed by subsequent
@@ -962,12 +962,12 @@ that corresponds to the current point according to the current value of
 the CTM. If a current point is set and then the CTM is changed, currentpoint
 will report a different position in user space than it did before.
 <P>
-<B>Errors:</B> <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>, <A 
-HREF="PSL2s.html#stackoverflow">stackoverflow</A>,
-<A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>, <A 
+HREF="s.html#stackoverflow">stackoverflow</A>,
+<A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#lineto">lineto</A>, <A HREF="PSL2m.html#moveto">moveto</A>,
-<A HREF="#curveto">curveto</A>, <A HREF="PSL2a.html#arc">arc</A>
+<B>See Also:</B> <A HREF="l.html#lineto">lineto</A>, <A HREF="m.html#moveto">moveto</A>,
+<A HREF="#curveto">curveto</A>, <A HREF="a.html#arc">arc</A>
 <HR>
 <A NAME="currentrgbcolor"></A>
 <B>currentrgbcolor</B>
@@ -984,9 +984,9 @@ converts the current color to RGB.
 <LI>For any other color space, currentrgbcolor returns 0.0 0.0 0.0.
 </UL>
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setrgbcolor">setrgbcolor</A>, <A HREF="#currentcolor">currentcolor</A>,
+<B>See Also:</B> <A HREF="s.html#setrgbcolor">setrgbcolor</A>, <A HREF="#currentcolor">currentcolor</A>,
 <A HREF="#currentgray">currentgray</A>, <A HREF="#currenthsbcolor">currenthsbcolor</A>
 <HR>
 <A NAME="currentscreen"></A>
@@ -996,16 +996,16 @@ converts the current color to RGB.
 <P>
 returns the current halftone screen parameters (frequency, angle, and proc)
 in the graphics state, assuming the current screen was established by setscreen.
-If <A HREF="PSL2s.html#setcolorscreen">setcolorscreen</A> was executed,
+If <A HREF="s.html#setcolorscreen">setcolorscreen</A> was executed,
 currentscreen returns the parameters for the gray screen.
 <P>
-If <A HREF="PSL2s.html#sethalftone">sethalftone</A> was executed, currentscreen
+If <A HREF="s.html#sethalftone">sethalftone</A> was executed, currentscreen
 returns a frequency of 60, an angle of 0, and the halftone dictionary.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setcolorscreen">setcolorscreen</A>, <A HREF="PSL2s.html#setscreen">setscreen</A>,
-<A HREF="PSL2s.html#sethalftone">sethalftone</A>
+<B>See Also:</B> <A HREF="s.html#setcolorscreen">setcolorscreen</A>, <A HREF="s.html#setscreen">setscreen</A>,
+<A HREF="s.html#sethalftone">sethalftone</A>
 <HR>
 <A NAME="currentshared"></A>
 <B>currentshared</B> LEVEL 2
@@ -1014,9 +1014,9 @@ returns a frequency of 60, an angle of 0, and the halftone dictionary.
 has the same semantics as currentglobal. This operator is defined for compatibility
 with existing Display PostScript applications.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setglobal">setglobal</A>, <A HREF="PSL2s.html#setshared">setshared</A>
+<B>See Also:</B> <A HREF="s.html#setglobal">setglobal</A>, <A HREF="s.html#setshared">setshared</A>
 <HR>
 <A NAME="currentstrokeadjust"></A>
 <B>currentstrokeadjust</B> LEVEL 2
@@ -1024,9 +1024,9 @@ with existing Display PostScript applications.
 <P>
 returns the current stroke adjust parameter in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setstrokeadjust">setstrokeadjust</A>
+<B>See Also:</B> <A HREF="s.html#setstrokeadjust">setstrokeadjust</A>
 <HR>
 <A NAME="currentsystemparams"></A>
 <B>currentsystemparams</B> LEVEL 2
@@ -1037,32 +1037,32 @@ parameters that are defined in the implementation. The returned dictionary
 is merely a container for key-value pairs. Each execution of currentsystemparams
 allocates and returns a new dictionary.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A 
-HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A 
+HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setsystemparams">setsystemparams</A>
+<B>See Also:</B> <A HREF="s.html#setsystemparams">setsystemparams</A>
 <HR>
 <A NAME="currenttransfer"></A>
 <B>currenttransfer</B>
 <PRE>- currenttransfer proc</PRE>
 <P>
 returns the current transfer function in the graphics state, assuming that
-it was established by <A HREF="PSL2s.html#settransfer">settransfer</A>.
-If <A HREF="PSL2s.html#setcolortransfer">setcolortransfer</A> was executed,
+it was established by <A HREF="s.html#settransfer">settransfer</A>.
+If <A HREF="s.html#setcolortransfer">setcolortransfer</A> was executed,
 currenttransfer returns the gray transfer function.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#settransfer">settransfer</A>, <A HREF="PSL2s.html#setcolortransfer">setcolortransfer</A>
+<B>See Also:</B> <A HREF="s.html#settransfer">settransfer</A>, <A HREF="s.html#setcolortransfer">setcolortransfer</A>
 <HR><A NAME="currentundercolorremoval"></A>
 <B>currentundercolorremoval</B> LEVEL 2
 <PRE>- currentundercolorremoval proc</PRE>
 <P>
 returns the current undercolor removal function in the graphics state.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setundercolorremoval">setundercolorremoval</A>
+<B>See Also:</B> <A HREF="s.html#setundercolorremoval">setundercolorremoval</A>
 <HR>
 <A NAME="currentuserparams"></A>
 <B>currentuserparams</B>
@@ -1073,10 +1073,10 @@ parameters that are defined in the implementation. The returned dictionary
 is a container for key-value pairs. Each execution of currentuserparams
 allocates and returns a new dictionary.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A 
-HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A 
+HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2s.html#setuserparams">setuserparams</A>
+<B>See Also:</B> <A HREF="s.html#setuserparams">setuserparams</A>
 <HR>
 <A NAME="curveto"></A>
 <B>curveto</B>
@@ -1086,7 +1086,7 @@ adds a Bezier cubic section to the current path between the current point,
 referred to here as (x0, y0), and the point (x3, y3), using (x1, y1) and
 (x2, y2) as the Bezier cubic control points. After constructing the curve,
 curveto makes (x3, y3) the new current point. If the current point is undefined
-because the current path is empty, curveto executes the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
+because the current path is empty, curveto executes the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
 The four points define the shape of the curve geometrically. The curve starts
 at (x0, y0), it is tangent to the line from (x0, y0) to (x1, y1) at that
@@ -1104,12 +1104,12 @@ The cubic section produced by curveto is the path traced by x(t) and y(t)
 as t ranges from 0 to 1. The Bezier control points corresponding to this
 curve are:
 <P>
-<B>Errors:</B> <A HREF="PSL2l.html#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2l.html#lineto">lineto</A>, <A HREF="PSL2m.html#moveto">moveto</A>,
-<A HREF="PSL2a.html#arc">arc</A>, <A HREF="PSL2a.html#arcn">arcn</A>, <A HREF="PSL2a.html#arct">arct</A>,
-<A HREF="PSL2a.html#arcto">arcto</A>
+<B>See Also:</B> <A HREF="l.html#lineto">lineto</A>, <A HREF="m.html#moveto">moveto</A>,
+<A HREF="a.html#arc">arc</A>, <A HREF="a.html#arcn">arcn</A>, <A HREF="a.html#arct">arct</A>,
+<A HREF="a.html#arcto">arcto</A>
 <HR>
 <A NAME="cvi"></A>
 <B>cvi</B>
@@ -1122,9 +1122,9 @@ returns it. If the operand is a real, it truncates any fractional part (i.e.,
 rounds it toward 0) and converts it to an integer. If the operand is a string,
 it interprets the characters of the string as a number according to the
 PostScript syntax rules. If that number is a real, cvi converts it to an
-integer. cvi executes a <A HREF="PSL2qr.html#rangecheck">rangecheck</A>
-error if a real is too large to convert to an integer. (See the <A HREF="PSL2qr.html#round">round</A>,
-<A HREF="PSL2t.html#truncate">truncate</A>, <A HREF="PSL2f.html#floor">floor</A>,
+integer. cvi executes a <A HREF="qr.html#rangecheck">rangecheck</A>
+error if a real is too large to convert to an integer. (See the <A HREF="qr.html#round">round</A>,
+<A HREF="t.html#truncate">truncate</A>, <A HREF="f.html#floor">floor</A>,
 and <A HREF="#ceiling">ceiling</A> operators, which remove fractional parts
 without performing type conversion.)
 <P>
@@ -1135,13 +1135,13 @@ without performing type conversion.)
 520.9 cvi    &rArr;   520
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2s.html#syntaxerror">syntaxerror</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="s.html#syntaxerror">syntaxerror</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
-<B>See Also:</B> <A HREF="#cvr">cvr</A>, <A HREF="#ceiling">ceiling</A>, <A HREF="PSL2f.html#floor">floor</A>,
-<A HREF="PSL2qr.html#round">round</A>, <A HREF="PSL2t.html#truncate">truncate</A>
+<B>See Also:</B> <A HREF="#cvr">cvr</A>, <A HREF="#ceiling">ceiling</A>, <A HREF="f.html#floor">floor</A>,
+<A HREF="qr.html#round">round</A>, <A HREF="t.html#truncate">truncate</A>
 <HR>
 <A NAME="cvlit"></A>
 <B>cvlit</B>
@@ -1150,9 +1150,9 @@ HREF="PSL2qr.html#rangecheck">rangecheck</A>,
 (convert to literal) makes the object on the top of the operand stack have
 the literal instead of executable attribute.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="#cvx">cvx</A>, <A HREF="PSL2xy.html#xcheck">xcheck</A>
+<B>See Also:</B> <A HREF="#cvx">cvx</A>, <A HREF="xy.html#xcheck">xcheck</A>
 <HR>
 <A NAME="cvn"></A>
 <B>cvn</B>
@@ -1167,11 +1167,11 @@ the same as the string. The name object is executable if the string was.
 (abc) cvx cvn  &rArr;  abc
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#cvs">cvs</A>, <A HREF="PSL2t.html#type">type</A>
+<B>See Also:</B> <A HREF="#cvs">cvs</A>, <A HREF="t.html#type">type</A>
 <HR>
 <A NAME="cvr"></A>
 <B>cvr</B>
@@ -1185,9 +1185,9 @@ it interprets the characters of the string as a number according to the
 PostScript syntax rules. If that number is an integer, cvr converts it to
 a real.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2l.html#limitcheck">limitcheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2s.html#syntaxerror">syntaxerror</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefinedresult">undefinedresult</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="l.html#limitcheck">limitcheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="s.html#syntaxerror">syntaxerror</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefinedresult">undefinedresult</A>
 <P>
 <B>See Also:</B> <A HREF="#cvi">cvi</A>
 <HR>
@@ -1199,7 +1199,7 @@ a real.
 num in the specified radix, stores the text into the supplied string (overwriting
 some initial portion of its value), and returns a string object designating
 the substring actually used. If string is too small to hold the result of
-the conversion, cvrs executes the error <A HREF="PSL2qr.html#rangecheck">rangecheck</A>.
+the conversion, cvrs executes the error <A HREF="qr.html#rangecheck">rangecheck</A>.
 <P>
 If radix is 10, cvrs produces the same result as cvs when applied to either
 an integer or a real. That is, it produces a signed integer or real token
@@ -1223,9 +1223,9 @@ language token that represents the same number.
 123.4 16 temp cvrs  &rArr;  (7B)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
 <B>See Also:</B> <A HREF="#cvs">cvs</A>
 <HR>
@@ -1237,7 +1237,7 @@ HREF="PSL2qr.html#rangecheck">rangecheck</A>,
 any, stores the text into the supplied string (overwriting some initial
 portion of its value), and returns a string object designating the substring
 actually used. If the string is too small to hold the result of conversion,
-cvs executes the error <A HREF="PSL2qr.html#rangecheck">rangecheck</A>.
+cvs executes the error <A HREF="qr.html#rangecheck">rangecheck</A>.
 <P>
 If any is a number, cvs produces a string representation of that number.
 If any is a boolean, cvs produces either the string true or the string false.
@@ -1256,12 +1256,12 @@ be represented as 0.001 or as 1.0E-3.
 mark str cvs         &rArr;  (--nostringval--)
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A 
-HREF="PSL2qr.html#rangecheck">rangecheck</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A 
+HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#cvi">cvi</A>, <A HREF="#cvr">cvr</A>, <A HREF="PSL2s.html#string">string</A>,
-<A HREF="PSL2t.html#type">type</A>
+<B>See Also:</B> <A HREF="#cvi">cvi</A>, <A HREF="#cvr">cvr</A>, <A HREF="s.html#string">string</A>,
+<A HREF="t.html#type">type</A>
 <HR>
 <A NAME="cvx"></A>
 <B>cvx</B>
@@ -1270,9 +1270,9 @@ HREF="PSL2qr.html#rangecheck">rangecheck</A>,
 (convert to executable) makes the object on top of the operand stack have
 the executable instead of literal attribute.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="#cvlit">cvlit</A>, <A HREF="PSL2xy.html#xcheck">xcheck</A>
+<B>See Also:</B> <A HREF="#cvlit">cvlit</A>, <A HREF="xy.html#xcheck">xcheck</A>
 <HR>
 </BODY>
 </HTML>

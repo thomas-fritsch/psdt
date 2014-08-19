@@ -11,15 +11,15 @@
 <B>[</B>
 <PRE>- [ mark</PRE>
 <P>
-pushes a mark object on the operand stack (see <A HREF="PSL2m.html#mark">mark</A>).
+pushes a mark object on the operand stack (see <A HREF="m.html#mark">mark</A>).
 The customary use of the [ operator is to mark the beginning of an indefinitely
 long sequence of objects that will eventually be formed into a new array
 object by the ] operator.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="#mark2">]</A>, <A HREF="PSL2m.html#mark">mark</A>, <A HREF="PSL2a.html#array">array</A>,
-<A HREF="PSL2a.html#astore">astore</A>
+<B>See Also:</B> <A HREF="#mark2">]</A>, <A HREF="m.html#mark">mark</A>, <A HREF="a.html#array">array</A>,
+<A HREF="a.html#astore">astore</A>
 <HR>
 <A NAME="mark2"></A>
 <B>]</B>
@@ -33,7 +33,7 @@ one immediately above the mark) into element 0 of array. It removes all
 the array elements from the stack, as well as the mark object.
 <P>
 The array is allocated in local or global VM according to the current VM
-allocation mode. An <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+allocation mode. An <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs if the array is in global VM and any of obj0 ... objn-1 are
 in local VM.
 <P>
@@ -52,11 +52,11 @@ on all of the array elements as it encounters them (unlike its behavior
 with the {...} syntax for executable array construction) so the add operator
 is executed before the array is constructed.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>, <A HREF="PSerrors.html#unmatchedmark">unmatchedmark</A>,
-<A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="u.html#unmatchedmark">unmatchedmark</A>,
+<A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="#mark1">[</A>, <A HREF="PSL2m.html#mark">mark</A>, <A HREF="PSL2a.html#array">array</A>,
-<A HREF="PSL2a.html#astore">astore</A>
+<B>See Also:</B> <A HREF="#mark1">[</A>, <A HREF="m.html#mark">mark</A>, <A HREF="a.html#array">array</A>,
+<A HREF="a.html#astore">astore</A>
 <HR>
 <A NAME="mark2LT"></A>
 <B>&lt;&lt;</B> LEVEL 2
@@ -64,9 +64,9 @@ is executed before the array is constructed.
 <P>
 pushes a mark object on the operand stack (same as mark and [ operators).
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackoverflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="#marktwoGT">&gt;&gt;</A>, <A HREF="PSL2m.html#mark">mark</A>
+<B>See Also:</B> <A HREF="#marktwoGT">&gt;&gt;</A>, <A HREF="m.html#mark">mark</A>
 <HR>
 <A NAME="marktwoGT"></A>
 &gt;&gt; LEVEL 2
@@ -79,9 +79,9 @@ The dictionary is allocated space for precisely the number of key-value
 pairs supplied.
 <P>
 The dictionary is allocated in local or global VM according to the current
-VM allocation mode. An <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>
+VM allocation mode. An <A HREF="ik.html#invalidaccess">invalidaccess</A>
 error occurs if the dictionary is in global VM and any keys or values are
-in local VM. A <A HREF="PSerrors.html#rangecheck">rangecheck</A> error occurs
+in local VM. A <A HREF="qr.html#rangecheck">rangecheck</A> error occurs
 if there is an odd number of objects above the topmost mark on the stack.
 <P>
 &gt;&gt; is equivalent to:
@@ -106,11 +106,11 @@ end
 This example constructs a dictionary containing three key-value pairs, which
 it immediately passes to the setpagedevice operator.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSerrors.html#rangecheck">rangecheck</A>,
-<A HREF="PSerrors.html#unmatchedmark">unmatchedmark</A>, <A HREF="PSerrors.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
+<A HREF="u.html#unmatchedmark">unmatchedmark</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="#mark2LT">&lt;&lt;</A>, <A HREF="PSL2m.html#mark">mark</A>,
-<A HREF="PSL2d.html#dict">dict</A>
+<B>See Also:</B> <A HREF="#mark2LT">&lt;&lt;</A>, <A HREF="m.html#mark">mark</A>,
+<A HREF="d.html#dict">dict</A>
 <HR>
 <A NAME="equals"></A>
 =
@@ -126,11 +126,11 @@ The name = is not special. In PostScript language programs it must be delimited
 by white space or special characters the same as names composed of alphabetical
 characters. The value of = is not an operator, but rather a built-in procedure.
 <P>
-<B><B>Errors:</B></B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>
+<B><B>Errors:</B></B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="#twoequals">==</A>, <A HREF="PSL2s.html#stack">stack</A>,
-<A HREF="PSL2c.html#cvs">cvs</A>, <A HREF="PSL2p.html#print">print</A>,
-<A HREF="PSL2f.html#flush">flush</A>
+<B>See Also:</B> <A HREF="#twoequals">==</A>, <A HREF="s.html#stack">stack</A>,
+<A HREF="c.html#cvs">cvs</A>, <A HREF="p.html#print">print</A>,
+<A HREF="f.html#flush">flush</A>
 <HR>
 <A NAME="twoequals"></A>
 <B>==</B>
@@ -153,26 +153,26 @@ characters. The value of == is not an operator, but rather a built-in procedure.
 The == operator is intended for convenience in debugging. The details of
 how == formats its output are intentionally unspecified. A program requiring
 detailed control over output format should do its own formatting explicitly,
-using lowerlevel operators, such as <A HREF="PSL2c.html#cvs">cvs</A>. Also,
-and <A HREF="PSL2w.html#writeobject">writeobject</A> (Level 2 features)
+using lowerlevel operators, such as <A HREF="c.html#cvs">cvs</A>. Also,
+and <A HREF="w.html#writeobject">writeobject</A> (Level 2 features)
 may be more suitable for generating machine-readable output.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackunderflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>
 <P>
-<B>See Also:</B> <A HREF="#equals">=</A>, <A HREF="PSL2p.html#print">print</A>,
-<A HREF="PSL2p.html#pstack">pstack</A>, <A HREF="PSL2f.html#flush">flush</A>
+<B>See Also:</B> <A HREF="#equals">=</A>, <A HREF="p.html#print">print</A>,
+<A HREF="p.html#pstack">pstack</A>, <A HREF="f.html#flush">flush</A>
 <HR>
 <A NAME="$error"></A>
 <B>$error</B>
 <PRE>- $error dict</PRE>
 <P>
 pushes the dictionary object $error on the operand stack.
-$error is not an operator; it is a name in <A HREF="PSL2s.html#systemdict">systemdict</A>
+$error is not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
 associated with the dictionary object.
 <P>
-<B>Errors:</B> <A HREF="PSerrors.html#stackunderflow">stackoverflow</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackoverflow</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2e.html#errordict">errordict</A>
+<B>See Also:</B> <A HREF="e.html#errordict">errordict</A>
 <HR>
 </BODY>
 </HTML>

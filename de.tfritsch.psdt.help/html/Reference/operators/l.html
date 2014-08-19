@@ -15,13 +15,13 @@ is an integer designating the PostScript language level supported by the
 PostScript interpreter. If the value of languagelevel is 2, the PostScript
 interpreter supports all PostScript Level 2 language features.
 If the value of languagelevel is 1 or if languagelevel is not defined in
-<A HREF="PSL2s.html#systemdict">systemdict</A>, the PostScript interpreter
+<A HREF="s.html#systemdict">systemdict</A>, the PostScript interpreter
 does not support all PostScript Level 2 language features.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2p.html#product">product</A>, <A HREF="PSL2qr.html#revision">revision</A>,
-<A HREF="PSL2s.html#serialnumber">serialnumber</A>, <A HREF="PSL2v.html#version">version</A>
+<B>See Also:</B> <A HREF="p.html#product">product</A>, <A HREF="qr.html#revision">revision</A>,
+<A HREF="s.html#serialnumber">serialnumber</A>, <A HREF="v.html#version">version</A>
 <HR>
 <A NAME="le"></A>
 <B>le</B>
@@ -35,13 +35,13 @@ both operands are strings, le compares them element by element (treating
 the elements as integers in the range 0 to 255) to determine whether the
 first string is lexically less than or equal to the second. If the operands
 are of other types or one is a string and the other is a number, le executes
-the <A HREF="PSL2t.html#typecheck">typecheck</A> error.
+the <A HREF="t.html#typecheck">typecheck</A> error.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#lt">lt</A>, <A HREF="PSL2e.html#eq">eq</A>, <A HREF="PSL2no.html#ne">ne</A>,
-<A HREF="PSL2gh.html#ge">ge</A>, <A HREF="PSL2gh.html#gt">gt</A>
+<B>See Also:</B> <A HREF="#lt">lt</A>, <A HREF="e.html#eq">eq</A>, <A HREF="no.html#ne">ne</A>,
+<A HREF="gh.html#ge">ge</A>, <A HREF="gh.html#gt">gt</A>
 <HR>
 <A NAME="length"></A>
 <B>length</B>
@@ -51,11 +51,11 @@ packedarray length int
      string length int
        name length int</PRE>
 <P>
-depends on the type of its operand. If the operand is an <A HREF="PSL2a.html#array">array</A>,
+depends on the type of its operand. If the operand is an <A HREF="a.html#array">array</A>,
 packed array, or string, length returns the number of elements in its value.
 If the operand is a dictionary, length returns the current number of key-value
 pairs it contains, as opposed to its maximum capacity, which is returned
-by <A HREF="PSL2m.html#maxlength">maxlength</A>. If the operand is a name
+by <A HREF="m.html#maxlength">maxlength</A>. If the operand is a name
 object, the length is the number of characters in the text string that defines
 it.
 <P>
@@ -76,10 +76,10 @@ mydict length                       &rArr;  1
 /foo length                         &rArr;  3
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#maxlength">maxlength</A>
+<B>See Also:</B> <A HREF="m.html#maxlength">maxlength</A>
 <HR>
 <A NAME="limitcheck"></A>
 <B>limitcheck</B> (error)
@@ -95,14 +95,14 @@ become too complex).
 appends a straight line segment to the current path . The line extends
 from the current point to the point (x, y) in user space; (x, y) then becomes
 the current point. If the current point is undefined because the current
-path is empty, lineto executes the error <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>.
+path is empty, lineto executes the error <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>.
 <P>
-<B>Errors:</B> <A HREF="#limitcheck">limitcheck</A>, <A HREF="PSL2no.html#nocurrentpoint">nocurrentpoint</A>,
-<A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="#limitcheck">limitcheck</A>, <A HREF="no.html#nocurrentpoint">nocurrentpoint</A>,
+<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2qr.html#rlineto">rlineto</A>, <A HREF="PSL2m.html#moveto">moveto</A>,
-<A HREF="PSL2a.html#arc">arc</A>, <A HREF="PSL2c.html#curveto">curveto</A>,
-<A HREF="PSL2c.html#closepath">closepath</A>
+<B>See Also:</B> <A HREF="qr.html#rlineto">rlineto</A>, <A HREF="m.html#moveto">moveto</A>,
+<A HREF="a.html#arc">arc</A>, <A HREF="c.html#curveto">curveto</A>,
+<A HREF="c.html#closepath">closepath</A>
 <HR>
 <A NAME="ln"></A>
 <B>ln</B>
@@ -116,10 +116,10 @@ returns the natural logarithm (base e) of num. The result is a real.
 100 ln   &rArr;  4.60517
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#log">log</A>, <A HREF="PSL2e.html#exp">exp</A>
+<B>See Also:</B> <A HREF="#log">log</A>, <A HREF="e.html#exp">exp</A>
 <HR>
 <A NAME="load"></A>
 <B>load</B>
@@ -128,7 +128,7 @@ returns the natural logarithm (base e) of num. The result is a real.
 searches for key in each dictionary on the dictionary stack, starting with
 the topmost (current) dictionary. If key is found in some dictionary, load
 pushes the associated value on the operand stack. If key is not found in
-any dictionary on the dictionary stack, load executes the error <A HREF="PSL2u.html#undefined">undefined</A>.
+any dictionary on the dictionary stack, load executes the error <A HREF="u.html#undefined">undefined</A>.
 <P>
 load looks up key the same way the interpreter looks up executable names
 that it encounters during execution. However, load always pushes the associated
@@ -140,11 +140,11 @@ value on the operand stack; it never executes that value.
 /avg load            &rArr;  {add 2 div}
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>, <A HREF="PSL2u.html#undefined">undefined</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefined">undefined</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2w.html#where">where</A>, <A HREF="PSL2gh.html#get">get</A>,
-<A HREF="PSL2s.html#store">store</A>
+<B>See Also:</B> <A HREF="w.html#where">where</A>, <A HREF="gh.html#get">get</A>,
+<A HREF="s.html#store">store</A>
 <HR>
 <A NAME="lock"></A>
 <B>lock</B> DPS
@@ -157,9 +157,9 @@ Since a lock is a composite object, creating one consumes VM. The lock's
 value is allocated in local or global VM according to the current VM allocation
 mode.
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackoverflow">stackoverflow</A>, <A HREF="PSL2v.html#VMerror">VMerror</A>
+<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>, <A HREF="v.html#VMerror">VMerror</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2m.html#monitor">monitor</A>, <A HREF="PSL2w.html#wait">wait</A>
+<B>See Also:</B> <A HREF="m.html#monitor">monitor</A>, <A HREF="w.html#wait">wait</A>
 <HR>
 <A NAME="log"></A>
 <B>log</B>
@@ -173,26 +173,26 @@ returns the common logarithm (base 10) of num. The result is a real.
 100 log  &rArr;  2.0
 </PRE>
 <P>
-<B>Errors:</B> <A HREF="PSL2qr.html#rangecheck">rangecheck</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#ln">ln</A>, <A HREF="PSL2e.html#exp">exp</A>
+<B>See Also:</B> <A HREF="#ln">ln</A>, <A HREF="e.html#exp">exp</A>
 <HR>
 <A NAME="loop"></A>
 <B>loop</B>
 <PRE>proc loop -</PRE>
 <P>
-repeatedly executes proc until proc executes the <A HREF="PSL2e.html#exit">exit</A>
+repeatedly executes proc until proc executes the <A HREF="e.html#exit">exit</A>
 operator, at which point interpretation resumes at the object next in sequence
-after the loop. Control also leaves proc if the <A HREF="PSL2s.html#stop">stop</A>
-operator is executed. If proc never executes <A HREF="PSL2e.html#exit">exit</A>
-or <A HREF="PSL2s.html#stop">stop</A>, an infinite loop results, which can
-be broken only via an external interrupt (see <A HREF="PSL2ik.html#interrupt">interrupt</A>).
+after the loop. Control also leaves proc if the <A HREF="s.html#stop">stop</A>
+operator is executed. If proc never executes <A HREF="e.html#exit">exit</A>
+or <A HREF="s.html#stop">stop</A>, an infinite loop results, which can
+be broken only via an external interrupt (see <A HREF="ik.html#interrupt">interrupt</A>).
 <P>
-<B>Errors:</B> <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>, <A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="PSL2f.html#for">for</A>, <A HREF="PSL2qr.html#repeat">repeat</A>,
-<A HREF="PSL2f.html#forall">forall</A>, <A HREF="PSL2e.html#exit">exit</A>
+<B>See Also:</B> <A HREF="f.html#for">for</A>, <A HREF="qr.html#repeat">repeat</A>,
+<A HREF="f.html#forall">forall</A>, <A HREF="e.html#exit">exit</A>
 <HR>
 <A NAME="lt"></A>
 <B>lt</B>
@@ -205,14 +205,14 @@ are numbers, lt compares their mathematical values. If both operands are
 strings, lt compares them element by element (treating the elements as integers
 in the range 0 to 255) to determine whether the first string is lexically
 less than the second. If the operands are of other types or one is a string
-and the other is a number, lt executes the <A HREF="PSL2t.html#typecheck">typecheck</A>
+and the other is a number, lt executes the <A HREF="t.html#typecheck">typecheck</A>
 error.
 <P>
-<B>Errors:</B> <A HREF="PSL2ik.html#invalidaccess">invalidaccess</A>, <A HREF="PSL2s.html#stackunderflow">stackunderflow</A>,
-<A HREF="PSL2t.html#typecheck">typecheck</A>
+<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
+<A HREF="t.html#typecheck">typecheck</A>
 <P>
-<B>See Also:</B> <A HREF="#le">le</A>, <A HREF="PSL2e.html#eq">eq</A>, <A HREF="PSL2no.html#ne">ne</A>,
-<A HREF="PSL2gh.html#ge">ge</A>, <A HREF="PSL2gh.html#gt">gt</A>
+<B>See Also:</B> <A HREF="#le">le</A>, <A HREF="e.html#eq">eq</A>, <A HREF="no.html#ne">ne</A>,
+<A HREF="gh.html#ge">ge</A>, <A HREF="gh.html#gt">gt</A>
 <HR>
 </BODY>
 </HTML>

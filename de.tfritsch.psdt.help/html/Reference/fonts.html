@@ -118,13 +118,15 @@
 			origins coincident, and then painted. This information is used in
 			making decisions about glyph caching and clipping. If all four values
 			are 0, the PostScript interpreter makes no assumptions based on the
-			font bounding box.<BR> If any value is nonzero, it is essential
-			that the font bounding box be accurate; if any glyph's marks fall
-			outside this bounding box, incorrect behavior may result.<BR> In
-			many Type 1 fonts, the <b>FontBBox</b> array is executable, though
-			there is no good reason for this to be so. Programs that access <b>FontBBox</b>
-			should invoke an explicit <b>get</b> or <b>load</b> operator to avoid
-			unintended execution.</td>
+			font bounding box.
+			<P>If any value is nonzero, it is essential that the font
+				bounding box be accurate; if any glyph's marks fall outside this
+				bounding box, incorrect behavior may result.
+			<P>
+				In many Type 1 fonts, the <b>FontBBox</b> array is executable,
+				though there is no good reason for this to be so. Programs that
+				access <b>FontBBox</b> should invoke an explicit <b>get</b> or <b>load</b>
+				operator to avoid unintended execution.</td>
 	</tr>
 </table>
 <p />
