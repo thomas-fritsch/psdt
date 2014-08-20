@@ -391,16 +391,16 @@
 		<topic label="xyshow"                   href="html/Reference/operators/xy.html#xyshow" />
 		<topic label="yield"                    href="html/Reference/operators/xy.html#yield" />
 		<topic label="yshow"                    href="html/Reference/operators/xy.html#yshow" />
-		<topic label="/Encoding"                href="html/Reference/fonts.html#Encoding" />
-		<topic label="/FID"                     href="html/Reference/fonts.html#FID" />
-		<topic label="/BuildChar"               href="html/Reference/fonts.html#BuildChar" />
-		<topic label="/BuildGlyph"              href="html/Reference/fonts.html#BuildGlyph" />
-		<topic label="/FontBBox"                href="html/Reference/fonts.html#FontBBox" />
-		<topic label="/FontInfo"                href="html/Reference/fonts.html#FontInfo" />
-		<topic label="/FontMatrix"              href="html/Reference/fonts.html#FontMatrix" />
-		<topic label="/FontName"                href="html/Reference/fonts.html#FontName" />
-		<topic label="/FontType"                href="html/Reference/fonts.html#FontType" />
-		<topic label="/LanguageLevel"           href="html/Reference/fonts.html#LanguageLevel" />
-		<topic label="/WMode"                   href="html/Reference/fonts.html#WMode" />
+		<topic label="/BuildChar"               href="html/Reference/fonts/type-3-fonts.html#BuildChar" />
+		<topic label="/BuildGlyph"              href="html/Reference/fonts/type-3-fonts.html#BuildGlyph" />
+		<topic label="/Encoding"                href="html/Reference/fonts/font-dictionaries.html#Encoding" />
+		<topic label="/FID"                     href="html/Reference/fonts/font-dictionaries.html#FID" />
+		<topic label="/FontBBox"                href="html/Reference/fonts/font-dictionaries.html#FontBBox" />
+		<topic label="/FontInfo"                href="html/Reference/fonts/font-dictionaries.html#FontInfo" />
+		<topic label="/FontMatrix"              href="html/Reference/fonts/font-dictionaries.html#FontMatrix" />
+		<topic label="/FontName"                href="html/Reference/fonts/font-dictionaries.html#FontName" />
+		<topic label="/FontType"                href="html/Reference/fonts/font-dictionaries.html#FontType" />
+		<topic label="/LanguageLevel"           href="html/Reference/fonts/font-dictionaries.html#LanguageLevel" />
+		<topic label="/WMode"                   href="html/Reference/fonts/font-dictionaries.html#WMode" />
 	</context>
 </contexts>

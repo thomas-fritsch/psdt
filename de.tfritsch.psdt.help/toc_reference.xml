@@ -2,6 +2,11 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Reference">
+	<topic label="Fonts"                        href="html/Reference/fonts.html">
+		<topic label="Font Dictionaries"        href="html/Reference/fonts/font-dictionaries.html" />
+		<topic label="Type 3 Fonts"             href="html/Reference/fonts/type-3-fonts.html" />
+	</topic>
+	<topic     label="Operators">
 	<topic     label="Symbols">
 		<topic label="["                        href="html/Reference/operators/@.html#mark1"/>
 		<topic label="]"                        href="html/Reference/operators/@.html#mark2"/>
@@ -431,5 +436,6 @@
 		<topic label="xyshow"                   href="html/Reference/operators/xy.html#xyshow" />
 		<topic label="yield"                    href="html/Reference/operators/xy.html#yield" />
 		<topic label="yshow"                    href="html/Reference/operators/xy.html#yshow" />
+	</topic>
 	</topic>
 </toc>

@@ -1,0 +1,176 @@
+<html>
+<head>
+<title>Type 3 Fonts</title>
+</head>
+<body>
+	<h2>5.7 Type 3 Fonts</h2>
+	<p>A Type 3 font is one whose behavior is determined entirely by
+		PostScript procedures. In contrast, most other types of base fonts
+		originate as font programs that conform to an external specification,
+		such as Adobe Type 1 Font Format, that has no direct connection with
+		the PostScript language. This section describes how to build a Type 3
+		font from scratch.</p>
+	<p>In addition to the entries common to all base fonts (Table 5.2
+		on page 324 and Table 5.3 on page 325), a Type 3 font dictionary
+		includes the entries listed in Table 5.6.</p>
+	<table border="1">
+		<caption>TABLE 5.6: Additional entries specific to Type 3
+			fonts</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<a name="BuildGlyph"></a>
+		<tr>
+			<td><b>BuildGlyph</b></td>
+			<td>procedure</td>
+			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
+				constructs the requested glyph. The font dictionary, followed by the
+				character name, is on the stack when the procedure is called. See
+				Section 5.7.1, "BuildGlyph."</td>
+		</tr>
+		<a name="BuildChar"></a>
+		<tr>
+			<td><b>BuildChar</b></td>
+			<td>procedure</td>
+			<td><i>(Required for LanguageLevel 1 or if <b>BuildGlyph</b>
+					is absent)
+			</i> A procedure that constructs the requested glyph (only if no <b>BuildGlyph</b>
+				entry is present, in LanguageLevel 2 or 3). The font dictionary,
+				followed by the character code, is on the stack when the procedure
+				is called. See Section 5.7.2, "BuildChar."</td>
+		</tr>
+	</table>
+	<h3>5.7.1 BuildGlyph</h3>
+	<p>When a PostScript program tries to show a glyph from a Type 3
+		font, and the glyph is not already present in the font cache, the
+		PostScript interpreter:</p>
+	<ol>
+		<li>Uses the character code as an index into the current font's <b>Encoding</b>
+			array, obtaining the corresponding character name. (This step is
+			omitted during a <b>glyphshow</b> operation.)
+		</li>
+		<li>Pushes the current font dictionary and the character name on
+			the operand stack.</li>
+		<li>Executes the font’s <b>BuildGlyph</b> procedure. <b>BuildGlyph</b>
+			must remove these two objects from the operand stack and use this
+			information to construct the requested glyph. This typically involves
+			determining the glyph description needed, supplying glyph metric
+			information, constructing the glyph, and painting it.
+		</li>
+	</ol>
+	<p>
+		All Type 3 fonts must include a character named .notdef. The <b>BuildGlyph</b>
+		procedure should be able to accept that character name regardless of
+		whether such a character is encoded in the <b>Encoding</b> array. If
+		the <b>BuildGlyph</b> procedure is given a character name it does not
+		recognize, it can handle that condition by painting the glyph for the
+		.notdef character instead.
+	</p>
+	<p>
+		<b>BuildGlyph</b> is called within the confines of a <b>gsave</b> and
+		a <b>grestore</b>, so any changes it makes to the graphics state do
+		not persist after it finishes. Each call to <b>BuildGlyph</b> is
+		independent of any other call. Because of the effects of font caching,
+		no assumptions can be made about the order in which glyph descriptions
+		will be executed. In particular, <b>BuildGlyph</b> should not depend
+		on any nonconstant information in VM, and it should not leave any side
+		effects in VM or on stacks.
+	</p>
+	<p>
+		When <b>BuildGlyph</b> gets control, the current transformation matrix
+		(CTM) is the concatenation of the font matrix (<b>FontMatrix</b> in
+		the current font dictionary) and the CTM that was in effect at the
+		time <b>show</b> was invoked. This means that shapes described in the
+		glyph coordinate system will be transformed into the user coordinate
+		system and will appear in the appropriate size and orientation on the
+		page. <b>BuildGlyph</b> should describe the glyph in terms of absolute
+		coordinates in the glyph coordinate system, placing the glyph origin
+		at (0, 0) in this space. It should make no assumptions about the
+		initial value of the current point parameter.
+	</p>
+	<p>
+		The results of <b>BuildGlyph</b> should depend only on the complete
+		transformation from glyph space to device space, and not on the
+		relative contributions of the font matrix and the CTM prior to <b>BuildGlyph</b>.
+		In particular, <b>BuildGlyph</b> should not attempt to vary its
+		results depending on the font dictionary’s <b>FontMatrix</b> entry.
+	</p>
+	<p>
+		Aside from the CTM, the graphics state is inherited from the
+		environment of the <b>show</b> operator (or show variant) that caused
+		<b>BuildGlyph</b> to be invoked. To ensure predictable results despite
+		font caching, <b>BuildGlyph</b> must initialize any graphics state
+		parameters on which it depends. In particular, if it invokes the <b>stroke</b>
+		operator, <b>BuildGlyph</b> should explicitly set the line width, line
+		join, line cap, and dash pattern to appropriate values. Normally, it
+		is unnecessary and undesirable to initialize the current color
+		parameter, because <b>show</b> is defined to paint glyphs with the
+		current color.
+	</p>
+	<p>
+		<b>BuildGlyph</b> must execute one of the following operators to pass
+		width and bounding box information to the PostScript interpreter. This
+		must precede execution of any path construction or painting operators
+		describing the glyph.
+	</p>
+	<ul>
+		<li><b>setcachedevice</b> establishes a single set of metrics for
+			both writing modes, and requests that the interpreter save the
+			results in the font cache if possible.</li>
+		<li><b>setcachedevice2</b> <i>(LanguageLevel 2)</i> establishes
+			separate sets of metrics for writing modes 0 and 1, and requests that
+			the interpreter save the results in the font cache.</li>
+		<li><b>setcharwidth</b> passes just the glyph's width (to be used
+			only once), and requests that the glyph not be cached. This operator
+			is typically used only if the glyph description includes operators to
+			set the color explicitly.</li>
+	</ul>
+	<p>
+		See the descriptions of <b>setcachedevice</b>, <b>setcachedevice2</b>,
+		and <b>setcharwidth</b> in Chapter 8 for more information.
+	</p>
+	<p>
+		After executing one of these operators, <b>BuildGlyph</b> should
+		execute a sequence of graphics operators to perform path construction
+		and painting. The PostScript interpreter transfers the results into
+		the font cache, if appropriate, and onto the page at the correct
+		position. It also uses the width information to control the spacing
+		between this glyph and the next. The final position of the current
+		point in the glyph coordinate system does not influence glyph spacing.
+	</p>
+	<h3>5.7.2 BuildChar</h3>
+	<p>
+		In LanguageLevel 2 or 3, if there is no <b>BuildGlyph</b> procedure
+		for the font, the interpreter calls the <b>BuildChar</b> procedure
+		instead. In LanguageLevel 1, <b>BuildChar</b> is always called,
+		whether or not a <b>BuildGlyph</b> procedure is present.
+	</p>
+	<p>
+		The semantics of <b>BuildChar</b> are essentially the same as for <b>BuildGlyph</b>.
+		The only difference is that <b>BuildChar</b> is called with the font
+		dictionary and the character code on the operand stack, instead of the
+		font dictionary and the character name. The <b>BuildChar</b> procedure
+		must then perform its own lookup to determine what glyph description
+		corresponds to the given character code.
+	</p>
+	<p>
+		For backward compatibility with the installed base of LanguageLevel 1
+		interpreters, all new Type 3 fonts should contain the following <b>BuildChar</b>
+		procedure:
+	</p>
+	<pre>/BuildChar
+    { 1 index /Encoding get exch get
+      1 index /BuildGlyph get exec
+    } bind def</pre>
+	<p>
+		This defines <b>BuildChar</b> in terms of the same font's <b>BuildGlyph</b>
+		procedure, which contains the actual commands for painting the glyph.
+		This permits the font to be used with higher-LanguageLevel
+		features&mdash;such as the LanguageLevel 2 operator <b>glyphshow</b>,
+		which requires <b>BuildGlyph</b> to be present&mdash;yet retains
+		compatibility with LanguageLevel 1.
+	</p>
+</body>
+</html>
