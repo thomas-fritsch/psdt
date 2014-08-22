@@ -391,6 +391,41 @@
 		<topic label="xyshow"                   href="html/Reference/8/2/xy.html#xyshow" />
 		<topic label="yield"                    href="html/Reference/8/2/xy.html#yield" />
 		<topic label="yshow"                    href="html/Reference/8/2/xy.html#yshow" />
+		<topic label="/Category"                href="html/Reference/3/9/2.html#Category" />
+		<topic label="/CIDFont"                 href="html/Reference/3/9/2.html#CIDFont" />
+		<topic label="/CMap"                    href="html/Reference/3/9/2.html#CMap" />
+		<topic label="/ColorRendering"          href="html/Reference/3/9/2.html#ColorRendering" />
+		<topic label="/ColorRenderingType"      href="html/Reference/3/9/2.html#ColorRenderingType" />
+		<topic label="/ColorSpace"              href="html/Reference/3/9/2.html#ColorSpace" />
+		<topic label="/ColorSpaceFamily"        href="html/Reference/3/9/2.html#ColorSpaceFamily" />
+		<topic label="/ControlLanguage"         href="html/Reference/3/9/2.html#ControlLanguage" />
+		<topic label="/Emulator"                href="html/Reference/3/9/2.html#Emulator" />
+		<topic label="/Encoding"                href="html/Reference/3/9/2.html#Encoding" />
+		<topic label="/Filter"                  href="html/Reference/3/9/2.html#Filter" />
+		<topic label="/FMapType"                href="html/Reference/3/9/2.html#FMapType" />
+		<topic label="/Font"                    href="html/Reference/3/9/2.html#Font" />
+		<topic label="/FontSet"                 href="html/Reference/3/9/2.html#FontSet" />
+		<topic label="/Font"                    href="html/Reference/3/9/2.html#Font" />
+		<topic label="/FontType"                href="html/Reference/3/9/2.html#FontType" />
+		<topic label="/Form"                    href="html/Reference/3/9/2.html#Form" />
+		<topic label="/FormType"                href="html/Reference/3/9/2.html#FormType" />
+		<topic label="/FunctionType"            href="html/Reference/3/9/2.html#FunctionType" />
+		<topic label="/Generic"                 href="html/Reference/3/9/2.html#Generic" />
+		<topic label="/Halftone"                href="html/Reference/3/9/2.html#Halftone" />
+		<topic label="/HalftoneType"            href="html/Reference/3/9/2.html#HalftoneType" />
+		<topic label="/HWOptions"               href="html/Reference/3/9/2.html#HWOptions" />
+		<topic label="/ImageType"               href="html/Reference/3/9/2.html#ImageType" />
+		<topic label="/InkParams"               href="html/Reference/3/9/2.html#InkParams" />
+		<topic label="/IODevice"                href="html/Reference/3/9/2.html#IODevice" />
+		<topic label="/Localization"            href="html/Reference/3/9/2.html#Localization" />
+		<topic label="/OutputDevice"            href="html/Reference/3/9/2.html#OutputDevice" />
+		<topic label="/Pattern"                 href="html/Reference/3/9/2.html#Pattern" />
+		<topic label="/PatternType"             href="html/Reference/3/9/2.html#PatternType" />
+		<topic label="/PDL"                     href="html/Reference/3/9/2.html#PDL" />
+		<topic label="/ShadingType"             href="html/Reference/3/9/2.html#ShadingType" />
+		<topic label="/TrapParams"              href="html/Reference/3/9/2.html#TrapParams" />
+		<topic label="/TrappingType"            href="html/Reference/3/9/2.html#TrappingType" />
+		<topic label="/ProcSet"                 href="html/Reference/3/9/2.html#ProcSet" />
 		<topic label="/BuildChar"               href="html/Reference/5/7.html#BuildChar" />
 		<topic label="/BuildGlyph"              href="html/Reference/5/7.html#BuildGlyph" />
 		<topic label="/Encoding"                href="html/Reference/5/2.html#Encoding" />

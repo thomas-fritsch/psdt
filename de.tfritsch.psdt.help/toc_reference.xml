@@ -2,6 +2,11 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Reference">
+	<topic label="Language">
+		<topic label="Named Resources">
+			<topic label="Resource Categories"  href="html/Reference/3/9/2.html" />
+		</topic>
+	</topic>
 	<topic label="Fonts"                        href="html/Reference/5.html">
 		<topic label="Font Dictionaries"        href="html/Reference/5/2.html" />
 		<topic label="Type 3 Fonts"             href="html/Reference/5/7.html" />

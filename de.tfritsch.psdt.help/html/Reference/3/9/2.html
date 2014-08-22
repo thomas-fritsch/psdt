@@ -1,0 +1,286 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Resource Categories</title>
+</head>
+<body>
+	<h3>3.9.2 Resource Categories</h3>
+	<p>Resource categories are identified by name. Tables 3.7, 3.8, and
+		3.9 list the standard resource categories. Within a given category,
+		every resource instance that resides in VM is of a particular type and
+		has a particular intended interpretation or use.</p>
+	<p>
+		Regular resources are those whose instances are ordinary useful
+		objects, such as font or halftone dictionaries. For example, a program
+		typically uses the result returned by <b>findresource</b> as an
+		operand of some other operator, such as <b>scalefont</b> or <b>sethalftone</b>.
+	</p>
+	<p>
+		Implicit resources represent some built-in capability of the
+		PostScript interpreter. For example, the instances of the <b>Filter</b>
+		category are filter names, such as <b>ASCII85Decode</b> and <b>CCITTFaxDecode</b>,
+		that are passed directly to the filter operator. For such resources,
+		the <b>findresource</b> operator returns only its name operand.
+		However, <b>resourceforall</b> and <b>resourcestatus</b> are useful
+		for inquiring about the availability of capabilities such as specific
+		filter algorithms.
+	</p>
+	<table border="1">
+		<caption>TABLE 3.7 Regular resources</caption>
+		<tr>
+			<th>Category Name</th>
+			<th>Object Type</th>
+			<th>Description</th>
+		</tr>
+		<a name="Font"></a>
+		<tr>
+			<td><b>Font</b></td>
+			<td>dictionary</td>
+			<td>Font definition</td>
+		</tr>
+		<a name="CIDFont"></a>
+		<tr>
+			<td><b>CIDFont</b></td>
+			<td>dictionary</td>
+			<td>CIDFont definition <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="CMap"></a>
+		<tr>
+			<td><b>CMap</b></td>
+			<td>dictionary</td>
+			<td>Character code mapping <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="FontSet"></a>
+		<tr>
+			<td><b>FontSet</b></td>
+			<td>dictionary</td>
+			<td>Bundle of font definitions <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="Encoding"></a>
+		<tr>
+			<td><b>Encoding</b></td>
+			<td>array</td>
+			<td>Encoding vector</td>
+		</tr>
+		<a name="Form"></a>
+		<tr>
+			<td><b>Form</b></td>
+			<td>dictionary</td>
+			<td>Form definition</td>
+		</tr>
+		<a name="Pattern"></a>
+		<tr>
+			<td><b>Pattern</b></td>
+			<td>dictionary</td>
+			<td>Pattern definition (prototype)</td>
+		</tr>
+		<a name="ProcSet"></a>
+		<tr>
+			<td><b>ProcSet</b></td>
+			<td>dictionary</td>
+			<td>Procedure set</td>
+		</tr>
+		<a name="ColorSpace"></a>
+		<tr>
+			<td><b>ColorSpace</b></td>
+			<td>array</td>
+			<td>Parameterized color space</td>
+		</tr>
+		<a name="Halftone"></a>
+		<tr>
+			<td><b>Halftone</b></td>
+			<td>dictionary</td>
+			<td>Halftone dictionary</td>
+		</tr>
+		<a name="ColorRendering"></a>
+		<tr>
+			<td><b>ColorRendering</b></td>
+			<td>dictionary</td>
+			<td>Color rendering dictionary</td>
+		</tr>
+		<a name="IdiomSet"></a>
+		<tr>
+			<td><b>IdiomSet</b></td>
+			<td>dictionary</td>
+			<td>Procedure substitution dictionary <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="InkParams"></a>
+		<tr>
+			<td><b>InkParams</b></td>
+			<td>dictionary</td>
+			<td>Colorant details dictionary <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="TrapParams"></a>
+		<tr>
+			<td><b>TrapParams</b></td>
+			<td>dictionary</td>
+			<td>Trapping parameter set <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="OutputDevice"></a>
+		<tr>
+			<td><b>OutputDevice</b></td>
+			<td>dictionary</td>
+			<td>Page device capabilities <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="ControlLanguage"></a>
+		<tr>
+			<td><b>ControlLanguage</b></td>
+			<td>dictionary</td>
+			<td>Control language support <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="Localization"></a>
+		<tr>
+			<td><b>Localization</b></td>
+			<td>dictionary</td>
+			<td>Natural language support <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="PDL"></a>
+		<tr>
+			<td><b>PDL</b></td>
+			<td>dictionary</td>
+			<td>PDL interpreter support <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="HWOptions"></a>
+		<tr>
+			<td><b>HWOptions</b></td>
+			<td>dictionary</td>
+			<td>Hardware options <i>(LanguageLevel 3)</i></td>
+		</tr>
+	</table>
+	<p />
+	<table border="1">
+		<caption>TABLE 3.8 Resources whose instances are implicit</caption>
+		<tr>
+			<th>Category Name</th>
+			<th>Object Type</th>
+			<th>Description</th>
+		</tr>
+		<a name="Filter"></a>
+		<tr>
+			<td><b>Filter</b></td>
+			<td>name</td>
+			<td>Filter algorithm</td>
+		</tr>
+		<a name="ColorSpaceFamily"></a>
+		<tr>
+			<td><b>ColorSpaceFamily</b></td>
+			<td>name</td>
+			<td>Color space family</td>
+		</tr>
+		<a name="Emulator"></a>
+		<tr>
+			<td><b>Emulator</b></td>
+			<td>name</td>
+			<td>Language interpreter</td>
+		</tr>
+		<a name="IODevice"></a>
+		<tr>
+			<td><b>IODevice</b></td>
+			<td>string</td>
+			<td>Device parameter set</td>
+		</tr>
+		<a name="ColorRenderingType"></a>
+		<tr>
+			<td><b>ColorRenderingType</b></td>
+			<td>integer</td>
+			<td>Color rendering dictionary type</td>
+		</tr>
+		<a name="FMapType"></a>
+		<tr>
+			<td><b>FMapType</b></td>
+			<td>integer</td>
+			<td>Composite font mapping algorithm</td>
+		</tr>
+		<a name="FontType"></a>
+		<tr>
+			<td><b>FontType</b></td>
+			<td>integer</td>
+			<td>Font dictionary type</td>
+		</tr>
+		<a name="FormType"></a>
+		<tr>
+			<td><b>FormType</b></td>
+			<td>integer</td>
+			<td>Form dictionary type</td>
+		</tr>
+		<a name="HalftoneType"></a>
+		<tr>
+			<td><b>HalftoneType</b></td>
+			<td>integer</td>
+			<td>Halftone dictionary type</td>
+		</tr>
+		<a name="ImageType"></a>
+		<tr>
+			<td><b>ImageType</b></td>
+			<td>integer</td>
+			<td>Image dictionary type</td>
+		</tr>
+		<a name="PatternType"></a>
+		<tr>
+			<td><b>PatternType</b></td>
+			<td>integer</td>
+			<td>Pattern dictionary type</td>
+		</tr>
+		<a name="FunctionType"></a>
+		<tr>
+			<td><b>FunctionType</b></td>
+			<td>integer</td>
+			<td>Function dictionary type <i>()LanguageLevel 3)</i></td>
+		</tr>
+		<a name="ShadingType"></a>
+		<tr>
+			<td><b>ShadingType</b></td>
+			<td>integer</td>
+			<td>Shading dictionary type <i>(LanguageLevel 3)</i></td>
+		</tr>
+		<a name="TrappingType"></a>
+		<tr>
+			<td><b>TrappingType</b></td>
+			<td>integer</td>
+			<td>Trappnig dictionary type <i>(LanguageLevel 3)</i></td>
+		</tr>
+	</table>
+	<p />
+	<table border="1">
+		<caption>TABLE 3.9 Resources used in defining new resource
+			categories</caption>
+		<tr>
+			<th>Category Name</th>
+			<th>Object Type</th>
+			<th>Description</th>
+		</tr>
+		<a name="Category"></a>
+		<tr>
+			<td><b>Category</b></td>
+			<td>dictionary</td>
+			<td>Resource category (recursive)</td>
+		</tr>
+		<a name="Generic"></a>
+		<tr>
+			<td><b>Generic</b></td>
+			<td>any</td>
+			<td>Prototype for new categories</td>
+		</tr>
+	</table>
+	<p>
+		The <b>Category</b> and <b>Generic</b> resources are used in defining
+		new categories of resources. This capability is described in Section
+		3.9.3, "Creating Resource Categories."
+	</p>
+	<p>
+		The resource operators&mdash;<b>findresource</b>, <b>resourcestatus</b>,
+		<b>resourceforall</b>, <b>defineresource</b>, and <b>undefineresource</b>&mdash;have
+		standard behavior that is uniform across all resource categories. This
+		behavior is specified in the operator descriptions in Chapter 8. For
+		some categories, the operators have additional semantics that are
+		category-specific. The following sections describe the semantics of
+		each resource category.
+	</p>
+	<p>
+		<em><b>Note:</b> Except as indicated below, the PostScript language does
+			not prescribe that a resource category must contain any standard
+			instances. Some categories may be populated with predefined
+			instances, but the set of instances is product-dependent.</em>
+	</p>
+</body>
+</html>
