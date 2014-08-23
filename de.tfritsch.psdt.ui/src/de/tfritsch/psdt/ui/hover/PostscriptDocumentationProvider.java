@@ -61,7 +61,7 @@ public class PostscriptDocumentationProvider implements
 			return null;
 		int posHash = href.indexOf('#');
 		String fragment = (posHash >= 0) ? href.substring(posHash + 1) : "";
-		Matcher matcher = Pattern.compile(".*(<tr>\\s*<th>.*</th>\\s*</tr>).*(<tr>.*?<a name=\""+ fragment + "\"></a>.*?</tr>).*",
+		Matcher matcher = Pattern.compile(".*(<tr>\\s*<th.*/th>\\s*</tr>).*(<tr>.*?<a name=\""+ fragment + "\"></a>.*?</tr>).*",
 				Pattern.CASE_INSENSITIVE | Pattern.DOTALL).matcher(content);
 		if (!matcher.matches())
 			return null;
