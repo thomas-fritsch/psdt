@@ -2,10 +2,12 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Reference">
-	<topic label="Language">
-		<topic label="Named Resources"          href="html/Reference/3/9.html">
-			<topic label="Resource Operators"   href="html/Reference/3/9/1.html" />
-			<topic label="Resource Categories"  href="html/Reference/3/9/2.html">
+	<topic label="3 Language">
+		<topic label="3.9 Named Resources"      href="html/Reference/3/9.html">
+			<topic label="3.9.1 Resource Operators"
+			                                    href="html/Reference/3/9/1.html" />
+			<topic label="3.9.2 Resource Categories"
+			                                    href="html/Reference/3/9/2.html">
 				<topic label="Font"             href="html/Reference/3/9/2.html#1"/>
 				<topic label="CIDFont"          href="html/Reference/3/9/2.html#2"/>
 				<topic label="CMap"             href="html/Reference/3/9/2.html#3"/>
@@ -26,15 +28,15 @@
 				<topic label="Implicit Resources"
 				                                href="html/Reference/3/9/2.html#16"/>
 			</topic>
-			<topic label="Creating Resource Categories"
+			<topic label="3.9.3 Creating Resource Categories"
 			                                    href="html/Reference/3/9/3.html" />
 		</topic>
 	</topic>
-	<topic label="Fonts"                        href="html/Reference/5.html">
-		<topic label="Font Dictionaries"        href="html/Reference/5/2.html" />
-		<topic label="Type 3 Fonts"             href="html/Reference/5/7.html" />
+	<topic label="5 Fonts"                      href="html/Reference/5.html">
+		<topic label="5.2 Font Dictionaries"    href="html/Reference/5/2.html" />
+		<topic label="5.7 Type 3 Fonts"         href="html/Reference/5/7.html" />
 	</topic>
-	<topic     label="Operators">
+	<topic     label="8 Operators">
 	<topic     label="Symbols">
 		<topic label="["                        href="html/Reference/8/2/@.html#mark1"/>
 		<topic label="]"                        href="html/Reference/8/2/@.html#mark2"/>
