@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Resource Operators</title>
+</head>
+<body>
+	<h3>3.9.1 Resource Operators</h3>
+	<p>
+		There are five LanguageLevel 2 operators that apply to resources: <b>findresource</b>,
+		<b>resourcestatus</b>, <b>resourceforall</b>, <b>defineresource</b>,
+		and <b>undefineresource</b>. A more limited pair of operators
+		applicable only to fonts, <b>findfont</b> and <b>definefont</b>, are
+		available in LanguageLevel 1.
+	</p>
+	<p>
+		The <b>findresource</b> operator is the key feature of the resource
+		facility. Given a resource category name and an instance name, <b>findresource</b>
+		returns an object. If the requested resource instance does not already
+		exist as an object in VM, <b>findresource</b> gets it from an external
+		source and loads it into VM. A PostScript program can access named
+		resources without knowing whether they are already in VM or how they
+		are obtained from external storage.
+	</p>
+	<p>
+		Other important features include <b>resourcestatus</b>, which returns
+		information about a resource instance, and <b>resourceforall</b>,
+		which enumerates all available resource instances in a particular
+		category. These operators apply to all resource instances, whether or
+		not they reside in VM; the operators do not cause the resource
+		instances to be brought into VM. <b>resourceforall</b> should be used
+		with care and only when absolutely necessary, since the set of
+		available resource instances is potentially extremely large.
+	</p>
+	<p>
+		A program can explicitly define a named resource instance in VM. That
+		is, it can create an object in VM, then execute <b>defineresource</b>
+		to associate the object with a name in a particular resource category.
+		This resource instance will be visible in subsequent executions of <b>findresource</b>,
+		<b>resourcestatus</b>, and <b>resourceforall</b>. A program can also
+		execute <b>undefineresource</b> to reverse the effect of a prior <b>defineresource</b>.
+		The <b>findresource</b> operator automatically executes <b>defineresource</b>
+		and <b>undefineresource</b> to manage VM for resource instances that
+		it obtains from external storage.
+	</p>
+	<p>Resource instances can be defined in either local or global VM.
+		The lifetime of the definition depends on the VM allocation mode in
+		effect at the time the definition is made (see Section 3.7.2, "Local
+		and Global VM"). Normally, both local and global resource instances
+		are visible and available to a program. However, when the current VM
+		allocation mode is global, only global instances are visible; this
+		ensures correct behavior of resource instances that are defined in
+		terms of other resource instances.</p>
+	<p>
+		When a program executes <b>defineresource</b> to define a resource
+		instance explicitly, the program has complete control over whether to
+		use local or global VM. However, when execution of <b>findresource</b>
+		causes a resource instance to be brought into VM automatically, the
+		decision whether to use local or global VM is independent of the VM
+		allocation mode at the time <b>findresource</b> is executed. Usually,
+		resource instances are loaded into global VM; this enables them to be
+		managed independently of the save and restore activity of the
+		executing program. However, certain resource instances do not function
+		correctly when they reside in global VM; they are loaded into local VM
+		instead. In general, PostScript programs using resources should not
+		depend on knowing anything about the policies used by the resource
+		machinery, since those policies can vary among different resource
+		implementations.
+	</p>
+	<p>The language does not specify a standard method for installing
+		resources in external storage. Installation typically consists of
+		writing to a named file in a file system. However, details of how
+		resource names are mapped to file names and how the files are managed
+		are environment-dependent. In some environments, resources may be
+		installed using facilities entirely separate from the PostScript
+		interpreter.</p>
+	<p>
+		Resource instances are identified by keys that ordinarily are name or
+		string objects; the resource operators treat names and strings
+		equivalently. Use of other types of keys is permitted but not
+		recommended. The <b>defineresource</b> operator can define a resource
+		instance with a key that is not a name or a string, and the other
+		resource operators can access the instance using that key. However,
+		such a key can never match any resource instance in external storage.
+	</p>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Named Resources</title>
+</head>
+<body>
+	<h3>3.9 Named Resources</h3>
+	<p>Some features of the PostScript language involve the use of
+		open-ended collections of objects to control their operation. For
+		example, the font machinery uses font dictionaries that describe the
+		appearance of characters. The number of possible font dictionaries is
+		unlimited. In LanguageLevels 2 and 3, this same idea applies to forms,
+		patterns, color rendering dictionaries, and many other categories of
+		objects.</p>
+	<p>It is often convenient to associate these objects with names in
+		some central registry. This is particularly true for fonts, which are
+		assigned standard names (such as Times-Roman or Palatino-BoldItalic)
+		when they are created. Other categories of objects also can benefit
+		from a central naming convention.</p>
+	<p>
+		If all available objects in a particular category (for example, all
+		possible fonts) were permanently resident in VM, they could simply be
+		stored in some dictionary. Accessing a named object would be a matter
+		of performing <b>get</b> from the dictionary; checking whether a named
+		object is available would be accomplished by performing a <b>known</b>
+		operation on the dictionary.
+	</p>
+	<p>There are many more fonts and objects of other categories than
+		can possibly reside in VM at any given time. These objects originate
+		from a source external to the PostScript interpreter. They are
+		introduced into VM in two ways:</p>
+	<ul>
+		<li>The application or print spooler embeds the objects’
+			definitions directly in the job stream.</li>
+		<li>During execution, the PostScript program requests the objects
+			by name. The interpreter loads them into VM automatically from an
+			external source, such as a disk file, a ROM cartridge, or a network
+			file server.</li>
+	</ul>
+	<p>
+		The notion of <i>named resources (LanguageLevel 2)</i> supports the
+		second method. A <i>resource</i> is a collection of named objects that
+		either reside in VM or can be located and brought into VM on demand.
+		There are separate categories of resources with independent name
+		spaces; for example, fonts and forms are distinct resource categories.
+		Within each category, there is a collection of named resource
+		instances. Each category can have its own policy for locating
+		instances that are not in VM and for managing the instances that are
+		in VM.
+	</p>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Creating Resource Categories</title>
+</head>
+<body>
+	<h3>3.9.3 Creating Resource Categories</h3>
+	<p>The language support for named resources is quite general. Most
+		of it is independent of the semantics of specific resource categories.
+		It is occasionally useful to create new resource categories, each
+		containing an independent collection of named instances. This is
+		accomplished through a level of recursion in the resource machinery
+		itself.</p>
+	<p>
+		The resource category named <b>Category</b> contains all of the
+		resource categories as instances. The instance names are resource
+		category names, such as <b>Font</b>, <b>Form</b>, and <b>Halftone</b>.
+		The instance values are dictionary objects containing information
+		about how the corresponding resource category is implemented.
+	</p>
+	<p>
+		A new resource category is created by defining a new instance of the <b>Category</b>
+		category. Example 3.6 creates a category named <b>Widget</b>.
+	</p>
+	<p>
+		<b>Example 3.6</b>
+	</p>
+	<pre>
+    true setglobal
+      /Widget catdict /Category defineresource pop
+    false setglobal
+	</pre>
+	<p>In this example, catdict is a dictionary describing the
+		implementation of the Widget category. Once it is defined, instances
+		of the Widget category can be manipulated like other categories:</p>
+	<pre>
+    /Frob1 w /Widget defineresource          % Returns w
+    /Frob1 /Widget findresource              % Returns w
+    /Frob1 /Widget resourcestatus            % Returns status size true
+    (*) proc scratch /Widget resourceforall  % Pushes (Frob1) on the stack, then calls proc
+    </pre>
+	<p>Here w is an instance of the Widget category whose type is
+		whatever is appropriate for widgets, and /Frob1 is the name of that
+		instance.</p>
+	<p>It is possible to redefine existing resource categories in this
+		way. Programs that do this must ensure that the new definition
+		correctly implements any special semantics of the category.</p>
+	<h4>Category Implementation Dictionary</h4>
+	<p>The behavior of all the resource operators, such as
+		defineresource, is determined by entries in the resource category's
+		implementation dictionary. This dictionary was supplied as an operand
+		to defineresource when the category was created. In the example</p>
+	<pre>
+	/Frob1 w /Widget defineresource</pre>
+	<p>
+		the <b>defineresource</b> operator does the following:
+	</p>
+	<ol>
+		<li>Obtains catdict, the implementation dictionary for the <b>Widget</b>
+			category
+		</li>
+		<li>Executes <b>begin</b> on the implementation dictionary.
+		</li>
+		<li>Executes the dictionary’s <b>DefineResource</b> entry, which
+			is ordinarily a procedure but might be an operator. When the
+			procedure corresponding to the <b>DefineResource</b> entry is called,
+			the operand stack contains the operands that were passed to <b>defineresource</b>,
+			except that the category name (Widget in this example) has been
+			removed. <b>DefineResource</b> is expected to consume the remaining
+			operands, perform whatever action is appropriate for this resource
+			category, and return the appropriate result.
+		</li>
+		<li>Executes the <b>end</b> operator. If an error occurred during
+			step 3, it also restores the operand and dictionary stacks to their
+			initial state.
+		</li>
+	</ol>
+	<p>
+		The other resource operators&mdash;<b>undefineresource</b>, <b>findresource</b>,
+		<b>resourcestatus</b>, and <b>resourceforall</b>&mdash;behave the same
+		way, with the exception that <b>resourceforall</b> does not restore
+		the stacks upon error. Aside from the steps described above, all of
+		the behavior of the resource operators is implemented by the
+		corresponding procedures in the dictionary.
+	</p>
+	<p>A category implementation dictionary contains the entries listed
+		in Table 3.11. The dictionary may also contain other information
+		useful to the procedures in the dictionary. Since the dictionary is on
+		the dictionary stack at the time those procedures are called, the
+		procedures can access the information conveniently.</p>
+	<table border="1">
+		<caption>TABLE 3.11 Entries in a category implementation
+			dictionary</caption>
+		<tr>
+			<th align="left">Key</th>
+			<th align="left">Type</th>
+			<th align="left">Value</th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="DefineResource"></a><b>DefineResource</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top"><i>(Required)</i> A procedure that implements <b>defineresource</b>
+				behavior.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="UndefineResource"></a><b>UndefineResource</b></td>
+			<td valign="top">procedure</td>
+			<td><i>(Required)</i> A procedure that implements <b>undefineresource</b>
+				behavior.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="FindResource"></a><b>FindResource</b></td>
+			<td valign="top">procedure</td>
+			<td><i>(Required)</i> A procedure that implements <b>findresource</b>
+				behavior. This procedure determines the policy for using global
+				versus current VM when loading a resource from an external source.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ResourceStatus"></a><b>ResourceStatus</b></td>
+			<td valign="top">procedure</td>
+			<td><i>(Required)</i> A procedure that implements <b>resourcestatus</b>
+				behavior.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ResourceForAll"></a><b>ResourceForAll</b></td>
+			<td valign="top">procedure</td>
+			<td><i>(Required)</i> A procedure that implements <b>resourceforall</b>
+				behavior. This procedure should remove the category implementation
+				dictionary from the dictionary stack before executing the procedure
+				operand of <b>resourceforall</b>, and should put that dictionary
+				back on the dictionary stack before returning. This ensures that the
+				procedure operand is executed in the dictionary context in effect at
+				the time <b>resourceforall</b> was invoked.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Category"></a><b>Category</b></td>
+			<td valign="top">name</td>
+			<td valign="top"><i>(Required)</i> The category name. This entry
+				is inserted by <b>defineresource</b> when the category is defined.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="InstanceType"></a><b>InstanceType</b></td>
+			<td valign="top">name</td>
+			<td valign="top"><i>(Optional)</i> The expected type of
+				instances of this category. If this entry is present, <b>defineresource</b>
+				checks that the instance's type, as returned by the <b>type</b>
+				operator, matches it.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ResourceFileName"></a><b>ResourceFileName</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top"><i>(Optional)</i> A procedure that translates a
+				resource instance name to a file name (see Section 3.9.4, "Resources
+				as Files").</td>
+		</tr>
+	</table>
+	<p>
+		A single dictionary provides the implementation for both local and
+		global instances of a category. The implementation must maintain the
+		local and global instances separately and must respect the VM
+		allocation mode in effect at the time each resource operator is
+		executed. The category implementation dictionary must be in global VM;
+		the <b>defineresource</b> operator that installs it in the <b>Category</b>
+		category must be executed while in global VM allocation mode.
+	</p>
+	<p>
+		The interpreter assumes that the category implementation procedures
+		will be reasonably well behaved and will generate errors only due to
+		circumstances not under their control. In this respect, they are
+		similar to the <b>BuildChar</b> procedure in a Type 3 font or to the <b>PaintProc</b>
+		procedure in a form or pattern, but are unlike the arbitrary
+		procedures invoked by operators such as <b>forall</b> or <b>resourceforall</b>.
+	</p>
+	<p>If an error occurs in a category implementation procedure, the
+		resource operator makes a token attempt to restore the stacks and to
+		provide the illusion that the error arose from the operator itself.
+		The intent is that the resource operators should have the usual error
+		behavior as viewed by a program executing them. The purpose is not to
+		compensate for bugs in the resource implementation procedures.</p>
+</body>
+</html>

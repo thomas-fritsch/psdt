@@ -426,6 +426,14 @@
 		<topic label="/TrapParams"              href="html/Reference/3/9/2.html#TrapParams" />
 		<topic label="/TrappingType"            href="html/Reference/3/9/2.html#TrappingType" />
 		<topic label="/ProcSet"                 href="html/Reference/3/9/2.html#ProcSet" />
+		<topic label="/Category"                href="html/Reference/3/9/3.html#Category" />
+		<topic label="/DefineResource"          href="html/Reference/3/9/3.html#DefineResource" />
+		<topic label="/FindResource"            href="html/Reference/3/9/3.html#FindResource" />
+		<topic label="/InstanceType"            href="html/Reference/3/9/3.html#InstanceType" />
+		<topic label="/ResourceFileName"        href="html/Reference/3/9/3.html#ResourceFileName" />
+		<topic label="/ResourceForAll"          href="html/Reference/3/9/3.html#ResourceForAll" />
+		<topic label="/ResourceStatus"          href="html/Reference/3/9/3.html#ResourceStatus" />
+		<topic label="/UndefineResource"        href="html/Reference/3/9/3.html#UndefineResource" />
 		<topic label="/BuildChar"               href="html/Reference/5/7.html#BuildChar" />
 		<topic label="/BuildGlyph"              href="html/Reference/5/7.html#BuildGlyph" />
 		<topic label="/Encoding"                href="html/Reference/5/2.html#Encoding" />

@@ -242,10 +242,338 @@
 		each resource category.
 	</p>
 	<p>
-		<em><b>Note:</b> Except as indicated below, the PostScript language does
-			not prescribe that a resource category must contain any standard
-			instances. Some categories may be populated with predefined
+		<em><b>Note:</b> Except as indicated below, the PostScript
+			language does not prescribe that a resource category must contain any
+			standard instances. Some categories may be populated with predefined
 			instances, but the set of instances is product-dependent.</em>
+	</p>
+	<h4>
+		<a name="1"></a>Font
+	</h4>
+	<p>
+		Instance names of the <b>Font</b> resource category are font names,
+		such as Times-Roman. The instances are font dictionaries that are
+		suitable for use as operands to <b>scalefont</b> or <b>makefont</b>,
+		which produce a transformed font dictionary that can be used to paint
+		characters on the page.
+	</p>
+	<p>The following special-purpose operators apply only to fonts but
+		are otherwise equivalent to the resource operators:</p>
+	<ul>
+		<li><b>findfont</b>, equivalent to /Font findresource</li>
+		<li><b>definefont</b>, equivalent to /Font defineresource</li>
+		<li><b>undefinefont</b>, equivalent to /Font undefineresource
+	</ul>
+	<p>
+		The <b>definefont</b> and <b>undefinefont</b> operators have
+		additional font-specific semantics, which are described under those
+		operators in Chapter 8. Those semantics also apply to <b>defineresource</b>
+		and <b>undefineresource</b> when applied to the Font category. <b>findfont</b>
+		and <b>definefont</b> are available in LanguageLevel 1, even though
+		the general facility for named resources is a LanguageLevel 2 feature.
+	</p>
+	<p>The font operators also maintain dictionaries of font names and
+		Font resource instances that are defined in VM. Those dictionaries are
+		FontDirectory (all Font resources in VM) and GlobalFontDirectory (only
+		Font resources in global VM). They are obsolete, but are provided for
+		compatibility with existing applications. The preferred method of
+		enumerating all available Font resources is</p>
+	<pre>
+    (*) proc scratch /Font resourceforall
+    </pre>
+	<p>
+		where proc is a procedure and scratch is a string used repeatedly to
+		hold font names. This method works for all available <b>Font</b>
+		resources, whether or not they are in VM. Normally, it is preferable
+		to use <b>resourcestatus</b> to determine the availability of specific
+		resources rather than enumerate all resources and check whether those
+		of interest are in the list.
+	</p>
+	<p>
+		When <b>findresource</b> or <b>findfont</b> loads a font from an
+		external source into VM, it may choose to use global VM rather than
+		the current VM allocation mode. This choice depends on memory
+		management algorithms used by the interpreter. It also depends on the
+		font type, since certain Type 3 fonts do not work correctly when
+		loaded into global VM. The details of this policy are
+		implementationdependent; a PostScript program should not depend on
+		knowing what they are.
+	</p>
+	<h4>
+		<a name="2"></a>CIDFont
+	</h4>
+	<p>
+		Instances of the <b>CIDFont</b> resource category <i>(LanguageLevel
+			3)</i> are dictionaries that are suitable for use with the <b>composefont</b>
+		operator to construct CID-keyed fonts, as described in Section 5.11,
+		"CID-Keyed Fonts." The <b>defineresource</b> operator has certain
+		category-specific semantics when applied to the <b>CIDFont</b>
+		category; furthermore, the <b>definefont</b> and <b>undefinefont</b>
+		operators can be applied to CIDFonts as well as fonts. For more
+		information on the behavior of these operators, see Section 5.11.3,
+		"CIDFont Dictionaries."
+	</p>
+	<h4>
+		<a name="3"></a>CMap
+	</h4>
+	<p>
+		Instances of the <b>CMap</b> resource category <i>(LanguageLevel
+			3)</i> are character code mapping dictionaries that are suitable for use
+		with the <b>composefont</b> operator to construct CID-keyed fonts, as
+		described in Section 5.11, "CID-Keyed Fonts."
+	</p>
+	<h4>
+		<a name="4"></a>FontSet
+	</h4>
+	<p>
+		Instances of the <b>FontSet</b> resource category (LanguageLevel 3)
+		are bundles of font definitions that are represented in the Compact
+		Font Format (CFF) or other multiple-font representations, as described
+		in Section 5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)." Each
+		<b>FontSet</b> instance contains the material from which one or more <b>Font</b>
+		instances can be constructed.
+	</p>
+	<h4>
+		<a name="5"></a>Encoding
+	</h4>
+	<p>
+		Instances of the <b>Encoding</b> resource category are array objects,
+		suitable for use as the <b>Encoding</b> entry of font dictionaries
+		(see Section 5.3, "Character Encoding"). An encoding array usually
+		contains 256 names, permitting it to be indexed by any 8-bit character
+		code. An encoding array for use with composite fonts (described in
+		Section 5.10, "Composite Fonts") contains integers instead of names,
+		and can be of any length.
+	</p>
+	<p>
+		There are two standard encodings that are permanently defined in VM
+		and available by name in <b>systemdict</b>:
+	</p>
+	<ul>
+		<li><b>StandardEncoding</b>, whose value is the same as the array
+			returned by /StandardEncoding /Encoding findresource</li>
+		<li><b>ISOLatin1Encoding</b>, whose value is the same as the
+			array returned by /ISOLatin1Encoding /Encoding findresource</li>
+	</ul>
+	<p>
+		If any other encodings exist, they are available only through <b>findresource</b>.
+		The convenience operator <b>findencoding</b> is equivalent to
+		/Encoding findresource.
+	</p>
+	<h4>
+		<a name="6"></a>Form
+	</h4>
+	<p>
+		Instances of the <b>Form</b> resource category are form dictionaries,
+		described in Section 4.7, "Forms." A form dictionary is suitable as
+		the operand to the <b>execform</b> operator to render the form on the
+		page.
+	</p>
+	<h4>
+		<a name="7"></a>Pattern
+	</h4>
+	<p>
+		Instances of the <b>Pattern</b> resource category are prototype
+		pattern dictionaries, described in Section 4.9, "Patterns." A
+		prototype pattern dictionary is suitable as the operand to the <b>makepattern</b>
+		operator, which produces a transformed pattern dictionary; a
+		PostScript program can then use the resulting dictionary in painting
+		operations by establishing a Pattern color space or by invoking the <b>setpattern</b>
+		operator.
+	</p>
+	<h4>
+		<a name="8"></a>ProcSet
+	</h4>
+	<p>
+		Instances of the <b>ProcSet</b> resource category are procedure sets.
+		A procedure set is a dictionary containing named procedures or
+		operators. Application prologs can be organized as one or more
+		procedure sets that are available from a library instead of being
+		included in-line in every document that uses them. The <b>ProcSet</b>
+		resource category provides a way to organize such a library.
+	</p>
+	<p>
+		In LanguageLevel 3, there are several standard instances of the <b>ProcSet</b>
+		category that are associated with specific features of the PostScript
+		language. These procedure sets, listed in Table 3.10, contain
+		procedures, operators, and other objects that a PostScript program can
+		access as part of using those features.
+	</p>
+	<table border="1">
+		<caption>TABLE 3.10 Standard procedure sets in LanguageLevel
+			3</caption>
+		<tr>
+			<th align="left">Procedure Set</th>
+			<th align="left">Associated Language Feature</th>
+		</tr>
+		<tr>
+			<td valign="top"><b>BitmapFontInit</b></td>
+			<td>Incremental downloading and management of glyph bitmaps in a
+				Type 4 CIDFont (see "Type 4 CIDFonts" on page 379)</td>
+		</tr>
+		<tr>
+			<td valign="top"><b>CIDInit</b></td>
+			<td>Building a Type 0 CIDFont ("Type 0 CIDFonts" on page 371) or
+				a CMap dictionary (Section 5.11.4, "CMap Dictionaries")</td>
+		</tr>
+		<tr>
+			<td valign="top"><b>ColorRendering</b></td>
+			<td>Selecting a color rendering dictionary (Section 7.1.3,
+				"Rendering Intents")</td>
+		</tr>
+		<tr>
+			<td valign="top"><b>FontSetInit</b></td>
+			<td>Building a <b>FontSet</b> resource ("FontSet Resources" on
+				page 344)
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><b>Trapping</b></td>
+			<td>In-RIP trapping (Section 6.3, "In-RIP Trapping")</td>
+		</tr>
+	</table>
+	<h4>
+		<a name="9"></a>ColorSpace
+	</h4>
+	<p>
+		Instances of the <b>ColorSpace</b> resource category are array objects
+		that represent fully parameterized color spaces. The first element of
+		a color space array is a color space family name; the remaining
+		elements are parameters to the color space (see Section 4.8, "Color
+		Spaces").
+	</p>
+	<p>
+		<em>Note: The ColorSpace resource category is distinct from the <b>ColorSpaceFamily</b>
+			category, described below.
+		</em>
+	</p>
+	<h4>
+		<a name="10"></a>Halftone
+	</h4>
+	<p>
+		Instances of the <b>Halftone</b> resource category are halftone
+		dictionaries, suitable as operands to the <b>sethalftone</b> operator
+		(see Section 7.4, "Halftones").
+	</p>
+	<h4>
+		<a name="11"></a>ColorRendering
+	</h4>
+	<p>
+		Instances of the <b>ColorRendering</b>b resource category are color
+		rendering dictionaries, suitable as operands to the <b>setcolorrendering</b>
+		operator (see Section 7.1, "CIE-Based Color to Device Color").
+	</p>
+	<h4>
+		<a name="12"></a>IdiomSet
+	</h4>
+	<p>
+		Instances of the <b>IdiomSet</b> resource category <i>(LanguageLevel
+			3)</i> are procedure substitution dictionaries, for use with the <b>bind</b>
+		operator (see Section 3.12.1, "bind Operator").
+	</p>
+	<h4>
+		<a name="13"></a>InkParams and TrapParams
+	</h4>
+	<p>
+		The LanguageLevel 3 resource categories <b>InkParams</b> and <b>TrapParams</b>
+		are present only in products that support in-RIP trapping (see Section
+		6.3, "In-RIP Trapping"). Instances of <b>InkParams</b> are
+		dictionaries that define trapping-related properties of device
+		colorants; instances of <b>TrapParams</b> are dictionaries that define
+		sets of trapping parameters suitable as operands to the <b>settrapparams</b>
+		operator.
+	</p>
+	<h4>
+		<a name="14"></a>OutputDevice
+	</h4>
+	<p>
+		Instances of the <b>OutputDevice</b> resource category (LanguageLevel
+		3) are dictionaries that describe certain capabilities of a particular
+		page device, such as the possible page sizes or resolutions (see
+		Section 6.4, "Output Device Dictionary").
+	</p>
+	<h4>
+		<a name="15"></a>ControlLanguage, PDL, Localization, and HWOptions
+	</h4>
+	<p>
+		Instances of the LanguageLevel 3 resource categories <b>ControlLanguage</b>,
+		<b>PDL</b>, <b>Localization</b>, and <b>HWOptions</b> provide
+		information that is product-dependent, as summarized below. For
+		further details, see the <a
+			href="http://partners.adobe.com/public/developer/en/ps/PS3010and3011.Supplement.pdf">PostScript
+			Language Reference Supplement</a>.
+	</p>
+	<ul>
+		<li>Instances of <b>ControlLanguage</b> are dictionaries that
+			describe the control languages available in a product. A control
+			language is a means for controlling product features, such as default
+			configuration and status reporting.
+		</li>
+		<li>Instances of <b>PDL</b> are dictionaries that describe the
+			page description language interpreters available in a product. This
+			category supersedes the <b>Emulator</b> implicit resource category,
+			because its instances provide a more complete description of each
+			interpreter (or emulator).
+		</li>
+		<li>Instances of <b>Localization</b> are dictionaries that
+			describe the natural languages (for example, English, Japanese, or
+			German) supported by a product.
+		</li>
+	</ul>
+	<h4>
+		<a name="16"></a>Implicit Resources
+	</h4>
+	<p>
+		For all implicit resources, the <b>findresource</b> operator returns
+		the instance's key if the instance is defined. The <b>resourcestatus</b>
+		and <b>resourceforall</b> operators have their normal behavior,
+		although the status and size values returned by <b>resourcestatus</b>
+		are meaningless. The <b>defineresource</b> and <b>undefineresource</b>
+		operators are ordinarily not allowed, but the ability to define new
+		instances of implicit resources may exist in some implementations. The
+		mechanisms are implementation-dependent.
+	</p>
+	<p>
+		The instances of the <b>Filter</b> category are filter names, such as
+		<b>ASCII85Decode</b> and <b>RunLengthEncode</b>, which are used as an
+		operand of the <b>filter</b> operator to determine its behavior.
+		Filters are described in Section 3.8.4, "Filters."
+	</p>
+	<p>
+		The instances of the <b>ColorSpaceFamily</b> category are color space
+		family names, which appear as the first element of a color space array
+		object. Some color spaces, such as <b>DeviceRGB</b>, are completely
+		determined by their family name; others, such as <b>CIEBasedABC</b>,
+		require additional parameters to describe them. Color spaces are
+		described in Section 4.8, "Color Spaces."
+	</p>
+	<p>
+		The instances of the <b>Emulator</b> category are names of emulators
+		for languages other than PostScript that may be built into a
+		particular implementation. Those emulators are not a standard part of
+		the PostScript language, but one or more of them may be present in
+		some products. This category has been superseded by the <b>PDL</b>
+		resource category in LanguageLevel 3.
+	</p>
+	<p>
+		The instances of the <b>IODevice</b> category are names of device
+		parameter sets. Some parameter sets are associated with input/output
+		devices, from which the category name <b>IODevice</b> originates.
+		However, there are also some parameter sets that do not correspond to
+		physical devices. The keys for all instances of this category are
+		expressed as strings of the form %device%. See Section C.4, "Device
+		Parameters."
+	</p>
+	<p>
+		The instances of the <b>ColorRenderingType</b>, <b>FMapType</b>, <b>FontType</b>,
+		<b>FormType</b>, <b>HalftoneType</b>, <b>ImageType</b>, <b>PatternType</b>,
+		<b>FunctionType</b>, <b>ShadingType</b>, and <b>TrappingType</b>
+		categories are integers that are the acceptable values for the
+		correspondingly named entries in various classes of special
+		dictionaries. For example, in LanguageLevel 3 the <b>FMapType</b>
+		category includes the integers 1 through 9 as keys; if an interpreter
+		supports additional FMapType values, the <b>FMapType</b> category will
+		also include those values as instances.
 	</p>
 </body>
 </html>
