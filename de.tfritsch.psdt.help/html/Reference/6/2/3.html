@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Page Image Placement</title>
+</head>
+<body>
+	<h3>6.2.3 Page Image Placement</h3>
+	<table border="1">
+		<caption>TABLE 6.4 Page device parameters related to page
+			image placement</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="HWResolution"></a><b>HWResolution</b></td>
+			<td valign="top">array</td>
+			<td valign="top">An array of two numbers, [x y], specifying the
+				resolution of the physical device in pixels per inch along the
+				horizontal and vertical dimensions of device space. Most devices
+				support only a single resolution or certain specific resolutions,
+				not arbitrary ones. The <b>HWResolution</b> entry in the output
+				device dictionary (see Section 6.4, "Output Device Dictionary")
+				defines the allowable values for this parameter on a given device;
+				attempting to set it to an unsupported value will cause a
+				configuration error.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ImagingBBox"></a><b>ImagingBBox</b></td>
+			<td valign="top">array or null</td>
+			<td valign="top">An optional bounding box defining an outer
+				boundary for each page image. If not null, the value is an array of
+				four numbers in the default user coordinate system giving the left,
+				bottom, right, and top coordinates, respectively, of the bounding
+				box. By specifying a page bounding box, a PostScript program asserts
+				that it will not paint any marks outside the box. Marks that do fall
+				outside the bounding box may or may not be rendered on the output
+				medium. <b>ImagingBBox</b> does not necessarily produce the same
+				effect as the <b>clip</b> operator, and it should not be used in
+				place of that operator for clipping page content.
+				<p>
+					The page bounding box should lie entirely within the overall page
+					boundaries defined by the <b>PageSize</b> parameter (see Table 6.2
+					on page 400). A value of null denotes the largest bounding box that
+					is possible for the given value of <b>PageSize</b>. (This may not
+					encompass the entire sheet of physical medium, however, since many
+					devices are incapable of placing marks close to the edges of the
+					medium.) If a program specifies <b>PageSize</b> but not <b>ImagingBBox</b>,
+					it should explicitly set <b>ImagingBBox</b> to null to prevent it
+					from inheriting an inappropriate value from the previous device
+					state.
+				</p>
+				<p>
+					Applications should provide a page bounding box whenever possible,
+					since it can improve performance by freeing raster memory for other
+					purposes. For example, if an application knows that all pages will
+					carry an unpainted border, it should indicate this by excluding the
+					unpainted area from <b>ImagingBBox</b>.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ImageShift"></a><b>ImageShift</b></td>
+			<td valign="top">array</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> An array of two
+				numbers, [x y], indicating the distance, in default user space
+				units, that each page image is to be shifted horizontally (x) and
+				vertically (y) with respect to the physical medium. For page images
+				appearing on the front (recto) side of the medium, the horizontal
+				shift is to the right if x &gt; 0 and to the left if x &lt; 0; the
+				vertical shift is upward if y &gt; 0 and downward if y &lt; 0. For
+				page images appearing on the back (verso) side, these directions are
+				reversed.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PageOffset"></a><b>PageOffset</b></td>
+			<td valign="top">array</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> An array of two
+				numbers, [x y], that reposition the page image on the physical
+				medium by x units horizontally and y units vertically, in the
+				direction of increasing coordinate values in the device coordinate
+				system. x and y are expressed in units of the default user space
+				(72nds of an inch). This parameter is typically used on imagesetters
+				to control the placement of the page image on the medium. It differs
+				from <b>Margins</b> (below) in that the repositioning is typically
+				accomplished by altering the current transformation matrix, although
+				on some devices it may instead be accomplished by device-dependent
+				means that are independent of the graphics state (in particular, of
+				the CTM).</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Margins"></a><b>Margins</b></td>
+			<td valign="top">array</td>
+			<td valign="top">An array of two numbers, [x y], that reposition
+				the page image on the physical medium by x units horizontally and y
+				units vertically, in the direction of increasing coordinate values
+				in the device coordinate system. x and y are expressed in
+				device-specific units, usually units of device space at one of the
+				supported resolutions. The purpose of this parameter is to
+				compensate for mechanical misalignments in the device, not to
+				perform purposeful positioning of the page image itself. It differs
+				from <b>PageOffset</b> (above) in that the repositioning is
+				typically accomplished by device-dependent means that are
+				independent of the graphics state (in particular, of the current
+				transformation matrix). The range and precision of the parameter
+				values may be restricted by the physical implementation.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MirrorPrint"></a><b>MirrorPrint</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag specifying whether the page image should
+				be reflected along one of the axes of device space. The reflection
+				is typically accomplished by devicedependent means that are
+				independent of the graphics state (in particular, of the current
+				transformation matrix). This feature is supported only by certain
+				devices, such as imagesetters, that produce output intended for
+				further photographic processing. For example, when output is
+				produced on transparent film, <b>MirrorPrint</b> controls whether
+				the page image should be viewed with the film emulsion face up or
+				face down.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="NegativePrint"></a><b>NegativePrint</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag specifying, if true, that the page image
+				should be produced in colorinverted (negative) form. The inversion
+				is typically accomplished by devicedependent means that are
+				independent of the graphics state (in particular, of the transfer
+				functions). The entire page is inverted, perhaps including portions
+				that lie outside the imageable area or that are generated
+				independently of the PostScript interpreter. This feature is
+				supported only by certain devices, such as imagesetters, that
+				produce output intended for further photographic processing.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Duplex"></a><b>Duplex</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag determining whether the output is to be
+				printed duplex (on both sides of the physical medium) or simplex (on
+				one side of the medium only). If this flag is true, pairs of
+				consecutive page images will be printed on opposite sides of a
+				single sheet of medium; if false, each page will be printed on a
+				separate sheet.
+				<p>On device activation, a duplex device always prints the first
+					page on a new sheet of medium; on deactivation, it automatically
+					delivers the last sheet of medium if it has been printed on only
+					one side.</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Tumble"></a><b>Tumble</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag specifying the relative orientation of
+				page images on opposite sides of a sheet of medium in duplex output
+				(that is, when <b>Duplex</b> is true). If <b>Tumble</b> is false,
+				the default user spaces of the two pages are oriented suitably for
+				binding at the left or right, with vertical (y) coordinates in the
+				two spaces increasing toward the same edge of the physical medium.
+				If <b>Tumble</b> is true, the default user spaces are oriented
+				suitably for binding at the top or bottom, with vertical coordinates
+				increasing toward opposite edges of the medium. If <b>Duplex</b> is
+				false, the <b>Tumble</b> parameter has no effect.
+				<p>
+					Note that <b>Tumble</b> is defined in terms of default user
+					space&mdash;the user space established by <b>setpagedevice</b>. The
+					orientation of default user space with respect to the medium is
+					determined by the <b>PageSize</b> and <b>Orientation</b>
+					parameters, possibly altered by the <b>Install</b> procedure.
+					Consistent results are obtained across all devices that support
+					duplexing, regardless of how the medium moves through the printing
+					mechanism. However, if a page description alters user space by
+					invoking operators such as <b>rotate</b>, the visual orientation of
+					the material printed on the page may differ from the orientation of
+					default user space.
+				</p>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

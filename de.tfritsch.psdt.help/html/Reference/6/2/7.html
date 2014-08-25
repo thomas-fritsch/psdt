@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Unsatisfied Parameter Requests</title>
+</head>
+<body>
+	<h3>6.2.7 Unsatisfied Parameter Requests</h3>
+	<table border="1">
+		<caption>TABLE 6.8 Page device parameter related to recovery
+			policies</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Policies"></a><b>Policies</b></td>
+			<td valign="top">dictionary</td>
+			<td valign="top">A dictionary specifying recovery policies for
+				responding to unsatisfied parameter requests. Entries in this
+				dictionary are keyed by the names of individual page device
+				parameters; the corresponding value for each parameter is an integer
+				code specifying what action to take when a requested setting for
+				that parameter cannot be satisfied. The entry for any given
+				parameter is optional; the dictionary also includes an overall
+				default policy for parameters for which no specific recovery policy
+				is defined.
+				<p>
+					Changes to the contents of the <b>Policies</b> dictionary are
+					cumulative; new entries are merged with those already present.
+				</p>
+			</td>
+		</tr>
+	</table>
+	<p />
+	<table border="1">
+		<caption>TABLE 6.9 Entries in the Policies dictionary</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PolicyNotFound"></a><b>PolicyNotFound</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">A code specifying the recovery policy to use
+				when a requested setting for a page device parameter cannot be
+				satisfied and no specific entry for that parameter is present in the
+				<b>Policies</b> dictionary:
+				<ol start="0">
+					<li>Generate a PostScript <b>configurationerror</b>&mdash;that
+						is, do not attempt recovery, but simply abandon the execution of <b>setpagedevice</b>,
+						leaving the current values of all page device parameters
+						undisturbed. Before generating the error, <b>setpagedevice</b>
+						inserts an <b>errorinfo</b> entry into the <b>$error</b>
+						dictionary. Error handling in general and <b>errorinfo</b> in
+						particular are discussed in Section 3.11, "Errors."
+					</li>
+					<li>Ignore the request and do not consider this parameter in
+						media selection. This is the usual default policy in most
+						products. Subsequent calls to <b>currentpagedevice</b> will return
+						a dictionary in which the entry for this parameter is modified as
+						follows:
+						<ul>
+							<li>Replaced by null if it is a media selection request</li>
+							<li>Unchanged from its former value if the parameter (other
+								than a media selection request) is known to the device</li>
+							<li>Absent if the parameter is unknown to the device</li>
+						</ul>
+					</li>
+					<li>Interact with a human operator or print management
+						software to determine what to do. The precise effects of this
+						policy vary among different output devices and environments. Some
+						devices may issue a message (on a front panel, for instance)
+						indicating an operator action that is required, then wait for
+						confirmation. Other devices have no ability to interact with an
+						operator and may generate a <b>configurationerror</b> in this
+						case.
+					</li>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PageSize"></a><b>PageSize</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">A code specifying the recovery policy to use
+				when a requested value for the <b>PageSize</b> parameter cannot be
+				matched (within a tolerance of ±5 units) by any available medium:
+				<ol start="0">
+					<li>Generate a <b>configurationerror</b>, as described above
+						for <b>PolicyNotFound</b>. This is the usual default policy on
+						most devices.
+					</li>
+					<li>Do not consider the <b>PageSize</b> parameter in media
+						selection. Subsequent calls to <b>currentpagedevice</b> will
+						return a dictionary whose <b>PageSize</b> entry describes the
+						medium that was actually selected.
+					</li>
+					<li>Interact with a human operator or print management
+						software, as described above for <b>PolicyNotFound</b>.
+					</li>
+					<li>Select the nearest available medium and adjust the page to
+						fit, as described below under "Recovery Policies and Media
+						Selection."</li>
+					<li>Select the next larger available medium and adjust the
+						page to fit.</li>
+					<li>Select the nearest available medium but do not adjust the
+						page.</li>
+					<li>Select the next larger available medium but do not adjust
+						the page.</li>
+					<li><i>(LanguageLevel 3)</i> If the requested page size is
+						within ±5 units of any page size supported by the device, disable
+						media selection altogether and impose the requested page size on
+						the previously selected medium without adjustment; otherwise,
+						generate a <b>configurationerror</b>. In the former case, the page
+						device is set up as if the selected medium were of the requested
+						size, ignoring the actual size of the medium. Positioning of the
+						page image on the medium is device-dependent and unpredictable.
+						<p>This policy exists solely for use in the emulations of
+							certain LanguageLevel 1 compatibility operators that perform
+							media selection and page device setup separately. Unlike all
+							other policies (which take effect only if a request cannot be
+							satisfied), this policy takes effect during every execution of
+							the setpagedevice operator. Because its behavior violates the
+							PostScript page device model, documents that use this policy are
+							not portable; for this reason, it should never be used directly
+							in a page description.</p></li>
+				</ol> Note that if <b>DeferredMediaSelection</b> is true, policies 3 and
+				4 may result in a <b>configurationerror</b>, since the needed
+				adjustments to the current transformation matrix cannot be deferred;
+				the effect of policy 7 under these circumstances is
+				device-dependent.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top">any feature name</td>
+			<td valign="top"></td>
+			<td valign="top">A code specifying the recovery policy to use
+				when a requested setting for the designated parameter cannot be
+				satisfied. Keys of this type are not limited to page device
+				parameters recognized by the device, but may include any key that
+				can appear in a request dictionary supplied to <b>setpagedevice</b>.
+				The <b>Policies</b> dictionary is consulted in the same way for an
+				unknown feature as for a known feature whose requested value cannot
+				be achieved. Except for <b>PageSize</b> (which has its own special
+				set of policy codes, as described above), the possible values
+				associated with any such key are the same as those described above
+				for <b>PolicyNotFound</b>.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PolicyReport"></a><b>PolicyReport</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top">A procedure to be called on successful
+				completion of <b>setpagedevice</b> if it encountered one or more
+				unsatisfied parameter requests requiring consultation of the <b>Policies</b>
+				dictionary. Before calling this procedure, the interpreter pushes a
+				dictionary on the stack identifying the parameters for which
+				unsatisfied requests were encountered and the corresponding recovery
+				actions specified in the dictionary; see "PolicyReport Procedure" on
+				page 438 for details. The procedure can report the actions that were
+				taken or perform alternative actions. Default value: {pop}.
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

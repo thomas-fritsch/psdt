@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Roll-Fed Media</title>
+</head>
+<body>
+	<h3>6.2.2 Roll-Fed Media</h3>
+	<table border="1">
+		<caption>TABLE 6.3 Page device parameters related to
+			roll-fed media</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="RollFedMedia"></a><b>RollFedMedia</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">(LanguageLevel 3) A flag specifying whether the
+				medium is roll-fed. The value of this flag may affect the matching
+				criteria used for the <b>PageSize</b> page device parameter (see the
+				description of <b>PageSize</b> in Table 6.4 on page 414).
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Orientation"></a><b>Orientation</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">A code specifying the orientation of the page
+				image on the medium. (The <b>PageSize</b> page device parameter may
+				not determine this orientation unambiguously, since pages on a
+				roll-fed medium have no inherent orientation.)
+				<ol start="0">
+					<li>Use normal default orientation as specified by <b>PageSize</b>.
+					</li>
+					<li>Rotate the image on the medium 90 degrees counterclockwise
+						with respect to the default orientation.</li>
+					<li>Rotate the image 180 degrees with respect to the default
+						orientation.</li>
+					<li>Rotate the image 270 degrees counterclockwise (equivalent
+						to 90 degrees clockwise) with respect to the default orientation.</li>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="AdvanceMedia"></a><b>AdvanceMedia</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">A code indicating whether and when to advance
+				the medium by an extra amount (specified by AdvanceDistance) in
+				addition to the space occupied by the page images themselves:
+				<ol start="0">
+					<li>Do not advance the medium.</li>
+					<li>Advance the medium at device deactivation.</li>
+					<li>Advance the medium at the end of the job. Advancing
+						between jobs is controlled by the value of <b>AdvanceMedia</b> for
+						the page device that is current between jobs. Thus, this feature
+						can be turned on or off only by executing <b>setpagedevice</b> as
+						part of an unencapsulated job.
+					</li>
+					<li>Advance the medium after each page set, as defined by the
+						<b>Collate</b> parameter (see Section 6.2.4, "Page Delivery").
+					</li>
+					<li>Advance the medium after each <b>showpage</b> or <b>copypage</b>
+						operation.
+					</li>
+				</ol>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="AdvanceDistance"></a><b>AdvanceDistance</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">The extra distance, in units of the default
+				user space (72nds of an inch), by which to advance the medium as
+				indicated by <b>AdvanceMedia</b>.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="CutMedia"></a><b>CutMedia</b></td>
+			<td valign="top">integer</td>
+			<td valign="top">A code indicating when to cut the medium:
+				<ol start="0">
+					<li>Do not cut the medium.</li>
+					<li>Cut the medium at device deactivation.</li>
+					<li>Cut the medium at the end of the job. Cutting between jobs
+						is controlled by the value of <b>CutMedia</b> for the page device
+						that is current between jobs. Thus, this feature can be turned on
+						or off only by executing <b>setpagedevice</b> as part of an
+						unencapsulated job.
+					</li>
+					<li>Cut the medium after each page set, as defined by the <b>Collate</b>
+						parameter (see Section 6.2.4, "Page Delivery").
+					</li>
+					<li>Cut the medium after each <b>showpage</b> or <b>copypage</b>
+						operation.
+					</li>
+				</ol>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

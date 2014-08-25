@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Color Support</title>
+</head>
+<body>
+	<h3>6.2.5 Color Support</h3>
+	<table border="1">
+		<caption>TABLE 6.6 Page device parameters related to color
+			support</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PageDeviceName"></a><b>PageDeviceName</b></td>
+			<td valign="top">string, name, or null</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> The name of the device
+				configuration represented by this page device dictionary. The <b>GetPageDeviceName</b>
+				procedure in the <b>ColorRendering</b> procedure set returns this
+				value, which is used by the <b>findcolorrendering</b> operator to
+				construct the name of a color rendering dictionary for a requested
+				rendering intent. See Section 7.1.3, "Rendering Intents," and
+				"Customizing CRD Selection" on page 472 for information on <b>findcolorrendering</b>
+				and <b>GetPageDeviceName</b>, respectively. See also the <b>MediaClass</b>
+				page device parameter in Table 6.2 on page 400, which can affect CRD
+				selection.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ProcessColorModel"></a><b>ProcessColorModel</b></td>
+			<td valign="top">name or string</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> The model used for
+				rendering process colors on the device (see "Process Color Model" on
+				page 422). This parameter controls the rendering process only; it
+				does not affect the interpretation of color values in any color
+				space.
+				<p>
+					The <b>ProcessColorModel</b> entry in the output device dictionary
+					(see Section 6.4, "Output Device Dictionary") defines the allowable
+					values for this parameter on a given device; attempting to set it
+					to an unsupported value will cause a configuration error. Valid
+					values are <b>DeviceGray</b>, <b>DeviceRGB</b>, <b>DeviceCMYK</b>,
+					<b>DeviceCMY</b>, <b>DeviceRGBK</b>, and (in LanguageLevel 3) <b>DeviceN</b>.
+				</p></td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Separations"></a><b>Separations</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag specifying whether the device should
+				produce separations or composite output. If this flag is true,
+				multiple color separations will be generated for each page of
+				output; that is, a separate sheet of physical medium will be
+				produced for each individual device colorant (primary or spot color)
+				specified by the <b>SeparationOrder</b> parameter. If the flag is
+				false, all colorants will be combined into a single composite page
+				on a single sheet of physical medium. See "Separations and Device
+				Colorants" on page 424.
+				<p>
+					In LanguageLevel 2, the availability of this feature is
+					devicedependent; most devices cannot produce separations. In
+					LanguageLevel 3, every device is capable of producing at least one
+					separation; the maximum number of separations is given by the <b>MaxSeparations</b>
+					parameter.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MaxSeparations"></a><b>MaxSeparations</b></td>
+			<td valign="top">integer</td>
+			<td valign="top"><i>(Read-only; LanguageLevel 3)</i> The maximum
+				number of separations that the device is capable of producing for
+				each page. This limit is a static property of the device, and is
+				independent of the values of page device parameters that control the
+				production of colorants and separations, such as <b>Separations</b>
+				and <b>SeparationColorNames</b>. However, its value can depend on
+				other parameters affecting memory needs, such as <b>PageSize</b> and
+				<b>HWResolution</b>. Valid range: 1 to 250.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="SeparationColorNames"></a><b>SeparationColorNames</b></td>
+			<td valign="top">array</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> An array specifying
+				the names of all colorants that are valid values for <b>Separation</b>
+				or (in LanguageLevel 3) <b>DeviceN</b> color spaces. Colorants
+				implied by the process color model (see "Process Color Model" on
+				page 422) are available automatically and need not be explicitly
+				declared. The <b>DeviceN</b> process color model (LanguageLevel 3)
+				has no such implicit colorant names; all device colorants in that
+				model must be declared explicitly in <b>SeparationColorNames</b>.
+				The <b>DeviceN</b> entry in the output device dictionary (see
+				Section 6.4, "Output Device Dictionary") defines the allowable sets
+				of process colorants for the <b>DeviceN</b> process color model.
+				<p>Array elements may be either name or string objects, which
+					are treated equivalently. The order of elements is not significant,
+					and duplicate elements are ignored.</p></td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="SeparationOrder"></a><b>SeparationOrder</b></td>
+			<td valign="top">array</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> An array specifying
+				the colorants to be applied when generating output on the device.
+				Array elements may be either name or string objects, which are
+				treated equivalently. Legal element values are the process colorant
+				names implied by the process color model (see "Process Color Model"
+				on page 422), as well as any additional colorant names declared by
+				the <b>SeparationColorNames</b> parameter. The presence of any other
+				names will result in a configuration error.
+				<p>
+					If physical separations are being produced (the <b>Separations</b>
+					parameter is true), a separation will be generated for each
+					colorant named in the <b>SeparationOrder</b> array, in the order
+					specified. Although all colorants implied by the process color
+					model or explicitly named in <b>SeparationColorNames</b> are
+					defined and can be specified via <b>Separation</b> or <b>DeviceN</b>
+					color spaces without recourse to their alternativeSpace and
+					tintTransform parameters, only those colorants named in <b>SeparationOrder</b>
+					will generate physical separations. Multiple occurrences of the
+					same colorant name in the <b>SeparationOrder</b> array will produce
+					multiple separations for the same colorant.
+				</p>
+				<p>
+					If composite output is being produced (<b>Separations</b> is
+					false), <b>SeparationOrder</b> merely specifies which colorants are
+					to be applied to the medium. The order of application is
+					unspecified; the order in which the colorants are named in the <b>SeparationOrder</b>
+					array is ignored.
+				</p>
+				<p>
+					An empty <b>SeparationOrder</b> array specifies that all colorants
+					implied by the process color model or named explicitly in <b>SeparationColorNames</b>
+					are to be applied in an unspecified order.
+				</p></td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="UseCIEColor"></a><b>UseCIEColor</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A flag that enables or
+				disables the remapping of colors from device color spaces to
+				device-independent CIE-based color spaces (see "Remapping Device
+				Colors to CIE"" on page 237).</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Trapping"></a><b>Trapping</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A flag that enables or
+				disables in-RIP trapping (see Section 6.3, "In-RIP Trapping").
+				Trapping is enabled if the flag is true and the device supports
+				multiple colorants, whether in the form of physical separations or
+				composite output. If the flag is false or the device supports only
+				one colorant, trapping is disabled.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="TrappingDetails"></a><b>TrappingDetails</b></td>
+			<td valign="top">dictionary</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A dictionary
+				containing parameters that control the operation of in-RIP trapping
+				on this device. See Table 6.10 on page 442 for the contents of this
+				dictionary.</td>
+		</tr>
+	</table>
+</body>
+</html>

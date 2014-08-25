@@ -36,6 +36,17 @@
 		<topic label="5.2 Font Dictionaries"    href="html/Reference/5/2.html" />
 		<topic label="5.7 Type 3 Fonts"         href="html/Reference/5/7.html" />
 	</topic>
+	<topic label="6 Device Control">
+		<topic label="6.2 Page Device Parameters" href="html/Reference/6/2.html">
+			<topic label="6.2.1 Media Selection" href="html/Reference/6/2/1.html" />
+			<topic label="6.2.2 Roll-Fed Media" href="html/Reference/6/2/2.html" />
+			<topic label="6.2.3 Page Image Placement" href="html/Reference/6/2/3.html" />
+			<topic label="6.2.4 Page Delivery" href="html/Reference/6/2/4.html" />
+			<topic label="6.2.5 Color Support" href="html/Reference/6/2/5.html" />
+			<topic label="6.2.6 Device Initialization and Page Setup" href="html/Reference/6/2/6.html" />
+			<topic label="6.2.7 Unsatisfied Parameter Requests" href="html/Reference/6/2/7.html" />
+		</topic>
+	</topic>
 	<topic     label="8 Operators">
 	<topic     label="Symbols">
 		<topic label="["                        href="html/Reference/8/2/@.html#mark1"/>

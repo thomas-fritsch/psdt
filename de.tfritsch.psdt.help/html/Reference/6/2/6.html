@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Device Initialization and Page Setup</title>
+</head>
+<body>
+	<h3>6.2.6 Device Initialization and Page Setup</h3>
+	<table border="1">
+		<caption>TABLE 6.7 Page device parameters related to device
+			initialization and page setup</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="Install"></a><b>Install</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top">A procedure to install parameter values in the
+				graphics state during each invocation of <b>setpagedevice</b>. <b>setpagedevice</b>
+				calls this procedure after setting up the device and installing it
+				as the current device in the graphics state, but before invoking <b>erasepage</b>
+				and <b>initgraphics</b>.
+				<p>
+					The <b>Install</b> procedure should not do anything besides alter
+					parameters in the graphics state. In general, it can usefully alter
+					only device-dependent parameters, because the succeeding <b>initgraphics</b>
+					operation resets all deviceindependent parameters to their standard
+					values. The only exception is the current transformation matrix;
+					see the discussion following this table.
+				</p>
+				<p>
+					In a device that supports in-RIP trapping (see Section 6.3, "In-RIP
+					Trapping"), the <b>Install</b> procedure can invoke <b>settrapzone</b>
+					to establish default trapping zones to be reestablished at the
+					beginning of each page.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="BeginPage"></a><b>BeginPage</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top">A procedure to be executed at the beginning of
+				each page. Before calling the procedure, the interpreter initializes
+				the graphics state, erases the current page if appropriate, and
+				pushes an integer on the operand stack indicating how many times <b>showpage</b>
+				has been invoked since the current device was activated.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="EndPage"></a><b>EndPage</b></td>
+			<td valign="top">procedure</td>
+			<td valign="top">A procedure to be executed at the end of each
+				page. Before calling the procedure, the interpreter pushes two
+				integers on the operand stack&mdash;a count of previous <b>showpage</b>
+				executions for this device and a reason code indicating the
+				circumstances under which this call is being made:
+				<ol start="0">
+					<li>During <b>showpage</b> or <i>(LanguageLevel 3)</i> <b>copypage</b></li>
+					<li>During <b>copypage</b> <i>(LanguageLevel 2 only)</i>
+					</li>
+					<li>At device deactivation</li>
+				</ol>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

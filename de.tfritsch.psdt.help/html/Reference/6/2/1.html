@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Media Selection</title>
+</head>
+<body>
+	<h3>6.2.1 Media Selection</h3>
+	<table border="1">
+		<caption>TABLE 6.2 Page device parameters related to media
+			selection</caption>
+		<tr>
+			<th align="left"><b>Key</b></th>
+			<th align="left"><b>Type</b></th>
+			<th align="left"><b>Value</b></th>
+		</tr>
+		<tr>
+			<td valign="top"><a name="InputAttributes"></a><b>InputAttributes</b></td>
+			<td valign="top">dictionary or null</td>
+			<td valign="top">A dictionary specifying the attributes of all
+				input media currently available for use by this output device. The
+				dictionary contains an entry for each available media source on the
+				device—for example, each input paper tray on a printer. The key for
+				each entry is an arbitrary integer position number; the value is a
+				subdictionary describing the medium currently available from that
+				source. Entries in these subdictionaries include <b>PageSize</b>, <b>MediaColor</b>,
+				<b>MediaWeight</b>, <b>MediaType</b>, <b>MediaClass</b>, and <b>InsertSheet</b>,
+				with the same meanings as the corresponding page device parameters
+				described in this table. Two other optional entries, <b>Priority</b>
+				and <b>MatchAll</b>, control details of the matching algorithm; see
+				"Matching Requests with Attributes" on page 403.
+				<p>
+					Changes to the contents of the <b>InputAttributes</b> dictionary
+					are cumulative; that is, the <b>setpagedevice</b> operator merges
+					the contents of <b>InputAttributes</b> from the request dictionary
+					with those of the existing <b>InputAttributes</b> dictionary for
+					the current device. However, this cumulative merging is not
+					recursive: the contents of subdictionaries representing individual
+					media sources within the <b>InputAttributes</b> dictionary are
+					replaced outright rather than merged.
+				</p>
+				<p>
+					On devices that perform deferred media selection (see "Deferred
+					Media Selection" on page 411), the PostScript interpreter has no
+					prior knowledge of the available input media. In such cases, <b>InputAttributes</b>
+					is either an empty dictionary or null. Instead of attempting to
+					fulfill the PostScript program's input media requests, the <b>setpagedevice</b>
+					operator will then simply save them and pass them to the device's
+					printing subsystem along with the contents of the rendered page
+					image.
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="PageSize"></a><b>PageSize</b></td>
+			<td valign="top">array</td>
+			<td valign="top">An array of two numbers, [width height],
+				specifying the overall dimensions of the physical medium that were
+				assumed during the generation of this page description. The
+				dimensions are expressed in units of the default user space (72nds
+				of an inch) and include any unprinted borders along the edges of the
+				page; thus the lower-left and upper-right corner of the assumed
+				physical page are at user space coordinates (0, 0) and (width,
+				height), respectively.
+				<p>The specified page dimensions are considered to match those
+					of an available input medium if they are within a tolerance of 5
+					units in each dimension. (For roll-fed media, the tolerance applies
+					only to the amount by which the requested size may exceed the
+					actual size of the physical medium; it may be smaller by an
+					unlimited amount.) The order in which the dimensions are specified
+					is immaterial; that is, a requested page size of [a b] is
+					considered to match an input medium whose dimensions are specified
+					as [b a]. Likewise, the physical orientation of the medium in the
+					printing mechanism is unspecified and can vary from one device to
+					another. The PostScript interpreter will set up the transformation
+					from user space to device space so that the longer and shorter
+					dimensions specified by PageSize are properly oriented with those
+					of the physical medium.</p>
+				<p>
+					To allow pages of the same dimensions in portrait (height greater
+					than width) and landscape (width greater than height) orientations
+					to be interspersed on the same physical medium, the <b>setpagedevice</b>
+					operator rotates the default user space for landscape orientation
+					90 degrees counterclockwise with respect to that for portrait
+					orientation. This relationship holds only for pages rendered on the
+					same physical medium; no such relationship is guaranteed between
+					different media. For roll-fed media, the page orientation is
+					further determined by the <b>Orientation</b> page device parameter
+					(see Table 6.3 on page 412).
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MediaColor"></a><b>MediaColor</b></td>
+			<td valign="top">string or null</td>
+			<td valign="top">A string identifying the color of the medium.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MediaWeight"></a><b>MediaWeight</b></td>
+			<td valign="top">number or null</td>
+			<td valign="top">The weight of the medium in grams per square
+				meter. "Basis weight" or "ream weight" in pounds can be converted to
+				grams per square meter by multiplying by 3.76; for example, 10-pound
+				paper is approximately 37.6 grams per square meter.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MediaType"></a><b>MediaType</b></td>
+			<td valign="top">string or null</td>
+			<td valign="top">An arbitrary string representing special
+				attributes of the medium other than its size, color, and weight.
+				This parameter can be used to identify special media such as
+				envelopes, letterheads, or preprinted forms.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MediaClass"></a><b>MediaClass</b></td>
+			<td valign="top">string or null</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> An arbitrary string
+				representing attributes of the medium that may require special
+				action by the output device, such as the selection of a color
+				rendering dictionary. Devices should use the value of this parameter
+				to trigger such media-related actions, reserving the <b>MediaType</b>
+				parameter (above) for generic attributes requiring no
+				device-specific action.
+				<p>
+					The <b>MediaClass</b> entry in the output device dictionary defines
+					the allowable values for this parameter on a given device (see
+					Section 6.4, "Output Device Dictionary"); attempting to set it to
+					an unsupported value will cause a configuration error.
+				</p></td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="InsertSheet"></a><b>InsertSheet</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A flag specifying
+				whether to insert a sheet of some special medium directly into the
+				output document. Media coming from a source for which this attribute
+				is true are sent directly to the output bin without passing through
+				the device’s usual imaging mechanism (such as the fuser assembly on
+				a laser printer). Consequently, nothing painted on the current page
+				is actually imaged on the inserted medium. See "Special Media
+				Handling" on page 407.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="LeadingEdge"></a><b>LeadingEdge</b></td>
+			<td valign="top">integer or null</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A code specifying the
+				edge of the input medium that will enter the printing engine or
+				imager first and across which data will be imaged. Values reflect
+				positions relative to a canonical page in portrait orientation
+				(width smaller than height):
+				<dl>
+					<dt>null</dt>
+					<dd>No request for media orientation</dd>
+					<dt>0</dt>
+					<dd>Short edge; top of canonical page</dd>
+					<dt>1</dt>
+					<dd>Long edge; right side of canonical page</dd>
+					<dt>2</dt>
+					<dd>Short edge; bottom of canonical page</dd>
+					<dt>3</dt>
+					<dd>Long edge; left side of canonical page</dd>
+				</dl>
+				<p>
+					When duplex printing is enabled, the canonical page orientation
+					refers only to the front (recto) side of the medium; the
+					orientation of the back (verso) side depends on the <b>Tumble</b>
+					parameter (see Section 6.2.3, "Page Image Placement") and is
+					independent of the value of <b>LeadingEdge</b>.
+				</p></td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="ManualFeed"></a><b>ManualFeed</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top">A flag indicating whether the input medium is
+				to be fed manually by a human operator (true) or automatically
+				(false). A true value asserts that the human operator will manually
+				feed media conforming to the specified attributes (<b>PageSize</b>,
+				<b>MediaColor</b>, <b>MediaWeight</b>, <b>MediaType</b>, <b>MediaClass</b>,
+				and <b>InsertSheet</b>). Thus, those attributes are not used to
+				select from available media sources in the normal way, although
+				their values may be presented to the human operator as an aid in
+				selecting the correct medium. On devices that offer more than one
+				manual feeding mechanism, the attributes may select among them.
+			</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="TraySwitch"></a><b>TraySwitch</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A flag specifying
+				whether the output device supports automatic switching of media
+				sources. When the originally selected source runs out of medium,
+				some devices with multiple media sources can switch automatically,
+				without human intervention, to an alternate source with the same
+				attributes (such as <b>PageSize</b> and <b>MediaColor</b>) as the
+				original. The choice of such an alternate media source is
+				device-specific, and may or may not be influenced by the <b>Priority</b>
+				array specified in the <b>InputAttributes</b> dictionary (see
+				"Matching Requests with Attributes," below).</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="MediaPosition"></a><b>MediaPosition</b></td>
+			<td valign="top">integer or null</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> The position number of
+				the media source to be used. This parameter does not override the
+				normal media selection process described in the text, but if
+				specified it will be honored&mdash;provided it can satisfy the input
+				media request in a manner consistent with normal media
+				selection&mdash;even if the media source it specifies is not the
+				best available match for the requested attributes.</td>
+		</tr>
+		<tr>
+			<td valign="top"><a name="DeferredMediaSelection"></a><b>DeferredMediaSelection</b></td>
+			<td valign="top">boolean</td>
+			<td valign="top"><i>(LanguageLevel 3)</i> A flag determining
+				when to perform media selection. If true, media will be selected by
+				an independent printing subsystem associated with the output device
+				itself, at some time after the execution of the <b>setpagedevice</b>
+				operator (see "Deferred Media Selection" on page 411). If false,
+				media selection is to be done in the normal way, as described below.</td>
+		</tr>
+	</table>
+</body>
+</html>
