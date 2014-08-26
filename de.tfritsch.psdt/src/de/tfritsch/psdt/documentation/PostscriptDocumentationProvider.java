@@ -3,6 +3,7 @@ package de.tfritsch.psdt.documentation;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Reader;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -10,7 +11,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.help.HelpSystem;
 import org.eclipse.help.IContext;
 import org.eclipse.help.IHelpResource;
-import org.eclipse.jface.internal.text.html.HTMLPrinter;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.util.PolymorphicDispatcher;
 
@@ -20,7 +20,6 @@ import de.tfritsch.psdt.postscript.PSExecutableName;
 import de.tfritsch.psdt.postscript.PSLiteralName;
 
 @Singleton
-@SuppressWarnings("restriction")
 public class PostscriptDocumentationProvider implements
 		IEObjectDocumentationProvider {
 
@@ -87,11 +86,27 @@ public class PostscriptDocumentationProvider implements
 		InputStream input = HelpSystem.getHelpContent(href);
 		if (input == null)
 			return null;
-		String content = HTMLPrinter.read(new InputStreamReader(input));
+		String content = read(new InputStreamReader(input));
 		try {
 			input.close();
 		} catch (IOException e) {
 		}
 		return content;
+	}
+
+	// copied from org.eclipse.jface.internal.text.html.HtmlPrinter
+	private static String read(Reader rd) {
+		StringBuffer buffer= new StringBuffer();
+		char[] readBuffer= new char[2048];
+		try {
+			int n= rd.read(readBuffer);
+			while (n > 0) {
+				buffer.append(readBuffer, 0, n);
+				n= rd.read(readBuffer);
+			}
+			return buffer.toString();
+		} catch (IOException x) {
+		}
+		return null;
 	}
 }
