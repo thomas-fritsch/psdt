@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.ui.hover;
+package de.tfritsch.psdt.documentation;
 
 import java.io.IOException;
 import java.io.InputStream;
