@@ -342,5 +342,14 @@
             extensions="ps,eps">
     </provider>
   </extension>
+  <extension
+        point="org.eclipse.ui.views">
+        <view
+              class="de.tfritsch.psdt.ui.views.PostscriptDocView"
+              icon="icons/doc.gif"
+              id="de.tfritsch.psdt.ui.docView"
+              name="Postscript Doc">
+        </view>
+  </extension>
 
 </plugin>
