@@ -3,14 +3,21 @@
  */
 package de.tfritsch.psdt;
 
+import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 
+import de.tfritsch.psdt.conversion.PostscriptTerminalConverters;
 import de.tfritsch.psdt.documentation.PostscriptDocumentationProvider;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
-public class PostscriptRuntimeModule extends de.tfritsch.psdt.AbstractPostscriptRuntimeModule {
+public class PostscriptRuntimeModule extends AbstractPostscriptRuntimeModule {
+
+	@Override
+	public Class<? extends IValueConverterService> bindIValueConverterService() {
+		return PostscriptTerminalConverters.class;
+	}
 
 	public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProviderr() {
         return PostscriptDocumentationProvider.class;
