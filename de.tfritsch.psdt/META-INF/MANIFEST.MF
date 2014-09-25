@@ -23,6 +23,7 @@ Import-Package: org.apache.log4j,
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: de.tfritsch.psdt,
  de.tfritsch.psdt.services,
+ de.tfritsch.psdt.conversion,
  de.tfritsch.psdt.postscript,
  de.tfritsch.psdt.postscript.impl,
  de.tfritsch.psdt.postscript.util,
