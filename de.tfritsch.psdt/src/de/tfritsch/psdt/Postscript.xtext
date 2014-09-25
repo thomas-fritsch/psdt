@@ -39,7 +39,7 @@ terminal STRING:
 	'(' (!('\\' | '(' | ')') | ESCAPED_CHAR)* ')';
 
 terminal fragment ESCAPED_CHAR:
-	'\\' ('t' | 'n' | 'f' | 'r' | '(' | ')' | '\\' | ('0'..'7')+);
+	'\\' ('t' | 'n' | 'f' | 'r' | 'b' | '(' | ')' | '\\' | ('0'..'7')+);
 
 terminal ASCII_HEX_STRING:
 	'<' ('0'..'9' | 'a'..'f' | 'A'..'F' | WS)* '>';
