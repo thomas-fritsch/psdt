@@ -4,11 +4,13 @@
 package de.tfritsch.psdt.ui.labeling
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
 import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
+import de.tfritsch.psdt.postscript.PSString
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
@@ -18,6 +20,9 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
  * see http://www.eclipse.org/Xtext/documentation.html#labelProvider
  */
 class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
+
+	@Inject
+	STRINGValueConverter stringValueConverter
 
 	@Inject
 	new(AdapterFactoryLabelProvider delegate) {
@@ -42,6 +47,10 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def text(PSDictionary it) {
 		"<<...>>" // better than "<unnamed>"
+	}
+
+	def text(PSString it) {
+		stringValueConverter.toString(s)
 	}
 
 	def image(PSObject it) {
