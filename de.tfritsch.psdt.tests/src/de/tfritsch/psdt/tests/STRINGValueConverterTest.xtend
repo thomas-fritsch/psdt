@@ -1,11 +1,11 @@
 package de.tfritsch.psdt.tests
 
-import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -13,12 +13,14 @@ import static org.junit.Assert.*
 
 @RunWith(XtextRunner)
 @InjectWith(PostscriptInjectorProvider)
-class STRINGValueConverterTest {
+class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 
-	@Inject
-	STRINGValueConverter converter;
+	@Before
+	def void init() {
+		converter = new STRINGValueConverter
+	}
 
-	@Test(expected = ValueConverterException)
+	@Test(expected=ValueConverterException)
 	def void testBrokenStringLiteral() {
 		converter.toValue("(", null)
 	}
