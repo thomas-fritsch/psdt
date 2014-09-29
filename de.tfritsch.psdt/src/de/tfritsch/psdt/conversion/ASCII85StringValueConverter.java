@@ -11,11 +11,11 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 
-public class ASCII85StringValueConverter implements IValueConverter<String> {
+public class ASCII85StringValueConverter implements IValueConverter<byte[]> {
 
 	private Filter filter = new ASCII85Filter();
 
-	public String toValue(String string, INode node)
+	public byte[] toValue(String string, INode node)
 			throws ValueConverterException {
 		if (!string.startsWith("<~"))
 			throw new ValueConverterException("must begin with '<~'", node,
@@ -27,16 +27,15 @@ public class ASCII85StringValueConverter implements IValueConverter<String> {
 					.getBytes("ISO-8859-1"));
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			filter.decode(input, output, null, 0);
-			return output.toString("ISO-8859-1");
+			return output.toByteArray();
 		} catch (IOException e) {
 			throw new ValueConverterException("decode error", node, e);
 		}
 	}
 
-	public String toString(String value) throws ValueConverterException {
+	public String toString(byte[] value) throws ValueConverterException {
 		try {
-			InputStream input = new ByteArrayInputStream(
-					value.getBytes("ISO-8859-1"));
+			InputStream input = new ByteArrayInputStream(value);
 			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			filter.encode(input, output, null, 0);
 			return "<~" + output.toString("ISO-8859-1").replace("~\n", "") + "~>";

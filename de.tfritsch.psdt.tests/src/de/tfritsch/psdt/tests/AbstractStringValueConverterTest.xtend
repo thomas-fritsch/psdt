@@ -8,14 +8,14 @@ import static org.junit.Assert.*
 
 abstract class AbstractStringValueConverterTest {
 
-	protected IValueConverter<String> converter
+	protected IValueConverter<byte[]> converter
 
 	val random = new Random
 
 	def protected randomValue() {
 		val bytes = newByteArrayOfSize(random.nextInt(10))
 		random.nextBytes(bytes)
-		return new String(bytes, "ISO-8859-1")
+		return bytes
 	}
 
 	@Test
@@ -24,7 +24,7 @@ abstract class AbstractStringValueConverterTest {
 			val value = randomValue
 			val string = converter.toString(value)
 			val value2 = converter.toValue(string, null)
-			assertEquals(value, value2)
+			assertArrayEquals(value, value2)
 		}
 	}
 }

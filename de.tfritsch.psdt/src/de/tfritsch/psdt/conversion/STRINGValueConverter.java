@@ -1,34 +1,36 @@
 package de.tfritsch.psdt.conversion;
 
+import java.io.ByteArrayOutputStream;
+
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
 
-public class STRINGValueConverter implements IValueConverter<String> {
+public class STRINGValueConverter implements IValueConverter<byte[]> {
 
-	public String toValue(String string, INode node)
+	public byte[] toValue(String string, INode node)
 			throws ValueConverterException {
 		if (!string.startsWith("("))
 			throw new ValueConverterException("must begin with '('", node, null);
 		if (!string.endsWith(")"))
 			throw new ValueConverterException("must end with ')'", node, null);
-		StringBuilder out = new StringBuilder();
+		ByteArrayOutputStream out = new ByteArrayOutputStream();
 		for (int i = 1; i < string.length() - 1; i++) {
 			char c = string.charAt(i);
 			if (c == '\\') {
 				c = string.charAt(++i);
 				if (c == 'b')
-					out.append('\b');
+					out.write('\b');
 				else if (c == 'f')
-					out.append('\f');
+					out.write('\f');
 				else if (c == 'r')
-					out.append('\r');
+					out.write('\r');
 				else if (c == 'n')
-					out.append('\n');
+					out.write('\n');
 				else if (c == 't')
-					out.append('\t');
+					out.write('\t');
 				else if (c == '(' || c == ')' || c == '\\')
-					out.append(c);
+					out.write(c);
 				else if (c == '\n')
 					; // ignore '\n'
 				else if (c == '\r') {
@@ -44,25 +46,23 @@ public class STRINGValueConverter implements IValueConverter<String> {
 						}
 					}
 					value &= 0xff; // high order overflow: ignore high bits
-					out.append((char) value);
+					out.write(value);
 				} else {
-					out.append(c); // invalid escape char: just ignore the '\'
+					out.write(c); // invalid escape char: just ignore the '\'
 				}
 			} else {
-				out.append(c);
+				out.write(c);
 			}
 		}
-		return out.toString();
+		return out.toByteArray();
 	}
 
-	public String toString(String value) throws ValueConverterException {
+	public String toString(byte[] value) throws ValueConverterException {
 		StringBuilder out = new StringBuilder();
 		out.append('(');
-		for (int i = 0; i < value.length(); i++) {
-			char c = value.charAt(i);
-			if (c >= '\u0100')
-				throw new ValueConverterException("illegal char", null, null);
-			else if (c == '\b')
+		for (int i = 0; i < value.length; i++) {
+			char c = (char) (value[i] & 0xff);
+			if (c == '\b')
 				out.append("\\b");
 			else if (c == '\f')
 				out.append("\\f");

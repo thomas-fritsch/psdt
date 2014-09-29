@@ -33,18 +33,18 @@ PSNumber:
 	n=NUMBER;
 
 PSString:
-	s=STRING | s=ASCII_HEX_STRING | s=ASCII_85_STRING;
+	bytes=STRING | bytes=ASCII_HEX_STRING | bytes=ASCII_85_STRING;
 
-terminal STRING:
+terminal STRING returns ecore::EByteArray:
 	'(' (!('\\' | '(' | ')') | ESCAPED_CHAR)* ')';
 
 terminal fragment ESCAPED_CHAR:
 	'\\' ('t' | 'n' | 'f' | 'r' | 'b' | '(' | ')' | '\\' | ('0'..'7')+);
 
-terminal ASCII_HEX_STRING:
+terminal ASCII_HEX_STRING returns ecore::EByteArray:
 	'<' ('0'..'9' | 'a'..'f' | 'A'..'F' | WS)* '>';
 
-terminal ASCII_85_STRING:
+terminal ASCII_85_STRING returns ecore::EByteArray:
 	'<~' ('!'..'u' | 'z' | WS)* '~>';
 
 terminal NUMBER:

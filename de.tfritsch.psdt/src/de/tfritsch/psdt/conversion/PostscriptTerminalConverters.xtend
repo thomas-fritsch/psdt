@@ -13,7 +13,7 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 	STRINGValueConverter stringValueConverter
 
 	@ValueConverter(rule="STRING")
-	def IValueConverter<String> getStringValueConverter() {
+	def IValueConverter<byte[]> getStringValueConverter() {
 		stringValueConverter
 	}
 
@@ -21,7 +21,7 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 	ASCIIHexStringValueConverter asciiHexStringValueConverter
 
 	@ValueConverter(rule="ASCII_HEX_STRING")
-	def IValueConverter<String> getAsciiHexStringValueConverter() {
+	def IValueConverter<byte[]> getAsciiHexStringValueConverter() {
 		asciiHexStringValueConverter
 	}
 
@@ -29,7 +29,7 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 	ASCII85StringValueConverter ascii85StringValueConverter
 
 	@ValueConverter(rule="ASCII_85_STRING")
-	def IValueConverter<String> getAscii85StringValueConverter() {
+	def IValueConverter<byte[]> getAscii85StringValueConverter() {
 		ascii85StringValueConverter
 	}
 

@@ -28,7 +28,7 @@ class ASCIIHexStringValueConverterTest extends AbstractStringValueConverterTest 
 	@Test
 	def void testEmpty() {
 		val value = converter.toValue("<>", null)
-		assertEquals("", value)
+		assertArrayEquals(newByteArrayOfSize(0), value)
 		val string = converter.toString(value)
 		assertEquals("<>", string)
 	}
@@ -36,7 +36,7 @@ class ASCIIHexStringValueConverterTest extends AbstractStringValueConverterTest 
 	@Test
 	def void testSimple() {
 		val value = converter.toValue("<48656C6C6F>", null)
-		assertEquals("Hello", value)
+		assertArrayEquals(#[0x48 as byte, 0x65 as byte, 0x6C as byte, 0x6C as byte, 0x6F as byte], value)
 		val string = converter.toString(value)
 		assertEquals("<48656C6C6F>", string)
 	}
@@ -44,19 +44,19 @@ class ASCIIHexStringValueConverterTest extends AbstractStringValueConverterTest 
 	@Test
 	def void testLowerCase() {
 		val value = converter.toValue("<48656c6c6f>", null)
-		assertEquals("Hello", value)
+		assertArrayEquals(#[0x48 as byte, 0x65 as byte, 0x6C as byte, 0x6C as byte, 0x6F as byte], value)
 	}
 
 	@Test
 	def void testHalf() {
 		val value = converter.toValue("<484>", null)
-		assertEquals("H@", value)
+		assertArrayEquals(#[0x48 as byte, 0x40 as byte], value)
 	}
 
 	@Test
 	def void testSpace() {
 		val value = converter.toValue("< 41 42 >", null)
-		assertEquals("AB", value)
+		assertArrayEquals(#[0x41 as byte, 0x42 as byte], value)
 	}
 
 }

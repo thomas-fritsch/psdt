@@ -50,7 +50,7 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def text(PSString it) {
-		stringValueConverter.toString(s)
+		stringValueConverter.toString(bytes)
 	}
 
 	def image(PSObject it) {

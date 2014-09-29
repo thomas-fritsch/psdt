@@ -28,7 +28,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testEmpty() {
 		val value = converter.toValue("<~~>", null)
-		assertEquals("", value)
+		assertArrayEquals(newByteArrayOfSize(0), value)
 		val string = converter.toString(value)
 		assertEquals("<~~>", string)
 	}
@@ -36,7 +36,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void test1Char() {
 		val value = converter.toValue("<~@/~>", null)
-		assertEquals("a", value)
+		assertArrayEquals(#[0x61 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("<~@/~>", string)
 	}
@@ -44,7 +44,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void test2Char() {
 		val value = converter.toValue("<~@:B~>", null)
-		assertEquals("ab", value)
+		assertArrayEquals(#[0x61 as byte, 0x62 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("<~@:B~>", string)
 	}
@@ -52,7 +52,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void test3Char() {
 		val value = converter.toValue("<~@:E^~>", null)
-		assertEquals("abc", value)
+		assertArrayEquals(#[0x61 as byte, 0x62 as byte, 0x63 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("<~@:E^~>", string)
 	}
@@ -60,7 +60,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void test4Char() {
 		val value = converter.toValue("<~@:E_W~>", null)
-		assertEquals("abcd", value)
+		assertArrayEquals(#[0x61 as byte, 0x62 as byte, 0x63 as byte, 0x64 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("<~@:E_W~>", string)
 	}
@@ -68,7 +68,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testSpace() {
 		val value = converter.toValue("<~ @ : B ~>", null)
-		assertEquals("ab", value)
+		assertArrayEquals(#[0x61 as byte, 0x62 as byte], value)
 	}
 
 }

@@ -28,7 +28,7 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testEmpty() {
 		val value = converter.toValue("()", null)
-		assertEquals("", value)
+		assertArrayEquals(newByteArrayOfSize(0), value)
 		val string = converter.toString(value)
 		assertEquals("()", string)
 	}
@@ -36,7 +36,7 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testSimple() {
 		val value = converter.toValue("(Hello world)", null)
-		assertEquals("Hello world", value)
+		assertArrayEquals("Hello world".getBytes("ISO-8859-1"), value)
 		val string = converter.toString(value)
 		assertEquals("(Hello world)", string)
 	}
@@ -44,7 +44,7 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testEscapeChars() {
 		val value = converter.toValue("(\\b\\f\\n\\r\\t\\\\\\(\\))", null)
-		assertEquals("\b\f\n\r\t\\()", value)
+		assertArrayEquals("\b\f\n\r\t\\()".getBytes("ISO-8859-1"), value)
 		val string = converter.toString(value)
 		assertEquals("(\\b\\f\\n\\r\\t\\\\\\(\\))", string)
 	}
@@ -52,31 +52,31 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testEscapeInvalid() {
 		val value = converter.toValue("(\\k)", null)
-		assertEquals("k", value)
+		assertArrayEquals("k".getBytes("ISO-8859-1"), value)
 	}
 
 	@Test
 	def void testEscapeNewline() {
 		val value = converter.toValue("(line1\\\nline2)", null)
-		assertEquals("line1line2", value)
+		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
 	}
 
 	@Test
 	def void testEscapeReturn() {
 		val value = converter.toValue("(line1\\\rline2)", null)
-		assertEquals("line1line2", value)
+		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
 	}
 
 	@Test
 	def void testEscapeReturnNewline() {
 		val value = converter.toValue("(line1\\\r\nline2)", null)
-		assertEquals("line1line2", value);
+		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
 	}
 
 	@Test
 	def void testOctal_1() {
 		val value = converter.toValue("(\\2)", null)
-		assertEquals("\u0002", value)
+		assertArrayEquals(#[2 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("(\\002)", string)
 	}
@@ -84,13 +84,13 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testOctal_1A() {
 		val value = converter.toValue("(\\2A)", null)
-		assertEquals("\u0002A", value)
+		assertArrayEquals(#[2 as byte, 0x41 as byte], value)
 	}
 
 	@Test
 	def void testOctal_2() {
 		val value = converter.toValue("(\\23)", null)
-		assertEquals("\u0013", value)
+		assertArrayEquals(#[023 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("(\\023)", string)
 	}
@@ -98,7 +98,7 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testOctal_3() {
 		val value = converter.toValue("(\\234)", null)
-		assertEquals("\u009c", value)
+		assertArrayEquals(#[0234 as byte], value)
 		val string = converter.toString(value)
 		assertEquals("(\\234)", string)
 	}
@@ -106,12 +106,12 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testOctal_4() {
 		val value = converter.toValue("(\\2345)", null)
-		assertEquals("\u009c5", value)
+		assertArrayEquals(#[0x9c as byte, 0x35 as byte], value)
 	}
 
 	@Test
 	def void testOctal_Overflow() {
 		val value = converter.toValue("(\\403)", null)
-		assertEquals("\u0003", value)
+		assertArrayEquals(#[3 as byte], value)
 	}
 }
