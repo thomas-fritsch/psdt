@@ -22,7 +22,7 @@ public class PostscriptAntlrTokenToAttributeIdMapper extends
 				|| "RULE_ASCII_85_STRING".equals(tokenName)) {
 			return DefaultHighlightingConfiguration.STRING_ID;
 		}
-		if ("RULE_NUMBER".equals(tokenName)) {
+		if ("RULE_INT".equals(tokenName) || "RULE_FLOAT".equals(tokenName)) {
 			return PostscriptHighlightingConfiguration.NUMBER_ID;
 		}
 		return super.calculateId(tokenName, tokenType);

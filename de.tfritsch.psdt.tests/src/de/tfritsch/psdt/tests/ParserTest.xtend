@@ -4,7 +4,9 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
+import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSFile
+import de.tfritsch.psdt.postscript.PSFloat
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
 import org.eclipse.xtext.junit4.InjectWith
@@ -27,6 +29,24 @@ class ParserTest {
 		'''.parse
 		assertNotNull(file)
 		assertEquals(0, file.objects.size)
+	}
+
+	@Test
+	def testInt() {
+		val file = '''
+			42
+		'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSInt)
+	}
+
+	@Test
+	def testFloat() {
+		val file = '''
+			42.0
+		'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSFloat)
 	}
 
 	@Test

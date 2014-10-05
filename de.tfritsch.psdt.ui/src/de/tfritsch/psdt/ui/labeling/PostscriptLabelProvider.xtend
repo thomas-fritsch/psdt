@@ -7,7 +7,9 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
+import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSFile
+import de.tfritsch.psdt.postscript.PSFloat
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
@@ -51,6 +53,14 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def text(PSString it) {
 		stringValueConverter.toString(bytes)
+	}
+
+	def text(PSInt it) {
+		String.valueOf(i)
+	}
+
+	def text(PSFloat it) {
+		String.valueOf(f)
 	}
 
 	def image(PSObject it) {

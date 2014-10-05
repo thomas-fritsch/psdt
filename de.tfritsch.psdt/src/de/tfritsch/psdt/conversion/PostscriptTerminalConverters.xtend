@@ -33,6 +33,14 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 		ascii85StringValueConverter
 	}
 
+	@Inject
+	INTValueConverter intValueConverter
+
+	@ValueConverter(rule="INT")
+	def IValueConverter<Integer> getIntValueConverter() {
+		intValueConverter
+	}
+
 // @Inject
 // AbstractIDValueConverter idValueConverter;
 //

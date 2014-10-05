@@ -9,7 +9,7 @@ PSFile:
 	objects+=PSObject*;
 
 PSObject:
-	PSLiteralName | PSExecutableName | PSNumber | PSString | PSProcedure | PSArray | PSDictionary;
+	PSLiteralName | PSExecutableName | PSInt | PSFloat | PSString | PSProcedure | PSArray | PSDictionary;
 
 PSProcedure:
 	{PSProcedure}
@@ -29,8 +29,11 @@ PSLiteralName:
 PSExecutableName:
 	name=ID;
 
-PSNumber:
-	n=NUMBER;
+PSInt:
+	i=INT;
+
+PSFloat:
+	f=FLOAT;
 
 PSString:
 	bytes=STRING | bytes=ASCII_HEX_STRING | bytes=ASCII_85_STRING;
@@ -47,8 +50,19 @@ terminal ASCII_HEX_STRING returns ecore::EByteArray:
 terminal ASCII_85_STRING returns ecore::EByteArray:
 	'<~' ('!'..'u' | 'z' | WS)* '~>';
 
-terminal NUMBER:
-	('-')? ('0'..'9') ('.' | '0'..'9')*;
+terminal INT returns ecore::EInt:
+	(('+' | '-')? ('0'..'9')+) | RADIX_INT;
+
+terminal fragment RADIX_INT:
+	('0'..'9')+ '#' ('0'..'9' | 'a'..'z' | 'A'..'Z')+;
+
+terminal FLOAT returns ecore::EFloat:
+	('+' | '-')? ('0'..'9')+ '.' ('0'..'9')* EXP? |
+	('+' | '-')? '.' ('0'..'9')+ EXP? |
+	('+' | '-')? ('0'..'9')+ EXP;
+
+terminal fragment EXP:
+	('E' | 'e') ('+' | '-')? ('0'..'9')+;
 
 terminal LITERAL_ID:
 	'/' ID;
