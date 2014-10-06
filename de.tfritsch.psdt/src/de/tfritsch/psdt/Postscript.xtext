@@ -1,4 +1,4 @@
-grammar de.tfritsch.psdt.Postscript hidden(WS, SL_COMMENT)
+grammar de.tfritsch.psdt.Postscript hidden(WS, SL_COMMENT, DSC_COMMENT)
 // there is no point to use  with org.eclipse.xtext.common.Terminals
 // because we would need to override most of it (ID, STRING, SL_COMMENT, WS)
 generate postscript "http://www.tfritsch.de/psdt/Postscript"
@@ -72,6 +72,9 @@ terminal ID:
 
 terminal fragment DELIM_CHAR:
 	'(' | ')' | '<' | '>' | '[' | ']' | '{' | '}' | '/' | '%' | ' ' | '\t' | '\r' | '\n' | '\f' | '\u0000';
+
+terminal DSC_COMMENT:
+	('%!PS' | '%%') !('\r' | '\n' | '\f')*;
 
 terminal SL_COMMENT:
 	'%' !('\r' | '\n' | '\f')*;

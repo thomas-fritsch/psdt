@@ -11,6 +11,8 @@ public class PostscriptHighlightingConfiguration extends
 
 	public static final String LITERAL_NAME_ID = "literalName";
 
+	public static final String DSC_COMMENT_ID = "dscComment";
+
 	@Override
 	public void configure(IHighlightingConfigurationAcceptor acceptor) {
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name",
@@ -19,6 +21,8 @@ public class PostscriptHighlightingConfiguration extends
 				punctuationTextStyle());
 		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment",
 				commentTextStyle());
+		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment",
+				dscCommentTextStyle());
 		acceptor.acceptDefaultHighlighting(STRING_ID, "String",
 				stringTextStyle());
 		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number",
@@ -33,6 +37,12 @@ public class PostscriptHighlightingConfiguration extends
 		TextStyle textStyle = defaultTextStyle().copy();
 		textStyle.setColor(new RGB(128, 0, 255)); // violet
 		textStyle.setStyle(SWT.BOLD);
+		return textStyle;
+	}
+
+	public TextStyle dscCommentTextStyle() {
+		TextStyle textStyle = defaultTextStyle().copy();
+		textStyle.setColor(new RGB(63, 95, 191)); // grey blue
 		return textStyle;
 	}
 

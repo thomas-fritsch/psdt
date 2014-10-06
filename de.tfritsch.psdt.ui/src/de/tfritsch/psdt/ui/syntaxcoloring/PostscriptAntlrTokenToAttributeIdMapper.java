@@ -25,6 +25,9 @@ public class PostscriptAntlrTokenToAttributeIdMapper extends
 		if ("RULE_INT".equals(tokenName) || "RULE_FLOAT".equals(tokenName)) {
 			return PostscriptHighlightingConfiguration.NUMBER_ID;
 		}
+		if ("RULE_DSC_COMMENT".equals(tokenName)) {
+			return PostscriptHighlightingConfiguration.DSC_COMMENT_ID;
+		}
 		return super.calculateId(tokenName, tokenType);
 	}
 }
