@@ -1,159 +1,159 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<HTML>
-<HEAD>
-    <TITLE>Postscript Level 2</TITLE>
-</HEAD>
-<BODY>
-<H1>Postscript Operators 'f'</H1>
-<HR>
-<A NAME="false"></A>
-<B>false</B>
-<PRE>- false false</PRE>
-<P>
+<html>
+<head>
+    <title>Postscript Level 2</title>
+</head>
+<body>
+<h1>Postscript Operators 'f'</h1>
+<hr>
+<a name="false"></a>
+<b>false</b>
+<pre>- false false</pre>
+<p>
 pushes a boolean object whose value is false on the operand stack.
-false is not an operator; it is a name in <A HREF="s.html#systemdict">systemdict</A>
+false is not an operator; it is a name in <a href="s.html#systemdict">systemdict</a>
 associated with the boolean value false.
-<P>
-<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
-<P>
-<B>See Also:</B> <A HREF="t.html#true">true</A>, <A HREF="a.html#and">and</A>,
-<A HREF="no.html#or">or</A>, <A HREF="no.html#not">not</A>, <A HREF="xy.html#xor">xor</A>
-<HR>
-<A NAME="file"></A>
-<B>file</B>
-<PRE>filename access file file</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="s.html#stackoverflow">stackoverflow</a>
+<p>
+<b>See Also:</b> <a href="t.html#true">true</a>, <a href="a.html#and">and</a>,
+<a href="no.html#or">or</a>, <a href="no.html#not">not</a>, <a href="xy.html#xor">xor</a>
+<hr>
+<a name="file"></a>
+<b>file</b>
+<pre>filename access file file</pre>
+<p>
 creates a file object for the file identified by filename, accessing it
 as specified by access. Both operands are strings. Conventions for both
 file names and access specifications depend on the operating system environment
 in which the PostScript interpreter is running.
-<P>
+<p>
 Once created and opened, the file object remains valid until the file is
-closed either explicitly (by executing <A HREF="c.html#closefile">closefile</A>)
+closed either explicitly (by executing <a href="c.html#closefile">closefile</a>)
 or implicitly (by encountering end-offile while reading or executing the
-file). A file is also closed by <A HREF="qr.html#restore">restore</A>
-if the file object was created more recently than the <A HREF="s.html#save">save</A>
+file). A file is also closed by <a href="qr.html#restore">restore</a>
+if the file object was created more recently than the <a href="s.html#save">save</a>
 snapshot being restored, or is closed by garbage collection if the file
 object is no longer accessible. There is a limit on the number of files
 that can be open simultaneously.
-<P>
+<p>
 If the specified filename is malformed or if the file doesn't exist and
-access does not permit creating a new file, file executes an <A HREF="u.html#undefinedfilename">undefinedfilename</A>
+access does not permit creating a new file, file executes an <a href="u.html#undefinedfilename">undefinedfilename</a>
 error. If access is malformed or the requested access is not permitted by
-the device, an <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>
+the device, an <a href="ik.html#invalidfileaccess">invalidfileaccess</a>
 error occurs. If the number of files opened by the current context exceeds
-an implementation limit, a <A HREF="l.html#limitcheck">limitcheck</A>
-error occurs. If an environmentdependent error is detected, an <A HREF="ik.html#ioerror">ioerror</A>
+an implementation limit, a <a href="l.html#limitcheck">limitcheck</a>
+error occurs. If an environmentdependent error is detected, an <a href="ik.html#ioerror">ioerror</a>
 occurs.
-<P>
-<B>Examples</B>
-<PRE>
+<p>
+<b>Examples</b>
+<pre>
 (%stdin) (r) file  &rArr;  % standard input file object
 (myfile) (w) file  &rArr;  % output file object, writing to named file
-</PRE>
-<P>
-<B>Errors:</B> <A HREF="ik.html#invalidfileaccess">invalidfileaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
-<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
-<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#undefinedfilename">undefinedfilename</A>
-<P>
-<B>See Also:</B> <A HREF="c.html#closefile">closefile</A>, <A HREF="c.html#currentfile">currentfile</A>,
-<A HREF="#filter">filter</A>, <A HREF="s.html#status">status</A>
-<HR>
-<A NAME="filenameforall"></A>
-<B>filenameforall</B> LEVEL 2
-<PRE>template proc scratch filenameforall -</PRE>
-<P>
+</pre>
+<p>
+<b>Errors:</b> <a href="ik.html#invalidfileaccess">invalidfileaccess</a>, <a href="ik.html#ioerror">ioerror</a>,
+<a href="l.html#limitcheck">limitcheck</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
+<a href="t.html#typecheck">typecheck</a>, <a href="u.html#undefinedfilename">undefinedfilename</a>
+<p>
+<b>See Also:</b> <a href="c.html#closefile">closefile</a>, <a href="c.html#currentfile">currentfile</a>,
+<a href="#filter">filter</a>, <a href="s.html#status">status</a>
+<hr>
+<a name="filenameforall"></a>
+<b>filenameforall</b> LEVEL 2
+<pre>template proc scratch filenameforall -</pre>
+<p>
 enumerates all files whose names match the specified template string. For
 each matching file, filenameforall copies the file's name into the supplied
 scratch string, pushes a string object designating the substring of scratch
 actually used, and calls proc. filenameforall does not return any results
 of its own, but proc may do so.
-<P>
+<p>
 The details of template matching are device dependent, but the following
 convention is typical. All characters in the template are treated literally
 and are case sensitive, except the following special characters:
-<DL>
-<DT>*<DD>matches zero or more consecutive characters.
-<DT>?<DD>matches exactly one character.
-<DT>\<DD>causes the next character of the template to be treated literally, even
+<dl>
+<dt>*<dd>matches zero or more consecutive characters.
+<dt>?<dd>matches exactly one character.
+<dt>\<dd>causes the next character of the template to be treated literally, even
 if it is *, ?, or /.
-</DL>
-<P>
+</dl>
+<p>
 If template does not begin with %, it is matched against device relative
 file names of all devices in the search order. When a match occurs, the
 file name passed to proc
 is likewise device relative-in other words, it does not have a %device%
 prefix.
-<P>
+<p>
 If template does begin with %, it is matched against complete file names
 in the form %device%file. Template matching can be performed on the device,
 the file, or both parts of the name. When a match occurs, the file name
 passed to proc is likewise in the complete form %device%file.
-<P>
+<p>
 The order of enumeration is unspecified and device dependent. There are
 no restrictions on what proc can do. However, if proc causes new files to
 be created, it is unspecified whether or not those files will be encountered
 later in the same enumeration. Likewise, the set of file names considered
 for template matching is device dependent.
-<P>
-<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#ioerror">ioerror</A>,
-<A HREF="qr.html#rangecheck">rangecheck</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>,
-<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="s.html#status">status</A>
-<HR>
-<A NAME="fileposition"></A>
-<B>fileposition</B> LEVEL 2
-<PRE>file fileposition position</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="ik.html#invalidaccess">invalidaccess</a>, <a href="ik.html#ioerror">ioerror</a>,
+<a href="qr.html#rangecheck">rangecheck</a>, <a href="s.html#stackoverflow">stackoverflow</a>,
+<a href="s.html#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="#file">file</a>, <a href="s.html#status">status</a>
+<hr>
+<a name="fileposition"></a>
+<b>fileposition</b> LEVEL 2
+<pre>file fileposition position</pre>
+<p>
 returns the current position in an existing open file. The result is a non-negative
 integer interpreted as number of bytes from the beginning of the file. If
 the file object is not valid or the underlying file is not positionable,
-an <A HREF="ik.html#ioerror">ioerror</A> occurs.
-<P>
-<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
-<A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="s.html#setfileposition">setfileposition</A>, <A HREF="#file">file</A>
-<HR>
-<A NAME="fill"></A>
-<B>fill</B>
-<PRE>- fill -</PRE>
+an <a href="ik.html#ioerror">ioerror</a> occurs.
+<p>
+<b>Errors:</b> <a href="ik.html#ioerror">ioerror</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
+<a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="s.html#setfileposition">setfileposition</a>, <a href="#file">file</a>
+<hr>
+<a name="fill"></a>
+<b>fill</b>
+<pre>- fill -</pre>
 paints the area enclosed by the current path with the current color.
 Any previous contents of that area on the current page are obscured, so
 areas may be erased by filling with color set to white.
-<P>
+<p>
 Before painting, fill implicitly closes any open subpaths of the current
 path. The inside of the current path is determined by the normal non-zero
 winding number rule.
-<P>
+<p>
 fill implicitly performs a newpath after it has finished filling the current
 path. To preserve the current path across a fill operation, use the sequence:
-<P>
+<p>
 gsave fill grestore
-<P>
-<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
-<P>
-<B>See Also:</B> <A HREF="c.html#clip">clip</A>, <A HREF="e.html#eofill">eofill</A>,
-<A HREF="s.html#stroke">stroke</A>, <A HREF="u.html#ufill">ufill</A>
-<P>
-<HR>
-<A NAME="filter"></A>
-<B>filter</B> LEVEL 2
-<PRE>source/target param1 ... paramn name filter file</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>
+<p>
+<b>See Also:</b> <a href="c.html#clip">clip</a>, <a href="e.html#eofill">eofill</a>,
+<a href="s.html#stroke">stroke</a>, <a href="u.html#ufill">ufill</a>
+<p>
+<hr>
+<a name="filter"></a>
+<b>filter</b> LEVEL 2
+<pre>source/target param1 ... paramn name filter file</pre>
+<p>
 creates and returns a filtered file.
-<P>
+<p>
 The source/target operand specifies the underlying data source or data target
 that the filter is to read or write. It can be a file, procedure, or string.
-<P>
+<p>
 The param1 ... paramn operands are additional parameters that control how
 the filter is to operate. The number and types of these operands depend
 on the filter name. Most filters require no additional parameters.
-<P>
+<p>
 The name operand identifies the data transformation that the filter is to
 perform. The standard filter names are: 
-<PRE>
+<pre>
   ASCIIHexEncode  ASCIIHexDecode 
   ASCII85Encode   ASCII85Decode 
   LZWEncode       LZWDecode 
@@ -161,7 +161,7 @@ perform. The standard filter names are:
   CCITTFaxEncode  CCITTFaxDecode 
   DCTEncode       DCTDecode 
   NullEncode      SubFileDecode 
-</PRE>
+</pre>
 An encoding filter is an output (writable) file. A decoding filter is an
 input (readable) file. The file object returned by the filter can be used
 as an operand of normal file input and output operators, such as read and
@@ -169,73 +169,73 @@ write. Reading from an input filtered file causes the filter to read from
 the underlying data source and transform the data. Similarly, writing to
 an output filtered file causes the filter to transform the data and write
 it to the underlying data target.
-<P>
-<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="u.html#undefined">undefined</A>,
-<A HREF="t.html#typecheck">typecheck</A>, <A HREF="qr.html#rangecheck">rangecheck</A>,
-<A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="ik.html#invalidaccess">invalidaccess</A>
-<P>
-<B>See Also:</B> <A HREF="#file">file</A>, <A HREF="c.html#closefile">closefile</A>,
-<A HREF="qr.html#resourceforall">resourceforall</A>
-<HR>
-<A NAME="findencoding"></A>
-<B>findencoding</B> LEVEL 2
-<PRE>key findencoding array</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>, <a href="u.html#undefined">undefined</a>,
+<a href="t.html#typecheck">typecheck</a>, <a href="qr.html#rangecheck">rangecheck</a>,
+<a href="s.html#stackunderflow">stackunderflow</a>, <a href="ik.html#invalidaccess">invalidaccess</a>
+<p>
+<b>See Also:</b> <a href="#file">file</a>, <a href="c.html#closefile">closefile</a>,
+<a href="qr.html#resourceforall">resourceforall</a>
+<hr>
+<a name="findencoding"></a>
+<b>findencoding</b> LEVEL 2
+<pre>key findencoding array</pre>
+<p>
 obtains an encoding vector identified by the specified key and pushes it
 onto the operand stack.
-<P>
+<p>
 findencoding is a special case of findresource applied to the Encoding category.
 If the encoding array specified by key does not exist or cannot be found,
-findencoding executes the <A HREF="u.html#undefinedresource">undefinedresource</A>
+findencoding executes the <a href="u.html#undefinedresource">undefinedresource</a>
 error.
-<P>
-<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
-<A HREF="u.html#undefinedresource">undefinedresource</A>
-<P>
-<B>See Also:</B> <A HREF="#findresource">findresource</A>, <A HREF="s.html#StandardEncoding">StandardEncoding</A>,
-<A HREF="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</A>
-<HR>
-<A NAME="findfont"></A>
-<B>findfont</B>
-<PRE>key findfont font</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="s.html#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>,
+<a href="u.html#undefinedresource">undefinedresource</a>
+<p>
+<b>See Also:</b> <a href="#findresource">findresource</a>, <a href="s.html#StandardEncoding">StandardEncoding</a>,
+<a href="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</a>
+<hr>
+<a name="findfont"></a>
+<b>findfont</b>
+<pre>key findfont font</pre>
+<p>
 obtains a font dictionary identified by the specified key and pushes it
-on the operand stack . key may be a key previously passed to <A HREF="d.html#definefont">definefont</A>,
+on the operand stack . key may be a key previously passed to <a href="d.html#definefont">definefont</a>,
 in which case the font dictionary associated with key (in the font directory)
 is returned.
-<P>
+<p>
 If key is not registered as a font in VM, findfont takes an action that
 varies according to the environment in which the PostScript interpreter
 is operating. In some environments, findfont may attempt to read a font
 definition from an external source, such as a file. In other environments,
-findfont substitutes a default font or executes the error <A HREF="ik.html#invalidfont">invalidfont</A>.
-findfont is a special case of <A HREF="#findresource">findresource</A> applied
+findfont substitutes a default font or executes the error <a href="ik.html#invalidfont">invalidfont</a>.
+findfont is a special case of <a href="#findresource">findresource</a> applied
 to the Font category.
-<P>
-findfont, like <A HREF="#findresource">findresource</A>, normally looks
+<p>
+findfont, like <a href="#findresource">findresource</a>, normally looks
 first for fonts defined in local VM, then for fonts defined in global VM.
 However, if the current VM allocation mode is global, findfont considers
 only fonts defined in global VM. If findfont needs to load a font into VM,
 it may use either local or global VM, depending on the font. Generally,
 Type 1 fonts are loaded into global VM; fonts of other types are loaded
 in to local VM.
-<P>
+<p>
 findfont is not an operator, but rather a built-in procedure. It may be
 redefined by a PostScript language program that requires different strategies
 for finding fonts.
-<P>
-<B>Errors:</B> <A HREF="ik.html#invalidfont">invalidfont</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
-<A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="s.html#scalefont">scalefont</A>, <A HREF="m.html#makefont">makefont</A>,
-<A HREF="s.html#setfont">setfont</A>, <A HREF="s.html#selectfont">selectfont</A>,
-<A HREF="d.html#definefont">definefont</A>, <A HREF="#findresource">findresource</A>,
-<A HREF="#FontDirectory">FontDirectory</A>, <A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
-<HR>
-<A NAME="findresource"></A>
-<B>findresource</B> LEVEL 2
-<PRE>key category findresource instance</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="ik.html#invalidfont">invalidfont</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
+<a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="s.html#scalefont">scalefont</a>, <a href="m.html#makefont">makefont</a>,
+<a href="s.html#setfont">setfont</a>, <a href="s.html#selectfont">selectfont</a>,
+<a href="d.html#definefont">definefont</a>, <a href="#findresource">findresource</a>,
+<a href="#FontDirectory">FontDirectory</a>, <a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>
+<hr>
+<a name="findresource"></a>
+<b>findresource</b> LEVEL 2
+<pre>key category findresource instance</pre>
+<p>
 attempts to obtain a named resource instance in a specified category. category
 is a name object that identifies a resource category, such as Font . key
 is a name or string object that identifies the resource instance. (Names
@@ -243,14 +243,14 @@ and strings are interchangeable; other types of keys are permitted but are
 not recommended.) If it succeeds, findresource pushes the resource instance
 on the operand stack; this is an object whose type depends on the resource
 category.
-<P>
+<p>
 findresource first attempts to obtain a resource instance that has previously
 been defined in VM by defineresource. If the current VM allocation mode
 is local, findresource considers local resource definitions first, then
-global definitions (see <A HREF="d.html#defineresource">defineresource</A>).
+global definitions (see <a href="d.html#defineresource">defineresource</a>).
 However, if the current VM allocation mode is global, findresource considers
 only global resource definitions.
-<P>
+<p>
 If the requested resource instance is not currently defined in VM, findresource
 attempts to obtain it from an external source. The way this is done is not
 specified by the PostScript language; it varies among different implementations
@@ -258,7 +258,7 @@ and different resource categories. The effect of this action is to create
 an object in VM and execute defineresource. findresource then returns the
 newly created object. If key is not a name or string, findresource will
 not attempt to obtain an external resource.
-<P>
+<p>
 When findresource loads an object into VM, it ordinarily attempts to use
 global VM, regardless of the current VM allocation mode. In other words,
 it sets the VM allocation mode to global (true setglobal) while loading
@@ -266,137 +266,137 @@ the resource instance and executing defineresource. However, certain resource
 instances do not function correctly when loaded into global VM; findresource
 uses local VM instead. This always occurs for type 3 font definitions and
 for any resource instance whose definition includes an explicit false setglobal.
-<P>
+<p>
 During its execution, findresource may remove the definitions of resource
 instances that were previously loaded into VM by findresource. The mechanisms
 and policies for this depend on the category and the implementation; reclamation
 of resources may occur at times other than during execution of findresource.
-However, resource definitions that were made by explicit execution of <A HREF="d.html#defineresource">defineresource</A>
-are never disturbed by automatic reclamation.<P>
-<P>
-If the specified resource category does not exist, an <A HREF="u.html#undefined">undefined</A>
+However, resource definitions that were made by explicit execution of <a href="d.html#defineresource">defineresource</a>
+are never disturbed by automatic reclamation.<p>
+<p>
+If the specified resource category does not exist, an <a href="u.html#undefined">undefined</a>
 error occurs. If the category exists but there is no instance whose name
-is key, an <A HREF="u.html#undefinedresource">undefinedresource</A>
+is key, an <a href="u.html#undefinedresource">undefinedresource</a>
 error occurs.
-<P>
-<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>,
-<A HREF="u.html#undefined">undefined</A>, <A HREF="u.html#undefinedresource">undefinedresource</A>
-<P>
-<B>See Also:</B> <A HREF="d.html#defineresource">defineresource</A>, <A HREF="qr.html#resourcestatus">resourcestatus</A>,
-<A HREF="qr.html#resourceforall">resourceforall</A>, <A HREF="u.html#undefineresource">undefineresource</A>
-<HR>
-<A NAME="flattenpath"></A>
-<B>flattenpath</B>
-<PRE>- flattenpath -</PRE>
+<p>
+<b>Errors:</b> <a href="s.html#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>,
+<a href="u.html#undefined">undefined</a>, <a href="u.html#undefinedresource">undefinedresource</a>
+<p>
+<b>See Also:</b> <a href="d.html#defineresource">defineresource</a>, <a href="qr.html#resourcestatus">resourcestatus</a>,
+<a href="qr.html#resourceforall">resourceforall</a>, <a href="u.html#undefineresource">undefineresource</a>
+<hr>
+<a name="flattenpath"></a>
+<b>flattenpath</b>
+<pre>- flattenpath -</pre>
 replaces the current path with an equivalent path that preserves all straight
-line segments, but has all <A HREF="c.html#curveto">curveto</A> segments
-replaced by sequences of <A HREF="l.html#lineto">lineto</A> (straight
+line segments, but has all <a href="c.html#curveto">curveto</a> segments
+replaced by sequences of <a href="l.html#lineto">lineto</a> (straight
 line) segments that approximate the curves. If the current path does not
-contain any <A HREF="c.html#curveto">curveto</A> segments, flattenpath
+contain any <a href="c.html#curveto">curveto</a> segments, flattenpath
 leaves it unchanged.
-<P>
+<p>
 This &quot;flattening&quot; of curves to straight line segments is done
-automatically when a path is used to control painting (for example, by <A HREF="s.html#stroke">stroke</A>,
-<A HREF="#fill">fill</A>, or <A HREF="c.html#clip">clip</A>). Only rarely
-does a program need to flatten a path explicitly (see <A HREF="p.html#pathbbox">pathbbox</A>).
+automatically when a path is used to control painting (for example, by <a href="s.html#stroke">stroke</a>,
+<a href="#fill">fill</a>, or <a href="c.html#clip">clip</a>). Only rarely
+does a program need to flatten a path explicitly (see <a href="p.html#pathbbox">pathbbox</a>).
 The accuracy of the approximation to the curve is controlled by the current
-flatness parameter in the graphics state (see <A HREF="s.html#setflat">setflat</A>).
-<P>
-<B>Errors:</B> <A HREF="l.html#limitcheck">limitcheck</A>
-<P>
-<B>See Also:</B> <A HREF="s.html#setflat">setflat</A>, <A HREF="c.html#curveto">curveto</A>,
-<A HREF="l.html#lineto">lineto</A>, <A HREF="p.html#pathbbox">pathbbox</A>
-<HR>
-<A NAME="floor"></A>
-<B>floor</B>
-<PRE>num1 floor num2</PRE>
-<P>
+flatness parameter in the graphics state (see <a href="s.html#setflat">setflat</a>).
+<p>
+<b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>
+<p>
+<b>See Also:</b> <a href="s.html#setflat">setflat</a>, <a href="c.html#curveto">curveto</a>,
+<a href="l.html#lineto">lineto</a>, <a href="p.html#pathbbox">pathbbox</a>
+<hr>
+<a name="floor"></a>
+<b>floor</b>
+<pre>num1 floor num2</pre>
+<p>
 returns the greatest integer value less than or equal to num1. The type
 of the result is the same as the type of the operand.
-<P>
-<B>Examples</B>
-<PRE>
+<p>
+<b>Examples</b>
+<pre>
 3.2 floor  &rArr; 3.0
 -4.8 floor &rArr; -5.0
 99 floor   &rArr; 99
-</PRE>
-<P>
-<B>Errors:</B> <A HREF="s.html#stackunderflow">stackunderflow</A>, <A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="c.html#ceiling">ceiling</A>, <A HREF="qr.html#round">round</A>,
-<A HREF="t.html#truncate">truncate</A>, <A HREF="c.html#cvi">cvi</A>
-<HR>
-<A NAME="flush"></A>
-<B>flush</B>
-<PRE>- flush -</PRE>
-<P>
+</pre>
+<p>
+<b>Errors:</b> <a href="s.html#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="c.html#ceiling">ceiling</a>, <a href="qr.html#round">round</a>,
+<a href="t.html#truncate">truncate</a>, <a href="c.html#cvi">cvi</a>
+<hr>
+<a name="flush"></a>
+<b>flush</b>
+<pre>- flush -</pre>
+<p>
 causes any buffered characters for the standard output file to be delivered
 immediately. In general, a program requiring output to be sent immediately,
 such as during real-time, two-way interactions, should call flush after
 generating that output.
-<P>
-<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>
-<P>
-<B>See Also:</B> <A HREF="#flushfile">flushfile</A>, <A HREF="p.html#print">print</A>
-<HR>
-<A NAME="flushfile"></A>
-<B>flushfile</B>
-<PRE>file flushfile -</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="ik.html#ioerror">ioerror</a>
+<p>
+<b>See Also:</b> <a href="#flushfile">flushfile</a>, <a href="p.html#print">print</a>
+<hr>
+<a name="flushfile"></a>
+<b>flushfile</b>
+<pre>file flushfile -</pre>
+<p>
 If file is an output file, flushfile causes any buffered characters for
 that file to be delivered immediately. In general, a program requiring output
 to be sent immediately, such as during real-time, two-way interactions,
 should call flushfile after generating that output.
-<P>
+<p>
 If file is an input file, flushfile reads and discards data from file until
 the end-offile indication is encountered. This is useful during error recovery,
 and the PostScript job server uses it for that purpose. flushfile does not
 close the file, unless it is a decoding filter file.
-<P>
-<B>Errors:</B> <A HREF="ik.html#ioerror">ioerror</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
-<A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="#flush">flush</A>, <A HREF="qr.html#read">read</A>,
-<A HREF="w.html#write">write</A>
-<HR>
-<A NAME="FontDirectory"></A>
-<B>FontDirectory</B>
-<PRE>- FontDirectory dict</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="ik.html#ioerror">ioerror</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
+<a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="#flush">flush</a>, <a href="qr.html#read">read</a>,
+<a href="w.html#write">write</a>
+<hr>
+<a name="FontDirectory"></a>
+<b>FontDirectory</b>
+<pre>- FontDirectory dict</pre>
+<p>
 pushes a dictionary of defined fonts on the operand stack. FontDirectory
 is not an operator; it is a name in systemdict associated with the dictionary
 object.
-<P>
+<p>
 The FontDirectory dictionary associates font names with font dictionaries.
 definefont places entries in FontDirectory, and findfont looks there first.
 The dictionary is read-only; only definefont and undefinefont can change
 it.
-<P>
+<p>
 Although FontDirectory contains all fonts that are currently defined in
 VM, it does not necessarily describe all the fonts available to a PostScript
 language program. This is because the findfont operator
 can sometimes obtain fonts from an external source and load them into VM
 dynamically. Consequently, examining FontDirectory is not a reliable method
-of inquiring about available fonts. The preferred method is to use the <A HREF="qr.html#resourcestatus">resourcestatus</A>
-and <A HREF="qr.html#resourceforall">resourceforall</A> operators, which
+of inquiring about available fonts. The preferred method is to use the <a href="qr.html#resourcestatus">resourcestatus</a>
+and <a href="qr.html#resourceforall">resourceforall</a> operators, which
 are Level 2 features, to inquire about the Font resource category.
-<P>
+<p>
 In Level 2, when global VM allocation mode is in effect, the name FontDirectory
 is temporarily
 rebound to the value of GlobalFontDirectory, which contains only those fonts
 that have been defined in global VM. This ensures the correct behavior of
 fonts that are defined in terms of other fonts.
-<P>
-<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A>
-<P>
-<B>See Also:</B> <A HREF="d.html#definefont">definefont</A>, <A HREF="u.html#undefinefont">undefinefont</A>,
-<A HREF="#findfont">findfont</A>, <A HREF="#findresource">findresource</A>,
-<A HREF="gh.html#GlobalFontDirectory">GlobalFontDirectory</A>
-<HR>
-<A NAME="for"></A>
-<B>for</B>
-<PRE>initial increment limit proc for -</PRE>
-<P>
+<p>
+<b>Errors:</b> <a href="s.html#stackoverflow">stackoverflow</a>
+<p>
+<b>See Also:</b> <a href="d.html#definefont">definefont</a>, <a href="u.html#undefinefont">undefinefont</a>,
+<a href="#findfont">findfont</a>, <a href="#findresource">findresource</a>,
+<a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>
+<hr>
+<a name="for"></a>
+<b>for</b>
+<pre>initial increment limit proc for -</pre>
+<p>
 executes proc repeatedly, passing it a sequence of values from initial by
 steps of increment to limit. The for operator expects initial, increment,
 and limit to be numbers. It maintains a temporary internal variable, known
@@ -404,52 +404,52 @@ as the control variable, which it first sets to initial. Then, before each
 repetition, it compares the control variable with the termination value
 limit. If limit has not been exceeded, it pushes the control variable on
 the operand stack, executes proc, and adds increment to the control variable.
-<P>
+<p>
 The termination condition depends on whether increment is positive or negative.
 If increment is positive, for terminates when the control variable becomes
 greater than limit. If increment is negative, for terminates when the control
 variable becomes less than limit. If initial meets the termination condition,
-for does not execute proc at all. If proc executes the <A HREF="e.html#exit">exit</A>
+for does not execute proc at all. If proc executes the <a href="e.html#exit">exit</a>
 operator, for terminates prematurely.
-<P>
+<p>
 Usually, proc will use the value on the operand stack for some purpose.
 However, if proc does not remove the value, it will remain there. Successive
 executions of proc will cause successive values of the control variable
 to accumulate on the operand stack.
-<P>
-<B>Examples</B>
-<PRE>
+<p>
+<b>Examples</b>
+<pre>
 0 1 1 4 {add} for &rArr; 10
 1 2 6 { } for     &rArr; 1 3 5
 3 -.5 1 {} for    &rArr; 3.0 2.5 2.0 1.5 1.0
-</PRE>
-<P>
+</pre>
+<p>
 In the first example, the value of the control variable is added to whatever
 is on the stack, so 1, 2, 3, and 4 are added in turn to a running sum whose
 initial value is 0. The second example has an empty procedure, so the successive
 values of the control variable are left on the stack. The last example counts
 backward from 3 to 1 by halves, leaving the successive values on the stack.
-<P>
+<p>
 Beware of using reals instead of integers for any of the first three operands.
 Most real numbers are not represented exactly. This can cause an error to
 accumulate in the value of the control variable, with possibly surprising
 results. In particular, if the difference between initial and limit is a
 multiple of increment, as in the third line of the example, the control
 variable may not achieve the limit value.
-<P>
-<B>Errors:</B> <A HREF="s.html#stackoverflow">stackoverflow</A> <A HREF="s.html#stackunderflow">stackunderflow,</A>
-<A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="qr.html#repeat">repeat</A>, <A HREF="l.html#loop">loop</A>,
-<A HREF="#forall">forall</A>, <A HREF="e.html#exit">exit</A>
-<HR>
-<A NAME="forall"></A>
-<B>forall</B>
-<PRE>      array proc forall -
+<p>
+<b>Errors:</b> <a href="s.html#stackoverflow">stackoverflow</a> <a href="s.html#stackunderflow">stackunderflow,</a>
+<a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="qr.html#repeat">repeat</a>, <a href="l.html#loop">loop</a>,
+<a href="#forall">forall</a>, <a href="e.html#exit">exit</a>
+<hr>
+<a name="forall"></a>
+<b>forall</b>
+<pre>      array proc forall -
 packedarray proc forall -
        dict proc forall -
-     string proc forall -</PRE>
-<P>
+     string proc forall -</pre>
+<p>
 enumerates the elements of the first operand, executing the procedure proc
 for each element. If the first operand is an array, string, or packed array,
 forall pushes an element on the operand stack and executes proc for each
@@ -458,83 +458,83 @@ whose index is 0 and continuing sequentially. The objects pushed on the
 operand stack are the array, packed array, or string elements. In the case
 of a string, these elements are integers in the range 0 to 255, not one-character
 strings.
-<P>
+<p>
 If the first operand is a dictionary, forall pushes a key and a value on
 the operand stack and executes proc for each key-value pair in the dictionary.
 The order in which forall enumerates the entries in the dictionary is arbitrary.
 New entries put in the dictionary during execution of proc may or may not
 be included in the enumeration.
-<P>
+<p>
 If the first operand is empty (i.e., has length 0), forall does not execute
-proc at all. If proc executes the <A HREF="e.html#exit">exit</A> operator,
+proc at all. If proc executes the <a href="e.html#exit">exit</a> operator,
 forall terminates prematurely.
-<P>
+<p>
 Although forall does not leave any results on the operand stack when it
 is finished, the execution of proc may leave arbitrary results there. If
 proc does not remove each enumerated element from the operand stack, the
 elements will accumulate there.
-<P>
-<B>Examples</B>
-<PRE>
+<p>
+<b>Examples</b>
+<pre>
 0 [13 29 3 -8 21] {add} forall &rArr; 58
 
 /d 2 dict def
 d /abc 123 put
 d /xyz (test) put
 d {} forall                    &rArr; /xyz (test) /abc 123
-</PRE>
-<P>
-<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="s.html#stackoverflow">stackoverflow</A>
-<A HREF="s.html#stackunderflow">stackunderflow,</A> <A HREF="t.html#typecheck">typecheck</A>
-<P>
-<B>See Also:</B> <A HREF="#for">for</A>, <A HREF="qr.html#repeat">repeat</A>,
-<A HREF="l.html#loop">loop</A>, <A HREF="e.html#exit">exit</A>
-<HR>
-<A NAME="fork"></A>
-<B>fork</B> DPS
-<PRE>mark obj1 ... objn proc fork context</PRE>
-<P>
+</pre>
+<p>
+<b>Errors:</b> <a href="ik.html#invalidaccess">invalidaccess</a>, <a href="s.html#stackoverflow">stackoverflow</a>
+<a href="s.html#stackunderflow">stackunderflow,</a> <a href="t.html#typecheck">typecheck</a>
+<p>
+<b>See Also:</b> <a href="#for">for</a>, <a href="qr.html#repeat">repeat</a>,
+<a href="l.html#loop">loop</a>, <a href="e.html#exit">exit</a>
+<hr>
+<a name="fork"></a>
+<b>fork</b> DPS
+<pre>mark obj1 ... objn proc fork context</pre>
+<p>
 creates a new execution context using the same local and global VM as the
 current context. The new context begins execution concurrent with continued
 execution of the current context. Which context executes first is unpredictable.
-<P>
+<p>
 The new context's environment is formed by copying the dictionary and graphics
 state stacks of the current context. The initial operand stack consists
 of obj1 through objn, pushed in the same order (obj1 through objn are objects
-of any type other than <A HREF="m.html#mark">mark</A>). fork consumes
+of any type other than <a href="m.html#mark">mark</a>). fork consumes
 all operands down to and including the topmost mark. It then pushes an integer
 that uniquely identifies the new context. The forked context inherits its
 object format from the current context; other percontext parameters are
 initialized to default values.
-<P>
+<p>
 When the new context begins execution, it executes the procedure proc. If
 proc runs to completion and returns, the context ordinarily will suspend
 until some other context executes a join on context. However, if the context
-has been detached, it will terminate immediately (see <A HREF="ik.html#join">join</A>
-and <A HREF="d.html#detach">detach</A>).
-<P>
+has been detached, it will terminate immediately (see <a href="ik.html#join">join</a>
+and <a href="d.html#detach">detach</a>).
+<p>
 If proc executes a stop that causes the execution of proc to end prematurely,
 the context will terminate immediately. proc is effectively called as follows:
-<PRE>
+<pre>
 proc stopped {handleerror quit} if
 % ...Wait for join or detach...
 quit
-</PRE>
-<P>
+</pre>
+<p>
 In other words, if proc stops due to an error, the context invokes the error
 handler in the usual way to report the error. Then it terminates regardless
 of whether it has been detached.
-<P>
+<p>
 It is illegal to execute fork if there has been any previous save not yet
-matched by a restore. Attempting to do so will cause an <A HREF="ik.html#invalidcontext">invalidcontext</A>
+matched by a restore. Attempting to do so will cause an <a href="ik.html#invalidcontext">invalidcontext</a>
 error.
-<P>
-<B>Errors:</B> <A HREF="ik.html#invalidaccess">invalidaccess</A>, <A HREF="ik.html#invalidcontext">invalidcontext</A>,
-<A HREF="l.html#limitcheck">limitcheck</A>, <A HREF="s.html#stackunderflow">stackunderflow</A>,
-<A HREF="t.html#typecheck">typecheck</A>, <A HREF="u.html#unmatchedmark">unmatchedmark</A>
-<P>
-<B>See Also:</B> <A HREF="ik.html#join">join</A>, <A HREF="d.html#detach">detach</A>,
-<A HREF="c.html#currentcontext">currentcontext</A>
-<HR>
-</BODY>
-</HTML>
+<p>
+<b>Errors:</b> <a href="ik.html#invalidaccess">invalidaccess</a>, <a href="ik.html#invalidcontext">invalidcontext</a>,
+<a href="l.html#limitcheck">limitcheck</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
+<a href="t.html#typecheck">typecheck</a>, <a href="u.html#unmatchedmark">unmatchedmark</a>
+<p>
+<b>See Also:</b> <a href="ik.html#join">join</a>, <a href="d.html#detach">detach</a>,
+<a href="c.html#currentcontext">currentcontext</a>
+<hr>
+</body>
+</html>
