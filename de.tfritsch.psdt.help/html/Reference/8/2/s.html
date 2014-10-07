@@ -328,7 +328,7 @@ operator is permitted.
 <p>
 passes two sets of glyph metrics to the font machinery (see Section 5.4, "Glyph
 Metric Information"). w0x and w0y are the distances from the current point to the
-new current point when showing text in writing mode 0. llx , lly and urx , ury are the
+new current point when showing text in writing mode 0. llx, lly and urx, ury are the
 distances from origin 0 to the lower-left and upper-right corners of the glyph
 bounding box. w1x and w1y are the distances from the current point to the new
 current point when showing text in writing mode 1. vx and vy are the distances
@@ -2086,13 +2086,13 @@ executable file or string object, or during explicit invocation of the token
 operator. Because the syntax of the PostScript language is simple, the set
 of possible causes for a syntaxerror is very small: 
 <ul>
-  <li>An opening string or procedure bracket, (, , ~, or {, is not matched
+  <li>An opening string or procedure bracket &mdash;(, &lt;, &lt;~, or {&mdash; is not matched
 by a corresponding closing bracket before the end of the file or string
 being interpreted
-  <li>A closing string or procedure bracket, ), &gt;, ~&gt;, or }, appears
+  <li>A closing string or procedure bracket &mdash;), &gt;, ~&gt;, or }&mdash; appears
 for which there is no previous matching opening bracket. o A character other
 than a hexadecimal digit or white space character appears within a hexadecimal
-string literal bracketed by ...&gt;.
+string literal bracketed by &lt;...&gt;.
   <li>An encoding violation occurs in an ASCII base-85 string literal bracketed
 by &lt;~...~&gt;.
   <li>A binary token or binary object sequence has incorrect structure.

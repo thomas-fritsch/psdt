@@ -119,7 +119,7 @@ pops from the stack
 intersects the inside of the current clipping path with the inside of the
 current path to produce a new, smaller current clipping path.
 The inside of the current path is determined by the normal PostScript non-zero
-winding number rule , while the inside of the current clipping path is determined
+winding number rule, while the inside of the current clipping path is determined
 by whatever rule was used at the time that path was created.
 <p>
 In general, clip produces a new path whose inside (according to the non-zero
@@ -231,7 +231,7 @@ of colorimage is equivalent to that of image using the first five operands.
 If ncomp is 3, the samples consist of red, green, and blue components. If
 ncomp is 4, the samples consist of cyan, magenta, yellow, and black components.
 The 1, 3, and 4 component values are interpreted according to the DeviceGray,
-DeviceRGB, and DeviceCMYK color spaces, respectively , regardless of the
+DeviceRGB, and DeviceCMYK color spaces, respectively, regardless of the
 current color space.
 <p>
 The multi operand is a boolean that determines how colorimage is to obtain
@@ -520,7 +520,7 @@ selects consecutive characters from the string.
 <a href="s.html#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>
 <p>
 <b>See Also:</b> <a href="a.html#ashow">ashow</a>, <a href="a.html#awidthshow">awidthshow</a>,
-<a href="ik.html#kshow">kshow</a>, <a href="s.html#show">show ,</a><a href="w.html#widthshow">widthshow</a>,
+<a href="ik.html#kshow">kshow</a>, <a href="s.html#show">show</a>, <a href="w.html#widthshow">widthshow</a>,
 <a href="xy.html#xshow">xshow</a>, <a href="xy.html#xyshow">xyshow</a>,
 <a href="xy.html#yshow">yshow</a>
 <hr>
@@ -781,7 +781,7 @@ to a gray value. For any other color space, currentgray returns 0.0.
 <p>
 replaces the value of the gstate object by a copy of the current graphics
 state and pushes gstate back on the operand stack. If gstate is in global
-VM , currentgstate will generate an invalidaccess error if any of the composite
+VM, currentgstate will generate an invalidaccess error if any of the composite
 objects in the current graphics state are in local VM. Such objects might
 include the current font, screen function, halftone dictionary, transfer
 function, or dash pattern. In general, allocating gstate objects in global

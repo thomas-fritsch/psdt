@@ -61,7 +61,7 @@ In Level 2, it is permissible to associate a font dictionary with more than
 one key. If font has already been registered, definefont does not alter
 it in any way.
 <p>
-If font is a composite font , definefont also inserts the entries MIDVector
+If font is a composite font, definefont also inserts the entries MIDVector
 and CurMID, and adds entries PrefEnc, EscChar, ShiftIn, and ShiftOut if
 they are required and are not already present. All the descendant fonts
 must have been registered by definefont previously.
@@ -379,7 +379,7 @@ vector (dx, dy) by the CTM to produce the corresponding distance vector
 (dx`, dy`) in device space. If the matrix operand is supplied, dtransform
 transforms the distance vector by matrix rather than by CTM.
 <p>
-A delta transformation is similar to a normal transformation , but the translation
+A delta transformation is similar to a normal transformation, but the translation
 components (tx and ty) of the transformation matrix are not used, making
 the distance vectors positionless in both user space and device space. This
 is useful for determining how distances map from user space to device space.

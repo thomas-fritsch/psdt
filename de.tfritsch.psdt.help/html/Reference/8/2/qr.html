@@ -16,12 +16,12 @@ on the environment in which the PostScript interpreter is running. It may
 give control to an operating system command interpreter, halt or restart
 the machine, and so on.
 <p>
-In an interpreter that supports multiple execution contexts , the quit operator
+In an interpreter that supports multiple execution contexts, the quit operator
 causes termination of the current context only. Termination is immediate,
 even if the context was created by <a href="f.html#fork">fork</a> in
 the expectation of a subsequent <a href="ik.html#join">join</a>.
 <p>
-In a context that is under the control of a job server , the definition
+In a context that is under the control of a job server, the definition
 of the quit operator in <a href="s.html#systemdict">systemdict</a> is
 masked by another definition of quit in <a href="u.html#userdict">userdict</a>,
 which usually is searched before <a href="s.html#systemdict">systemdict</a>.
