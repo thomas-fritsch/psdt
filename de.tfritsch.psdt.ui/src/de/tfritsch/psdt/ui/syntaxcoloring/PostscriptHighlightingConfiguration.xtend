@@ -1,0 +1,39 @@
+package de.tfritsch.psdt.ui.syntaxcoloring
+
+import org.eclipse.swt.SWT
+import org.eclipse.swt.graphics.RGB
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfigurationAcceptor
+import org.eclipse.xtext.ui.editor.utils.TextStyle
+
+class PostscriptHighlightingConfiguration extends DefaultHighlightingConfiguration {
+
+	public static val LITERAL_NAME_ID = "literalName"
+
+	public static val DSC_COMMENT_ID = "dscComment"
+
+	override void configure(IHighlightingConfigurationAcceptor acceptor) {
+		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
+		acceptor.acceptDefaultHighlighting(PUNCTUATION_ID, "Bracket", punctuationTextStyle)
+		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment", commentTextStyle)
+		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment", dscCommentTextStyle)
+		acceptor.acceptDefaultHighlighting(STRING_ID, "String", stringTextStyle)
+		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number", numberTextStyle)
+		acceptor.acceptDefaultHighlighting(DEFAULT_ID, "Default", defaultTextStyle)
+		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, "Invalid Symbol", errorTextStyle)
+	}
+
+	def TextStyle literalNameTextStyle() {
+		return defaultTextStyle.copy => [
+			color = new RGB(128, 0, 255) // violet
+			style = SWT.BOLD
+		]
+	}
+
+	def TextStyle dscCommentTextStyle() {
+		return defaultTextStyle.copy => [
+			color = new RGB(63, 95, 191) // grey blue
+		]
+	}
+
+}
