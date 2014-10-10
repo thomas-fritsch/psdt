@@ -9,7 +9,7 @@
 <hr>
 <a name="ne"></a>
 <b>ne</b>
-<pre>any1 any2 ne bool</pre>
+<pre>any<sub>1</sub> any<sub>2</sub> ne bool</pre>
 <p>
 pops two objects from the operand stack and pushes the boolean value false
 if they are equal, true if not. What it means for objects to be equal is
@@ -22,10 +22,10 @@ presented in the description of the <a href="e.html#eq">eq</a> operator.
 <hr>
 <a name="neg"></a>
 <b>neg</b>
-<pre>num1 neg num2</pre>
+<pre>num<sub>1</sub> neg num<sub>2</sub></pre>
 <p>
-returns the negative of num1. The type of the result is the same as the
-type of num1, unless num1 is the most negative integer, in which case the
+returns the negative of num<sub>1</sub>. The type of the result is the same as the
+type of num<sub>1</sub>, unless num<sub>1</sub> is the most negative integer, in which case the
 result is a real.
 <p>
 <b>Examples</b>
@@ -89,8 +89,8 @@ is neglecting to perform an initial <a href="m.html#moveto">moveto</a>.
 <hr>
 <a name="not"></a>
 <b>not</b>
-<pre>bool1 not bool2
- int1 not int2</pre>
+<pre>bool<sub>1</sub> not bool<sub>2</sub>
+ int<sub>1</sub> not int<sub>2</sub></pre>
 <p>
 If the operand is a boolean, not returns its logical negation. If the operand
 is an integer, not returns the bitwise complement (one's complement) of
@@ -172,8 +172,8 @@ undone.
 <hr>
 <a name="or"></a>
 <b>or</b>
-<pre>bool1 bool2 or bool3
-  int1 int2 or int3</pre>
+<pre>bool<sub>1</sub> bool<sub>2</sub> or bool<sub>3</sub>
+  int<sub>1</sub> int<sub>2</sub> or int<sub>3</sub></pre>
 <p>
 If the operands are booleans, or returns their logical disjunction. If the
 operands are integers, or returns the bitwise &quot;inclusive or&quot; of

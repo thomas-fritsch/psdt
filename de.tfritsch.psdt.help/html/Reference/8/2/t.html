@@ -26,9 +26,9 @@ may provide a set of timeout facilities appropriate for that environment.
 <a name="token"></a>
 <b>token</b>
 <pre>  file token any true (if found)
-             false (if not found)
+             false    (if not found)
 string token post any true (if found)
-             false (if not found)</pre>
+             false         (if not found)</pre>
 <p>
 reads characters from file or string, interpreting them according to the
 PostScript language syntax rules, until it has scanned and constructed an
@@ -96,8 +96,8 @@ rather than by CTM.
 <hr>
 <a name="translate"></a>
 <b>translate</b>
-<pre>       tx ty translate -
-tx ty matrix translate matrix</pre>
+<pre>       t<sub>x</sub> t<sub>y</sub> translate -
+t<sub>x</sub> t<sub>y</sub> matrix translate matrix</pre>
 <p>
 With no matrix operand, translate builds a temporary matrix and concatenates
 this matrix with the current transformation matrix (CTM). Precisely, translate
@@ -131,9 +131,9 @@ associated with the boolean value true.
 <hr>
 <a name="truncate"></a>
 <b>truncate</b>
-<pre>num1 truncate num2</pre>
+<pre>num<sub>1</sub> truncate num<sub>2</sub></pre>
 <p>
-truncates num1 toward zero by removing its fractional part. The type of
+truncates num<sub>1</sub> toward zero by removing its fractional part. The type of
 the result is the same as the type of the operand.
 <p>
 <b>Examples</b>

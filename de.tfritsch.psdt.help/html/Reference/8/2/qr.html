@@ -75,13 +75,13 @@ otherwise.
 <hr>
 <a name="rcurveto"></a>
 <b>rcurveto</b>
-<pre>dx1 dy1 dx2 dy2 dx3 dy3 rcurveto -</pre>
+<pre>dx<sub>1</sub> dy<sub>1</sub> dx<sub>2</sub> dy<sub>2</sub> dx<sub>3</sub> dy<sub>3</sub> rcurveto -</pre>
 <p>
 (relative curveto) adds a Bezier cubic section to the current path in
 the same manner as curveto. However, the three number pairs are interpreted
-as displacements relative to the current point (x0, y0) rather than as absolute
-coordinates. That is, rcurveto constructs a curve from (x0, y0) to (x0+dx3,
-y0+dy3), using (x0+dx1, y0+dy1) and (x0+dx2, y0+dy2) as Bezier control points.
+as displacements relative to the current point (x<sub>0</sub>, y<sub>0</sub>) rather than as absolute
+coordinates. That is, rcurveto constructs a curve from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>0</sub>+dx<sub>3</sub>,
+y<sub>0</sub>+dy<sub>3</sub>), using (x<sub>0</sub>+dx<sub>1</sub>, y<sub>0</sub>+dy<sub>1</sub>) and (x<sub>0</sub>+dx<sub>2</sub>, y<sub>0</sub>+dy<sub>2</sub>) as Bezier control points.
 See the description of <a href="c.html#curveto">curveto</a> for complete
 information.
 <p>
@@ -454,7 +454,7 @@ literally and are case sensitive, with the exception of the following:
 <dt>*<dd>matches zero or more consecutive characters.
 <dt>?<dd>matches exactly one character.
 <dt>\<dd>causes the next character of the template to be treated literally, even
-if it is *, ?, or /.
+if it is *, ?, or \.
 </dl>
 <p>
 Note that the scratch string is reused during every call to proc. If proc
@@ -671,9 +671,9 @@ executes the error <a href="no.html#nocurrentpoint">nocurrentpoint</a>.
 <hr>
 <a name="roll"></a>
 <b>roll</b>
-<pre>anyn-1 ... any0 n j roll any (j-1) mod n ... any0 anyn-1 ... anyj mod n</pre>
+<pre>any<sub>n-1</sub> ... any<sub>0</sub> n j roll any (j-1) mod n ... any<sub>0</sub> any<sub>n-1</sub> ... any<sub>j</sub> mod n</pre>
 <p>
-performs a circular shift of the objects anyn-1 through any0 on the operand
+performs a circular shift of the objects any<sub>n-1</sub> through any<sub>0</sub> on the operand
 stack by the amount j. Positive j indicates upward motion on the stack,
 whereas negative j indicates downward motion.
 <p>
@@ -741,9 +741,9 @@ rotate does not affect the CTM.
 <a href="c.html#concat">concat</a>
 <hr>
 <a name="round"></a>
-<b>round</b><pre>num1 round num2</pre>
+<b>round</b><pre>num<sub>1</sub> round num<sub>2</sub></pre>
 <p>
-returns the integer value nearest to num1. If num1 is equally close to its
+returns the integer value nearest to num<sub>1</sub>. If num<sub>1</sub> is equally close to its
 two nearest integers, round returns the greater of the two. The type of
 the result is the same as the type of the operand.
 <p>

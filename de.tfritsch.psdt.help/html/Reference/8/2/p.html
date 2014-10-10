@@ -9,10 +9,10 @@
 <hr>
 <a name="packedarray"></a>
 <b>packedarray</b> LEVEL 2
-<pre>any0 ... anyn-1 n packedarray packedarray</pre>
+<pre>any<sub>0</sub> ... any<sub>n-1</sub> n packedarray packedarray</pre>
 <p>
 creates a packed <a href="a.html#array">array</a> object of length n
-containing the objects any0 through anyn-1 as elements. packedarray first
+containing the objects any<sub>0</sub> through any<sub>n-1</sub> as elements. packedarray first
 removes the non-negative integer n from the operand stack. It then removes
 that number of objects from the operand stack, creates a packed array containing
 those objects as elements, and finally pushes the resulting packed array
@@ -22,9 +22,9 @@ The resulting object has a type of packedarraytype, a literal attribute,
 and readonly access. In all other respects, its behavior is identical to
 that of an ordinary array object.
 <p>
-v The packed array is allocated in local or global VM according to the current
+The packed array is allocated in local or global VM according to the current
 VM allocation mode. An <a href="ik.html#invalidaccess">invalidaccess</a>
-error occurs if the packed array is in global VM and any of any0 ... anyn-1
+error occurs if the packed array is in global VM and any of any<sub>0</sub> ... any<sub>n-1</sub>
 are in local VM.
 <p>
 <b>Errors:</b> <a href="ik.html#invalidaccess">invalidaccess</a>, <a href="qr.html#rangecheck">rangecheck</a>,
@@ -35,7 +35,7 @@ are in local VM.
 <hr>
 <a name="pathbbox"></a>
 <b>pathbbox</b>
-<pre>- pathbbox llx lly urx ury</pre>
+<pre>- pathbbox ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub></pre>
 <p>
 returns the bounding box of the current path in the current user coordinate
 system. The results are four real numbers: lower-left x, lower-left y, upper-right
@@ -85,7 +85,7 @@ on the operand stack and executes one of the four procedures as follows:
 <dl>
 <dt>moveto<dd>push x y; execute move
 <dt>lineto<dd>push x y; execute line
-<dt>curveto<dd>push x1 y1 x2 y2 x3 y3; execute curve
+<dt>curveto<dd>push x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> x<sub>3</sub> y<sub>3</sub>; execute curve
 <dt>closepath<dd>execute close
 </dl>
 <p>
@@ -224,7 +224,7 @@ defined in products that do not support executive.
 <hr>
 <a name="pstack"></a>
 <b>pstack</b>
-<pre>any1 ... anyn pstack any1 ... anyn</pre>
+<pre>any<sub>1</sub> ... any<sub>n</sub> pstack any<sub>1</sub> ... any<sub>n</sub></pre>
 <p>
 writes text representations of every object on the stack to the standard
 output file, but leaves the stack unchanged. pstack applies the <a href="@.html#twoequals">==
@@ -285,9 +285,9 @@ st                   &rArr; (Abc)
 <hr>
 <a name="putinterval"></a>
 <b>putinterval</b>
-<pre>      array1 index array2 putinterval -
-array1 index packedarray2 putinterval -
-    string1 index string2 putinterval -</pre>
+<pre>      array<sub>1</sub> index array<sub>2</sub> putinterval -
+array<sub>1</sub> index packedarray<sub>2</sub> putinterval -
+    string<sub>1</sub> index string<sub>2</sub> putinterval -</pre>
 <p>
 replaces a subsequence of the elements of the first operand by the entire
 contents of the third operand. The subsequence that is replaced begins at
@@ -297,14 +297,14 @@ length of the third operand.
 The objects are copied from the third operand to the first, as if by a sequence
 of individual gets and puts. In the case of arrays, if the copied elements
 are themselves composite objects, the values of those objects are shared
-between array2 and array1.
+between array<sub>2</sub> and array<sub>1</sub>.
 <p>
-putinterval requires index to be a valid index in array1 or string1 such
-that index plus the length of array2 or string2 is not greater than the
-length of array1 or string1.
+putinterval requires index to be a valid index in array<sub>1</sub> or string<sub>1</sub> such
+that index plus the length of array<sub>2</sub> or string<sub>2</sub> is not greater than the
+length of array<sub>1</sub> or string<sub>1</sub>.
 <p>
-If the value of array1 is in global VM and any of the elements copied from
-array2 or packedarray2 are composite objects whose values are in local VM,
+If the value of array<sub>1</sub> is in global VM and any of the elements copied from
+array<sub>2</sub> or packedarray<sub>2</sub> are composite objects whose values are in local VM,
 an <a href="ik.html#invalidaccess">invalidaccess</a> error occurs.
 <p>
 <b>Examples</b>

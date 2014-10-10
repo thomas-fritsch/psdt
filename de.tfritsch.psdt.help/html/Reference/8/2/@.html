@@ -23,7 +23,7 @@ object by the ] operator.
 <hr>
 <a name="mark2"></a>
 <b>]</b>
-<pre>mark obj0 ... objn-1 ] array</pre>
+<pre>mark obj<sub>0</sub> ... obj<sub>n-1</sub> ] array</pre>
 <p>
 creates a new array of n elements, where n is the number of elements above
 the topmost mark on the operand stack; stores those elements into the array;
@@ -34,7 +34,7 @@ the array elements from the stack, as well as the mark object.
 <p>
 The array is allocated in local or global VM according to the current VM
 allocation mode. An <a href="ik.html#invalidaccess">invalidaccess</a>
-error occurs if the array is in global VM and any of obj0 ... objn-1 are
+error occurs if the array is in global VM and any of obj<sub>0</sub> ... obj<sub>n-1</sub> are
 in local VM.
 <p>
 <b>Examples</b>
@@ -70,7 +70,7 @@ pushes a mark object on the operand stack (same as mark and [ operators).
 <hr>
 <a name="marktwoGT"></a>
 &gt;&gt; LEVEL 2
-<pre>mark key1 value1 ... keyn valuen &gt;&gt; dict</pre>
+<pre>mark key<sub>1</sub> value<sub>1</sub> ... key<sub>n</sub> value<sub>n</sub> &gt;&gt; dict</pre>
 <p>
 creates and returns a dictionary containing the specified key-value pairs.
 The operands are a mark followed by an even number of objects, which the

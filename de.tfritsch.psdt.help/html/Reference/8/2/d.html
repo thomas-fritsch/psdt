@@ -352,9 +352,9 @@ was no corresponding begin.
 <hr>
 <a name="div"></a>
 <b>div</b>
-<pre>num1 num2 div quotient</pre>
+<pre>num<sub>1</sub> num<sub>2</sub> div quotient</pre>
 <p>
-divides num1 by num2, producing a result that is always a real even if both
+divides num<sub>1</sub> by num<sub>2</sub>, producing a result that is always a real even if both
 operands are integers. Use idiv if an integer result is desired.
 <p>
 <b>Examples</b>
@@ -371,12 +371,12 @@ operands are integers. Use idiv if an integer result is desired.
 <hr>
 <a name="dtransform"></a>
 <b>dtransform</b>
-<pre>dx dy dtransform dx` dy`
-dx dy matrix dtransform dx` dy`</pre>
+<pre>dx dy dtransform dx' dy'
+dx dy matrix dtransform dx' dy'</pre>
 <p>
 With no matrix operand, dtransform (delta transform) transforms the distance
 vector (dx, dy) by the CTM to produce the corresponding distance vector
-(dx`, dy`) in device space. If the matrix operand is supplied, dtransform
+(dx', dy') in device space. If the matrix operand is supplied, dtransform
 transforms the distance vector by matrix rather than by CTM.
 <p>
 A delta transformation is similar to a normal transformation, but the translation

@@ -9,10 +9,10 @@
 <hr>
 <a name="abs"></a>
 <b>abs</b>
-<pre>num1 abs num2</pre>
+<pre>num<sub>1</sub> abs num<sub>2</sub></pre>
 <p>
-returns the absolute value of num1.
-The type of the result is the same as the type of num1 unless num1 is the
+returns the absolute value of num<sub>1</sub>.
+The type of the result is the same as the type of num<sub>1</sub> unless num<sub>1</sub> is the
 most negative integer, in which case the result is a real.
 <p>
 <b>Examples</b>
@@ -28,7 +28,7 @@ most negative integer, in which case the result is a real.
 <hr>
 <a name="add"></a>
 <b>add</b>
-<pre>num1 num2 add sum</pre>
+<pre>num<sub>1</sub> num<sub>2</sub> add sum</pre>
 <p>
 returns the sum of num1 and num2.
 If both operands are integers and the result is within integer range, the
@@ -49,8 +49,8 @@ result is an integer; otherwise, the result is a real.
 <hr>
 <a name="aload"></a>
 <b>aload</b>
-<pre>      array aload array0 ... arrayn-1 array
-packedarray aload packedarray0 ... packedarrayn-1 packedarray</pre>
+<pre>      array aload array<sub>0</sub> ... array<sub>n-1</sub> array
+packedarray aload packedarray<sub>0</sub> ... packedarray<sub>n-1</sub> packedarray</pre>
 <p>
 successively pushes all n elements of array or packedarray on the operand
 stack (where n is the length of the operand), and finally pushes the operand
@@ -96,8 +96,8 @@ is a special case of the <a href="s.html#search">search</a> operator.
 <hr>
 <a name="and"></a>
 <b>and</b>
-<pre>bool1 bool2 and bool3
-  int1 int1 and int1</pre>
+<pre>bool<sub>1</sub> bool<sub>2</sub> and bool<sub>3</sub>
+  int<sub>1</sub> int<sub>2</sub> and int<sub>3</sub></pre>
 <p>
 If the operands are booleans, and returns their logical conjunction. If
 the operands are integers, and returns the bitwise and of their binary representations.
@@ -121,12 +121,12 @@ false false and  &rArr;  false
 <hr>
 <a name="arc"></a>
 <b>arc</b>
-<pre>x y r ang1 ang2 arc -</pre>
+<pre>x y r ang<sub>1</sub> ang<sub>2</sub> arc -</pre>
 <p>
 appends a counterclockwise arc of a circle to the current path, possibly
 preceded by a straight line segment. The arc has (x, y) as center, r as
-radius, ang1 the angle of a vector from (x, y) of length r to the first
-endpoint of the arc, and ang2 the angle of a vector from (x, y) of length
+radius, ang<sub>1</sub> the angle of a vector from (x, y) of length r to the first
+endpoint of the arc, and ang<sub>2</sub> the angle of a vector from (x, y) of length
 r to the second endpoint of the arc.
 <p>
 If there is a current point, the arc operator includes a straight line segment
@@ -164,7 +164,7 @@ This constructs a 1-unit radius, 45-degree &quot;pie slice.&quot;
 <hr>
 <a name="arcn"></a>
 <b>arcn</b>
-<pre>x y r ang1 ang2 arcn -</pre>
+<pre>x y r ang<sub>1</sub> ang<sub>2</sub> arcn -</pre>
 <p>
 (arc negative) behaves like arc, but arcn builds its arc segment in a clockwise
 direction in user space.
@@ -187,30 +187,30 @@ wiper swath.&quot;
 <hr>
 <a name="arct"></a>
 <b>arct</b> LEVEL 2
-<pre>x1 y1 x2 y2 r arct -</pre>
+<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r arct -</pre>
 <p>
 appends an arc of a circle to the current path, possibly preceded by a straight
 line segment. The arc is defined by a radius r and two tangent lines.The
-tangent lines are those drawn from the current point, here called (x0, y0),
-to (x1, y1), and from (x1, y1) to (x2, y2). If the current point is undefined,
+tangent lines are those drawn from the current point, here called (x<sub>0</sub>, y<sub>0</sub>),
+to (x<sub>1</sub>, y<sub>1</sub>), and from (x<sub>1</sub>, y<sub>1</sub>) to (x<sub>2</sub>, y<sub>2</sub>). If the current point is undefined,
 arct executes the error <a href="no.html#nocurrentpoint">nocurrentpoint</a>.
 <p>
 The center of the arc is located within the inner angle between the tangent
 lines. It is the only point located at distance r in a direction perpendicular
-to both lines. The arc begins at the first tangent point (xt1, yt1) on the
-first tangent line, passes between its center and the point (x1, y1), and
-ends at the second tangent point (xt2, yt2) on the second tangent line.
+to both lines. The arc begins at the first tangent point (xt<sub>1</sub>, yt<sub>1</sub>) on the
+first tangent line, passes between its center and the point (x<sub>1</sub>, y<sub>1</sub>), and
+ends at the second tangent point (xt<sub>2</sub>, yt<sub>2</sub>) on the second tangent line.
 <p>
 Before constructing the arc, arct adds a straight line segment from the
-current point (x0, y0) to (xt1, yt1), unless those points are the same.
-In any event, (xt2, yt2) becomes the new current point.
+current point (x<sub>0</sub>, y<sub>0</sub>) to (xt<sub>1</sub>, yt<sub>1</sub>), unless those points are the same.
+In any event, (xt<sub>2</sub>, yt<sub>2</sub>) becomes the new current point.
 <p>
 The curve produced is circular in user space. If user space is scaled non-uniformly
 (i.e., differently in x and y) arct will produce elliptical curves in device
 space.
 <p>
 If the two tangent lines are collinear, arct merely appends a straight line
-segment from (x0, y0) to (x1, y1), considering the arc to be part of a degenerate
+segment from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>1</sub>, y<sub>1</sub>), considering the arc to be part of a degenerate
 circle with radius 0 at that point.
 <p>
 <b>Examples</b>
@@ -233,10 +233,10 @@ This constructs a 4-unit wide, 4-unit high right angle with a 1-unit radius
 <hr>
 <a name="arcto"></a>
 <b>arcto</b>
-<pre>x1 y1 x2 y2 r arcto xt1 yt1 xt2 yt2</pre>
+<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r arcto xt<sub>1</sub> yt<sub>1</sub> xt<sub>2</sub> yt<sub>2</sub></pre>
 <p>
 produces the same effect as arct. It also returns the two tangent point
-coordinates (xt1, yt1) and (xt2, yt2) in user space.
+coordinates (xt<sub>1</sub>, yt<sub>1</sub>) and (xt<sub>2</sub>, yt<sub>2</sub>) in user space.
 arcto is not allowed as an element of a user path, whereas arct is allowed.
 <p>
 <b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>, <a href="no.html#nocurrentpoint">nocurrentpoint</a>,
@@ -270,11 +270,11 @@ VM allocation mode.
 <hr>
 <a name="ashow"></a>
 <b>ashow</b>
-<pre>ax ay string ashow -</pre>
+<pre>a<sub>x</sub> a<sub>y</sub> string ashow -</pre>
 <p>
 paints the characters of string in a manner similar to <a href="s.html#show">show</a>.
 But while doing so, ashow adjusts the width of each character shown by adding
-ax to the character's x width and ay to its y width, thus modifying the
+a<sub>x</sub> to the character's x width and a<sub>y</sub> to its y width, thus modifying the
 spacing between characters. The numbers ax and ay are x and y displacements
 in the user coordinate system, not in the character coordinate system.
 <p>
@@ -299,9 +299,9 @@ by adjusting all the spaces between characters by a uniform amount.
 <hr>
 <a name="astore"></a>
 <b>astore</b>
-<pre>any0 ... anyn-1 array astore array</pre>
+<pre>any<sub>0</sub> ... any<sub>n-1</sub> array astore array</pre>
 <p>
-stores the objects any0 through anyn-1 from the operand stack into array,
+stores the objects any<sub>0</sub> through any<sub>n-1</sub> from the operand stack into array,
 where n is the length of array. The astore operator first removes the array
 operand from the stack and determines its length. It then removes that number
 of objects from the stack, storing the topmost one into element n - 1 of
@@ -309,7 +309,7 @@ array and the bottommost one into element 0 of array. Finally, it pushes
 array back on the stack. Note that astore cannot be performed on <a href="p.html#packedarray">packed
 arrays</a>.
 <p>
-If the value of array is in global VM and any of any0 ... anyn-1 are composite
+If the value of array is in global VM and any of any<sub>0</sub> ... any<sub>n-1</sub> are composite
 objects whose values are in local VM, an <a href="ik.html#invalidaccess">invalidaccess</a>
 error occurs.
 <p>
@@ -353,14 +353,14 @@ x plane. The result is a real.
 <hr>
 <a name="awidthshow"></a>
 <b>awidthshow</b>
-<pre>cx cy char ax ay string awidthshow -</pre>
+<pre>c<sub>x</sub> c<sub>y</sub> char a<sub>x</sub> a<sub>y</sub> string awidthshow -</pre>
 <p>
 paints the characters of string in a manner similar to show, but combines
 the special effects of ashow and widthshow. awidthshow adjusts the width
-of each character shown by adding ax to its x width and ay to its y width,
+of each character shown by adding a<sub>x</sub> to its x width and a<sub>y</sub> to its y width,
 thus modifying the spacing between characters. Furthermore, awidthshow modifies
 the width of each occurrence of the character char by an additional amount
-(cx, cy). The interpretation of char is as described for the <a href="w.html#widthshow">widthshow</a>
+(c<sub>x</sub>, c<sub>y</sub>). The interpretation of char is as described for the <a href="w.html#widthshow">widthshow</a>
 operator.
 <p>
 This operator enables fitting a string of text to a specific width by adjusting

@@ -56,8 +56,8 @@ is unlimited, <a href="f.html#false">false</a> otherwise.
 <hr>
 <a name="where"></a>
 <b>where</b>
-<pre>key where dict true (if found)
-          false (if not found)</pre>
+<pre>key where dict true  (if found)
+               false (if not found)</pre>
 <p>
 determines which dictionary on the dictionary stack, if any, contains an
 entry whose key is key. where searches for key in each dictionary on the
@@ -74,11 +74,11 @@ where simply returns false.
 <hr>
 <a name="widthshow"></a>
 <b>widthshow</b>
-<pre>cx cy char string widthshow -</pre>
+<pre>c<sub>x</sub> c<sub>y</sub> char string widthshow -</pre>
 <p>
 paints the characters of string in a manner similar to <a href="s.html#show">show</a>.
 But while doing so, widthshow adjusts the width of each occurrence of the
-character char by adding cx to its x width and cy to its y width, thus modifying
+character char by adding c<sub>x</sub> to its x width and c<sub>y</sub> to its y width, thus modifying
 the spacing between it and the next character. char is an integer used as
 a character code. This operator enables fitting a string of text to a specific
 width by adjusting the width of all occurrences of some specific character,

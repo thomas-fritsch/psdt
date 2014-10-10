@@ -38,8 +38,8 @@ saveobj restore                    % Restore saved VM state
 <hr>
 <a name="scale"></a>
 <b>scale</b>
-<pre>       sx sy scale -
-sx sy matrix scale matrix</pre>
+<pre>       s<sub>x</sub> s<sub>y</sub> scale -
+s<sub>x</sub> s<sub>y</sub> matrix scale matrix</pre>
 <p>
 With no matrix operand, scale builds a temporary matrix and concatenates
 this matrix with the current transformation matrix (CTM). Precisely, scale
@@ -121,7 +121,7 @@ with existing Display PostScript applications.
 <a name="search"></a>
 <b>search</b>
 <pre>string seek search post match pre true (if found)
-                   string false (if not found)</pre>
+                   string false        (if not found)</pre>
 <p>
 looks for the first occurrence of the string seek within string and returns
 results of this search on the operand stack. The topmost result is a boolean
@@ -211,19 +211,19 @@ number (including any claim of its uniqueness) is product dependent.
 <hr>
 <a name="setbbox"></a>
 <b>setbbox</b>
-<pre>llx lly urx ury setbbox -</pre>
+<pre>ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> setbbox -</pre>
 <p>
 establishes a bounding box for the current path, within which the coordinates of
 all path construction operators must fall. Any subsequent attempt to append a
 path element with a coordinate lying outside the bounding box will cause a
 rangecheck error; subsequent invocations of pathbbox will return a result derived
 from the bounding box rather than from the actual path. The bounding box remains
-in effect for the lifetime of the current path—that is, until the next newpath
+in effect for the lifetime of the current path&mdash;that is, until the next newpath
 or any operator that resets the path implicitly.
 <p>
 The operands define a rectangle in user space, oriented with its sides parallel to
-the axes of the user coordinate system: llx and lly are the coordinates of the rectangle’s
-lower-left corner, urx and ury the upper-right corner. The upper-right coordinate
+the axes of the user coordinate system: ll<sub>x</sub> and ll<sub>y</sub> are the coordinates of the rectangle's
+lower-left corner, ur<sub>x</sub> and ur<sub>y</sub> the upper-right corner. The upper-right coordinate
 values must be greater than or equal to the lower-left values, or a rangecheck
 error will occur. setbbox transforms the corners of the specified bounding box
 from user to device coordinates, then constructs the smallest rectangle in device
@@ -246,7 +246,7 @@ must begin with a setbbox operation (optionally preceded by ucache). The
 bounding box information enables the user path rendering operator to optimize
 execution.
 <p>
-If setbbox is invoked more than once during the definition of a path, the path’s
+If setbbox is invoked more than once during the definition of a path, the path's
 effective bounding box is successively enlarged to enclose the union of all of the
 individual bounding boxes specified. Such multiple invocation is not permitted
 within a user path definition, but could conceivably arise in building up a single
@@ -278,9 +278,9 @@ Execution of this operator is not permitted in certain circumstances.
 <b>See Also:</b> <a href="#setundercolorremoval">setundercolorremoval</a>
 <hr><a name="setcachedevice"></a>
 <b>setcachedevice</b>
-<pre>wx wy llx lly urx ury setcachedevice -</pre>
+<pre>w<sub>x</sub> w<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> setcachedevice -</pre>
 <p>
-passes width and bounding box information to the PostScript interpreter’s font
+passes width and bounding box information to the PostScript interpreter's font
 machinery. setcachedevice can be executed only within the context of a
 BuildGlyph, BuildChar, or CharStrings procedure for a font or CIDFont. The procedure
 must invoke setcachedevice, setcachedevice2, or setcharwidth before executing
@@ -289,17 +289,17 @@ the font machinery to transfer the results of those operators both into the font
 cache, if possible, and onto the current page.
 <p>
 The operands to setcachedevice are all numbers interpreted in the glyph coordinate
-system (see Section 5.4, "Glyph Metric Information"). wx and wy define the
-basic width vector for this glyph—in other words, the normal position of the origin
+system (see Section 5.4, "Glyph Metric Information"). w<sub>x</sub> and w<sub>y</sub> define the
+basic width vector for this glyph&mdash;in other words, the normal position of the origin
 of the next glyph relative to origin of this one.
 <p>
-llx and lly are the coordinates of the lower-left corner, and urx and ury the upperright
+ll<sub>x</sub> and ll<sub>y</sub> are the coordinates of the lower-left corner, and urx and ury the upperright
 corner, of the glyph bounding box. The glyph bounding box is the smallest
 rectangle, oriented with the glyph coordinate system axes, that completely encloses
-all marks placed on the page as a result of executing the glyph’s description.
+all marks placed on the page as a result of executing the glyph's description.
 For a glyph defined as a path, this may be determined by means of the pathbbox
 operator. The font machinery needs this information to make decisions about
-clipping and caching. The declared bounding box must be correct—in other
+clipping and caching. The declared bounding box must be correct&mdash;in other
 words, sufficiently large to enclose the entire glyph. If any marks fall outside this
 bounding box, the result is unpredictable.
 <p>
@@ -324,14 +324,14 @@ operator is permitted.
 <hr>
 <a name="setcachedevice2"></a>
 <b>setcachedevice2</b> LEVEL 2
-<pre>w0x w0y llx lly urx ury w1x w1y vx vy setcachedevice2 -</pre>
+<pre>w0<sub>x</sub> w0<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> w1<sub>x</sub> w1<sub>y</sub> v<sub>x</sub> v<sub>y</sub> setcachedevice2 -</pre>
 <p>
 passes two sets of glyph metrics to the font machinery (see Section 5.4, "Glyph
-Metric Information"). w0x and w0y are the distances from the current point to the
-new current point when showing text in writing mode 0. llx, lly and urx, ury are the
+Metric Information"). w0<sub>x</sub> and w0<sub>y</sub> are the distances from the current point to the
+new current point when showing text in writing mode 0. ll<sub>x</sub>, ll<sub>y</sub> and ur<sub>x</sub>, ur<sub>y</sub> are the
 distances from origin 0 to the lower-left and upper-right corners of the glyph
-bounding box. w1x and w1y are the distances from the current point to the new
-current point when showing text in writing mode 1. vx and vy are the distances
+bounding box. w1<sub>x</sub> and w1<sub>y</sub> are the distances from the current point to the new
+current point when showing text in writing mode 1. v<sub>x</sub> and v<sub>y</sub> are the distances
 from origin 0 to origin 1.
 <p>
 Aside from its interpretation of the operands, setcachedevice2 works the same as
@@ -404,16 +404,16 @@ size is unchanged.
 <hr>
 <a name="setcharwidth"></a>
 <b>setcharwidth</b>
-<pre>wx wy setcharwidth -</pre>
+<pre>w<sub>x</sub> w<sub>y</sub> setcharwidth -</pre>
 <p>
 is similar to setcachedevice, but it passes only width information to the PostScript
-interpreter’s font machinery and it declares that the glyph being defined is not to
+interpreter's font machinery and it declares that the glyph being defined is not to
 be placed in the font cache.
 <p>
 setcharwidth is useful in the unusual case of defining glyphs that incorporate two
 or more specific opaque colors, such as opaque black and opaque white. Most
 glyphs have no inherent color, but are painted with the current color within the
-glyph’s outline, leaving the area outside unpainted (transparent).
+glyph's outline, leaving the area outside unpainted (transparent).
 Another use of setcharwidth is in defining glyphs that intentionally change their
 behavior based on the environment in which they execute. Such glyphs must not
 be cached, because that would subvert the intended variable behavior.
@@ -446,9 +446,9 @@ Section 4.8.1, "Types of Color Space."
 <hr>
 <a name="setcolor"></a>
 <b>setcolor</b> LEVEL 2
-<pre>        comp1 ... compn setcolor -
+<pre>        comp<sub>1</sub> ... comp<sub>n</sub> setcolor -
                 pattern setcolor -
-comp1 ... compn pattern setcolor -</pre>
+comp<sub>1</sub> ... comp<sub>n</sub> pattern setcolor -</pre>
 <p>
 The appropriate form of the operator depends on the current color space. All
 color spaces except Pattern use the first form, in which the operands comp1
@@ -456,14 +456,14 @@ through compn specify the values of the color components describing the desired
 color. The number of components and the valid ranges of their values depend on
 the specific characteristics of the color space; see Section 4.8, "Color Spaces." (In
 the case of an Indexed color space, the single operand comp1 is actually an index
-into the space’s color table rather than a true color component.) If the wrong
+into the space's color table rather than a true color component.) If the wrong
 number of components is specified, an error will occur, such as stackunderflow or
 typecheck. If a component value is outside the valid range, the nearest valid value
 will be substituted without error indication.
 <p>
 The second and third forms of setcolor are used when the current color space is a
 Pattern space. In both forms, the pattern operand is a pattern dictionary describing
-the pattern to be established as the current color. The values of the dictionary’s
+the pattern to be established as the current color. The values of the dictionary's
 PatternType and PaintType entries determine whether additional operands
 are needed:
 <ul>
@@ -472,7 +472,7 @@ PaintType 1) use the second form of the operator, in which the pattern dictionar
 is the only operand.
 <li>Uncolored tiling patterns (PatternType 1, PaintType 2) use the third form, in
 which the dictionary is accompanied by one or more component values in the
-pattern’s underlying color space, defining the color in which the pattern is to
+pattern's underlying color space, defining the color in which the pattern is to
 be painted.
 </ul>
 <p>
@@ -576,7 +576,7 @@ of the current color space is DeviceGray.
 In the first form of the operator, the color space is specified by an array of the
 form
 <pre>
-[family param1 ... paramn]
+[family param<sub>1</sub> ... param<sub>n</sub>]
 </pre>
 where family is the name of the color space family and the parameters
 param1 through paramn further describe the space within that family. The number
@@ -610,12 +610,12 @@ in the range 0.0 to 1.0 on the operand stack and will return a number in the sam
 range.
 <p>
 These procedures adjust the values of device color components (see Section 7.3,
-"Transfer Functions"). A device’s output will be affected only by those transfer
+"Transfer Functions"). A device's output will be affected only by those transfer
 functions corresponding to color components that the device supports. For example,
 redproc, greenproc, and blueproc will have no effect on a black-and-white
 device, while grayproc will have no effect on an RGB device. On a device whose
 ProcessColorModel is DeviceN, none of the transfer functions set by setcolortransfer
-have any effect; in this case, all components’ transfer functions must be
+have any effect; in this case, all components' transfer functions must be
 specified via TransferFunction entries in a halftone dictionary supplied to
 sethalftone.
 <p>
@@ -664,11 +664,11 @@ pattern is restarted and the offset reapplied at the beginning of each subpath.
 <b>Examples</b>
 <pre>
 [ ] 0 setdash       % Solid, unbroken lines
-[3] 0 setdash       % 3 units on, 3 units off, …
-[2] 1 setdash       % 1 on, 2 off, 2 on, 2 off, …
-[2 1] 0 setdash     % 2 on, 1 off, 2 on, 1 off, …
-[3 5] 6 setdash     % 2 off, 3 on, 5 off, 3 on, 5 off, …
-[2 3] 11 setdash    % 1 on, 3 off, 2 on, 3 off, 2 on, …</pre>
+[3] 0 setdash       % 3 units on, 3 units off, ...
+[2] 1 setdash       % 1 on, 2 off, 2 on, 2 off, ...
+[2 1] 0 setdash     % 2 on, 1 off, 2 on, 1 off, ...
+[3 5] 6 setdash     % 2 off, 3 on, 5 off, 3 on, 5 off, ...
+[2 3] 11 setdash    % 1 on, 3 off, 2 on, 3 off, 2 on, ...</pre>
 <p>
 <b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>, <a href="#stackunderflow">stackunderflow</a>,
 <a href="t.html#typecheck">typecheck</a>
@@ -711,8 +711,8 @@ the following behavior is typical:
 <li>If a parameter name is not known to the implementation, an undefined error
 occurs.
 <li>If a parameter value is of the wrong type, a typecheck error occurs.
-<li>If a numeric parameter value is unreasonable—for instance, a negative integer
-for a parameter that must be positive—a rangecheck error occurs.
+<li>If a numeric parameter value is unreasonable&mdash;for instance, a negative integer
+for a parameter that must be positive&mdash;a rangecheck error occurs.
 <li>If a numeric parameter value is reasonable but cannot be achieved by the
 implementation, either the nearest achievable value is substituted or a
 configurationerror occurs, depending on the device and the parameter.
@@ -1204,12 +1204,12 @@ parameters, such as the halftone screen, transfer functions, flatness tolerance,
 and color rendering dictionary, are reset to built-in default values or to ones provided
 in the Install procedure of the page device dictionary.
 <p>
-When the current device in the graphics state is not a page device—for example,
-after nulldevice has been invoked or when an interactive display device is active—
+When the current device in the graphics state is not a page device&mdash;for example,
+after nulldevice has been invoked or when an interactive display device is active&mdash;
 setpagedevice creates a new device dictionary from scratch before merging in the
 parameters from dict. The contents of this dictionary are implementationdependent.
 <p>
-If a device’s BeginPage or EndPage procedure invokes setpagedevice, an
+If a device's BeginPage or EndPage procedure invokes setpagedevice, an
 undefined error occurs.
 <p>
 <b>Errors:</b> <a href="c.html#configurationerror">configurationerror</a>,
@@ -1224,7 +1224,7 @@ undefined error occurs.
 <a name="setpattern"></a>
 <b>setpattern</b> LEVEL 2
 <pre>                pattern setpattern -
-comp1 ... compn pattern setpattern -</pre>
+comp<sub>1</sub> ... comp<sub>n</sub> pattern setpattern -</pre>
 <p>
 sets the current color space in the graphics state to Pattern and establishes a specified
 pattern as the current color. Subsequent painting operations (except image
@@ -1296,7 +1296,7 @@ Execution of this operator is not permitted in certain circumstances.
 <a name="setscreen"></a>
 <b>setscreen</b>
 <pre>frequency angle proc setscreen -
-  num1 num2 halftone setscreen -</pre>
+  num<sub>1</sub> num<sub>2</sub> halftone setscreen -</pre>
 <p>
 sets the halftone screen parameter in the graphics state (see Section 7.4, "Halftones")
 as specified by the operands. setscreen sets the screen identically for all
@@ -1717,7 +1717,7 @@ invocations of rand to generate a reproducible sequence of results.
 <hr>
 <a name="stack"></a>
 <b>stack</b>
-<pre>any1 ... anyn stack any1 ... anyn</pre>
+<pre>any<sub>1</sub> ... any<sub>n</sub> stack any<sub>1</sub> ... any<sub>n</sub></pre>
 <p>
 writes text representations of every object on the stack to the
 standard output file, but leaves the stack unchanged. stack applies the
@@ -1982,7 +1982,7 @@ according to the current VM allocation mode.
 <hr>
 <a name="stringwidth"></a>
 <b>stringwidth</b>
-<pre>string stringwidth wx wy</pre>
+<pre>string stringwidth w<sub>x</sub> w<sub>y</sub></pre>
 <p>
 calculates the change in the current point that would occur if string were
 given as the operand to show with the current font. wx and wy are computed
@@ -2065,7 +2065,7 @@ conversion process.
 <hr>
 <a name="sub"></a>
 <b>sub</b>
-<pre>num1 num2 sub difference</pre>
+<pre>num<sub>1</sub> num<sub>2</sub> sub difference</pre>
 <p>
 difference returns the result of subtracting num2 from num1. If both operands
 are integers and the result is within integer range, the result is an integer.

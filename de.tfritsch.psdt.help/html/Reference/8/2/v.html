@@ -8,9 +8,10 @@
 <h1>Postscript Operators 'v'</h1>
 <hr>
 <a name="version"></a>
-<b>version</b> - version
+<b>version</b>
+<pre>- version string</pre>
 <p>
-string returns a string that identifies the version of the PostScript interpreter
+returns a string that identifies the version of the PostScript interpreter
 being used. This identification does not include information about the language
 features or the hardware or operating system environment in which the PostScript
 interpreter is running.
@@ -21,9 +22,10 @@ interpreter is running.
 <a href="qr.html#revision">revision</a>, <a href="s.html#serialnumber">serialnumber</a>
 <hr>
 <a name="viewclip"></a>
-<b>viewclip</b> - viewclip
+<b>viewclip</b> DPS
+<pre>- viewclip -</pre>
 <p>
-DPS replaces the current view clipping path by a copy of the current path
+replaces the current view clipping path by a copy of the current path
 in the graphics state. The inside of the current path is determined by the
 normal non-zero winding number rule. viewclip implicitly closes any open
 subpaths of the view clipping path. After setting the view clip, viewclip
@@ -56,7 +58,8 @@ in the user path cache.
 <a href="c.html#clip">clip</a>
 <hr>
 <a name="viewclippath"></a>
-<b>viewclippath</b> - viewclippath - DPS
+<b>viewclippath</b> DPS
+<pre>- viewclippath -</pre>
 <p>
 replaces the current path by a copy of the current view clipping path. If
 no view clipping path exists, it replaces the current path by one that exactly
@@ -93,7 +96,8 @@ not snapshot the stacks.
 </ul>
 <hr>
 <a name="vmreclaim"></a>
-<b>vmreclaim</b> int vmreclaim - LEVEL 2
+<b>vmreclaim</b> LEVEL 2
+<pre>int vmreclaim -</pre>
 <p>
 controls the garbage collection machinery as specified by int: 
 <dl>
@@ -137,7 +141,8 @@ user parameter to the same value by means of setuserparams.
 <b>See Also:</b> <a href="s.html#setvmthreshold">setvmthreshold</a>, <a href="s.html#setuserparams">setuserparams</a>
 <hr>
 <a name="vmstatus"></a>
-<b>vmstatus</b> - vmstatus level used maximum
+<b>vmstatus</b>
+<pre>- vmstatus level used maximum</pre>
 <p>
 returns three integers describing the state of the PostScript
 interpreter's virtual memory (VM).

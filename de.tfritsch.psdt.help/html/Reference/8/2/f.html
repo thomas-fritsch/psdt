@@ -140,14 +140,14 @@ gsave fill grestore
 <hr>
 <a name="filter"></a>
 <b>filter</b> LEVEL 2
-<pre>source/target param1 ... paramn name filter file</pre>
+<pre>source/target param<sub>1</sub> ... param<sub>n</sub> name filter file</pre>
 <p>
 creates and returns a filtered file.
 <p>
 The source/target operand specifies the underlying data source or data target
 that the filter is to read or write. It can be a file, procedure, or string.
 <p>
-The param1 ... paramn operands are additional parameters that control how
+The param<sub>1</sub> ... param<sub>n</sub> operands are additional parameters that control how
 the filter is to operate. The number and types of these operands depend
 on the filter name. Most filters require no additional parameters.
 <p>
@@ -309,9 +309,9 @@ flatness parameter in the graphics state (see <a href="s.html#setflat">setflat</
 <hr>
 <a name="floor"></a>
 <b>floor</b>
-<pre>num1 floor num2</pre>
+<pre>num<sub>1</sub> floor num<sub>2</sub></pre>
 <p>
-returns the greatest integer value less than or equal to num1. The type
+returns the greatest integer value less than or equal to num<sub>1</sub>. The type
 of the result is the same as the type of the operand.
 <p>
 <b>Examples</b>
@@ -492,7 +492,7 @@ d {} forall                    &rArr; /xyz (test) /abc 123
 <hr>
 <a name="fork"></a>
 <b>fork</b> DPS
-<pre>mark obj1 ... objn proc fork context</pre>
+<pre>mark obj<sub>1</sub> ... obj<sub>n</sub> proc fork context</pre>
 <p>
 creates a new execution context using the same local and global VM as the
 current context. The new context begins execution concurrent with continued
@@ -500,7 +500,7 @@ execution of the current context. Which context executes first is unpredictable.
 <p>
 The new context's environment is formed by copying the dictionary and graphics
 state stacks of the current context. The initial operand stack consists
-of obj1 through objn, pushed in the same order (obj1 through objn are objects
+of obj1 through objn, pushed in the same order (obj<sub>1</sub> through obj<sub>n</sub> are objects
 of any type other than <a href="m.html#mark">mark</a>). fork consumes
 all operands down to and including the topmost mark. It then pushes an integer
 that uniquely identifies the new context. The forked context inherits its

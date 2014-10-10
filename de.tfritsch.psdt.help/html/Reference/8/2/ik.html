@@ -25,9 +25,9 @@ matrix transforms any coordinate to itself.
 <hr>
 <a name="idiv"></a>
 <b>idiv</b>
-<pre>int1 int2 idiv quotient</pre>
+<pre>int<sub>1</sub> int<sub>2</sub> idiv quotient</pre>
 <p>
-divides int1 by int2 and returns the integer part of the quotient, with
+divides int<sub>1</sub> by int<sub>2</sub> and returns the integer part of the quotient, with
 any fractional part discarded. Both operands of idiv must be integers and
 the result is an integer.
 <p>
@@ -89,10 +89,10 @@ proc may do so.
 <hr>
 <a name="ifelse"></a>
 <b>ifelse</b>
-<pre>bool proc1 proc2 ifelse -</pre>
+<pre>bool proc<sub>1</sub> proc<sub>2</sub> ifelse -</pre>
 <p>
-removes all three operands from the stack, then executes proc1 if bool is
-true or proc2 if bool is false. The ifelse operator pushes no results of
+removes all three operands from the stack, then executes proc<sub>1</sub> if bool is
+true or proc<sub>2</sub> if bool is false. The ifelse operator pushes no results of
 its own on the operand stack, but the procedure it executes may do so.
 <p>
 <b>Example</b>
@@ -227,7 +227,7 @@ imagemask
 <hr>
 <a name="index"></a>
 <b>index</b>
-<pre>anyn ... any0 n index anyn ... any0 anyn</pre>
+<pre>any<sub>n</sub> ... any<sub>0</sub> n index any<sub>n</sub> ... any<sub>0</sub> any<sub>n</sub></pre>
 <p>
 removes the non-negative integer n from the operand stack, counts down to
 the nth element from the top of the stack, and pushes a copy of that element
@@ -647,12 +647,12 @@ be allowed.
 <hr>
 <a name="invertmatrix"></a>
 <b>invertmatrix</b>
-<pre>matrix1 matrix2 invertmatrix matrix2</pre>
+<pre>matrix<sub>1</sub> matrix<sub>2</sub> invertmatrix matrix<sub>2</sub></pre>
 <p>
-replaces the value of matrix2 with the result of inverting matrix1 and pushes
-the modified matrix2 back on the operand stack. The result of inverting
-a matrix is that if matrix1 transforms a coordinate (x, y) to (x', y') then
-matrix2 transforms (x', y') to (x, y).
+replaces the value of matrix<sub>2</sub> with the result of inverting matrix<sub>1</sub> and pushes
+the modified matrix<sub>2</sub> back on the operand stack. The result of inverting
+a matrix is that if matrix<sub>1</sub> transforms a coordinate (x, y) to (x', y') then
+matrix<sub>2</sub> transforms (x', y') to (x, y).
 <p>
 <b>Errors:</b> <a href="qr.html#rangecheck">rangecheck</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
 <a href="t.html#typecheck">typecheck</a>, <a href="u.html#undefinedresult">undefinedresult</a>
@@ -707,7 +707,7 @@ of CTM.
 <hr>
 <a name="join"></a>
 <b>join</b> DPS
-<pre>context join mark obj1 ... objn</pre>
+<pre>context join mark obj<sub>1</sub> ... obj<sub>n</sub></pre>
 <p>
 waits for the execution context identified by the integer context to finish
 executing its top-level procedure (the proc operand of <a href="f.html#fork">fork</a>).
