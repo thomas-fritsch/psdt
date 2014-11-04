@@ -1,7 +1,9 @@
 package de.tfritsch.psdt.debug.ui;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IStorage;
+import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IValue;
 import org.eclipse.debug.ui.IDebugModelPresentation;
 import org.eclipse.debug.ui.IValueDetailListener;
@@ -48,6 +50,10 @@ public class PSDebugModelPresentation extends LabelProvider implements
 		}
 		if (element instanceof IStorage) {
 			return new StorageEditorInput((IStorage) element);
+		}
+		if (element instanceof IBreakpoint) {
+			IResource resource = ((IBreakpoint) element).getMarker().getResource();
+			return getEditorInput(resource); // recursion!
 		}
 		return null;
 	}

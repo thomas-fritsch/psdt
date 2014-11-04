@@ -9,6 +9,14 @@
          <adapter type="org.eclipse.debug.ui.actions.IRunToLineTarget"/>
       </factory>
    </extension>
+   <extension point="org.eclipse.debug.core.breakpoints">
+      <breakpoint
+           class="de.tfritsch.psdt.debug.model.PSLineBreakpoint"
+      	   id="de.tfritsch.psdt.debug.model.lineBreakpoint"
+      	   markerType="org.eclipse.debug.core.lineBreakpointMarker"
+      	   name="Postscript Breakpoint">
+      </breakpoint>
+   </extension>
    <extension point="org.eclipse.debug.core.processFactories">
       <processFactory
             class="de.tfritsch.psdt.debug.model.PSProcessFactory"
