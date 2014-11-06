@@ -5,12 +5,14 @@ import java.util.List;
 
 import org.eclipse.core.resources.IMarkerDelta;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugException;
 import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.model.IBreakpoint;
 import org.eclipse.debug.core.model.IDebugTarget;
+import org.eclipse.debug.core.model.ILineBreakpoint;
 import org.eclipse.debug.core.model.IMemoryBlock;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
@@ -266,7 +268,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 
 	//@Override
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
-		return breakpoint.getModelIdentifier().equals(getModelIdentifier());
+		return breakpoint.getModelIdentifier().equals(getModelIdentifier()) &&
+				breakpoint.getMarker().getResource().getLocation().equals(new Path(fSourceName));
 	}
 
 	//@Override
@@ -324,7 +327,16 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		debug("GUI -> breakpointAdded " + breakpoint); //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
-			// TODO PSDebugTarget.breakpointAdded
+			try {
+				int lineNumber = ((ILineBreakpoint)breakpoint).getLineNumber();
+				boolean enabled = breakpoint.isEnabled();
+				for (int i = 0; i < fTokens.size(); i++) {
+					PSToken token = fTokens.get(i);
+					if (enabled && token.getLineNumber() == lineNumber)
+						fDebugCommander.addBreakpoint(i);
+				}
+			} catch (CoreException e) {
+			}
 		}
 	}
 
@@ -347,7 +359,15 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointRemoved " + breakpoint); //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
-			// TODO PSDebugTarget.breakpointRemoved
+			try {
+				int lineNumber = ((ILineBreakpoint)breakpoint).getLineNumber();
+				for (int i = 0; i < fTokens.size(); i++) {
+					PSToken token = fTokens.get(i);
+					if (token.getLineNumber() == lineNumber)
+						fDebugCommander.removeBreakpoint(i);
+				}
+			} catch (CoreException e) {
+			}
 		}
 	}
 
