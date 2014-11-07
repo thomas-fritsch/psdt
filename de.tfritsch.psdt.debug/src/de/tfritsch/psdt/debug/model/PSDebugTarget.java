@@ -345,15 +345,13 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	//@Override
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointChanged " + breakpoint); //$NON-NLS-1$
-		if (supportsBreakpoint(breakpoint)) {
-			try {
-				if (breakpoint.isEnabled()) {
-					breakpointAdded(breakpoint);
-				} else {
-					breakpointRemoved(breakpoint, null);
-				}
-			} catch (CoreException e) {
+		try {
+			if (breakpoint.isEnabled()) {
+				breakpointAdded(breakpoint);
+			} else {
+				breakpointRemoved(breakpoint, null);
 			}
+		} catch (CoreException e) {
 		}
 	}
 
