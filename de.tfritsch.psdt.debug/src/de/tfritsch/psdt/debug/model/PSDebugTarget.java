@@ -332,8 +332,10 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				boolean enabled = breakpoint.isEnabled();
 				for (int i = 0; i < fTokens.size(); i++) {
 					PSToken token = fTokens.get(i);
-					if (enabled && token.getLineNumber() == lineNumber)
+					if (enabled && token.getLineNumber() == lineNumber) {
 						fDebugCommander.addBreakpoint(i);
+						break; // 1 breakpoint per line is enough
+					}
 				}
 			} catch (CoreException e) {
 			}
