@@ -41,7 +41,9 @@ public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 	//@Override
 	public boolean canToggleLineBreakpoints(IWorkbenchPart part,
 			ISelection selection) {
-		return true;
+		ITextEditor textEditor = (ITextEditor) part.getAdapter(ITextEditor.class);
+		IResource resource = (IResource) textEditor.getEditorInput().getAdapter(IResource.class);
+		return (resource != null);
 	}
 
 	//@Override
