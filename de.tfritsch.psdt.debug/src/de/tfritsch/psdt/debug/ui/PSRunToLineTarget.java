@@ -2,7 +2,9 @@ package de.tfritsch.psdt.debug.ui;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.DebugEvent;
 import org.eclipse.debug.core.DebugPlugin;
+import org.eclipse.debug.core.IDebugEventSetListener;
 import org.eclipse.debug.core.model.ISuspendResume;
 import org.eclipse.debug.ui.actions.IRunToLineTarget;
 import org.eclipse.jface.text.ITextSelection;
@@ -20,8 +22,22 @@ public class PSRunToLineTarget implements IRunToLineTarget {
 		IResource resource = (IResource) textEditor.getEditorInput().getAdapter(IResource.class);
 		ITextSelection textSelection = (ITextSelection) selection;
 		int lineNumber = textSelection.getStartLine();
-		PSLineBreakpoint breakpoint = new PSLineBreakpoint(resource, lineNumber + 1);
+		final PSLineBreakpoint breakpoint = new PSLineBreakpoint(resource, lineNumber + 1);
 		breakpoint.setPersisted(false);
+		DebugPlugin.getDefault().addDebugEventListener(new IDebugEventSetListener() {
+			
+			public void handleDebugEvents(DebugEvent[] events) {
+				for (DebugEvent event : events) {
+					if (event.getKind() == DebugEvent.SUSPEND) {
+						try {
+							breakpoint.delete();
+						} catch (CoreException e) {
+						}
+						DebugPlugin.getDefault().removeDebugEventListener(this);
+					}
+				}
+			}
+		});
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(breakpoint);
 		target.resume();
 	}
