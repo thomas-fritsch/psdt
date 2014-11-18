@@ -7,7 +7,7 @@ import org.eclipse.ui.part.ViewPart
 import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput
 
 /**
- * Tab group for launching a PostScript program.
+ * View for displaying Postscript doc.
  * 
  * Matches plugin.xml extension[@point="org.eclipse.debug.ui.views"]/view/@class
  */
