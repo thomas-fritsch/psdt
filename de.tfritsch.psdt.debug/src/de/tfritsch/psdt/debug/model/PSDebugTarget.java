@@ -338,6 +338,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 					}
 				}
 			} catch (CoreException e) {
+				DebugPlugin.log(e);
 			}
 		}
 	}
@@ -352,6 +353,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				breakpointRemoved(breakpoint, null);
 			}
 		} catch (CoreException e) {
+			DebugPlugin.log(e);
 		}
 	}
 
@@ -367,6 +369,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 						fDebugCommander.removeBreakpoint(i);
 				}
 			} catch (CoreException e) {
+				DebugPlugin.log(e);
 			}
 		}
 	}

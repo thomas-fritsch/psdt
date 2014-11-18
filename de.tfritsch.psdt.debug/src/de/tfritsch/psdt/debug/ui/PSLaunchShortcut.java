@@ -86,6 +86,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 				}
 			}
 		} catch (CoreException e) {
+			DebugPlugin.log(e);
 		}
 		return result.toArray(new ILaunchConfiguration[result.size()]);
 	}
@@ -103,6 +104,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 			wc.setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "-dBATCH"); //$NON-NLS-1$
 			return wc.doSave();
 		} catch (CoreException e) {
+			DebugPlugin.log(e);
 			return null;
 		}
 	}

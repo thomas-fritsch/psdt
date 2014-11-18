@@ -32,6 +32,7 @@ public class PSRunToLineTarget implements IRunToLineTarget {
 						try {
 							breakpoint.delete();
 						} catch (CoreException e) {
+							DebugPlugin.log(e);
 						}
 						DebugPlugin.getDefault().removeDebugEventListener(this);
 					}
