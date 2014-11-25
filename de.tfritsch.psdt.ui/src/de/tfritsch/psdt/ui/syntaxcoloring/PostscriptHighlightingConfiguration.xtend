@@ -13,14 +13,9 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 	public static val DSC_COMMENT_ID = "dscComment"
 
 	override void configure(IHighlightingConfigurationAcceptor acceptor) {
+		super.configure(acceptor)
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
-		acceptor.acceptDefaultHighlighting(PUNCTUATION_ID, "Bracket", punctuationTextStyle)
-		acceptor.acceptDefaultHighlighting(COMMENT_ID, "Comment", commentTextStyle)
 		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment", dscCommentTextStyle)
-		acceptor.acceptDefaultHighlighting(STRING_ID, "String", stringTextStyle)
-		acceptor.acceptDefaultHighlighting(NUMBER_ID, "Number", numberTextStyle)
-		acceptor.acceptDefaultHighlighting(DEFAULT_ID, "Default", defaultTextStyle)
-		acceptor.acceptDefaultHighlighting(INVALID_TOKEN_ID, "Invalid Symbol", errorTextStyle)
 	}
 
 	def TextStyle literalNameTextStyle() {
