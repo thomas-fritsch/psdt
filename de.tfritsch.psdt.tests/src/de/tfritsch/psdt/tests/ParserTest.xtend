@@ -25,44 +25,35 @@ class ParserTest {
 
 	@Test
 	def testEmptyFile() {
-		val file = '''
-		'''.parse
+		val file = ''''''.parse
 		assertNotNull(file)
 		assertEquals(0, file.objects.size)
 	}
 
 	@Test
 	def testInt() {
-		val file = '''
-			42
-		'''.parse
+		val file = '''42'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSInt)
 	}
 
 	@Test
 	def testFloat() {
-		val file = '''
-			42.0
-		'''.parse
+		val file = '''42.0'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSFloat)
 	}
 
 	@Test
 	def testString() {
-		val file = '''
-			()
-		'''.parse
+		val file = '''()'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSString)
 	}
 
 	@Test
 	def testAsciiHexString() {
-		val file = '''
-			<>
-		'''.parse
+		val file = '''<>'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSString)
 	}

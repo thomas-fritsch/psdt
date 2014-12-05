@@ -11,7 +11,7 @@ import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.xtext.diagnostics.Diagnostic.*
+import static org.eclipse.xtext.diagnostics.Diagnostic.SYNTAX_DIAGNOSTIC
 
 @RunWith(XtextRunner)
 @InjectWith(PostscriptInjectorProvider)
@@ -26,16 +26,12 @@ class ValidatorTest {
 	@Test
 	def testMissingCloseBrace() {
 		val file = '''{ a b'''.parse
-		file.assertError(
-			PSExecutableName,
-			SYNTAX_DIAGNOSTIC,
-			"mismatched input '<EOF>' expecting '}'"
-		)
+		file.assertError(PSExecutableName, SYNTAX_DIAGNOSTIC, "expecting '}'")
 	}
 
 	@Test
 	def testExtraneousCloseBrace() {
 		val file = '''a b }'''.parse
-		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input '}' expecting EOF")
+		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input '}'")
 	}
 }
