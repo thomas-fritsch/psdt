@@ -2,6 +2,13 @@
 <?NLS TYPE="org.eclipse.help.toc"?>
 
 <toc label="Postscript User Guide">
+	<topic label="Overview" href="html/overview.html" />
+	<topic label="Getting started">
+		<topic label="Preparing Eclipse" href="html/getting_started/preparing.html" />
+		<topic label="Editing Postscript files" href="html/getting_started/editing.html" />
+		<topic label="Running Postscript files" href="html/getting_started/running.html" />
+		<topic label="Debugging Postscript files" href="html/getting_started/debugging.html" />
+	</topic>
 	<topic label="Reference">
 		<link toc="toc_reference.xml" />
 	</topic>

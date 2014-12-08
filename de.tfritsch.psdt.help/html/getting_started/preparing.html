@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Preparing Eclipse</title>
+</head>
+<body>
+	<h1>Preparing Eclipse</h1>
+	<h2>Verifying Ghostscript installation</h2>
+	<ol>
+		<li>If you still see the Eclipse Welcome page, click the arrow
+			icon to begin using Eclipse</li>
+		<li>Select the menu item <a class="command-link"
+			href='javascript:executeCommand("org.eclipse.ui.window.preferences(preferencePageId=org.eclipse.ui.preferencePages.Workbench)")'>
+				<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png"
+				alt="Goto workbench preferences"> <b>Window &gt;
+					Preferences...</b>
+		</a> to open the workbench preferences.&nbsp;
+		</li>
+		<li>Select the <a class="command-link"
+			href='javascript:executeCommand("org.eclipse.ui.window.preferences(preferencePageId=de.tfritsch.psdt.debug.ghostscriptPreferencePage)")'>
+				<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png"
+				alt="Goto Ghostscript preference page"> <b>Postscript &gt;
+					Ghostscript</b>
+		</a> preference page to display the configured Ghostscript interpreter.
+			You will see that it is not configured yet.
+			<p>
+				<img src="preparing_1.png" alt="Ghostscript preference page">
+			</p>
+		</li>
+		<li>Click the "Browse..." button.
+			<dl>
+				<dt>For Windows:</dt>
+				<dd>
+					Navigate to the Ghostscript installation directory. Select the
+					executable (it is called "gswin32c.exe" or "gswin64c.exe").
+					<p>
+						<img src="preparing_2.png" alt="Ghostscript preference page">
+					</p>
+				</dd>
+				<dt>For Linux or Unix:</dt>
+				<dd>Select "/usr/bin/gs".</dd>
+			</dl>
+			<p>
+				<img src="preparing_3.png" alt="Ghostscript preference page">
+			</p>
+		</li>
+	</ol>
+</body>
+</html>
