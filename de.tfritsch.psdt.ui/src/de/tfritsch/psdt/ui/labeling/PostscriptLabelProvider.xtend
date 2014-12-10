@@ -7,14 +7,16 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
-import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.postscript.PSFloat
+import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+
+import static org.eclipse.ui.plugin.AbstractUIPlugin.*
 
 /**
  * Provides labels for a EObjects.
@@ -64,7 +66,7 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def image(PSObject it) {
-		"defaultoutlinenode.gif"
+		imageDescriptorFromPlugin("org.eclipse.xtext.ui", "icons/defaultoutlinenode.gif")
 	}
 
 }
