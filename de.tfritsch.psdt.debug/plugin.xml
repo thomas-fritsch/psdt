@@ -124,7 +124,7 @@
          </action>
          <action
                class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-               icon="icons/brkp_obj.gif"
+               icon="platform:/plugin/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.gif"
                id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.toggleBreakpointAction"
                label="Toggle Breakpoint"
                menubarPath="debug">
