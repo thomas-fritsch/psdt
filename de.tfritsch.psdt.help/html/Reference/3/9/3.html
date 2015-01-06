@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Creating Resource Categories</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>3.9.3 Creating Resource Categories</h3>
@@ -88,42 +89,42 @@
 		useful to the procedures in the dictionary. Since the dictionary is on
 		the dictionary stack at the time those procedures are called, the
 		procedures can access the information conveniently.</p>
-	<table border="1">
+	<table>
 		<caption>TABLE 3.11 Entries in a category implementation
 			dictionary</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="DefineResource"></a><b>DefineResource</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top"><i>(Required)</i> A procedure that implements <b>defineresource</b>
+			<th><a name="DefineResource"></a>DefineResource</th>
+			<td>procedure</td>
+			<td><i>(Required)</i> A procedure that implements <b>defineresource</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="UndefineResource"></a><b>UndefineResource</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="UndefineResource"></a>UndefineResource</th>
+			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>undefineresource</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FindResource"></a><b>FindResource</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="FindResource"></a>FindResource</th>
+			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>findresource</b>
 				behavior. This procedure determines the policy for using global
 				versus current VM when loading a resource from an external source.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ResourceStatus"></a><b>ResourceStatus</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="ResourceStatus"></a>ResourceStatus</th>
+			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>resourcestatus</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ResourceForAll"></a><b>ResourceForAll</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="ResourceForAll"></a>ResourceForAll</th>
+			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>resourceforall</b>
 				behavior. This procedure should remove the category implementation
 				dictionary from the dictionary stack before executing the procedure
@@ -133,23 +134,23 @@
 				the time <b>resourceforall</b> was invoked.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Category"></a><b>Category</b></td>
-			<td valign="top">name</td>
-			<td valign="top"><i>(Required)</i> The category name. This entry
+			<th><a name="Category"></a>Category</th>
+			<td>name</td>
+			<td><i>(Required)</i> The category name. This entry
 				is inserted by <b>defineresource</b> when the category is defined.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="InstanceType"></a><b>InstanceType</b></td>
-			<td valign="top">name</td>
-			<td valign="top"><i>(Optional)</i> The expected type of
+			<th><a name="InstanceType"></a>InstanceType</th>
+			<td>name</td>
+			<td><i>(Optional)</i> The expected type of
 				instances of this category. If this entry is present, <b>defineresource</b>
 				checks that the instance's type, as returned by the <b>type</b>
 				operator, matches it.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ResourceFileName"></a><b>ResourceFileName</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top"><i>(Optional)</i> A procedure that translates a
+			<th><a name="ResourceFileName"></a>ResourceFileName</th>
+			<td>procedure</td>
+			<td><i>(Optional)</i> A procedure that translates a
 				resource instance name to a file name (see Section 3.9.4, "Resources
 				as Files").</td>
 		</tr>

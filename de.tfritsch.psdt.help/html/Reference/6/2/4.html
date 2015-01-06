@@ -2,21 +2,22 @@
 <html>
 <head>
 <title>Page Delivery</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>6.2.4 Page Delivery</h3>
-	<table border="1">
+	<table>
 		<caption>TABLE 6.5 Page device parameters related to page
 			delivery</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="OutputDevice"></a><b>OutputDevice</b></td>
-			<td valign="top">name or string</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> The name of the output
+			<th><a name="OutputDevice"></a>OutputDevice</th>
+			<td>name or string</td>
+			<td><i>(LanguageLevel 3)</i> The name of the output
 				device for which this page description is destined. The name should
 				match that of an instance of the <b>OutputDevice</b> resource
 				category (see Section 6.4, "Output Device Dictionary"). In
@@ -37,9 +38,9 @@
 				</p></td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="OutputType"></a><b>OutputType</b></td>
-			<td valign="top">string or null</td>
-			<td valign="top">An arbitrary string representing special
+			<th><a name="OutputType"></a>OutputType</th>
+			<td>string or null</td>
+			<td>An arbitrary string representing special
 				attributes of the output destination, analogous to the <b>MediaType</b>
 				parameter for input (see Table 6.2 on page 400). If not null, this
 				parameter is used in conjunction with <b>OutputAttributes</b> to
@@ -47,9 +48,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="NumCopies"></a><b>NumCopies</b></td>
-			<td valign="top">integer or null</td>
-			<td valign="top">The number of copies to produce, either of each
+			<th><a name="NumCopies"></a>NumCopies</th>
+			<td>integer or null</td>
+			<td>The number of copies to produce, either of each
 				page individually or of the document as a whole, depending on the
 				value of the <b>Collate</b> parameter (see below). A null value
 				indicates that the interpreter should consult the value associated
@@ -60,9 +61,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Collate"></a><b>Collate</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag specifying how the output is to be
+			<th><a name="Collate"></a>Collate</th>
+			<td>boolean</td>
+			<td>A flag specifying how the output is to be
 				organized when multiple copies are requested (via <b>NumCopies</b>
 				or <b>#copies</b>) for a multiple-page document. Output consists of
 				page sets that are delivered together. If <b>Collate</b> is true, a
@@ -94,9 +95,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Jog"></a><b>Jog</b></td>
-			<td valign="top">integer</td>
-			<td valign="top">A code specifying when output pages should be
+			<th><a name="Jog"></a>Jog</th>
+			<td>integer</td>
+			<td>A code specifying when output pages should be
 				"jogged" (physically shifted in the output tray):
 				<ol start="0">
 					<li>Do not jog pages at all.</li>
@@ -114,9 +115,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="OutputFaceUp"></a><b>OutputFaceUp</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag specifying the order in which pages are
+			<th><a name="OutputFaceUp"></a>OutputFaceUp</th>
+			<td>boolean</td>
+			<td>A flag specifying the order in which pages are
 				stacked in the output tray. If this flag is true, pages are stacked
 				with the back side of each page placed against the front of the
 				previous page; the resulting stack is thus ordered backwards from
@@ -133,9 +134,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="OutputAttributes"></a><b>OutputAttributes</b></td>
-			<td valign="top">dictionary</td>
-			<td valign="top">A dictionary specifying the attributes of all
+			<th><a name="OutputAttributes"></a>OutputAttributes</th>
+			<td>dictionary</td>
+			<td>A dictionary specifying the attributes of all
 				media destinations currently available for use by this output
 				device. The dictionary contains an entry for each available
 				destination—for example, each output paper tray on a printer. The

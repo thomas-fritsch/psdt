@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Font Dictionaries</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
 </head>
 <body>
 	<h2>5.2 Font Dictionaries</h2>
@@ -21,20 +22,20 @@
 		Fonts of type 1, 2, 3, 14, and 42 are called base fonts. The standard
 		font types defined at present are listed in Table 5.1.
 	</p>
-	<table border="1">
+	<table>
 		<caption>TABLE 5.1: Font types</caption>
 		<tr>
-			<th align="left">Type</th>
-			<th align="left">Description</th>
+			<th>Type</th>
+			<th>Description</th>
 		</tr>
 		<tr>
-			<td valign="top">Type 0</td>
+			<td>Type 0</td>
 			<td><i>(LanguageLevel 2)</i> A composite font&mdash;a font
 				composed of other fonts, organized hierarchically. See Section 5.10,
 				"Composite Fonts."</td>
 		</tr>
 		<tr>
-			<td valign="top">Type 1</td>
+			<td>Type 1</td>
 			<td><p>A font that defines glyph shapes by using a special
 					encoded format. Details on this format are provided in a separate
 					book, Adobe Type 1 Font Format.</p>
@@ -48,12 +49,12 @@
 				</p></td>
 		</tr>
 		<tr>
-			<td valign="top">Type 2</td>
+			<td>Type 2</td>
 			<td><i>(LanguageLevel 3)</i> A Compact Font Format (CFF) font.
 				See Section 5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)."</td>
 		</tr>
 		<tr>
-			<td valign="top">Type 3</td>
+			<td>Type 3</td>
 			<td>A font that defines glyphs with ordinary PostScript
 				procedures, which are the values of entries named <b>BuildGlyph</b>
 				or <b>BuildChar</b> in the font dictionary. See Section 5.7, "Type 3
@@ -61,7 +62,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">Type 9, 10, 11, 32</td>
+			<td>Type 9, 10, 11, 32</td>
 			<td><i>(LanguageLevel 3)</i> These <b>FontType</b> values
 				identify a class of fontlike objects, called CIDFonts, that can be
 				used as descendants in CIDkeyed fonts. See Section 5.11, "CID-Keyed
@@ -71,12 +72,12 @@
 				considered to be base fonts.</td>
 		</tr>
 		<tr>
-			<td valign="top">Type 14</td>
+			<td>Type 14</td>
 			<td><i>(LanguageLevel 3)</i> A Chameleon font. See Section
 				5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)."</td>
 		</tr>
 		<tr>
-			<td valign="top">Type 42</td>
+			<td>Type 42</td>
 			<td><i>(LanguageLevel 3)</i> A font based on the TrueType font
 				format. See Section 5.8.2, "Type 42 Fonts (TrueType)."</td>
 		</tr>
@@ -159,23 +160,23 @@
 		containing information useful to PostScript procedures that are part
 		of the font’s definition; the interpreter pays no attention to such
 		entries.</p>
-	<table border="1">
+	<table>
 		<caption>TABLE 5.2: Entries common to all font dictionaries</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FontType"></a><b>FontType</b></td>
-			<td valign="top">integer</td>
+			<th><a name="FontType"></a>FontType</th>
+			<td>integer</td>
 			<td><i>(Required)</i> The font type; see Table 5.1. Indicates
 				where the glyph descriptions are to be found and how they are
 				represented.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b><a name="FontMatrix"></a>FontMatrix</b></td>
-			<td valign="top">array</td>
+			<th><a name="FontMatrix"></a>FontMatrix</th>
+			<td>array</td>
 			<td><i>(Required)</i> An array that transforms the <i>glyph
 					coordinate system</i> into the user coordinate system (see Section 5.4,
 				"Glyph Metric Information"). For example, Type 1 font programs from
@@ -187,23 +188,23 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FontName"></a><b>FontName</b></td>
-			<td valign="top">name</td>
+			<th><a name="FontName"></a>FontName</th>
+			<td>name</td>
 			<td><i>(Optional)</i> The name of the font. This entry is for
 				information only; it is not used by the PostScript interpreter.
 				Ordinarily, it is the same as the key passed to <b>definefont</b>,
 				but it need not be.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FontInfo"></a><b>FontInfo</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="FontInfo"></a>FontInfo</th>
+			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing font information
 				that is not accessed by the PostScript interpreter; see Table 5.5 on
 				page 327.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="LanguageLevel"></a><b>LanguageLevel</b></td>
-			<td valign="top">integer</td>
+			<th><a name="LanguageLevel"></a>LanguageLevel</th>
+			<td>integer</td>
 			<td><i>(Optional)</i> The minimum LanguageLevel required for
 				correct behavior of the font. For example, any font that uses
 				LanguageLevel 2 features for rendering glyphs (such as a glyph
@@ -217,8 +218,8 @@
 				to 2. Default value: 1.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="WMode"></a><b>WMode</b></td>
-			<td valign="top">integer</td>
+			<th><a name="WMode"></a>WMode</th>
+			<td>integer</td>
 			<td><i>(Optional; LanguageLevel 2)</i> The writing mode, which
 				determines which of two sets of metrics will be used when glyphs are
 				shown from the font. Mode 0 specifies horizontal writing; mode 1
@@ -227,8 +228,8 @@
 				font extensions ignore this entry. Default value: 0.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FID"></a><b>FID</b></td>
-			<td valign="top">fontID</td>
+			<th><a name="FID"></a>FID</th>
+			<td>fontID</td>
 			<td><i>(Inserted by <b>definefont</b>)
 			</i> A special object of type fontID that serves internal purposes in the
 				font machinery. The <b>definefont</b> operator inserts this entry.
@@ -238,23 +239,23 @@
 		</tr>
 	</table>
 	<p />
-	<table border="1">
+	<table>
 		<caption>TABLE 5.3: Additional entries common to all base
 			fonts</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Encoding"></a><b>Encoding</b></td>
-			<td valign="top">array</td>
+			<th><a name="Encoding"></a>Encoding</th>
+			<td>array</td>
 			<td><i>(Required)</i> An array of character names to which
 				character codes are mapped. See Section 5.3, "Character Encoding."</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="FontBBox"></a><b>FontBBox</b></td>
-			<td valign="top">array</td>
+			<th><a name="FontBBox"></a>FontBBox</th>
+			<td>array</td>
 			<td><i>(Required)</i> An array of four numbers in the glyph
 				coordinate system giving the left, bottom, right, and top
 				coordinates, respectively, of the font bounding box. The font
@@ -274,32 +275,32 @@
 					operator to avoid unintended execution.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="UniqueUID"></a><b>UniqueID</b></td>
-			<td valign="top">integer</td>
+			<th><a name="UniqueUID"></a>UniqueID</th>
+			<td>integer</td>
 			<td><i>(Optional)</i> An integer in the range 0 to 16,777,215 (2<sup>24</sup>
 				- 1) that uniquely identifies this font. See Section 5.6, "Unique ID
 				Generation."</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="XUID"></a><b>XUID</b></td>
-			<td valign="top">array</td>
+			<th><a name="XUID"></a>XUID</th>
+			<td>array</td>
 			<td><i>(Optional; LanguageLevel 2)</i> An array of integers that
 				uniquely identifies this font or any variant of it. See Section 5.6,
 				"Unique ID Generation."</td>
 		</tr>
 	</table>
 	<p />
-	<table border="1">
+	<table>
 		<caption>TABLE 5.4 Additional entries specific to Type 1
 			fonts</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PaintType"></a><b>PaintType</b></td>
-			<td valign="top">integer</td>
+			<th><a name="PaintType"></a>PaintType</th>
+			<td>integer</td>
 			<td><i>(Required)</i> A code indicating how the glyphs of the
 				font are to be painted:
 				<ol>
@@ -313,8 +314,8 @@
 				supported.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="StrokeWidth"></a><b>StrokeWidth</b></td>
-			<td valign="top">number</td>
+			<th><a name="StrokeWidth"></a>StrokeWidth</th>
+			<td>number</td>
 			<td><i>(Optional)</i> The stroke width (in units of the glyph
 				coordinate system) for stroked-outline fonts (<b>PaintType</b> 2).
 				This entry is not initially present in filled-outline fonts. It
@@ -322,8 +323,8 @@
 				created from an existing filled font. Default value: 0.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Metrics"></a><b>Metrics</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="Metrics"></a>Metrics</th>
+			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing metric information
 				(glyph widths and sidebearings) for writing mode 0. This entry is
 				not normally present in the original definition of a font. Adding a
@@ -332,22 +333,22 @@
 				Information,” and 5.9.2, "Changing Glyph Metrics."</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Metrics2"></a><b>Metrics2</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="Metrics2"></a>Metrics2</th>
+			<td>dictionary</td>
 			<td><i>(Optional; LanguageLevel 2)</i> Similar to Metrics, but
 				for writing mode 1.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="CDevProc"></a><b>CDevProc</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="CDevProc"></a>CDevProc</th>
+			<td>procedure</td>
 			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
 				algorithmically derives global changes to the font's metrics.
 				LanguageLevel 1 implementations lacking composite font extensions
 				ignore this entry.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="CharStrings"></a><b>CharStrings</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="CharStrings"></a>CharStrings</th>
+			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary associating character names
 				(the keys in the dictionary) with glyph descriptions. Each entry's
 				value is ordinarily a string (called a charstring) that represents
@@ -359,16 +360,16 @@
 				Glyphs." This dictionary must have an entry whose key is .notdef.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Private"></a><b>Private</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="Private"></a>Private</th>
+			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary containing other internal
 				information about the font. See <a
 				href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
 					Type 1 Font Format</a> for details.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="WeightVector"></a><b>WeightVector</b></td>
-			<td valign="top">dictionary</td>
+			<th><a name="WeightVector"></a>WeightVector</th>
+			<td>dictionary</td>
 			<td><i>(Required; multiple-master fonts only)</i> An array
 				specifying the contribution of each master design to the current
 				font instance. The array contains one number per master design, each
@@ -385,64 +386,64 @@
 		the font, or for documentation; it is not accessed by the PostScript
 		interpreter, and all of its entries are optional.
 	</p>
-	<table border="1">
+	<table>
 		<caption>TABLE 5.5 Entries in a FontInfo dictionary</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><b>FamilyName</b></td>
-			<td valign="top">string</td>
+			<th>FamilyName</th>
+			<td>string</td>
 			<td>A human-readable name for a group of fonts that are
 				stylistic variants of a single design. All fonts that are members of
 				such a group should have exactly the same <b>FamilyName</b> value.
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>FullName</b></td>
-			<td valign="top">string</td>
+			<th>FullName</th>
+			<td>string</td>
 			<td>A unique, human-readable name for an individual font.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>Notice</b></td>
-			<td valign="top">string</td>
+			<th>Notice</th>
+			<td>string</td>
 			<td>A trademark or copyright notice, if applicable.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>Weight</b></td>
-			<td valign="top">string</td>
+			<th>Weight</th>
+			<td>string</td>
 			<td>A human-readable name for the weight, or "boldness,"
 				attribute of a font.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>version</b></td>
-			<td valign="top">string</td>
+			<th>version</th>
+			<td>string</td>
 			<td>The version number of the font program.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>ItalicAngle</b></td>
-			<td valign="top">number</td>
+			<th>ItalicAngle</th>
+			<td>number</td>
 			<td>The angle, in degrees counterclockwise from the vertical, of
 				the dominant vertical strokes of the font.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>isFixedPitch</b></td>
-			<td valign="top">boolean</td>
+			<th>isFixedPitch</th>
+			<td>boolean</td>
 			<td>A flag indicating whether the font is a fixed-pitch
 				(monospaced) font.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>UnderlinePosition</b></td>
-			<td valign="top">number</td>
+			<th>UnderlinePosition</th>
+			<td>number</td>
 			<td>The recommended distance from the baseline for positioning
 				underlining strokes. This number is the y coordinate (in the glyph
 				coordinate system) of the center of the stroke.</td>
 		</tr>
 		<tr>
-			<td valign="top"><b>UnderlineThickness</b></td>
-			<td valign="top">number</td>
+			<th>UnderlineThickness</th>
+			<td>number</td>
 			<td>The recommended stroke width for underlining, in units of
 				the glyph coordinate system.</td>
 		</tr>

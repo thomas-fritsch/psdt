@@ -2,21 +2,22 @@
 <html>
 <head>
 <title>Device Initialization and Page Setup</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>6.2.6 Device Initialization and Page Setup</h3>
-	<table border="1">
+	<table>
 		<caption>TABLE 6.7 Page device parameters related to device
 			initialization and page setup</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Install"></a><b>Install</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top">A procedure to install parameter values in the
+			<th><a name="Install"></a>Install</th>
+			<td>procedure</td>
+			<td>A procedure to install parameter values in the
 				graphics state during each invocation of <b>setpagedevice</b>. <b>setpagedevice</b>
 				calls this procedure after setting up the device and installing it
 				as the current device in the graphics state, but before invoking <b>erasepage</b>
@@ -38,9 +39,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="BeginPage"></a><b>BeginPage</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top">A procedure to be executed at the beginning of
+			<th><a name="BeginPage"></a>BeginPage</th>
+			<td>procedure</td>
+			<td>A procedure to be executed at the beginning of
 				each page. Before calling the procedure, the interpreter initializes
 				the graphics state, erases the current page if appropriate, and
 				pushes an integer on the operand stack indicating how many times <b>showpage</b>
@@ -48,9 +49,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="EndPage"></a><b>EndPage</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top">A procedure to be executed at the end of each
+			<th><a name="EndPage"></a>EndPage</th>
+			<td>procedure</td>
+			<td>A procedure to be executed at the end of each
 				page. Before calling the procedure, the interpreter pushes two
 				integers on the operand stack&mdash;a count of previous <b>showpage</b>
 				executions for this device and a reason code indicating the

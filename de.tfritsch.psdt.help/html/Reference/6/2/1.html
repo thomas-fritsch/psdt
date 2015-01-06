@@ -2,21 +2,22 @@
 <html>
 <head>
 <title>Media Selection</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>6.2.1 Media Selection</h3>
-	<table border="1">
+	<table>
 		<caption>TABLE 6.2 Page device parameters related to media
 			selection</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="InputAttributes"></a><b>InputAttributes</b></td>
-			<td valign="top">dictionary or null</td>
-			<td valign="top">A dictionary specifying the attributes of all
+			<th><a name="InputAttributes"></a>InputAttributes</th>
+			<td>dictionary or null</td>
+			<td>A dictionary specifying the attributes of all
 				input media currently available for use by this output device. The
 				dictionary contains an entry for each available media source on the
 				device—for example, each input paper tray on a printer. The key for
@@ -51,9 +52,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PageSize"></a><b>PageSize</b></td>
-			<td valign="top">array</td>
-			<td valign="top">An array of two numbers, [width height],
+			<th><a name="PageSize"></a>PageSize</th>
+			<td>array</td>
+			<td>An array of two numbers, [width height],
 				specifying the overall dimensions of the physical medium that were
 				assumed during the generation of this page description. The
 				dimensions are expressed in units of the default user space (72nds
@@ -90,30 +91,30 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MediaColor"></a><b>MediaColor</b></td>
-			<td valign="top">string or null</td>
-			<td valign="top">A string identifying the color of the medium.</td>
+			<th><a name="MediaColor"></a>MediaColor</th>
+			<td>string or null</td>
+			<td>A string identifying the color of the medium.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MediaWeight"></a><b>MediaWeight</b></td>
-			<td valign="top">number or null</td>
-			<td valign="top">The weight of the medium in grams per square
+			<th><a name="MediaWeight"></a>MediaWeight</th>
+			<td>number or null</td>
+			<td>The weight of the medium in grams per square
 				meter. "Basis weight" or "ream weight" in pounds can be converted to
 				grams per square meter by multiplying by 3.76; for example, 10-pound
 				paper is approximately 37.6 grams per square meter.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MediaType"></a><b>MediaType</b></td>
-			<td valign="top">string or null</td>
-			<td valign="top">An arbitrary string representing special
+			<th><a name="MediaType"></a>MediaType</th>
+			<td>string or null</td>
+			<td>An arbitrary string representing special
 				attributes of the medium other than its size, color, and weight.
 				This parameter can be used to identify special media such as
 				envelopes, letterheads, or preprinted forms.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MediaClass"></a><b>MediaClass</b></td>
-			<td valign="top">string or null</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> An arbitrary string
+			<th><a name="MediaClass"></a>MediaClass</th>
+			<td>string or null</td>
+			<td><i>(LanguageLevel 3)</i> An arbitrary string
 				representing attributes of the medium that may require special
 				action by the output device, such as the selection of a color
 				rendering dictionary. Devices should use the value of this parameter
@@ -128,9 +129,9 @@
 				</p></td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="InsertSheet"></a><b>InsertSheet</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> A flag specifying
+			<th><a name="InsertSheet"></a>InsertSheet</th>
+			<td>boolean</td>
+			<td><i>(LanguageLevel 3)</i> A flag specifying
 				whether to insert a sheet of some special medium directly into the
 				output document. Media coming from a source for which this attribute
 				is true are sent directly to the output bin without passing through
@@ -140,9 +141,9 @@
 				Handling" on page 407.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="LeadingEdge"></a><b>LeadingEdge</b></td>
-			<td valign="top">integer or null</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> A code specifying the
+			<th><a name="LeadingEdge"></a>LeadingEdge</th>
+			<td>integer or null</td>
+			<td><i>(LanguageLevel 3)</i> A code specifying the
 				edge of the input medium that will enter the printing engine or
 				imager first and across which data will be imaged. Values reflect
 				positions relative to a canonical page in portrait orientation
@@ -168,9 +169,9 @@
 				</p></td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ManualFeed"></a><b>ManualFeed</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag indicating whether the input medium is
+			<th><a name="ManualFeed"></a>ManualFeed</th>
+			<td>boolean</td>
+			<td>A flag indicating whether the input medium is
 				to be fed manually by a human operator (true) or automatically
 				(false). A true value asserts that the human operator will manually
 				feed media conforming to the specified attributes (<b>PageSize</b>,
@@ -183,9 +184,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="TraySwitch"></a><b>TraySwitch</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> A flag specifying
+			<th><a name="TraySwitch"></a>TraySwitch</th>
+			<td>boolean</td>
+			<td><i>(LanguageLevel 3)</i> A flag specifying
 				whether the output device supports automatic switching of media
 				sources. When the originally selected source runs out of medium,
 				some devices with multiple media sources can switch automatically,
@@ -197,9 +198,9 @@
 				"Matching Requests with Attributes," below).</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MediaPosition"></a><b>MediaPosition</b></td>
-			<td valign="top">integer or null</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> The position number of
+			<th><a name="MediaPosition"></a>MediaPosition</th>
+			<td>integer or null</td>
+			<td><i>(LanguageLevel 3)</i> The position number of
 				the media source to be used. This parameter does not override the
 				normal media selection process described in the text, but if
 				specified it will be honored&mdash;provided it can satisfy the input
@@ -208,9 +209,9 @@
 				best available match for the requested attributes.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="DeferredMediaSelection"></a><b>DeferredMediaSelection</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> A flag determining
+			<th><a name="DeferredMediaSelection"></a>DeferredMediaSelection</th>
+			<td>boolean</td>
+			<td><i>(LanguageLevel 3)</i> A flag determining
 				when to perform media selection. If true, media will be selected by
 				an independent printing subsystem associated with the output device
 				itself, at some time after the execution of the <b>setpagedevice</b>

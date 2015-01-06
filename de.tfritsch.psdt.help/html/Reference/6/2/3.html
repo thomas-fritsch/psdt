@@ -2,21 +2,22 @@
 <html>
 <head>
 <title>Page Image Placement</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>6.2.3 Page Image Placement</h3>
-	<table border="1">
+	<table>
 		<caption>TABLE 6.4 Page device parameters related to page
 			image placement</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="HWResolution"></a><b>HWResolution</b></td>
-			<td valign="top">array</td>
-			<td valign="top">An array of two numbers, [x y], specifying the
+			<th><a name="HWResolution"></a>HWResolution</th>
+			<td>array</td>
+			<td>An array of two numbers, [x y], specifying the
 				resolution of the physical device in pixels per inch along the
 				horizontal and vertical dimensions of device space. Most devices
 				support only a single resolution or certain specific resolutions,
@@ -28,9 +29,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ImagingBBox"></a><b>ImagingBBox</b></td>
-			<td valign="top">array or null</td>
-			<td valign="top">An optional bounding box defining an outer
+			<th><a name="ImagingBBox"></a>ImagingBBox</th>
+			<td>array or null</td>
+			<td>An optional bounding box defining an outer
 				boundary for each page image. If not null, the value is an array of
 				four numbers in the default user coordinate system giving the left,
 				bottom, right, and top coordinates, respectively, of the bounding
@@ -62,9 +63,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="ImageShift"></a><b>ImageShift</b></td>
-			<td valign="top">array</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> An array of two
+			<th><a name="ImageShift"></a>ImageShift</th>
+			<td>array</td>
+			<td><i>(LanguageLevel 3)</i> An array of two
 				numbers, [x y], indicating the distance, in default user space
 				units, that each page image is to be shifted horizontally (x) and
 				vertically (y) with respect to the physical medium. For page images
@@ -75,9 +76,9 @@
 				reversed.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PageOffset"></a><b>PageOffset</b></td>
-			<td valign="top">array</td>
-			<td valign="top"><i>(LanguageLevel 3)</i> An array of two
+			<th><a name="PageOffset"></a>PageOffset</th>
+			<td>array</td>
+			<td><i>(LanguageLevel 3)</i> An array of two
 				numbers, [x y], that reposition the page image on the physical
 				medium by x units horizontally and y units vertically, in the
 				direction of increasing coordinate values in the device coordinate
@@ -91,9 +92,9 @@
 				the CTM).</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Margins"></a><b>Margins</b></td>
-			<td valign="top">array</td>
-			<td valign="top">An array of two numbers, [x y], that reposition
+			<th><a name="Margins"></a>Margins</th>
+			<td>array</td>
+			<td>An array of two numbers, [x y], that reposition
 				the page image on the physical medium by x units horizontally and y
 				units vertically, in the direction of increasing coordinate values
 				in the device coordinate system. x and y are expressed in
@@ -109,9 +110,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="MirrorPrint"></a><b>MirrorPrint</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag specifying whether the page image should
+			<th><a name="MirrorPrint"></a>MirrorPrint</th>
+			<td>boolean</td>
+			<td>A flag specifying whether the page image should
 				be reflected along one of the axes of device space. The reflection
 				is typically accomplished by devicedependent means that are
 				independent of the graphics state (in particular, of the current
@@ -124,9 +125,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="NegativePrint"></a><b>NegativePrint</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag specifying, if true, that the page image
+			<th><a name="NegativePrint"></a>NegativePrint</th>
+			<td>boolean</td>
+			<td>A flag specifying, if true, that the page image
 				should be produced in colorinverted (negative) form. The inversion
 				is typically accomplished by devicedependent means that are
 				independent of the graphics state (in particular, of the transfer
@@ -137,9 +138,9 @@
 				produce output intended for further photographic processing.</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Duplex"></a><b>Duplex</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag determining whether the output is to be
+			<th><a name="Duplex"></a>Duplex</th>
+			<td>boolean</td>
+			<td>A flag determining whether the output is to be
 				printed duplex (on both sides of the physical medium) or simplex (on
 				one side of the medium only). If this flag is true, pairs of
 				consecutive page images will be printed on opposite sides of a
@@ -152,9 +153,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Tumble"></a><b>Tumble</b></td>
-			<td valign="top">boolean</td>
-			<td valign="top">A flag specifying the relative orientation of
+			<th><a name="Tumble"></a>Tumble</th>
+			<td>boolean</td>
+			<td>A flag specifying the relative orientation of
 				page images on opposite sides of a sheet of medium in duplex output
 				(that is, when <b>Duplex</b> is true). If <b>Tumble</b> is false,
 				the default user spaces of the two pages are oriented suitably for

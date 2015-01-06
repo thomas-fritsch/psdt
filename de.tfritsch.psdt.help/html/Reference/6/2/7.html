@@ -2,21 +2,22 @@
 <html>
 <head>
 <title>Unsatisfied Parameter Requests</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
 	<h3>6.2.7 Unsatisfied Parameter Requests</h3>
-	<table border="1">
+	<table>
 		<caption>TABLE 6.8 Page device parameter related to recovery
 			policies</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="Policies"></a><b>Policies</b></td>
-			<td valign="top">dictionary</td>
-			<td valign="top">A dictionary specifying recovery policies for
+			<th><a name="Policies"></a>Policies</th>
+			<td>dictionary</td>
+			<td>A dictionary specifying recovery policies for
 				responding to unsatisfied parameter requests. Entries in this
 				dictionary are keyed by the names of individual page device
 				parameters; the corresponding value for each parameter is an integer
@@ -33,17 +34,17 @@
 		</tr>
 	</table>
 	<p />
-	<table border="1">
+	<table>
 		<caption>TABLE 6.9 Entries in the Policies dictionary</caption>
 		<tr>
-			<th align="left"><b>Key</b></th>
-			<th align="left"><b>Type</b></th>
-			<th align="left"><b>Value</b></th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PolicyNotFound"></a><b>PolicyNotFound</b></td>
-			<td valign="top">integer</td>
-			<td valign="top">A code specifying the recovery policy to use
+			<th><a name="PolicyNotFound"></a>PolicyNotFound</th>
+			<td>integer</td>
+			<td>A code specifying the recovery policy to use
 				when a requested setting for a page device parameter cannot be
 				satisfied and no specific entry for that parameter is present in the
 				<b>Policies</b> dictionary:
@@ -81,9 +82,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PageSize"></a><b>PageSize</b></td>
-			<td valign="top">integer</td>
-			<td valign="top">A code specifying the recovery policy to use
+			<th><a name="PageSize"></a>PageSize</th>
+			<td>integer</td>
+			<td>A code specifying the recovery policy to use
 				when a requested value for the <b>PageSize</b> parameter cannot be
 				matched (within a tolerance of ±5 units) by any available medium:
 				<ol start="0">
@@ -133,9 +134,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top">any feature name</td>
-			<td valign="top"></td>
-			<td valign="top">A code specifying the recovery policy to use
+			<td>any feature name</td>
+			<td></td>
+			<td>A code specifying the recovery policy to use
 				when a requested setting for the designated parameter cannot be
 				satisfied. Keys of this type are not limited to page device
 				parameters recognized by the device, but may include any key that
@@ -149,9 +150,9 @@
 			</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="PolicyReport"></a><b>PolicyReport</b></td>
-			<td valign="top">procedure</td>
-			<td valign="top">A procedure to be called on successful
+			<th><a name="PolicyReport"></a>PolicyReport</th>
+			<td>procedure</td>
+			<td>A procedure to be called on successful
 				completion of <b>setpagedevice</b> if it encountered one or more
 				unsatisfied parameter requests requiring consultation of the <b>Policies</b>
 				dictionary. Before calling this procedure, the interpreter pushes a

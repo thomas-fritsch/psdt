@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Type 3 Fonts</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
 </head>
 <body>
 	<h2>5.7 Type 3 Fonts</h2>
@@ -14,25 +15,25 @@
 	<p>In addition to the entries common to all base fonts (Table 5.2
 		on page 324 and Table 5.3 on page 325), a Type 3 font dictionary
 		includes the entries listed in Table 5.6.</p>
-	<table border="1">
+	<table>
 		<caption>TABLE 5.6: Additional entries specific to Type 3
 			fonts</caption>
 		<tr>
-			<th align="left">Key</th>
-			<th align="left">Type</th>
-			<th align="left">Value</th>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
 		</tr>
 		<tr>
-			<td valign="top"><a name="BuildGlyph"></a><b>BuildGlyph</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="BuildGlyph"></a>BuildGlyph</th>
+			<td>procedure</td>
 			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
 				constructs the requested glyph. The font dictionary, followed by the
 				character name, is on the stack when the procedure is called. See
 				Section 5.7.1, "BuildGlyph."</td>
 		</tr>
 		<tr>
-			<td valign="top"><a name="BuildChar"></a><b>BuildChar</b></td>
-			<td valign="top">procedure</td>
+			<th><a name="BuildChar"></a>BuildChar</th>
+			<td>procedure</td>
 			<td><i>(Required for LanguageLevel 1 or if <b>BuildGlyph</b>
 					is absent)
 			</i> A procedure that constructs the requested glyph (only if no <b>BuildGlyph</b>
