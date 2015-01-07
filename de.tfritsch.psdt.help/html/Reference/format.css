@@ -1,8 +1,9 @@
 @CHARSET "ISO-8859-1";
-table, th, td {
-	border: 1px solid;
+table {
+	border-collapse: collapse;
 }
 th, td {
+	border: 1px solid;
 	text-align: left;
 	vertical-align: top;
 }
