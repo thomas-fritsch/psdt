@@ -40,9 +40,13 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 			.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 		if (!matcher.matches)
 			return null
-		val headerRow = matcher.group(1)
-		val dataRow = matcher.group(2)
-		return "<table border=\"1\">" + headerRow + dataRow + "</table><br><br><br>"
+		return '''
+			<table border="1">
+			«matcher.group(1)»
+			«matcher.group(2)»
+			</table>
+			<br><br><br>
+		'''
 	}
 
 	def private String getHref(String label) {
