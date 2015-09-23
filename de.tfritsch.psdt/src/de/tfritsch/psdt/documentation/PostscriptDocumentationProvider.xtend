@@ -2,14 +2,12 @@ package de.tfritsch.psdt.documentation
 
 import de.tfritsch.psdt.postscript.PSExecutableName
 import de.tfritsch.psdt.postscript.PSLiteralName
-import java.io.IOException
-import java.io.InputStreamReader
-import java.io.Reader
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 
 import static extension java.util.regex.Pattern.*
 import static extension org.eclipse.help.HelpSystem.*
+import static extension org.eclipse.xtext.util.Files.*
 
 class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 
@@ -55,30 +53,6 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 	}
 
 	def private String getContent(String href) {
-		val input = href.helpContent
-		if (input == null)
-			return null
-		val content = read(new InputStreamReader(input))
-		try {
-			input.close
-		} catch (IOException e) {
-		}
-		return content
-	}
-
-	// copied from org.eclipse.jface.internal.text.html.HtmlPrinter
-	def private static String read(Reader rd) {
-		val buffer = new StringBuffer
-		val readBuffer = newCharArrayOfSize(2048)
-		try {
-			var n = rd.read(readBuffer)
-			while (n > 0) {
-				buffer.append(readBuffer, 0, n)
-				n = rd.read(readBuffer)
-			}
-			return buffer.toString
-		} catch (IOException x) {
-		}
-		return null
+		return href.helpContent?.readStreamIntoString
 	}
 }
