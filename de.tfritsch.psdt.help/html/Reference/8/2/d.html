@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'd'</h1>
 <hr>
-<a name="def"></a>
-<b>def</b>
+<b id="def">def</b>
 <pre>key value def -</pre>
 <p>
 associates key with value in the current dictionary-the one on the top
@@ -31,8 +30,8 @@ error occurs.
 <a href="t.html#typecheck">typecheck</a>, <a href="v.html#VMerror">VMerror</a>
 <p>
 <b>See Also:</b> <a href="s.html#store">store</a>, <a href="p.html#put">put</a>
-<hr><a name="defaultmatrix"></a>
-<b>defaultmatrix</b>
+<hr>
+<b id="defaultmatrix">defaultmatrix</b>
 <pre>matrix defaultmatrix matrix</pre>
 <p>
 replaces the value of matrix with the default transformation matrix for
@@ -45,8 +44,7 @@ stack.
 <b>See Also:</b> <a href="c.html#currentmatrix">currentmatrix</a>, <a href="ik.html#initmatrix">initmatrix</a>,
 <a href="s.html#setmatrix">setmatrix</a>
 <hr>
-<a name="definefont"></a>
-<b>definefont</b>
+<b id="definefont">definefont</b>
 <pre>key font definefont font</pre>
 <p>
 registers font as a font dictionary associated with key (usually a name).
@@ -84,8 +82,7 @@ operating on the Font category.
 <a href="f.html#FontDirectory">FontDirectory</a>, <a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>,
 <a href="s.html#setglobal">setglobal</a>
 <hr>
-<a name="defineresource"></a>
-<b>defineresource</b> LEVEL 2
+<b id="defineresource">defineresource</b> LEVEL 2
 <pre>key instance category defineresource instance</pre>
 <p>
 associates a resource instance with a resource name in a specified category.
@@ -145,8 +142,7 @@ error.
 <b>See Also:</b> <a href="u.html#undefinedresource">undefineresource</a>, <a href="f.html#findresource">findresource</a>,
 <a href="qr.html#resourcestatus">resourcestatus</a>, <a href="qr.html#resourceforall">resourceforall</a>
 <hr>
-<a name="defineusername"></a>
-<b>defineusername</b> DPS
+<b id="defineusername">defineusername</b> DPS
 <pre>index name defineusername -</pre>
 <p>
 establishes an association between the non-negative integer index and the
@@ -172,8 +168,7 @@ Assigning index values sequentially starting at zero is strongly recommended.
 <a href="qr.html#rangecheck">rangecheck</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
 <a href="t.html#typecheck">typecheck</a>
 <hr>
-<a name="defineuserobject"></a>
-<b>defineuserobject</b> LEVEL 2
+<b id="defineuserobject">defineuserobject</b> LEVEL 2
 <pre>index any defineuserobject -</pre>
 <p>
 establishes an association between the non-negative integer index and the
@@ -208,8 +203,7 @@ is strongly recommended.
 <b>See Also:</b> <a href="e.html#execuserobject">execuserobject</a>, <a href="u.html#undefineuserobject">undefineuserobject</a>,
 <a href="u.html#UserObjects">UserObjects</a>
 <hr>
-<a name="deletefile"></a>
-<b>deletefile</b> LEVEL 2
+<b id="deletefile">deletefile</b> LEVEL 2
 <pre>filename deletefile -</pre>
 <p>
 removes the specified file from its storage device. If no such file exists,
@@ -225,8 +219,7 @@ occurs.
 <b>See Also:</b> <a href="f.html#file">file</a>, <a href="qr.html#renamefile">renamefile</a>,
 <a href="s.html#status">status</a>
 <hr>
-<a name="detach"></a>
-<b>detach</b> DPS
+<b id="detach">detach</b> DPS
 <pre>context detach -</pre>
 <p>
 specifies that the execution context identified by the integer context is
@@ -245,8 +238,7 @@ the current context.
 <b>See Also:</b> <a href="c.html#currentcontext">currentcontext</a>, <a href="f.html#fork">fork</a>,
 <a href="ik.html#join">join</a>
 <hr>
-<a name="deviceinfo"></a>
-<b>deviceinfo</b> DPS
+<b id="deviceinfo">deviceinfo</b> DPS
 <pre>- deviceinfo dict</pre>
 <p>
 returns a read-only dictionary containing static information about the current
@@ -260,8 +252,7 @@ error results.
 <p>
 <b>Errors:</b> <a href="s.html#stackoverflow">stackoverflow</a>, <a href="u.html#undefined">undefined</a>
 <hr>
-<a name="dict"></a>
-<b>dict</b>
+<b id="dict">dict</b>
 <pre>int dict dict</pre>
 <p>
 creates an empty dictionary with an initial capacity of int elements and
@@ -296,8 +287,7 @@ the latter convention.
 <a href="l.html#length">length</a>, <a href="m.html#maxlength">maxlength</a>
 <p>
 <hr>
-<a name="dictfull"></a>
-<b>dictfull</b> (error)
+<b id="dictfull">dictfull</b> (error)
 <p>
 occurs when def, put, or store attempts to define a new entry in a dictionary
 that is already full-in other words, whose length and maxlength are already
@@ -309,8 +299,7 @@ the dictionary.
 <b>See Also:</b> <a href="#def">def</a>, <a href="p.html#put">put</a>, <a href="s.html#store">store</a>,
 <a href="#dict">dict</a>
 <hr>
-<a name="dictstack"></a>
-<b>dictstack</b>
+<b id="dictstack">dictstack</b>
 <pre>array dictstack subarray</pre>
 <p>
 stores all elements of the dictionary stack into array and returns an object
@@ -326,8 +315,7 @@ error.
 <p>
 <b>See Also:</b> <a href="c.html#countdictstack">countdictstack</a>
 <hr>
-<a name="dictstackoverflow"></a>
-<b>dictstackoverflow</b> (error)
+<b id="dictstackoverflow">dictstackoverflow</b> (error)
 <p>
 The dictionary stack has grown too large. Too many begin operators without
 corresponding end operators have pushed too many dictionaries on the dictionary
@@ -341,8 +329,7 @@ to contain only the permanent entries.
 <b>See Also:</b> <a href="b.html#begin">begin</a>, <a href="c.html#countdictstack">countdictstack</a>,
 <a href="c.html#cleardictstack">cleardictstack</a>
 <hr>
-<a name="dictstackunderflow"></a>
-<b>dictstackunderflow</b> (error)
+<b id="dictstackunderflow">dictstackunderflow</b> (error)
 <p>
 An attempt has been made to remove (end) the bottommost instance of userdict
 from the dictionary stack. This occurs if an end is executed for which there
@@ -350,8 +337,7 @@ was no corresponding begin.
 <p>
 <b>See Also:</b> <a href="e.html#end">end</a>
 <hr>
-<a name="div"></a>
-<b>div</b>
+<b id="div">div</b>
 <pre>num<sub>1</sub> num<sub>2</sub> div quotient</pre>
 <p>
 divides num<sub>1</sub> by num<sub>2</sub>, producing a result that is always a real even if both
@@ -369,8 +355,7 @@ operands are integers. Use idiv if an integer result is desired.
 <b>See Also:</b> <a href="ik.html#idiv">idiv</a>, <a href="a.html#add">add</a>,
 <a href="m.html#mul">mul</a>, <a href="s.html#sub">sub</a>, <a href="m.html#mod">mod</a>
 <hr>
-<a name="dtransform"></a>
-<b>dtransform</b>
+<b id="dtransform">dtransform</b>
 <pre>dx dy dtransform dx' dy'
 dx dy matrix dtransform dx' dy'</pre>
 <p>
@@ -390,8 +375,7 @@ is useful for determining how distances map from user space to device space.
 <b>See Also:</b> <a href="ik.html#idtransform">idtransform</a>, <a href="t.html#transform">transform</a>,
 <a href="ik.html#itransform">itransform</a>
 <hr>
-<a name="dup"></a>
-<b>dup</b>
+<b id="dup">dup</b>
 <pre>any dup any any</pre>
 <p>
 duplicates the top element on the operand stack. Note that dup copies only

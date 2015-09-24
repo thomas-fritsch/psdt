@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'w'</h1>
 <hr>
-<a name="wait"></a>
-<b>wait</b> DPS
+<b id="wait">wait</b> DPS
 <pre>lock condition wait -</pre>
 <p>
 releases lock, waits for condition to be notified by some other execution
@@ -35,8 +34,7 @@ that of the current context.
 <b>See Also:</b> <a href="c.html#condition">condition</a>, <a href="l.html#lock">lock</a>,
 <a href="m.html#monitor">monitor</a>, <a href="no.html#notify">notify</a>
 <hr>
-<a name="wcheck"></a>
-<b>wcheck</b>
+<b id="wcheck">wcheck</b>
 <pre>      array wcheck bool
 packedarray wcheck false
        dict wcheck bool
@@ -54,8 +52,7 @@ is unlimited, <a href="f.html#false">false</a> otherwise.
 <b>See Also:</b> rcheck, <a href="qr.html#readonly">readonly</a>, <a href="e.html#executeonly">executeonly</a>,
 <a href="no.html#noaccess">noaccess</a>
 <hr>
-<a name="where"></a>
-<b>where</b>
+<b id="where">where</b>
 <pre>key where dict true  (if found)
                false (if not found)</pre>
 <p>
@@ -72,8 +69,7 @@ where simply returns false.
 <b>See Also:</b> <a href="ik.html#known">known</a>, <a href="l.html#load">load</a>,
 <a href="gh.html#get">get</a>
 <hr>
-<a name="widthshow"></a>
-<b>widthshow</b>
+<b id="widthshow">widthshow</b>
 <pre>c<sub>x</sub> c<sub>y</sub> char string widthshow -</pre>
 <p>
 paints the characters of string in a manner similar to <a href="s.html#show">show</a>.
@@ -109,8 +105,7 @@ for all other FMapType values, it is (f x 256) + c.
 <a href="xy.html#xshow">xshow</a>, <a href="xy.html#yshow">yshow</a>,
 <a href="xy.html#xyshow">xyshow</a>, <a href="s.html#stringwidth">stringwidth</a>
 <hr>
-<a name="write"></a>
-<b>write</b>
+<b id="write">write</b>
 <pre>file int write -</pre>
 <p>
 appends a single character to the output file file. The int operand should
@@ -129,8 +124,7 @@ is required.
 <b>See Also:</b> <a href="qr.html#read">read</a>, <a href="#writehexstring">writehexstring</a>,
 <a href="#writestring">writestring</a>, <a href="f.html#file">file</a>
 <hr>
-<a name="writehexstring"></a>
-<b>writehexstring</b>
+<b id="writehexstring">writehexstring</b>
 <pre>file string writehexstring -</pre>
 <p>
 writes all of the characters of string to file as hexadecimal digits.
@@ -152,8 +146,7 @@ is required.
 <a href="#writestring">writestring</a>, <a href="f.html#file">file</a>,
 <a href="f.html#filter">filter</a>
 <hr>
-<a name="writeobject"></a>
-<b>writeobject</b> LEVEL 2
+<b id="writeobject">writeobject</b> LEVEL 2
 <pre>file obj tag writeobject -</pre>
 <p>
 writes a binary object sequence to file. Except for taking an explicit file
@@ -172,8 +165,7 @@ is required.
 <p>
 <b>See Also:</b> <a href="p.html#printobject">printobject</a>, <a href="s.html#setobjectformat">setobjectformat</a>
 <hr>
-<a name="writestring"></a>
-<b>writestring</b>
+<b id="writestring">writestring</b>
 <pre>file string writestring -</pre>
 <p>
 writes the characters of string to the output file file. writestring does
@@ -193,8 +185,7 @@ is required.
 <a href="#writehexstring">writehexstring</a>, <a href="f.html#file">file</a>,
 <a href="f.html#filter">filter</a>
 <hr>
-<a name="wtranslation"></a>
-<b>wtranslation</b> DPS
+<b id="wtranslation">wtranslation</b> DPS
 <pre>- wtranslation x y</pre>
 <p>
 returns the translation from the window origin to the PostScript interpreter's

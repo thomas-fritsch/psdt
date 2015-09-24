@@ -22,7 +22,7 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 			return null
 		val posHash = href.indexOf('#')
 		val fragment = if(posHash >= 0) href.substring(posHash + 1) else ""
-		val matcher = (".*<a name=\"" + fragment + "\"></a>(.*?)<hr>.*")
+		val matcher = (".*(<b id=\"" + fragment + "\">.*?)<hr>.*")
 			.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 		if (!matcher.matches)
 			return null
@@ -36,7 +36,7 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 			return null
 		val posHash = href.indexOf('#')
 		val fragment = if(posHash >= 0) href.substring(posHash + 1) else ""
-		val matcher = (".*(<tr>\\s*<th.*/th>\\s*</tr>).*(<tr>.*?<a name=\"" + fragment + "\"></a>.*?</tr>).*")
+		val matcher = (".*(<tr>\\s*<th.*/th>\\s*</tr>).*(<tr>.*?<th id=\"" + fragment + "\">.*?</th>.*?</tr>).*")
 			.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 		if (!matcher.matches)
 			return null

@@ -6,8 +6,7 @@
 <body>
 <h1>Postscript Operators 'f'</h1>
 <hr>
-<a name="false"></a>
-<b>false</b>
+<b id="false">false</b>
 <pre>- false false</pre>
 <p>
 pushes a boolean object whose value is false on the operand stack.
@@ -19,8 +18,7 @@ associated with the boolean value false.
 <b>See Also:</b> <a href="t.html#true">true</a>, <a href="a.html#and">and</a>,
 <a href="no.html#or">or</a>, <a href="no.html#not">not</a>, <a href="xy.html#xor">xor</a>
 <hr>
-<a name="file"></a>
-<b>file</b>
+<b id="file">file</b>
 <pre>filename access file file</pre>
 <p>
 creates a file object for the file identified by filename, accessing it
@@ -59,8 +57,7 @@ occurs.
 <b>See Also:</b> <a href="c.html#closefile">closefile</a>, <a href="c.html#currentfile">currentfile</a>,
 <a href="#filter">filter</a>, <a href="s.html#status">status</a>
 <hr>
-<a name="filenameforall"></a>
-<b>filenameforall</b> LEVEL 2
+<b id="filenameforall">filenameforall</b> LEVEL 2
 <pre>template proc scratch filenameforall -</pre>
 <p>
 enumerates all files whose names match the specified template string. For
@@ -102,8 +99,7 @@ for template matching is device dependent.
 <p>
 <b>See Also:</b> <a href="#file">file</a>, <a href="s.html#status">status</a>
 <hr>
-<a name="fileposition"></a>
-<b>fileposition</b> LEVEL 2
+<b id="fileposition">fileposition</b> LEVEL 2
 <pre>file fileposition position</pre>
 <p>
 returns the current position in an existing open file. The result is a non-negative
@@ -116,8 +112,7 @@ an <a href="ik.html#ioerror">ioerror</a> occurs.
 <p>
 <b>See Also:</b> <a href="s.html#setfileposition">setfileposition</a>, <a href="#file">file</a>
 <hr>
-<a name="fill"></a>
-<b>fill</b>
+<b id="fill">fill</b>
 <pre>- fill -</pre>
 paints the area enclosed by the current path with the current color.
 Any previous contents of that area on the current page are obscured, so
@@ -138,8 +133,7 @@ gsave fill grestore
 <a href="s.html#stroke">stroke</a>, <a href="u.html#ufill">ufill</a>
 <p>
 <hr>
-<a name="filter"></a>
-<b>filter</b> LEVEL 2
+<b id="filter">filter</b> LEVEL 2
 <pre>source/target param<sub>1</sub> ... param<sub>n</sub> name filter file</pre>
 <p>
 creates and returns a filtered file.
@@ -177,8 +171,7 @@ it to the underlying data target.
 <b>See Also:</b> <a href="#file">file</a>, <a href="c.html#closefile">closefile</a>,
 <a href="qr.html#resourceforall">resourceforall</a>
 <hr>
-<a name="findencoding"></a>
-<b>findencoding</b> LEVEL 2
+<b id="findencoding">findencoding</b> LEVEL 2
 <pre>key findencoding array</pre>
 <p>
 obtains an encoding vector identified by the specified key and pushes it
@@ -195,8 +188,7 @@ error.
 <b>See Also:</b> <a href="#findresource">findresource</a>, <a href="s.html#StandardEncoding">StandardEncoding</a>,
 <a href="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</a>
 <hr>
-<a name="findfont"></a>
-<b>findfont</b>
+<b id="findfont">findfont</b>
 <pre>key findfont font</pre>
 <p>
 obtains a font dictionary identified by the specified key and pushes it
@@ -232,8 +224,7 @@ for finding fonts.
 <a href="d.html#definefont">definefont</a>, <a href="#findresource">findresource</a>,
 <a href="#FontDirectory">FontDirectory</a>, <a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>
 <hr>
-<a name="findresource"></a>
-<b>findresource</b> LEVEL 2
+<b id="findresource">findresource</b> LEVEL 2
 <pre>key category findresource instance</pre>
 <p>
 attempts to obtain a named resource instance in a specified category. category
@@ -285,8 +276,7 @@ error occurs.
 <b>See Also:</b> <a href="d.html#defineresource">defineresource</a>, <a href="qr.html#resourcestatus">resourcestatus</a>,
 <a href="qr.html#resourceforall">resourceforall</a>, <a href="u.html#undefineresource">undefineresource</a>
 <hr>
-<a name="flattenpath"></a>
-<b>flattenpath</b>
+<b id="flattenpath">flattenpath</b>
 <pre>- flattenpath -</pre>
 replaces the current path with an equivalent path that preserves all straight
 line segments, but has all <a href="c.html#curveto">curveto</a> segments
@@ -307,8 +297,7 @@ flatness parameter in the graphics state (see <a href="s.html#setflat">setflat</
 <b>See Also:</b> <a href="s.html#setflat">setflat</a>, <a href="c.html#curveto">curveto</a>,
 <a href="l.html#lineto">lineto</a>, <a href="p.html#pathbbox">pathbbox</a>
 <hr>
-<a name="floor"></a>
-<b>floor</b>
+<b id="floor">floor</b>
 <pre>num<sub>1</sub> floor num<sub>2</sub></pre>
 <p>
 returns the greatest integer value less than or equal to num<sub>1</sub>. The type
@@ -326,8 +315,7 @@ of the result is the same as the type of the operand.
 <b>See Also:</b> <a href="c.html#ceiling">ceiling</a>, <a href="qr.html#round">round</a>,
 <a href="t.html#truncate">truncate</a>, <a href="c.html#cvi">cvi</a>
 <hr>
-<a name="flush"></a>
-<b>flush</b>
+<b id="flush">flush</b>
 <pre>- flush -</pre>
 <p>
 causes any buffered characters for the standard output file to be delivered
@@ -339,8 +327,7 @@ generating that output.
 <p>
 <b>See Also:</b> <a href="#flushfile">flushfile</a>, <a href="p.html#print">print</a>
 <hr>
-<a name="flushfile"></a>
-<b>flushfile</b>
+<b id="flushfile">flushfile</b>
 <pre>file flushfile -</pre>
 <p>
 If file is an output file, flushfile causes any buffered characters for
@@ -359,8 +346,7 @@ close the file, unless it is a decoding filter file.
 <b>See Also:</b> <a href="#flush">flush</a>, <a href="qr.html#read">read</a>,
 <a href="w.html#write">write</a>
 <hr>
-<a name="FontDirectory"></a>
-<b>FontDirectory</b>
+<b id="FontDirectory">FontDirectory</b>
 <pre>- FontDirectory dict</pre>
 <p>
 pushes a dictionary of defined fonts on the operand stack. FontDirectory
@@ -393,8 +379,7 @@ fonts that are defined in terms of other fonts.
 <a href="#findfont">findfont</a>, <a href="#findresource">findresource</a>,
 <a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>
 <hr>
-<a name="for"></a>
-<b>for</b>
+<b id="for">for</b>
 <pre>initial increment limit proc for -</pre>
 <p>
 executes proc repeatedly, passing it a sequence of values from initial by
@@ -443,8 +428,7 @@ variable may not achieve the limit value.
 <b>See Also:</b> <a href="qr.html#repeat">repeat</a>, <a href="l.html#loop">loop</a>,
 <a href="#forall">forall</a>, <a href="e.html#exit">exit</a>
 <hr>
-<a name="forall"></a>
-<b>forall</b>
+<b id="forall">forall</b>
 <pre>      array proc forall -
 packedarray proc forall -
        dict proc forall -
@@ -490,8 +474,7 @@ d {} forall                    &rArr; /xyz (test) /abc 123
 <b>See Also:</b> <a href="#for">for</a>, <a href="qr.html#repeat">repeat</a>,
 <a href="l.html#loop">loop</a>, <a href="e.html#exit">exit</a>
 <hr>
-<a name="fork"></a>
-<b>fork</b> DPS
+<b id="fork">fork</b> DPS
 <pre>mark obj<sub>1</sub> ... obj<sub>n</sub> proc fork context</pre>
 <p>
 creates a new execution context using the same local and global VM as the

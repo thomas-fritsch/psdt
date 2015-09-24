@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'v'</h1>
 <hr>
-<a name="version"></a>
-<b>version</b>
+<b id="version">version</b>
 <pre>- version string</pre>
 <p>
 returns a string that identifies the version of the PostScript interpreter
@@ -21,8 +20,7 @@ interpreter is running.
 <b>See Also:</b> <a href="l.html#languagelevel">languagelevel</a>, <a href="p.html#product">product</a>,
 <a href="qr.html#revision">revision</a>, <a href="s.html#serialnumber">serialnumber</a>
 <hr>
-<a name="viewclip"></a>
-<b>viewclip</b> DPS
+<b id="viewclip">viewclip</b> DPS
 <pre>- viewclip -</pre>
 <p>
 replaces the current view clipping path by a copy of the current path
@@ -57,8 +55,7 @@ in the user path cache.
 <b>See Also:</b> <a href="ik.html#initviewclip">initviewclip</a>, <a href="#viewclippath">viewclippath</a>,
 <a href="c.html#clip">clip</a>
 <hr>
-<a name="viewclippath"></a>
-<b>viewclippath</b> DPS
+<b id="viewclippath">viewclippath</b> DPS
 <pre>- viewclippath -</pre>
 <p>
 replaces the current path by a copy of the current view clipping path. If
@@ -78,8 +75,7 @@ of the window.
 <b>See Also:</b> <a href="#viewclip">viewclip</a>, <a href="ik.html#initviewclip">initviewclip</a>,
 <a href="c.html#clippath">clippath</a>
 <hr>
-<a name="VMerror"></a>
-<b>VMerror</b> (error)
+<b id="VMerror">VMerror</b> (error)
 <p>
 An error has occurred in the virtual memory (VM) machinery. The most likely
 problems are: 
@@ -95,8 +91,7 @@ The default handler for this error, unlike those for all other errors, does
 not snapshot the stacks. 
 </ul>
 <hr>
-<a name="vmreclaim"></a>
-<b>vmreclaim</b> LEVEL 2
+<b id="vmreclaim">vmreclaim</b> LEVEL 2
 <pre>int vmreclaim -</pre>
 <p>
 controls the garbage collection machinery as specified by int: 
@@ -140,8 +135,7 @@ user parameter to the same value by means of setuserparams.
 <p>
 <b>See Also:</b> <a href="s.html#setvmthreshold">setvmthreshold</a>, <a href="s.html#setuserparams">setuserparams</a>
 <hr>
-<a name="vmstatus"></a>
-<b>vmstatus</b>
+<b id="vmstatus">vmstatus</b>
 <pre>- vmstatus level used maximum</pre>
 <p>
 returns three integers describing the state of the PostScript

@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'a'</h1>
 <hr>
-<a name="abs"></a>
-<b>abs</b>
+<b id="abs">abs</b>
 <pre>num<sub>1</sub> abs num<sub>2</sub></pre>
 <p>
 returns the absolute value of num<sub>1</sub>.
@@ -26,8 +25,7 @@ most negative integer, in which case the result is a real.
 <p>
 <b>See Also:</b> <a href="no.html#neg">neg</a>
 <hr>
-<a name="add"></a>
-<b>add</b>
+<b id="add">add</b>
 <pre>num<sub>1</sub> num<sub>2</sub> add sum</pre>
 <p>
 returns the sum of num1 and num2.
@@ -47,8 +45,7 @@ result is an integer; otherwise, the result is a real.
 <a href="s.html#sub">sub</a>, <a href="ik.html#idiv">idiv</a>.
 <a href="m.html#mod">mod</a>
 <hr>
-<a name="aload"></a>
-<b>aload</b>
+<b id="aload">aload</b>
 <pre>      array aload array<sub>0</sub> ... array<sub>n-1</sub> array
 packedarray aload packedarray<sub>0</sub> ... packedarray<sub>n-1</sub> packedarray</pre>
 <p>
@@ -67,8 +64,7 @@ itself.
 <b>See Also:</b> <a href="#astore">astore</a>, <a href="gh.html#get">get</a>,
 <a href="gh.html#getinterval">getinterval</a>
 <hr>
-<a name="anchorsearch"></a>
-<b>anchorsearch</b>
+<b id="anchorsearch">anchorsearch</b>
 <pre>string seek anchorsearch post match true  (if found)
                          string false     (if not found)</pre>
 <p>
@@ -94,8 +90,7 @@ is a special case of the <a href="s.html#search">search</a> operator.
 <p>
 <b>See Also:</b> <a href="s.html#search">search</a>, <a href="t.html#token">token</a>
 <hr>
-<a name="and"></a>
-<b>and</b>
+<b id="and">and</b>
 <pre>bool<sub>1</sub> bool<sub>2</sub> and bool<sub>3</sub>
   int<sub>1</sub> int<sub>2</sub> and int<sub>3</sub></pre>
 <p>
@@ -119,8 +114,7 @@ false false and  &rArr;  false
 <a href="no.html#not">not</a>, <a href="t.html#true">true</a>,
 <a href="f.html#false">false</a>
 <hr>
-<a name="arc"></a>
-<b>arc</b>
+<b id="arc">arc</b>
 <pre>x y r ang<sub>1</sub> ang<sub>2</sub> arc -</pre>
 <p>
 appends a counterclockwise arc of a circle to the current path, possibly
@@ -162,8 +156,7 @@ This constructs a 1-unit radius, 45-degree &quot;pie slice.&quot;
 <b>See Also:</b> <a href="#arcn">arcn</a>, <a href="#arct">arct</a>, <a href="#arcto">arcto</a>,
 <a href="c.html#curveto">curveto</a>
 <hr>
-<a name="arcn"></a>
-<b>arcn</b>
+<b id="arcn">arcn</b>
 <pre>x y r ang<sub>1</sub> ang<sub>2</sub> arcn -</pre>
 <p>
 (arc negative) behaves like arc, but arcn builds its arc segment in a clockwise
@@ -185,8 +178,7 @@ wiper swath.&quot;
 <b>See Also:</b> <a href="#arc">arc</a>, <a href="#arct">arct</a>, <a href="#arcto">arcto</a>,
 <a href="c.html#curveto">curveto</a>
 <hr>
-<a name="arct"></a>
-<b>arct</b> LEVEL 2
+<b id="arct">arct</b> LEVEL 2
 <pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r arct -</pre>
 <p>
 appends an arc of a circle to the current path, possibly preceded by a straight
@@ -231,8 +223,7 @@ This constructs a 4-unit wide, 4-unit high right angle with a 1-unit radius
 <b>See Also:</b> <a href="#arc">arc</a>, <a href="#arcn">arcn</a>, <a href="#arcto">arcto</a>,
 <a href="c.html#curveto">curveto</a>
 <hr>
-<a name="arcto"></a>
-<b>arcto</b>
+<b id="arcto">arcto</b>
 <pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r arcto xt<sub>1</sub> yt<sub>1</sub> xt<sub>2</sub> yt<sub>2</sub></pre>
 <p>
 produces the same effect as arct. It also returns the two tangent point
@@ -246,8 +237,7 @@ arcto is not allowed as an element of a user path, whereas arct is allowed.
 <b>See Also:</b> <a href="#arc">arc</a>, <a href="#arcn">arcn</a>, <a href="#arcto">arcto</a>,
 <a href="c.html#curveto">curveto</a>
 <hr>
-<a name="array"></a>
-<b>array</b>
+<b id="array">array</b>
 <pre>int array array</pre>
 <p>
 creates an array of length int, each of whose elements is initialized with
@@ -268,8 +258,7 @@ VM allocation mode.
 <b>See Also:</b> [, ], <a href="#aload">aload</a>, <a href="#astore">astore</a>,
 <a href="p.html#packedarray">packedarray</a>
 <hr>
-<a name="ashow"></a>
-<b>ashow</b>
+<b id="ashow">ashow</b>
 <pre>a<sub>x</sub> a<sub>y</sub> string ashow -</pre>
 <p>
 paints the characters of string in a manner similar to <a href="s.html#show">show</a>.
@@ -297,8 +286,7 @@ by adjusting all the spaces between characters by a uniform amount.
 <a href="w.html#widthshow">widthshow</a>, <a href="xy.html#xshow">xshow</a>,
 <a href="xy.html#xyshow">xyshow</a>, <a href="xy.html#yshow">yshow</a>
 <hr>
-<a name="astore"></a>
-<b>astore</b>
+<b id="astore">astore</b>
 <pre>any<sub>0</sub> ... any<sub>n-1</sub> array astore array</pre>
 <p>
 stores the objects any<sub>0</sub> through any<sub>n-1</sub> from the operand stack into array,
@@ -328,8 +316,7 @@ stack.
 <b>See Also:</b> <a href="#aload">aload</a>, <a href="p.html#put">put</a>,
 <a href="p.html#putinterval">putinterval</a>
 <hr>
-<a name="atan"></a>
-<b>atan</b>
+<b id="atan">atan</b>
 <pre>num den atan angle</pre>
 <p>
 returns the angle (in degrees between 0 and 360) whose tangent is num/den.
@@ -351,8 +338,7 @@ x plane. The result is a real.
 <p>
 <b>See Also:</b> <a href="c.html#cos">cos</a>, <a href="s.html#sin">sin</a>
 <hr>
-<a name="awidthshow"></a>
-<b>awidthshow</b>
+<b id="awidthshow">awidthshow</b>
 <pre>c<sub>x</sub> c<sub>y</sub> char a<sub>x</sub> a<sub>y</sub> string awidthshow -</pre>
 <p>
 paints the characters of string in a manner similar to show, but combines

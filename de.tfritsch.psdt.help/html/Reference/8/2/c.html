@@ -7,7 +7,7 @@
 <body>
 <h1>Postscript Operators 'c'</h1>
 <hr>
-<a name="cachestatus"></a><b>cachestatus</b>
+<b id="cachestatus">cachestatus</b>
 <pre>- cachestatus bsize bmax msize mmax csize cmax blimit</pre>
 <p>
 returns measurements of several aspects of the font cache.
@@ -22,8 +22,7 @@ than this are not cached.
 <p>
 <b>See Also:</b> <a href="s.html#setcachelimit">setcachelimit</a>, <a href="s.html#setsystemparams">setsystemparams</a>
 <hr>
-<a name="ceiling"></a>
-<b>ceiling</b>
+<b id="ceiling">ceiling</b>
 <pre>num<sub>1</sub> ceiling num<sub>2</sub></pre>
 <p>
 returns the least integer value greater than or equal to num<sub>1</sub>.
@@ -42,8 +41,7 @@ href="t.html#typecheck">typecheck</a>
 <b>See Also:</b> <a href="f.html#floor">floor</a>, <a href="qr.html#round">round</a>,
 <a href="t.html#truncate">truncate</a>, <a href="#cvi">cvi</a>
 <hr>
-<a name="charpath"></a>
-<b>charpath</b>
+<b id="charpath">charpath</b>
 <pre>string bool charpath -</pre>
 <p>
 obtains the character path outlines that would result if string were shown
@@ -73,8 +71,7 @@ long as those outlines remain in the current path.
 <b>See Also:</b> <a href="s.html#show">show</a>, <a href="f.html#flattenpath">flattenpath</a>,
 <a href="p.html#pathbbox">pathbbox</a>, <a href="#clip">clip</a>
 <hr>
-<a name="clear"></a>
-<b>clear</b>
+<b id="clear">clear</b>
 <pre>any<sub>1</sub> ... any<sub>n</sub> clear -</pre>
 <p>
 pops all objects from the operand stack and discards them.
@@ -84,8 +81,7 @@ pops all objects from the operand stack and discards them.
 <b>See Also:</b> <a href="#count">count</a>, <a href="#cleartomark">cleartomark</a>,
 <a href="p.html#pop">pop</a>
 <hr>
-<a name="cleardictstack"></a>
-<b>cleardictstack</b>
+<b id="cleardictstack">cleardictstack</b>
 <pre>- cleardictstack -</pre>
 <p>
 pops all dictionaries off the dictionary stack except for the permanent
@@ -99,8 +95,7 @@ instead of an operator defined in systemdict.)
 <p>
 <b>See Also:</b> <a href="b.html#begin">begin</a>, <a href="e.html#end">end</a>
 <hr>
-<a name="cleartomark"></a>
-<b>cleartomark</b>
+<b id="cleartomark">cleartomark</b>
 <pre>mark obj<sub>1</sub> ... obj<sub>n</sub> cleartomark -</pre>
 <p>
 pops the operand stack repeatedly until it encounters a mark, which it also
@@ -112,8 +107,7 @@ pops from the stack
 <b>See Also:</b> <a href="#clear">clear</a>, <a href="m.html#mark">mark</a>,
 <a href="#counttomark">counttomark</a>, <a href="p.html#pop">pop</a>
 <hr>
-<a name="clip"></a>
-<b>clip</b>
+<b id="clip">clip</b>
 <pre>- clip -</pre>
 <p>
 intersects the inside of the current clipping path with the inside of the
@@ -151,8 +145,8 @@ This can cause unexpected behavior.
 <b>See Also:</b> <a href="e.html#eoclip">eoclip</a>, <a href="#clippath">clippath</a>,
 <a href="ik.html#initclip">initclip</a>, <a href="qr.html#rectclip">rectclip</a>
 <hr>
-<a name="clippath"></a>
-<b>clippath</b><pre>- clippath -</pre>
+<b id="clippath">clippath</b>
+<pre>- clippath -</pre>
 <p>
 sets the current path to one that describes the current clipping path.
 This operator is useful for determining the exact extent of the imaging
@@ -176,8 +170,7 @@ This erases (fills with white) the interior of the current clipping path.
 <b>See Also:</b> <a href="#clip">clip</a>, <a href="e.html#eoclip">eoclip</a>,
 <a href="ik.html#initclip">initclip</a>, <a href="qr.html#rectclip">rectclip</a>
 <hr>
-<a name="closefile"></a>
-<b>closefile</b>
+<b id="closefile">closefile</b>
 <pre>file closefile -</pre>
 <p>
 closes file-in other words, breaks the association between the file object
@@ -192,8 +185,7 @@ an end-of-file indication.
 <b>See Also:</b> <a href="f.html#file">file</a>, <a href="f.html#filter">filter</a>,
 <a href="s.html#status">status</a>
 <hr>
-<a name="closepath"></a>
-<b>closepath</b>
+<b id="closepath">closepath</b>
 <pre>- closepath -</pre>
 <p>
 closes the current subpath by appending a straight line segment connecting
@@ -211,8 +203,7 @@ reached by the closepath.
 <b>See Also:</b> <a href="no.html#newpath">newpath</a>, <a href="m.html#moveto">moveto</a>,
 <a href="l.html#lineto">lineto</a>
 <hr>
-<a name="colorimage"></a>
-<b>colorimage</b> LEVEL 2
+<b id="colorimage">colorimage</b> LEVEL 2
 <pre>width height bits/comp matrix datasrc<sub>0</sub> ... datasrc<sub>n-1</sub> multi ncomp colorimage -</pre>
 <p>
 paints a sampled image onto the current page.
@@ -260,8 +251,7 @@ href="ik.html#ioerror">ioerror</a>,
 <p>
 <b>See Also:</b> <a href="ik.html#image">image</a>, <a href="ik.html#imagemask">imagemask</a>
 <hr>
-<a name="concat"></a>
-<b>concat</b>
+<b id="concat">concat</b>
 <pre>matrix concat -</pre>
 <p>
 concatenates matrix with the current transformation matrix (CTM). Precisely,
@@ -285,8 +275,7 @@ The two examples have the same effect on the current transformation.
 <a href="s.html#setmatrix">setmatrix</a>, <a href="t.html#translate">translate</a>
 <p>
 <hr>
-<a name="concatmatrix"></a>
-<b>concatmatrix</b>
+<b id="concatmatrix">concatmatrix</b>
 <pre>matrix<sub>1</sub> matrix<sub>2</sub> matrix<sub>3</sub> concatmatrix matrix<sub>3</sub></pre>
 <p>
 replaces the value of matrix<sub>3</sub> by the result of multiplying matrix<sub>1</sub> x matrix<sub>2</sub>,
@@ -300,8 +289,7 @@ does not affect the CTM.
 <a href="qr.html#rotate">rotate</a>, <a href="s.html#scale">scale</a>,
 <a href="s.html#setmatrix">setmatrix</a>, <a href="t.html#translate">translate</a>
 <hr>
-<a name="condition"></a>
-<b>condition</b> DPS
+<b id="condition">condition</b> DPS
 <pre>- condition condition</pre>
 <p>
 creates a new condition object, unequal to any condition object already
@@ -315,8 +303,7 @@ href="v.html#VMerror">VMerror</a>
 <p>
 <b>See Also:</b> <a href="w.html#wait">wait</a>, <a href="no.html#notify">notify</a>
 <hr>
-<a name="configurationerror"></a>
-<b>configurationerror</b> (error) LEVEL 2
+<b id="configurationerror">configurationerror</b> (error) LEVEL 2
 <p>
 occurs when <a href="s.html#setpagedevice">setpagedevice</a> or <a href="s.html#setdevparams">setdevparams</a>
 has been executed with a request for a feature that either is not available
@@ -331,8 +318,7 @@ the key and value of the request that could not be met.
 <p>
 <b>See Also:</b> <a href="s.html#setpagedevice">setpagedevice</a>, <a href="s.html#setdevparams">setdevparams</a>
 <hr>
-<a name="copy"></a>
-<b>copy</b>
+<b id="copy">copy</b>
 <pre>     any<sub>1</sub> ... any<sub>n</sub> n copy any<sub>1</sub> ... any<sub>n</sub> any<sub>1</sub> ... any<sub>n</sub>
 
        array<sub>1</sub> array<sub>2</sub> copy subarray<sub>2</sub>
@@ -398,8 +384,7 @@ a1 dup length array copy  &rArr;  [1 2 3]
 <b>See Also:</b> <a href="d.html#dup">dup</a>, <a href="gh.html#get">get</a>,
 <a href="p.html#put">put</a>, <a href="p.html#putinterval">putinterval</a>
 <hr>
-<a name="copypage"></a>
-<b>copypage</b>
+<b id="copypage">copypage</b>
 <pre>- copypage -</pre>
 <p>
 transmits one copy of the current page to the current output device without
@@ -419,8 +404,7 @@ or the NumCopies parameter of <a href="s.html#setpagedevice">setpagedevice</a>.
 <p>
 <b>See Also:</b> <a href="s.html#showpage">showpage</a>, <a href="e.html#erasepage">erasepage</a>
 <hr>
-<a name="cos"></a>
-<b>cos</b>
+<b id="cos">cos</b>
 <pre>angle cos real</pre>
 <p>
 returns the cosine of angle, which is interpreted as an angle in degrees.
@@ -437,8 +421,7 @@ href="t.html#typecheck">typecheck</a>
 <p>
 <b>See Also:</b> <a href="a.html#atan">atan</a>, <a href="s.html#sin">sin</a>
 <hr>
-<a name="count"></a>
-<b>count</b>
+<b id="count">count</b>
 <pre>any<sub>1</sub> ... any<sub>n</sub> count any<sub>1</sub> ... any<sub>n</sub> n</pre>
 <p>
 counts the number of items on the operand stack and pushes this count on
@@ -454,8 +437,7 @@ clear 1 2 3 count  &rArr;  1 2 3 3
 <p>
 <b>See Also:</b> <a href="#counttomark">counttomark</a>
 <hr>
-<a name="countdictstack"></a>
-<b>countdictstack</b>
+<b id="countdictstack">countdictstack</b>
 <pre>- countdictstack int</pre>
 <p>
 counts the number of dictionaries currently on the dictionary stack and
@@ -466,8 +448,7 @@ pushes this count on the operand stack.
 <b>See Also:</b> <a href="d.html#dictstack">dictstack</a>, <a href="b.html#begin">begin</a>,
 <a href="e.html#end">end</a>
 <hr>
-<a name="countexecstack"></a>
-<b>countexecstack</b>
+<b id="countexecstack">countexecstack</b>
 <pre>- countexecstack int</pre>
 <p>
 counts the number of objects on the execution stack and pushes this count
@@ -477,8 +458,7 @@ on the operand stack.
 <p>
 <b>See Also:</b> <a href="e.html#execstack">execstack</a>
 <hr>
-<a name="counttomark"></a>
-<b>counttomark</b>
+<b id="counttomark">counttomark</b>
 <pre>mark obj<sub>1</sub> ... obj<sub>n</sub> counttomark mark obj<sub>1</sub> ... obj<sub>n</sub> n</pre>
 <p>
 counts the number of objects on the operand stack starting with the top
@@ -495,8 +475,7 @@ obj1 through objn are any objects other than marks.
 <p>
 <b>See Also:</b> <a href="m.html#mark">mark</a>, <a href="#count">count</a>
 <hr>
-<a name="cshow"></a>
-<b>cshow</b> LEVEL 2
+<b id="cshow">cshow</b> LEVEL 2
 <pre>proc string cshow -</pre>
 <p>
 invokes proc once for each operation of the font mapping algorithm. The
@@ -524,8 +503,7 @@ selects consecutive characters from the string.
 <a href="xy.html#xshow">xshow</a>, <a href="xy.html#xyshow">xyshow</a>,
 <a href="xy.html#yshow">yshow</a>
 <hr>
-<a name="currentblackgeneration"></a>
-<b>currentblackgeneration</b> LEVEL 2
+<b id="currentblackgeneration">currentblackgeneration</b> LEVEL 2
 <pre>- currentblackgeneration proc</pre>
 <p>
 returns the current black generation function in the graphics state.
@@ -534,8 +512,7 @@ returns the current black generation function in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setblackgeneration">setblackgeneration</a>
 <hr>
-<a name="currentcacheparams"></a>
-<b>currentcacheparams</b> LEVEL 2
+<b id="currentcacheparams">currentcacheparams</b> LEVEL 2
 <pre>- currentcacheparams mark size lower upper</pre>
 <p>
 pushes a mark object followed by the current cache parameters on the operand
@@ -546,8 +523,7 @@ stack. The number of cache parameters returned is variable (see <a href="s.html#
 <b>See Also:</b> <a href="s.html#setcacheparams">setcacheparams</a>, <a href="s.html#setsystemparams">setsystemparams</a>,
 <a href="s.html#setuserparams">setuserparams</a>
 <hr>
-<a name="currentcmykcolor"></a>
-<b>currentcmykcolor</b> LEVEL 2
+<b id="currentcmykcolor">currentcmykcolor</b> LEVEL 2
 <pre>- currentcmykcolor cyan magenta yellow black</pre>
 <p>
 returns the current color in the graphics state according to the cyan-magenta-yellow-black
@@ -561,8 +537,7 @@ returns 0.0 0.0 0.0 1.0.
 <p>
 <b>See Also:</b> <a href="s.html#setcmykcolor">setcmykcolor</a>
 <hr>
-<a name="currentcolor"></a>
-<b>currentcolor</b> LEVEL 2
+<b id="currentcolor">currentcolor</b> LEVEL 2
 <pre>- currentcolor comp<sub>1</sub> comp<sub>2</sub> ... comp<sub>m</sub></pre>
 <p>
 returns the components, in the current color space, of the color specified
@@ -573,8 +548,7 @@ by the current color parameters in the graphics state.
 <b>See Also:</b> <a href="s.html#setcolor">setcolor</a>, <a href="s.html#setcolorspace">setcolorspace</a>
 <p>
 <hr>
-<a name="currentcolorrendering"></a>
-<b>currentcolorrendering</b> LEVEL 2
+<b id="currentcolorrendering">currentcolorrendering</b> LEVEL 2
 <pre>- currentcolorrendering dict</pre>
 <p>
 returns the value of the CIE based color rendering dictionary parameter
@@ -584,8 +558,7 @@ in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setcolorrendering">setcolorrendering</a>
 <hr>
-<a name="currentcolorscreen"></a>
-<b>currentcolorscreen</b> LEVEL 2
+<b id="currentcolorscreen">currentcolorscreen</b> LEVEL 2
 <pre>- currentcolorscreen redfreq redang redproc
                      greenfreq greenang greenpro
                      bluefreq blueang blueproc
@@ -606,8 +579,7 @@ four times.
 <b>See Also:</b> <a href="s.html#setcolorscreen">setcolorscreen</a>, <a href="s.html#setscreen">setscreen</a>,
 <a href="s.html#sethalftone">sethalftone</a>
 <hr>
-<a name="currentcolorspace"></a>
-<b>currentcolorspace</b> LEVEL 2
+<b id="currentcolorspace">currentcolorspace</b> LEVEL 2
 <pre>- currentcolorspace array</pre>
 <p>
 returns an array containing the identifying key and parameters of the color
@@ -619,8 +591,7 @@ just a name to setcolorspace.
 <p>
 <b>See Also:</b> <a href="s.html#setcolorspace">setcolorspace</a>, <a href="s.html#setcolor">setcolor</a>
 <hr>
-<a name="currentcolortransfer"></a>
-<b>currentcolortransfer</b> LEVEL 2
+<b id="currentcolortransfer">currentcolortransfer</b> LEVEL 2
 <pre>- currentcolortransfer redproc greenproc blueproc grayproc</pre>
 <p>
 returns the current transfer functions in the graphics state for all four
@@ -634,8 +605,7 @@ returns the single transfer function, repeated four times.
 <p>
 <b>See Also:</b> <a href="s.html#setcolortransfer">setcolortransfer</a>, <a href="s.html#settransfer">settransfer</a>
 <hr>
-<a name="currentcontext"></a>
-<b>currentcontext</b> DPS
+<b id="currentcontext">currentcontext</b> DPS
 <pre>- currentcontext context</pre>
 <p>
 returns an integer that identifies the current execution context.
@@ -645,8 +615,7 @@ returns an integer that identifies the current execution context.
 <b>See Also:</b> <a href="f.html#fork">fork</a>, <a href="ik.html#join">join</a>,
 <a href="d.html#detach">detach</a>
 <hr>
-<a name="currentdash"></a>
-<b>currentdash</b>
+<b id="currentdash">currentdash</b>
 <pre>- currentdash array offset</pre>
 <p>
 returns the current dash array and offset in the graphics state.
@@ -656,8 +625,7 @@ returns the current dash array and offset in the graphics state.
 <b>See Also:</b> <a href="s.html#setdash">setdash</a>, <a href="s.html#stroke">stroke</a>
 <p>
 <hr>
-<a name="currentdevparams"></a>
-<b>currentdevparams</b> LEVEL 2
+<b id="currentdevparams">currentdevparams</b> LEVEL 2
 <pre>string currentdevparams dict</pre>
 <p>
 returns a dictionary containing the keys and current values of all parameters
@@ -669,8 +637,7 @@ and returns a new dictionary.
 <p>
 <b>See Also:</b> <a href="s.html#setdevparams">setdevparams</a>
 <hr>
-<a name="currentdict"></a>
-<b>currentdict</b>
+<b id="currentdict">currentdict</b>
 <pre>- currentdict dict</pre>
 <p>
 pushes the current dictionary (the dictionary on top of the dictionary stack)
@@ -682,8 +649,7 @@ just pushes a duplicate of its top element on the operand stack.
 <b>See Also:</b> <a href="b.html#begin">begin</a>, <a href="d.html#dictstack">dictstack</a>
 <p>
 <hr>
-<a name="currentfile"></a>
-<b>currentfile</b>
+<b id="currentfile">currentfile</b>
 <pre>- currentfile file</pre>
 <p>
 returns the file object from which the PostScript interpreter is currently
@@ -723,8 +689,7 @@ is associated with the string &quot;here is a line of text&quot;.
 <b>See Also:</b> <a href="e.html#exec">exec</a>, <a href="qr.html#run">run</a>
 <p>
 <hr>
-<a name="currentflat"></a>
-<b>currentflat</b>
+<b id="currentflat">currentflat</b>
 <pre>- currentflat num</pre>
 <p>
 returns the current value of the flatness parameter in the graphics state.
@@ -734,8 +699,7 @@ returns the current value of the flatness parameter in the graphics state.
 <b>See Also:</b> <a href="s.html#setflat">setflat</a>, <a href="f.html#flattenpath">flattenpath</a>,
 <a href="s.html#stroke">stroke</a>, <a href="f.html#fill">fill</a>
 <hr>
-<a name="currentfont"></a>
-<b>currentfont</b>
+<b id="currentfont">currentfont</b>
 <pre>- currentfont font</pre>
 <p>
 returns the current font dictionary in the graphics state. Normally, this
@@ -749,8 +713,7 @@ selected base font (descendant of a composite font).
 <b>See Also:</b> <a href="qr.html#rootfont">rootfont</a>, <a href="s.html#selectfont">selectfont</a>,
 <a href="s.html#setfont">setfont</a>
 <hr>
-<a name="currentglobal"></a>
-<b>currentglobal</b> LEVEL 2
+<b id="currentglobal">currentglobal</b> LEVEL 2
 <pre>- currentglobal bool</pre>
 <p>
 returns the VM allocation mode currently in effect.
@@ -759,8 +722,7 @@ returns the VM allocation mode currently in effect.
 <p>
 <b>See Also:</b> <a href="s.html#setglobal">setglobal</a>
 <hr>
-<a name="currentgray"></a>
-<b>currentgray</b>
+<b id="currentgray">currentgray</b>
 <pre>- currentgray num</pre>
 <p>
 returns the gray value of the current color parameter in the graphics state.
@@ -775,8 +737,7 @@ to a gray value. For any other color space, currentgray returns 0.0.
 <a href="#currentcolorspace">currentcolorspace</a>, <a href="#currenthsbcolor">currenthsbcolor</a>,
 <a href="#currentrgbcolor">currentrgbcolor</a>
 <hr>
-<a name="currentgstate"></a>
-<b>currentgstate</b> LEVEL 2
+<b id="currentgstate">currentgstate</b> LEVEL 2
 <pre>gstate currentgstate gstate</pre>
 <p>
 replaces the value of the gstate object by a copy of the current graphics
@@ -794,8 +755,7 @@ href="s.html#stackunderflow">stackunderflow</a>,
 <b>See Also:</b> <a href="gh.html#gstate">gstate</a>, <a href="s.html#setgstate">setgstate</a>
 <p>
 <hr>
-<a name="currenthalftone"></a>
-<b>currenthalftone</b> LEVEL 2
+<b id="currenthalftone">currenthalftone</b> LEVEL 2
 <pre>- currenthalftone halftone</pre>
 <p>
 returns the current halftone dictionary in the graphics state. If the current
@@ -808,8 +768,7 @@ currenthalftone fabricates and returns a halftone dictionary (type 1 or
 <b>See Also:</b> <a href="s.html#setscreen">setscreen</a>, <a href="s.html#setcolorscreen">setcolorscreen</a>,
 <a href="s.html#sethalftone">sethalftone</a>
 <hr>
-<a name="currenthalftonephase"></a>
-<b>currenthalftonephase</b> DPS
+<b id="currenthalftonephase">currenthalftonephase</b> DPS
 <pre>- currenthalftonephase x y</pre>
 <p>
 returns the current values of the halftone phase parameters in the graphics
@@ -820,8 +779,7 @@ values.
 <p>
 <b>See Also:</b> <a href="s.html#sethalftonephase">sethalftonephase</a>
 <hr>
-<a name="currenthsbcolor"></a>
-<b>currenthsbcolor</b>
+<b id="currenthsbcolor">currenthsbcolor</b>
 <pre>- currenthsbcolor hue saturation brightness</pre>
 <p>
 returns the current color parameter in the graphics state according to the
@@ -838,8 +796,7 @@ For any other color space, currenthsbcolor returns 0.0 0.0 0.0
 <b>See Also:</b> <a href="s.html#sethsbcolor">sethsbcolor</a>, <a href="#currentcolor">currentcolor</a>,
 <a href="#currentgray">currentgray</a>, <a href="#currentrgbcolor">currentrgbcolor</a>
 <hr>
-<a name="currentlinecap"></a>
-<b>currentlinecap</b>
+<b id="currentlinecap">currentlinecap</b>
 <pre>- currentlinecap int</pre>
 <p>
 returns the current value of the line cap parameter in the graphics state.
@@ -849,8 +806,7 @@ returns the current value of the line cap parameter in the graphics state.
 <b>See Also:</b> <a href="s.html#setlinecap">setlinecap</a>, <a href="s.html#stroke">stroke</a>,
 <a href="#currentlinejoin">currentlinejoin</a>
 <hr>
-<a name="currentlinejoin"></a>
-<b>currentlinejoin</b>
+<b id="currentlinejoin">currentlinejoin</b>
 <pre>- currentlinejoin int</pre>
 <p>
 returns the current value of the line join parameter in the graphics state.
@@ -860,8 +816,7 @@ returns the current value of the line join parameter in the graphics state.
 <b>See Also:</b> <a href="s.html#setlinejoin">setlinejoin</a>, <a href="s.html#stroke">stroke</a>,
 <a href="#currentlinecap">currentlinecap</a>
 <hr>
-<a name="currentlinewidth"></a>
-<b>currentlinewidth</b>
+<b id="currentlinewidth">currentlinewidth</b>
 <pre>- currentlinewidth num</pre>
 <p>
 returns the current value of the line width parameter in the graphics state.
@@ -870,8 +825,7 @@ returns the current value of the line width parameter in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setlinewidth">setlinewidth</a>, <a href="s.html#stroke">stroke</a>
 <hr>
-<a name="currentmatrix"></a>
-<b>currentmatrix</b>
+<b id="currentmatrix">currentmatrix</b>
 <pre>matrix currentmatrix matrix</pre>
 <p>
 replaces the value of matrix with the value of the current transformation
@@ -885,8 +839,7 @@ on the operand stack.
 <a href="ik.html#initmatrix">initmatrix</a>, <a href="qr.html#rotate">rotate</a>,
 <a href="s.html#scale">scale</a>, <a href="t.html#translate">translate</a>
 <hr>
-<a name="currentmiterlimit"></a>
-<b>currentmiterlimit</b>
+<b id="currentmiterlimit">currentmiterlimit</b>
 <pre>- currentmiterlimit num</pre>
 <p>
 returns the current value of the miter limit parameter in the graphics state.
@@ -895,8 +848,7 @@ returns the current value of the miter limit parameter in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setmiterlimit">setmiterlimit</a>, <a href="s.html#stroke">stroke</a>
 <hr>
-<a name="currentobjectformat"></a>
-<b>currentobjectformat</b> LEVEL 2
+<b id="currentobjectformat">currentobjectformat</b> LEVEL 2
 <pre>- currentobjectformat int</pre>
 <p>
 returns the object format parameter currently in effect.
@@ -905,8 +857,7 @@ returns the object format parameter currently in effect.
 <p>
 <b>See Also:</b> <a href="s.html#setobjectformat">setobjectformat</a>
 <hr>
-<a name="currentoverprint"></a>
-<b>currentoverprint</b> LEVEL 2
+<b id="currentoverprint">currentoverprint</b> LEVEL 2
 <pre>- currentoverprint bool</pre>
 <p>
 returns the value of the overprint parameter in the graphics state.
@@ -915,8 +866,7 @@ returns the value of the overprint parameter in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setoverprint">setoverprint</a>
 <hr>
-<a name="currentpacking"></a>
-<b>currentpacking</b> LEVEL 2
+<b id="currentpacking">currentpacking</b> LEVEL 2
 <pre>- currentpacking bool</pre>
 <p>
 returns the array packing mode currently in effect.
@@ -926,8 +876,7 @@ returns the array packing mode currently in effect.
 <b>See Also:</b> <a href="s.html#setpacking">setpacking</a>, <a href="p.html#packedarray">packedarray</a>
 <p>
 <hr>
-<a name="currentpagedevice"></a>
-<b>currentpagedevice</b> LEVEL 2
+<b id="currentpagedevice">currentpagedevice</b> LEVEL 2
 <pre>- currentpagedevice dict</pre>
 <p>
 returns a read-only dictionary that describes the page-oriented output device
@@ -946,8 +895,7 @@ returns matches the current hardware state.
 <p>
 <b>See Also:</b> <a href="s.html#setpagedevice">setpagedevice</a>
 <hr>
-<a name="currentpoint"></a>
-<b>currentpoint</b>
+<b id="currentpoint">currentpoint</b>
 <pre>- currentpoint x y</pre>
 <p>
 returns the x and y coordinates of the current point in the graphics state
@@ -969,8 +917,7 @@ href="s.html#stackoverflow">stackoverflow</a>,
 <b>See Also:</b> <a href="l.html#lineto">lineto</a>, <a href="m.html#moveto">moveto</a>,
 <a href="#curveto">curveto</a>, <a href="a.html#arc">arc</a>
 <hr>
-<a name="currentrgbcolor"></a>
-<b>currentrgbcolor</b>
+<b id="currentrgbcolor">currentrgbcolor</b>
 <pre>- currentrgbcolor red green blue</pre>
 <p>
 returns the three components of the current color in the graphics state
@@ -989,8 +936,7 @@ converts the current color to RGB.
 <b>See Also:</b> <a href="s.html#setrgbcolor">setrgbcolor</a>, <a href="#currentcolor">currentcolor</a>,
 <a href="#currentgray">currentgray</a>, <a href="#currenthsbcolor">currenthsbcolor</a>
 <hr>
-<a name="currentscreen"></a>
-<b>currentscreen</b>
+<b id="currentscreen">currentscreen</b>
 <pre>- currentscreen frequency angle proc
 - currentscreen frequency angle halftone</pre>
 <p>
@@ -1007,8 +953,7 @@ returns a frequency of 60, an angle of 0, and the halftone dictionary.
 <b>See Also:</b> <a href="s.html#setcolorscreen">setcolorscreen</a>, <a href="s.html#setscreen">setscreen</a>,
 <a href="s.html#sethalftone">sethalftone</a>
 <hr>
-<a name="currentshared"></a>
-<b>currentshared</b> LEVEL 2
+<b id="currentshared">currentshared</b> LEVEL 2
 <pre>- currentshared bool</pre>
 <p>
 has the same semantics as currentglobal. This operator is defined for compatibility
@@ -1018,8 +963,7 @@ with existing Display PostScript applications.
 <p>
 <b>See Also:</b> <a href="s.html#setglobal">setglobal</a>, <a href="s.html#setshared">setshared</a>
 <hr>
-<a name="currentstrokeadjust"></a>
-<b>currentstrokeadjust</b> LEVEL 2
+<b id="currentstrokeadjust">currentstrokeadjust</b> LEVEL 2
 <pre>- currentstrokeadjust bool</pre>
 <p>
 returns the current stroke adjust parameter in the graphics state.
@@ -1028,8 +972,7 @@ returns the current stroke adjust parameter in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setstrokeadjust">setstrokeadjust</a>
 <hr>
-<a name="currentsystemparams"></a>
-<b>currentsystemparams</b> LEVEL 2
+<b id="currentsystemparams">currentsystemparams</b> LEVEL 2
 <pre>- currentsystemparams dict</pre>
 <p>
 returns a dictionary containing the keys and current values of all system
@@ -1042,8 +985,7 @@ href="v.html#VMerror">VMerror</a>
 <p>
 <b>See Also:</b> <a href="s.html#setsystemparams">setsystemparams</a>
 <hr>
-<a name="currenttransfer"></a>
-<b>currenttransfer</b>
+<b id="currenttransfer">currenttransfer</b>
 <pre>- currenttransfer proc</pre>
 <p>
 returns the current transfer function in the graphics state, assuming that
@@ -1054,8 +996,8 @@ currenttransfer returns the gray transfer function.
 <b>Errors:</b> <a href="s.html#stackoverflow">stackoverflow</a>
 <p>
 <b>See Also:</b> <a href="s.html#settransfer">settransfer</a>, <a href="s.html#setcolortransfer">setcolortransfer</a>
-<hr><a name="currentundercolorremoval"></a>
-<b>currentundercolorremoval</b> LEVEL 2
+<hr>
+<b id="currentundercolorremoval">currentundercolorremoval</b> LEVEL 2
 <pre>- currentundercolorremoval proc</pre>
 <p>
 returns the current undercolor removal function in the graphics state.
@@ -1064,8 +1006,7 @@ returns the current undercolor removal function in the graphics state.
 <p>
 <b>See Also:</b> <a href="s.html#setundercolorremoval">setundercolorremoval</a>
 <hr>
-<a name="currentuserparams"></a>
-<b>currentuserparams</b>
+<b id="currentuserparams">currentuserparams</b>
 <pre>- currentuserparams dict</pre>
 <p>
 returns a dictionary containing the keys and current values of all user
@@ -1078,8 +1019,7 @@ href="v.html#VMerror">VMerror</a>
 <p>
 <b>See Also:</b> <a href="s.html#setuserparams">setuserparams</a>
 <hr>
-<a name="curveto"></a>
-<b>curveto</b>
+<b id="curveto">curveto</b>
 <pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> x<sub>3</sub> y<sub>3</sub> curveto -</pre>
 <p>
 adds a Bezier cubic section to the current path between the current point,
@@ -1111,8 +1051,7 @@ curve are:
 <a href="a.html#arc">arc</a>, <a href="a.html#arcn">arcn</a>, <a href="a.html#arct">arct</a>,
 <a href="a.html#arcto">arcto</a>
 <hr>
-<a name="cvi"></a>
-<b>cvi</b>
+<b id="cvi">cvi</b>
 <pre>   num cvi int
 string cvi int</pre>
 <p>
@@ -1143,8 +1082,7 @@ href="qr.html#rangecheck">rangecheck</a>,
 <b>See Also:</b> <a href="#cvr">cvr</a>, <a href="#ceiling">ceiling</a>, <a href="f.html#floor">floor</a>,
 <a href="qr.html#round">round</a>, <a href="t.html#truncate">truncate</a>
 <hr>
-<a name="cvlit"></a>
-<b>cvlit</b>
+<b id="cvlit">cvlit</b>
 <pre>any cvlit any</pre>
 <p>
 (convert to literal) makes the object on the top of the operand stack have
@@ -1154,8 +1092,7 @@ the literal instead of executable attribute.
 <p>
 <b>See Also:</b> <a href="#cvx">cvx</a>, <a href="xy.html#xcheck">xcheck</a>
 <hr>
-<a name="cvn"></a>
-<b>cvn</b>
+<b id="cvn">cvn</b>
 <pre>string cvn name</pre>
 <p>
 (convert to name) converts the string operand to a name object that is lexically
@@ -1173,8 +1110,7 @@ href="l.html#limitcheck">limitcheck</a>,
 <p>
 <b>See Also:</b> <a href="#cvs">cvs</a>, <a href="t.html#type">type</a>
 <hr>
-<a name="cvr"></a>
-<b>cvr</b>
+<b id="cvr">cvr</b>
 <pre>   num cvr real
 string cvr real</pre>
 <p>
@@ -1191,8 +1127,7 @@ a real.
 <p>
 <b>See Also:</b> <a href="#cvi">cvi</a>
 <hr>
-<a name="cvrs"></a>
-<b>cvrs</b>
+<b id="cvrs">cvrs</b>
 <pre>num radix string cvrs substring</pre>
 <p>
 (convert to string with radix) produces a text representation of the number
@@ -1229,8 +1164,7 @@ href="qr.html#rangecheck">rangecheck</a>,
 <p>
 <b>See Also:</b> <a href="#cvs">cvs</a>
 <hr>
-<a name="cvs"></a>
-<b>cvs</b>
+<b id="cvs">cvs</b>
 <pre>any string cvs substring</pre>
 <p>
 (convert to string) produces a text representation of an arbitrary object
@@ -1263,8 +1197,7 @@ href="qr.html#rangecheck">rangecheck</a>,
 <b>See Also:</b> <a href="#cvi">cvi</a>, <a href="#cvr">cvr</a>, <a href="s.html#string">string</a>,
 <a href="t.html#type">type</a>
 <hr>
-<a name="cvx"></a>
-<b>cvx</b>
+<b id="cvx">cvx</b>
 <pre>any cvx any</pre>
 <p>
 (convert to executable) makes the object on top of the operand stack have

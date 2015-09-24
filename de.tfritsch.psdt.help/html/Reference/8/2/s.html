@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 's'</h1>
 <hr>
-<a name="save"></a>
-<b>save</b>
+<b id="save">save</b>
 <pre>- save save</pre>
 <p>
 creates a snapshot of the current state of the virtual memory (VM)
@@ -36,8 +35,7 @@ saveobj restore                    % Restore saved VM state
 <b>See Also:</b> <a href="qr.html#restore">restore</a>, <a href="gh.html#gsave">gsave</a>,
 <a href="gh.html#grestoreall">grestoreall</a>, <a href="v.html#vmstatus">vmstatus</a>
 <hr>
-<a name="scale"></a>
-<b>scale</b>
+<b id="scale">scale</b>
 <pre>       s<sub>x</sub> s<sub>y</sub> scale -
 s<sub>x</sub> s<sub>y</sub> matrix scale matrix</pre>
 <p>
@@ -56,8 +54,7 @@ on the operand stack In this case, scale does not affect the CTM.
 <b>See Also:</b> <a href="qr.html#rotate">rotate</a>, <a href="t.html#translate">translate</a>,
 <a href="c.html#concat">concat</a>
 <hr>
-<a name="scalefont"></a>
-<b>scalefont</b>
+<b id="scalefont">scalefont</b>
 <pre>font scale scalefont font'</pre>
 <p>
 applies the scale factor scale to font, producing a new font' whose characters
@@ -107,8 +104,7 @@ font.
 <b>See Also:</b> <a href="m.html#makefont">makefont</a>, <a href="#setfont">setfont</a>,
 <a href="f.html#findfont">findfont</a>, <a href="#selectfont">selectfont</a>
 <hr>
-<a name="scheck"></a>
-<b>scheck</b> LEVEL 2
+<b id="scheck">scheck</b> LEVEL 2
 <pre>any scheck bool</pre>
 <p>
 has the same semantics as gcheck. This operator is defined for compatibility
@@ -118,8 +114,7 @@ with existing Display PostScript applications.
 <p>
 <b>See Also:</b> <a href="gh.html#gcheck">gcheck</a>
 <hr>
-<a name="search"></a>
-<b>search</b>
+<b id="search">search</b>
 <pre>string seek search post match pre true (if found)
                    string false        (if not found)</pre>
 <p>
@@ -147,8 +142,7 @@ find a match, it pushes the original string and the boolean false.
 <p>
 <b>See Also:</b> <a href="a.html#anchorsearch">anchorsearch</a>, <a href="t.html#token">token</a>
 <hr>
-<a name="selectfont"></a>
-<b>selectfont</b> LEVEL 2
+<b id="selectfont">selectfont</b> LEVEL 2
 <pre> key scale selectfont -
 key matrix selectfont -</pre>
 <p>
@@ -196,8 +190,7 @@ independent of the current VM allocation mode.
 <b>See Also:</b> <a href="f.html#findfont">findfont</a>, <a href="m.html#makefont">makefont</a>,
 <a href="#scalefont">scalefont</a>, <a href="#setfont">setfont</a>
 <hr>
-<a name="serialnumber"></a>
-<b>serialnumber</b> LEVEL 2
+<b id="serialnumber">serialnumber</b> LEVEL 2
 <pre>- serialnumber int</pre>
 <p>
 returns an integer that purports to represent the specific machine on which
@@ -209,8 +202,7 @@ number (including any claim of its uniqueness) is product dependent.
 <b>See Also:</b> <a href="l.html#languagelevel">languagelevel</a>, <a href="p.html#product">product</a>,
 <a href="qr.html#revision">revision</a>, <a href="v.html#version">version</a>
 <hr>
-<a name="setbbox"></a>
-<b>setbbox</b>
+<b id="setbbox">setbbox</b>
 <pre>ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> setbbox -</pre>
 <p>
 establishes a bounding box for the current path, within which the coordinates of
@@ -258,8 +250,7 @@ uappend.
 <p>
 <b>See Also:</b> <a href="p.html#pathbbox">pathbbox</a>
 <hr>
-<a name="setblackgeneration"></a>
-<b>setblackgeneration</b> LEVEL 2
+<b id="setblackgeneration">setblackgeneration</b> LEVEL 2
 <pre>proc setblackgeneration -</pre>
 <p>
 sets the black generation function parameter in the graphics state. The
@@ -276,8 +267,8 @@ Execution of this operator is not permitted in certain circumstances.
 <a href="u.html#undefined">undefined</a>
 <p>
 <b>See Also:</b> <a href="#setundercolorremoval">setundercolorremoval</a>
-<hr><a name="setcachedevice"></a>
-<b>setcachedevice</b>
+<hr>
+<b id="setcachedevice">setcachedevice</b>
 <pre>w<sub>x</sub> w<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> setcachedevice -</pre>
 <p>
 passes width and bounding box information to the PostScript interpreter's font
@@ -322,8 +313,7 @@ operator is permitted.
 <b>See Also:</b> <a href="#setcachedevice2">setcachedevice2</a>, <a href="#setcharwidth">setcharwidth</a>,
 <a href="#setcachelimit">setcachelimit</a>, <a href="c.html#cachestatus">cachestatus</a>
 <hr>
-<a name="setcachedevice2"></a>
-<b>setcachedevice2</b> LEVEL 2
+<b id="setcachedevice2">setcachedevice2</b> LEVEL 2
 <pre>w0<sub>x</sub> w0<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> w1<sub>x</sub> w1<sub>y</sub> v<sub>x</sub> v<sub>y</sub> setcachedevice2 -</pre>
 <p>
 passes two sets of glyph metrics to the font machinery (see Section 5.4, "Glyph
@@ -343,8 +333,7 @@ setcachedevice in all respects.
 <b>See Also:</b> <a href="#setcachedevice">setcachedevice</a>, <a href="#setcharwidth">setcharwidth</a>,
 <a href="#setcachelimit">setcachelimit</a>, <a href="c.html#cachestatus">cachestatus</a>
 <hr>
-<a name="setcachelimit"></a>
-<b>setcachelimit</b>
+<b id="setcachelimit">setcachelimit</b>
 <pre>int setcachelimit -</pre>
 <p>
 establishes the maximum number of bytes the pixel array (bitmap) of a single
@@ -372,8 +361,7 @@ set by setuserparams (see Appendix C).
 <p>
 <b>See Also:</b> <a href="c.html#cachestatus">cachestatus</a>, <a href="#setuserparams">setuserparams</a>
 <hr>
-<a name="setcacheparams"></a>
-<b>setcacheparams</b> LEVEL 2
+<b id="setcacheparams">setcacheparams</b> LEVEL 2
 <pre>mark size lower upper setcacheparams -</pre>
 <p>
 sets font cache parameters as specified by the integer objects above the topmost
@@ -402,8 +390,7 @@ size is unchanged.
 <a href="#setcachelimit">setcachelimit</a>, <a href="#setsystemparams">setsystemparams</a>,
 <a href="#setuserparams">setuserparams</a>
 <hr>
-<a name="setcharwidth"></a>
-<b>setcharwidth</b>
+<b id="setcharwidth">setcharwidth</b>
 <pre>w<sub>x</sub> w<sub>y</sub> setcharwidth -</pre>
 <p>
 is similar to setcachedevice, but it passes only width information to the PostScript
@@ -423,8 +410,7 @@ be cached, because that would subvert the intended variable behavior.
 <p>
 <b>See Also:</b> <a href="#setcachedevice">setcachedevice</a>, <a href="#setcachedevice2">setcachedevice2</a>
 <hr>
-<a name="setcmykcolor"></a>
-<b>setcmykcolor</b> LEVEL 2
+<b id="setcmykcolor">setcmykcolor</b> LEVEL 2
 <pre>cyan magenta yellow black setcmykcolor -</pre>
 <p>
 sets the current color space in the graphics state to DeviceCMYK and the current
@@ -444,8 +430,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="#setcolorspace">setcolorspace</a>, <a href="#setcolor">setcolor</a>,
 <a href="c.html#currentcmykcolor">currentcmykcolor</a>
 <hr>
-<a name="setcolor"></a>
-<b>setcolor</b> LEVEL 2
+<b id="setcolor">setcolor</b> LEVEL 2
 <pre>        comp<sub>1</sub> ... comp<sub>n</sub> setcolor -
                 pattern setcolor -
 comp<sub>1</sub> ... comp<sub>n</sub> pattern setcolor -</pre>
@@ -486,8 +471,7 @@ Section 4.8.1, "Types of Color Space."
 <p>
 <b>See Also:</b> <a href="c.html#currentcolor">currentcolor</a>, <a href="#setcolorspace">setcolorspace</a>
 <hr>
-<a name="setcolorrendering"></a>
-<b>setcolorrendering</b> LEVEL 2
+<b id="setcolorrendering">setcolorrendering</b> LEVEL 2
 <pre>dict setcolorrendering -</pre>
 <p>
 sets the current CIE-based color rendering dictionary (CRD) in the graphics state
@@ -510,8 +494,7 @@ Section 4.8.1, "Types of Color Space."
 <p>
 <b>See Also:</b> <a href="c.html#currentcolorrendering">currentcolorrendering</a>
 <hr>
-<a name="setcolorscreen"></a>
-<b>setcolorscreen</b> LEVEL 2
+<b id="setcolorscreen">setcolorscreen</b> LEVEL 2
 <pre>      redfreq redang redproc
 greenfreq greenang greenproc
    bluefreq blueang blueproc
@@ -564,8 +547,7 @@ used for color printing.
 <b>See Also:</b> <a href="c.html#currentcolorscreen">currentcolorscreen</a>,
 <a href="#setscreen">setscreen</a>, <a href="#sethalftone">sethalftone</a>
 <hr>
-<a name="setcolorspace"></a>
-<b>setcolorspace</b> LEVEL 2
+<b id="setcolorspace">setcolorspace</b> LEVEL 2
 <pre>array setcolorspace -
  name setcolorspace -</pre>
 <p>
@@ -598,8 +580,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currentcolorspace">currentcolorspace</a>,
 <a href="#setcolor">setcolor</a>
 <hr>
-<a name="setcolortransfer"></a>
-<b>setcolortransfer</b> LEVEL 2
+<b id="setcolortransfer">setcolortransfer</b> LEVEL 2
 <pre>redproc greenproc blueproc grayproc setcolortransfer -</pre>
 <p>
 sets the transfer function parameter in the graphics state. setcolortransfer specifies
@@ -630,8 +611,7 @@ see Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currentcolortransfer">currentcolortransfer</a>,
 <a href="#settransfer">settransfer</a>
 <hr>
-<a name="setdash"></a>
-<b>setdash</b>
+<b id="setdash">setdash</b>
 <pre>array offset setdash -</pre>
 <p>
 sets the dash pattern parameter in the graphics state. This parameter controls the
@@ -675,8 +655,7 @@ pattern is restarted and the offset reapplied at the beginning of each subpath.
 <p>
 <b>See Also:</b> <a href="c.html#currentdash">currentdash</a>, <a href="#stroke">stroke</a>
 <hr>
-<a name="setdevparams"></a>
-<b>setdevparams</b> LEVEL 2
+<b id="setdevparams">setdevparams</b> LEVEL 2
 <pre>string dict setdevparams -</pre>
 <p>
 attempts to set one or more parameters for the device identified by string according
@@ -729,8 +708,7 @@ to that parameter, a limitcheck error occurs.
 <b>See Also:</b> <a href="c.html#currentdevparams">currentdevparams</a>, <a href="#setsystemparams">setsystemparams</a>,
 <a href="#setuserparams">setuserparams</a>
 <hr>
-<a name="setfileposition"></a>
-<b>setfileposition</b> LEVEL 2
+<b id="setfileposition">setfileposition</b> LEVEL 2
 <pre>file position setfileposition -</pre>
 <p>
 repositions an existing open file to a new position so the next read or
@@ -753,8 +731,7 @@ for the file, or a device-dependent error condition is detected.
 <p>
 <b>See Also:</b> <a href="f.html#fileposition">fileposition</a>, <a href="f.html#file">file</a>
 <hr>
-<a name="setflat"></a>
-<b>setflat</b>
+<b id="setflat">setflat</b>
 <pre>num setflat -</pre>
 <p>
 sets the flatness parameter in the graphics state to num, which must be a positive
@@ -783,8 +760,7 @@ not be used in a page description that is intended to be device-independent.
 <b>See Also:</b> <a href="c.html#currentflat">currentflat</a>, <a href="f.html#flattenpath">flattenpath</a>,
 <a href="#stroke">stroke</a>, <a href="f.html#fill">fill</a>
 <hr>
-<a name="setfont"></a>
-<b>setfont</b>
+<b id="setfont">setfont</b>
 <pre>   font setfont -
 cidfont setfont -</pre>
 <p>
@@ -809,8 +785,7 @@ setfont                        % Establish it as current font
 <a href="m.html#makefont">makefont</a>, <a href="f.html#findfont">findfont</a>,
 <a href="#selectfont">selectfont</a>
 <hr>
-<a name="setglobal"></a>
-<b>setglobal</b> LEVEL 2
+<b id="setglobal">setglobal</b> LEVEL 2
 <pre>bool setglobal -</pre>
 <p>
 sets the VM allocation mode: true denotes global, false denotes local. This
@@ -826,8 +801,8 @@ setglobal, reverting to local VM allocation mode if an error occurs.
 <b>Errors:</b> <a href="#stackunderflow">stackunderflow</a>, <a href="t.html#typecheck">typecheck</a>
 <p>
 <b>See Also:</b> <a href="c.html#currentglobal">currentglobal</a>
-<hr><a name="setgray"></a>
-<b>setgray</b>
+<hr>
+<b id="setgray">setgray</b>
 <pre>num setgray -</pre>
 <p>
 sets the current color space in the graphics state to DeviceGray and the current
@@ -843,8 +818,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currentgray">currentgray</a>, <a href="#setcolorspace">setcolorspace</a>,
 <a href="#setcolor">setcolor</a>
 <hr>
-<a name="setgstate"></a>
-<b>setgstate</b> LEVEL 2
+<b id="setgstate">setgstate</b> LEVEL 2
 <pre>gstate setgstate -</pre>
 <p>
 replaces the current graphics state by the value of the gstate object. This
@@ -859,8 +833,8 @@ not intersected with it.
 <p>
 <b>See Also:</b> <a href="gh.html#gstate">gstate</a>, <a href="c.html#currentgstate">currentgstate</a>,
 <a href="gh.html#gsave">gsave</a>, <a href="gh.html#grestore">grestore</a>
-<hr><a name="sethalftone"></a>
-<b>sethalftone</b> LEVEL 2
+<hr>
+<b id="sethalftone">sethalftone</b> LEVEL 2
 <pre>halftone sethalftone -</pre>
 <p>
 establishes halftone as the halftone parameter in the graphics state. Once
@@ -878,8 +852,7 @@ not be used in a page description that is intended to be device independent.
 <b>See Also:</b> <a href="c.html#currenthalftone">currenthalftone</a>, <a href="#setscreen">setscreen</a>,
 <a href="#setcolorscreen">setcolorscreen</a>
 <hr>
-<a name="sethalftonephase"></a>
-<b>sethalftonephase</b> DPS
+<b id="sethalftonephase">sethalftonephase</b> DPS
 <pre>x y sethalftonephase -</pre>
 <p>
 sets the halftone phase parameters in the graphics state. x and y
@@ -892,8 +865,7 @@ to be device independent.
 <p>
 <b>See Also:</b> <a href="c.html#currenthalftonephase">currenthalftonephase</a>
 <hr>
-<a name="sethsbcolor"></a>
-<b>sethsbcolor</b>
+<b id="sethsbcolor">sethsbcolor</b>
 <pre>hue saturation brightness sethsbcolor -</pre>
 <p>
 sets the current color space in the graphics state to DeviceRGB and the current
@@ -912,8 +884,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currenthsbcolor">currenthsbcolor</a>, <a href="#setrgbcolor">setrgbcolor</a>,
 <a href="#setcolorspace">setcolorspace</a>, <a href="#setcolor">setcolor</a>
 <hr>
-<a name="setlinecap"></a>
-<b>setlinecap</b>
+<b id="setlinecap">setlinecap</b>
 <pre>int setlinecap -</pre>
 <p>
 sets the line cap parameter in the graphics state to int, which must be
@@ -936,8 +907,7 @@ the path for a distance equal to half the line width and is squared off.
 <b>See Also:</b> <a href="c.html#currentlinecap">currentlinecap</a>, <a href="#setlinejoin">setlinejoin</a>,
 <a href="#stroke">stroke</a>
 <hr>
-<a name="setlinejoin"></a>
-<b>setlinejoin</b>
+<b id="setlinejoin">setlinejoin</b>
 <pre>int setlinejoin -</pre>
 <p>
 sets the line join parameter in the graphics state to int, which must
@@ -974,8 +944,7 @@ corners are so shallow that the difference between join styles is not visible.
 <b>See Also:</b> <a href="c.html#currentlinejoin">currentlinejoin</a>, <a href="#setlinecap">setlinecap</a>,
 <a href="#stroke">stroke</a>, <a href="#setmiterlimit">setmiterlimit</a>
 <hr>
-<a name="setlinewidth"></a>
-<b>setlinewidth</b>
+<b id="setlinewidth">setlinewidth</b>
 <pre>num setlinewidth -</pre>
 <p>
 sets the line width parameter in the graphics state to num. This controls
@@ -1006,8 +975,7 @@ to assure uniform line width.
 <b>See Also:</b> <a href="c.html#currentlinewidth">currentlinewidth</a>, <a href="#stroke">stroke</a>,
 <a href="#setstrokeadjust">setstrokeadjust</a>
 <hr>
-<a name="setmatrix"></a>
-<b>setmatrix</b>
+<b id="setmatrix">setmatrix</b>
 <pre>matrix setmatrix -</pre>
 <p>
 replaces the current transformation matrix (CTM) in the graphics state
@@ -1027,8 +995,7 @@ ordinarily modify the CTM (by use of the <a href="t.html#translate">translate</a
 <a href="#scale">scale</a>, <a href="t.html#translate">translate</a>,
 <a href="c.html#concat">concat</a>
 <hr>
-<a name="setmiterlimit"></a>
-<b>setmiterlimit</b>
+<b id="setmiterlimit">setmiterlimit</b>
 <pre>num setmiterlimit -</pre>
 <p>
 sets the miter limit parameter in the graphics state to num, which must
@@ -1068,8 +1035,7 @@ miters are specified.
 <b>See Also:</b> <a href="c.html#currentmiterlimit">currentmiterlimit</a>,
 <a href="#stroke">stroke</a>, <a href="#setlinejoin">setlinejoin</a>
 <hr>
-<a name="setobjectformat"></a>
-<b>setobjectformat</b> LEVEL 2
+<b id="setobjectformat">setobjectformat</b> LEVEL 2
 <pre>int setobjectformat -</pre>
 <p>
 establishes the number representation to be used in binary object sequences written
@@ -1108,8 +1074,8 @@ for each context.
 <b>See Also:</b> <a href="c.html#currentobjectformat">currentobjectformat</a>,
 <a href="p.html#printobject">printobject</a>, <a href="w.html#writeobject">writeobject</a>
 <hr>
-<a name="setoverprint"></a>
-<b>setoverprint</b> bool setoverprint - LEVEL 2
+<b id="setoverprint">setoverprint</b>
+<pre>bool setoverprint - LEVEL 2</pre>
 <p>
 sets the overprint parameter in the graphics state to bool. On output devices capable
 of producing separations or of generating composite output in multiple colorants,
@@ -1130,8 +1096,7 @@ should not be used in a program that is intended to be device-independent.
 <p>
 <b>See Also:</b> <a href="c.html#currentoverprint">currentoverprint</a>, <a href="#setcolorspace">setcolorspace</a>
 <hr>
-<a name="setpacking"></a>
-<b>setpacking</b> LEVEL 2
+<b id="setpacking">setpacking</b> LEVEL 2
 <pre>bool setpacking -</pre>
 <p>
 sets the array packing mode to bool. This determines the type of executable arrays
@@ -1168,8 +1133,7 @@ array packing mode in effect before its execution.
 <p>
 <b>See Also:</b> <a href="c.html#currentpacking">currentpacking</a>, <a href="p.html#packedarray">packedarray</a>
 <hr>
-<a name="setpagedevice"></a>
-<b>setpagedevice</b> LEVEL 2
+<b id="setpagedevice">setpagedevice</b> LEVEL 2
 <pre>dict setpagedevice -</pre>
 <p>
 modifies the contents of the page device dictionary in the graphics state based on
@@ -1221,8 +1185,7 @@ undefined error occurs.
 <a href="no.html#nulldevice">nulldevice</a>, <a href="gh.html#gsave">gsave</a>,
 <a href="gh.html#grestore">grestore</a>
 <hr>
-<a name="setpattern"></a>
-<b>setpattern</b> LEVEL 2
+<b id="setpattern">setpattern</b> LEVEL 2
 <pre>                pattern setpattern -
 comp<sub>1</sub> ... comp<sub>n</sub> pattern setpattern -</pre>
 <p>
@@ -1271,8 +1234,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="f.html#findresource">findresource</a>, <a href="m.html#makepattern">makepattern</a>,
 <a href="#setcolor">setcolor</a>, <a href="#setcolorspace">setcolorspace</a>
 <hr>
-<a name="setrgbcolor"></a>
-<b>setrgbcolor</b>
+<b id="setrgbcolor">setrgbcolor</b>
 <pre>red green blue setrgbcolor -</pre>
 <p>
 sets the color space to DeviceRGB, then sets the current color parameter
@@ -1293,8 +1255,7 @@ Execution of this operator is not permitted in certain circumstances.
 <a href="#sethsbcolor">sethsbcolor</a>, <a href="#setcolorspace">setcolorspace</a>,
 <a href="#setcolor">setcolor</a>
 <hr>
-<a name="setscreen"></a>
-<b>setscreen</b>
+<b id="setscreen">setscreen</b>
 <pre>frequency angle proc setscreen -
   num<sub>1</sub> num<sub>2</sub> halftone setscreen -</pre>
 <p>
@@ -1339,8 +1300,7 @@ Section 4.8.1, "Types of Color Space."
 <p>
 <b>See Also:</b> <a href="c.html#currentscreen">currentscreen</a>, <a href="#sethalftone">sethalftone</a>
 <hr>
-<a name="setshared"></a>
-<b>setshared</b> LEVEL 2
+<b id="setshared">setshared</b> LEVEL 2
 <pre>bool setshared -</pre>
 <p>
 has the same semantics as setglobal. This operator is defined for compatibility
@@ -1350,8 +1310,7 @@ with existing Display PostScript applications.
 <p>
 <b>See Also:</b> <a href="#setglobal">setglobal</a>
 <hr>
-<a name="setstrokeadjust"></a>
-<b>setstrokeadjust</b> LEVEL 2
+<b id="setstrokeadjust">setstrokeadjust</b> LEVEL 2
 <pre>bool setstrokeadjust -</pre>
 <p>
 sets the stroke adjustment parameter in the graphics state to bool. This parameter
@@ -1369,8 +1328,7 @@ change it. It is not altered by initgraphics.
 <b>See Also:</b> <a href="c.html#currentstrokeadjust">currentstrokeadjust</a>,
 <a href="#stroke">stroke</a>
 <hr>
-<a name="setsystemparams"></a>
-<b>setsystemparams</b> LEVEL 2
+<b id="setsystemparams">setsystemparams</b> LEVEL 2
 <pre>dict setsystemparams -</pre>
 <p>
 attempts to set one or more system parameters whose keys and new values are
@@ -1423,8 +1381,7 @@ set the default value of the MaxFontItem user parameter to 7500.
 <b>See Also:</b> <a href="c.html#currentsystemparams">currentsystemparams</a>,
 <a href="#setuserparams">setuserparams</a>, <a href="#setdevparams">setdevparams</a>
 <hr>
-<a name="settransfer"></a>
-<b>settransfer</b>
+<b id="settransfer">settransfer</b>
 <pre>proc settransfer -</pre>
 <p>
 sets the transfer function parameter in the graphics state to proc (see Section 7.3,
@@ -1446,8 +1403,7 @@ Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currenttransfer">currenttransfer</a>, <a href="#setcolortransfer">setcolortransfer</a>,
 <a href="#sethalftone">sethalftone</a>
 <hr>
-<a name="setucacheparams"></a>
-<b>setucacheparams</b> LEVEL 2
+<b id="setucacheparams">setucacheparams</b> LEVEL 2
 <pre>mark blimit setucacheparams -</pre>
 <p>
 sets user path cache parameters as specified by the integer objects above the topmost
@@ -1477,8 +1433,7 @@ parameter set by setuserparams (see Appendix C).
 <p>
 <b>See Also:</b> <a href="u.html#ucachestatus">ucachestatus</a>, <a href="#setuserparams">setuserparams</a>
 <hr>
-<a name="setundercolorremoval"></a>
-<b>setundercolorremoval</b> LEVEL 2
+<b id="setundercolorremoval">setundercolorremoval</b> LEVEL 2
 <pre>proc setundercolorremoval -</pre>
 <p>
 sets the undercolor-removal function in the graphics state to proc. The value of this
@@ -1502,8 +1457,7 @@ see Section 4.8.1, "Types of Color Space."
 <b>See Also:</b> <a href="c.html#currentundercolorremoval">currentundercolorremoval</a>,
 <a href="#setblackgeneration">setblackgeneration</a>
 <hr>
-<a name="setuserparams"></a>
-<b>setuserparams</b> LEVEL 2
+<b id="setuserparams">setuserparams</b> LEVEL 2
 <pre>dict setuserparams -</pre>
 <p>
 attempts to set one or more user parameters whose keys and new values are contained
@@ -1546,8 +1500,7 @@ This example attempts to set the MaxFontItem user parameter to 7500.
 <b>See Also:</b> <a href="c.html#currentuserparams">currentuserparams</a>,
 <a href="#setsystemparams">setsystemparams</a>, <a href="#setdevparams">setdevparams</a>
 <hr>
-<a name="setvmthreshold"></a>
-<b>setvmthreshold</b> LEVEL 2
+<b id="setvmthreshold">setvmthreshold</b> LEVEL 2
 <pre>int setvmthreshold -</pre>
 <p>
 sets the allocation threshold used to trigger garbage collection. If int is less than the
@@ -1568,8 +1521,7 @@ parameter set by setuserparams (see Appendix C).
 <p>
 <b>See Also:</b> <a href="#setuserparams">setuserparams</a>
 <hr>
-<a name="shareddict"></a>
-<b>shareddict</b> LEVEL 2
+<b id="shareddict">shareddict</b> LEVEL 2
 <pre>- shareddict dict</pre>
 <p>
 is the same dictionary as globaldict. The name shareddict is defined for compatibility
@@ -1579,8 +1531,7 @@ with earlier PostScript interpreter implementations.
 <p>
 <b>See Also:</b> <a href="gh.html#globaldict">globaldict</a>
 <hr>
-<a name="SharedFontDirectory"></a>
-<b>SharedFontDirectory</b> LEVEL 2
+<b id="SharedFontDirectory">SharedFontDirectory</b> LEVEL 2
 <pre>- SharedFontDirectory dict</pre>
 <p>
 is the same dictionary as GlobalFontDirectory. The name SharedFontDirectory is
@@ -1590,8 +1541,7 @@ defined for compatibility with earlier PostScript interpreter implementations.
 <p>
 <b>See Also:</b> <a href="gh.html#GlobalFontDirectory">GlobalFontDirectory</a>
 <hr>
-<a name="show"></a>
-<b>show</b>
+<b id="show">show</b>
 <pre>string show -</pre>
 <p>
 paints glyphs for the characters identified by the elements of string on the current
@@ -1621,8 +1571,7 @@ rendition of fonts.
 <a href="c.html#charpath">charpath</a>, <a href="m.html#moveto">moveto</a>,
 <a href="#setfont">setfont</a>
 <hr>
-<a name="showpage"></a>
-<b>showpage</b>
+<b id="showpage">showpage</b>
 <pre>- showpage -</pre>
 <p>
 ransmits the contents of the current page to the current output device, causing
@@ -1680,8 +1629,7 @@ the graphics state.
 <b>See Also:</b> <a href="c.html#copypage">copypage</a>, <a href="e.html#erasepage">erasepage</a>,
 <a href="#setpagedevice">setpagedevice</a>
 <hr>
-<a name="sin"></a>
-<b>sin</b>
+<b id="sin">sin</b>
 <pre>angle sin real</pre>
 <p>
 returns the sine of angle, which is interpreted as an angle in degrees.
@@ -1691,8 +1639,7 @@ The result is a real.
 <p>
 <b>See Also:</b> <a href="c.html#cos">cos</a>, <a href="a.html#atan">atan</a>
 <hr>
-<a name="sqrt"></a>
-<b>sqrt</b>
+<b id="sqrt">sqrt</b>
 <pre>num sqrt real</pre>
 <p>
 returns the square root of num, which must be a non-negative number. The
@@ -1703,8 +1650,7 @@ result is a real.
 <p>
 <b>See Also:</b> <a href="e.html#exp">exp</a>
 <hr>
-<a name="srand"></a>
-<b>srand</b>
+<b id="srand">srand</b>
 <pre>int srand -</pre>
 <p>
 initializes the random number generator with the seed int, which may be
@@ -1715,8 +1661,7 @@ invocations of rand to generate a reproducible sequence of results.
 <p>
 <b>See Also:</b> <a href="qr.html#rand">rand</a>, <a href="qr.html#rrand">rrand</a>
 <hr>
-<a name="stack"></a>
-<b>stack</b>
+<b id="stack">stack</b>
 <pre>any<sub>1</sub> ... any<sub>n</sub> stack any<sub>1</sub> ... any<sub>n</sub></pre>
 <p>
 writes text representations of every object on the stack to the
@@ -1730,8 +1675,7 @@ operator for a description of its effects.
 <b>See Also:</b> <a href="p.html#pstack">pstack</a>, <a href="@.html#equals">=</a>,
 <a href="@.html#twoequals">==</a>, <a href="c.html#count">count</a>
 <hr>
-<a name="stackoverflow"></a>
-<b>stackoverflow</b> (error)
+<b id="stackoverflow">stackoverflow</b> (error)
 <p>
 The operand stack has grown too large. Too many objects have been pushed
 on the stack and not popped off. Before invoking this error, the interpreter
@@ -1739,14 +1683,13 @@ creates an array containing all elements of the operand stack (stored as
 if by <a href="a.html#astore">astore</a>), resets the operand stack
 to empty, and pushes the array on the operand stack.
 <hr>
-<a name="stackunderflow"></a><b>stackunderflow</b> (error)
+<b id="stackunderflow">stackunderflow</b> (error)
 <p>
 An attempt has been made to remove an object from the operand stack when
 it is empty. This usually occurs because some operator did not have all
 of its required operands on the stack.
 <hr>
-<a name="StandardEncoding"></a>
-<b>StandardEncoding</b>
+<b id="StandardEncoding">StandardEncoding</b>
 <pre>- StandardEncoding array</pre>
 <p>
 pushes the standard encoding vector on the operand stack. This is a 256-element
@@ -1764,8 +1707,7 @@ than define its own private array.
 <b>See Also:</b> <a href="ik.html#ISOLatin1Encoding">ISOLatin1Encoding</a>,
 <a href="f.html#findencoding">findencoding</a>
 <hr>
-<a name="start"></a>
-<b>start</b>
+<b id="start">start</b>
 <pre>- start -</pre>
 <p>
 is executed by the PostScript interpreter when it starts up. After setting up the
@@ -1782,8 +1724,7 @@ effect of executing it explicitly is undefined.
 <p>
 <b>See Also:</b> <a href="qr.html#quit">quit</a>
 <hr>
-<a name="startjob"></a>
-<b>startjob</b> LEVEL 2
+<b id="startjob">startjob</b> LEVEL 2
 <pre>bool password startjob bool</pre>
 <p>
 conditionally starts a new job whose execution may alter the initial virtual memory
@@ -1825,8 +1766,7 @@ system parameters; see Section C.3.1, "Passwords," for details.
 <b>See Also:</b> <a href="e.html#exitserver">exitserver</a>, <a href="#setsystemparams">setsystemparams</a>,
 <a href="#save">save</a>, <a href="qr.html#restore">restore</a>
 <hr>
-<a name="status"></a>
-<b>status</b>
+<b id="status">status</b>
 <pre>  file status bool
 string status pages bytes referenced created true   (if found)
               false                                 (if not found)>
@@ -1856,8 +1796,7 @@ or writing.
 <b>See Also:</b> <a href="f.html#file">file</a>, <a href="c.html#closefile">closefile</a>,
 <a href="f.html#filenameforall">filenameforall</a>
 <hr>
-<a name="statusdict"></a>
-<b>statusdict</b>
+<b id="statusdict">statusdict</b>
 <pre>- statusdict dict</pre>
 <p>
 pushes a product-dependent dictionary on the operand stack. statusdict is
@@ -1885,8 +1824,7 @@ program impairs the portability of that program.
 <p>
 <b>Errors:</b> <a href="#stackoverflow">stackoverflow</a>, <a href="u.html#undefined">undefined</a>
 <hr>
-<a name="stop"></a>
-<b>stop</b>
+<b id="stop">stop</b>
 <pre>- stop -</pre>
 <p>
 terminates execution of the innermost, dynamically enclosing instance
@@ -1909,8 +1847,7 @@ never occurs during execution of ordinary user programs.
 <p>
 <b>See Also:</b> <a href="#stopped">stopped</a>, <a href="e.html#exit">exit</a>
 <hr>
-<a name="stopped"></a>
-<b>stopped</b>
+<b id"stopped">stopped</b>
 <pre>any stopped bool</pre>
 <p>
 executes any, which is typically, but not necessarily, a procedure, executable
@@ -1938,8 +1875,7 @@ In any event, normal execution continues at the token following the if.
 <p>
 <b>See Also:</b> <a href="#stop">stop</a> <a href="#store">store</a> key value
 <hr>
-<a name="store"></a>
-<b>store</b>
+<b id="store">store</b>
 <pre>key value store -</pre>
 <p>
 searches for key in each dictionary on the dictionary stack, starting
@@ -1964,8 +1900,8 @@ The two code fragments above have the same effect.
 <p>
 <b>See Also:</b> <a href="d.html#def">def</a>, <a href="p.html#put">put</a>,
 <a href="w.html#where">where</a>, <a href="l.html#load">load</a>
-<hr><a name="string"></a>
-<b>string</b>
+<hr>
+<b id="string">string</b>
 <pre>int string string</pre>
 <p>
 creates a string of length int, each of whose elements is initialized with
@@ -1980,8 +1916,7 @@ according to the current VM allocation mode.
 <p>
 <b>See Also:</b> <a href="l.html#length">length</a>, <a href="t.html#type">type</a>
 <hr>
-<a name="stringwidth"></a>
-<b>stringwidth</b>
+<b id="stringwidth">stringwidth</b>
 <pre>string stringwidth w<sub>x</sub> w<sub>y</sub></pre>
 <p>
 calculates the change in the current point that would occur if string were
@@ -2008,8 +1943,7 @@ and <a href="p.html#pathbbox">pathbbox</a>).
 <p>
 <b>See Also:</b> <a href="#show">show</a>, <a href="#setfont">setfont</a>
 <hr>
-<a name="stroke"></a>
-<b>stroke</b>
+<b id="stroke">stroke</b>
 <pre>- stroke -</pre>
 <p>
 paints a line centered on the current path, with sides parallel to the path segments.
@@ -2046,8 +1980,7 @@ grestore
 <a href="#setdash">setdash</a>, <a href="#setstrokeadjust">setstrokeadjust</a>,
 <a href="u.html#ustroke">ustroke</a>
 <hr>
-<a name="strokepath"></a>
-<b>strokepath</b>
+<b id="strokepath">strokepath</b>
 <pre>- strokepath -</pre>
 <p>
 replaces the current path with one enclosing the shape that would result
@@ -2063,8 +1996,7 @@ conversion process.
 <a href="#stroke">stroke</a>, <a href="p.html#pathbbox">pathbbox</a>,
 <a href="c.html#charpath">charpath</a>
 <hr>
-<a name="sub"></a>
-<b>sub</b>
+<b id="sub">sub</b>
 <pre>num<sub>1</sub> num<sub>2</sub> sub difference</pre>
 <p>
 difference returns the result of subtracting num2 from num1. If both operands
@@ -2077,8 +2009,7 @@ Otherwise, the result is a real.
 <b>See Also:</b> <a href="a.html#add">add</a>, <a href="d.html#div">div</a>,
 <a href="m.html#mul">mul</a>, <a href="ik.html#idiv">idiv</a>, <a href="m.html#mod">mod</a>
 <hr>
-<a name="syntaxerror"></a>
-<b>syntaxerror</b> (error)
+<b id="syntaxerror">syntaxerror</b> (error)
 <p>
 The scanner has encountered program text that does not conform to the PostScript
 language syntax rules. This can occur either during interpretation of an
@@ -2103,8 +2034,7 @@ error when executed).
 Tokens that exceed implementation limits, such as names that are too long
 or numbers whose values are too large, produce a <a href="l.html#limitcheck">limitcheck</a>.
 <hr>
-<a name="systemdict"></a>
-<b>systemdict</b>
+<b id="systemdict">systemdict</b>
 <pre>- systemdict dict</pre>
 <p>
 pushes the dictionary object systemdict on the operand stack . systemdict

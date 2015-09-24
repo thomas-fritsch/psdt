@@ -15,7 +15,7 @@
 			<th>Value</th>
 		</tr>
 		<tr>
-			<th><a name="PageDeviceName"></a>PageDeviceName</th>
+			<th id="PageDeviceName">PageDeviceName</th>
 			<td>string, name, or null</td>
 			<td><i>(LanguageLevel 3)</i> The name of the device
 				configuration represented by this page device dictionary. The <b>GetPageDeviceName</b>
@@ -29,7 +29,7 @@
 				selection.</td>
 		</tr>
 		<tr>
-			<th><a name="ProcessColorModel"></a>ProcessColorModel</th>
+			<th id="ProcessColorModel">ProcessColorModel</th>
 			<td>name or string</td>
 			<td><i>(LanguageLevel 3)</i> The model used for
 				rendering process colors on the device (see "Process Color Model" on
@@ -46,7 +46,7 @@
 				</p></td>
 		</tr>
 		<tr>
-			<th><a name="Separations"></a>Separations</th>
+			<th id="Separations">Separations</th>
 			<td>boolean</td>
 			<td>A flag specifying whether the device should
 				produce separations or composite output. If this flag is true,
@@ -67,7 +67,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th><a name="MaxSeparations"></a>MaxSeparations</th>
+			<th id="MaxSeparations">MaxSeparations</th>
 			<td>integer</td>
 			<td><i>(Read-only; LanguageLevel 3)</i> The maximum
 				number of separations that the device is capable of producing for
@@ -79,7 +79,7 @@
 				<b>HWResolution</b>. Valid range: 1 to 250.</td>
 		</tr>
 		<tr>
-			<th><a name="SeparationColorNames"></a>SeparationColorNames</th>
+			<th id="SeparationColorNames">SeparationColorNames</th>
 			<td>array</td>
 			<td><i>(LanguageLevel 3)</i> An array specifying
 				the names of all colorants that are valid values for <b>Separation</b>
@@ -97,7 +97,7 @@
 					and duplicate elements are ignored.</p></td>
 		</tr>
 		<tr>
-			<th><a name="SeparationOrder"></a>SeparationOrder</th>
+			<th id="SeparationOrder">SeparationOrder</th>
 			<td>array</td>
 			<td><i>(LanguageLevel 3)</i> An array specifying
 				the colorants to be applied when generating output on the device.
@@ -134,7 +134,7 @@
 				</p></td>
 		</tr>
 		<tr>
-			<th><a name="UseCIEColor"></a>UseCIEColor</th>
+			<th id="UseCIEColor">UseCIEColor</th>
 			<td>boolean</td>
 			<td><i>(LanguageLevel 3)</i> A flag that enables or
 				disables the remapping of colors from device color spaces to
@@ -142,7 +142,7 @@
 				Colors to CIE"" on page 237).</td>
 		</tr>
 		<tr>
-			<th><a name="Trapping"></a>Trapping</th>
+			<th id="Trapping">Trapping</th>
 			<td>boolean</td>
 			<td><i>(LanguageLevel 3)</i> A flag that enables or
 				disables in-RIP trapping (see Section 6.3, "In-RIP Trapping").
@@ -152,7 +152,7 @@
 				one colorant, trapping is disabled.</td>
 		</tr>
 		<tr>
-			<th><a name="TrappingDetails"></a>TrappingDetails</th>
+			<th id="TrappingDetails">TrappingDetails</th>
 			<td>dictionary</td>
 			<td><i>(LanguageLevel 3)</i> A dictionary
 				containing parameters that control the operation of in-RIP trapping

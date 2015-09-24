@@ -168,14 +168,14 @@
 			<th>Value</th>
 		</tr>
 		<tr>
-			<th><a name="FontType"></a>FontType</th>
+			<th id="FontType">FontType</th>
 			<td>integer</td>
 			<td><i>(Required)</i> The font type; see Table 5.1. Indicates
 				where the glyph descriptions are to be found and how they are
 				represented.</td>
 		</tr>
 		<tr>
-			<th><a name="FontMatrix"></a>FontMatrix</th>
+			<th id="FontMatrix">FontMatrix</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array that transforms the <i>glyph
 					coordinate system</i> into the user coordinate system (see Section 5.4,
@@ -188,7 +188,7 @@
 			</td>
 		</tr>
 		<tr>
-			<th><a name="FontName"></a>FontName</th>
+			<th id="FontName">FontName</th>
 			<td>name</td>
 			<td><i>(Optional)</i> The name of the font. This entry is for
 				information only; it is not used by the PostScript interpreter.
@@ -196,14 +196,14 @@
 				but it need not be.</td>
 		</tr>
 		<tr>
-			<th><a name="FontInfo"></a>FontInfo</th>
+			<th id="FontInfo">FontInfo</th>
 			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing font information
 				that is not accessed by the PostScript interpreter; see Table 5.5 on
 				page 327.</td>
 		</tr>
 		<tr>
-			<th><a name="LanguageLevel"></a>LanguageLevel</th>
+			<th id="LanguageLevel">LanguageLevel</th>
 			<td>integer</td>
 			<td><i>(Optional)</i> The minimum LanguageLevel required for
 				correct behavior of the font. For example, any font that uses
@@ -218,7 +218,7 @@
 				to 2. Default value: 1.</td>
 		</tr>
 		<tr>
-			<th><a name="WMode"></a>WMode</th>
+			<th id="WMode">WMode</th>
 			<td>integer</td>
 			<td><i>(Optional; LanguageLevel 2)</i> The writing mode, which
 				determines which of two sets of metrics will be used when glyphs are
@@ -228,7 +228,7 @@
 				font extensions ignore this entry. Default value: 0.</td>
 		</tr>
 		<tr>
-			<th><a name="FID"></a>FID</th>
+			<th id="FID">FID</th>
 			<td>fontID</td>
 			<td><i>(Inserted by <b>definefont</b>)
 			</i> A special object of type fontID that serves internal purposes in the
@@ -248,13 +248,13 @@
 			<th>Value</th>
 		</tr>
 		<tr>
-			<th><a name="Encoding"></a>Encoding</th>
+			<th id="Encoding">Encoding</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array of character names to which
 				character codes are mapped. See Section 5.3, "Character Encoding."</td>
 		</tr>
 		<tr>
-			<th><a name="FontBBox"></a>FontBBox</th>
+			<th id="FontBBox">FontBBox</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array of four numbers in the glyph
 				coordinate system giving the left, bottom, right, and top
@@ -275,14 +275,14 @@
 					operator to avoid unintended execution.</td>
 		</tr>
 		<tr>
-			<th><a name="UniqueUID"></a>UniqueID</th>
+			<th id="UniqueUID">UniqueID</th>
 			<td>integer</td>
 			<td><i>(Optional)</i> An integer in the range 0 to 16,777,215 (2<sup>24</sup>
 				- 1) that uniquely identifies this font. See Section 5.6, "Unique ID
 				Generation."</td>
 		</tr>
 		<tr>
-			<th><a name="XUID"></a>XUID</th>
+			<th id="XUID">XUID</th>
 			<td>array</td>
 			<td><i>(Optional; LanguageLevel 2)</i> An array of integers that
 				uniquely identifies this font or any variant of it. See Section 5.6,
@@ -299,7 +299,7 @@
 			<th>Value</th>
 		</tr>
 		<tr>
-			<th><a name="PaintType"></a>PaintType</th>
+			<th id="PaintType">PaintType</th>
 			<td>integer</td>
 			<td><i>(Required)</i> A code indicating how the glyphs of the
 				font are to be painted:
@@ -314,7 +314,7 @@
 				supported.</td>
 		</tr>
 		<tr>
-			<th><a name="StrokeWidth"></a>StrokeWidth</th>
+			<th id="StrokeWidth">StrokeWidth</th>
 			<td>number</td>
 			<td><i>(Optional)</i> The stroke width (in units of the glyph
 				coordinate system) for stroked-outline fonts (<b>PaintType</b> 2).
@@ -323,7 +323,7 @@
 				created from an existing filled font. Default value: 0.</td>
 		</tr>
 		<tr>
-			<th><a name="Metrics"></a>Metrics</th>
+			<th id="Metrics">Metrics</th>
 			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing metric information
 				(glyph widths and sidebearings) for writing mode 0. This entry is
@@ -333,13 +333,13 @@
 				Information,” and 5.9.2, "Changing Glyph Metrics."</td>
 		</tr>
 		<tr>
-			<th><a name="Metrics2"></a>Metrics2</th>
+			<th id="Metrics2">Metrics2</th>
 			<td>dictionary</td>
 			<td><i>(Optional; LanguageLevel 2)</i> Similar to Metrics, but
 				for writing mode 1.</td>
 		</tr>
 		<tr>
-			<th><a name="CDevProc"></a>CDevProc</th>
+			<th id="CDevProc">CDevProc</th>
 			<td>procedure</td>
 			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
 				algorithmically derives global changes to the font's metrics.
@@ -347,7 +347,7 @@
 				ignore this entry.</td>
 		</tr>
 		<tr>
-			<th><a name="CharStrings"></a>CharStrings</th>
+			<th id="CharStrings">CharStrings</th>
 			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary associating character names
 				(the keys in the dictionary) with glyph descriptions. Each entry's
@@ -360,7 +360,7 @@
 				Glyphs." This dictionary must have an entry whose key is .notdef.</td>
 		</tr>
 		<tr>
-			<th><a name="Private"></a>Private</th>
+			<th id="Private">Private</th>
 			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary containing other internal
 				information about the font. See <a
@@ -368,7 +368,7 @@
 					Type 1 Font Format</a> for details.</td>
 		</tr>
 		<tr>
-			<th><a name="WeightVector"></a>WeightVector</th>
+			<th id="WeightVector">WeightVector</th>
 			<td>dictionary</td>
 			<td><i>(Required; multiple-master fonts only)</i> An array
 				specifying the contribution of each master design to the current

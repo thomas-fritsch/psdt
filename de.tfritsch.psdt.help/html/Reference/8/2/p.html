@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'p'</h1>
 <hr>
-<a name="packedarray"></a>
-<b>packedarray</b> LEVEL 2
+<b id="packedarray">packedarray</b> LEVEL 2
 <pre>any<sub>0</sub> ... any<sub>n-1</sub> n packedarray packedarray</pre>
 <p>
 creates a packed <a href="a.html#array">array</a> object of length n
@@ -33,8 +32,7 @@ are in local VM.
 <p>
 <b>See Also:</b> <a href="a.html#aload">aload</a>
 <hr>
-<a name="pathbbox"></a>
-<b>pathbbox</b>
+<b id="pathbbox">pathbbox</b>
 <pre>- pathbbox ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub></pre>
 <p>
 returns the bounding box of the current path in the current user coordinate
@@ -67,8 +65,7 @@ path.
 <b>See Also:</b> <a href="f.html#flattenpath">flattenpath</a>, <a href="c.html#clippath">clippath</a>,
 <a href="c.html#charpath">charpath</a>, <a href="s.html#setbbox">setbbox</a>
 <hr>
-<a name="pathforall"></a>
-<b>pathforall</b>
+<b id="pathforall">pathforall</b>
 <pre>move line curve close pathforall -</pre>
 <p>
 removes four operands from the stack, all of which must be procedures.
@@ -115,8 +112,7 @@ error (see <a href="c.html#charpath">charpath</a>).
 <a href="c.html#curveto">curveto</a>, <a href="c.html#closepath">closepath</a>,
 <a href="c.html#charpath">charpath</a>
 <hr>
-<a name="pop"></a>
-<b>pop</b>
+<b id="pop">pop</b>
 <pre>any pop -</pre>
 <p>
 removes the top element from the operand stack and discards it.
@@ -131,8 +127,7 @@ removes the top element from the operand stack and discards it.
 <p>
 <b>See Also:</b> <a href="c.html#clear">clear</a>, <a href="d.html#dup">dup</a>
 <hr>
-<a name="print"></a>
-<b>print</b>
+<b id="print">print</b>
 <pre>string print -</pre>
 <p>
 writes the characters of string to the standard output file. The print
@@ -148,8 +143,7 @@ or with sending the current page to a raster output device (see <a href="s.html#
 <a href="@.html#equals">=</a>, <a href="@.html#twoequals">==</a>,
 <a href="#printobject">printobject</a>
 <hr>
-<a name="printobject"></a>
-<b>printobject</b> LEVEL 2
+<b id="printobject">printobject</b> LEVEL 2
 <pre>obj tag printobject -</pre>
 <p>
 writes a binary object sequence to the standard output file. The binary
@@ -193,8 +187,7 @@ response to a query from the application.
 <b>See Also:</b> <a href="#print">print</a>, <a href="s.html#setobjectformat">setobjectformat</a>,
 <a href="w.html#writeobject">writeobject</a>
 <hr>
-<a name="product"></a>
-<b>product</b> LEVEL 2
+<b id="product">product</b> LEVEL 2
 <pre>- product string</pre>
 <p>
 is a read-only string object that is the name of the product in which the
@@ -207,8 +200,7 @@ features of the PostScript language.
 <b>See Also:</b> <a href="l.html#languagelevel">languagelevel</a>, <a href="qr.html#revision">revision</a>,
 <a href="s.html#serialnumber">serialnumber</a>, <a href="v.html#version">version</a>
 <hr>
-<a name="prompt"></a>
-<b>prompt</b>
+<b id="prompt">prompt</b>
 <pre>- prompt -</pre>
 <p>
 is a procedure executed by executive whenever it is ready for the user
@@ -222,8 +214,7 @@ defined in products that do not support executive.
 <p>
 <b>See Also:</b> <a href="e.html#executive">executive</a>
 <hr>
-<a name="pstack"></a>
-<b>pstack</b>
+<b id="pstack">pstack</b>
 <pre>any<sub>1</sub> ... any<sub>n</sub> pstack any<sub>1</sub> ... any<sub>n</sub></pre>
 <p>
 writes text representations of every object on the stack to the standard
@@ -237,8 +228,7 @@ of its effects.
 <b>See Also:</b> <a href="s.html#stack">stack</a>, <a href="@.html#equals">=</a>,
 <a href="@.html#twoequals">==</a>
 <hr>
-<a name="put"></a>
-<b>put</b>
+<b id="put">put</b>
 <pre> array index any put -
     dict key any put -
 string index int put -</pre>
@@ -283,8 +273,7 @@ st                   &rArr; (Abc)
 <p>
 <b>See Also:</b> <a href="gh.html#get">get</a>, <a href="#putinterval">putinterval</a>
 <hr>
-<a name="putinterval"></a>
-<b>putinterval</b>
+<b id="putinterval">putinterval</b>
 <pre>      array<sub>1</sub> index array<sub>2</sub> putinterval -
 array<sub>1</sub> index packedarray<sub>2</sub> putinterval -
     string<sub>1</sub> index string<sub>2</sub> putinterval -</pre>

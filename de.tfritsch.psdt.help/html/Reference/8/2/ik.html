@@ -6,8 +6,7 @@
 <body>
 <h1>Postscript Operators 'i','j', and 'k'</h1>
 <hr>
-<a name="identmatrix"></a>
-<b>identmatrix</b>
+<b id="identmatrix">identmatrix</b>
 <pre>matrix identmatrix matrix</pre>
 <p>
 replaces the value of matrix with the value of the identity matrix
@@ -23,8 +22,7 @@ matrix transforms any coordinate to itself.
 <b>See Also:</b> <a href="m.html#matrix">matrix</a>, <a href="c.html#currentmatrix">currentmatrix</a>,
 <a href="d.html#defaultmatrix">defaultmatrix</a>, <a href="#initmatrix">initmatrix</a>
 <hr>
-<a name="idiv"></a>
-<b>idiv</b>
+<b id="idiv">idiv</b>
 <pre>int<sub>1</sub> int<sub>2</sub> idiv quotient</pre>
 <p>
 divides int<sub>1</sub> by int<sub>2</sub> and returns the integer part of the quotient, with
@@ -45,8 +43,7 @@ the result is an integer.
 <a href="m.html#mul">mul</a>, <a href="s.html#sub">sub</a>, <a href="m.html#mod">mod</a>,
 <a href="c.html#cvi">cvi</a>
 <hr>
-<a name="idtransform"></a>
-<b>idtransform</b>
+<b id="idtransform">idtransform</b>
 <pre>dx' dy' idtransform dx dy
 dx' dy' matrix idtransform dx dy</pre>
 <p>
@@ -70,8 +67,7 @@ space.
 <b>See Also:</b> <a href="d.html#dtransform">dtransform</a>, <a href="t.html#transform">transform</a>,
 <a href="#itransform">itransform</a>
 <hr>
-<a name="if"></a>
-<b>if</b>
+<b id="if">if</b>
 <pre>bool proc if -</pre>
 <p>
 removes both operands from the stack, then executes proc if bool is true.
@@ -87,8 +83,7 @@ proc may do so.
 <p>
 <b>See Also:</b> <a href="#ifelse">ifelse</a>
 <hr>
-<a name="ifelse"></a>
-<b>ifelse</b>
+<b id="ifelse">ifelse</b>
 <pre>bool proc<sub>1</sub> proc<sub>2</sub> ifelse -</pre>
 <p>
 removes all three operands from the stack, then executes proc<sub>1</sub> if bool is
@@ -107,8 +102,7 @@ ifelse           &rArr; (FalsePart)    % Since 4 is not less than 3
 <p>
 <b>See Also:</b> <a href="#if">if</a>
 <hr>
-<a name="image"></a>
-<b>image</b>
+<b id="image">image</b>
 <pre>width height bits/sample matrix datasrc image -
                                    dict image -</pre>
 <p>
@@ -159,8 +153,7 @@ Execution of this operator is not permitted in certain circumstances.
 <p>
 <b>See Also:</b> <a href="#imagemask">imagemask</a>, <a href="c.html#colorimage">colorimage</a>
 <hr>
-<a name="imagemask"></a>
-<b>imagemask</b>
+<b id="imagemask">imagemask</b>
 <pre>width height polarity matrix datasrc imagemask -
                                 dict imagemask -</pre>
 <p>
@@ -225,8 +218,7 @@ imagemask
 <p>
 <b>See Also:</b> <a href="#image">image</a>, <a href="c.html#colorimage">colorimage</a>
 <hr>
-<a name="index"></a>
-<b>index</b>
+<b id="index">index</b>
 <pre>any<sub>n</sub> ... any<sub>0</sub> n index any<sub>n</sub> ... any<sub>0</sub> any<sub>n</sub></pre>
 <p>
 removes the non-negative integer n from the operand stack, counts down to
@@ -245,8 +237,7 @@ on the stack.
 <b>See Also:</b> <a href="c.html#copy">copy</a>, <a href="d.html#dup">dup</a>,
 <a href="qr.html#roll">roll</a>
 <hr>
-<a name="ineofill"></a>
-<b>ineofill</b> LEVEL 2
+<b id="ineofill">ineofill</b> LEVEL 2
 <pre>     x y ineofill bool
 userpath ineofill bool</pre>
 <p>
@@ -259,8 +250,7 @@ test is based on <a href="e.html#eofill">eofill</a> instead of <a href="f.html#f
 <p>
 <b>See Also:</b> <a href="e.html#eofill">eofill</a>, <a href="#infill">infill</a>
 <hr>
-<a name="infill"></a>
-<b>infill</b> LEVEL 2
+<b id="infill">infill</b> LEVEL 2
 <pre>     x y infill bool
 userpath infill bool</pre>
 <p>
@@ -294,8 +284,7 @@ x y infill and
 <p>
 <b>See Also:</b> <a href="f.html#fill">fill</a>, <a href="#ineofill">ineofill</a>
 <hr>
-<a name="initclip"></a>
-<b>initclip</b>
+<b id="initclip">initclip</b>
 <pre>- initclip -</pre>
 <p>
 replaces the current clip path parameter in the graphics state by the default
@@ -316,8 +305,7 @@ incorrect results if it is embedded within another, composite page.
 <b>See Also:</b> <a href="c.html#clip">clip</a>, <a href="e.html#eoclip">eoclip</a>,
 <a href="c.html#clippath">clippath</a>, <a href="#initgraphics">initgraphics</a>
 <hr>
-<a name="initgraphics"></a>
-<b>initgraphics</b>
+<b id="initgraphics">initgraphics</b>
 <pre>- initgraphics -</pre>
 <p>
 % different in the NeXT implementation
@@ -375,8 +363,7 @@ that the default state prevailed initially.
 <b>See Also:</b> <a href="gh.html#grestoreall">grestoreall</a>, hideinstance,
 newinstance, setalpha, setinstance
 <hr>
-<a name="initmatrix"></a>
-<b>initmatrix</b>
+<b id="initmatrix">initmatrix</b>
 <pre>- initmatrix -</pre>
 <p>
 sets the current transformation matrix (CTM) to the default matrix for the
@@ -394,8 +381,7 @@ produces incorrect results if it is embedded within another, composite page.
 <b>See Also:</b> <a href="d.html#defaultmatrix">defaultmatrix</a>, <a href="c.html#currentmatrix">currentmatrix</a>,
 <a href="s.html#setmatrix">setmatrix</a>
 <hr>
-<a name="initviewclip"></a>
-<b>initviewclip</b> DPS
+<b id="initviewclip">initviewclip</b> DPS
 <pre>- initviewclip -</pre>
 <p>
 returns the context to its initial view clipping state, in which no view
@@ -405,8 +391,7 @@ clipping path exists.
 <p>
 <b>See Also:</b> <a href="v.html#viewclip">viewclip</a>, <a href="v.html#viewclippath">viewclippath</a>
 <hr>
-<a name="instroke"></a>
-<b>instroke</b> LEVEL 2
+<b id="instroke">instroke</b> LEVEL 2
 <pre>     x y instroke bool
 userpath instroke bool</pre>
 <p>
@@ -438,8 +423,7 @@ to be part of the stroke is device dependent.
 <b>See Also:</b> <a href="#infill">infill</a>, <a href="#inustroke">inustroke</a>,
 <a href="s.html#stroke">stroke</a>
 <hr>
-<a name="internaldict"></a>
-<b>internaldict</b>
+<b id="internaldict">internaldict</b>
 <pre>int internaldict dict</pre>
 <p>
 pushes the internal dictionary object on the operand stack. The int operand
@@ -455,8 +439,7 @@ This operator is not present in some PostScript interpreters.
 <b>Errors:</b> <a href="#invalidaccess">invalidaccess</a>, <a href="s.html#stackunderflow">stackunderflow</a>,
 <a href="u.html#undefined">undefined</a>
 <hr>
-<a name="interrupt"></a>
-<b>interrupt</b> (error)
+<b id="interrupt">interrupt</b> (error)
 <p>
 processes an external request to interrupt execution of a PostScript language
 program. When the interpreter receives an interrupt request, it executes
@@ -475,8 +458,7 @@ receipt of a control-C character from a serial communication channel gives
 rise to the interrupt error. This enables a user to explicitly abort a PostScript
 computation. The default definition of interrupt executes a stop.
 <hr>
-<a name="inueofill"></a>
-<b>inueofill</b> LEVEL 2
+<b id="inueofill">inueofill</b> LEVEL 2
 <pre>       x y userpath inueofill bool
 userpath1 userpath2 inueofill bool</pre>
 <p>
@@ -489,8 +471,7 @@ test is based on <a href="u.html#ueofill">ueofill</a> instead of <a href="u.html
 <p>
 <b>See Also:</b> <a href="#inufill">inufill</a>, <a href="e.html#eofill">eofill</a>
 <hr>
-<a name="inufill"></a>
-<b>inufill</b> LEVEL 2
+<b id="inufill">inufill</b> LEVEL 2
 <pre>       x y userpath inufill bool
 userpath1 userpath2 inufill bool</pre>
 <p>
@@ -528,8 +509,7 @@ performance.
 <b>See Also:</b> <a href="#inueofill">inueofill</a>, <a href="#infill">infill</a>,
 <a href="u.html#ufill">ufill</a>
 <hr>
-<a name="inustroke"></a>
-<b>inustroke </b> LEVEL 2
+<b id="inustroke">inustroke </b> LEVEL 2
 <pre>              x y userpath inustroke bool
        x y userpath matrix inustroke bool
        userpath1 userpath2 inustroke bool
@@ -563,8 +543,7 @@ to optimize execution.
 <b>See Also:</b> <a href="s.html#stroke">stroke</a>, <a href="u.html#ustroke">ustroke</a>,
 <a href="#instroke">instroke</a>
 <hr>
-<a name="invalidaccess"></a>
-<b>invalidaccess</b> (error)
+<b id="invalidaccess">invalidaccess</b> (error)
 <p>
 An access violation has occurred. Principal causes of invalidaccess are:
 <ul>
@@ -580,8 +559,7 @@ protected font.
 <a href="e.html#executeonly">executeonly</a>, <a href="no.html#noaccess">noaccess</a>
 <p>
 <hr>
-<a name="invalidcontext"></a>
-<b>invalidcontext</b> (error) DPS
+<b id="invalidcontext">invalidcontext</b> (error) DPS
 <p>
 indicates that an invalid use of the context synchronization facilities
 has been detected.
@@ -598,31 +576,27 @@ The PostScript interpreter detects only the simplest types of deadlock.
 It is possible to encounter deadlocks for which no invalidcontext error
 is generated.
 <hr>
-<a name="invalidexit"></a>
-<b>invalidexit</b> (error)
+<b id="invalidexit">invalidexit</b> (error)
 <p>
 An exit has been executed for which there is no dynamically enclosing looping
 context (for example, <a href="f.html#for">for</a>, <a href="l.html#loop">loop</a>,
 <a href="qr.html#repeat">repeat</a>, or <a href="p.html#pathforall">pathforall</a>)
 or it has attempted to leave the context of a run or stopped operator.
 <hr>
-<a name="invalidfileaccess"></a>
-<b>invalidfileaccess</b> (error)
+<b id="invalidfileaccess">invalidfileaccess</b> (error)
 <p>
 The access string specification to the file operator is unacceptable or
 a file operation has been attempted (for example, <a href="d.html#deletefile">deletefile</a>)
 that is not permitted by the storage device.
 <hr>
-<a name="invalidfont"></a>
-<b>invalidfont</b> (error)
+<b id="invalidfont">invalidfont</b> (error)
 <p>
 Either the operand to findfont is not a valid font name or the operand to
 makefont or setfont is not a well-formed font dictionary. The invalidfont
 error may also be executed by other font operators upon discovering a font
 dictionary is malformed.
 <hr>
-<a name="invalidid"></a>
-<b>invalidid</b> (error) DPS
+<b id="invalidid">invalidid</b> (error) DPS
 <p>
 indicates that an invalid identifier has been presented to a window system
 specific operator. In each integration of the Display PostScript system
@@ -632,8 +606,7 @@ and other objects that exist outside the PostScript language. This error
 occurs when the operand does not identify a valid object. It is generated
 only by window system specific operators and not by any standard operator.
 <hr>
-<a name="invalidrestore"></a>
-<b>invalidrestore</b> (error)
+<b id="invalidrestore">invalidrestore</b> (error)
 <p>
 An improper restore has been attempted. One or more of the operand, dictionary,
 or execution stacks contains composite objects whose values were created
@@ -645,8 +618,7 @@ be allowed.
 <p>
 <b>See Also:</b> <a href="qr.html#restore">restore</a>, <a href="s.html#save">save</a>
 <hr>
-<a name="invertmatrix"></a>
-<b>invertmatrix</b>
+<b id="invertmatrix">invertmatrix</b>
 <pre>matrix<sub>1</sub> matrix<sub>2</sub> invertmatrix matrix<sub>2</sub></pre>
 <p>
 replaces the value of matrix<sub>2</sub> with the result of inverting matrix<sub>1</sub> and pushes
@@ -659,8 +631,7 @@ matrix<sub>2</sub> transforms (x', y') to (x, y).
 <p>
 <b>See Also:</b> <a href="#itransform">itransform</a>, <a href="#idtransform">idtransform</a>
 <hr>
-<a name="ioerror"></a>
-<b>ioerror</b> (error)
+<b id="ioerror">ioerror</b> (error)
 <p>
 An exception other than end-of-file has occurred during execution of one
 of the file operators. The nature of the exception is environment dependent,
@@ -670,8 +641,7 @@ been closed will also cause an ioerror. Occurrence of an ioerror does not
 cause the file to become closed unless it was already closed or the error
 occurs during <a href="c.html#closefile">closefile</a>.
 <hr>
-<a name="ISOLatin1Encoding"></a>
-<b>ISOLatin1Encoding</b> LEVEL 2
+<b id="ISOLatin1Encoding">ISOLatin1Encoding</b> LEVEL 2
 <pre>- ISOLatin1Encoding array</pre>
 <p>
 pushes the ISO Latin-1 encoding vector on the operand stack. This is a 256-element
@@ -688,8 +658,7 @@ of ISOLatin1Encoding.
 <p>
 <b>See Also:</b> <a href="s.html#StandardEncoding">StandardEncoding</a>, <a href="f.html#findencoding">findencoding</a>
 <hr>
-<a name="itransform"></a>
-<b>itransform</b>
+<b id="itransform">itransform</b>
 <pre>       x' y' itransform x y
 x' y' matrix itransform x y</pre>
 <p>
@@ -705,8 +674,7 @@ of CTM.
 <b>See Also:</b> <a href="t.html#transform">transform</a>, <a href="d.html#dtransform">dtransform</a>,
 <a href="#idtransform">idtransform</a>, <a href="#invertmatrix">invertmatrix</a>
 <hr>
-<a name="join"></a>
-<b>join</b> DPS
+<b id="join">join</b> DPS
 <pre>context join mark obj<sub>1</sub> ... obj<sub>n</sub></pre>
 <p>
 waits for the execution context identified by the integer context to finish
@@ -737,8 +705,7 @@ to do so will cause an <a href="#invalidcontext">invalidcontext</a> error.
 <b>See Also:</b> <a href="f.html#fork">fork</a>, <a href="d.html#detach">detach</a>,
 <a href="c.html#currentcontext">currentcontext</a>
 <hr>
-<a name="known"></a>
-<b>known</b>
+<b id="known">known</b>
 <pre>dict key known bool</pre>
 <p>
 returns the boolean value true if there is an entry in the dictionary dict
@@ -759,8 +726,7 @@ mydict /badname known &rArr; false
 <b>See Also:</b> <a href="w.html#where">where</a>, <a href="l.html#load">load</a>,
 <a href="gh.html#get">get</a>
 <hr>
-<a name="kshow"></a>
-<b>kshow</b>
+<b id="kshow">kshow</b>
 <pre>proc string kshow -</pre>
 <p>
 paints the characters of string in a manner similar to show, but allowing

@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'L'</h1>
 <hr>
-<a name="languagelevel"></a>
-<b>languagelevel</b> LEVEL 2
+<b id="languagelevel">languagelevel</b> LEVEL 2
 <pre>- languagelevel int</pre>
 <p>
 is an integer designating the PostScript language level supported by the
@@ -23,8 +22,7 @@ does not support all PostScript Level 2 language features.
 <b>See Also:</b> <a href="p.html#product">product</a>, <a href="qr.html#revision">revision</a>,
 <a href="s.html#serialnumber">serialnumber</a>, <a href="v.html#version">version</a>
 <hr>
-<a name="le"></a>
-<b>le</b>
+<b id="le">le</b>
 <pre>      num<sub>1</sub> num<sub>2</sub> le bool
 string<sub>1</sub> string<sub>2</sub> le bool</pre>
 <p>
@@ -43,8 +41,7 @@ the <a href="t.html#typecheck">typecheck</a> error.
 <b>See Also:</b> <a href="#lt">lt</a>, <a href="e.html#eq">eq</a>, <a href="no.html#ne">ne</a>,
 <a href="gh.html#ge">ge</a>, <a href="gh.html#gt">gt</a>
 <hr>
-<a name="length"></a>
-<b>length</b>
+<b id="length">length</b>
 <pre>      array length int
 packedarray length int
        dict length int
@@ -81,15 +78,13 @@ mydict length                       &rArr;  1
 <p>
 <b>See Also:</b> <a href="m.html#maxlength">maxlength</a>
 <hr>
-<a name="limitcheck"></a>
-<b>limitcheck</b> (error)
+<b id="limitcheck">limitcheck</b> (error)
 <p>
 An implementation limit has been exceeded
 (for example, too many files have been opened simultaneously or a path has
 become too complex).
 <hr>
-<a name="lineto"></a>
-<b>lineto</b>
+<b id="lineto">lineto</b>
 <pre>x y lineto</pre>
 <p>
 appends a straight line segment to the current path . The line extends
@@ -104,8 +99,7 @@ path is empty, lineto executes the error <a href="no.html#nocurrentpoint">nocurr
 <a href="a.html#arc">arc</a>, <a href="c.html#curveto">curveto</a>,
 <a href="c.html#closepath">closepath</a>
 <hr>
-<a name="ln"></a>
-<b>ln</b>
+<b id="ln">ln</b>
 <pre>num ln real</pre>
 <p>
 returns the natural logarithm (base e) of num. The result is a real.
@@ -121,8 +115,7 @@ returns the natural logarithm (base e) of num. The result is a real.
 <p>
 <b>See Also:</b> <a href="#log">log</a>, <a href="e.html#exp">exp</a>
 <hr>
-<a name="load"></a>
-<b>load</b>
+<b id="load">load</b>
 <pre>key load value</pre>
 <p>
 searches for key in each dictionary on the dictionary stack, starting with
@@ -146,8 +139,7 @@ value on the operand stack; it never executes that value.
 <b>See Also:</b> <a href="w.html#where">where</a>, <a href="gh.html#get">get</a>,
 <a href="s.html#store">store</a>
 <hr>
-<a name="lock"></a>
-<b>lock</b> DPS
+<b id="lock">lock</b> DPS
 <pre>- lock lock</pre>
 <p>
 creates a new lock object, unequal to any lock object already in existence,
@@ -161,8 +153,7 @@ mode.
 <p>
 <b>See Also:</b> <a href="m.html#monitor">monitor</a>, <a href="w.html#wait">wait</a>
 <hr>
-<a name="log"></a>
-<b>log</b>
+<b id="log">log</b>
 <pre>num log real</pre>
 <p>
 returns the common logarithm (base 10) of num. The result is a real.
@@ -178,8 +169,7 @@ returns the common logarithm (base 10) of num. The result is a real.
 <p>
 <b>See Also:</b> <a href="#ln">ln</a>, <a href="e.html#exp">exp</a>
 <hr>
-<a name="loop"></a>
-<b>loop</b>
+<b id="loop">loop</b>
 <pre>proc loop -</pre>
 <p>
 repeatedly executes proc until proc executes the <a href="e.html#exit">exit</a>
@@ -194,8 +184,7 @@ be broken only via an external interrupt (see <a href="ik.html#interrupt">interr
 <b>See Also:</b> <a href="f.html#for">for</a>, <a href="qr.html#repeat">repeat</a>,
 <a href="f.html#forall">forall</a>, <a href="e.html#exit">exit</a>
 <hr>
-<a name="lt"></a>
-<b>lt</b>
+<b id="lt">lt</b>
 <pre>      num<sub>1</sub> num<sub>2</sub> lt bool
 string<sub>1</sub> string<sub>2</sub> lt bool</pre>
 <p>

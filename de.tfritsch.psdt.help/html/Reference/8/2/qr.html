@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'q' and 'r'</h1>
 <hr>
-<a name="quit"></a>
-<b>quit</b>
+<b id="quit">quit</b>
 <pre>- quit -</pre>
 <p>
 terminates operation of the interpreter. The precise action of quit depends
@@ -35,8 +34,7 @@ causes an <a href="ik.html#invalidaccess">invalidaccess</a> error.
 <p>
 <b>See Also:</b> <a href="s.html#stop">stop</a>, <a href="s.html#start">start</a>
 <hr>
-<a name="rand"></a>
-<b>rand</b>
+<b id="rand">rand</b>
 <pre>- rand int</pre>
 <p>
 returns a random integer in the range 0 to 231 - 1, produced by a pseudo-random
@@ -47,16 +45,14 @@ and interrogated by <a href="#rrand">rrand</a>.
 <p>
 <b>See Also:</b> <a href="s.html#srand">srand</a>, <a href="#rrand">rrand</a>
 <hr>
-<a name="rangecheck"></a>
-<b>rangecheck</b> (error)
+<b id="rangecheck">rangecheck</b> (error)
 <p>
 A numeric operand's value is outside the range expected by an operator-for
 example, an array or string index is out of bounds, or a negative number
 appears where a non-negative number is required. rangecheck can also occur
 if a matrix operand does not contain exactly six elements.
 <hr>
-<a name="rcheck"></a>
-<b>rcheck</b>
+<b id="rcheck">rcheck</b>
 <pre>array rcheck bool
 packedarray rcheck bool
 dict rcheck bool
@@ -73,8 +69,7 @@ otherwise.
 <b>See Also:</b> <a href="e.html#executeonly">executeonly</a>, <a href="no.html#noaccess">noaccess</a>,
 <a href="#readonly">readonly</a>, <a href="w.html#wcheck">wcheck</a>
 <hr>
-<a name="rcurveto"></a>
-<b>rcurveto</b>
+<b id="rcurveto">rcurveto</b>
 <pre>dx<sub>1</sub> dy<sub>1</sub> dx<sub>2</sub> dy<sub>2</sub> dx<sub>3</sub> dy<sub>3</sub> rcurveto -</pre>
 <p>
 (relative curveto) adds a Bezier cubic section to the current path in
@@ -92,8 +87,7 @@ information.
 <b>See Also:</b> <a href="c.html#curveto">curveto</a>, <a href="#rlineto">rlineto</a>,
 <a href="#rmoveto">rmoveto</a>
 <hr>
-<a name="read"></a>
-<b>read</b>
+<b id="read">read</b>
 <pre>file read int true  (if not end-of-file)
               false (if end-of-file)</pre>
 <p>
@@ -111,8 +105,7 @@ error), read executes <a href="ik.html#ioerror">ioerror</a>.
 <b>See Also:</b> <a href="#readhexstring">readhexstring</a>, <a href="#readline">readline</a>,
 <a href="#readstring">readstring</a>, <a href="b.html#bytesavailable">bytesavailable</a>
 <hr>
-<a name="readhexstring"></a>
-<b>readhexstring</b>
+<b id="readhexstring">readhexstring</b>
 <pre>file string readhexstring substring bool</pre>
 <p>
 reads characters from file, expecting to encounter a sequence of hexadecimal
@@ -136,8 +129,7 @@ changing the interpretation of the data.
 <b>See Also:</b> <a href="#read">read</a>, <a href="#readline">readline</a>, <a href="#readstring">readstring</a>,
 <a href="f.html#filter">filter</a>
 <hr>
-<a name="readline"></a>
-<b>readline</b>
+<b id="readline">readline</b>
 <pre>file string readline substring bool</pre>
 <p>
 reads a line of characters (terminated by a newline character) from file
@@ -162,8 +154,7 @@ before encountering a newline character, it executes the error <a href="#rangech
 <b>See Also:</b> <a href="#read">read</a>, <a href="#readhexstring">readhexstring</a>,
 <a href="#readonly">readonly</a>
 <hr>
-<a name="readonly"></a>
-<b>readonly</b>
+<b id="readonly">readonly</b>
 <pre>      array readonly array
 packedarray readonly packedarray
        dict readonly dict
@@ -190,8 +181,7 @@ all dictionary objects sharing the same dictionary are affected.
 <b>See Also:</b> <a href="e.html#executeonly">executeonly</a>, <a href="no.html#noaccess">noaccess</a>,
 <a href="#rcheck">rcheck</a>, <a href="w.html#wcheck">wcheck</a>
 <hr>
-<a name="readstring"></a>
-<b>readstring</b>
+<b id="readstring">readstring</b>
 <pre>file string readstring substring bool</pre>
 <p>
 reads characters from file and stores them into successive elements of string
@@ -212,8 +202,7 @@ control characters.
 <b>See Also:</b> <a href="#read">read</a>, <a href="#readhexstring">readhexstring</a>,
 <a href="#readline">readline</a>
 <hr>
-<a name="realtime"></a>
-<b>realtime</b> LEVEL 2
+<b id="realtime">realtime</b> LEVEL 2
 <pre>- realtime int</pre>
 <p>
 returns the value of a clock that counts in real time, independent of the
@@ -228,8 +217,7 @@ to the smallest (most negative) integer.
 <p>
 <b>See Also:</b> <a href="u.html#usertime">usertime</a>
 <hr>
-<a name="rectclip"></a>
-<b>rectclip</b> LEVEL 2
+<b id="rectclip">rectclip</b> LEVEL 2
 <pre>x y width height rectclip -
         numarray rectclip -
        numstring rectclip -</pre>
@@ -266,8 +254,7 @@ same direction and the non-zero winding number rule is used.
 <b>See Also:</b> <a href="c.html#clip">clip</a>, <a href="#rectfill">rectfill</a>,
 <a href="#rectstroke">rectstroke</a>
 <hr>
-<a name="rectfill"></a>
-<b>rectfill</b> LEVEL 2
+<b id="rectfill">rectfill</b> LEVEL 2
 <pre>x y width height rectfill -
         numarray rectfill -
        numstring rectfill -</pre>
@@ -298,8 +285,7 @@ grestore
 <b>See Also:</b> <a href="f.html#fill">fill</a>, <a href="#rectclip">rectclip</a>,
 <a href="#rectstroke">rectstroke</a>
 <hr>
-<a name="rectstroke"></a>
-<b>rectstroke</b> LEVEL 2
+<b id="rectstroke">rectstroke</b> LEVEL 2
 <pre>       x y width height rectstroke -
 x y width height matrix rectstroke -
                numarray rectstroke -
@@ -338,8 +324,7 @@ grestore
 <b>See Also:</b> <a href="s.html#stroke">stroke</a>, <a href="#rectclip">rectclip</a>,
 <a href="#rectfill">rectfill</a>
 <hr>
-<a name="rectviewclip"></a>
-<b>rectviewclip</b> LEVEL 2
+<b id="rectviewclip">rectviewclip</b> LEVEL 2
 <pre>x y width height rectviewclip -
         numarray rectviewclip -
        numstring rectviewclip -</pre>
@@ -365,8 +350,7 @@ rule is used.
 <p>
 <b>See Also:</b> <a href="#rectclip">rectclip</a>, <a href="v.html#viewclip">viewclip</a>
 <hr>
-<a name="renamefile"></a>
-<b>renamefile</b>  LEVEL 2
+<b id="renamefile">renamefile</b>  LEVEL 2
 <pre>old new renamefile -</pre>
 <p>
 changes the name of a file from old to new, where old and new are strings
@@ -388,8 +372,7 @@ dependent.
 <b>See Also:</b> <a href="f.html#file">file</a>, <a href="d.html#deletefile">deletefile</a>,
 <a href="s.html#status">status</a>
 <hr>
-<a name="repeat"></a>
-<b>repeat</b>
+<b id="repeat">repeat</b>
 <pre>int proc repeat - </pre>
 <p>
 executes proc int times, where int is a non-negative integer. The repeat
@@ -414,8 +397,7 @@ executed at all, hence the mark is still topmost on the stack.
 <b>See Also:</b> <a href="f.html#for">for</a>, <a href="l.html#loop">loop</a>,
 <a href="f.html#forall">forall</a>, <a href="e.html#exit">exit</a>
 <hr>
-<a name="resetfile"></a>
-<b>resetfile</b> LEVEL 2
+<b id="resetfile">resetfile</b> LEVEL 2
 <pre>file resetfile -</pre>
 <p>
 discards buffered characters belonging to a file object. For an input file,
@@ -433,8 +415,7 @@ never waits for characters to be received or transmitted.
 <b>See Also:</b> <a href="f.html#file">file</a>, <a href="c.html#closefile">closefile</a>,
 <a href="f.html#flushfile">flushfile</a>
 <hr>
-<a name="resourceforall"></a>
-<b>resourceforall</b> LEVEL 2
+<b id="resourceforall">resourceforall</b> LEVEL 2
 <pre>template proc scratch category resourceforall -</pre>
 <p>
 enumerates the names of all instances of a specified resource category or
@@ -509,8 +490,7 @@ of its own.
 <b>See Also:</b> <a href="d.html#defineresource">defineresource</a>, <a href="u.html#undefineresource">undefineresource</a>,
 <a href="f.html#findresource">findresource</a>, <a href="#resourcestatus">resourcestatus</a>
 <hr>
-<a name="resourcestatus"></a>
-<b>resourcestatus</b> LEVEL 2
+<b id="resourcestatus">resourcestatus</b> LEVEL 2
 <pre>key category resourcestatus status size true  (if resource exists)
                             false             (if not)</pre>
 <p>
@@ -557,8 +537,7 @@ error occurs.
 <b>See Also:</b> <a href="d.html#defineresource">defineresource</a>, <a href="u.html#undefineresource">undefineresource</a>,
 <a href="f.html#findresource">findresource</a>, <a href="#resourceforall">resourceforall</a>
 <hr>
-<a name="restore"></a>
-<b>restore</b>
+<b id="restore">restore</b>
 <pre>save restore -</pre>
 <p>
 resets the virtual memory (VM) to the state represented by the supplied
@@ -603,8 +582,7 @@ to their state at the time of save. These include:
 <b>See Also:</b> <a href="s.html#save">save</a>, <a href="gh.html#grestoreall">grestoreall</a>,
 <a href="v.html#vmstatus">vmstatus</a>, <a href="s.html#startjob">startjob</a>
 <hr>
-<a name="reversepath"></a>
-<b>reversepath</b>
+<b id="reversepath">reversepath</b>
 <pre>- reversepath -</pre>
 <p>
 replaces the current path with an equivalent one whose segments are defined
@@ -614,8 +592,7 @@ not alter the order of the subpaths in the path with respect to each other.
 <p>
 <b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>
 <hr>
-<a name="revision"></a>
-<b>revision</b> LEVEL 2
+<b id="revision">revision</b> LEVEL 2
 <pre>- revision int</pre>
 <p>
 is an integer designating the current revision level of the product in which
@@ -630,8 +607,7 @@ to the product in which it is running.
 <b>See Also:</b> <a href="l.html#languagelevel">languagelevel</a>, <a href="p.html#product">product</a>,
 <a href="s.html#serialnumber">serialnumber</a>, <a href="v.html#version">version</a>
 <hr>
-<a name="rlineto"></a>
-<b>rlineto</b>
+<b id="rlineto">rlineto</b>
 <pre>dx dy rlineto -</pre>
 <p>
 (relative lineto) appends a straight line segment to the current path
@@ -650,8 +626,7 @@ executes the error <a href="no.html#nocurrentpoint">nocurrentpoint</a>.
 <b>See Also:</b> <a href="l.html#lineto">lineto</a>, <a href="#rmoveto">rmoveto</a>,
 <a href="#rcurveto">rcurveto</a>
 <hr>
-<a name="rmoveto"></a>
-<b>rmoveto</b>
+<b id="rmoveto">rmoveto</b>
 <pre>dx dy rmoveto -</pre>
 <p>
 (relative moveto) starts a new subpath of the current path in the same
@@ -669,8 +644,7 @@ executes the error <a href="no.html#nocurrentpoint">nocurrentpoint</a>.
 <b>See Also:</b> <a href="m.html#moveto">moveto</a>, <a href="#rlineto">rlineto</a>,
 <a href="#rcurveto">rcurveto</a>
 <hr>
-<a name="roll"></a>
-<b>roll</b>
+<b id="roll">roll</b>
 <pre>any<sub>n-1</sub> ... any<sub>0</sub> n j roll any (j-1) mod n ... any<sub>0</sub> any<sub>n-1</sub> ... any<sub>j</sub> mod n</pre>
 <p>
 performs a circular shift of the objects any<sub>n-1</sub> through any<sub>0</sub> on the operand
@@ -701,8 +675,7 @@ one level lower on the stack.
 <b>See Also:</b> <a href="e.html#exch">exch</a>, <a href="ik.html#index">index</a>,
 <a href="c.html#copy">copy</a>, <a href="p.html#pop">pop</a>
 <hr>
-<a name="rootfont"></a>
-<b>rootfont</b> LEVEL 2
+<b id="rootfont">rootfont</b> LEVEL 2
 <pre>- rootfont font</pre>
 <p>
 returns the font that has been selected most recently by setfont or selectfont.
@@ -717,8 +690,7 @@ would return the currently selected base font.
 <b>See Also:</b> <a href="s.html#setfont">setfont</a>, <a href="s.html#selectfont">selectfont</a>,
 <a href="c.html#currentfont">currentfont</a>
 <hr>
-<a name="rotate"></a>
-<b>rotate</b>
+<b id="rotate">rotate</b>
 <pre>       angle rotate -
 angle matrix rotate matrix -</pre>
 <p>
@@ -740,8 +712,8 @@ rotate does not affect the CTM.
 <b>See Also:</b> <a href="s.html#scale">scale</a>, <a href="t.html#translate">translate</a>,
 <a href="c.html#concat">concat</a>
 <hr>
-<a name="round"></a>
-<b>round</b><pre>num<sub>1</sub> round num<sub>2</sub></pre>
+<b id="round">round</b>
+<pre>num<sub>1</sub> round num<sub>2</sub></pre>
 <p>
 returns the integer value nearest to num<sub>1</sub>. If num<sub>1</sub> is equally close to its
 two nearest integers, round returns the greater of the two. The type of
@@ -761,8 +733,7 @@ the result is the same as the type of the operand.
 <b>See Also:</b> <a href="c.html#ceiling">ceiling</a>, <a href="f.html#floor">floor</a>,
 <a href="t.html#truncate">truncate</a>, <a href="c.html#cvi">cvi</a>
 <hr>
-<a name="rrand"></a>
-<b>rrand</b>
+<b id="rrand">rrand</b>
 <pre>- rrand int</pre>
 <p>
 returns an integer representing the current state of the random number generator
@@ -774,8 +745,7 @@ of numbers produced.
 <p>
 <b>See Also:</b> <a href="#rand">rand</a>, <a href="s.html#srand">srand</a>
 <hr>
-<a name="run"></a>
-<b>run</b>
+<b id="run">run</b>
 <pre>string run -</pre>
 <p>
 executes the contents of the file identified by string-in other words,

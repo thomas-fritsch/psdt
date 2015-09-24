@@ -98,32 +98,32 @@
 			<th>Value</th>
 		</tr>
 		<tr>
-			<th><a name="DefineResource"></a>DefineResource</th>
+			<th id="DefineResource">DefineResource</th>
 			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>defineresource</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<th><a name="UndefineResource"></a>UndefineResource</th>
+			<th id="UndefineResource">UndefineResource</th>
 			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>undefineresource</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<th><a name="FindResource"></a>FindResource</th>
+			<th id="FindResource">FindResource</th>
 			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>findresource</b>
 				behavior. This procedure determines the policy for using global
 				versus current VM when loading a resource from an external source.</td>
 		</tr>
 		<tr>
-			<th><a name="ResourceStatus"></a>ResourceStatus</th>
+			<th id="ResourceStatus">ResourceStatus</th>
 			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>resourcestatus</b>
 				behavior.</td>
 		</tr>
 		<tr>
-			<th><a name="ResourceForAll"></a>ResourceForAll</th>
+			<th id="ResourceForAll">ResourceForAll</th>
 			<td>procedure</td>
 			<td><i>(Required)</i> A procedure that implements <b>resourceforall</b>
 				behavior. This procedure should remove the category implementation
@@ -134,13 +134,13 @@
 				the time <b>resourceforall</b> was invoked.</td>
 		</tr>
 		<tr>
-			<th><a name="Category"></a>Category</th>
+			<th id="Category">Category</th>
 			<td>name</td>
 			<td><i>(Required)</i> The category name. This entry
 				is inserted by <b>defineresource</b> when the category is defined.</td>
 		</tr>
 		<tr>
-			<th><a name="InstanceType"></a>InstanceType</th>
+			<th id="InstanceType">InstanceType</th>
 			<td>name</td>
 			<td><i>(Optional)</i> The expected type of
 				instances of this category. If this entry is present, <b>defineresource</b>
@@ -148,7 +148,7 @@
 				operator, matches it.</td>
 		</tr>
 		<tr>
-			<th><a name="ResourceFileName"></a>ResourceFileName</th>
+			<th id="ResourceFileName">ResourceFileName</th>
 			<td>procedure</td>
 			<td><i>(Optional)</i> A procedure that translates a
 				resource instance name to a file name (see Section 3.9.4, "Resources

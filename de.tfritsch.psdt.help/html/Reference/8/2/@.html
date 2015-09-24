@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript symbols</h1>
 <hr>
-<a name="mark1"></a>
-<b>[</b>
+<b id="mark1">[</b>
 <pre>- [ mark</pre>
 <p>
 pushes a mark object on the operand stack (see <a href="m.html#mark">mark</a>).
@@ -21,8 +20,7 @@ object by the ] operator.
 <b>See Also:</b> <a href="#mark2">]</a>, <a href="m.html#mark">mark</a>, <a href="a.html#array">array</a>,
 <a href="a.html#astore">astore</a>
 <hr>
-<a name="mark2"></a>
-<b>]</b>
+<b id="mark2">]</b>
 <pre>mark obj<sub>0</sub> ... obj<sub>n-1</sub> ] array</pre>
 <p>
 creates a new array of n elements, where n is the number of elements above
@@ -58,8 +56,7 @@ is executed before the array is constructed.
 <b>See Also:</b> <a href="#mark1">[</a>, <a href="m.html#mark">mark</a>, <a href="a.html#array">array</a>,
 <a href="a.html#astore">astore</a>
 <hr>
-<a name="mark2LT"></a>
-<b>&lt;&lt;</b> LEVEL 2
+<b id="mark2LT">&lt;&lt;</b> LEVEL 2
 <pre>- &lt;&lt; mark</pre>
 <p>
 pushes a mark object on the operand stack (same as mark and [ operators).
@@ -68,8 +65,7 @@ pushes a mark object on the operand stack (same as mark and [ operators).
 <p>
 <b>See Also:</b> <a href="#marktwoGT">&gt;&gt;</a>, <a href="m.html#mark">mark</a>
 <hr>
-<a name="marktwoGT"></a>
-&gt;&gt; LEVEL 2
+<b id="marktwoGT">&gt;&gt;</b> LEVEL 2
 <pre>mark key<sub>1</sub> value<sub>1</sub> ... key<sub>n</sub> value<sub>n</sub> &gt;&gt; dict</pre>
 <p>
 creates and returns a dictionary containing the specified key-value pairs.
@@ -112,8 +108,7 @@ it immediately passes to the setpagedevice operator.
 <b>See Also:</b> <a href="#mark2LT">&lt;&lt;</a>, <a href="m.html#mark">mark</a>,
 <a href="d.html#dict">dict</a>
 <hr>
-<a name="equals"></a>
-=
+<b id="equals">=</b>
 <pre>any = -</pre>
 <p>
 pops an object from the operand stack, produces a text representation
@@ -132,8 +127,7 @@ characters. The value of = is not an operator, but rather a built-in procedure.
 <a href="c.html#cvs">cvs</a>, <a href="p.html#print">print</a>,
 <a href="f.html#flush">flush</a>
 <hr>
-<a name="twoequals"></a>
-<b>==</b>
+<b id="twoequals">==</b>
 <pre>any ==</pre>
 <p>
 pops an object from the operand stack, produces a text
@@ -162,8 +156,7 @@ may be more suitable for generating machine-readable output.
 <b>See Also:</b> <a href="#equals">=</a>, <a href="p.html#print">print</a>,
 <a href="p.html#pstack">pstack</a>, <a href="f.html#flush">flush</a>
 <hr>
-<a name="$error"></a>
-<b>$error</b>
+<b id="$error">$error</b>
 <pre>- $error dict</pre>
 <p>
 pushes the dictionary object $error on the operand stack.

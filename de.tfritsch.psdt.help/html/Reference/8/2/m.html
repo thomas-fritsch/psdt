@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 'm'</h1>
 <hr>
-<a name="makefont"></a>
-<b>makefont</b>
+<b id="makefont">makefont</b>
 <pre>font matrix makefont font'</pre>
 <p>
 applies matrix to font, producing a new font' whose characters are transformed
@@ -65,8 +64,7 @@ x dimension by a ratio of 10/12.
 <b>See Also:</b> <a href="s.html#scalefont">scalefont</a>, <a href="s.html#setfont">setfont</a>,
 <a href="f.html#findfont">findfont</a>, <a href="s.html#selectfont">selectfont</a>
 <hr>
-<a name="makepattern"></a>
-<b>makepattern</b> LEVEL 2
+<b id="makepattern">makepattern</b> LEVEL 2
 <pre>dict matrix makepattern pattern</pre>
 <p>
 verifies that dict is a prototype pattern dictionary with all required key-value
@@ -98,8 +96,7 @@ as an operand of <a href="s.html#setpattern">setpattern</a> or as a
 <p>
 <b>See Also:</b> <a href="s.html#setpattern">setpattern</a>, <a href="f.html#findresource">findresource</a>
 <hr>
-<a name="mark"></a>
-<b>mark</b>
+<b id="mark">mark</b>
 <pre>- mark mark</pre>
 <p>
 pushes a mark (an object whose type is mark, not the mark operator itself)
@@ -120,8 +117,7 @@ counttomark and cleartomark are useful within such procedures.
 <b>See Also:</b> <a href="c.html#counttomark">counttomark</a>, <a href="c.html#cleartomark">cleartomark</a>,
 <a href="p.html#pop">pop</a>
 <hr>
-<a name="matrix"></a>
-<b>matrix</b>
+<b id="matrix">matrix</b>
 <pre>- matrix matrix</pre>
 creates a 6-element array object, fills it in with the values of an identity
 matrix<pre>
@@ -145,8 +141,7 @@ The two lines in the example yield identical results.
 <a href="ik.html#initmatrix">initmatrix</a>, <a href="s.html#setmatrix">setmatrix</a>,
 <a href="a.html#array">array</a>
 <hr>
-<a name="maxlength"></a>
-<b>maxlength</b>
+<b id="maxlength">maxlength</b>
 <pre>dict maxlength int</pre>
 <p>
 returns the capacity of dict-in other words, the maximum number of key-value
@@ -170,8 +165,7 @@ mydict maxlength    &rArr; 5
 <p>
 <b>See Also:</b> <a href="l.html#length">length</a>, <a href="d.html#dict">dict</a>
 <hr>
-<a name="mod"></a>
-<b>mod</b>
+<b id="mod">mod</b>
 <pre>int<sub>1</sub> int<sub>2</sub> mod remainder</pre>
 <p>
 returns the remainder that results from dividing int<sub>1</sub> by int<sub>2</sub>. The sign
@@ -193,8 +187,7 @@ rather than a true modulo operation.
 <p>
 <b>See Also:</b> <a href="ik.html#idiv">idiv</a>, <a href="d.html#div">div</a>
 <hr>
-<a name="monitor"></a>
-<b>monitor</b> DPS
+<b id="monitor">monitor</b> DPS
 <pre>lock proc monitor</pre>
 <p>
 acquires <a href="l.html#lock">lock</a>, first waiting if necessary
@@ -217,8 +210,7 @@ of a context deadlocking with itself.
 <b>See Also:</b> <a href="l.html#lock">lock</a>, <a href="f.html#fork">fork</a>,
 <a href="w.html#wait">wait</a>
 <hr>
-<a name="moveto"></a>
-<b>moveto</b>
+<b id="moveto">moveto</b>
 <pre>x y moveto -</pre>
 <p>
 starts a new subpath of the current path. moveto sets the current point
@@ -236,8 +228,7 @@ current path and the new moveto point replaces it.
 <a href="c.html#curveto">curveto</a>, <a href="a.html#arc">arc</a>,
 <a href="c.html#closepath">closepath</a>
 <hr>
-<a name="mul"></a>
-<b>mul</b>
+<b id="mul">mul</b>
 <pre>num<sub>1</sub> num<sub>2</sub> mul product</pre>
 <p>
 returns the product of num<sub>1</sub> and num<sub>2</sub>. If both operands are integers and

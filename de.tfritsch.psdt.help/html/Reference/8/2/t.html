@@ -7,8 +7,7 @@
 <body>
 <h1>Postscript Operators 't'</h1>
 <hr>
-<a name="timeout"></a>
-<b>timeout</b> (error)
+<b id="timeout">timeout</b> (error)
 <p>
 A time limit has been exceeded; that is, a PostScript language program has
 executed for too long or has waited too long for some external event to
@@ -23,8 +22,7 @@ The PostScript language does not define any standard causes for timeout
 errors. However, a PostScript interpreter running in a particular environment
 may provide a set of timeout facilities appropriate for that environment.
 <hr>
-<a name="token"></a>
-<b>token</b>
+<b id="token">token</b>
 <pre>  file token any true (if found)
              false    (if not found)
 string token post any true (if found)
@@ -78,8 +76,7 @@ characters.
 <b>See Also:</b> <a href="s.html#search">search</a>, <a href="a.html#anchorsearch">anchorsearch</a>,
 <a href="qr.html#read">read</a>
 <hr>
-<a name="transform"></a>
-<b>transform</b>
+<b id="transform">transform</b>
 <pre>       x y transform x' y'
 x y matrix transform x' y'</pre>
 <p>
@@ -94,8 +91,7 @@ rather than by CTM.
 <b>See Also:</b> <a href="ik.html#itransform">itransform</a>, <a href="d.html#dtransform">dtransform</a>,
 <a href="ik.html#idtransform">idtransform</a>
 <hr>
-<a name="translate"></a>
-<b>translate</b>
+<b id="translate">translate</b>
 <pre>       t<sub>x</sub> t<sub>y</sub> translate -
 t<sub>x</sub> t<sub>y</sub> matrix translate matrix</pre>
 <p>
@@ -116,8 +112,7 @@ translate does not affect the CTM.
 <b>See Also:</b> <a href="qr.html#rotate">rotate</a>, <a href="s.html#scale">scale</a>,
 <a href="c.html#concat">concat</a>, <a href="s.html#setmatrix">setmatrix</a>
 <hr>
-<a name="true"></a>
-<b>true</b>
+<b id="true">true</b>
 <pre>- true true</pre>
 <p>
 pushes a boolean object whose value is true on the operand stack. true is
@@ -129,8 +124,7 @@ associated with the boolean value true.
 <b>See Also:</b> <a href="f.html#false">false</a>, <a href="a.html#and">and</a>,
 <a href="no.html#or">or</a>, <a href="no.html#not">not</a>, <a href="xy.html#xor">xor</a>
 <hr>
-<a name="truncate"></a>
-<b>truncate</b>
+<b id="truncate">truncate</b>
 <pre>num<sub>1</sub> truncate num<sub>2</sub></pre>
 <p>
 truncates num<sub>1</sub> toward zero by removing its fractional part. The type of
@@ -148,8 +142,7 @@ the result is the same as the type of the operand.
 <b>See Also:</b> <a href="c.html#ceiling">ceiling</a>, <a href="f.html#floor">floor</a>,
 <a href="qr.html#round">round</a>, <a href="c.html#cvi">cvi</a>
 <hr>
-<a name="type"></a>
-<b>type</b>
+<b id="type">type</b>
 <pre>any type name</pre>
 <p>
 returns a name object that identifies the type of the object any. The possible
@@ -182,8 +175,7 @@ to behave reasonably if type returns a name that is not in this list.
 <p>
 <b>Errors:</b> <a href="s.html#stackunderflow">stackunderflow</a>
 <hr>
-<a name="typecheck"></a>
-<b>typecheck</b> (error)
+<b id="typecheck">typecheck</b> (error)
 <p>
 Some operand's type is different from what an operator expects. This is
 probably the most frequent error encountered. It is often the result of
