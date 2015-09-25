@@ -179,5 +179,44 @@
 		The intent is that the resource operators should have the usual error
 		behavior as viewed by a program executing them. The purpose is not to
 		compensate for bugs in the resource implementation procedures.</p>
+
+	<h4 id="2">Generic Category</h4>
+	<p>The preceding section describes a way to define a new resource
+		category, but it does not provide guidance about how the individual
+		procedures in the category’s dictionary should be implemented. In
+		principle, every resource category has complete freedom over how to
+		organize and manage resource instances, both in VM and in external
+		storage.</p>
+	<p>
+		Since different implementations have different conventions for
+		organizing resource instances, especially in external storage, a
+		program that seeks to create a new resource category might need
+		implementation-dependent information. To overcome this problem, it is
+		useful to have a generic resource implementation that can be copied
+		and used to define new resource categories. The <b>Category</b>
+		category contains an instance named <b>Generic</b>, whose value is a
+		dictionary containing a generic resource implementation.
+	</p>
+	<p>
+		<b>Example 3.7</b>
+	</p>
+	<pre>
+        currentglobal                     % Save the current VM status on the stack.
+        true setglobal
+        /Generic /Category findresource
+        dup length 1 add dict copy
+        dup /InstanceType /dicttype put
+        /Widget exch /Category defineresource pop
+        setglobal                         % Restore the saved VM status.
+	</pre>
+	<p>
+		The <b>Generic</b> resource category's implementation dictionary does
+		not have an <b>InstanceType</b> entry; instances need not be of any
+		particular type. The example above makes a copy of the dictionary with
+		space for one additional entry and inserts an <b>InstanceType</b>
+		entry with the value dicttype. As a result, <b>defineresource</b>
+		requires that instances of the Widget category be dictionaries.
+	</p>
+
 </body>
 </html>
