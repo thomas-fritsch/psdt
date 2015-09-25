@@ -23,7 +23,7 @@ public class PSLineBreakpoint extends LineBreakpoint {
 			throws DebugException {
 		run(getMarkerRule(resource), new IWorkspaceRunnable() {
 
-			// @Override
+			@Override
 			public void run(IProgressMonitor monitor) throws CoreException {
 				IMarker marker = resource.createMarker(LINE_BREAKPOINT_MARKER);
 				marker.setAttribute(ID, getModelIdentifier());
@@ -34,7 +34,7 @@ public class PSLineBreakpoint extends LineBreakpoint {
 		});
 	}
 
-	// @Override
+	@Override
 	public String getModelIdentifier() {
 		return PSDebugElement.MODEL_ID;
 	}

@@ -43,7 +43,7 @@ import org.eclipse.ui.IStorageEditorInput;
         return fStorage.equals(((StorageEditorInput)obj).fStorage);
     }
    
-    //@Override
+    @Override
 	public boolean exists() {
         return true;
     }
@@ -57,27 +57,27 @@ import org.eclipse.ui.IStorageEditorInput;
 		return fStorage.getAdapter(adapter);
 	}
 
-    //@Override
+    @Override
 	public IStorage getStorage() {
         return fStorage;
     }
 
-    //@Override
+    @Override
 	public ImageDescriptor getImageDescriptor() {
         return null;
     }
 
-    //@Override
+    @Override
 	public String getName() {
         return fStorage.getName();
     }
 
-    //@Override
+    @Override
 	public IPersistableElement getPersistable() {
         return null;
     }
 
-    //@Override
+    @Override
 	public String getToolTipText() {
         return fStorage.getFullPath().toString();
     }

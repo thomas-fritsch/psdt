@@ -119,7 +119,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		return values[0].getVariables();
 	}
 
-    //@Override
+	@Override
 	public void statusReceived(List<StatusLine> lines) {
 		fVariables = convertStatus(lines);
 		int detail = isStepping() ? DebugEvent.STEP_END : DebugEvent.BREAKPOINT;
@@ -128,12 +128,12 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		fThread.fireSuspendEvent(detail);
 	}
 
-	//@Override
+	@Override
 	public void resumeReceived() {
 		// do nothing
 	}
 
-	//@Override
+	@Override
 	public void breakReceived(int depth, int ref, String value) {
 		fCurrentToken = fTokens.get(ref);
 		debug("       " + fCurrentToken); //$NON-NLS-1$
@@ -159,7 +159,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		}
 	}
 
-	//@Override
+	@Override
 	public void breakReceived(int depth) {
 		// do nothing
 	}
@@ -246,43 +246,43 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		return getProcess().getLaunch();
 	}
 
-	//@Override
+	@Override
 	public String getName() {
 		return fSourceName;
 	}
 
-	//@Override
+	@Override
 	public IProcess getProcess() {
 		return fProcess;
 	}
 
-	//@Override
+	@Override
 	public IThread[] getThreads() throws DebugException {
 		return new IThread[] { fThread };
 	}
 
-	//@Override
+	@Override
 	public boolean hasThreads() throws DebugException {
 		return !isTerminated();
 	}
 
-	//@Override
+	@Override
 	public boolean supportsBreakpoint(IBreakpoint breakpoint) {
 		return breakpoint.getModelIdentifier().equals(getModelIdentifier()) &&
 				breakpoint.getMarker().getResource().getLocation().equals(new Path(fSourceName));
 	}
 
-	//@Override
+	@Override
 	public boolean canTerminate() {
 		return getProcess().canTerminate();
 	}
 
-	//@Override
+	@Override
 	public boolean isTerminated() {
 		return getProcess().isTerminated();
 	}
 
-	//@Override
+	@Override
 	public void terminate() throws DebugException {
 		debug("GUI -> terminate"); //$NON-NLS-1$
 		getProcess().terminate();
@@ -290,22 +290,22 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		terminated();
 	}
 
-	//@Override
+	@Override
 	public boolean canResume() {
 		return !isTerminated() && isSuspended();
 	}
 
-	//@Override
+	@Override
 	public boolean canSuspend() {
 		return false; // not supported
 	}
 
-	//@Override
+	@Override
 	public boolean isSuspended() {
 		return fState == State.SUSPENDED;
 	}
 
-	//@Override
+	@Override
 	public void resume() throws DebugException {
 		debug("GUI -> resume"); //$NON-NLS-1$
 		fState = State.RESUMED;
@@ -316,14 +316,14 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		getPSDebugCommander().resume();
 	}
 
-	//@Override
+	@Override
 	public void suspend() throws DebugException {
 		debug("GUI -> suspend"); //$NON-NLS-1$
 		// TODO PSDebugTarget.suspend
 		notSupported("suspend", null); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void breakpointAdded(IBreakpoint breakpoint) {
 		debug("GUI -> breakpointAdded " + breakpoint); //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
@@ -343,7 +343,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		}
 	}
 
-	//@Override
+	@Override
 	public void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointChanged " + breakpoint); //$NON-NLS-1$
 		try {
@@ -357,7 +357,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		}
 	}
 
-	//@Override
+	@Override
 	public void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointRemoved " + breakpoint); //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
@@ -374,30 +374,30 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		}
 	}
 
-	//@Override
+	@Override
 	public boolean canDisconnect() {
 		return false; // not supported
 	}
 
-	//@Override
+	@Override
 	public void disconnect() throws DebugException {
 		debug("GUI -> disconnect"); //$NON-NLS-1$
 		notSupported("disconnect", null); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public boolean isDisconnected() {
 		return false;
 	}
 
-	//@Override
+	@Override
 	public IMemoryBlock getMemoryBlock(long startAddress, long length)
 			throws DebugException {
 		notSupported("getMemoryBlock", null); //$NON-NLS-1$
 		return null;
 	}
 
-	//@Override
+	@Override
 	public boolean supportsStorageRetrieval() {
 		return false;
 	}

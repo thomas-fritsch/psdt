@@ -32,7 +32,7 @@ abstract class PSDebugElement extends DebugElement {
 		super(target);
 	}
 
-	//@Override
+	@Override
 	public String getModelIdentifier() {
 		return MODEL_ID;
 	}

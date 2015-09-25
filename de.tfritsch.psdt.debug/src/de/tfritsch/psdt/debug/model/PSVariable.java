@@ -27,17 +27,17 @@ class PSVariable extends PSDebugElement implements IVariable, Comparable<PSVaria
 		fValue = value;
 	}
 
-	//@Override
+	@Override
 	public int compareTo(PSVariable o) {
 		return fName.compareToIgnoreCase(o.fName);
 	}
 
-	//@Override
+	@Override
 	public IValue getValue() {
 		return fValue;
 	}
 
-	//@Override
+	@Override
 	public String getName() {
 		return fName;
 	}
@@ -48,38 +48,38 @@ class PSVariable extends PSDebugElement implements IVariable, Comparable<PSVaria
 		return getName() + "=" + getValue();
 	}
 
-	//@Override
+	@Override
 	public String getReferenceTypeName() throws DebugException {
 		return getValue().getReferenceTypeName();
 	}
 
-	//@Override
+	@Override
 	public boolean hasValueChanged() {
 		return false;
 	}
 
-	//@Override
+	@Override
 	public void setValue(String expression) throws DebugException {
 		notSupported("setValue", null); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void setValue(IValue value) throws DebugException {
 		notSupported("setValue", null); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public boolean supportsValueModification() {
 		return false;
 	}
 
-	//@Override
+	@Override
 	public boolean verifyValue(String expression) throws DebugException {
 		notSupported("verifyValue", null); //$NON-NLS-1$
 		return false;
 	}
 
-	//@Override
+	@Override
 	public boolean verifyValue(IValue value) throws DebugException {
 		notSupported("verifyValue", null); //$NON-NLS-1$
 		return false;

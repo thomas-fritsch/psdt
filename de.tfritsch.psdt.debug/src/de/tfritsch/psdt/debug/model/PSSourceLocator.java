@@ -19,7 +19,7 @@ import org.eclipse.debug.core.sourcelookup.containers.LocalFileStorage;
  * extension[@point="org.eclipse.debug.core.sourceLocators"]/sourceLocator/@class
  */
 public class PSSourceLocator implements IPersistableSourceLocator {
-	//@Override
+	@Override
 	public Object getSourceElement(IStackFrame stackFrame) {
 		if (!(stackFrame instanceof PSStackFrame))
 		   return null;
@@ -31,17 +31,17 @@ public class PSSourceLocator implements IPersistableSourceLocator {
 		return new LocalFileStorage(new File(psFile));
 	}
 
-	//@Override
+	@Override
 	public String getMemento() throws CoreException {
 		return null;
 	}
 
-	//@Override
+	@Override
 	public void initializeDefaults(ILaunchConfiguration configuration)
 			throws CoreException {
 	}
 
-	//@Override
+	@Override
 	public void initializeFromMemento(String memento) throws CoreException {
 	}
 }

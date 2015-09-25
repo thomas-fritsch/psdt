@@ -46,7 +46,7 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage
     }
     
     @Override
-	public void createFieldEditors() {
+    public void createFieldEditors() {
 		FileFieldEditor editor = new FileFieldEditor(
 				IPSConstants.PREF_INTERPRETER, "&Interpreter:", true,
 				getFieldEditorParent());
@@ -60,7 +60,7 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage
 		addField(editor);
     }
 
-    //@Override
-	public void init(IWorkbench workbench) {
+    @Override
+    public void init(IWorkbench workbench) {
     }
 }

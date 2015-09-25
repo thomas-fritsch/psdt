@@ -33,22 +33,22 @@ class PSThread extends PSDebugElement implements IThread {
 		return super.getAdapter(adapter);
 	}
 
-	//@Override
+	@Override
 	public IBreakpoint[] getBreakpoints() {
 		return getPSDebugTarget().getBreakpoints();
 	}
 
-	//@Override
+	@Override
 	public String getName() {
 		return "Thread [main]"; //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public int getPriority() {
 		return 0;
 	}
 
-	//@Override
+	@Override
 	public IStackFrame[] getStackFrames() {
 		if (isSuspended()) {
 			return new IStackFrame[] { fStackFrame };
@@ -57,7 +57,7 @@ class PSThread extends PSDebugElement implements IThread {
 		}
 	}
 
-	//@Override
+	@Override
 	public IStackFrame getTopStackFrame() {
 		IStackFrame[] frames = getStackFrames();
 		if (frames.length > 0) {
@@ -66,82 +66,82 @@ class PSThread extends PSDebugElement implements IThread {
 		return null;
 	}
 
-	//@Override
+	@Override
 	public boolean hasStackFrames() throws DebugException {
 		return isSuspended();
 	}
 
-	//@Override
+	@Override
 	public boolean canStepInto() {
 		return isSuspended() && !isStepping();
 	}
 
-	//@Override
+	@Override
 	public boolean canStepOver() {
 		return isSuspended() && !isStepping();
 	}
 
-	//@Override
+	@Override
 	public boolean canStepReturn() {
 		return isSuspended() && !isStepping();
 	}
 
-	//@Override
+	@Override
 	public boolean isStepping() {
 		return getPSDebugTarget().isStepping();
 	}
 
-	//@Override
+	@Override
 	public void stepInto() throws DebugException {
 		getPSDebugTarget().stepInto();
 	}
 
-	//@Override
+	@Override
 	public void stepOver() throws DebugException {
 		getPSDebugTarget().stepOver();
 	}
 
-	//@Override
+	@Override
 	public void stepReturn() throws DebugException {
 		getPSDebugTarget().stepReturn();
 	}
 
-	//@Override
+	@Override
 	public boolean canResume() {
 		return getDebugTarget().canResume();
 	}
 
-	//@Override
+	@Override
 	public boolean canSuspend() {
 		return getDebugTarget().canSuspend();
 	}
 
-	//@Override
+	@Override
 	public boolean isSuspended() {
 		return getDebugTarget().isSuspended();
 	}
 
-	//@Override
+	@Override
 	public void resume() throws DebugException {
 		getDebugTarget().resume();
 	}
 
-	//@Override
+	@Override
 	public void suspend() throws DebugException {
 		getDebugTarget().suspend();
 	}
 
-	//@Override
+	@Override
 	public boolean canTerminate() {
 		return getDebugTarget().canTerminate();
 	}
 
-	//@Override
+	@Override
 	public boolean isTerminated() {
 		return getDebugTarget().isTerminated();
 	}
 
-	//@Override
+	@Override
 	public void terminate() throws DebugException {
 		getDebugTarget().terminate();
 	}

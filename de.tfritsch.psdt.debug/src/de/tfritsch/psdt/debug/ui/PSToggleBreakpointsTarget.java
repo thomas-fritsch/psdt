@@ -16,7 +16,7 @@ import de.tfritsch.psdt.debug.model.PSLineBreakpoint;
 
 public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 
-	//@Override
+	@Override
 	public void toggleLineBreakpoints(IWorkbenchPart part, ISelection selection)
 			throws CoreException {
 		ITextEditor textEditor = (ITextEditor) part.getAdapter(ITextEditor.class);
@@ -38,7 +38,7 @@ public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpoint(breakpoint);
 	}
 
-	//@Override
+	@Override
 	public boolean canToggleLineBreakpoints(IWorkbenchPart part,
 			ISelection selection) {
 		ITextEditor textEditor = (ITextEditor) part.getAdapter(ITextEditor.class);
@@ -46,23 +46,23 @@ public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 		return (resource != null);
 	}
 
-	//@Override
+	@Override
 	public void toggleMethodBreakpoints(IWorkbenchPart part,
 			ISelection selection) throws CoreException {
 	}
 
-	//@Override
+	@Override
 	public boolean canToggleMethodBreakpoints(IWorkbenchPart part,
 			ISelection selection) {
 		return false;
 	}
 
-	//@Override
+	@Override
 	public void toggleWatchpoints(IWorkbenchPart part, ISelection selection)
 			throws CoreException {
 	}
 
-	//@Override
+	@Override
 	public boolean canToggleWatchpoints(IWorkbenchPart part,
 			ISelection selection) {
 		return false;

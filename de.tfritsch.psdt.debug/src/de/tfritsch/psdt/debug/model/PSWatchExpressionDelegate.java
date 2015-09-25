@@ -17,27 +17,33 @@ import org.eclipse.debug.core.model.IWatchExpressionResult;
  */
 public class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 
+	@Override
 	public void evaluateExpression(String expression, IDebugElement context,
 			IWatchExpressionListener listener) {
 		IStackFrame stackFrame = (IStackFrame) context.getAdapter(IStackFrame.class);
 		// TODO evaluate expression
 		IWatchExpressionResult result = new IWatchExpressionResult() {
+			@Override
 			public IValue getValue() {
 				return null;
 			}
 
+			@Override
 			public boolean hasErrors() {
 				return true;
 			}
 
+			@Override
 			public String[] getErrorMessages() {
 				return new String[] { "(Watch expressions not supported)" };
 			}
 
+			@Override
 			public String getExpressionText() {
 				return "";
 			}
 
+			@Override
 			public DebugException getException() {
 				return null;
 			}

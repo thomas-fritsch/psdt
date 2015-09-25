@@ -23,7 +23,7 @@ import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 public class PSDebugModelPresentation extends LabelProvider implements
 		IDebugModelPresentation {
 
-    //@Override
+        @Override
 	public void setAttribute(String attribute, Object value) {
 	}
 
@@ -37,13 +37,13 @@ public class PSDebugModelPresentation extends LabelProvider implements
 		return null; // The view will show a default label
 	}
 
-	//@Override
+	@Override
 	public void computeDetail(IValue value, IValueDetailListener listener) {
 		listener.detailComputed(value, null);
 		// The view will show value.getValueString()
 	}
 
-	//@Override
+	@Override
 	public IEditorInput getEditorInput(Object element) {
 		if (element instanceof IFile) {
 			return new FileEditorInput((IFile) element);
@@ -58,7 +58,7 @@ public class PSDebugModelPresentation extends LabelProvider implements
 		return null;
 	}
 
-	//@Override
+	@Override
 	public String getEditorId(IEditorInput input, Object element) {
 		return PostscriptEditor.ID;
 	}

@@ -20,8 +20,8 @@ public class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
     private ILaunchConfigurationTab[] fBlocks;
 
-    //@Override
-	public String getName() {
+    @Override
+    public String getName() {
         return "Ghostscript"; //$NON-NLS-1$
     }
 
@@ -40,12 +40,12 @@ public class GhostscriptTab extends AbstractLaunchConfigurationTab {
     }
 
     @Override
-	public Image getImage() {
+    public Image getImage() {
     	return PSPlugin.getImage("icons/ghostscript.png"); //$NON-NLS-1$
     }
     
-    //@Override
-	public void createControl(Composite parent) {
+    @Override
+    public void createControl(Composite parent) {
         Composite comp = new Composite(parent, SWT.NONE);
         setControl(comp);
 		comp.setLayout(new GridLayout(1, true));
@@ -54,37 +54,37 @@ public class GhostscriptTab extends AbstractLaunchConfigurationTab {
         }
     }
 
-	@Override
-	public void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
+    @Override
+    public void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
 		super.setLaunchConfigurationDialog(dialog);
 		for (ILaunchConfigurationTab block : fBlocks) {
 			block.setLaunchConfigurationDialog(dialog);
 		}
 	}	
 
-	//@Override
-	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+    @Override
+    public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
         for (ILaunchConfigurationTab block : fBlocks) {
         	block.setDefaults(configuration);
         }
     }
 
-    //@Override
-	public void initializeFrom(ILaunchConfiguration configuration) {
+    @Override
+    public void initializeFrom(ILaunchConfiguration configuration) {
         for (ILaunchConfigurationTab block : fBlocks) {
         	block.initializeFrom(configuration);
         }
     }
 
-    //@Override
-	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
+    @Override
+    public void performApply(ILaunchConfigurationWorkingCopy configuration) {
         for (ILaunchConfigurationTab block : fBlocks) {
         	block.performApply(configuration);
         }
     }
 
     @Override
-	public boolean isValid(ILaunchConfiguration launchConfig) {
+    public boolean isValid(ILaunchConfiguration launchConfig) {
         for (ILaunchConfigurationTab block : fBlocks) {
         	if (!block.isValid(launchConfig)) {
         		setErrorMessage(block.getErrorMessage());

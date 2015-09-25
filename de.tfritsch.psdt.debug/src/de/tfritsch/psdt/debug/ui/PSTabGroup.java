@@ -15,7 +15,7 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
  */
 public class PSTabGroup extends AbstractLaunchConfigurationTabGroup {
 
-	//@Override
+	@Override
 	public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
         ILaunchConfigurationTab tabs[] = {
                 new PSMainTab(),

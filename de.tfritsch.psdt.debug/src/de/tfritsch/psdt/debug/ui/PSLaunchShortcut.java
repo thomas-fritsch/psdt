@@ -35,7 +35,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 	public PSLaunchShortcut() {
 	}
 
-	//@Override
+	@Override
 	public void launch(ISelection selection, String mode) {
 		if (!(selection instanceof IStructuredSelection))
 			return;
@@ -44,7 +44,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 			launch((IFile) element, mode);
 	}
 
-	//@Override
+	@Override
 	public void launch(IEditorPart editor, String mode) {
 		IEditorInput editorInput = editor.getEditorInput();
 		IFile file = (IFile) editorInput.getAdapter(IFile.class);

@@ -42,8 +42,8 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      */
     public final static String ID = PSPlugin.ID + ".launchConfigurationType"; //$NON-NLS-1$
 
-	//@Override
-	public void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
+    @Override
+    public void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
         String exe = verifyInterpreter();
         String psFile = verifyPSFile(cfg);
         List<String> cmdLineList = new ArrayList<String>();

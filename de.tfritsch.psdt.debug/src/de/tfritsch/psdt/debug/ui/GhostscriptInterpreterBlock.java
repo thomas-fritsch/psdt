@@ -23,7 +23,7 @@ public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab 
 	private Text fInterpreterText;
 	private Button fInterpreterButton;
 
-	//@Override
+	@Override
 	public void createControl(Composite parent) {
 		Group group = new Group(parent, SWT.NONE);
 		setControl(group);
@@ -46,11 +46,11 @@ public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab 
         });
 	}
 
-	//@Override
+	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
-	//@Override
+	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
 		fInterpreterText.setText(getInterpreter());
 	}
@@ -65,11 +65,11 @@ public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab 
 		return true;
 	}
 
-	//@Override
+	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
-	//@Override
+	@Override
 	public String getName() {
 		return "Ghostscript interpreter"; //$NON-NLS-1$
 	}

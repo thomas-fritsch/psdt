@@ -3,6 +3,6 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Postscript Help
 Bundle-SymbolicName: de.tfritsch.psdt.help;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.help
 Bundle-Vendor: Thomas Fritsch

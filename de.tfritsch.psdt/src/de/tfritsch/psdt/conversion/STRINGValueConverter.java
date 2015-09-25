@@ -8,6 +8,7 @@ import org.eclipse.xtext.nodemodel.INode;
 
 public class STRINGValueConverter implements IValueConverter<byte[]> {
 
+	@Override
 	public byte[] toValue(String string, INode node)
 			throws ValueConverterException {
 		if (!string.startsWith("("))
@@ -57,6 +58,7 @@ public class STRINGValueConverter implements IValueConverter<byte[]> {
 		return out.toByteArray();
 	}
 
+	@Override
 	public String toString(byte[] value) throws ValueConverterException {
 		StringBuilder out = new StringBuilder();
 		out.append('(');

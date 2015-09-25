@@ -57,33 +57,33 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		}
 	}
 
-	//@Override
+	@Override
 	public IStreamMonitor getErrorStreamMonitor() {
 		return fErrorMonitor;
 	}
 
-	//@Override
+	@Override
 	public IStreamMonitor getOutputStreamMonitor() {
 		return fOutputMonitor;
 	}
 
-	//@Override
+	@Override
 	public void write(String input) throws IOException {
 		fInputWriter.write(input);
 		fInputWriter.flush();
 	}
 
-	//@Override
+	@Override
 	public void closeInputStream() throws IOException {
 		fInputWriter.close();
 	}
 
-	//@Override
+	@Override
 	public void setDebugStreamListener(IPSDebugStreamListener listener) {
 		fErrorMonitor.setListener(listener);
 	}
 
-	//@Override
+	@Override
 	public void sendCommand(String command) throws DebugException {
 		try {
 			write(command + "\n"); //$NON-NLS-1$
@@ -95,27 +95,27 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		}
 	}
 
-	//@Override
+	@Override
 	public void setSingleStep(boolean singleStep) throws DebugException {
 		sendCommand(singleStep + " @@singlestep"); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void resume() throws DebugException {
 		sendCommand("@@resume"); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void addBreakpoint(int ref) throws DebugException {
 		sendCommand("@@breakpoints " + ref + " null put"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
-	//@Override
+	@Override
 	public void removeBreakpoint(int ref) throws DebugException {
 		sendCommand("@@breakpoints " + ref + " undef"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
-	//@Override
+	@Override
 	public void hideDicts(boolean hideSystemDict, boolean hideGlobalDict,
 			boolean hideUserDict) throws DebugException {
 		sendCommand(hideSystemDict + " " //$NON-NLS-1$
@@ -123,12 +123,12 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 				+ hideUserDict + " @@stathide"); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void requestStatus() throws DebugException {
 		sendCommand("@@status"); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void sendInstrumentedCode(List<PSToken> tokens)
 			throws DebugException {
 		sendCommand("{"); //$NON-NLS-1$

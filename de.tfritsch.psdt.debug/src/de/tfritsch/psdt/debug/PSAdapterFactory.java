@@ -13,6 +13,7 @@ public class PSAdapterFactory implements IAdapterFactory {
 
 	private IRunToLineTarget fRunToLineTarget = new PSRunToLineTarget();
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Object getAdapter(Object adaptableObject, Class adapterType) {
 		if (IToggleBreakpointsTarget.class.equals(adapterType)) {
@@ -24,6 +25,7 @@ public class PSAdapterFactory implements IAdapterFactory {
 		return null;
 	}
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Class[] getAdapterList() {
 		return new Class[] { IToggleBreakpointsTarget.class,

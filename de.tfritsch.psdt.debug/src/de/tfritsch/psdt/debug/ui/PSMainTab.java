@@ -34,18 +34,18 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
     private Button fProgramButton;
     private Button fBreakOnFirstTokenButton;
 
-    //@Override
-	public String getName() {
+    @Override
+    public String getName() {
         return "Main";
     }
 
     @Override
-	public Image getImage() {
+    public Image getImage() {
     	return PSPlugin.getImage("icons/postscript.png"); //$NON-NLS-1$
     }
     
-    //@Override
-	public void createControl(Composite parent) {
+    @Override
+    public void createControl(Composite parent) {
         Composite comp = new Composite(parent, SWT.NONE);
         setControl(comp);
 		comp.setLayout(new GridLayout(1, true));
@@ -57,22 +57,22 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
         fProgramText = new Text(group, SWT.SINGLE | SWT.BORDER);
         fProgramText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         fProgramText.addModifyListener(new ModifyListener() {
-            //@Override
-			public void modifyText(ModifyEvent e) {
+            @Override
+            public void modifyText(ModifyEvent e) {
                 updateLaunchConfigurationDialog();
             }
         });
         fProgramButton = createPushButton(group, "&Browse...", null);
         fProgramButton.addSelectionListener(new SelectionAdapter() {
             @Override
-			public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(SelectionEvent e) {
                 browsePSFiles();
             }
         });
-		fBreakOnFirstTokenButton = createCheckButton(comp, "Break on first token");
-		fBreakOnFirstTokenButton.addSelectionListener(new SelectionAdapter() {
+        fBreakOnFirstTokenButton = createCheckButton(comp, "Break on first token");
+        fBreakOnFirstTokenButton.addSelectionListener(new SelectionAdapter() {
             @Override
-			public void widgetSelected(SelectionEvent e) {
+            public void widgetSelected(SelectionEvent e) {
                 updateLaunchConfigurationDialog();
             }
         });
@@ -91,14 +91,14 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
         }
     }
     
-	//@Override
-	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+    @Override
+    public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
         configuration.setAttribute(DebugPlugin.ATTR_PROCESS_FACTORY_ID, PSProcessFactory.ID);
     	configuration.setAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false);
     }
 
-    //@Override
-	public void initializeFrom(ILaunchConfiguration configuration) {
+    @Override
+    public void initializeFrom(ILaunchConfiguration configuration) {
         try {
             String program = configuration.getAttribute(IPSConstants.ATTR_PROGRAM, (String)null);
             if (program != null) {
@@ -115,8 +115,8 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
         }
     }
 
-    //@Override
-	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
+    @Override
+    public void performApply(ILaunchConfigurationWorkingCopy configuration) {
         String program = fProgramText.getText();
         if (program.length() == 0) {
             program = null;
@@ -127,7 +127,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
     }
 
     @Override
-	public boolean isValid(ILaunchConfiguration launchConfig) {
+    public boolean isValid(ILaunchConfiguration launchConfig) {
         String program = fProgramText.getText();
         if (program.length() == 0) {
             setErrorMessage("Specify a program");

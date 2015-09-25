@@ -18,8 +18,8 @@ class PSIndexedValue extends PSValue implements IIndexedValue {
         super(target, valueString);
     }
 
-    //@Override
-	public int getInitialOffset() {
+    @Override
+    public int getInitialOffset() {
         return 0;
     }
 
@@ -28,13 +28,13 @@ class PSIndexedValue extends PSValue implements IIndexedValue {
         return super.getSize();
     }
 
-    //@Override
-	public IVariable getVariable(int offset) {
+    @Override
+    public IVariable getVariable(int offset) {
         return getVariables()[offset];
     }
 
-    //@Override
-	public IVariable[] getVariables(int offset, int length) {
+    @Override
+    public IVariable[] getVariables(int offset, int length) {
         IVariable[] vars = new IVariable[length];
         System.arraycopy(getVariables(), offset, vars, 0, length);
         return vars;

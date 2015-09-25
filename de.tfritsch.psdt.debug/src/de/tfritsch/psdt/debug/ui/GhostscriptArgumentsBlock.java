@@ -35,7 +35,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	private Text fArgumentsText;
 
-	//@Override
+	@Override
 	public void createControl(Composite parent) {
 		Group group = new Group(parent, SWT.NONE);
 		setControl(group);
@@ -46,8 +46,8 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
         fArgumentsText = new Text(group, SWT.MULTI | SWT.WRAP| SWT.BORDER | SWT.V_SCROLL);
         fArgumentsText.setLayoutData(new GridData(GridData.FILL_BOTH));
         fArgumentsText.addModifyListener(new ModifyListener() {
-            //@Override
-			public void modifyText(ModifyEvent e) {
+            @Override
+            public void modifyText(ModifyEvent e) {
                 updateLaunchConfigurationDialog();
             }
         });
@@ -70,12 +70,12 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	}
 
-	//@Override
+	@Override
 	public void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
         configuration.setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "-dBATCH"); //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public void initializeFrom(ILaunchConfiguration configuration) {
         try {
 			String arguments = configuration.getAttribute(IPSConstants.ATTR_GS_ARGUMENTS, ""); //$NON-NLS-1$
@@ -97,13 +97,13 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		return true;
 	}
 
-	//@Override
+	@Override
 	public void performApply(ILaunchConfigurationWorkingCopy configuration) {
         String arguments = fArgumentsText.getText();
         configuration.setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, arguments);
 	}
 
-	//@Override
+	@Override
 	public String getName() {
 		return "Ghostscript interpreter:";
 	}

@@ -72,7 +72,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	protected void startMonitoring() {
 		if (fThread == null) {
 			fThread = new Thread(new Runnable() {
-				//@Override
+				@Override
 				public void run() {
 					read();
 				}
@@ -129,17 +129,17 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 		getNotifier().notifyAppend(text);
 	}
 
-	//@Override
+	@Override
 	public synchronized void addListener(IStreamListener listener) {
 		fListeners.add(listener);
 	}
 
-	//@Override
+	@Override
 	public void removeListener(IStreamListener listener) {
 		fListeners.remove(listener);
 	}
 
-	//@Override
+	@Override
 	public String getContents() {
 		return fContents.toString();
 	}
@@ -153,12 +153,12 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 		private IStreamListener fListener;
 		private String fText;
 
-		//@Override
+		@Override
 		public void handleException(Throwable exception) {
 			DebugPlugin.log(exception);
 		}
 
-		//@Override
+		@Override
 		public void run() throws Exception {
 			fListener.streamAppended(fText, PSOutputStreamMonitor.this);
 		}
@@ -177,17 +177,17 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 		}
 	}
 
-	//@Override
+	@Override
 	public void flushContents() {
 		fContents.setLength(0);
 	}
 
-	//@Override
+	@Override
 	public void setBuffered(boolean buffered) {
 		fBuffered = buffered;
 	}
 
-	//@Override
+	@Override
 	public boolean isBuffered() {
 		return fBuffered;
 	}

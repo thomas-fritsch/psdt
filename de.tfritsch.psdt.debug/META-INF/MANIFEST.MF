@@ -13,6 +13,6 @@ Require-Bundle: de.tfritsch.psdt.ui,
  org.eclipse.ui,
  org.eclipse.ui.editors,
  org.eclipse.ui.ide
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
 Export-Package: de.tfritsch.psdt.debug.ui

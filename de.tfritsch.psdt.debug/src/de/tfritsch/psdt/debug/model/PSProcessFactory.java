@@ -28,8 +28,8 @@ public class PSProcessFactory implements IProcessFactory {
 	public PSProcessFactory() {
 	}
 
-	//@Override
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	@SuppressWarnings("rawtypes")
 	public IProcess newProcess(ILaunch launch, Process process, String label,
 			Map attributes) {
 		return new RuntimeProcess(launch, process, label, attributes) {

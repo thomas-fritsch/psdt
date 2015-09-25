@@ -16,6 +16,7 @@ import de.tfritsch.psdt.debug.model.PSLineBreakpoint;
 
 public class PSRunToLineTarget implements IRunToLineTarget {
 
+	@Override
 	public void runToLine(IWorkbenchPart part, ISelection selection,
 			ISuspendResume target) throws CoreException {
 		ITextEditor textEditor = (ITextEditor) part.getAdapter(ITextEditor.class);
@@ -26,6 +27,7 @@ public class PSRunToLineTarget implements IRunToLineTarget {
 		breakpoint.setPersisted(false);
 		DebugPlugin.getDefault().addDebugEventListener(new IDebugEventSetListener() {
 			
+			@Override
 			public void handleDebugEvents(DebugEvent[] events) {
 				for (DebugEvent event : events) {
 					if (event.getKind() == DebugEvent.SUSPEND) {
@@ -43,6 +45,7 @@ public class PSRunToLineTarget implements IRunToLineTarget {
 		target.resume();
 	}
 
+	@Override
 	public boolean canRunToLine(IWorkbenchPart part, ISelection selection,
 			ISuspendResume target) {
 		ITextEditor textEditor = (ITextEditor) part.getAdapter(ITextEditor.class);

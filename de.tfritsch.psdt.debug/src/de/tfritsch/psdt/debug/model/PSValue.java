@@ -26,12 +26,12 @@ class PSValue extends PSDebugElement implements IValue {
 		fValueString = valueString;
 	}
 
-	//@Override
+	@Override
 	public String getReferenceTypeName() {
 		return ""; //$NON-NLS-1$
 	}
 
-	//@Override
+	@Override
 	public String getValueString() {
 		return fValueString;
 	}
@@ -42,7 +42,7 @@ class PSValue extends PSDebugElement implements IValue {
 		return getValueString();
 	}
 
-	//@Override
+	@Override
 	public IVariable[] getVariables() {
 		if (fVariables == null)
 			return new IVariable[0];
@@ -51,12 +51,12 @@ class PSValue extends PSDebugElement implements IValue {
 		return vars;
 	}
 
-	//@Override
+	@Override
 	public boolean hasVariables() {
 		return fVariables != null && fVariables.size() > 0;
 	}
 
-	//@Override
+	@Override
 	public boolean isAllocated() {
 		return true;
 	}

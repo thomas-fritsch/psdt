@@ -69,6 +69,7 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 			showInDocViewAction.setEnabled(false);
 			tbm.add(showInDocViewAction);
 			IInputChangedListener inputChangeListener = new IInputChangedListener() {
+				@Override
 				public void inputChanged(Object newInput) {
 					backAction.update();
 					forwardAction.update();
