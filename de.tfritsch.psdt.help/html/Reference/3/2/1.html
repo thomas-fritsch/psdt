@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Scanner</title>
+</head>
+<body>
+	<h2>3.2.1 Scanner</h2>
+	<p>
+		The PostScript language differs from most other programming languages
+		in that it does not have any syntactic entity for a "program," nor is
+		it necessary for an entire "program" to exist in one place at one
+		time. There is no notion of "reading in" a program before executing
+		it. Instead, the PostScript interpreter <em>consumes</em> a program by
+		reading and executing one syntactic entity at a time. From the
+		interpreter’s point of view, the program has no permanent existence.
+		Execution of the program may have side effects in the interpreter’s
+		memory or elsewhere. These side effects may include the creation of
+		procedure objects in memory that are intended to be invoked later in
+		the program; their execution is <em>deferred</em>.
+	</p>
+	<p>
+		It is not correct to think that the PostScript interpreter "executes"
+		the character stream directly. Rather, a scanner groups characters
+		into tokens according to the PostScript language syntax rules. It then
+		assembles one or more tokens to create a PostScript <em>object</em>&mdash;in
+		other words, a data value in the interpreter's memory. Finally, the
+		interpreter executes the object.
+	</p>
+	<p>For example, when the scanner encounters a group of consecutive
+		digits surrounded by spaces or other separators, it assembles the
+		digits into a token and then converts the token into a number object
+		represented internally as a binary integer. The interpreter then
+		executes this number object; in this case, it pushes a copy of the
+		object on the operand stack.</p>
+</body>
+</html>

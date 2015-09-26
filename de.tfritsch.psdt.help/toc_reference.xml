@@ -3,6 +3,27 @@
 
 <toc label="Reference">
 	<topic label="3 Language">
+		<topic label="3.1 Interpreter"          href="html/Reference/3/1.html"/>
+		<topic label="3.2 Syntax"               href="html/Reference/3/2.html">
+			<topic label="3.2.1 Scanner"        href="html/Reference/3/2/1.html"/>
+			<topic label="3.2.2 ASCII Encoding" href="html/Reference/3/2/2.html">
+				<topic label="Comments"         href="html/Reference/3/2/2.html#1"/>
+				<topic label="Numbers"          href="html/Reference/3/2/2.html#2"/>
+				<topic label="Strings"          href="html/Reference/3/2/2.html#3">
+					<topic label="Literal Text Strings"
+					                            href="html/Reference/3/2/2.html#3.1"/>
+					<topic label="Hexadecimal Strings"
+					                            href="html/Reference/3/2/2.html#3.2"/>
+					<topic label="ASCII Base-85 Strings"
+					                            href="html/Reference/3/2/2.html#3.3"/>
+				</topic>
+				<topic label="Names"            href="html/Reference/3/2/2.html#4"/>
+				<topic label="Arrays"           href="html/Reference/3/2/2.html#5"/>
+				<topic label="Procedures"       href="html/Reference/3/2/2.html#6"/>
+				<topic label="Dictionaris"      href="html/Reference/3/2/2.html#7"/>
+			</topic>
+		</topic>
+		<topic label="3.4 Stacks"               href="html/Reference/3/4.html"/>
 		<topic label="3.9 Named Resources"      href="html/Reference/3/9.html">
 			<topic label="3.9.1 Resource Operators"
 			                                    href="html/Reference/3/9/1.html" />

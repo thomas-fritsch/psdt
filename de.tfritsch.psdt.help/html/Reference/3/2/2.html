@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>ASCII Encoding</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h2>3.2.2 ASCII Encoding</h2>
+	<p>The standard character set for ASCII-encoded PostScript programs
+		is the visible printable subset of the ASCII character set, plus
+		characters that appear as "white space," such as space, tab, and
+		newline characters. ASCII is the American Standard Code for
+		Information Interchange, a widely used convention for encoding
+		characters as binary numbers. ASCII encoding does not prohibit the use
+		of characters outside this set, but such use is not recommended,
+		because it impairs portability and may make transmission and storage
+		of PostScript programs more difficult.</p>
+	<p>
+		<em><b>Note:</b> Control characters are often usurped by
+			communications functions. Control codes are device-dependent—not part
+			of the PostScript language. For example, the serial communication
+			protocol supported by many products uses the Control-D character as
+			an end-of-file indication. In such cases, Control-D is a
+			communications function and should not be part of a PostScript
+			program.</em>
+	</p>
+	<p>
+		<em>White-space characters</em> (Table 3.1) separate syntactic
+		constructs such as names and numbers from each other. The interpreter
+		treats any number of consecutive white-space characters as if there
+		were just one. All white-space characters are equivalent, except in
+		comments and strings.
+	</p>
+	<p>The characters carriage return (CR) and line feed (LF) are also
+		called newline characters. The combination of a carriage return
+		followed immediately by a line feed is treated as one newline.</p>
+	<table>
+		<caption>TABLE 3.1 White-space characters</caption>
+		<tr>
+			<th>octal</th>
+			<th>hexadecimal</th>
+			<th>decimal</th>
+			<th>name</th>
+		</tr>
+		<tr>
+			<td>000</td>
+			<td>00</td>
+			<td>0</td>
+			<td>Null (nul)</td>
+		</tr>
+		<tr>
+			<td>011</td>
+			<td>09</td>
+			<td>9</td>
+			<td>Tab (tab)</td>
+		</tr>
+		<tr>
+			<td>012</td>
+			<td>0A</td>
+			<td>10</td>
+			<td>Line feed (LF)</td>
+		</tr>
+		<tr>
+			<td>014</td>
+			<td>0C</td>
+			<td>12</td>
+			<td>Form feed (FF)</td>
+		</tr>
+		<tr>
+			<td>015</td>
+			<td>0D</td>
+			<td>13</td>
+			<td>Carriage return (CR)</td>
+		</tr>
+		<tr>
+			<td>040</td>
+			<td>20</td>
+			<td>32</td>
+			<td>Space (SP)</td>
+		</tr>
+	</table>
+	<p>The characters (, ), &lt;, &gt;, [, ], {, }, /, and % are
+		special. They delimit syntactic entities such as strings, procedure
+		bodies, name literals, and comments. Any of these characters
+		terminates the entity preceding it and is not included in the entity.</p>
+	<p>
+		All characters besides the white-space characters and delimiters are
+		referred to as <em>regular characters</em>. These include nonprinting
+		characters that are outside the recommended PostScript ASCII character
+		set.
+	</p>
+	<h3 id="1">Comments</h3>
+	<p>
+		Any occurrence of the character % outside a string introduces a <em>comment</em>.
+		The comment consists of all characters between the % and the next
+		newline or form feed, including regular, delimiter, space, and tab
+		characters.
+	</p>
+	<p>The scanner ignores comments, treating each one as if it were a
+		single whitespace character. That is, a comment separates the token
+		preceding it from the one following. Thus the ASCII-encoded program
+		fragment</p>
+	<pre>
+    abc% comment {/%) blah blah blah
+    123</pre>
+	<p>is treated by the scanner as just two tokens: abc and 123.</p>
+	<h3 id="2">Numbers</h3>
+	<p>Numbers in the PostScript language include:</p>
+	<ul>
+		<li>Signed integers, such as <pre>123 -98 43445 0 +17</pre></li>
+		<li>Real numbers, such as<pre>-.002 34.5 -3.62 123.6e10 1.0E-5 1E6 -1. 0.0</pre></li>
+		<li>Radix numbers, such as<pre>8#1777 16#FFFE 2#1000</pre></li>
+	</ul>
+	<p>An integer consists of an optional sign followed by one or more
+		decimal digits. The number is interpreted as a signed decimal integer
+		and is converted to an integer object. If it exceeds the
+		implementation limit for integers, it is converted to a real object.
+		(See Appendix B for implementation limits.)</p>
+	<p>
+		A real number consists of an optional sign and one or more decimal
+		digits, with an embedded period (decimal point), a trailing exponent,
+		or both. The exponent, if present, consists of the letter E or e
+		followed by an optional sign and one or more decimal digits. The
+		number is interpreted as a real number and is converted to a real
+		(floating-point) object. If it exceeds the implementation limit for
+		real numbers, a <b>limitcheck</b> error occurs.
+	</p>
+	<p>
+		A radix number takes the form base#number, where base is a decimal
+		integer in the range 2 through 36. number is interpreted in this base;
+		it must consist of digits ranging from 0 to base - 1. Digits greater
+		than 9 are represented by the letters A through Z (or a through z).
+		The number is treated as an unsigned integer and is converted to an
+		integer object having the same twos-complement binary representation.
+		This notation is intended for specifying integers in a nondecimal
+		radix, such as binary, octal, or hexadecimal. If the number exceeds
+		the implementation limit for integers, a <b>limitcheck</b> error
+		occurs.
+	</p>
+	<h3 id="3">Strings</h3>
+	<p>There are three conventions for quoting a literal string object:</p>
+	<ul>
+		<li>As literal text, enclosed in ( and )</li>
+		<li>As hexadecimal data, enclosed in &lt; and &gt;</li>
+		<li>As ASCII base-85 data, enclosed in &lt;~ and ~&gt; <em>(LanguageLevel
+				2)</em></li>
+	</ul>
+	<h4 id="3.1">Literal Text Strings</h4>
+	<p>A literal text string consists of an arbitrary number of
+		characters enclosed in ( and ). Any characters may appear in the
+		string other than (, ), and \, which must be treated specially.
+		Balanced pairs of parentheses in the string require no special
+		treatment.</p>
+	<p>The following lines show several valid strings:</p>
+	<pre>
+        (This is a string)
+        (Strings may contain newlines
+        and such.)
+        (Strings may contain special characters *!&amp;}^% and
+        balanced parentheses ( ) (and so on).)
+        (The following is an empty string.)
+        ()
+        (It has 0 (zero) length.)
+		</pre>
+	<p>Within a text string, the \ (backslash) character is treated as
+		an "escape" for various purposes, such as including newline
+		characters, unbalanced parentheses, and the \ character itself in the
+		string. The character immediately following the \ determines its
+		precise interpretation.</p>
+	<table>
+		<tr>
+			<td>\n</td>
+			<td>line feed (LF)</td>
+		</tr>
+		<tr>
+			<td>\r</td>
+			<td>carriage return (CR)</td>
+		</tr>
+		<tr>
+			<td>\t</td>
+			<td>horizontal tab</td>
+		</tr>
+		<tr>
+			<td>\b</td>
+			<td>backspace</td>
+		</tr>
+		<tr>
+			<td>\f</td>
+			<td>form feed</td>
+		</tr>
+		<tr>
+			<td>\\</td>
+			<td>backslash</td>
+		</tr>
+		<tr>
+			<td>\(</td>
+			<td>left parenthesis</td>
+		</tr>
+		<tr>
+			<td>\)</td>
+			<td>right parenthesis</td>
+		</tr>
+		<tr>
+			<td>\<em>ddd</em></td>
+			<td>character code <em>ddd</em> (octal)
+			</td>
+		</tr>
+	</table>
+	<p>If the character following the \ is not in the preceding list,
+		the scanner ignores the \. If the \ is followed immediately by a
+		newline (CR, LF, or CR-LF pair), the scanner ignores both the initial
+		\ and the newline; this breaks a string into multiple lines without
+		including the newline character as part of the string, as in the
+		following example:</p>
+	<pre>
+        (These \
+        two strings \
+        are the same.)
+        (These two strings are the same.)
+    </pre>
+	<p>But if a newline appears without a preceding \, the result is
+		equivalent to \n. For example:</p>
+	<pre>
+        (This string has a newline at the end of it.
+        )
+        (So does this one.\n)
+        </pre>
+	<p>For more information about end-of-line conventions, see Section
+		3.8, "File Input and Output."</p>
+	<p>
+		The <em>\ddd</em> form may be used to include any 8-bit character
+		constant in a string. One, two, or three octal digits may be
+		specified, with high-order overflow ignored. This notation is
+		preferred for specifying a character outside the recommended ASCII
+		character set for the PostScript language, since the notation itself
+		stays within the standard set and thereby avoids possible difficulties
+		in transmitting or storing the text of the program. It is recommended
+		that three octal digits always be used, with leading zeros as needed,
+		to prevent ambiguity. The string (\0053), for example, contains two
+		characters&mdash;an ASCII 5 (Control-E) followed by the digit
+		3&mdash;whereas the strings (\53) and (\053) contain one character,
+		the ASCII character whose code is octal 53 (plus sign).
+	</p>
+	<h4 id="3.2">Hexadecimal Strings</h4>
+	<p>
+		A hexadecimal string consists of a sequence of hexadecimal digits (0–9
+		and either A–F or a–f) enclosed within &lt; and &gt;. Each pair of
+		hexadecimal digits defines one character of the string. White-space
+		characters are ignored. If a hexadecimal string contains characters
+		outside the allowed character set, a <b>syntaxerror</b> occurs.
+		Hexadecimal strings are useful for including arbitrary binary data as
+		literal text.
+	</p>
+	<p>If the final digit of a given hexadecimal string is
+		missing&mdash;in other words, if there is an odd number of
+		digits&mdash;the final digit is assumed to be 0. For example,
+		&lt;901fa3&gt; is a 3-character string containing the characters whose
+		hexadecimal codes are 90, 1f, and a3, but &lt;901fa&gt; is a
+		3-character string containing the characters whose hexadecimal codes
+		are 90, 1f, and a0.</p>
+	<h4 id="3.3">ASCII Base-85 Strings</h4>
+	<p>
+		An ASCII base-85 string <em>(LanguageLevel 2)</em> consists of a
+		sequence of printable ASCII characters enclosed in &lt;~ and ~&gt;.
+		This notation represents arbitrary binary data using an encoding
+		technique that produces a 4:5 expansion as opposed to the 1:2
+		expansion for hexadecimal. The ASCII base-85 encoding algorithm is
+		described under "ASCII85Encode Filter" on page 131. If an ASCII
+		base-85 string is malformed, a <b>syntaxerror</b> occurs.
+	</p>
+
+	<h3 id="4">Names</h3>
+	<p>
+		Any token that consists entirely of regular characters and cannot be
+		interpreted as a number is treated as a <em>name</em> object (more
+		precisely, an <em>executable</em> name). All characters except
+		delimiters and white-space characters can appear in names, including
+		characters ordinarily considered to be punctuation.
+	</p>
+	<p>The following are examples of valid names:</p>
+	<pre>
+    abc Offset $$ 23A 13-456 a.b $MyDict @pattern</pre>
+	<p>Use care when choosing names that begin with digits. For
+		example, while 23A is a valid name, 23E1 is a real number, and 23#1 is
+		a radix number token that represents an integer.</p>
+	<p>
+		A / (slash&mdash;<em>not</em> backslash) introduces a literal name.
+		The slash is not part of the name itself, but is a prefix indicating
+		that the following sequence of zero or more regular characters
+		constitutes a literal name object. There can be no white-space
+		characters between the / and the name. The characters // (two slashes)
+		introduce an <em>immediately evaluated name</em>. The important
+		properties and uses of names and the distinction between executable
+		and literal names are described in Section 3.3, "Data Types and
+		Objects"; immediately evaluated names are discussed in Section 3.12.2,
+		"Immediately Evaluated Names."
+	</p>
+	<p>
+		<em><b>Note:</b> The token / (a slash followed by no regular
+			characters) is a valid literal name.</em>
+	</p>
+	<h3 id="5">Arrays</h3>
+	<p>The characters [ and ] are self-delimiting tokens that specify
+		the construction of an array. For example, the program fragment</p>
+	<pre>
+    [ 123 /abc (xyz) ]</pre>
+	<p>results in the construction of an array object containing the
+		integer object 123, the literal name object abc, and the string object
+		xyz. Each token within the brackets is executed in turn.</p>
+	<p>The [ and ] characters are special syntax for names that, when
+		executed, invoke PostScript operators that collect objects and
+		construct an array containing them. Thus the example</p>
+	<pre>
+    [ 123 /abc (xyz) ]</pre>
+	<p>contains these five tokens:</p>
+	<ul>
+		<li>The name object [</li>
+		<li>The integer object 123</li>
+		<li>The literal name object abc</li>
+		<li>The string object xyz</li>
+		<li>The name object ]</li>
+	</ul>
+	<p>When the example is executed, a sixth object (the array) results
+		from executing the [ and ] name objects.</p>
+	<h3 id="6">Procedures</h3>
+	<p>
+		The special characters { and } delimit an <em>executable array</em>,
+		otherwise known as a <em>procedure</em>. The syntax is superficially
+		similar to that for the array construction operators [ and ]; however,
+		the semantics are entirely different and arise as a result of <em>scanning</em>
+		the procedure rather than <em>executing</em> it.
+	</p>
+	<p>Scanning the program fragment</p>
+	<pre>
+    {add 2 div}</pre>
+	<p>
+		produces a single procedure object that contains the name object <b>add</b>,
+		the integer object 2, and the name object <b>div</b>. When the scanner
+		encounters the initial {, it continues scanning and creating objects,
+		but the interpreter does not execute them. When the scanner encounters
+		the matching }, it puts all the objects created since the initial {
+		into a new executable array (procedure) object.
+	</p>
+	<p>
+		The interpreter does not execute a procedure immediately, but treats
+		it as data; it pushes the procedure on the operand stack. Only when
+		the procedure is explicitly invoked (by means yet to be described)
+		will it be executed. Execution of the procedure&mdash; and of all
+		objects within the procedure, including any embedded procedures&mdash;
+		has been <em>deferred</em>. The matter of immediate versus deferred
+		execution is discussed in Section 3.5, "Execution."
+	</p>
+	<p>The procedure object created by { and } is either an array or a
+		packed array, according to the current setting of a mode switch. The
+		distinction between these array types is discussed in Section 3.3,
+		"Data Types and Objects."</p>
+	<h3 id="7">Dictionaries</h3>
+	<p>
+		The special character sequences &lt;&lt; and &gt;&gt; <em>(LanguageLevel
+			2)</em> are self-delimiting tokens that denote the construction of a
+		dictionary, much the same as [ and ] denote the construction of an
+		array. They are intended to be used as follows:
+	</p>
+	<p>
+		&lt;&lt; <em>key<sub>1</sub> value<sub>1</sub> key<sub>2</sub>
+			value<sub>2</sub> ... key<sub>n</sub> value<sub>n</sub></em> &gt;&gt;
+	</p>
+	<p>This creates a dictionary containing the bracketed key-value
+		pairs and pushes it on the operand stack. Dictionaries are introduced
+		in Section 3.3, "Data Types and Objects."</p>
+	<p>The &lt;&lt; and >> tokens are self-delimiting, so they need not
+		be surrounded by white-space characters or other delimiters. Do not
+		confuse these tokens with &lt; and >, which delimit a hexadecimal
+		string literal, or &lt;<~ and ~&gt;, which delimit an ASCII base-85
+		string literal. The &lt;&lt; and &gt;&gt; tokens are objects in their
+		own right (specifically, name objects), whereas in &lt; ... &gt; and
+		&lt;~ ... ~&gt; the delimiting characters are merely punctuation for
+		the enclosed literal string objects.</p>
+</body>
+</html>

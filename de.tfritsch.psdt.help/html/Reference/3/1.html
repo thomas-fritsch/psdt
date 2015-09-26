@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Interpreter</title>
+</head>
+<body>
+	<h2>3.1 Interpreter</h2>
+	<p>The PostScript interpreter executes the PostScript language
+		according to the rules in this chapter. These rules determine the
+		order in which operations are carried out and how the pieces of a
+		PostScript program fit together to produce the desired results.</p>
+	<p>
+		The interpreter manipulates entities called PostScript <em>objects</em>.
+		Some objects are data, such as numbers, boolean values, strings, and
+		arrays. Other objects are elements of programs to be executed, such as
+		names, operators, and procedures. However, there is not a distinction
+		between data and programs; any PostScript object may be treated as
+		data or be executed as part of a program.
+	</p>
+	<p>
+		The interpreter operates by executing a sequence of objects. The
+		effect of executing a particular object depends on that object’s <em>type</em>,
+		<em>attributes</em>, and <em>value</em>. For example, executing a
+		number object causes the interpreter to push a copy of that object on
+		the operand stack (to be described shortly). Executing a name object
+		causes the interpreter to look up the name in a dictionary, fetch the
+		associated value, and execute it. Executing an operator object causes
+		the interpreter to perform a built-in action, such as adding two
+		numbers or painting characters in raster memory.
+	</p>
+	<p>The objects to be executed by the interpreter come from two
+		principal sources:</p>
+	<ul>
+		<li>A character stream may be scanned according to the syntax
+			rules of the Post- Script language, producing a sequence of new
+			objects. As each object is scanned, it is immediately executed. The
+			character stream may come from an external source, such as a file or
+			a communication channel, or it may come from a string object
+			previously stored in the PostScript interpreter's memory.</li>
+		<li>Objects previously stored in an array in memory may be
+			executed in sequence. Such an array is known as a <em>procedure</em>.
+		</li>
+	</ul>
+	<p>
+		The interpreter can switch back and forth between executing a
+		procedure and scanning a character stream. For example, if the
+		interpreter encounters a name in a character stream, it executes that
+		name by looking it up in a dictionary and retrieving the associated
+		value. If that value is a procedure object, the interpreter suspends
+		scanning the character stream and begins executing the objects in the
+		procedure. When it reaches the end of the procedure, it resumes
+		scanning the character stream where it left off. The interpreter
+		maintains an <em>execution stack</em> for remembering all of its
+		suspended execution contexts.
+	</p>
+</body>
+</html>

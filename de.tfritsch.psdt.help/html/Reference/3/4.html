@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Stacks</title>
+</head>
+<body>
+	<h2>3.4 Stacks</h2>
+	<p>The PostScript interpreter manages five stacks representing the
+		execution state of a PostScript program. Three of them&mdash;the
+		operand, dictionary, and execution stacks&mdash;are described here;
+		the other two—the graphics state stack and clipping path stack—are
+		presented in Chapter 4. Stacks are "last in, first out" (LIFO) data
+		structures. In this book, “the stack” with no qualifier always means
+		the operand stack.</p>
+	<ul>
+		<li>The <em>operand stack</em> holds arbitrary PostScript objects
+			that are the operands and results of PostScript operators being
+			executed. The interpreter pushes objects on the operand stack when it
+			encounters them as literal data in a program being executed. When an
+			operator requires one or more operands, it obtains them by popping
+			them off the top of the operand stack. When an operator returns one
+			or more results, it does so by pushing them on the operand stack.
+		</li>
+		<li>The <em>dictionary stack</em> holds only dictionary objects.
+			The current set of dictionaries on the dictionary stack defines the
+			environment for all implicit name searches, such as those that occur
+			when the interpreter encounters an executable name. The role of the
+			dictionary stack is introduced in Section 3.3, "Data Types and
+			Objects," and is further explained in Section 3.5, "Execution."
+		</li>
+		<li>The <em>execution stack</em> holds executable objects (mainly
+			procedures and files) that are in intermediate stages of execution.
+			At any point in the execution of a Post- Script program, this stack
+			represents the program’s call stack. Whenever the interpreter
+			suspends execution of an object to execute some other object, it
+			pushes the new object on the execution stack. When the interpreter
+			finishes executing an object, it pops that object off the execution
+			stack and resumes executing the suspended object beneath it.
+		</li>
+	</ul>
+	<p>The three stacks are independent and there are different ways to
+		access each of them:</p>
+	<ul>
+		<li>The operand stack is directly under the control of the
+			PostScript program being executed. Objects may be pushed and popped
+			arbitrarily by various operators.</li>
+		<li>The dictionary stack is also under PostScript program
+			control, but it can hold only dictionaries. The bottom three
+			dictionaries on the stack&mdash;<b>systemdict</b>, <b>globaldict</b>,
+			and <b>userdict</b>&mdash;(or the bottom two, in LanguageLevel 1)
+			cannot be popped off. The only operators that can alter the
+			dictionary stack are <b>begin</b>, <b>end</b>, and <b>cleardictstack</b>.
+		</li>
+		<li>The execution stack is under the control of the PostScript
+			interpreter. It can be read but not directly modified by a PostScript
+			program.</li>
+	</ul>
+	<p>When an object is pushed on a stack, the object is copied onto
+		the stack from wherever it was obtained; however, in the case of a
+		composite object (such as an array, a string, or a dictionary), the
+		object’s value is not copied onto the stack, but rather is shared with
+		the original object. Similarly, when a composite object is popped off
+		a stack and put somewhere, only the object itself is moved, not its
+		value. See Section 3.3, "Data Types and Objects," for more details.</p>
+	<p>The maximum capacity of stacks may be limited; see Appendices B
+		and C.</p>
+</body>
+</html>
