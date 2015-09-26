@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Resources as Files</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.9.4 Resource as Files</h3>
+	<p>The PostScript language does not specify how external resources
+		are installed, how they are loaded, or what correspondence, if any,
+		exists between resource names and file names. In general, all
+		knowledge of such things is in the category implementation dictionary
+		and in environment-dependent installation software.</p>
+	<p>
+		Typically, resource instances are installed as named files, which can
+		also be accessed by ordinary PostScript file operators such as <b>file</b>
+		and <b>run</b>. There is a straightforward mapping from resource names
+		to file names, though the details of this mapping vary because of
+		restrictions on file name syntax imposed by the underlying file
+		system.
+	</p>
+	<p>
+		In some implementations, including many dedicated printers, the only
+		access to the file system is through the PostScript interpreter. In
+		such environments, it is important for PostScript programs to be able
+		to access the underlying resource files directly in order to install
+		or remove them. Only resource installation or other system management
+		software should do this. Page descriptions should never attempt to
+		access resources as files; they should use only resource operators,
+		such as <b>findresource</b>.
+	</p>
+	<p>
+		The implementation dictionary for a category can contain an optional
+		entry, <b>ResourceFileName</b>, which is a procedure that translates
+		from a resource name to a file name. If the procedure exists, a
+		program can call it as follows:
+	</p>
+	<ol>
+		<li>Push the category implementation dictionary on the dictionary
+			stack. The <b>ResourceFileName</b> procedure requires this step in
+			order to obtain categoryspecific information, such as <b>Category</b>.
+		</li>
+		<li>Push the instance name and a scratch string on the operand
+			stack. The scratch string must be long enough to accept the complete
+			file name for the resource.</li>
+		<li>Execute <b>ResourceFileName</b>.
+		</li>
+		<li>Pop the dictionary stack.</li>
+	</ol>
+	<p>
+		<b>ResourceFileName</b> builds a complete file name in the scratch
+		string and returns on the operand stack the substring that was used.
+		This string can then be used as the filename operand of file operators
+		such as <b>file</b>, <b>deletefile</b>, <b>status</b>, and so on. For
+		example, the following program fragment obtains the file name for the
+		Times-Roman font:
+	</p>
+	<pre>/Font /Category findresource
+    begin
+    /Times-Roman scratch ResourceFileName
+    end
+    </pre>
+	<p>
+		If a <b>ResourceFileName</b> procedure for a particular category and
+		instance name exists and executes without a PostScript error, it will
+		leave a string on the stack. If that category maintains all of its
+		instances as named files, this string is the name of the file for that
+		instance. This file name may or may not contain the %device% prefix.
+		Use of this file name with file operators may not succeed for a
+		variety of reasons, including:
+	</p>
+	<ul>
+		<li>The category does not maintain all of its instances as named
+			files.</li>
+		<li>The operator tried to delete a file from a read-only file
+			system.</li>
+		<li>The operator tried to write to a file system with
+			insufficient space.</li>
+	</ul>
+	<p>
+		There may be a limit on the length of a resource file name, which in
+		turn imposes a length limit on the instance name. The inherent limit
+		on resource instance names is the same as that on name objects in
+		general (see Appendix B). By convention, font names are restricted to
+		fewer than 40 characters. This convention is recommended for other
+		resource categories as well. Note that the resource file name may be
+		longer or shorter than the resource instance name, depending on
+		details of the name-mapping algorithm. When calling <b>ResourceFileName</b>,
+		it is prudent to provide a scratch string at least 100 characters
+		long.
+	</p>
+	<p>
+		Some implementations provide additional control over the behavior of <b>ResourceFileName</b>;
+		see Section C.3.6, "Resource File Location."
+	</p>
+	<p>
+		A resource file contains a PostScript program that can be executed to
+		load the resource instance into VM. The last action the program should
+		take is to execute <b>defineresource</b> or an equivalent operator,
+		such as <b>definefont</b>, to associate the resource instance with a
+		category and a name. In other words, each resource file must be
+		self-identifying and self-defining. The resource file must be well
+		behaved: it must leave the stacks in their original state and it must
+		not execute any operators (graphics operators, for instance) that are
+		not directly related to creating the resource instance.
+	</p>
+</body>
+</html>
