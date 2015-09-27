@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Error Handling</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h2>3.11.1 Error Handling</h2>
+	<p>
+		The <b>errordict</b> dictionary present in the initial state of VM
+		provides standard handlers for all errors. However, <b>errordict</b>
+		is a writeable dictionary; a program can replace individual error
+		handlers selectively. <b>errordict</b> is in local VM, so changes are
+		subject to <b>save</b> and <b>restore</b>; see Section 3.7, "Memory
+		Management."
+	</p>
+	<p>
+		The default error-handling procedures all operate in a standard way.
+		They record information about the error in a special dictionary named
+		<b>$error</b>, set the VM allocation mode to local, and invoke the <b>stop</b>
+		operator. They do not print anything or generate any text messages to
+		%stdout or %stderr.
+	</p>
+	<p>
+		Execution of <b>stop</b> exits the innermost enclosing context
+		established by the <b>stopped</b> operator. Assuming the user program
+		has not invoked <b>stopped</b>, interpretation continues in the job
+		server, which invoked the user program with <b>stopped</b>.
+	</p>
+	<p>
+		As part of error recovery, the job server executes the name <b>handleerror</b>
+		from <b>errordict</b>. The default <b>handleerror</b> procedure
+		accesses the error information in the <b>$error</b> dictionary and
+		reports the error in an installation-dependent fashion. In some
+		environments, <b>handleerror</b> simply writes a text message to the
+		standard output file. In other environments, it invokes more elaborate
+		error reporting mechanisms.
+	</p>
+	<p>
+		After an error occurs and one of the default error-handling procedures
+		is executed, <b>$error</b> contains the entries shown in Table 3.16.
+	</p>
+	<table>
+		<caption>TABLE 3.16 Entries in the $error dictionary</caption>
+		<tr>
+			<th>key</th>
+			<th>type</th>
+			<th>value</th>
+		</tr>
+		<tr>
+			<th>newerror</th>
+			<td>boolean</td>
+			<td>A flag that is set to true to indicate that an error has
+				occurred. <b>handleerror</b> sets it to false.
+			</td>
+		</tr>
+		<tr>
+			<th>errorname</th>
+			<td>name</td>
+			<td>The name of the error that occurred.</td>
+		</tr>
+		<tr>
+			<th>command</th>
+			<td>any</td>
+			<td>The operator or other object being executed by the
+				interpreter at the time the error occurred.</td>
+		</tr>
+		<tr>
+			<th>errorinfo</th>
+			<td>array or null</td>
+			<td><em>(LanguageLevel 2)</em> If the error arose from an
+				operator that takes a parameter dictionary as an operand (such as <b>setpagedevice</b>
+				or <b>setdevparams</b>), this array contains the key and value of
+				the incorrect parameter. (If a required entry was missing, this
+				array contains the expected key with a null value.) <b>handleerror</b>
+				sets <b>errorinfo</b> to null.</td>
+		</tr>
+		<tr>
+			<th>ostack</th>
+			<td>array</td>
+			<td>A snapshot of the entire operand stack immediately before
+				the error, stored as if by the <b>astore</b> operator.
+			</td>
+		</tr>
+		<tr>
+			<th>estack</th>
+			<td>array</td>
+			<td>A snapshot of the execution stack, stored as if by the <b>execstack</b>
+				operator.
+			</td>
+		</tr>
+		<tr>
+			<th>dstack</th>
+			<td>array</td>
+			<td>A snapshot of the dictionary stack, stored as if by the <b>dictstack</b>
+				operator.
+			</td>
+		</tr>
+		<tr>
+			<th>recordstacks</th>
+			<td>boolean</td>
+			<td><em>(LanguageLevel 2)</em> A flag that controls whether the
+				standard error handlers record the <b>ostack</b>, <b>estack</b>, and
+				<b>dstack</b> snapshots. Default value: true.</td>
+		</tr>
+		<tr>
+			<th>binary</th>
+			<td>boolean</td>
+			<td><em>(LanguageLevel 2)</em> A flag that controls the format
+				of error reports produced by the standard <b>handleerror</b>
+				procedure. false produces a text message; true produces a binary
+				object sequence (see Section 3.14.6, "Structured Output"). Default
+				value: false.</td>
+		</tr>
+	</table>
+	<p>A program that wishes to modify the behavior of error handling
+		can do so in one of two ways:</p>
+	<ul>
+		<li>It can change the way errors are reported simply by
+			redefining <b>handleerror</b> in <b>errordict</b>. For example, a
+			revised error handler might report more information about the context
+			of the error, or it might produce a printed page containing the error
+			information instead of reporting it to the standard output file.
+		</li>
+		<li>It can change the way errors are invoked by redefining the
+			individual error names in <b>errordict</b>. There is no restriction
+			on what an error-handling procedure can do. For example, in an
+			interactive environment, an error handler might invoke a debugging
+			facility that would enable the user to examine or alter the execution
+			environment and perhaps resume execution.
+		</li>
+	</ul>
+</body>
+</html>

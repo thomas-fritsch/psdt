@@ -20,7 +20,7 @@
 				<topic label="Names"            href="html/Reference/3/2/2.html#4"/>
 				<topic label="Arrays"           href="html/Reference/3/2/2.html#5"/>
 				<topic label="Procedures"       href="html/Reference/3/2/2.html#6"/>
-				<topic label="Dictionaris"      href="html/Reference/3/2/2.html#7"/>
+				<topic label="Dictionaries"     href="html/Reference/3/2/2.html#7"/>
 			</topic>
 		</topic>
 		<topic label="3.4 Stacks"               href="html/Reference/3/4.html"/>
@@ -57,6 +57,12 @@
 			</topic>
 			<topic label="3.9.4 Resources as Files"
 			                                    href="html/Reference/3/9/4.html"/>
+		</topic>
+		<topic label="3.11 Errors"              href="html/Reference/3/11.html">
+			<topic label="3.11.1 Error Initiation"
+			                                    href="html/Reference/3/11/1.html"/>
+			<topic label="3.11.2 Error Handling"
+			                                    href="html/Reference/3/11/2.html"/>
 		</topic>
 	</topic>
 	<topic label="5 Fonts"                      href="html/Reference/5.html">

@@ -1,4 +1,7 @@
 @CHARSET "ISO-8859-1";
+caption {
+	font-weight: bold;
+}
 table {
 	border-collapse: collapse;
 }
