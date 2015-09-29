@@ -1,6 +1,8 @@
 package de.tfritsch.psdt.ui.hover;
 
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IInputChangedListener;
@@ -59,30 +61,28 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 
 		@Override
 		protected void configureControl(final IXtextBrowserInformationControl control, ToolBarManager tbm, String font) {
-			final BackAction backAction = new BackAction(control);
-			backAction.setEnabled(false);
-			tbm.add(backAction);
-			final ForwardAction forwardAction = new ForwardAction(control);
-			tbm.add(forwardAction);
-			forwardAction.setEnabled(false);
+			super.configureControl(control, tbm, font);
+			// remove item "Open Declaration" (doesn't make sense for Postscript)
+			for (IContributionItem item : tbm.getItems()) {
+				if (item instanceof ActionContributionItem &&
+					((ActionContributionItem) item).getAction() instanceof OpenDeclarationAction) {
+					tbm.remove(item);
+				}
+			}
+			// add item "Show in PostscriptDoc View"
 			final Action showInDocViewAction = new ShowInDocViewAction(control);
 			showInDocViewAction.setEnabled(false);
 			tbm.add(showInDocViewAction);
-			IInputChangedListener inputChangeListener = new IInputChangedListener() {
+			control.addInputChangeListener(new IInputChangedListener() {
 				@Override
 				public void inputChanged(Object newInput) {
-					backAction.update();
-					forwardAction.update();
-					if (newInput instanceof XtextBrowserInformationControlInput) {
-						if (((XtextBrowserInformationControlInput) newInput).getInputElement() != null) {
-							showInDocViewAction.setEnabled(true);
-						}
+					if (newInput instanceof XtextBrowserInformationControlInput &&
+						((XtextBrowserInformationControlInput) newInput).getInputElement() != null) {
+						showInDocViewAction.setEnabled(true);
 					}
 				}
-			};
-			control.addInputChangeListener(inputChangeListener);
+			});
 			tbm.update(true);
-			addLinkListener(control);
 		}
 
 	}
