@@ -49,11 +49,11 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 		'''
 	}
 
-	def private String getHref(String label) {
-		val context = "de.tfritsch.psdt.help.Reference".context
+	def private String getHref(String name) {
+		val context = ("de.tfritsch.psdt.help." + name).context
 		if (context == null)
 			return null
-		return context.relatedTopics.findFirst[it|it.label == label]?.href
+		return context.relatedTopics.head?.href
 	}
 
 	def private String getContent(String href) {
