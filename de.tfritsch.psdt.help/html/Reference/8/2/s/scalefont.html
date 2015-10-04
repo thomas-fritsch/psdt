@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>scalefont</title>
+</head>
+<body>
+	<b>scalefont</b>
+	<pre>font scale <b>scalefont</b> font'</pre>
+	<p>
+		applies the scale factor scale to font, producing a new font' whose
+		characters are scaled by scale (in both x and y) when they are shown.
+		scalefont first creates a copy of font, then replaces the new font's
+		FontMatrix entry with the result of scaling the existing FontMatrix by
+		scale. It inserts two additional entries, OrigFont and ScaleMatrix,
+		whose purpose is internal to the implementation. Finally, it returns
+		the result as font'. Showing characters from the transformed font
+		produces the same results as showing from the original font after
+		having scaled user space by the factor scale in both x and y by means
+		of the <a href="scale.html">scale</a> operator.
+	</p>
+	<p>scalefont is essentially a convenience operator that enables the
+		desired scale factor to be encapsulated in the font description.
+		Another operator, makefont, performs more general transformations than
+		simple scaling. See the description of makefont for more information
+		on how the transformed font is derived. selectfont combines the
+		effects of findfont and scalefont. The interpreter keeps track of font
+		dictionaries recently created by scalefont.</p>
+	<p>Calling scalefont multiple times with the same font and scale
+		will usually return the same font' rather than create a new one each
+		time. However, it is usually more efficient for a PostScript language
+		program to apply scalefont only once for each font that it needs and
+		to keep track of the resulting font dictionaries on its own.</p>
+	<p>
+		The <a href="../m/makefont.html">makefont</a>, scalefont, and <a
+			href="selectfont.html">selectfont</a> operators produce a font
+		dictionary derived from an original font dictionary, but with the
+		FontMatrix entry altered. The derived font dictionary is allocated in
+		local or global VM according to whether the original font dictionary
+		is in local or global VM. This is independent of the current VM
+		allocation mode.
+	</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/Helvetica findfont 12 scalefont setfont
+</pre>
+	<p>This obtains the standard Helvetica font, which is defined with
+		a 1-unit line height, and scales it by a factor of 12 in both x and y
+		dimensions. This produces a 12-unit high font (i.e., a 12-point font
+		in default user space) whose characters have the same proportions as
+		those in the original font.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../m/makefont.html">makefont</a>, <a
+			href="setfont.html">setfont</a>, <a href="../f/findfont.html">findfont</a>,
+		<a href="selectfont.html">selectfont</a>
+	</p>
+</body>
+</html>

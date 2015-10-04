@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setmiterlimit</title>
+</head>
+<body>
+	<b>setmiterlimit</b>
+	<pre>num <b>setmiterlimit</b> -</pre>
+	<p>
+		sets the miter limit parameter in the graphics state to num, which
+		must be a number greater than or equal to 1. The miter limit controls
+		the stroke operator's treatment of corners when miter joins have been
+		specified (see <a href="#setlinejoin">setlinejoin</a>). When path
+		segments connect at a sharp angle, a miter join results in a spike
+		that extends well beyond the connection point. The purpose of the
+		miter limit is to cut off such spikes when they become objectionably
+		long.
+	</p>
+	<p>At any given corner, the miter length is the distance from the
+		point at which the inner edges of the stroke intersect to the point at
+		which the outside edges of the strokes intersect-in other words, the
+		diagonal length of the miter. This distance increases as the angle
+		between the segments decreases. If the ratio of the miter length to
+		the line width exceeds the miter limit parameter, stroke treats the
+		corner with a bevel join instead of a miter join.</p>
+	<p>The ratio of miter length to line width is directly related to
+		the angle j between the segments in user space by the formula:</p>
+	<pre>
+  miterLength      1
+  ----------- = --------
+   lineWidth    sin(&phi;/2)
+</pre>
+	<p>Examples of miter limit values are: 1.415 cuts off miters
+		(converts them to bevels) at angles less than 90 degrees, 2.0 cuts off
+		miters at angles less than 60 degrees, and 10.0 cuts off miters at
+		angles less than 11 degrees. The default value of the miter limit is
+		10. Setting the miter limit to 1 cuts off miters at all angles so that
+		bevels are always produced even when miters are specified.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentmiterlimit.html">currentmiterlimit</a>,
+		<a href="stroke.html">stroke</a>, <a href="setlinejoin.html">setlinejoin</a>
+	</p>
+</body>
+</html>

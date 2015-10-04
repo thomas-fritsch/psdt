@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>if</title>
+</head>
+<body>
+	<b>if</b>
+	<pre>bool proc <b>if</b> -</pre>
+	<p>removes both operands from the stack, then executes proc if bool
+		is true. The if operator pushes no results of its own on the operand
+		stack, but the proc may do so.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+3 4 lt {(3 is less than 4)} if &rArr; (3 is less than 4)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="ifelse.html">ifelse</a>
+	</p>
+</body>
+</html>

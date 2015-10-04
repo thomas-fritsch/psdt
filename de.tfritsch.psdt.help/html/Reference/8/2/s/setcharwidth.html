@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcharwidth</title>
+</head>
+<body>
+	<b>setcharwidth</b>
+	<pre>w<sub>x</sub> w<sub>y</sub> <b>setcharwidth</b> -</pre>
+	<p>is similar to setcachedevice, but it passes only width
+		information to the PostScript interpreter's font machinery and it
+		declares that the glyph being defined is not to be placed in the font
+		cache.</p>
+	<p>setcharwidth is useful in the unusual case of defining glyphs
+		that incorporate two or more specific opaque colors, such as opaque
+		black and opaque white. Most glyphs have no inherent color, but are
+		painted with the current color within the glyph's outline, leaving the
+		area outside unpainted (transparent). Another use of setcharwidth is
+		in defining glyphs that intentionally change their behavior based on
+		the environment in which they execute. Such glyphs must not be cached,
+		because that would subvert the intended variable behavior.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="setcachedevice.html">setcachedevice</a>, <a
+			href="setcachedevice2.html">setcachedevice2</a>
+	</p>
+</body>
+</html>

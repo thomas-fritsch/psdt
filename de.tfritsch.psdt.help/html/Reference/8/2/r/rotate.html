@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rotate</title>
+</head>
+<body>
+	<b>rotate</b>
+	<pre>       angle <b>rotate</b> -
+angle matrix <b>rotate</b> matrix -</pre>
+	<p>With no matrix operand, rotate builds a temporary matrix where q
+		is the operand angle in degrees, and concatenates this matrix with the
+		current transformation matrix (CTM). Precisely, rotate replaces the
+		CTM by R x CTM. The effect of this is to rotate the user coordinate
+		system axes about their origin by angle degrees (positive is
+		counterclockwise) with respect to their former orientation. The
+		position of the user coordinate origin and the sizes of the x and y
+		units are unchanged.</p>
+	<p>If the matrix operand is supplied, rotate replaces the value of
+		matrix by R and pushes the modified matrix back on the operand stack.
+		In this case, rotate does not affect the CTM.</p>
+	<p>
+		<b>Errors:</b> <a href="rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/scale.html">scale</a>, <a
+			href="../t/translate.html">translate</a>, <a href="../c/concat.html">concat</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>packedarray</title>
+</head>
+<body>
+	<b>packedarray</b> LEVEL 2
+	<pre>any<sub>0</sub> ... any<sub>n-1</sub> n <b>packedarray</b> packedarray</pre>
+	<p>
+		creates a packed <a href="../a/array.html">array</a> object of length
+		n containing the objects any<sub>0</sub> through any<sub>n-1</sub> as
+		elements. packedarray first removes the non-negative integer n from
+		the operand stack. It then removes that number of objects from the
+		operand stack, creates a packed array containing those objects as
+		elements, and finally pushes the resulting packed array object on the
+		operand stack.
+	</p>
+	<p>The resulting object has a type of packedarraytype, a literal
+		attribute, and readonly access. In all other respects, its behavior is
+		identical to that of an ordinary array object.</p>
+	<p>
+		The packed array is allocated in local or global VM according to the
+		current VM allocation mode. An <a href="../i/invalidaccess.html">invalidaccess</a>
+		error occurs if the packed array is in global VM and any of any<sub>0</sub>
+		... any<sub>n-1</sub> are in local VM.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="t.html#typecheck">typecheck</a>, <a href="v.html#VMerror">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../a/aload.html">aload</a>
+	</p>
+</body>
+</html>

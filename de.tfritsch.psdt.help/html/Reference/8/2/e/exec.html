@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>exec</title>
+</head>
+<body>
+	<b>exec</b>
+	<pre>any <b>exec</b> -</pre>
+	<p>pushes the operand on the execution stack, executing it
+		immediately. The effect of executing an object depends on the object's
+		type and literal/executable attribute. In particular, executing a
+		literal object will cause it only to be pushed back on the operand
+		stack. Executing a procedure, however, will cause the procedure to be
+		called.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+(3 2 add) cvx exec  &rArr;  5
+3 2 /add exec       &rArr;  3 2 /add
+3 2 /add cvx exec   &rArr;  5
+</pre>
+	<p>In the first line, the string (3 2 add) is made executable and
+		then executed. Executing a string causes its characters to be scanned
+		and interpreted according to the PostScript language syntax rules.</p>
+	<p>In the second line, the literal objects 3, 2, and /add are
+		pushed on the operand stack, then exec is applied to the add. Since
+		the add is a literal name, executing it simply causes it to be pushed
+		back on the operand stack. The exec in this case has no useful effect.</p>
+	<p>
+		In the third line, the literal name /add on the top of the operand
+		stack is made executable by <a href="../c/cvx.html">cvx</a>. Applying
+		exec to this executable name causes it to be looked up and the add
+		operation to be performed.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../x/xcheck.html">xcheck</a>, <a
+			href="../c/cvx.html">cvx</a>, <a href="../r/run.html">run</a>
+	</p>
+</body>
+</html>

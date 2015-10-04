@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>charpath</title>
+</head>
+<body>
+	<b>charpath</b>
+	<pre>string bool <b>charpath</b> -</pre>
+	<p>obtains the character path outlines that would result if string
+		were shown at the current point using show. Instead of painting the
+		path, however, charpath appends the path to the current path. This
+		yields a result suitable for general filling, stroking, or clipping
+		false
+	<p>
+		The bool operand determines what happens if the character path is
+		designed to be stroked rather than filled or outlined. If bool is <a
+			href="../f/false.html">false</a>, charpath simply appends the
+		character path to the current path; the result is suitable only for
+		stroking. If bool is <a href="../t/true.html">true</a>, charpath
+		applies the strokepath operator to the character path; the result is
+		suitable for filling or clipping, but not for stroking. charpath does
+		not produce results for portions of a character defined as images or
+		masks rather than as paths.
+	</p>
+	<p>
+		The outlines of some fonts are protected. (In Level 1 implementations,
+		this applies to all fonts; in Level 2, only to certain special fonts
+		and not to ordinary Type 1 or Type 3 fonts.) If the current font is
+		protected, using charpath to obtain its outlines causes the <a
+			href="../p/pathforall.html">pathforall</a> and <a
+			href="../u/upath.html">upath</a> operators to be disabled for as long
+		as those outlines remain in the current path.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/show.html">show</a>, <a
+			href="../f/flattenpath.html">flattenpath</a>, <a
+			href="../p/pathbbox.html">pathbbox</a>, <a href="clip.html">clip</a>
+	</p>
+</body>
+</html>

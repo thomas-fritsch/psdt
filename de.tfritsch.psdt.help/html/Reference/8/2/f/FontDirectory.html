@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FontDirectory</title>
+</head>
+<body>
+	<b>FontDirectory</b>
+	<pre>- <b>FontDirectory</b> dict</pre>
+	<p>pushes a dictionary of defined fonts on the operand stack.
+		FontDirectory is not an operator; it is a name in systemdict
+		associated with the dictionary object.</p>
+	<p>The FontDirectory dictionary associates font names with font
+		dictionaries. definefont places entries in FontDirectory, and findfont
+		looks there first. The dictionary is read-only; only definefont and
+		undefinefont can change it.</p>
+	<p>
+		Although FontDirectory contains all fonts that are currently defined
+		in VM, it does not necessarily describe all the fonts available to a
+		PostScript language program. This is because the findfont operator can
+		sometimes obtain fonts from an external source and load them into VM
+		dynamically. Consequently, examining FontDirectory is not a reliable
+		method of inquiring about available fonts. The preferred method is to
+		use the <a href="../r/resourcestatus.html">resourcestatus</a> and <a
+			href="../r/resourceforall.html">resourceforall</a> operators, which
+		are Level 2 features, to inquire about the Font resource category.
+	</p>
+	<p>In Level 2, when global VM allocation mode is in effect, the
+		name FontDirectory is temporarily rebound to the value of
+		GlobalFontDirectory, which contains only those fonts that have been
+		defined in global VM. This ensures the correct behavior of fonts that
+		are defined in terms of other fonts.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/definefont.html">definefont</a>, <a
+			href="../u/undefinefont.html">undefinefont</a>, <a
+			href="findfont.html">findfont</a>, <a href="findresource.html">findresource</a>,
+		<a href="../g/GlobalFontDirectory.html">GlobalFontDirectory</a>
+	</p>
+</body>
+</html>

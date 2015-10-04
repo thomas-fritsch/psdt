@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentscreen</title>
+</head>
+<body>
+	<b>currentscreen</b>
+	<pre>- <b>currentscreen</b> frequency angle proc
+- <b>currentscreen</b> frequency angle halftone</pre>
+	<p>
+		returns the current halftone screen parameters (frequency, angle, and
+		proc) in the graphics state, assuming the current screen was
+		established by setscreen. If <a href="../s/setcolorscreen.html">setcolorscreen</a>
+		was executed, currentscreen returns the parameters for the gray
+		screen.
+	</p>
+	<p>
+		If <a href="../s/sethalftone.html">sethalftone</a> was executed,
+		currentscreen returns a frequency of 60, an angle of 0, and the
+		halftone dictionary.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setcolorscreen.html">setcolorscreen</a>,
+		<a href="../s/setscreen.html">setscreen</a>, <a
+			href="../s/sethalftone.html">sethalftone</a>
+	</p>
+</body>
+</html>

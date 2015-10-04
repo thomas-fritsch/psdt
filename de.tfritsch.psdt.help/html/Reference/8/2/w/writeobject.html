@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>writeobject</title>
+</head>
+<body>
+	<b>writeobject</b> LEVEL 2
+	<pre>file obj tag <b>writeobject</b> -</pre>
+	<p>
+		writes a binary object sequence to file. Except for taking an explicit
+		file operand, writeobject is identical to <a
+			href="../p/printobject.html">printobject</a> in all respects.
+	</p>
+	<p>
+		As is the case for all operators that write to files, the output
+		produced by writeobject may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, a <a
+			href="../f/flushfile.html">flushfile</a> is required.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a> , <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../p/printobject.html">printobject</a>, <a
+			href="../s/setobjectformat.html">setobjectformat</a>
+	</p>
+</body>
+</html>

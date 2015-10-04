@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>quit</title>
+</head>
+<body>
+	<b>quit</b>
+	<pre>- <b>quit</b>> -</pre>
+	<p>terminates operation of the interpreter. The precise action of
+		quit depends on the environment in which the PostScript interpreter is
+		running. It may give control to an operating system command
+		interpreter, halt or restart the machine, and so on.</p>
+	<p>
+		In an interpreter that supports multiple execution contexts, the quit
+		operator causes termination of the current context only. Termination
+		is immediate, even if the context was created by <a
+			href="../f/fork.html">fork</a> in the expectation of a subsequent <a
+			href="../j/join.html">join</a>.
+	</p>
+	<p>
+		In a context that is under the control of a job server, the definition
+		of the quit operator in <a href="../s/systemdict.html">systemdict</a>
+		is masked by another definition of quit in <a
+			href="../u/userdict.html">userdict</a>, which usually is searched
+		before <a href="../s/systemdict.html">systemdict</a>. The default
+		definition of quit in <a href="../u/userdict.html">userdict</a> is the
+		same as <a href="../s/stop.html">stop</a>, which terminates the
+		current job, but not the interpreter as a whole. The quit operator in
+		<a href="../s/systemdict.html">systemdict</a> can be executed only by
+		an unencapsulated job; in an encapsulated job, it causes an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/stop.html">stop</a>, <a
+			href="../s/start.html">start</a>
+	</p>
+</body>
+</html>

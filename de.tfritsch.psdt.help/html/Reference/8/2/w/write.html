@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>write</title>
+</head>
+<body>
+	<b>write</b>
+	<pre>file int <b>write</b> -</pre>
+	<p>
+		appends a single character to the output file file. The int operand
+		should be an integer in the range 0 to 255 representing a character
+		code (values outside this range are reduced modulo 256). If file is
+		not a valid output file or some error is encountered, write executes <a
+			href="../i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		As is the case for all operators that write to files, the output
+		produced by write may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, a <a
+			href="../f/flushfile.html">flushfile</a> is required.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/read.html">read</a>, <a
+			href="writehexstring.html">writehexstring</a>, <a
+			href="writestring.html">writestring</a>, <a href="../f/file.html">file</a>
+	</p>
+</body>
+</html>

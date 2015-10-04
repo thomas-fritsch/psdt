@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentpagedevice</title>
+</head>
+<body>
+	<b>currentpagedevice</b> LEVEL 2
+	<pre>- <b>currentpagedevice</b> dict</pre>
+	<p>
+		returns a read-only dictionary that describes the page-oriented output
+		device in the current graphics state. currentpagedevice creates a new
+		dictionary if necessary. If the device in the current graphics state
+		is not a page device, currentpagedevice returns an empty dictionary
+		(length of 0). Changes made to the hardware state of the output device
+		since the last execution of <a href="../s/setpagedevice.html">setpagedevice</a>,
+		such as changing paper trays or switches, are not immediately
+		reflected in this dictionary. If the current context is under the
+		control of a job server, the server sets up a device that matches the
+		hardware state before starting each job. At the beginning of each job,
+		therefore, the dictionary currentpagedevice returns matches the
+		current hardware state.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setpagedevice.html">setpagedevice</a>
+	</p>
+</body>
+</html>

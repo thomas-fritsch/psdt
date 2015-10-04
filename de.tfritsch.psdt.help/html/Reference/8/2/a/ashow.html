@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ashow</title>
+</head>
+<body>
+	<b>ashow</b>
+	<pre>a<sub>x</sub> a<sub>y</sub> string <b>ashow</b> -</pre>
+	<p>
+		paints the characters of string in a manner similar to <a
+			href="../s/show.html">show</a>. But while doing so, ashow adjusts the
+		width of each character shown by adding a<sub>x</sub> to the
+		character's x width and a<sub>y</sub> to its y width, thus modifying
+		the spacing between characters. The numbers ax and ay are x and y
+		displacements in the user coordinate system, not in the character
+		coordinate system.
+	<p>This operator enables a string of text to be fitted to a
+		specific width by adjusting all the spaces between characters by a
+		uniform amount.
+	<p>
+		<b>Example</b>
+	<pre>
+/Helvetica findfont 12 scalefont setfont
+14 61 moveto (Normal spacing) show
+14 47 moveto 4 0 (Wide spacing) ashow
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="../s/show.html">show</a>, <a
+			href="awidthshow.html">awidthshow</a>, <a href="../c/cshow.html">cshow</a>,
+		<a href="../k/kshow.html">kshow</a>, <a href="../w/widthshow.html">widthshow</a>,
+		<a href="../x/xshow.html">xshow</a>, <a href="../x/xyshow.html">xyshow</a>,
+		<a href="../y/yshow.html">yshow</a>
+</body>
+</html>

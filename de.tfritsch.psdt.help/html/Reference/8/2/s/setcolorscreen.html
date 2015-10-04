@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcolorscreen</title>
+</head>
+<body>
+	<b>setcolorscreen</b> LEVEL 2
+	<pre>      redfreq redang redproc
+greenfreq greenang greenproc
+   bluefreq blueang blueproc
+   grayfreq grayang grayproc <b>setcolorscreen</b> -</pre>
+	<p>sets the halftone screen parameter in the graphics state (see
+		Section 7.4, "Halftones") as specified by the operands. setcolorscreen
+		sets independent halftone screens for the four primary color
+		components of the output device (red, green, blue, and gray) or their
+		complements (cyan, magenta, yellow, and black); this distinguishes it
+		from setscreen, which sets the screen identically for all four primary
+		components.</p>
+	<p>In the first form of the operator, the operands define a
+		separate frequency, angle, and spot function for each component, which
+		are interpreted the same as in the setscreen operator. The second form
+		substitutes halftone dictionaries in place of the spot functions. This
+		form sets all the halftone screens for all four components
+		identically, using the grayfreq, grayang, and grayhalftone operands in
+		the same manner as setscreen; the first nine operands (redfreq through
+		bluehalftone) are ignored. In LanguageLevel 3, the behavior of
+		setcolorscreen can be altered by the user parameters AccurateScreens
+		(see "Type 1 Halftone Dictionaries" on page 487), HalftoneMode
+		("Halftone Setting" on page 757), and MaxSuperScreen (Section 7.4.8,
+		"Supercells").</p>
+	<p>Because the effect of the halftone screen is device-dependent,
+		setcolorscreen should not be used in a page description that is
+		intended to be deviceindependent. Execution of this operator is not
+		permitted in certain circumstances; see Section 4.8.1, "Types of Color
+		Space."</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/sfreq 50 def                    % 50 halftone cells per inch
+/sproc { dup mul                 % Dot-screen spot function
+         exch dup mul
+         add 1
+         exch sub
+} def
+sfreq 75 /sproc load             % 75-degree red (cyan) screen
+sfreq 15 /sproc load             % 15-degree green (magenta) screen
+sfreq 0 /sproc load              % 0-degree blue (yellow) screen
+sfreq 45 /sproc load             % 45-degree gray (black) screen
+setcolorscreen
+</pre>
+	<p>This example establishes 50-line dot screens angled at 75
+		degrees for cyan, 15 degrees for magenta, 0 degrees for yellow, and 45
+		degrees for black, which are commonly used for color printing.</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentcolorscreen.html">currentcolorscreen</a>,
+		<a href="setscreen-html">setscreen</a>, <a href="sethalftone.html">sethalftone</a>
+	</p>
+</body>
+</html>

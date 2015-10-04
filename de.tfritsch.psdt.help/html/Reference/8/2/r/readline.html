@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readline</title>
+</head>
+<body>
+	<b>readline</b>
+	<pre>file string <b>readline</b> substring bool</pre>
+	<p>reads a line of characters (terminated by a newline character)
+		from file and stores them into successive elements of string. readline
+		then returns the substring of string that was filled and a boolean
+		indicating the outcome (true normally, false if end-of-file was
+		encountered before a newline character was read).</p>
+	<p>A &quot;line of characters&quot; is a sequential string of ASCII
+		characters, including space, tab, and non-printing &quot;control&quot;
+		characters. A line terminates with a newline-a carriage return
+		character, a line-feed character, or both.</p>
+	<p>
+		The terminating newline character is not stored into string or
+		included at the end of the returned substring. If readline completely
+		fills string before encountering a newline character, it executes the
+		error <a href="rangecheck.html">rangecheck</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="rangecheck.html">rangecheck</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="read.html">read</a>, <a
+			href="readhexstring.html">readhexstring</a>, <a href="readonly.html">readonly</a>
+	</p>
+</body>
+</html>

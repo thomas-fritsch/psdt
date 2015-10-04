@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>get</title>
+</head>
+<body>
+	<b>get</b>
+	<pre>      array index <b>get</b> any
+packedarray index <b>get</b> any
+         dict key <b>get</b> any
+     string index <b>get</b> int</pre>
+	<p>gets a single element from the value of an array, packed array,
+		dictionary, or string.</p>
+	<p>
+		If the first operand is an array, packed array, or string, get treats
+		the second operand as an index and returns the element identified by
+		the index, counting from zero. index must be in the range 0 to n-1,
+		where n is the length of the array, packed array, or string. If it is
+		outside this range, get will execute a <a href="../r/rangecheck.html">rangecheck</a>
+		error.
+	</p>
+	<p>
+		If the first operand is a dictionary, get looks up the second operand
+		as a key in the dictionary and returns the associated value. If the
+		key is not present in the dictionary, get executes the <a
+			href="../u/undefined.html">undefined</a> error.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+[31 41 59] 0 get               &rArr; 31
+[0 (string1) [] {add 2 div}]          % A mixed-type array
+   2 get                       &rArr; []   % An empty array
+
+/mykey (myvalue) def
+currentdict /mykey get         &rArr; (myvalue)
+
+(abc) 1 get                    &rArr; 98   % Character code for &quot;b&quot;
+(a) 0 get                      &rArr; 97
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../p/put.html">put</a>, <a
+			href="getinterval.html">getinterval</a>
+	</p>
+</body>
+</html>

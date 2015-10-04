@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>findresource</title>
+</head>
+<body>
+	<b>findresource</b> LEVEL 2
+	<pre>key category <b>findresource</b> instance</pre>
+	<p>attempts to obtain a named resource instance in a specified
+		category. category is a name object that identifies a resource
+		category, such as Font . key is a name or string object that
+		identifies the resource instance. (Names and strings are
+		interchangeable; other types of keys are permitted but are not
+		recommended.) If it succeeds, findresource pushes the resource
+		instance on the operand stack; this is an object whose type depends on
+		the resource category.</p>
+	<p>
+		findresource first attempts to obtain a resource instance that has
+		previously been defined in VM by defineresource. If the current VM
+		allocation mode is local, findresource considers local resource
+		definitions first, then global definitions (see <a
+			href="../d/defineresource.html">defineresource</a>). However, if the
+		current VM allocation mode is global, findresource considers only
+		global resource definitions.
+	</p>
+	<p>If the requested resource instance is not currently defined in
+		VM, findresource attempts to obtain it from an external source. The
+		way this is done is not specified by the PostScript language; it
+		varies among different implementations and different resource
+		categories. The effect of this action is to create an object in VM and
+		execute defineresource. findresource then returns the newly created
+		object. If key is not a name or string, findresource will not attempt
+		to obtain an external resource.</p>
+	<p>When findresource loads an object into VM, it ordinarily
+		attempts to use global VM, regardless of the current VM allocation
+		mode. In other words, it sets the VM allocation mode to global (true
+		setglobal) while loading the resource instance and executing
+		defineresource. However, certain resource instances do not function
+		correctly when loaded into global VM; findresource uses local VM
+		instead. This always occurs for type 3 font definitions and for any
+		resource instance whose definition includes an explicit false
+		setglobal.</p>
+	<p>
+		During its execution, findresource may remove the definitions of
+		resource instances that were previously loaded into VM by
+		findresource. The mechanisms and policies for this depend on the
+		category and the implementation; reclamation of resources may occur at
+		times other than during execution of findresource. However, resource
+		definitions that were made by explicit execution of <a
+			href="../d/defineresource.html">defineresource</a> are never
+		disturbed by automatic reclamation.
+	</p>
+	<p>
+		If the specified resource category does not exist, an <a
+			href="../u/undefined.html">undefined</a> error occurs. If the
+		category exists but there is no instance whose name is key, an <a
+			href="../u/undefinedresource.html">undefinedresource</a> error
+		occurs.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>, <a
+			href="../u/undefinedresource.html">undefinedresource</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/defineresource.html">defineresource</a>,
+		<a href="../r/resourcestatus.html">resourcestatus</a>, <a
+			href="../r/resourceforall.html">resourceforall</a>, <a
+			href="../u/undefineresource.html">undefineresource</a>
+	</p>
+</body>
+</html>

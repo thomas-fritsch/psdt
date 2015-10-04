@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>putinterval</title>
+</head>
+<body>
+	<b>putinterval</b>
+	<pre>      array<sub>1</sub> index array<sub>2</sub> <b>putinterval</b> -
+array<sub>1</sub> index packedarray<sub>2</sub> <b>putinterval</b> -
+    string<sub>1</sub> index string<sub>2</sub> <b>putinterval</b> -</pre>
+	<p>replaces a subsequence of the elements of the first operand by
+		the entire contents of the third operand. The subsequence that is
+		replaced begins at the specified index in the first operand; its
+		length is the same as the length of the third operand.</p>
+	<p>
+		The objects are copied from the third operand to the first, as if by a
+		sequence of individual gets and puts. In the case of arrays, if the
+		copied elements are themselves composite objects, the values of those
+		objects are shared between array<sub>2</sub> and array<sub>1</sub>.
+	</p>
+	<p>
+		putinterval requires index to be a valid index in array<sub>1</sub> or
+		string<sub>1</sub> such that index plus the length of array<sub>2</sub>
+		or string<sub>2</sub> is not greater than the length of array<sub>1</sub>
+		or string<sub>1</sub>.
+	</p>
+	<p>
+		If the value of array<sub>1</sub> is in global VM and any of the
+		elements copied from array<sub>2</sub> or packedarray<sub>2</sub> are
+		composite objects whose values are in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/ar [5 8 2 7 3] def
+ar 1 [(a) (b) (c)] putinterval
+ar                               &rArr;  [5 (a) (b) (c) 3]
+
+/st (abc) def
+st 1 (de) putinterval
+st                               &rArr;  (ade)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../g/getinterval.html">getinterval</a>, <a
+			href="put.html">put</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>image</title>
+</head>
+<body>
+	<b>image</b>
+	<pre>width height bits/sample matrix datasrc <b>image</b> -
+                                   dict <b>image</b> -</pre>
+	<p>paints a sampled image onto the current page. The description
+		here only summarizes the image operator.</p>
+	<p>The sampled image is a rectangular array of width x height
+		sample values, each of which consists of bits/sample bits of data (1,
+		2, 4, 8, or 12). The data is received as a sequence of characters-in
+		other words, 8-bit integers in the range 0 to 255. If bits/sample is
+		less than 8, sample values are packed left to right within a character</p>
+	<p>In the first form of image, the parameters are specified as
+		separate operands. This is the only form Level 1 implementations
+		support. image renders a monochrome image according to the DeviceGray
+		color space, regardless of the current color space.</p>
+	<p>In the second form, the parameters are contained as key-value
+		pairs in an image dictionary, which is specified as the single operand
+		of image. This form is a Level 2 feature. image renders either a
+		monochrome or color image according to the current color space
+		parameter in the graphics state. The number of component values per
+		source sample and the interpretations of those values depend on the
+		current color space.</p>
+	<p>The image is considered to exist in its own coordinate system.
+		The rectangular boundary of the image has its lower-left corner at (0,
+		0) and its upper-right corner at (width, height). The matrix operand
+		specifies a transformation from user space to the image coordinate
+		system.</p>
+	<p>In Level 1, datasrc must be a procedure. In Level 2, datasrc may
+		be any data source &mdash;a procedure, string, or readable file object
+		(including a filtered file).</p>
+	<p>If datasrc is a procedure, image executes datasrc repeatedly to
+		obtain the actual image data. datasrc must return (on the operand
+		stack) a string containing any number of additional characters of
+		sample data.</p>
+	<p>If datasrc returns a string of length zero, image will terminate
+		execution prematurely. The sample values are assumed to be received in
+		a fixed order: (0, 0) through (width-1, 0), then (0, 1) through
+		(width-1, 1), and so on.</p>
+	<p>Execution of this operator is not permitted in certain
+		circumstances.</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="invalidaccess.html">invalidaccess</a>, <a href="ioerror.html">ioerror</a>,
+		<a href="../r/html#rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="imagemask.html">imagemask</a>, <a
+			href="../c/colorimage.html">colorimage</a>
+	</p>
+</body>
+</html>

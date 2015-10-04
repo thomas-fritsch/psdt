@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>sethalftone</title>
+</head>
+<body>
+	<b>sethalftone</b> LEVEL 2
+	<pre>halftone <b>sethalftone</b> -</pre>
+	<p>
+		establishes halftone as the halftone parameter in the graphics state.
+		Once established, the halftone dictionary should be treated as
+		readonly. If the halftone dictionary's HalftoneType value is out of
+		bounds or is not supported by the PostScript interpreter, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs. If a
+		required entry is missing or its value is of the wrong type, a <a
+			href="../t/typecheck.html">typecheck</a> error occurs. sethalftone
+		sets a graphics state parameter whose effect is device dependent. It
+		should not be used in a page description that is intended to be device
+		independent.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/imitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currenthalftone.html">currenthalftone</a>,
+		<a href="setscreen.html">setscreen</a>, <a href="setcolorscreen.html">setcolorscreen</a>
+	</p>
+</body>
+</html>

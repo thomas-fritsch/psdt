@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>stopped</title>
+</head>
+<body>
+	<b>stopped</b>
+	<pre>any <b>stopped</b> bool</pre>
+	<p>executes any, which is typically, but not necessarily, a
+		procedure, executable file, or executable string object. If any runs
+		to completion normally, stopped returns false on the operand stack. If
+		any terminates prematurely as a result of executing stop, stopped
+		returns true on the operand stack. Regardless of the outcome, the
+		interpreter resumes execution at the next object in normal sequence
+		after stopped.</p>
+	<p>This mechanism provides an effective way for a PostScript
+		language program to &quot;catch&quot; errors or other premature
+		terminations, retain control, and perhaps perform its own error
+		recovery.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+{ ... } stopped
+  {handleerror}
+if
+</pre>
+	<p>If execution of the procedure {...} causes an error, the default
+		error-reporting procedure is invoked (by handleerror). In any event,
+		normal execution continues at the token following the if.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="stop.html">stop</a>
+	</p>
+</body>
+</html>

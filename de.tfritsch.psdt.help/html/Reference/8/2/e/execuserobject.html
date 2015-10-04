@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>execuserobject</title>
+</head>
+<body>
+	<b>execuserobject</b> LEVEL 2
+	<pre>index <b>execuserobject</b> -</pre>
+	<p>
+		executes the object associated with the non-negative integer index in
+		the <a href="../u/UserObjects.html">UserObjects</a> array.
+		execuserobject is equivalent to:
+	</p>
+	<p>userdict /UserObjects get exch get exec</p>
+	<p>execuserobject's semantics are similar to those of exec or other
+		explicit execution operators. That is, if the object is executable, it
+		is executed; otherwise, it is pushed on the operand stack.</p>
+	<p>
+		If <a href="../u/UserObjects.html">UserObjects</a> is not defined in
+		userdict because defineuserobject has never been executed, an <a
+			href="../u/undefined.html">undefined</a> error occurs. If index is
+		not a valid index for the existing <a href="../u/UserObjects.html">UserObjects</a>
+		array, a <a href="../r/rangecheck.html">rangecheck</a> error occurs.
+		If index is a valid index but <a href="../d/defineuserobject.html">defineuserobject</a>
+		has not been executed previously for that index, a null object is
+		returned.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/defineuserobject.html">defineuserobject</a>,
+		<a href="../u/undefineuserobject.html">undefineuserobject</a>, <a
+			href="../u/UserObjects.html">UserObjects</a>
+	</p>
+</body>
+</html>

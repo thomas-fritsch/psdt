@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>makepattern</title>
+</head>
+<body>
+	<b>makepattern</b> LEVEL 2
+	<pre>dict matrix <b>makepattern</b> pattern</pre>
+	<p>verifies that dict is a prototype pattern dictionary with all
+		required key-value pairs . It then creates a copy of dict in local VM,
+		adding an entry, with key Implementation, for use by the
+		implementation. makepattern copies only the contents of dict itself,
+		not the values of subsidiary composite objects, which are shared with
+		the original dictionary.</p>
+	<p>makepattern saves a copy of the current graphics state, to be
+		used later when the interpreter calls the PaintProc to render the
+		pattern cell. It then modifies certain parameters in the saved
+		graphics state, as follows:</p>
+	<ul>
+		<li>Concatenates matrix with the saved copy of the CTM.</li>
+		<li>Adjusts the resulting matrix to ensure that the device space
+			can be tiled properly with a pattern cell of the given size in
+			accordance with the TilingType.</li>
+		<li>Resets the path to empty.</li>
+		<li>Replaces the clipping path by the pattern cell bounding box
+			specified by the BBox entry in the pattern dictionary.</li>
+		<li>Replaces the device by a special one the implementation
+			provides.</li>
+	</ul>
+	<p>
+		Finally, makepattern makes the new dictionary read-only and pushes it
+		on the operand stack. The resulting pattern dictionary is suitable for
+		use as an operand of <a href="../s/setpattern.html">setpattern</a> or as
+		a &quot;color value&quot; in the Pattern color space.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined,</a> <a href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setpattern.html">setpattern</a>, <a
+			href="../f/findresource.html">findresource</a>
+	</p>
+</body>
+</html>

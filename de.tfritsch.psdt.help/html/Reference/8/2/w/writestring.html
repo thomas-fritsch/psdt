@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>writestring</title>
+</head>
+<body>
+	<b>writestring</b>
+	<pre>file string <b>writestring</b> -</pre>
+	<p>writes the characters of string to the output file file.
+		writestring does not append a newline character or interpret the value
+		of string, which can contain arbitrary binary data. However, the
+		communication channel may usurp certain control characters or impose
+		other restrictions.</p>
+	<p>
+		As is the case for all operators that write to files, the output
+		produced by writestring may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, a <a
+			href="../f/flushfile.html">flushfile</a> is required.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/readstring.html">readstring</a>, <a
+			href="write.html">write</a>, <a href="writehexstring.html">writehexstring</a>,
+		<a href="../f/file.html">file</a>, <a href="../f/filter.html">filter</a>
+	</p>
+</body>
+</html>

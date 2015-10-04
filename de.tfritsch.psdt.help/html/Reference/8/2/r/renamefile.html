@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>renamefile</title>
+</head>
+<body>
+	<b>renamefile</b> LEVEL 2
+	<pre>old new <b>renamefile</b> -</pre>
+	<p>changes the name of a file from old to new, where old and new
+		are strings that specify file names on the same storage device.</p>
+	<p>
+		If no such file exists, an <a href="../u/undefinedfilename.html">undefinedfilename</a>
+		error occurs. If the device does not allow this operation, an <a
+			href="../i/invalidfileaccess.html">invalidfileaccess</a> error
+		occurs. If an environment-dependent error is detected, an <a
+			href="../i/ioerror.html">ioerror</a> occurs. Whether or not an error
+		occurs if a file named new already exists is environment dependent.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidfileaccess.html">invalidfileaccess</a>,
+		<a href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedfilename.html">undefinedfilename</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/file.html">file</a>, <a
+			href="../d/deletefile.html">deletefile</a>, <a
+			href="../s/status.html">status</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ufill</title>
+</head>
+<body>
+	<b>ufill</b> LEVEL 2
+	<pre>userpath <b>ufill</b> -</pre>
+	<p>
+		interprets a user path definition and fills the resulting path as if
+		by fill. The entire operation is effectively enclosed by <a
+			href="../g/gsave.html">gsave</a> and <a href="../g/grestore.html">grestore</a>,
+		so ufill has no lasting effect on the graphics state.
+	</p>
+	<p>ufill is equivalent to:</p>
+	<pre>
+gsave
+  newpath
+  uappend
+  fill
+grestore
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> fill, <a href="uappend.html">uappend</a>, <a
+			href="ueofill.html">ueofill</a>
+	</p>
+</body>
+</html>

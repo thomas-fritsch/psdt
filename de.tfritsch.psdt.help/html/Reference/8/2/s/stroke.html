@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>stroke</title>
+</head>
+<body>
+	<b>stroke</b>
+	<pre>- <b>stroke</b> -</pre>
+	<p>paints a line centered on the current path, with sides parallel
+		to the path segments. The line’s graphical properties are defined by
+		various parameters of the graphics state. Its thickness is determined
+		by the current line width parameter (see setlinewidth) and its color
+		by the current color (see setcolor). The joints between connected path
+		segments and the ends of open subpaths are painted with the current
+		line join (see setlinejoin) and the current line cap (see setlinecap),
+		respectively. The line is either solid or broken according to the dash
+		pattern established by setdash. Uniform stroke width can be ensured by
+		enabling automatic stroke adjustment (see setstrokeadjust). All of
+		these graphics state parameters are consulted at the time stroke is
+		executed; their values during the time the path is being constructed
+		are irrelevant.</p>
+	<p>If a subpath is degenerate (consists of a single-point closed
+		path or of two or more points at the same coordinates), stroke paints
+		it only if round line caps have been specified, producing a filled
+		circle centered at the single point. If butt or projecting square line
+		caps have been specified, stroke produces no output, because the
+		orientation of the caps would be indeterminate. A subpath consisting
+		of a singlepoint open path produces no output.</p>
+	<p>After painting the current path, stroke clears it with an
+		implicit newpath operation. To preserve the current path across a
+		stroke operation, use the sequence</p>
+	<pre>
+gsave
+  stroke
+grestore
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="setlinewidth.html">setlinewidth</a>, <a
+			href="setlinejoin.html">setlinejoin</a>, <a href="setmiterlimit.html">setmiterlimit</a>,
+		<a href="setlinecap.html">setlinecap</a>, <a href="setdash.html">setdash</a>,
+		<a href="setstrokeadjust.html">setstrokeadjust</a>, <a
+			href="../u/ustroke.html">ustroke</a>
+	</p>
+</body>
+</html>

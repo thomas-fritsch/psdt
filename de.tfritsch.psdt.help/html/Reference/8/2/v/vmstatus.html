@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vmstatus</title>
+</head>
+<body>
+	<b>vmstatus</b>
+	<pre>- <b>vmstatus</b> level used maximum</pre>
+	<p>returns three integers describing the state of the PostScript
+		interpreter's virtual memory (VM).</p>
+	<p>level is the current depth of save nesting-in other words, the
+		number of saves that haven't been matched by a restore. used and
+		maximum measure VM resources in units of 8-bit bytes; used is the
+		number of bytes currently in use and maximum is the maximum available
+		capacity.</p>
+	<p>
+		VM consumption is monitored separately for local and global VM. The
+		used and maximum values apply to either local or global VM according
+		to the current VM allocation mode (see <a href="../s/setglobal.html">setglobal</a>).
+	</p>
+	<p>
+		The used value is meaningful only immediately after a garbage
+		collection has taken place (see <a href="vmreclaim.html">vmreclaim</a>).
+		At other times, it may be too large because it includes memory
+		occupied by objects that have become inaccessible, but have not yet
+		been reclaimed.
+	</p>
+	<p>The maximum value is an estimate of the maximum size to which
+		the current VM (local or global) could grow, assuming that all other
+		uses of available memory remain constant. Because that assumption is
+		never valid in practice, there is some uncertainty about the maximum
+		value. Also, in some environments (workstations, for instance), the
+		PostScript interpreter can obtain more memory from the operating
+		system. In this case, memory is essentially inexhaustible and the
+		maximum value is meaningless-it is an extremely large number.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setuserparams.html">setuserparams</a>
+	</p>
+</body>
+</html>

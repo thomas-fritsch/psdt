@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>kshow</title>
+</head>
+<body>
+	<b>kshow</b>
+	<pre>proc string <b>kshow</b> -</pre>
+	<p>paints the characters of string in a manner similar to show, but
+		allowing program intervention between characters. If the character
+		codes in string are c0, c1, ... cn, kshow proceeds as follows: First
+		it shows c0 at the current point, updating the current point by c0's
+		width. Then it pushes the character codes c0 and c1 on the operand
+		stack (as integers) and executes proc. The proc may perform any
+		actions it wishes; typically, it will modify the current point to
+		affect the subsequent placement of c1. kshow continues by showing c1,
+		pushing c1 and c2 on the stack, executing proc, and so on. It finishes
+		by pushing cn-1 and cn on the stack, executing proc, and finally
+		showing cn.</p>
+	<p>When proc is called for the first time, the graphics state (in
+		particular, the CTM) is the same as it was at the time kshow was
+		invoked, except that the current point has been updated by the width
+		of c0. Execution of proc is permitted to have any side effects,
+		including changes to the graphics state. Such changes persist from one
+		call of proc to the next and may affect graphical output for the
+		remainder of kshow's execution and afterward.</p>
+	<p>The name kshow is derived from &quot;kern-show.&quot; To kern
+		characters is to adjust the spacing between adjacent pairs of
+		characters in order to achieve a visually pleasing result. The kshow
+		operator enables user-defined kerning and other manipulations, because
+		arbitrary computations can be performed between each pair of
+		characters.</p>
+	<p>
+		kshow can be applied only to base fonts. If the current font is
+		composite, kshow issues an <a href="../i/invalidfont.html">invalidfont</a>
+		error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/show.html">show</a>, <a
+			href="../a/ashow.html">ashow</a>, <a href="../a/awidthshow.html">awidthshow</a>,
+		<a href="../w/widthshow.html">widthshow</a>, <a href="../x/xshow.html">xshow</a>,
+		<a href="../x/xyshow.html">xyshow</a>, <a href="../xy/yshow.html">yshow</a>,
+		<a href="../c/cshow.html">cshow</a>
+	</p>
+</body>
+</html>

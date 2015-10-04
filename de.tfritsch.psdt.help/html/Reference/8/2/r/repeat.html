@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>repeat</title>
+</head>
+<body>
+	<b>repeat</b>
+	<pre>int proc <b>repeat</b> - </pre>
+	<p>executes proc int times, where int is a non-negative integer.
+		The repeat operator removes both operands from the stack before
+		executing proc for the first time. If proc executes the exit operator,
+		repeat terminates prematurely. repeat leaves no results of its own on
+		the stack, but proc may do so.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+4 {(abc)} repeat               &rArr; (abc)(abc)(abc)(abc)
+1 2 3 4 3 {pop} repeat         &rArr; 1     % Pops 3 values (down to the 1)
+4 {} repeat                    &rArr;       % Does nothing four times
+mark 0 {(won't happen)} repeat &rArr; mark
+</pre>
+	<p>In the last example, a zero repeat count meant that the
+		procedure is not executed at all, hence the mark is still topmost on
+		the stack.</p>
+	<p>
+		<b>Errors:</b> <a href="rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/for.html">for</a>, <a
+			href="--/l/loop.html">loop</a>, <a href="../f/forall.html">forall</a>,
+		<a href="../e/exit.html">exit</a>
+	</p>
+</body>
+</html>

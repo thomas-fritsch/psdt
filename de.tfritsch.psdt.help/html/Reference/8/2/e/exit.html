@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>exit</title>
+</head>
+<body>
+	<b>exit</b>
+	<pre>- <b>exit</b> -</pre>
+	<p>
+		terminates execution of the innermost, dynamically enclosing instance
+		of a looping context without regard to lexical relationship. A looping
+		context is a procedure invoked repeatedly by one of the following
+		control operators: <a href="../c/cshow.html">cshow</a>, <a
+			href="../f/forall.html">forall</a>, <a href="../p/pathforall.html">pathforall</a>,
+		<a href="../f/filenameforall.html">filenameforall</a>, <a
+			href="../k/kshow.html">kshow</a>, <a href="../r/repeat.html">repeat</a>,
+		<a href="../f/for.html">for</a>, <a href="../l/loop.html">loop</a>, <a
+			href="../r/resourceforall.html">resourceforall</a>.
+	</p>
+	<p>exit pops the execution stack down to the level of that
+		operator. The interpreter then resumes execution at the next object in
+		normal sequence after that operator.</p>
+	<p>exit does not affect the operand or dictionary stacks. Any
+		objects pushed on those stacks during execution of the looping context
+		remain after the context is exited.</p>
+	<p>
+		If exit would escape from the context of a <a href="qr.html#run">run</a>
+		or <a href="../s/stopped.html">stopped</a> operator, it executes the <a
+			href="../i/invalidexit.html">invalidexit</a> error (still in the
+		context of the <a href="../r/run.html">run</a> or <a
+			href="../s/stopped.html">stopped</a>). If there is no enclosing
+		looping context, the interpreter prints an error message and executes
+		the built-in operator <a href="../q/quit.html">quit</a>. This never
+		occurs during execution of ordinary user programs, because they are
+		enclosed by a <a href="../s/stopped.html">stopped</a> context.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidexit.html">invalidexit</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/stop.html">stop</a>, <a
+			href="../s/stopped.html">stopped</a>
+	</p>
+</body>
+</html>

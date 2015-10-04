@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>viewclip</title>
+</head>
+<body>
+	<b>viewclip</b> DPS
+	<pre>- <b>viewclip</b> -</pre>
+	<p>
+		replaces the current view clipping path by a copy of the current path
+		in the graphics state. The inside of the current path is determined by
+		the normal non-zero winding number rule. viewclip implicitly closes
+		any open subpaths of the view clipping path. After setting the view
+		clip, viewclip resets the current path to empty, as if by newpath.
+		viewclip is similar to <a href="../c/clip.html">clip</a> in that it
+		causes subsequent painting operations to affect only those areas of
+		the current page that lie inside the new view clipping path. However,
+		it differs from clip in three important respects:
+	</p>
+	<ul>
+		<li>The view clipping path is independent of the current clipping
+			path, which is unaffected. A subsequent <a href="../c/clippath.html">clippath</a>
+			returns the current clipping path, uninfluenced by the additional
+			clipping imposed by the view clip.
+		</li>
+		<li>viewclip entirely replaces the current view clipping path,
+			whereas clip computes the intersection of the current and new
+			clipping paths.</li>
+		<li>viewclip performs an implicit <a href="../n/newpath.html">newpath</a>
+			at the end of its execution, whereas clip leaves the current path
+			unchanged.
+		</li>
+	</ul>
+	<p>The view clipping path is independent of the graphics state; it
+		is maintained separately for each execution context. Modifications to
+		the view clipping path obey save and restore. The view clipping path
+		can be described by a user path. This is accomplished by: newpath
+		userpath uappend viewclip If userpath specifies ucache, this operation
+		may take advantage of information in the user path cache.</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../i/initviewclip.html">initviewclip</a>, <a
+			href="viewclippath.html">viewclippath</a>, <a href="../c/clip.html">clip</a>
+	</p>
+</body>
+</html>

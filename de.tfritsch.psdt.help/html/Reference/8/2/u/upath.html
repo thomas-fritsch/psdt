@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>upath</title>
+</head>
+<body>
+	<b>upath</b> LEVEL 2
+	<pre>bool <b>upath</b> userpath</pre>
+	<p>creates a new user path object that is equivalent to the current
+		path in the graphics state. upath creates a new executable array
+		object of the appropriate length and fills it with the operands and
+		operators needed to describe the current path. upath produces only an
+		ordinary user path array, not an encoded user path. It does not
+		disturb the current path in the graphics state.</p>
+	<p>The bool operand specifies whether the resulting user path is to
+		include ucache as its first element.</p>
+	<p>Since the current path's coordinates are maintained in device
+		space, upath transforms them to user space using the inverse of the
+		CTM while constructing the user path. Applying uappend to the
+		resulting user path will reproduce the same current path in the
+		graphics state, but only if the same CTM is in effect at that time.</p>
+	<p>upath is equivalent to:</p>
+	<pre>
+[
+  exch {/ucache cvx} if
+  pathbbox /setbbox cvx
+  {/moveto cvx} {/lineto cvx} {/curveto cvx} {/closepath cvx} pathforall
+] cvx
+</pre>
+	<p>
+		If charpath was used to construct any portion of the current path from
+		a font whose outlines are protected, upath is not allowed. Its
+		execution will produce an <a href="../i/invalidaccess.html">invalidaccess</a>
+		error (see <a href="../c/charpath.html">charpath</a>).
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="uappend.html">uappend</a>, <a
+			href="ucache.html">ucache</a>, <a href="../p/pathforall.html">pathforall</a>
+	</p>
+</body>
+</html>

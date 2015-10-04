@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>definefont</title>
+</head>
+<body>
+	<b>definefont</b>
+	<pre>key font <b>definefont</b> font</pre>
+	<p>registers font as a font dictionary associated with key (usually
+		a name). definefont first checks that font is a well-formed font
+		dictionary-in other words, contains all required key-value pairs. It
+		inserts an additional entry whose key is FID and whose value is an
+		object of type fontID. The dictionary must be large enough to
+		accommodate this additional entry. It makes the dictionary's access
+		read-only. Finally, it associates key with font in the font directory.</p>
+	<p>In Level 2, it is permissible to associate a font dictionary
+		with more than one key. If font has already been registered,
+		definefont does not alter it in any way.</p>
+	<p>If font is a composite font, definefont also inserts the entries
+		MIDVector and CurMID, and adds entries PrefEnc, EscChar, ShiftIn, and
+		ShiftOut if they are required and are not already present. All the
+		descendant fonts must have been registered by definefont previously.</p>
+	<p>
+		Subsequent invocation of findfont with key will return font. Font
+		registration is subject to the normal semantics of VM . In particular,
+		the lifetime of the definition depends on the VM allocation mode at
+		the time definefont is executed. A local definition can be undone by a
+		subsequent <a href="../r/restore.html">restore</a>.
+	</p>
+	<p>
+		definefont is actually a special case of <a href="defineresource.html">defineresource</a>
+		operating on the Font category.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../d/dictfull.html">dictfull</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../m/makefont.html">makefont</a>, <a
+			href="../s/scalefont.html">scalefont</a>, <a href="../s/setfont.html">setfont</a>,
+		<a href="defineresource.html">defineresource</a>, <a
+			href="../f/FontDirectory.html">FontDirectory</a>, <a
+			href="../g/GlobalFontDirectory.html">GlobalFontDirectory</a>, <a
+			href="../s/setglobal.html">setglobal</a>
+	</p>
+</body>
+</html>

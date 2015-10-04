@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>getinterval</title>
+</head>
+<body>
+	<b>getinterval</b>
+	<pre>      array index count <b>getinterval</b> subarray
+packedarray index count <b>getinterval</b> subarray
+     string index count <b>getinterval</b> substring</pre>
+	<p>creates a new array, packed array, or string object whose value
+		consists of some subsequence of the original array, packed array, or
+		string. The subsequence consists of count elements starting at the
+		specified index in the original object. The elements in the
+		subsequence are shared between the original and new objects.</p>
+	<p>The returned subarray or substring is an ordinary array, packed
+		array, or string object whose length is count and whose elements are
+		indexed starting at 0. The element at index 0 in subarray is the same
+		as the element at index index in the original array.</p>
+	<p>getinterval requires index to be a valid index in the original
+		object and count to be a non-negative integer such that index + count
+		is not greater than the length of the original object.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+[9 8 7 6 5] 1 3 getinterval &rArr; [8 7 6]
+(abcde) 1 3 getinterval     &rArr; (bcd)
+(abcde) 0 0 getinterval     &rArr; ()       % An empty string
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="get.html">get</a>, <a
+			href="../p/putinterval.html">putinterval</a>
+	</p>
+</body>
+</html>

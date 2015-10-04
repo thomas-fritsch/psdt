@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>filter</title>
+</head>
+<body>
+	<b>filter</b> LEVEL 2
+	<pre>source/target param<sub>1</sub> ... param<sub>n</sub> name <b>filter</b> file</pre>
+	<p>creates and returns a filtered file.</p>
+	<p>The source/target operand specifies the underlying data source
+		or data target that the filter is to read or write. It can be a file,
+		procedure, or string.</p>
+	<p>
+		The param<sub>1</sub> ... param<sub>n</sub> operands are additional
+		parameters that control how the filter is to operate. The number and
+		types of these operands depend on the filter name. Most filters
+		require no additional parameters.
+	</p>
+	<p>The name operand identifies the data transformation that the
+		filter is to perform. The standard filter names are:</p>
+	<pre>
+  ASCIIHexEncode  ASCIIHexDecode 
+  ASCII85Encode   ASCII85Decode 
+  LZWEncode       LZWDecode 
+  RunLengthEncode RunLengthDecode 
+  CCITTFaxEncode  CCITTFaxDecode 
+  DCTEncode       DCTDecode 
+  NullEncode      SubFileDecode 
+</pre>
+	<p>An encoding filter is an output (writable) file. A decoding
+		filter is an input (readable) file. The file object returned by the
+		filter can be used as an operand of normal file input and output
+		operators, such as read and write. Reading from an input filtered file
+		causes the filter to read from the underlying data source and
+		transform the data. Similarly, writing to an output filtered file
+		causes the filter to transform the data and write it to the underlying
+		data target.</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../u/undefined.html">undefined</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="file.html">file</a>, <a
+			href="../c/closefile.html">closefile</a>, <a
+			href="../r/resourceforall.html">resourceforall</a>
+	</p>
+</body>
+</html>

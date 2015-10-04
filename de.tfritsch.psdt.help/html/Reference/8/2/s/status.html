@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>status</title>
+</head>
+<body>
+	<b>status</b>
+	<pre>  file <b>status</b> bool
+string <b>status</b> pages bytes referenced created true   (if found)
+              false                                 (if not found)>
+</pre>
+	<p>If the operand is a file object, status returns true if it is
+		still valid (i.e., is associated with an open file), false otherwise.
+		If the operand is a string, status treats it as a file name according
+		to the conventions of &quot;Named Files.&quot; If there is a file by
+		that name, status pushes four integers of status information followed
+		by the value true; otherwise, it pushes false. The four integer values
+		are:</p>
+	<dl>
+		<dt>pages</dt>
+		<dd>The storage space occupied by the file, in
+			implementationdependent units.</dd>
+		<dt>bytes</dt>
+		<dd>The length of the file in bytes.</dd>
+		<dt>referenced</dt>
+		<dd>The date and time the file was last referenced for reading or
+			writing. This value is interpreted according to the conventions of
+			the underlying operating system. The only assumption that a program
+			can make is that larger values indicate later times.</dd>
+		<dt>created</dt>
+		<dd>The date and time the contents of the file were created. or
+			writing.</dd>
+	</dl>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="stackoverflow.html">stackoverflow</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/file.html">file</a>, <a
+			href="../c/closefile.html">closefile</a>, <a
+			href="../f/filenameforall.html">filenameforall</a>
+	</p>
+</body>
+</html>

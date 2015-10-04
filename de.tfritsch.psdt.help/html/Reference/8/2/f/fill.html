@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fill</title>
+</head>
+<body>
+	<b>fill</b>
+	<pre>- <b>fill</b> -</pre>
+	<p>paints the area enclosed by the current path with the current
+		color. Any previous contents of that area on the current page are
+		obscured, so areas may be erased by filling with color set to white.</p>
+	<p>Before painting, fill implicitly closes any open subpaths of the
+		current path. The inside of the current path is determined by the
+		normal non-zero winding number rule.</p>
+	<p>fill implicitly performs a newpath after it has finished filling
+		the current path. To preserve the current path across a fill
+		operation, use the sequence:</p>
+	<p>gsave fill grestore</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/clip">clip.html</a>, <a
+			href="../e/eofill.html">eofill</a>, <a href="../s/stroke.html">stroke</a>,
+		<a href="../u/ufill.html">ufill</a>
+	</p>
+</body>
+</html>

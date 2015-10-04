@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setfont</title>
+</head>
+<body>
+	<b>setfont</b>
+	<pre>   font <b>setfont</b> -
+cidfont <b>setfont</b> -</pre>
+	<p>establishes font or cidfont as the font parameter in the
+		graphics state (subsequently returned by rootfont). This in turn
+		determines the current font or CIDFont (returned by currentfont)—the
+		font to be used by subsequent glyph operators, such as show and
+		stringwidth, or the CIDFont to be used by a subsequent glyphshow
+		operator. The operand must be a valid font or CIDFont dictionary. See
+		Section 5.1, "Organization and Use of Fonts."</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/Helvetica findfont            % Obtain prototype
+Helvetica font 10 scalefont    % Scale it to 10-unit size
+setfont                        % Establish it as current font
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentfont.html">currentfont</a>, <a
+			href="scalefont.html">scalefont</a>, <a href="../m/makefont.html">makefont</a>,
+		<a href="../f/findfont.html">findfont</a>, <a href="selectfont.html">selectfont</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>counttomark</title>
+</head>
+<body>
+	<b>counttomark</b>
+	<pre>mark obj<sub>1</sub> ... obj<sub>n</sub> <b>counttomark</b> mark obj<sub>1</sub> ... obj<sub>n</sub> n</pre>
+	<p>counts the number of objects on the operand stack starting with
+		the top element and continuing down to but not including the first
+		mark encountered. obj1 through objn are any objects other than marks.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+1 mark 2 3 counttomark  &rArr;  1 mark 2 3 2
+1 mark counttomark      &rArr;  1 mark 0
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../u/unmatchedmark.html">unmatchedmark</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="m.html#mark">mark</a>, <a href="#count">count</a>
+	</p>
+</body>
+</html>

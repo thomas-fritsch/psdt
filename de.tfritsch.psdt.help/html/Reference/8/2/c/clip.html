@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>clip</title>
+</head>
+<body>
+	<b>clip</b>
+	<pre>- <b>clip</b> -</pre>
+	<p>intersects the inside of the current clipping path with the
+		inside of the current path to produce a new, smaller current clipping
+		path. The inside of the current path is determined by the normal
+		PostScript non-zero winding number rule, while the inside of the
+		current clipping path is determined by whatever rule was used at the
+		time that path was created.</p>
+	<p>In general, clip produces a new path whose inside (according to
+		the non-zero winding number rule) consists of all areas that are
+		inside both of the original paths. The way this new path is
+		constructed (the order of its segments, whether it self-intersects,
+		etc.) is not specified. clip treats an open subpath of the current
+		path as though it were closed; it does not actually alter the path
+		itself. It is permissible for the current path to be empty. The result
+		of executing clip is always a non-empty clipping path, though it may
+		enclose zero area.</p>
+	<p>
+		There is no way to enlarge the current clipping path (other than by <a
+			href="../i/initclip.html">initclip</a> or <a
+			href="../i/initgraphics.html">initgraphics</a>) or to set a new
+		clipping path without reference to the current one. The recommended
+		way of using clip is to bracket the clip and the sequence of graphics
+		to be clipped with <a href="../g/gsave.html">gsave</a> and <a
+			href="../g/grestore.html">grestore</a>. The grestore will restore the
+		clipping path that was in effect before the gsave. The <a
+			href="../s/setgstate.html">setgstate</a> operator can also be used to
+		reset the clipping path to an earlier state.
+	</p>
+	<p>
+		Unlike <a href="../f/fill.html">fill</a> and <a
+			href="../s/stroke.html">stroke</a>, clip does not implicitly perform
+		a <a href="../n/newpath.html">newpath</a> after it has finished using
+		the current path. Any subsequent path construction operators will
+		append to the current path unless newpath is executed explicitly. This
+		can cause unexpected behavior.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="l.html#limitcheck">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../e/eoclip.html">eoclip</a>, <a
+			href="../clippath.html">clippath</a>, <a href="../i/initclip.html">initclip</a>,
+		<a href="../r/rectclip.html">rectclip</a>
+	</p>
+</body>
+</html>

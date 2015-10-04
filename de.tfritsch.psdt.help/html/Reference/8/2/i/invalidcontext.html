@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>invalidcontext</title>
+</head>
+<body>
+	<b>invalidcontext</b> (error) DPS
+	<p>indicates that an invalid use of the context synchronization
+		facilities has been detected. Possible causes include:</p>
+	<ul>
+		<li>Presenting an invalid context identifier to join or detach.</li>
+		<li>Executing monitor on a lock already held by the current
+			context.</li>
+		<li>Executing wait on a lock not held by the current context.</li>
+		<li>Executing any of several synchronization operators when an
+			unmatched save is pending if the result would be a deadlock.</li>
+	</ul>
+	<p>The PostScript interpreter detects only the simplest types of
+		deadlock. It is possible to encounter deadlocks for which no
+		invalidcontext error is generated.</p>
+</body>
+</html>

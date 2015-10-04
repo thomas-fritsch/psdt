@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>stop</title>
+</head>
+<body>
+	<b>stop</b>
+	<pre>- <b>stop</b> -</pre>
+	<p>terminates execution of the innermost, dynamically enclosing
+		instance of a stopped context, without regard to lexical relationship.
+		A stopped context is a procedure or other executable object invoked by
+		the stopped operator. stop pops the execution stack down to the level
+		of the stopped operator. The interpreter then pushes the boolean true
+		on the operand stack and resumes execution at the next object in
+		normal sequence after the stopped. It thus appears that stopped
+		returned the value true, whereas it normally returns false.</p>
+	<p>
+		stop does not affect the operand or dictionary stacks. Any objects
+		pushed on those stacks during the execution of the stopped context
+		remain after the context is terminated. If stop is executed when there
+		is no enclosing stopped context, the interpreter prints an error
+		message and executes the built-in operator <a href="../q/quit.html">quit</a>.
+		This never occurs during execution of ordinary user programs.
+	</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="stopped.html">stopped</a>, <a
+			href="../e/exit.html">exit</a>
+	</p>
+</body>
+</html>

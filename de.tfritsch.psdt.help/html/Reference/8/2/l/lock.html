@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lock</title>
+</head>
+<body>
+	<b>lock</b> DPS
+	<pre>- <b>lock</b> lock</pre>
+	<p>creates a new lock object, unequal to any lock object already in
+		existence, and pushes it on the operand stack. The state of the lock
+		is initially free.</p>
+	<p>Since a lock is a composite object, creating one consumes VM.
+		The lock's value is allocated in local or global VM according to the
+		current VM allocation mode.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../m/monitor.html">monitor</a>, <a
+			href="../w/wait.html">wait</a>
+	</p>
+</body>
+</html>

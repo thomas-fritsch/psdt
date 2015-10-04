@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rectfill</title>
+</head>
+<body>
+	<b>rectfill</b> LEVEL 2
+	<pre>x y width height <b>rectfill</b> -
+        numarray <b>rectfill</b> -
+       numstring <b>rectfill</b> -</pre>
+	<p>fills a path consisting of one or more rectangles the operands
+		describe. In the first form, the operands are four numbers that
+		describe a single rectangle. In the other two forms, the operand is an
+		array or an encoded number string that describes an arbitrary number
+		of rectangles rectfill neither reads nor alters the current path in
+		the graphics state.</p>
+	<p>In the first form, assuming width and height are positive,
+		rectfill is equivalent to:</p>
+	<pre>
+gsave
+  newpath>
+  x y moveto
+  width 0 rlineto
+  0 height rlineto
+  width neg 0 rlineto
+  closepath
+  fill
+grestore
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/fill.html">fill</a>, <a
+			href="rectclip.html">rectclip</a>, <a href="rectstroke.html">rectstroke</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>token</title>
+</head>
+<body>
+	<b>token</b>
+	<pre>  file <b>token</b> any true (if found)
+             false    (if not found)
+string <b>token</b> post any true (if found)
+             false         (if not found)</pre>
+	<p>reads characters from file or string, interpreting them
+		according to the PostScript language syntax rules, until it has
+		scanned and constructed an entire object.</p>
+	<p>In the file case, token normally pushes the scanned object
+		followed by true. If token reaches end-of-file before encountering any
+		characters besides white space, it closes file and returns false.</p>
+	<p>In the string case, token normally pushes post (the substring of
+		string beyond the portion consumed by token), the scanned object, and
+		true. If token reaches the end of string before encountering any
+		characters besides white space, it simply returns false.</p>
+	<p>In either case, the any result is an ordinary object. It may be
+		simple-an integer, real, or name-or composite-a string bracketed by
+		(...) or a procedure bracketed by {...}. The object returned by token
+		is the same as the object that would be encountered by the interpreter
+		if the file or string were executed directly. However, token scans
+		just a single object and it always pushes that object on the operand
+		stack rather than executing it.</p>
+	<p>token consumes all characters of the token and sometimes the
+		terminating character as well. If the token is a name or a number
+		followed by a white-space character, token consumes the white-space
+		character (only the first one if there are several). If the token is
+		terminated by a special character that is part of the token-one of ),
+		&gt;, ], or }-token consumes that character, but no following ones. If
+		the token is terminated by a special character that is part of the
+		next token-one of /, (, &lt;, [, or {-token does not consume that
+		character, but leaves it in the input sequence. If the token is a
+		binary token or a binary object sequence, token consumes no additional
+		characters.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+(15(St1) {1 2 add}) token   &rArr;  ((St1) {1 2 add}) 15 true
+((St1) {1 2 add}) token     &rArr;  ( {1 2 add}) (St1) true
+( {1 2 add}) token          &rArr;  ( ) {1 2 add} true
+( ) token                   &rArr;  false
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../s/syntaxerror.html">syntaxerror</a>, <a
+			href="typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>, <a
+			href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/search.html">search</a>, <a
+			href="../a/anchorsearch.html">anchorsearch</a>, <a
+			href="../r/read.html">read</a>
+	</p>
+</body>
+</html>

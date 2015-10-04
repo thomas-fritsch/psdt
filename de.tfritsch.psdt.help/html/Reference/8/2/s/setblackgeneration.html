@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setblackgeneration</title>
+</head>
+<body>
+	<b>setblackgeneration</b> LEVEL 2
+	<pre>proc <b>setblackgeneration</b> -</pre>
+	<p>sets the black generation function parameter in the graphics
+		state. The proc operand must be a procedure that can be called with a
+		number in the range 0.0 to 1.0 (inclusive) on the operand stack and
+		that returns a number in the same range. This procedure computes the
+		value of the black component during conversion from DeviceRGB color
+		space to DeviceCMYK. setblackgeneration sets a graphics state
+		parameter whose effect is device dependent. It should not be used in a
+		page description that is intended to be device independent. Execution
+		of this operator is not permitted in certain circumstances.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="setundercolorremoval.html">setundercolorremoval</a>
+	</p>
+</body>
+</html>

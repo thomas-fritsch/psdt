@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setgstate</title>
+</head>
+<body>
+	<b>setgstate</b> LEVEL 2
+	<pre>gstate <b>setgstate</b> -</pre>
+	<p>
+		replaces the current graphics state by the value of the gstate object.
+		This is a copying operation, so subsequent modifications to the value
+		of gstate will not affect the current graphics state or vice versa.
+		Note that this is a wholesale replacement of all components of the
+		graphics state; in particular, the current clipping path is replaced
+		by the value in <a href="../g/gstate.html">gstate</a>, not intersected
+		with it.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../g/gstate.html">gstate</a>, <a
+			href="../c/currentgstate.html">currentgstate</a>, <a
+			href="../g/gsave.html">gsave</a>, <a href="../g/grestore.html">grestore</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcolor</title>
+</head>
+<body>
+	<b>setcolor</b> LEVEL 2
+	<pre>        comp<sub>1</sub> ... comp<sub>n</sub> <b>setcolor</b> -
+                pattern <b>setcolor</b> -
+comp<sub>1</sub> ... comp<sub>n</sub> pattern <b>setcolor</b> -</pre>
+	<p>The appropriate form of the operator depends on the current
+		color space. All color spaces except Pattern use the first form, in
+		which the operands comp1 through compn specify the values of the color
+		components describing the desired color. The number of components and
+		the valid ranges of their values depend on the specific
+		characteristics of the color space; see Section 4.8, "Color Spaces."
+		(In the case of an Indexed color space, the single operand comp1 is
+		actually an index into the space's color table rather than a true
+		color component.) If the wrong number of components is specified, an
+		error will occur, such as stackunderflow or typecheck. If a component
+		value is outside the valid range, the nearest valid value will be
+		substituted without error indication.</p>
+	<p>The second and third forms of setcolor are used when the current
+		color space is a Pattern space. In both forms, the pattern operand is
+		a pattern dictionary describing the pattern to be established as the
+		current color. The values of the dictionary's PatternType and
+		PaintType entries determine whether additional operands are needed:</p>
+	<ul>
+		<li>Shading patterns (PatternType 2) or colored tiling patterns
+			(PatternType 1, PaintType 1) use the second form of the operator, in
+			which the pattern dictionary is the only operand.</li>
+		<li>Uncolored tiling patterns (PatternType 1, PaintType 2) use
+			the third form, in which the dictionary is accompanied by one or more
+			component values in the pattern's underlying color space, defining
+			the color in which the pattern is to be painted.</li>
+	</ul>
+	<p>The setcolorspace operator initializes the current color to a
+		value that depends on the specific color space selected. Execution of
+		this operator is not permitted in certain circumstances; see Section
+		4.8.1, "Types of Color Space."</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentcolor.html">currentcolor</a>, <a
+			href="setcolorspace.html">setcolorspace</a>setcolor
+</body>
+</html>

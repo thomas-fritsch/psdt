@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>printobject</title>
+</head>
+<body>
+	<b>printobject</b> LEVEL 2
+	<pre>obj tag <b>printobject</b> -</pre>
+	<p>writes a binary object sequence to the standard output file. The
+		binary object sequence contains a top-level array whose length is one;
+		its single element is an encoding of obj. If obj is composite, the
+		binary object sequence also includes subsidiary array and string
+		values for the components of obj. The tag operand, which must be an
+		integer in the range 0 to 255, is used to tag the top-level object; it
+		appears as the second byte of the object's representation.</p>
+	<p>Tag values 0 through 249 are available for general use; tag
+		values 250 through 255 are reserved for special purposes, such as
+		reporting errors.</p>
+	<p>
+		The binary object sequence uses the number representation established
+		by the most recent execution of setobjectformat. The token type given
+		as the first byte of the binary object sequence reflects the number
+		representation that was used. If the object format parameter has been
+		set to zero, printobject executes an <a href="../u/undefined.html">undefined</a>
+		error.
+	</p>
+	<p>
+		The object obj and its components must be of type null, integer, real,
+		name, boolean, string, array, or mark. Appearance of an object of any
+		other type, including packed array, will result in a typecheck error.
+		If arrays are nested too deeply or are cyclical, a <a
+			href="../l/limitcheck.html">limitcheck</a> error occurs.
+	</p>
+	<p>printobject always encodes a name object as a reference to a
+		text name in the string value portion of the binary object sequence,
+		never as a system or user name index.</p>
+	<p>As is the case for all operators that write to files, the output
+		produced by printobject may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, a flush is
+		required. This is particularly important in situations where the
+		output produced by printobject is the response to a query from the
+		application.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="print.html">print</a>, <a
+			href="../s/setobjectformat.html">setobjectformat</a>, <a
+			href="../w/writeobject.html">writeobject</a>
+	</p>
+</body>
+</html>

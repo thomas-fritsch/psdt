@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>execstack</title>
+</head>
+<body>
+	<b>execstack</b>
+	<pre>array <b>execstack</b> subarray</pre>
+	<p>
+		stores all elements of the execution stack into array and returns an
+		object describing the initial n-element subarray of array, where n is
+		the current depth of the execution stack. execstack copies the topmost
+		object into element n-1 of array and the bottommost one into element 0
+		of array. The execution stack itself is unchanged. If the length of
+		array is less than the depth of the execution stack, execstack
+		executes a <a href="../r/rangecheck.html">rangecheck</a> error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/countexecstack.html">countexecstack</a>,
+		<a href="exec.html">exec</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>atan</title>
+</head>
+<body>
+	<b>atan</b>
+	<pre>num den <b>atan</b> angle</pre>
+	<p>returns the angle (in degrees between 0 and 360) whose tangent
+		is num/den. Either num or den may be zero, but not both. The signs of
+		num and den determine the quadrant in which the result will lie: a
+		positive num yields a result in the positive y plane, a positive den
+		yields a result in the positive x plane. The result is a real.
+	<p>
+		<b>Examples</b>
+	<pre>
+0 1 atan     &rArr;  0.0
+1 0 atan     &rArr;  90.0
+-100 0 atan  &rArr;  270.0
+4 4 atan     &rArr;  45.0
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	<p>
+		<b>See Also:</b> <a href="../c/cos.html">cos</a>, <a
+			href="../s/sin.html">sin</a>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>startjob</title>
+</head>
+<body>
+	<b>startjob</b> LEVEL 2
+	<pre>bool password <b>startjob</b> bool</pre>
+	<p>conditionally starts a new job whose execution may alter the
+		initial virtual memory for subsequent jobs (see Section 3.7.7, "Job
+		Execution Environment"). bool1 specifies whether the new job’s side
+		effects are to be persistent. The behavior of startjob depends on
+		whether the following three conditions are true:</p>
+	<ul>
+		<li>The current execution context supports job encapsulation-in
+			other words, is under the control of a job server.</li>
+		<li>The password is correct-in other words, matches the
+			StartJobPassword system parameter.</li>
+		<li>The current level of save nesting is not any deeper than it
+			was at the time the current job started.</li>
+	</ul>
+	<p>If all three conditions are satisfied, startjob performs the
+		following actions:</p>
+	<ol>
+		<li>Ends the current job&mdash;in other words, resets the stacks
+			and, if the current job was encapsulated, performs a restore
+			operation.</li>
+		<li>Begins a new job. If bool1 is true, the usual save operation
+			at the beginning of the job is omitted, enabling the new job to make
+			persistent alterations to the initial VM. If bool1 is false, the
+			usual save operation is performed, encapsulating the new job.</li>
+		<li>Returns true on the operand stack.</li>
+	</ol>
+	<p>If any of the three conditions is not satisfied, startjob pushes
+		false on the operand stack and has no other effect.</p>
+	<p>password is a string that authorizes switching between
+		encapsulated and unencapsulated jobs, as well as between an ordinary
+		encapsulated job and a system administrator job. If password is an
+		integer, it is first converted to a string, as if by the cvs operator.
+		It is compared to the StartJobPassword and SystemParamsPassword system
+		parameters; see Section C.3.1, "Passwords," for details.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../e/exitserver.html">exitserver</a>, <a
+			href="setsystemparams.html">setsystemparams</a>, <a href="save.html">save</a>,
+		<a href="../r/restore.html">restore</a>
+	</p>
+</body>
+</html>

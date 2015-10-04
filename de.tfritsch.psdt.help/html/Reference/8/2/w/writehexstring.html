@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>writehexstring</title>
+</head>
+<body>
+	<b>writehexstring</b>
+	<pre>file string <b>writehexstring</b> -</pre>
+	<p>writes all of the characters of string to file as hexadecimal
+		digits. For each element of string (an integer in the range 0 to 255),
+		writehexstring appends a two-digit hexadecimal number composed of the
+		characters 0 through 9 and a through f. The example</p>
+	<pre>(%stdout)(w) file (abz) writehexstring</pre>
+	<p>writes the six characters 61627a to the standard output file.</p>
+	<p>
+		As is the case for all operators that write to files, the output
+		produced by writehexstring may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, a <a
+			href="../f/flushfile.html">flushfile</a> is required.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/readhexstring.html">readhexstring</a>,
+		<a href="write.html">write</a>, <a href="writestring.html">writestring</a>,
+		<a href="../f/file.html">file</a>, <a href="../f/filter.html">filter</a>
+	</p>
+</body>
+</html>

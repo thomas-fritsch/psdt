@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>arcn</title>
+</head>
+<body>
+	<b>arcn</b>
+	<pre>x y r ang<sub>1</sub> ang<sub>2</sub> <b>arcn</b> -</pre>
+	<p>(arc negative) behaves like arc, but arcn builds its arc segment
+		in a clockwise direction in user space.
+	<p>
+		<b>Example</b>
+	<pre>
+newpath
+  0 0 2 0 90 arc
+  0 0 1 90 0 arcn
+closepath
+</pre>
+	This constructs a 2-unit radius, 1-unit wide, 90-degree
+	&quot;windshield wiper swath.&quot;
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="arc.html">arc</a>, <a href="arct.html">arct</a>,
+		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+</body>
+</html>

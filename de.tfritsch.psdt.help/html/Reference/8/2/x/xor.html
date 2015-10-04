@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>xor</title>
+</head>
+<body>
+	<b>xor</b>
+	<pre>bool<sub>1</sub> bool<sub>2</sub> <b>xor</b> bool<sub>3</sub>
+  int<sub>1</sub> int<sub>2</sub> <b>xor</b> int<sub>3</sub>
+	</pre>
+	<p>If the operands are booleans, xor pushes their logical
+		&quot;exclusive or.&quot; If the operands are integers, xor pushes the
+		bitwise &quot;exclusive or&quot; of their binary representations.</p>
+	<pre>
+true true xor   &rArr; false   % A complete truth table
+true false xor  &rArr; true
+false true xor  &rArr; true
+false false xor &rArr; false
+
+7 3 xor         &rArr; 4
+12 3 xor        &rArr; 15
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../o/or.html">or</a>, <a
+			href="../a/and.html">and</a>, <a href="../n/not.html">not</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>VMerror</title>
+</head>
+<body>
+	<b>VMerror</b> (error)
+	<p>An error has occurred in the virtual memory (VM) machinery. The
+		most likely problems are:</p>
+	<ul>
+		<li>An attempt to create a new composite object (string, array,
+			dictionary, or packed array) would exhaust VM resources. Either the
+			program's requirements exceed available capacity or, more likely, the
+			program has failed to use the save/restore facility appropriately.</li>
+		<li>The interpreter has attempted to perform an operation that
+			should be impossible due to access restrictions (for example, store
+			into systemdict, which is read-only). This represents an internal
+			error in the interpreter. The default handler for this error, unlike
+			those for all other errors, does not snapshot the stacks.</li>
+	</ul>
+</body>
+</html>

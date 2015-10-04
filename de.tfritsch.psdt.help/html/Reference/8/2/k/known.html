@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>known</title>
+</head>
+<body>
+	<b>known</b>
+	<pre>dict key <b>known</b> bool</pre>
+	<p>returns the boolean value true if there is an entry in the
+		dictionary dict whose key is key. Otherwise, it returns false. dict
+		does not have to be on the dictionary stack.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/mydict 5 dict def
+mydict /total 0 put
+mydict /total known   &rArr; true
+mydict /badname known &rArr; false
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../w/where.html">where</a>, <a
+			href="../l/load.html">load</a>, <a href="../g/get.html">get</a>
+	</p>
+</body>
+</html>

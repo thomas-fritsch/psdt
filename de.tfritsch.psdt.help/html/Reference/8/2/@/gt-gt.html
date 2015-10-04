@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>&gt;&gt;</title>
+</head>
+<body>
+	<b>&gt;&gt;</b> LEVEL 2
+	<pre>mark key<sub>1</sub> value<sub>1</sub> ... key<sub>n</sub> value<sub>n</sub> <b>>&gt;&gt;</b> dict</pre>
+	<p>creates and returns a dictionary containing the specified
+		key-value pairs. The operands are a mark followed by an even number of
+		objects, which the operator uses alternately as keys and values to be
+		inserted into the dictionary. The dictionary is allocated space for
+		precisely the number of key-value pairs supplied.</p>
+	<p>
+		The dictionary is allocated in local or global VM according to the
+		current VM allocation mode. An <a href="../i/invalidaccess.html">invalidaccess</a>
+		error occurs if the dictionary is in global VM and any keys or values
+		are in local VM. A <a href="../r/rangecheck.html">rangecheck</a> error
+		occurs if there is an odd number of objects above the topmost mark on
+		the stack.
+	</p>
+	<p>&gt;&gt; is equivalent to:</p>
+	<pre>
+counttomark 2 idiv
+dup dict
+begin
+  {def} repeat
+  pop currentdict
+end
+</pre>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+&lt;&lt;
+  /Duplex true
+  /PageSize [612 792]
+  /Collate false
+&gt;&gt; setpagedevice
+</pre>
+	<p>This example constructs a dictionary containing three key-value
+		pairs, which it immediately passes to the setpagedevice operator.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../u/unmatchedmark.html">unmatchedmark</a>, <a
+			href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="lt-lt.html">&lt;&lt;</a>, <a
+			href="../m/mark.html">mark</a>, <a href="../d/dict.html">dict</a>
+	</p>
+</body>
+</html>

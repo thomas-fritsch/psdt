@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>closefile</title>
+</head>
+<body>
+	<b>closefile</b>
+	<pre>file <b>closefile</b> -</pre>
+	<p>
+		closes file-in other words, breaks the association between the file
+		object and the underlying file. For an output file, closefile first
+		performs a <a href="../f/flushfile.html">flushfile</a>. It may also
+		take device-dependent actions, such as truncating a disk file to the
+		current position or transmitting an end-of-file indication.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/file.html">file</a>, <a
+			href="../f/filter.html">filter</a>, <a href="../s/status.html">status</a>
+	</p>
+</body>
+</html>

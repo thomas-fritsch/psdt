@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>put</title>
+</head>
+<body>
+	<b>put</b>
+	<pre> array index any <b>put</b> -
+    dict key any <b>put</b> -
+string index int <b>put</b> -</pre>
+	<p>replaces a single element of the value of an array, dictionary,
+		or string.</p>
+	<p>
+		If the first operand is an array or string, put treats the second
+		operand as an index and stores the third operand at the position
+		identified by the index, counting from zero. index must be in the
+		range 0 to n-1,where n is the length of the array or string. If it is
+		outside this range, put will execute a <a href="../r/rangecheck.html">rangecheck</a>
+		error.
+	</p>
+	<p>
+		If the first operand is a dictionary, put uses the second operand as a
+		key and the third operand as a value, and it stores this key-value
+		pair into dict. If key is already present as a key in dict, put simply
+		replaces its value by any. Otherwise, put creates a new entry for key
+		and associates any with it. In Level 1 implementations, if dict is
+		already full, put executes the error <a href="../d/dictfull.html">dictfull</a>.
+	</p>
+	<p>
+		If the value of array or dict is in global VM and any is a composite
+		object whose value is in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/ar [5 17 3 8] def
+ar 2 (abcd) put
+ar                   &rArr; [5 17 (abcd) 8]
+
+/d 5 dict def
+d /abc 123 put
+d {} forall          &rArr; /abc 12
+
+/st (abc) def
+st 0 65 put          % 65 is ASCII code for character &quot;A&quot;
+st                   &rArr; (Abc)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../d/dictfull.html">dictfull</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../g/get.html">get</a>, <a
+			href="putinterval.html">putinterval</a>
+	</p>
+</body>
+</html>

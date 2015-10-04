@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>copypage</title>
+</head>
+<body>
+	<b>copypage</b>
+	<pre>- <b>copypage</b> -</pre>
+	<p>
+		transmits one copy of the current page to the current output device
+		without erasing the current page or changing the graphics state. This
+		is in contrast to showpage, which performs the equivalent of an <a
+			href="../e/erasepage.html">erasepage</a> and an <a
+			href="../i/initgraphics.html">initgraphics</a>. Aside from these
+		differences, the behavior of copypage is identical to that of <a
+			href="../s/showpage.html">showpage</a>.
+	</p>
+	<p>
+		copypage is intended primarily as a debugging aid or as a means of
+		printing successive pages with incrementally accumulated contents.
+		Routine use of copypage as a substitute for showpage may severely
+		degrade the page throughput of some PostScript printers. To print
+		multiple copies of the same page, use the #copies implicit parameter
+		of <a href="../s/showpage.html">showpage</a> or the NumCopies
+		parameter of <a href="../s/setpagedevice.html">setpagedevice</a>.
+	</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/showpage.html">showpage</a>, <a
+			href="../e/erasepage.html">erasepage</a>
+	</p>
+</body>
+</html>

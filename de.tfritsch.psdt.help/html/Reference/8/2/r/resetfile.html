@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>resetfile</title>
+</head>
+<body>
+	<b>resetfile</b> LEVEL 2
+	<pre>file <b>resetfile</b> -</pre>
+	<p>discards buffered characters belonging to a file object. For an
+		input file, resetfile discards any characters that have been received
+		from the source, but not yet consumed. For an output file, it discards
+		any characters that have been written to the file, but not yet
+		delivered to their destination.</p>
+	<p>resetfile may have other side effects that depend on the
+		properties of the underlying file. For example, it may restart
+		communication via a channel that was blocked waiting for buffer space
+		to become available. resetfile never waits for characters to be
+		received or transmitted.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/file.html">file</a>, <a
+			href="../c/closefile.html">closefile</a>, <a
+			href="../f/flushfile.html">flushfile</a>
+	</p>
+</body>
+</html>

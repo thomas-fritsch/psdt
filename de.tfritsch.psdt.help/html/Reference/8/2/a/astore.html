@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>astore</title>
+</head>
+<body>
+	<b>astore</b>
+	<pre>any<sub>0</sub> ... any<sub>n-1</sub> array <b>astore</b> array</pre>
+	<p>
+		stores the objects any<sub>0</sub> through any<sub>n-1</sub> from the
+		operand stack into array, where n is the length of array. The astore
+		operator first removes the array operand from the stack and determines
+		its length. It then removes that number of objects from the stack,
+		storing the topmost one into element n - 1 of array and the bottommost
+		one into element 0 of array. Finally, it pushes array back on the
+		stack. Note that astore cannot be performed on <a
+			href="../p/packedarray.html">packed arrays</a>.
+	<p>
+		If the value of array is in global VM and any of any<sub>0</sub> ...
+		any<sub>n-1</sub> are composite objects whose values are in local VM,
+		an <a href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+	<p>
+		<b>Example</b>
+	<pre>
+(a) (bcd) (ef) 3 array astore  &rArr;  [(a) (bcd) (ef)]
+</pre>
+	<p>This example creates a three element array, stores the strings
+		(a), (bcd), and (ef) into it as elements 0, 1, and 2, and leaves the
+		array object on the operand stack.
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="aload.html">aload</a>, <a
+			href="../p/put.html">put</a>, <a href="../p/putinterval.html">putinterval</a>
+</body>
+</html>

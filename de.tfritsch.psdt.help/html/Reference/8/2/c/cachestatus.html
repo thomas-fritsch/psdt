@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>cachestatus</title>
+</head>
+<body>
+	<b>cachestatus</b>
+	<pre>- <b>cachestatus</b> bsize bmax msize mmax csize cmax blimit</pre>
+	<p>returns measurements of several aspects of the font cache.
+		cachestatus reports the current consumption and limit for each of
+		three font cache resources: bytes of bitmap storage (bsize and bmax),
+		font/matrix combinations (msize and mmax), and total number of cached
+		characters (csize and cmax). It also reports the limit on the number
+		of bytes occupied by a single cached character (blimit). Characters
+		whose bitmaps are larger than this are not cached.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setcachelimit.html">setcachelimit</a>,
+		<a href="../s/setsystemparams.html">setsystemparams</a>
+	</p>
+</body>
+</html>

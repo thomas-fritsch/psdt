@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setflat</title>
+</head>
+<body>
+	<b>setflat</b>
+	<pre>num <b>setflat</b> -</pre>
+	<p>sets the flatness parameter in the graphics state to num, which
+		must be a positive number. This parameter controls the precision with
+		which curved path segments are rendered on the raster output device by
+		operators such as stroke, fill, and clip. These operators render
+		curves by approximating them with a series of straight line segments.
+		Flatness is the error tolerance of this approximation; it is the
+		maximum allowable distance of any point of the approximation from the
+		corresponding point on the true curve, measured in output device
+		pixels. The acceptable range of values is 0.2 to 100.0. If num is
+		outside this range, the nearest valid value is substituted without
+		error indication.</p>
+	<p>The choice of a flatness value is a tradeoff between precision
+		and execution efficiency. Very small values (less than 1 device pixel)
+		produce very precise curves at high cost, because enormous numbers of
+		tiny line segments must be generated. Larger values produce cruder
+		approximations with substantially less computation. A default value of
+		the flatness parameter is established by the device setup (Install)
+		procedure for each raster output device. This value is based on the
+		characteristics of the individual device and is suitable for most
+		applications.</p>
+	<p>setflat sets a graphics state parameter whose effect is
+		device-dependent. It should not be used in a page description that is
+		intended to be device-independent.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentflat.html">currentflat</a>, <a
+			href="../f/flattenpath.html">flattenpath</a>, <a href="stroke.html">stroke</a>,
+		<a href="../f/fill.html">fill</a>
+	</p>
+</body>
+</html>

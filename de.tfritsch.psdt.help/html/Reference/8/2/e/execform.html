@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>execform</title>
+</head>
+<body>
+	<b>execform</b> LEVEL 2
+	<pre>form <b>execform</b> -</pre>
+	<p>paints a form specified by a form dictionary. The graphical
+		output produced by execform is defined by the form dictionary's
+		PaintProc procedure.</p>
+	<p>If this is the first invocation of execform for form, execform
+		first verifies that the dictionary contains the required entries. Then
+		it adds an entry to the dictionary with the key Implementation, whose
+		value is private to the implementation. Finally, it makes the
+		dictionary read-only. (execform performs these alterations directly to
+		the operand dictionary; it does not copy the dictionary.)</p>
+	<p>When execform needs to call the PaintProc procedure, it pushes
+		the form dictionary on the operand stack, then executes the equivalent
+		of</p>
+	<pre>
+gsave                          % Operand stack: dict
+  dup /Matrix get concat
+  dup /BBox get aload pop      % Stack: dict llx lly urx ury
+  exch 3 index sub
+  exch 2 index sub             % Stack: dict llx lly width height
+  rectclip                     % Also does a newpath
+  dup /PaintProc get           % Stack: dict proc
+  exec                         % Execute PaintProc with dict on stack
+grestore
+</pre>
+	<p>The PaintProc procedure is expected to consume the dictionary
+		operand and to execute a sequence of graphics operators to paint the
+		form. The PaintProc must always produce the same output, given the
+		same graphics state parameters, independent of the number of times it
+		is called and independent, for example, of the contents of userdict.
+		The PostScript language program should not expect any particular
+		execution of execform to cause execution of the specified PaintProc.</p>
+	<p>The documented errors are those produced directly by execform.
+		Obviously, the PaintProc can cause other errors.</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>, <a href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/findresource.html">findresource</a>
+	</p>
+</body>
+</html>

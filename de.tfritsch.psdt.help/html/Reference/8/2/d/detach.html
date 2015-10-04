@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>detach</title>
+</head>
+<body>
+	<b>detach</b> DPS
+	<pre>context <b>detach</b> -</pre>
+	<p>specifies that the execution context identified by the integer
+		context is to terminate immediately when it finishes executing its
+		top-level procedure, whereas ordinarily it would wait for a join. If
+		the context is already waiting for a join, detach causes it to
+		terminate immediately.</p>
+	<p>
+		detach executes an <a href="../i/invalidcontext.html">invalidcontext</a>
+		error if context is not a valid context identifier or if the context
+		has already been joined or detached. It is permissible for context to
+		identify the current context.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidcontext.html">invalidcontext</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="--/c/currentcontext.html">currentcontext</a>,
+		<a href="../f/fork.html">fork</a>, <a href="../j/join.html">join</a>
+	</p>
+</body>
+</html>

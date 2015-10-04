@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>filenameforall</title>
+</head>
+<body>
+	<b>filenameforall</b> LEVEL 2
+	<pre>template proc scratch <b>filenameforall</b> -</pre>
+	<p>enumerates all files whose names match the specified template
+		string. For each matching file, filenameforall copies the file's name
+		into the supplied scratch string, pushes a string object designating
+		the substring of scratch actually used, and calls proc. filenameforall
+		does not return any results of its own, but proc may do so.</p>
+	<p>The details of template matching are device dependent, but the
+		following convention is typical. All characters in the template are
+		treated literally and are case sensitive, except the following special
+		characters:</p>
+	<dl>
+		<dt>*</dt>
+		<dd>matches zero or more consecutive characters.</dd>
+		<dt>?</dt>
+		<dd>matches exactly one character.</dd>
+		<dt>\</dt>
+		<dd>causes the next character of the template to be treated
+			literally, even if it is *, ?, or /.</dd>
+	</dl>
+	<p>If template does not begin with %, it is matched against device
+		relative file names of all devices in the search order. When a match
+		occurs, the file name passed to proc is likewise device relative-in
+		other words, it does not have a %device% prefix.</p>
+	<p>If template does begin with %, it is matched against complete
+		file names in the form %device%file. Template matching can be
+		performed on the device, the file, or both parts of the name. When a
+		match occurs, the file name passed to proc is likewise in the complete
+		form %device%file.</p>
+	<p>The order of enumeration is unspecified and device dependent.
+		There are no restrictions on what proc can do. However, if proc causes
+		new files to be created, it is unspecified whether or not those files
+		will be encountered later in the same enumeration. Likewise, the set
+		of file names considered for template matching is device dependent.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../r/rangecheck.html">rangecheck</a>,
+		<a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="f.htmlile">file</a>, <a
+			href="../s/status.html">status</a>
+	</p>
+</body>
+</html>

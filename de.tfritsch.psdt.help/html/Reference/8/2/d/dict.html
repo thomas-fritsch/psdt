@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dict</title>
+</head>
+<body>
+	<b>dict</b>
+	<pre>int <b>dict</b> dict</pre>
+	<p>creates an empty dictionary with an initial capacity of int
+		elements and pushes the created dictionary object on the operand
+		stack. int is expected to be a nonnegative integer. The dictionary is
+		allocated in local or global VM according to the VM allocation mode.</p>
+	<p>
+		In Level 1 implementations, the resulting dictionary has a maximum
+		capacity of int elements. Attempting to exceed that limit causes a <a
+			href="dictfull.html">dictfull</a> error.
+	</p>
+	<p>In Level 2 implementations, the int operand specifies only the
+		initial capacity; the dictionary can grow beyond that capacity if
+		necessary. The dict operator immediately consumes sufficient VM to
+		hold int key-value pairs. If more than that number of entries are
+		subsequently stored in the dictionary, additional VM is consumed at
+		that time.</p>
+	<p>
+		There is a cost associated with expanding a dictionary beyond its
+		initial allocation. For efficiency reasons, a dictionary is expanded
+		in chunks rather than one element at a time, so it may contain a
+		substantial amount of unused space. If a program knows how large a
+		dictionary it needs, it should create one of that size initially. On
+		the other hand, if a program cannot predict how large the dictionary
+		will eventually grow, it should choose a small initial allocation
+		sufficient for its immediate needs. The built-in writable dictionaries
+		(for example, <a href="../u/userdict.html">userdict</a>) follow the
+		latter convention.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck-html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../b/begin.html">begin</a>, <a
+			href="../e/end.html">end</a>, <a href="../l/length.html">length</a>,
+		<a href="../m/maxlength.html">maxlength</a>
+	</p>
+</body>
+</html>

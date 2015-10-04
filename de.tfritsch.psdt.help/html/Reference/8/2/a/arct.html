@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>arct</title>
+</head>
+<body>
+	<b>arct</b> LEVEL 2
+	<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r <b>arct</b> -</pre>
+	<p>
+		appends an arc of a circle to the current path, possibly preceded by a
+		straight line segment. The arc is defined by a radius r and two
+		tangent lines.The tangent lines are those drawn from the current
+		point, here called (x<sub>0</sub>, y<sub>0</sub>), to (x<sub>1</sub>,
+		y<sub>1</sub>), and from (x<sub>1</sub>, y<sub>1</sub>) to (x<sub>2</sub>,
+		y<sub>2</sub>). If the current point is undefined, arct executes the
+		error <a href="../n/nocurrentpoint.html">nocurrentpoint</a>.
+	<p>
+		The center of the arc is located within the inner angle between the
+		tangent lines. It is the only point located at distance r in a
+		direction perpendicular to both lines. The arc begins at the first
+		tangent point (xt<sub>1</sub>, yt<sub>1</sub>) on the first tangent
+		line, passes between its center and the point (x<sub>1</sub>, y<sub>1</sub>),
+		and ends at the second tangent point (xt<sub>2</sub>, yt<sub>2</sub>)
+		on the second tangent line.
+	<p>
+		Before constructing the arc, arct adds a straight line segment from
+		the current point (x<sub>0</sub>, y<sub>0</sub>) to (xt<sub>1</sub>,
+		yt<sub>1</sub>), unless those points are the same. In any event, (xt<sub>2</sub>,
+		yt<sub>2</sub>) becomes the new current point.
+	<p>The curve produced is circular in user space. If user space is
+		scaled non-uniformly (i.e., differently in x and y) arct will produce
+		elliptical curves in device space.
+	<p>
+		If the two tangent lines are collinear, arct merely appends a straight
+		line segment from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>1</sub>, y<sub>1</sub>),
+		considering the arc to be part of a degenerate circle with radius 0 at
+		that point.
+	<p>
+		<b>Examples</b>
+	<pre>
+newpath
+0 0 moveto
+0 4 4 4 1 arct
+4 4 lineto
+</pre>
+	<p>This constructs a 4-unit wide, 4-unit high right angle with a
+		1-unit radius &quot;rounded corner.&quot;
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	<p>
+		<b>See Also:</b> <a href="arc.html">arc</a>, <a href="arcn.html">arcn</a>,
+		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>length</title>
+</head>
+<body>
+	<b>length</b>
+	<pre>      array <b>length</b> int
+packedarray <b>length</b> int
+       dict <b>length</b> int
+     string <b>length</b> int
+       name <b>length</b> int</pre>
+	<p>
+		depends on the type of its operand. If the operand is an <a
+			href="../a/array.html">array</a>, packed array, or string, length
+		returns the number of elements in its value. If the operand is a
+		dictionary, length returns the current number of key-value pairs it
+		contains, as opposed to its maximum capacity, which is returned by <a
+			href="../m/maxlength.html">maxlength</a>. If the operand is a name
+		object, the length is the number of characters in the text string that
+		defines it.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+[1 2 4] length                      &rArr;  3
+[] length                           &rArr;  0    % An array of zero length
+/ar 20 array def
+ar length                           &rArr;  20
+
+/mydict 5 dict def
+mydict length                       &rArr;  0
+mydict /firstkey (firstvalue) put
+mydict length                       &rArr;  1
+
+(abc\n) length                      &rArr;  4    % Newline )\n) is one character
+() length                           &rArr;  0    % No characters between ( and )
+/foo length                         &rArr;  3
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../m/maxlength.html">maxlength</a>
+	</p>
+</body>
+</html>

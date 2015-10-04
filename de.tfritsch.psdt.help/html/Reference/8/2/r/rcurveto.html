@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rcurveto</title>
+</head>
+<body>
+	<b>rcurveto</b>
+	<pre>dx<sub>1</sub> dy<sub>1</sub> dx<sub>2</sub> dy<sub>2</sub> dx<sub>3</sub> dy<sub>3</sub> <b>rcurveto</b> -</pre>
+	<p>
+		(relative curveto) adds a Bezier cubic section to the current path in
+		the same manner as curveto. However, the three number pairs are
+		interpreted as displacements relative to the current point (x<sub>0</sub>,
+		y<sub>0</sub>) rather than as absolute coordinates. That is, rcurveto
+		constructs a curve from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>0</sub>+dx<sub>3</sub>,
+		y<sub>0</sub>+dy<sub>3</sub>), using (x<sub>0</sub>+dx<sub>1</sub>, y<sub>0</sub>+dy<sub>1</sub>)
+		and (x<sub>0</sub>+dx<sub>2</sub>, y<sub>0</sub>+dy<sub>2</sub>) as
+		Bezier control points. See the description of <a
+			href="../c/curveto.html">curveto</a> for complete information.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a> , <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/curveto.html">curveto</a>, <a
+			href="rlineto.html">rlineto</a>, <a href="rmoveto.html">rmoveto</a>
+	</p>
+</body>
+</html>

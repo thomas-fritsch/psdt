@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>concat</title>
+</head>
+<body>
+	<b>concat</b>
+	<pre>matrix <b>concat</b> -</pre>
+	<p>concatenates matrix with the current transformation matrix
+		(CTM). Precisely, concat replaces the CTM by matrix x CTM . The effect
+		of this is to define a new user space whose coordinates are
+		transformed into the former user space according to matrix.</p>
+	<p>Examples</p>
+	<pre>
+[72 0 0 72 0 0] concat
+72 72 scale
+</pre>
+	<p>The two examples have the same effect on the current
+		transformation.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="concatmatrix.html">concatmatrix</a>, <a
+			href="../m/matrix.html">matrix</a>, <a href="../r/rotate.html">rotate</a>,
+		<a href="../s/scale.html">scale</a>, <a href="../s/setmatrix.html">setmatrix</a>,
+		<a href="../t/translate.html">translate</a>
+	</p>
+</body>
+</html>

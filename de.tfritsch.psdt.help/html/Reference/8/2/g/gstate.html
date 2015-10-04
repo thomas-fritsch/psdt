@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gstate</title>
+</head>
+<body>
+	<b>gstate</b> LEVEL 2
+	<pre>- <b>gstate</b> gstate</pre>
+	<p>creates a new gstate (graphics state) object and pushes it on
+		the operand stack. Its initial value is a copy of the current graphics
+		state.</p>
+	<p>This operator consumes VM; it is the only graphics state
+		operator that does. The gstate is allocated in either local or global
+		VM according to the current VM allocation mode.</p>
+	<p>If gstate is allocated in global VM, gstate will generate an
+		invalidaccess error if any of the composite objects in the current
+		graphics state are in local VM. Such objects might include the current
+		font, screen function, halftone dictionary, transfer function, or dash
+		pattern. In general, allocating gstate objects in global VM is risky
+		and should be avoided.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentgstate.html">currentgstate</a>,
+		<a href="../s/setgstate.html">setgstate</a>
+	</p>
+</body>
+</html>

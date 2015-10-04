@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ifelse</title>
+</head>
+<body>
+	<b>ifelse</b>
+	<pre>bool proc<sub>1</sub> proc<sub>2</sub> <b>ifelse</b> -</pre>
+	<p>
+		removes all three operands from the stack, then executes proc<sub>1</sub>
+		if bool is true or proc<sub>2</sub> if bool is false. The ifelse
+		operator pushes no results of its own on the operand stack, but the
+		procedure it executes may do so.
+	</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+4 3 lt
+  {(TruePart)}
+  {(FalsePart)}
+ifelse           &rArr; (FalsePart)    % Since 4 is not less than 3
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="if.html">if</a>
+	</p>
+</body>
+</html>

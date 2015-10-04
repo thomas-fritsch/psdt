@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setlinecap</title>
+</head>
+<body>
+	<b>setlinecap</b>
+	<pre>int <b>setlinecap</b> -</pre>
+	<p>sets the line cap parameter in the graphics state to int, which
+		must be one of the integers 0, 1, or 2. This establishes the shape to
+		be put at the ends of open subpaths painted by the stroke operator.</p>
+	<p>The integers select the following shapes:</p>
+	<ol start="0">
+		<li>Butt cap. The stroke is squared off at the endpoint of the
+			path. There is no projection beyond the end of the path.</li>
+		<li>Round cap. A semicircular arc with diameter equal to the line
+			width is drawn around the endpoint and filled in.</li>
+		<li>Projecting square cap. The stroke continues beyond the
+			endpoint of the path for a distance equal to half the line width and
+			is squared off.</li>
+	</ol>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentlinecap.html">currentlinecap</a>,
+		<a href="setlinejoin.html">setlinejoin</a>, <a href="stroke.html">stroke</a>
+	</p>
+</body>
+</html>

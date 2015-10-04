@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>vmreclaim</title>
+</head>
+<body>
+	<b>vmreclaim</b> LEVEL 2
+	<pre>int <b>vmreclaim</b> -</pre>
+	<p>controls the garbage collection machinery as specified by int:</p>
+	<dl>
+		<dt>-2</dt>
+		<dd>Disable automatic collection in both local and global VM.</dd>
+		<dt>-1</dt>
+		<dd>Disable automatic collection in local VM.</dd>
+		<dt>0</dt>
+		<dd>Enable automatic collection.</dd>
+		<dt>1</dt>
+		<dd>Perform immediate collection in local VM.</dd>
+		<dt>2</dt>
+		<dd>Perform immediate collection in local and global VM.</dd>
+	</dl>
+	<p>This can take a long time, because it must consult the local VMs
+		of all execution contexts. Garbage collection causes the memory
+		occupied by the values of inaccessible objects to be reclaimed and
+		made available for reuse. It does not have any effects that are
+		visible to the PostScript language program. There is normally no need
+		to execute the vmreclaim operator, because garbage collection is
+		invoked automatically when necessary. However, there are a few
+		situations in which this operator may be useful: o In an interactive
+		application that is temporarily idle, the idle time can be put to good
+		use by invoking an immediate garbage collection. This defers the need
+		to perform an automatic collection subsequently. In a context that is
+		under the control of a job server.</p>
+	<p>garbage collection is invoked automatically between jobs.</p>
+	<ul>
+		<li>When monitoring the VM consumption of a program, one must
+			invoke garbage collection before executing vmstatus to obtain
+			meaningful results.</li>
+		<li>When measuring the execution time of a program, one must
+			disable automatic garbage collection to obtain repeatable results.
+			The negative values that disable garbage collection apply only to the
+			current execution context; that is, they do not prevent collection
+			from occurring during execution of other contexts.</li>
+	</ul>
+	<p>Note that disabling garbage collection for too long may
+		eventually cause a program to run out of memory and fail with a
+		VMerror. Executing vmreclaim with an operand of 0, -1, or -2 has the
+		same effect as setting the VMReclaim user parameter to the same value
+		by means of setuserparams.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setvmthreshold.html">setvmthreshold</a>,
+		<a href="../s/setuserparams.html">setuserparams</a>
+	</p>
+</body>
+</html>

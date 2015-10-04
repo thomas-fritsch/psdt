@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>save</title>
+</head>
+<body>
+	<b>save</b>
+	<pre>- <b>save</b> save</pre>
+	<p>creates a snapshot of the current state of the virtual memory
+		(VM) and returns a save object representing that snapshot.</p>
+	<p>Subsequently, this save object may be presented to restore to
+		reset the VM to this snapshot. See the restore operator for a detailed
+		description of what is saved in the snapshot.</p>
+	<p>
+		save also saves the current graphics state by pushing a copy of it on
+		the graphics state stack in a manner similar to <a
+			href="../g/gsave.html">gsave</a>. This saved graphics state is
+		restored by <a href="../r/restore.html">restore</a> and <a
+			href="../g/grestoreall.html">grestoreall</a>.
+	</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/saveobj save def
+      ...arbitrary computation...
+saveobj restore                    % Restore saved VM state
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/restore.html">restore</a>, <a
+			href="../g/gsave.html">gsave</a>, <a href="../g/grestoreall.html">grestoreall</a>,
+		<a href="../v/vmstatus.html">vmstatus</a>
+	</p>
+</body>
+</html>

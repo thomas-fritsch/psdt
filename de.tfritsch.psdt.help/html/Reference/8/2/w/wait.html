@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>wait</title>
+</head>
+<body>
+	<b>wait</b> DPS
+	<pre>lock condition <b>wait</b> -</pre>
+	<p>releases lock, waits for condition to be notified by some other
+		execution</p>
+	<p>
+		context, and finally reacquires lock. The lock must originally have
+		been acquired by the current context, which means that wait can be
+		invoked only within the execution of a monitor that references the
+		same <a href="../l/lock.html">lock</a>.
+	</p>
+	<p>
+		If lock is initially held by some other context or is not held by any
+		context, wait executes an <a href="../i/invalidcontext.html">invalidcontext</a>
+		error. On the other hand, during the wait for condition, the lock can
+		be acquired by some other context. After condition is notified, wait
+		will wait an arbitrary length of time to reacquire <a
+			href="../l/lock.html">lock</a>.
+	</p>
+	<p>If the current context has previously executed a save not yet
+		matched by a restore, wait executes invalidcontext unless both lock
+		and condition are in global VM. The latter case is permitted under the
+		assumption that the wait is synchronizing with some context whose
+		local VM is different from that of the current context.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidcontext.html">invalidcontext</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/condition.html">condition</a>, <a
+			href="../l/lock.html">lock</a>, <a href="../m/monitor.html">monitor</a>,
+		<a href="../n/notify.html">notify</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>scale</title>
+</head>
+<body>
+	<b>scale</b>
+	<pre>       s<sub>x</sub> s<sub>y</sub> <b>scale</b> -
+s<sub>x</sub> s<sub>y</sub> matrix <b>scale</b> matrix</pre>
+	<p>With no matrix operand, scale builds a temporary matrix and
+		concatenates this matrix with the current transformation matrix (CTM).
+		Precisely, scale replaces the CTM by S x CTM. The effect of this is to
+		make the x and y units in the user coordinate system the size of sx
+		and sy units in the former user coordinate system. The position of the
+		user coordinate origin and the orientation of the axes are unchanged.
+		If the matrix operand is supplied, scale replaces the value of matrix
+		by S and pushes the modified matrix back on the operand stack In this
+		case, scale does not affect the CTM.</p>
+	<p>
+		<b>Errors:</b> <a href=".../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/rotate.html">rotate</a>, <a
+			href="../t/translate.html">translate</a>, <a href="../c/concat.html">concat</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>aload</title>
+</head>
+<body>
+	<b>aload</b>
+	<pre>      array <b>aload</b> array<sub>0</sub> ... array<sub>n-1</sub> array
+packedarray <b>aload</b> packedarray<sub>0</sub> ... packedarray<sub>n-1</sub> packedarray</pre>
+	<p>successively pushes all n elements of array or packedarray on
+		the operand stack (where n is the length of the operand), and finally
+		pushes the operand itself.
+	<p>
+		<b>Example</b>
+	<pre>
+[23 (ab) -6] aload  &rArr;  23 (ab) -6 [23 (ab) -6]
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="astore.html">astore</a>, <a
+			href="../g/get.html">get</a>, <a href="../g/getinterval.html">getinterval</a>
+</body>
+</html>

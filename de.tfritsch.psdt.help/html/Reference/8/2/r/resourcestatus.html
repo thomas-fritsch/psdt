@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>resourcestatus</title>
+</head>
+<body>
+	<b>resourcestatus</b> LEVEL 2
+	<pre>key category <b>resourcestatus</b> status size true  (if resource exists)
+                            false             (if not)</pre>
+	<p>returns status information about a named resource instance.
+		category is a name object that identifies a resource category, such as
+		Font. key is a name or string object that identifies the resource
+		instance. (Names and strings are interchangeable; keys of other types
+		are permitted but are not recommended.)</p>
+	<p>If the named resource instance exists, either defined in VM or
+		available from some external source, resourcestatus returns two
+		integers and the value true; otherwise, it returns false. Unlike
+		findresource, resourcestatus never loads a resource instance into VM.</p>
+	<p>status is an integer with the following meanings:</p>
+	<dl>
+		<dt>0</dt>
+		<dd>Defined in VM by an explicit defineresource; not subject to
+			automatic removal.</dd>
+		<dt>1</dt>
+		<dd>Defined in VM by a previous execution of findresource;
+			subject to automatic removal.</dd>
+		<dt>2</dt>
+		<dd>Not currently defined in VM, but available from external
+			storage.</dd>
+	</dl>
+	<p>size is an integer giving the estimated VM consumption of the
+		resource instance in bytes. This information may not be available for
+		certain resources; if the size is unknown, -1 is returned. Usually,
+		resourcestatus can obtain the size of a status 1 or 2 resource
+		(derived from the %%VMusage comment in the resource file), but it has
+		no general way to determine the size of a status 0 resource. A size
+		value of 0 is returned for implicit resources, whose instances do not
+		occupy VM.</p>
+	<p>
+		If the current VM allocation mode is local, resourcestatus considers
+		both local and global resource definitions, in that order (see <a
+			href="../d/defineresource.html">defineresource</a>). However, if the
+		current VM allocation mode is global, only global resource definitions
+		are visible to resourcestatus. Resource instances in external storage
+		are visible without regard to the current VM allocation mode.
+	</p>
+	<p>
+		If the specified resource category does not exist, an <a
+			href="../u/undefined.html">undefined</a> error occurs
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/defineresource.html">defineresource</a>,
+		<a href="../u/undefineresource.html">undefineresource</a>, <a
+			href="../f/findresource.html">findresource</a>, <a
+			href="resourceforall.html">resourceforall</a>
+	</p>
+</body>
+</html>

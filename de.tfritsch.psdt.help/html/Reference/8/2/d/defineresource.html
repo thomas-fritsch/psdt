@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>defineresource</title>
+</head>
+<body>
+	<b>defineresource</b> LEVEL 2
+	<pre>key instance category <b>defineresource</b> instance</pre>
+	<p>associates a resource instance with a resource name in a
+		specified category. category is a name object that identifies a
+		resource category, such as Font . key is a name or string object that
+		will be used to identify the resource instance. (Names and strings are
+		interchangeable; other types of keys are permitted but are not
+		recommended.) instance is the resource instance itself; its type must
+		be appropriate to the resource category.</p>
+	<p>Before defining the resource instance, defineresource verifies
+		that the instance object is the correct type. Depending on the
+		resource category, it may also perform additional validation of the
+		object and may have other side effects. Finally, it makes the object
+		read-only if its access is not already restricted.</p>
+	<p>
+		The lifetime of the definition depends on the VM allocation mode in
+		effect at the time defineresource is executed. If local VM allocation
+		is in effect (<a href="../c/currentglobal.html">currentglobal</a>
+		returns false), the effect of defineresource is undone by the next
+		nonnested <a href="../r/restore.html">restore</a>. If global VM
+		allocation is in effect (<a href="../c/currentglobal.html">currentglobal</a>
+		returns true), the effect of defineresource persists until global VM
+		is restored at the end of the job. If the current job is not
+		encapsulated, the effect of a global defineresource persists
+		indefinitely, and may be visible to other execution contexts.
+	</p>
+	<p>Local and global definitions are maintained separately. If a new
+		resource instance is defined with the same category and key as an
+		existing one, the new definition overrides the old one. The precise
+		effect depends on whether the old definition is local or global and
+		whether the new definition (current VM allocation mode) is local or
+		global. There are two main cases:</p>
+	<ul>
+		<li><em>New definition is local.</em> defineresource installs the
+			new local definition, replacing an existing local definition if there
+			is one. If there is an existing global definition, defineresource
+			does not disturb it. However, the global definition is obscured by
+			the local one. If the local definition is later removed, the global
+			definition reappears.</li>
+		<li><em>New definition is global.</em> defineresource first
+			removes an existing local definition if there is one. It then
+			installs the new global definition, replacing an existing global
+			definition if there is one.</li>
+	</ul>
+	<p>It is permissible to use defineresource multiple times to
+		associate a given resource instance with more than one key.</p>
+	<p>
+		If the category name is unknown, an <a href="../u/undefined.html">undefined</a>
+		error occurs. If the instance is of the wrong type for the specified
+		category, a <a href="../t/typecheck.html">typecheck</a> error occurs.
+		If the instance is in local VM but the current VM allocation mode is
+		global, an <a href="../i/invalidaccess.html">invalidaccess</a> error
+		occurs. This is analogous to storing a local object into a global
+		dictionary. Other errors can occur for specific categories. For
+		example, when dealing with the Font category, defineresource can
+		execute an <a href="../i/invalidfont.html">invalidfont</a> error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../u/undefinedresource.html">undefineresource</a>,
+		<a href="../f/findresource.html">findresource</a>, <a
+			href="../r/resourcestatus.html">resourcestatus</a>, <a
+			href="../r/resourceforall.html">resourceforall</a>
+	</p>
+</body>
+</html>

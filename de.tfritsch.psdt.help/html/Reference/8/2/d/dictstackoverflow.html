@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dictstackoverflow</title>
+</head>
+<body>
+	<b>dictstackoverflow</b> (error)
+	<p>The dictionary stack has grown too large. Too many begin
+		operators without corresponding end operators have pushed too many
+		dictionaries on the dictionary stack.</p>
+	<p>
+		Before invoking this error, the interpreter creates an array
+		containing all elements of the dictionary stack stored as if by <a
+			href="dictstack.html">dictstack</a>, pushes this array on the operand
+		stack, and resets the dictionary stack to contain only the permanent
+		entries.
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../b/begin.html">begin</a>, <a
+			href="../c/ountdictstack.html">countdictstack</a>, <a
+			href="../c/cleardictstack.html">cleardictstack</a>
+	</p>
+</body>
+</html>

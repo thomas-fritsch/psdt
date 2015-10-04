@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>flattenpath</title>
+</head>
+<body>
+	<b>flattenpath</b>
+	<pre>- <b>flattenpath</b> -</pre>
+	<p>
+		replaces the current path with an equivalent path that preserves all
+		straight line segments, but has all <a href="../c/curveto.html">curveto</a>
+		segments replaced by sequences of <a href="../l/lineto.html">lineto</a>
+		(straight line) segments that approximate the curves. If the current
+		path does not contain any <a href="../c/curveto.html">curveto</a>
+		segments, flattenpath leaves it unchanged.
+	</p>
+	<p>
+		This &quot;flattening&quot; of curves to straight line segments is
+		done automatically when a path is used to control painting (for
+		example, by <a href="../s/stroke.html">stroke</a>, <a href="fill.html">fill</a>,
+		or <a href="../c/clip.html">clip</a>). Only rarely does a program need
+		to flatten a path explicitly (see <a href="../p/pathbbox.html">pathbbox</a>).
+		The accuracy of the approximation to the curve is controlled by the
+		current flatness parameter in the graphics state (see <a
+			href="../s/setflat.html">setflat</a>).
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setflat.html">setflat</a>, <a
+			href="../c/curveto.html">curveto</a>, <a href="../l/lineto.html">lineto</a>,
+		<a href="../p/pathbbox.html">pathbbox</a>
+	</p>
+</body>
+</html>

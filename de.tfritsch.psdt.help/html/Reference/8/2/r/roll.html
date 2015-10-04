@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>roll</title>
+</head>
+<body>
+	<b>roll</b>
+	<pre>any<sub>n-1</sub> ... any<sub>0</sub> n j <b>roll</b> any<sub>(j-1) mod n</sub> ... any<sub>0</sub> any<sub>n-1</sub> ... any<sub>j mod n</sub></pre>
+	<p>
+		performs a circular shift of the objects any<sub>n-1</sub> through any<sub>0</sub>
+		on the operand stack by the amount j. Positive j indicates upward
+		motion on the stack, whereas negative j indicates downward motion.
+	</p>
+	<p>n must be a non-negative integer and j must be an integer. roll
+		first removes these operands from the stack; there must be at least n
+		additional elements. roll then performs a circular shift of these n
+		elements by j positions.</p>
+	<p>If j is positive, each shift consists of removing an element
+		from the top of the stack and inserting it between element n - 1 and
+		element n of the stack, moving all intervening elements one level
+		higher on the stack. If j is negative, each shift consists of removing
+		element n - 1 of the stack and pushing it on the top of the stack,
+		moving all intervening elements one level lower on the stack.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+(a)(b)(c) 3 -1 roll &rArr; (b)(c)(a)
+(a)(b)(c) 3 1 roll  &rArr; (c)(a)(b)
+(a)(b)(c) 3 0 roll  &rArr; (a)(b)(c)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../e/exch.html">exch</a>, <a
+			href="../i/index.html">index</a>, <a href="../c/copy.html">copy</a>,
+		<a href="../p/pop.html">pop</a>
+	</p>
+</body>
+</html>

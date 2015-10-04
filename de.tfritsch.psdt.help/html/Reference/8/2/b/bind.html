@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bind</title>
+</head>
+<body>
+	<b>bind</b>
+	<pre>proc <b>bind</b> proc</pre>
+	<p>
+		replaces executable operator names in proc by their values. For each
+		element of proc that is an executable name, bind looks up the name in
+		the context of the current dictionary stack as if by <a
+			href="../l/load.html">load</a>. If the name is found and its value is
+		an operator object, bind replaces the name by the operator in proc. If
+		the name is not found or its value is not an operator, bind does not
+		make a change.
+	</p>
+	<p>For each procedure object in proc, bind applies itself
+		recursively to that procedure, makes the procedure read-only, and
+		stores it back into proc. The bind operator applies to both arrays and
+		packed arrays, but it treats their access attributes differently. It
+		will ignore a read-only array; that is, it will neither bind elements
+		of the array nor examine nested procedures. On the other hand, bind
+		will operate on a packed array (which is always read-only),
+		disregarding its access attribute. No error occurs in either case.</p>
+	<p>The effect of bind is that all operator names in proc and in
+		procedures nested in proc to any depth become &quot;tightly
+		bound&quot; to the operators themselves. During subsequent execution
+		of proc, the interpreter encounters the operators themselves rather
+		than the names of operators.</p>
+	<p>
+		<b>Errors:</b> <a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../l/load.html">load</a>
+	</p>
+</body>
+</html>

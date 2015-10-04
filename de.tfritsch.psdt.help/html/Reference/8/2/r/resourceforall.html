@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>resourceforall</title>
+</head>
+<body>
+	<b>resourceforall</b> LEVEL 2
+	<pre>template proc scratch category <b>resourceforall</b> -</pre>
+	<p>enumerates the names of all instances of a specified resource
+		category or a subset selected by template. category is a name object
+		that identifies a resource category, such as Font. template is a
+		string object to be matched against names of resource instances. For
+		each matching name, resourceforall copies the name into the supplied
+		scratch string, pushes a string object that is the substring of
+		scratch that was actually used, and calls proc. resourceforall does
+		not return any results of its own, but proc may do so.</p>
+	<p>The template is matched against the names of resource instances,
+		treating them as if they were strings. Within the template, all
+		characters are treated literally and are case sensitive, with the
+		exception of the following:</p>
+	<p>
+	<dl>
+		<dt>*</dt>
+		<dd>matches zero or more consecutive characters.</dd>
+		<dt>?</dt>
+		<dd>matches exactly one character.</dd>
+		<dt>\</dt>
+		<dd>causes the next character of the template to be treated
+			literally, even if it is *, ?, or \.</dd>
+	</dl>
+	<p>Note that the scratch string is reused during every call to
+		proc. If proc wishes to save the string that is passed to it, it must
+		make a copy or use cvn to convert the string to a name. Use of strings
+		instead of names allows resourceforall to function without creating
+		new name objects, which would consume VM needlessly during a large
+		enumeration. It is prudent to provide a scratch string at least as
+		long as the implementation limit for names.</p>
+	<p>It is possible for a resource instance to have a key which is
+		not a name or string. Such a key matches only the template (*). In
+		this case, resourceforall passes the key directly to proc instead of
+		copying it into the scratch string. This case can arise only for a
+		resource instance defined in VM by a previous defineresource; the keys
+		for external resource instances are always names or strings.</p>
+	<p>Like resourcestatus, but unlike findresource, resourceforall
+		never loads a resource instance into VM.</p>
+	<p>resourceforall enumerates the resource instances in order of
+		status (the status value returned by resourcestatus); that is, it
+		enumerates groups in this order:</p>
+	<ol>
+		<li>Instances defined in VM by an explicit defineresource; not
+			subject to automatic removal.</li>
+		<li>Instances defined in VM by a previous execution of
+			findresource; subject to automatic removal.</li>
+		<li>Instances not currently defined in VM, but available from
+			external storage.</li>
+	</ol>
+	<p>Within each group, the order of enumeration is unpredictable. It
+		is unrelated to order of definition or to whether the definition is
+		local or global. A given resource instance is enumerated only once,
+		even if it exists in more than one group. If proc adds or removes
+		resource instances, those instances may or may not appear later in the
+		same enumeration.</p>
+	<p>
+		Like resourcestatus, resourceforall considers both local and global
+		definitions if the current VM allocation mode is local, but only
+		global definitions if the current VM allocation mode is global (see <a
+			href="resourcestatus.html">resourcestatus</a> and <a
+			href="../d/defineresource.html">defineresource</a>).
+	</p>
+	<p>
+		If the specified resource category does not exist, an <a
+			href="../u/undefined.html">undefined</a> error occurs. However, no
+		error occurs if there are no instances whose names match the template.
+		Of course, the proc that is called can generate errors of its own.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/defineresource.html">defineresource</a>,
+		<a href="../u/undefineresource.html">undefineresource</a>, <a
+			href="../f/findresource.html">findresource</a>, <a
+			href="resourcestatus.html">resourcestatus</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>for</title>
+</head>
+<body>
+	<b>for</b>
+	<pre>initial increment limit proc <b>for</b> -</pre>
+	<p>executes proc repeatedly, passing it a sequence of values from
+		initial by steps of increment to limit. The for operator expects
+		initial, increment, and limit to be numbers. It maintains a temporary
+		internal variable, known as the control variable, which it first sets
+		to initial. Then, before each repetition, it compares the control
+		variable with the termination value limit. If limit has not been
+		exceeded, it pushes the control variable on the operand stack,
+		executes proc, and adds increment to the control variable.</p>
+	<p>
+		The termination condition depends on whether increment is positive or
+		negative. If increment is positive, for terminates when the control
+		variable becomes greater than limit. If increment is negative, for
+		terminates when the control variable becomes less than limit. If
+		initial meets the termination condition, for does not execute proc at
+		all. If proc executes the <a href="../e/exit.html">exit</a> operator,
+		for terminates prematurely.
+	</p>
+	<p>Usually, proc will use the value on the operand stack for some
+		purpose. However, if proc does not remove the value, it will remain
+		there. Successive executions of proc will cause successive values of
+		the control variable to accumulate on the operand stack.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+0 1 1 4 {add} for &rArr; 10
+1 2 6 { } for     &rArr; 1 3 5
+3 -.5 1 {} for    &rArr; 3.0 2.5 2.0 1.5 1.0
+</pre>
+	<p>In the first example, the value of the control variable is added
+		to whatever is on the stack, so 1, 2, 3, and 4 are added in turn to a
+		running sum whose initial value is 0. The second example has an empty
+		procedure, so the successive values of the control variable are left
+		on the stack. The last example counts backward from 3 to 1 by halves,
+		leaving the successive values on the stack.</p>
+	<p>Beware of using reals instead of integers for any of the first
+		three operands. Most real numbers are not represented exactly. This
+		can cause an error to accumulate in the value of the control variable,
+		with possibly surprising results. In particular, if the difference
+		between initial and limit is a multiple of increment, as in the third
+		line of the example, the control variable may not achieve the limit
+		value.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a> <a
+			href="../s/stackunderflow.html">stackunderflow,</a> <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/repeat.html">repeat</a>, <a
+			href="../l/loop.html">loop</a>, <a href="forall.html">forall</a>, <a
+			href="../e/exit.html">exit</a>
+	</p>
+</body>
+</html>

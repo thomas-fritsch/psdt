@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>viewclippath</title>
+</head>
+<body>
+	<b>viewclippath</b> DPS
+	<pre>- <b>viewclippath</b> -</pre>
+	<p>replaces the current path by a copy of the current view clipping
+		path. If no view clipping path exists, it replaces the current path by
+		one that exactly corresponds to the bounding rectangle of the
+		imageable area of the output device.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+initviewclip viewclippath pathbbox
+</pre>
+	<p>If the current device is a window device, this returns the
+		bounding box of the window.</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="viewclip.html">viewclip</a>, <a
+			href="../i/initviewclip.html">initviewclip</a>, <a
+			href="../c/clippath.html">clippath</a>
+	</p>
+</body>
+</html>

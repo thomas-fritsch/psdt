@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentfont</title>
+</head>
+<body>
+	<b>currentfont</b>
+	<pre>- <b>currentfont</b> font</pre>
+	<p>
+		returns the current font dictionary in the graphics state. Normally,
+		this is the font most recently established by setfont or selectfont.
+		However, when executed inside a font's BuildGlyph or BuildChar
+		procedure or a procedure invoked by <a href="cshow.html">cshow</a>,
+		currentfont returns the currently selected base font (descendant of a
+		composite font).
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/rootfont.html">rootfont</a>, <a
+			href="../s/selectfont.html">selectfont</a>, <a href="s.html#setfont">setfont</a>
+	</p>
+</body>
+</html>

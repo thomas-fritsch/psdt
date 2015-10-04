@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setlinewidth</title>
+</head>
+<body>
+	<b>setlinewidth</b>
+	<pre>num <b>setlinewidth</b> -</pre>
+	<p>sets the line width parameter in the graphics state to num. This
+		controls the thickness of lines rendered by subsequent execution of
+		the stroke operator. stroke paints all points whose perpendicular
+		distance from the current path in user space is less than or equal to
+		one-half the absolute value of num. The effect produced in device
+		space depends on the current transformation matrix (CTM) in effect at
+		the time of the stroke. If the CTM specifies scaling by different
+		factors in the x and y dimensions, the thickness of stroked lines in
+		device space will vary according to their orientation.</p>
+	<p>A line width of zero is acceptable: It is interpreted as the
+		thinnest line that can be rendered at device resolution-in other
+		words, one device pixel wide. Some devices cannot reproduce one-pixel
+		lines, and on high-resolution devices, such lines are nearly
+		invisible. Since the results of rendering such &quot;zero-width&quot;
+		lines are device dependent, their use is not recommended.</p>
+	<p>
+		The actual line width achieved by stroke can differ from the requested
+		width by as much as two device pixels, depending on the positions of
+		lines with respect to the pixel grid. One can enable automatic stroke
+		adjustment (by <a href="setstrokeadjust.html">setstrokeadjust</a>) to
+		assure uniform line width.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentlinewidth.html">currentlinewidth</a>,
+		<a href="stroke.html">stroke</a>, <a href="setstrokeadjust.html">setstrokeadjust</a>
+	</p>
+</body>
+</html>

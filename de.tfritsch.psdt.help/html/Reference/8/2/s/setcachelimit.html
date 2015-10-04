@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcachelimit</title>
+</head>
+<body>
+	<b>setcachelimit</b>
+	<pre>int <b>setcachelimit</b> -</pre>
+	<p>establishes the maximum number of bytes the pixel array (bitmap)
+		of a single cached glyph may occupy. Any glyph larger than this
+		(according to the glyph bounding box information passed to
+		setcachedevice) is not saved in the font cache. Instead, its
+		description is executed every time the glyph is encountered.
+		setcachelimit affects the decision whether to place new glyphs in the
+		font cache; it does not disturb any glyphs already in the cache.
+		Making the limit larger allows larger glyphs to be cached, but may
+		decrease the total number of different glyphs that can be held in the
+		cache simultaneously. Changing this parameter is appropriate only in
+		very unusual situations.</p>
+	<p>The maximum limit for int is implementation-dependent,
+		representing the total available size of the font cache (see
+		cachestatus). As a practical matter, int should not be larger than a
+		small fraction of the total font cache size. Modifications to the
+		cache limit parameter are subject to save and restore. In an
+		interpreter that supports multiple contexts, this parameter is
+		maintained separately for each context.</p>
+	<p>The parameter set by setcachelimit is the same as the
+		MaxFontItem user parameter set by setuserparams (see Appendix C).</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="./t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/cachestatus.html">cachestatus</a>, <a
+			href="setuserparams.html">setuserparams</a>
+	</p>
+</body>
+</html>

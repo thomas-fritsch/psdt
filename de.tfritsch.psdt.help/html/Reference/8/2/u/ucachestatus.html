@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ucachestatus</title>
+</head>
+<body>
+	<b>ucachestatus</b> LEVEL 2
+	<pre>- <b>ucachestatus</b> mark bsize bmax rsize rmax blimit</pre>
+	<p>
+		reports the current consumption and limit for two user path cache
+		resources: bytes of reduced path storage (bsize and bmax) and total
+		number of cached reduced paths (rsize and rmax). It also reports the
+		limit on the number of bytes occupied by a single reduced path
+		(blimit)-reduced paths that are larger than this are not cached. All
+		ucachestatus results except blimit are for information only. A
+		PostScript language program can change blimit (see <a
+			href="../s/setucacheparams.html">setucacheparams</a>).
+	</p>
+	<p>
+		The number of values pushed on the operand stack is variable. Future
+		versions of the PostScript interpreter may push additional values
+		between mark and bsize. The purpose of the mark is to delimit the
+		values returned by ucachestatus. This enables a program to determine
+		how many values were returned (by <a href="../c/counttomark.html">counttomark</a>)
+		and to discard any unused ones (by <a href="../c/cleartomark.html">cleartomark</a>).
+	</p>
+	<p>
+		The bsize, bmax, and blimit parameters reported by ucachestatus are
+		the same as the CurUPathCache and MaxUPathCache system parameters and
+		MaxUPathItem user parameter reported by <a
+			href="../c/currentsystemparams.html">currentsystemparams</a> and <a
+			href="../c/currentuserparams.html">currentuserparams</a>,
+		respectively.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setucacheparams.html">setucacheparams</a>,
+		<a href="../s/setsystemparams.html">setsystemparams</a>, <a
+			href="../s/setuserparams.html">setuserparams</a>
+	</p>
+</body>
+</html>

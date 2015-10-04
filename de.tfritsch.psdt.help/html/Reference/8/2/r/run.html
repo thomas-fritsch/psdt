@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>run</title>
+</head>
+<body>
+	<b>run</b>
+	<pre>string <b>run</b> -</pre>
+	<p>executes the contents of the file identified by string-in other
+		words, interprets the characters in that file as a PostScript language
+		program. When run encounters end-of-file or terminates for some other
+		reason (for example, stop), it closes the file.</p>
+	<p>run is essentially a convenience operator for the sequence</p>
+	<pre>
+(r) file cvx exec
+</pre>
+	<p>except for its behavior upon abnormal termination. Also, the
+		context of a run cannot be left by executing exit; an attempt to do so
+		produces the error invalidexit. The run operator leaves no results on
+		the operand stack, but the program executed by run may alter the
+		stacks arbitrarily.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedfilename.html">undefinedfilename</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../e/exec.html">exec</a>, <a
+			href="../f/file.html">file</a>
+	</p>
+</body>
+</html>

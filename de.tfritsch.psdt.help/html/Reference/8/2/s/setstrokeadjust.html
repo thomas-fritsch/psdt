@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setstrokeadjust</title>
+</head>
+<body>
+	<b>setstrokeadjust</b> LEVEL 2
+	<pre>bool <b>setstrokeadjust</b> -</pre>
+	<p>sets the stroke adjustment parameter in the graphics state to
+		bool. This parameter controls whether automatic stroke adjustment will
+		be performed during subsequent invocations of stroke and related
+		operators, including strokepath (see Section 7.5.2, "Automatic Stroke
+		Adjustment").</p>
+	<p>The initial value of the stroke adjustment parameter is
+		device-dependent; typically it is true for displays and false for
+		printers. It is set to false when a font’s BuildChar, BuildGlyph, or
+		CharStrings procedure is called, but the procedure can change it. It
+		is not altered by initgraphics.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="c.html#currentstrokeadjust">currentstrokeadjust</a>,
+		<a href="#stroke">stroke</a>
+	</p>
+</body>
+</html>

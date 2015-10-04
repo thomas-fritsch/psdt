@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readstring</title>
+</head>
+<body>
+	<b>readstring</b>
+	<pre>file string <b>readstring</b> substring bool</pre>
+	<p>reads characters from file and stores them into successive
+		elements of string until either the entire string has been filled or
+		an end-of-file indication is encountered in file. readstring then
+		returns the substring of string that was filled and a boolean
+		indicating the outcome (true normally, false if end-of-file was
+		encountered before the string was filled).</p>
+	<p>All character codes are treated the same-as integers in the
+		range 0 to 255. There are no special characters (in particular, the
+		newline character is not treated specially). However, the
+		communication channel may usurp certain control characters.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="rangecheck.html">rangecheck</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="t.html#typecheck">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="read.html">read</a>, <a
+			href="readhexstring.html">readhexstring</a>, <a href="readline.html">readline</a>
+	</p>
+</body>
+</html>

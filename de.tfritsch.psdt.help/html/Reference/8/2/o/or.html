@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>or</title>
+</head>
+<body>
+	<b>or</b>
+	<pre>bool<sub>1</sub> bool<sub>2</sub> <b>or</b> bool<sub>3</sub>
+  int<sub>1</sub> int<sub>2</sub> <b>or</b> int<sub>3</sub>	</pre>
+	<p>If the operands are booleans, or returns their logical
+		disjunction. If the operands are integers, or returns the bitwise
+		&quot;inclusive or&quot; of their binary representations.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+true false or   &rArr; true        % A complete truth table
+true false or   &rArr; true
+false true or   &rArr; true
+false false or  &rArr; false
+
+17 5 or         &rArr; 21
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../a/and.html">and</a>, <a
+			href="../n/not.html">not</a>, <a href="../x/xor.html">xor</a>
+	</p>
+</body>
+</html>

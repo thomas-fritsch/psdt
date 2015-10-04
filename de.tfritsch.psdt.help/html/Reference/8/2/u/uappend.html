@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>uappend</title>
+</head>
+<body>
+	<b>uappend</b> LEVEL 2
+	<pre>userpath <b>uappend</b> -</pre>
+	<p>interprets a user path definition and appends the result to the
+		current path in the graphics state. If userpath is an ordinary user
+		path (in other words, an array or packed array whose length is at
+		least 5), uappend is equivalent to:</p>
+	<pre>
+systemdict begin     % Ensure standard operator meanings
+  cvx exec           % Interpret userpath
+end
+</pre>
+	<p>If userpath is an encoded user path, uappend interprets it and
+		performs the encoded operations. It does not matter whether the
+		userpath object is literal or executable.</p>
+	<p>Note that uappend uses the standard definitions of all operator
+		names mentioned in the user path, unaffected by any name redefinition
+		that may have occurred.</p>
+	<p>
+		A ucache appearing in userpath may or may not have an effect,
+		depending on the environment in which uappend is executed. If the
+		current path is initially empty and no path construction operators are
+		executed after uappend, a subsequent painting operator may access the
+		user path cache. Otherwise, it definitely will not. This is
+		particularly useful in the case of <a href="../c/clip.html">clip</a>
+		and <a href="../v/viewclip.html">viewclip</a>.
+	</p>
+	<p>uappend performs a temporary adjustment to the current
+		transformation matrix as part of its execution. This adjustment
+		consists of rounding the tx and ty components of the CTM to the
+		nearest integer values.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.htlm">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	/
+	<p>
+		<b>See Also:</b> <a href="upath.html">upath</a>, <a href="ucache.html">ucache</a>
+	</p>
+</body>
+</html>

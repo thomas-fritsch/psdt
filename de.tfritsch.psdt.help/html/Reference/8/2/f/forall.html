@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>forall</title>
+</head>
+<body>
+	<b>forall</b>
+	<pre>      array proc <b>forall</b> -
+packedarray proc <b>forall</b> -
+       dict proc <b>forall</b> -
+     string proc <b>forall</b> -</pre>
+	<p>enumerates the elements of the first operand, executing the
+		procedure proc for each element. If the first operand is an array,
+		string, or packed array, forall pushes an element on the operand stack
+		and executes proc for each element in the array, string, or packed
+		array, beginning with the element whose index is 0 and continuing
+		sequentially. The objects pushed on the operand stack are the array,
+		packed array, or string elements. In the case of a string, these
+		elements are integers in the range 0 to 255, not one-character
+		strings.</p>
+	<p>If the first operand is a dictionary, forall pushes a key and a
+		value on the operand stack and executes proc for each key-value pair
+		in the dictionary. The order in which forall enumerates the entries in
+		the dictionary is arbitrary. New entries put in the dictionary during
+		execution of proc may or may not be included in the enumeration.</p>
+	<p>
+		If the first operand is empty (i.e., has length 0), forall does not
+		execute proc at all. If proc executes the <a href="../e/exit.html">exit</a>
+		operator, forall terminates prematurely.
+	</p>
+	<p>Although forall does not leave any results on the operand stack
+		when it is finished, the execution of proc may leave arbitrary results
+		there. If proc does not remove each enumerated element from the
+		operand stack, the elements will accumulate there.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+0 [13 29 3 -8 21] {add} forall &rArr; 58
+
+/d 2 dict def
+d /abc 123 put
+d /xyz (test) put
+d {} forall                    &rArr; /xyz (test) /abc 123
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a> <a
+			href="../s/stackunderflow.html">stackunderflow,</a> <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="for.html">for</a>, <a
+			href="../r/repeat.html">repeat</a>, <a href="../l/loop.html">loop</a>,
+		<a href="../e/exit.html">exit</a>
+	</p>
+</body>
+</html>

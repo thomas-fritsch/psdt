@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>grestore</title>
+</head>
+<body>
+	<b>grestore</b>
+	<pre>- <b>grestore</b> -</pre>
+	<p>resets the current graphics state from the one on the top of the
+		graphics state stack and pops the graphics state stack, restoring the
+		graphics state in effect at the time of the matching gsave. This
+		operator provides a simple way to undo complicated transformations and
+		other graphics state modifications without having to re-establish all
+		graphics state parameters individually.</p>
+	<p>
+		If there is no matching <a href="gsave.html">gsave</a> or if the most
+		recent <a href="gsave.html">gsave</a> preceded the most recent
+		unmatched save, grestore does not pop the graphics state stack,
+		although it does restore the graphics state from the top of the
+		graphics state stack.
+	</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="gsave.html">gsave</a>, <a
+			href="grestoreall.html">grestoreall</a>, <a
+			href="../s/setgstate.html">setgstate</a>
+	</p>
+</body>
+</html>

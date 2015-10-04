@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gt</title>
+</head>
+<body>
+	<b>gt</b>
+	<pre>      num<sub>1</sub> num<sub>2</sub> <b>gt</b> bool
+string<sub>1</sub> string<sub>2</sub> <b>gt</b> bool</pre>
+	<p>
+		pops two objects from the operand stack and pushes the boolean value
+		true if the first operand is greater than the second, false otherwise.
+		If both operands are numbers, gt compares their mathematical values.
+		If both operands are strings, gt compares them element by element,
+		treating the elements as integers in the range 0 to 255, to determine
+		whether the first string is lexically greater than the second. If the
+		operands are of other types or one is a string and the other is a
+		number, gt executes the <a href="../t/typecheck.html">typecheck</a>
+		error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="ge.html">ge</a>, <a href="../e/eq.html">eq</a>,
+		<a href="../n/ne.html">ne</a>, <a href="l.html#le">le</a>, <a
+			href="../l/lt-html">lt</a>
+	</p>
+</body>
+</html>

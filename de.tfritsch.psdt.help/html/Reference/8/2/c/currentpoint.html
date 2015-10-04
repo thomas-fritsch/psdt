@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentpoint</title>
+</head>
+<body>
+	<b>currentpoint</b>
+	<pre>- <b>currentpoint</b> x y</pre>
+	<p>
+		returns the x and y coordinates of the current point in the graphics
+		state (i.e., the trailing endpoint of the current path). If the
+		current point is undefined because the current path is empty,
+		currentpoint executes the <a href="../n/nocurrentpoint.html">nocurrentpoint</a>
+		error. The current point is reported in the user coordinate system.
+		Points entered into a path are immediately converted to device
+		coordinates by the current transformation matrix (CTM); existing
+		points are not changed by subsequent modifications to the CTM.
+		currentpoint computes the user space coordinate that corresponds to
+		the current point according to the current value of the CTM. If a
+		current point is set and then the CTM is changed, currentpoint will
+		report a different position in user space than it did before.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../n/nocurrentpoint.html">nocurrentpoint</a>,
+		<a href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../l/lineto.html">lineto</a>, <a
+			href="../m/moveto.html">moveto</a>, <a href="curveto.html">curveto</a>,
+		<a href="../a/arc.html">arc</a>
+	</p>
+</body>
+</html>

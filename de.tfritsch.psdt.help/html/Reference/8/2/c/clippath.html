@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>clippath</title>
+</head>
+<body>
+	<b>clippath</b>
+	<pre>- <b>clippath</b> -</pre>
+	<p>sets the current path to one that describes the current clipping
+		path. This operator is useful for determining the exact extent of the
+		imaging area on the current output device.</p>
+	<p>
+		If the current clipping path is the result of application of the <a
+			href="clip.html">clip</a> or <a href="../e/eoclip.html">eoclip</a>
+		operator, the path set by clippath is generally suitable only for
+		filling or clipping. It is not suitable for stroking because it may
+		contain interior segments or disconnected subpaths produced by the
+		clipping process.
+	</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+clippath 1 setgray fill
+</pre>
+	<p>This erases (fills with white) the interior of the current
+		clipping path.</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="clip.html">clip</a>, <a
+			href="../e/eoclip.html">eoclip</a>, <a href="../i/initclip.html">initclip</a>,
+		<a href="../r/rectclip.clip">rectclip</a>
+	</p>
+</body>
+</html>

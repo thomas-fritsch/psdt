@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>type</title>
+</head>
+<body>
+	<b>type</b>
+	<pre>any <b>type</b> name</pre>
+	<p>returns a name object that identifies the type of the object
+		any. The possible names that type can return are as follows:</p>
+	<pre>
+arraytype     marktype 
+booleantype   nametype 
+conditiontype nulltype 
+dicttype      operatortype 
+filetype      packedarraytype 
+fonttype      realtype 
+gstatetype    savetype 
+integertype   stringtype 
+locktype 
+</pre>
+	<p>The name fonttype identifies an object of type fontID. It has
+		nothing to do with a font dictionary, which is identified by dicttype
+		the same as any other dictionary.</p>
+	<p>
+		The returned name has the executable attribute. This makes it
+		convenient to perform type-dependent processing of an object simply by
+		executing the name returned by type in the context of a dictionary
+		that defines all the type names to have procedure values (this is how
+		<a href="../@/equals-equals.html">==</a> works).
+	</p>
+	<p>The set of types is subject to enlargement in future revisions
+		of the language. A program that examines the types of arbitrary
+		objects should be prepared to behave reasonably if type returns a name
+		that is not in this list.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>dtransform</title>
+</head>
+<body>
+	<b>dtransform</b>
+	<pre>       dx dy <b>dtransform</b> dx' dy'
+dx dy matrix <b>dtransform</b> dx' dy'</pre>
+	<p>With no matrix operand, dtransform (delta transform) transforms
+		the distance vector (dx, dy) by the CTM to produce the corresponding
+		distance vector (dx', dy') in device space. If the matrix operand is
+		supplied, dtransform transforms the distance vector by matrix rather
+		than by CTM.</p>
+	<p>A delta transformation is similar to a normal transformation,
+		but the translation components (tx and ty) of the transformation
+		matrix are not used, making the distance vectors positionless in both
+		user space and device space. This is useful for determining how
+		distances map from user space to device space.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../i/idtransform">idtransform</a>, <a
+			href="../t/transform.html">transform</a>, <a
+			href="../i/itransform.html">itransform</a>
+	</p>
+</body>
+</html>

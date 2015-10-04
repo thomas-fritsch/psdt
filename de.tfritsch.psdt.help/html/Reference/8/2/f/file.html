@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>file</title>
+</head>
+<body>
+	<b>file</b>
+	<pre>filename access <b>file</b> file</pre>
+	<p>creates a file object for the file identified by filename,
+		accessing it as specified by access. Both operands are strings.
+		Conventions for both file names and access specifications depend on
+		the operating system environment in which the PostScript interpreter
+		is running.</p>
+	<p>
+		Once created and opened, the file object remains valid until the file
+		is closed either explicitly (by executing <a
+			href="../c/closefile.html">closefile</a>) or implicitly (by
+		encountering end-offile while reading or executing the file). A file
+		is also closed by <a href="../r/restore.html">restore</a> if the file
+		object was created more recently than the <a href="../s/save.html">save</a>
+		snapshot being restored, or is closed by garbage collection if the
+		file object is no longer accessible. There is a limit on the number of
+		files that can be open simultaneously.
+	</p>
+	<p>
+		If the specified filename is malformed or if the file doesn't exist
+		and access does not permit creating a new file, file executes an <a
+			href="../u/undefinedfilename.html">undefinedfilename</a> error. If
+		access is malformed or the requested access is not permitted by the
+		device, an <a href="../i/invalidfileaccess.html">invalidfileaccess</a>
+		error occurs. If the number of files opened by the current context
+		exceeds an implementation limit, a <a href="../l/limitcheck.html">limitcheck</a>
+		error occurs. If an environmentdependent error is detected, an <a
+			href="../i/ioerror.html">ioerror</a> occurs.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+(%stdin) (r) file  &rArr;  % standard input file object
+(myfile) (w) file  &rArr;  % output file object, writing to named file
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidfileaccess.html">invalidfileaccess</a>,
+		<a href="../i/ioerror.html">ioerror</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedfilename.html">undefinedfilename</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/closefile.html">closefile</a>, <a
+			href="../c/currentfile.html">currentfile</a>, <a href="filter.html">filter</a>,
+		<a href="../s/status.html">status</a>
+	</p>
+</body>
+</html>

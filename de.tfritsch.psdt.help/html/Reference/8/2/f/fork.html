@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>fork</title>
+</head>
+<body>
+	<b>fork</b> DPS
+	<pre>mark obj<sub>1</sub> ... obj<sub>n</sub> proc <b>fork</b> context</pre>
+	<p>creates a new execution context using the same local and global
+		VM as the current context. The new context begins execution concurrent
+		with continued execution of the current context. Which context
+		executes first is unpredictable.</p>
+	<p>
+		The new context's environment is formed by copying the dictionary and
+		graphics state stacks of the current context. The initial operand
+		stack consists of obj1 through objn, pushed in the same order (obj<sub>1</sub>
+		through obj<sub>n</sub> are objects of any type other than <a
+			href="../m/mark.html">mark</a>). fork consumes all operands down to
+		and including the topmost mark. It then pushes an integer that
+		uniquely identifies the new context. The forked context inherits its
+		object format from the current context; other percontext parameters
+		are initialized to default values.
+	</p>
+	<p>
+		When the new context begins execution, it executes the procedure proc.
+		If proc runs to completion and returns, the context ordinarily will
+		suspend until some other context executes a join on context. However,
+		if the context has been detached, it will terminate immediately (see <a
+			href="../j/join.html">join</a> and <a href="../d/detach.html">detach</a>).
+	</p>
+	<p>If proc executes a stop that causes the execution of proc to end
+		prematurely, the context will terminate immediately. proc is
+		effectively called as follows:</p>
+	<pre>
+proc stopped {handleerror quit} if
+% ...Wait for join or detach...
+quit
+</pre>
+	<p>In other words, if proc stops due to an error, the context
+		invokes the error handler in the usual way to report the error. Then
+		it terminates regardless of whether it has been detached.</p>
+	<p>
+		It is illegal to execute fork if there has been any previous save not
+		yet matched by a restore. Attempting to do so will cause an <a
+			href="../i/invalidcontext.html">invalidcontext</a> error.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidcontext-html">invalidcontext</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/unmatchedmark.html">unmatchedmark</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../j/join.html">join</a>, <a
+			href="../d/detach.html">detach</a>, <a
+			href="../c/currentcontext.html">currentcontext</a>
+	</p>
+</body>
+</html>

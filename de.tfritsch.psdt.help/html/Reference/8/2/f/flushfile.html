@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>flushfile</title>
+</head>
+<body>
+	<b>flushfile</b>
+	<pre>file <b>flushfile</b> -</pre>
+	<p>If file is an output file, flushfile causes any buffered
+		characters for that file to be delivered immediately. In general, a
+		program requiring output to be sent immediately, such as during
+		real-time, two-way interactions, should call flushfile after
+		generating that output.</p>
+	<p>If file is an input file, flushfile reads and discards data from
+		file until the end-offile indication is encountered. This is useful
+		during error recovery, and the PostScript job server uses it for that
+		purpose. flushfile does not close the file, unless it is a decoding
+		filter file.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="#flush">flush</a>, <a href="qr.html#read">read</a>,
+		<a href="w.html#write">write</a>
+	</p>
+</body>
+</html>

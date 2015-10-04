@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readhexstring</title>
+</head>
+<body>
+	<b>readhexstring</b>
+	<pre>file string <b>readhexstring</b> substring bool</pre>
+	<p>reads characters from file, expecting to encounter a sequence of
+		hexadecimal digits 0 through 9 and A through F (or a through f).
+		readhexstring interprets each successive pair of digits as a two-digit
+		hexadecimal number representing an integer value in the range 0 to
+		255. It then stores these values into successive elements of string
+		starting at index 0 until either the entire string has been filled or
+		an end-of-file indication is encountered in file. Finally,
+		readhexstring returns the substring of string that was filled and a
+		boolean indicating the outcome (true normally, false if end-of-file
+		was encountered before the string was filled).</p>
+	<p>readhexstring ignores any characters that are not valid
+		hexadecimal digits, so the data in file may be interspersed with
+		spaces, newlines, etc., without changing the interpretation of the
+		data.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="rangecheck.html">rangecheck</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="read.html">read</a>, <a href="readline.html">readline</a>,
+		<a href="readstring.html">readstring</a>, <a href="f.html#filter">filter</a>
+	</p>
+</body>
+</html>

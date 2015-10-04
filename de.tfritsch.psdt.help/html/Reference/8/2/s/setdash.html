@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setdash</title>
+</head>
+<body>
+	<b>setdash</b>
+	<pre>array offset <b>setdash</b> -</pre>
+	<p>sets the dash pattern parameter in the graphics state. This
+		parameter controls the lines to be drawn by subsequent invocations of
+		stroke and related operators, such as rectstroke and ustroke. An empty
+		(zero-length) array operand denotes solid, unbroken lines. If array is
+		not empty, its elements (which must be nonnegative numbers and not all
+		zero) define the sequence of dashes and gaps constituting the dash
+		pattern.</p>
+	<p>The elements of array alternately specify the length of a dash
+		and the length of a gap between dashes, expressed in units of the user
+		coordinate system. The stroke operator uses these elements cyclically;
+		when it reaches the end of the array, it starts again at the
+		beginning.</p>
+	<p>Dashed strokes wrap around curves and corners in the same way as
+		solid strokes. The ends of each dash are treated with the current line
+		cap, and corners within a dash are treated with the current line join.
+		stroke takes no measures to coordinate the dash pattern with features
+		of the path itself; it simply dispenses dashes along the path in the
+		pattern defined by array. The offset operand can be thought of as the
+		"phase" of the dash pattern relative to the start of the path. It is
+		interpreted as a distance into the dash pattern (measured in user
+		space units) at which to start the pattern. Before beginning to stroke
+		a path, the stroke operator cycles through the elements of array,
+		adding up distances and alternating dashes and gaps as usual, but
+		without generating any output. When the accumulated distance reaches
+		the value specified by offset, it begins stroking from the starting
+		point of the path, using the dash pattern from the point that has been
+		reached. Each subpath of a path is treated independently; the dash
+		pattern is restarted and the offset reapplied at the beginning of each
+		subpath.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+[ ] 0 setdash       % Solid, unbroken lines
+[3] 0 setdash       % 3 units on, 3 units off, ...
+[2] 1 setdash       % 1 on, 2 off, 2 on, 2 off, ...
+[2 1] 0 setdash     % 2 on, 1 off, 2 on, 1 off, ...
+[3 5] 6 setdash     % 2 off, 3 on, 5 off, 3 on, 5 off, ...
+[2 3] 11 setdash    % 1 on, 3 off, 2 on, 3 off, 2 on, ...</pre>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/ttypecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentdash.html">currentdash</a>, <a
+			href="stroke.html">stroke</a>
+	</p>
+</body>
+</html>

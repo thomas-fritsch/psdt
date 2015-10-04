@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>anchorsearch</title>
+</head>
+<body>
+	<b>anchorsearch</b>
+	<pre>string seek <b>anchorsearch</b> post match true  (if found)
+                         string false     (if not found)</pre>
+	<p>
+		determines if the string seek matches the initial substring of string
+		(that is, string is at least as long as seek and the corresponding
+		characters are equal). If it matches, anchorsearch splits string into
+		two segments: match, the portion of string that matches seek, and
+		post, the remainder of string; it then pushes the string objects post
+		and match and the boolean <a href="../t/true.html">true</a>. If not,
+		anchorsearch pushes the original string and the boolean false.
+		anchorsearch is a special case of the <a href="../s/search.html">search</a>
+		operator.
+	<p>
+		<b>Examples</b>
+	<pre>
+(abbc) (ab) anchorsearch  &rArr;  (bc) (ab) true
+(abbc) (bb) anchorsearch  &rArr;  (abbc) false
+(abbc) (bc) anchorsearch  &rArr;  (abbc) false
+(abbc) (B) anchorsearch   &rArr;  (abbc) false
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="../s/search.html">search</a>, <a
+			href="../t/token.html">token</a>
+</body>
+</html>

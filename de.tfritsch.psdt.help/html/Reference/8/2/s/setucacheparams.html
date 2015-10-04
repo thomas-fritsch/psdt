@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setucacheparams</title>
+</head>
+<body>
+	<b>setucacheparams</b> LEVEL 2
+	<pre>mark blimit <b>setucacheparams</b> -</pre>
+	<p>sets user path cache parameters as specified by the integer
+		objects above the topmost mark on the stack, then removes all operands
+		and the mark object itself, as if by cleartomark.</p>
+	<p>The number of cache parameters is variable. If more operands are
+		supplied than are needed, the topmost ones are used and the remainder
+		ignored. If too few are supplied, setucacheparams implicitly inserts
+		default values between the mark and the first supplied operand.</p>
+	<p>blimit specifies the maximum number of bytes that can be
+		occupied by the reduced representation of a single path in the user
+		path cache. Any reduced path larger than this limit is not saved in
+		the cache. Changing blimit does not disturb any paths that are already
+		in the cache. A blimit value that is too large is automatically
+		reduced to the maximum permissible value without error indication.</p>
+	<p>Modifications to the cache limit parameter are subject to save
+		and restore. In an interpreter that supports multiple contexts, this
+		parameter is maintained separately for each context.</p>
+	<p>The parameter that setucacheparams sets is the same as the
+		MaxUPathItem user parameter set by setuserparams (see Appendix C).</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/unmatchedmark.html">unmatchedmark</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../u/ucachestatus.html">ucachestatus</a>, <a
+			href="setuserparams.html">setuserparams</a>
+	</p>
+</body>
+</html>

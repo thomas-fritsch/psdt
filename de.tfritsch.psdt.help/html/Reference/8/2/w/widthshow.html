@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>widthshow</title>
+</head>
+<body>
+	<b>widthshow</b>
+	<pre>c<sub>x</sub> c<sub>y</sub> char string <b>widthshow</b> -</pre>
+	<p>
+		paints the characters of string in a manner similar to <a
+			href="../s/show.html">show</a>. But while doing so, widthshow adjusts
+		the width of each occurrence of the character char by adding c<sub>x</sub>
+		to its x width and c<sub>y</sub> to its y width, thus modifying the
+		spacing between it and the next character. char is an integer used as
+		a character code. This operator enables fitting a string of text to a
+		specific width by adjusting the width of all occurrences of some
+		specific character, such as the space character.
+	</p>
+	<p>For a base font, char is simply an integer in the range 0 to 255
+		compared to successive elements of string. For a composite font, char
+		is compared to an integer computed from the font mapping algorithm.
+		The font number, f, and character code, c, that are selected by the
+		font mapping algorithm are combined into a single integer according to
+		the FMapType of the immediate parent of the selected base font. For
+		FMapType values of 4 and 5, the integer value is (f x 128) + c; for
+		all other FMapType values, it is (f x 256) + c.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/Helvetica findfont 12 scalefont setfont
+14 60 moveto (Normal spacing) show
+14 46 moveto 6 0 8#040 (Wide word spacing) widthshow
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/show.html">show</a>, <a
+			href="../a/ashow.html">ashow</a>, <a href="../a/awidthshow.html">awidthshow</a>,
+		<a href="../k/kshow.html">kshow</a>, <a href="../x/xshow.html">xshow</a>,
+		<a href="../y/yshow.html">yshow</a>, <a href="../x/xyshow.html">xyshow</a>,
+		<a href="../s/stringwidth.html">stringwidth</a>
+	</p>
+</body>
+</html>

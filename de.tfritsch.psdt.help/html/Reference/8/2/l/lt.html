@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lt</title>
+</head>
+<body>
+	<b>lt</b>
+	<pre>      num<sub>1</sub> num<sub>2</sub> <b>lt</b> bool
+string<sub>1</sub> string<sub>2</sub> <b>lt</b> bool</pre>
+	<p>
+		pops two objects from the operand stack and pushes the boolean value
+		true if the first operand is less than the second, false otherwise. If
+		both operands are numbers, lt compares their mathematical values. If
+		both operands are strings, lt compares them element by element
+		(treating the elements as integers in the range 0 to 255) to determine
+		whether the first string is lexically less than the second. If the
+		operands are of other types or one is a string and the other is a
+		number, lt executes the <a href="../t/typecheck.html">typecheck</a>
+	</p>
+	error.
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="le.html">le</a>, <a href="../e/eq.html">eq</a>,
+		<a href="../n/ne.html">ne</a>, <a href="../g/ge.html">ge</a>, <a
+			href="../g/gt.html">gt</a>
+	</p>
+</body>
+</html>

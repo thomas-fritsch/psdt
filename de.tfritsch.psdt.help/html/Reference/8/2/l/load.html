@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>load</title>
+</head>
+<body>
+	<b>load</b>
+	<pre>key <b>load</b> value</pre>
+	<p>
+		searches for key in each dictionary on the dictionary stack, starting
+		with the topmost (current) dictionary. If key is found in some
+		dictionary, load pushes the associated value on the operand stack. If
+		key is not found in any dictionary on the dictionary stack, load
+		executes the error <a href="../u/undefined.html">undefined</a>.
+	</p>
+	<p>load looks up key the same way the interpreter looks up
+		executable names that it encounters during execution. However, load
+		always pushes the associated value on the operand stack; it never
+		executes that value.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/avg {add 2 div} def
+/avg load            &rArr;  {add 2 div}
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../w/where.html">where</a>, <a
+			href="../g/get.html">get</a>, <a href="../s/store.html">store</a>
+	</p>
+</body>
+</html>

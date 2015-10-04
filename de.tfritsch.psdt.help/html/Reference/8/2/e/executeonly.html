@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>executeonly</title>
+</head>
+<body>
+	<b>executeonly</b>
+	<pre>      array <b>executeonly</b> array
+packedarray <b>executeonly</b> packedarray
+       file <b>executeonly</b> file
+     string <b>executeonly</b> string</pre>
+	<p>
+		reduces the access attribute of an array, packed array, file, or
+		string object to execute-only .Access can only be reduced by these
+		means, never increased. When an object is execute-only, its value
+		cannot be read or modified explicitly by PostScript operators (an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error will result),
+		but it can still be executed by the PostScript interpreter-for
+		example, by invoking it with exec.
+	</p>
+	<p>executeonly affects the access attribute only of the object that
+		it returns. If there are other composite objects that share the same
+		value, their access attributes are unaffected.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/rcheck.html">rcheck</a>, <a
+			href="../w/wcheck.html">wcheck</a>, <a href="../x/xcheck.html">xcheck</a>,
+		<a href="../r/readonly.html">readonly</a>, <a
+			href="../n/noaccess.html">noaccess</a>
+	</p>
+</body>
+</html>

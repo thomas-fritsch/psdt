@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>infill</title>
+</head>
+<body>
+	<b>infill</b> LEVEL 2
+	<pre>     x y <b>infill</b> bool
+userpath <b>infill</b> bool</pre>
+	<p>The first form returns true if the device pixel containing the
+		point (x, y) in user space would be painted by a fill of the current
+		path in the graphics state. Otherwise, it returns false.</p>
+	<p>In the second form, the device pixels that would be painted by
+		filling userpath become an &quot;aperture.&quot; This form of the
+		operator returns true if any of the pixels in the aperture would be
+		painted by a fill of the current path in the graphics state.
+		Otherwise, it returns false.</p>
+	<p>Both forms of this operator ignore the current clipping path and
+		current view clip; that is, they detect a &quot;hit&quot; anywhere
+		within the current path, even if filling that path would not mark the
+		current page due to clipping. They do not place any marks on the
+		current page nor do they disturb the current path. The following
+		program fragment takes the current clipping path into account:</p>
+	<p>
+	<pre>
+gsave
+  clippath
+  x y infill
+grestore
+x y infill and
+</pre>
+	<p>
+		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/fill.html">fill</a>, <a
+			href="ineofill.html">ineofill</a>
+	</p>
+</body>
+</html>

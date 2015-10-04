@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>eq</title>
+</head>
+<body>
+	<b>eq</b>
+	<pre>any<sub>1</sub> any<sub>2</sub> <b>eq</b> bool</pre>
+	<p>
+		pops two objects from the operand stack and pushes the boolean value <a
+			href="../t/true.html">true</a> if they are equal, <a
+			href="../f/false.html">false</a> if not. The definition of equality
+		depends on the types of the objects being compared. Simple objects are
+		equal if their types and values are the same. Strings are equal if
+		their lengths and individual elements are equal. Other composite
+		objects (arrays and dictionaries) are equal only if they share the
+		same value. Separate values are considered unequal, even if all the
+		components of those values are the same.
+	</p>
+	<p>Some type conversions are performed by eq. Integers and reals
+		can be compared freely: An integer and a real representing the same
+		mathematical value are considered equal by eq. Strings and names can
+		likewise be compared freely: A name defined by some sequence of
+		characters is equal to a string whose elements are the same sequence
+		of characters.</p>
+	<p>The literal/executable and access attributes of objects are not
+		considered in comparisons between objects.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+4.0 4 eq            &rArr;  true   % A real and an integer may be equal
+(abc) (abc) eq      &rArr;  true   % Strings with equal elements are equal
+(abc) /abc eq       &rArr;  true   % A string and a name may be equal
+[1 2 3] dup eq      &rArr;  true   % An array is equal to itself
+[1 2 3] [1 2 3] eq  &rArr;  false  % Distinct array objects not equal
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../n/ne.html">ne</a>, <a href="../l/le.html">le</a>,
+		<a href="../l/lt.html">lt</a>, <a href="../g/ge.html">ge</a>, <a
+			href="../g/gt.html">gt</a>
+	</p>
+</body>
+</html>

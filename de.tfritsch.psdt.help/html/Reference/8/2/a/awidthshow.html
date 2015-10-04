@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>awidthshow</title>
+</head>
+<body>
+	<b>awidthshow</b>
+	<pre>c<sub>x</sub> c<sub>y</sub> char a<sub>x</sub> a<sub>y</sub> string <b>awidthshow</b> -</pre>
+	<p>
+		paints the characters of string in a manner similar to show, but
+		combines the special effects of ashow and widthshow. awidthshow
+		adjusts the width of each character shown by adding a<sub>x</sub> to
+		its x width and a<sub>y</sub> to its y width, thus modifying the
+		spacing between characters. Furthermore, awidthshow modifies the width
+		of each occurrence of the character char by an additional amount (c<sub>x</sub>,
+		c<sub>y</sub>). The interpretation of char is as described for the <a
+			href="../w/widthshow.html">widthshow</a> operator.
+	<p>This operator enables fitting a string of text to a specific
+		width by adjusting all of the spaces between characters by a uniform
+		amount, while independently controlling the width of some specific
+		character, such as the space character.
+	<p>
+		<b>Example</b>
+	<pre>
+/Helvetica findfont 12 scalefont setfont
+30 60 moveto (Normal spacing) show
+30 46 moveto 6 0 8#040 .5 0 (Wide spacing) awidthshow
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../ik.html#invalidaccess">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="ashow.html">ashow</a>, <a
+			href="../c/cshow.html">cshow</a>, <a href="../k/kshow.html">kshow</a>,
+		<a href="../s/show.html">show,</a> <a href="../w/widthshow.html">widthshow</a>,
+		<a href="../x/xshow.html">xshow</a>, <a href="../x/xyshow.html">xyshow</a>,
+		<a href="../y/yshow.html">yshow</a>
+</body>
+</html>

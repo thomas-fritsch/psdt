@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ustrokepath</title>
+</head>
+<body>
+	<b>ustrokepath</b> LEVEL 2
+	<pre>       userpath <b>ustrokepath</b> -
+userpath matrix <b>ustrokepath</b> - </pre>
+	<p>
+		replaces the current path with one enclosing the shape that would
+		result if the ustroke operator were applied to the same operands. The
+		path resulting from ustrokepath is suitable as the implicit operand to
+		a subsequent <a href="../f/fill.html">fill</a>, <a
+			href="../c/clip.html">clip</a>, or <a href="../p/pathbbox.html">pathbbox</a>.
+		In general, this path is not suitable for <a href="../s/stroke.html">stroke</a>,
+		as it may contain interior segments or disconnected subpaths produced
+		by ustrokepath's stroke to outline conversion process.
+	</p>
+	<p>In the first form, ustrokepath is equivalent to:</p>
+	<pre>
+newpath
+uappend
+strokepath
+</pre>
+	<p>In the second form, ustrokepath is equivalent to:</p>
+	<pre>
+newpath
+exch uappend              % Interpret userpath
+matrix currentmatrix      % Save CTM
+exch 
+  concat                  % Concat matrix to CTM
+  strokepath              % Compute outline of stroke
+setmatrix                 % Restore original CTM
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="ustroke.html">ustroke</a>, <a
+			href="../s/strokepath.html">strokepath</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>notify</title>
+</head>
+<body>
+	<b>notify</b> DPS
+	<pre>condition <b>notify</b> -</pre>
+	<p>
+		resumes execution of all contexts, if any, that are suspended in a
+		wait for condition. Ordinarily, notify should be invoked only within
+		the execution of a monitor that references the same <a
+			href="../l/lock.html">lock</a> used in the <a href="../w/wait.html">wait</a>
+		for condition. This ensures that notifications cannot be lost due to a
+		race between a context executing notify and one executing <a
+			href="../w/wait.html">wait</a>. However, this recommendation is not
+		enforced by the language.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../w/wait.html">wait</a>, <a
+			href="../m/monitor.html">monitor</a>, <a href="../c/condition.html">condition</a>
+	</p>
+</body>
+</html>

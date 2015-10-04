@@ -16,13 +16,10 @@ class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 	}
 
 	def dispatch String getDocumentation(PSExecutableName o) {
-		val href = o.name.href
-		val content = href?.content
+		val content = o.name.href?.content
 		if (content == null)
 			return null
-		val posHash = href.indexOf('#')
-		val fragment = if(posHash >= 0) href.substring(posHash + 1) else ""
-		val matcher = (".*(<b id=\"" + fragment + "\">.*?)<hr>.*")
+		val matcher = (".*<body>(.*)</body>.*")
 			.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 		if (!matcher.matches)
 			return null

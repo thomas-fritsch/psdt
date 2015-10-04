@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>cvrs</title>
+</head>
+<body>
+	<b>cvrs</b>
+	<pre>num radix string <b>cvrs</b> substring</pre>
+	<p>
+		(convert to string with radix) produces a text representation of the
+		number num in the specified radix, stores the text into the supplied
+		string (overwriting some initial portion of its value), and returns a
+		string object designating the substring actually used. If string is
+		too small to hold the result of the conversion, cvrs executes the
+		error <a href="../r/rangecheck.html">rangecheck</a>.
+	</p>
+	<p>If radix is 10, cvrs produces the same result as cvs when
+		applied to either an integer or a real. That is, it produces a signed
+		integer or real token that conforms to the PostScript language syntax
+		for that number.</p>
+	<p>If radix is not 10, cvrs converts num to an integer, as if by
+		cvi. Then it treats the machine representation of that integer as an
+		unsigned positive integer and converts it to text form according to
+		the specific radix. The resulting text is not necessarily a valid
+		number. However, if it is immediately preceded by the same radix and
+		#, the combination is a valid PostScript language token that
+		represents the same number.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/temp 12 string def
+123 10 temp cvrs    &rArr;  (123)
+-123 10 temp cvrs   &rArr;  (-123)
+123.4 10 temp cvrs  &rArr;  (123.4)
+123 16 temp cvrs    &rArr;  (7B)
+-123 16 temp cvrs   &rArr;  (FFFFFF85)
+123.4 16 temp cvrs  &rArr;  (7B)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="cvs.html">cvs</a>
+	</p>
+</body>
+</html>

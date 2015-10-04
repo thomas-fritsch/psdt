@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>syntaxerror</title>
+</head>
+<body>
+	<b>syntaxerror</b> (error)
+	<p>The scanner has encountered program text that does not conform
+		to the PostScript language syntax rules. This can occur either during
+		interpretation of an executable file or string object, or during
+		explicit invocation of the token operator. Because the syntax of the
+		PostScript language is simple, the set of possible causes for a
+		syntaxerror is very small:</p>
+	<ul>
+		<li>An opening string or procedure bracket &mdash;(, &lt;, &lt;~,
+			or {&mdash; is not matched by a corresponding closing bracket before
+			the end of the file or string being interpreted</li>
+		<li>A closing string or procedure bracket &mdash;), &gt;, ~&gt;,
+			or }&mdash; appears for which there is no previous matching opening
+			bracket. o A character other than a hexadecimal digit or white space
+			character appears within a hexadecimal string literal bracketed by
+			&lt;...&gt;.</li>
+		<li>An encoding violation occurs in an ASCII base-85 string
+			literal bracketed by &lt;~...~&gt;.</li>
+		<li>A binary token or binary object sequence has incorrect
+			structure.</li>
+	</ul>
+	<p>
+		Erroneous tokens, such as malformed numbers, do not produce a
+		syntaxerror; such tokens are instead treated as name objects (often
+		producing an <a href="../u/undefined.html">undefined</a> error when
+		executed). Tokens that exceed implementation limits, such as names
+		that are too long or numbers whose values are too large, produce a <a
+			href="../l/limitcheck.html">limitcheck</a>.
+	</p>
+</body>
+</html>

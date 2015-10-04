@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setobjectformat</title>
+</head>
+<body>
+	<b>setobjectformat</b> LEVEL 2
+	<pre>int <b>setobjectformat</b> -</pre>
+	<p>establishes the number representation to be used in binary
+		object sequences written by subsequent execution of printobject and
+		writeobject. Output produced by those operators will have a token type
+		that identifies the representation used. The int operand is one of the
+		following (see Section 3.14, "Binary Encoding Details"):</p>
+	<ol start="0">
+		<li>Disable binary encodings (see below).</li>
+		<li>High-order byte first, IEEE standard real format.</li>
+		<li>Low-order byte first, IEEE standard real format.</li>
+		<li>High-order byte first, native real format.</li>
+		<li>Low-order byte first, native real format.</li>
+	</ol>
+	<p>Note that the latter four values specify the number
+		representation only for output. Incoming binary encoded numbers use a
+		representation that is specified as part of each token (in the initial
+		token type byte).</p>
+	<p>The value 0 disables all binary encodings for both input and
+		output. That is, the PostScript language scanner treats all incoming
+		characters as part of the ASCII encoding, even if a token starts with
+		a character code in the range 128 to 159. The printobject and
+		writeobject operators are disabled; executing them will cause an
+		undefined error. This mode is provided for compatibility with certain
+		existing PostScript programs.</p>
+	<p>The initial value of this parameter is implementation-dependent.
+		A program must invoke setobjectformat to generate output with a
+		predictable number representation.</p>
+	<p>Modifications to the object format parameter are subject to save
+		and restore. In an interpreter that supports multiple contexts, this
+		parameter is maintained separately for each context.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentobjectformat.html">currentobjectformat</a>,
+		<a href="../p/printobject.html">printobject</a>, <a
+			href="../w/writeobject.html">writeobject</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>instroke</title>
+</head>
+<body>
+	<b>instroke</b> LEVEL 2
+	<pre>     x y <b>instroke</b> bool
+userpath <b>instroke</b> bool</pre>
+	<p>The first form returns true if the device pixel containing the
+		point (x, y) in user space would be painted by a stroke of the current
+		path in the graphics state. Otherwise, it returns false. It does not
+		place any marks on the current page nor does it disturb the current
+		path.</p>
+	<p>In the second form of the operator, the device pixels that would
+		be painted by filling userpath become an &quot;aperture.&quot;
+		instroke returns true if any of the pixels in the aperture would be
+		painted by a stroke of the current path in the graphics state.
+		Otherwise, it returns false.</p>
+	<p>As with infill, this operator ignores the current clipping path
+		and current view clip; that is, it detects a &quot;hit&quot; on any
+		pixel that lies beneath a stroke drawn along the current path, even if
+		stroking that path would not mark the current page due to clipping.</p>
+	<p>The shape against which the point (x, y) or the aperture,
+		userpath, is tested is computed according to the current,
+		stroke-related parameters in the graphics state: line width, line cap,
+		line join, miter limit, dash pattern, and stroke adjust. If the
+		current line width is zero, the set of pixels considered to be part of
+		the stroke is device dependent.</p>
+	<p>
+		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="infill.html">infill</a>, <a
+			href="inustroke.html">inustroke</a>, <a href="../s/stroke.html">stroke</a>
+	</p>
+</body>
+</html>

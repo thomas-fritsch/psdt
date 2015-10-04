@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>restore</title>
+</head>
+<body>
+	<b>restore</b>
+	<pre>save <b>restore</b> -</pre>
+	<p>resets the virtual memory (VM) to the state represented by the
+		supplied save object-in other words, the state at the time the
+		corresponding save was executed.</p>
+	<p>If the current execution context supports job encapsulation and
+		if save represents the outermost saved VM state for this context, then
+		objects in both local and global VM revert to their saved state. If
+		the current context does not support job encapsulation or if save is
+		not the outermost saved VM state for this context, then only objects
+		in local VM revert to their saved state; objects in global VM are
+		undisturbed.</p>
+	<p>restore can reset the VM to the state represented by any save
+		object that is still valid, not necessarily the one produced by the
+		most recent save. After restoring the VM, restore invalidates its save
+		operand along with any other save objects created more recently than
+		that one. That is, a VM snapshot can be used only once; to restore the
+		same environment repeatedly, it is necessary to do a new save each
+		time.</p>
+	<p>restore does not alter the contents of the operand, dictionary,
+		or execution stack, except to pop its save operand. If any of these
+		stacks contains composite objects whose values reside in local VM and
+		are newer than the snapshot being restored, restore executes the
+		invalidrestore error. This restriction applies to save objects and, in
+		Level 1 implementations, to name objects.</p>
+	<p>restore does alter the graphics state stack: It performs the
+		equivalent of a grestoreall and then removes the graphics state
+		created by save from the graphics state stack. restore also resets
+		several per-context parameters to their state at the time of save.
+		These include:</p>
+	<ul>
+		<li>Array packing mode (see setpacking).</li>
+		<li>VM allocation mode (see setglobal).</li>
+		<li>Object output format (see setobjectformat).</li>
+		<li>View clipping path (see viewclip).</li>
+		<li>All user interpreter parameters (see setuserparams).</li>
+	</ul>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidrestore.html">invalidrestore</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/save.html">save</a>, <a
+			href="../g/grestoreall.html">grestoreall</a>, <a
+			href="../v/vmstatus.html">vmstatus</a>, <a href="../s/startjob.html">startjob</a>
+	</p>
+</body>
+</html>

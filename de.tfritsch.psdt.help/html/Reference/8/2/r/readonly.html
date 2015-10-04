@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readonly</title>
+</head>
+<body>
+	<b>readonly</b>
+	<pre>      array <b>readonly</b> array
+packedarray <b>readonly</b> packedarray
+       dict <b>readonly</b> dict
+       file <b>readonly</b> file
+     string <b>readonly</b> string</pre>
+	<p>
+		reduces the access attribute of an <a href="../a/array.html">array</a>,
+		<a href="../p/packedarray.html">packed array</a>, dictionary, <a
+			href="../f/file.html">file</a>, or string object to read-only. Access
+		can only be reduced this way, never increased. When an object is
+		read-only, its value cannot be modified by PostScript operators (an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error will result),
+		but it can still be read by operators or executed by the PostScript
+		interpreter.
+	</p>
+	<p>For an array, packed array, file, or string, readonly affects
+		the access attribute only of the object that it returns. If there are
+		other objects that share the same value, their access attributes are
+		unaffected. However, in the case of a dictionary, readonly affects the
+		value of the object, so all dictionary objects sharing the same
+		dictionary are affected.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../e/executeonly.html">executeonly</a>, <a
+			href="../n/noaccess.html">noaccess</a>, <a href="rcheck.html">rcheck</a>,
+		<a href="../w/wcheck.html">wcheck</a>
+	</p>
+</body>
+</html>

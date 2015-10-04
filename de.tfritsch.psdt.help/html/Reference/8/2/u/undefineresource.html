@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>undefineresource</title>
+</head>
+<body>
+	<b>undefineresource</b> LEVEL 2
+	<pre>key category <b>undefineresource</b> -</pre>
+	<p>
+		removes the named resource instance identified by key from the
+		specified category. This undoes the effect of a previous <a
+			href="../d/defineresource.html">defineresource</a>. If no such
+		resource instance exists in VM, undefineresource does nothing; no
+		error occurs. However, the resource category must exist, or else an <a
+			href="undefined.html">undefined</a> error occurs.
+	</p>
+	<p>Local and global resource definitions are maintained separately;
+		the precise effect of undefineresource depends on the current VM
+		allocation mode:</p>
+	<ul>
+		<li>Local-undefineresource removes a local definition if there is
+			one. If there is a global definition with the same key,
+			undefineresource does not disturb it; the global definition, formerly
+			obscured by the local one, now reappears.</li>
+		<li>Global-undefineresource removes a local definition, a global
+			definition,</li> or both.
+	</ul>
+	<p>Depending on the resource category, undefineresource may have
+		other side effects. However, it does not alter the resource instance
+		in any way. If the instance is still accessible (say, stored directly
+		in some dictionary or defined as a resource under another name), it
+		can still be used in whatever ways are appropriate. The object becomes
+		a candidate for garbage collection only if it is no longer accessible.</p>
+	<p>The effect of undefineresource is subject to normal VM
+		semantics. In particular, removal of a local resource instance can be
+		undone by a subsequent non-nested restore. In this case, the resource
+		instance is not a candidate for garbage collection.</p>
+	<p>
+		undefineresource removes the resource instance definition from VM
+		only. If the resource instance also exists in external storage, it can
+		still be found by <a href="../f/findresource.html">findresource</a>, <a
+			href="../r/resourcestatus.html">resourcestatus</a>, and <a
+			href="../r/resourceforall.html">resourceforall</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>, <a href="undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/defineresource.html">defineresource</a>,
+		<a href="../f/findresource.html">findresource</a>, <a
+			href="../r/resourcestatus.html">resourcestatus</a>, <a
+			href="../r/resourceforall.html">resourceforall</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>store</title>
+</head>
+<body>
+	<b>store</b>
+	<pre>key value <b>store</b> -</pre>
+	<p>
+		searches for key in each dictionary on the dictionary stack, starting
+		with the topmost (current) dictionary. If key is found in some
+		dictionary, store replaces its value by the value operand. If key is
+		not found in any dictionary on the dictionary stack, store creates a
+		new entry with key and value in the current dictionary. If the chosen
+		dictionary is in global VM and value is a composite object whose value
+		is in local VM, an <a href="../i/invalidaccess.html">invalidaccess</a>
+		error occurs.
+	</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+/abc 123 store
+
+/abc where { } {currentdict} ifelse
+/abc 123 put
+</pre>
+	<p>The two code fragments above have the same effect.</p>
+	<p>
+		<b>Errors:</b> <a href="../d/dictfull.html">dictfull</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../d/def.html">def</a>, <a
+			href="../p/put.html">put</a>, <a href="../w/where.html">where</a>, <a
+			href="../l/load.html">load</a>
+	</p>
+</body>
+</html>

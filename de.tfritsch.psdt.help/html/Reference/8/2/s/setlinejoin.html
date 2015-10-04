@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setlinejoin</title>
+</head>
+<body>
+	<b>setlinejoin</b>
+	<pre>int <b>setlinejoin</b> -</pre>
+	<p>sets the line join parameter in the graphics state to int, which
+		must be one of the integers 0, 1, or 2. This establishes the shape to
+		be put at corners in paths painted by the stroke operator. The
+		integers select the following shapes:</p>
+	<ol start="0">
+		<li>Miter join. the outer edges of the strokes for the two
+			segments are extended until they meet at an angle, as in a picture
+			frame. If the segments meet at too sharp an angle, a bevel join is
+			used instead. This is controlled by the miter limit parameter
+			established by <a href="setmiterlimit.html">setmiterlimit</a>.
+		</li>
+		<li>Round join. A circular arc with diameter equal to the line
+			width is drawn around the point where the segments meet and is filled
+			in, producing a rounded corner. stroke draws a full circle at this
+			point. If path segments shorter than one-half the line width meet at
+			sharp angles, an unintentional &quot;wrong side&quot; of this circle
+			may appear.</li>
+		<li>Bevel join. The meeting path segments are finished with butt
+			end caps (see <a href="setlinecap.html">setlinecap</a>); then the
+			resulting notch beyond the ends of the segments is filled with a
+			triangle. Join styles are significant only at points where
+			consecutive segments of a path connect at an angle. Segments that
+			meet or intersect fortuitously receive no special treatment. Curved
+			lines are actually rendered as sequences of straight line segments,
+			and the current line join is applied to the &quot;corners&quot;
+			between those segments. However, for typical values of the flatness
+			parameter (see <a href="setflat.html">setflat</a>), the corners are
+			so shallow that the difference between join styles is not visible.
+		</li>
+	</ol>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentlinejoin.html">currentlinejoin</a>,
+		<a href="setlinecap.html">setlinecap</a>, <a href="stroke.html">stroke</a>,
+		<a href="setmiterlimit.html">setmiterlimit</a>
+	</p>
+</body>
+</html>

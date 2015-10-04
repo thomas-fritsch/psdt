@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentcolorscreen</title>
+</head>
+<body>
+	<b>currentcolorscreen</b> LEVEL 2
+	<pre>- <b>currentcolorscreen</b> redfreq redang redproc
+                     greenfreq greenang greenpro
+                     bluefreq blueang blueproc
+                     grayfreq grayang grayproc</pre>
+	<p>
+		If the current halftone screen was specified by <a
+			href="../s/setcolorscreen-html">setcolorscreen</a>,
+		currentcolorscreen returns all 12 current halftone screen parameters
+		in the graphics state. If the current screen was specified by <a
+			href="../s/setscreen.html">setscreen</a>, currentcolorscreen returns
+		the three screen parameters repeated four times.
+	</p>
+	<p>
+		If the current screen was specified by <a href="../s/sethalftone.html">sethalftone</a>,
+		currentcolorscreen returns 60, 0, and the halftone dictionary,
+		repeated four times.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setcolorscreen.html">setcolorscreen</a>,
+		<a href="../s/setscreen.html">setscreen</a>, <a
+			href="../s/sethalftone.html">sethalftone</a>
+	</p>
+</body>
+</html>

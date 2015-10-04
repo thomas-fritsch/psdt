@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>noaccess</title>
+</head>
+<body>
+	<b>noaccess</b>
+	<pre>      array <b>noaccess</b> array
+packedarray <b>noaccess</b> packedarray
+       dict <b>noaccess</b> dict
+       file <b>noaccess</b> file
+     string <b>noaccess</b> string</pre>
+	<p>reduces the access attribute of an array, packed array,
+		dictionary, file, or string object to none. The value of a noaccess
+		object cannot be executed or accessed directly by PostScript
+		operators. Noaccess objects are of no use to PostScript language
+		programs, but serve certain internal purposes that are not documented
+		in this manual.</p>
+	<p>For an array, packed array, file, or string, noaccess affects
+		the access attribute only of the object that it returns. If there are
+		other objects that share the same value, their access attributes are
+		unaffected. However, in the case of a dictionary, noaccess affects the
+		value of the object, so all dictionary objects sharing the same
+		dictionary are affected.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> rcheck, <a href="../w/wcheck.html">wcheck</a>, <a
+			href="../x/xcheck.html">xcheck</a>, <a href="../r/readonly.html">readonly</a>,
+		<a href="../e/executeonly.html">executeonly</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>currentrgbcolor</title>
+</head>
+<body>
+	<b>currentrgbcolor</b>
+	<pre>- <b>currentrgbcolor</b> red green blue</pre>
+	<p>returns the three components of the current color in the
+		graphics state according to the red-green-blue color model.</p>
+	<ul>
+		<li>If the current color space is DeviceRGB, currentrgbcolor
+			returns the color values most recently specified to setrgbcolor or
+			setcolor (or transformed values specified to sethsbcolor).</li>
+		<li>If the current color space is DeviceGray or DeviceCMYK,
+			currentrgbcolor converts the current color to RGB.</li>
+		<li>For any other color space, currentrgbcolor returns 0.0 0.0
+			0.0.</li>
+	</ul>
+	<p>
+		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="currentcolor.html">currentcolor</a>, <a href="currentgray.html">currentgray</a>,
+		<a href="currenthsbcolor.html">currenthsbcolor</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>defineuserobject</title>
+</head>
+<body>
+	<b>defineuserobject</b> LEVEL 2
+	<pre>index any <b>defineuserobject</b> -</pre>
+	<p>
+		establishes an association between the non-negative integer index and
+		the object any in the <a href="../u/UserObjects.html">UserObjects</a>
+		array. First, it creates a UserObjects array in userdict if one is not
+		already present. It extends an existing UserObjects array if
+		necessary. It then executes the equivalent of
+	</p>
+	<pre>
+userdict /UserObjects get
+3 1 roll put
+</pre>
+	<p>In other words, it simply stores any into the array at the
+		position specified by index.</p>
+	<p>If defineuserobject creates or extends the UserObjects array, it
+		allocates the array in local VM, regardless of the current VM
+		allocation mode.</p>
+	<p>
+		The behavior of defineuserobject obeys normal PostScript language
+		semantics in all respects. In particular, the modification to the
+		UserObjects array and to userdict, if any, is immediately visible to
+		all contexts that share the same local VM. It can be undone by a
+		subsequent <a href="../r/restore.html">restore</a> according to the
+		usual VM rules. index values must be within the range permitted for
+		arrays; a large index value may cause allocation of an array that
+		would exhaust VM resources. Assigning index values sequentially
+		starting at zero is strongly recommended.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a href="../v/VMerror.html">VMerror</a>
+	<p>
+		<b>See Also:</b> <a href="../e/execuserobject.html">execuserobject</a>,
+		<a href="../u/undefineuserobject.html">undefineuserobject</a>, <a
+			href="../u/UserObjects.html">UserObjects</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>maxlength</title>
+</head>
+<body>
+	<b>maxlength</b>
+	<pre>dict <b>maxlength</b> int</pre>
+	<p>
+		returns the capacity of dict-in other words, the maximum number of
+		key-value pairs that dict can hold using the VM currently allocated to
+		it. In Level 1 implementations, maxlength returns the length operand
+		of the dict operator that created the dictionary; this is the
+		dictionary's maximum capacity (exceeding it causes a <a
+			href="../d/dictfull.html">dictfull</a> error). In a Level 2
+		implementation, which permits a dictionary to grow beyond its initial
+		capacity, maxlength returns its current capacity, a number at least as
+		large as that returned by length.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/mydict 5 dict def
+mydict length       &rArr; 0
+mydict maxlength    &rArr; 5
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../l/length.html">length</a>, <a
+			href="../d/dict.html">dict</a>
+	</p>
+</body>
+</html>

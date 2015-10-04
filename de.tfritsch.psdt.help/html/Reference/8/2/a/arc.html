@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>arc</title>
+</head>
+<body>
+	<b>arc</b>
+	<pre>x y r ang<sub>1</sub> ang<sub>2</sub> <b>arc</b> -</pre>
+	<p>
+		appends a counterclockwise arc of a circle to the current path,
+		possibly preceded by a straight line segment. The arc has (x, y) as
+		center, r as radius, ang<sub>1</sub> the angle of a vector from (x, y)
+		of length r to the first endpoint of the arc, and ang<sub>2</sub> the
+		angle of a vector from (x, y) of length r to the second endpoint of
+		the arc. arc
+	<p>If there is a current point, the arc operator includes a
+		straight line segment from the current point to the first endpoint of
+		this arc and then adds the arc into the current path. If the current
+		path is empty, the arc operator does not produce the initial straight
+		line segment. In any event, the second endpoint of the arc becomes the
+		new current point.
+	<p>Angles are measured in degrees counterclockwise from the
+		positive x-axis of the current user coordinate system. The curve
+		produced is circular in user space. If user space is scaled
+		non-uniformly (i.e., differently in x and y) arc will produce
+		elliptical curves in device space.
+	<p>
+		The operators that produce arcs (<a href="arc.html"></a>, <a
+			href="arcn.html">arcn</a>, <a href="arct.html">arct</a>, and <a
+			href="arcto.html">arcto</a> represent them internally as one or more
+		Bezier cubic curves. This is done with sufficient accuracy that a
+		faithful rendition of an arc is produced. However, a program that
+		reads the constructed path using pathforall will encounter <a
+			href="../c/curveto.html">curveto</a> segments where arcs were
+		specified originally.
+	<p>
+		<b>Example</b>
+	<pre>
+newpath
+  0 0 moveto
+  0 0 1 0 45 arc
+closepath
+</pre>
+	This constructs a 1-unit radius, 45-degree &quot;pie slice.&quot;
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	<p>
+		<b>See Also:</b> <a href="#arcn">arcn</a>, <a href="arct.html">arct</a>,
+		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+</body>
+</html>

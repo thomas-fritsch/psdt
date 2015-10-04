@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>index</title>
+</head>
+<body>
+	<b>index</b>
+	<pre>any<sub>n</sub> ... any<sub>0</sub> n <b>index</b> any<sub>n</sub> ... any<sub>0</sub> any<sub>n</sub>
+	</pre>
+	<p>removes the non-negative integer n from the operand stack,
+		counts down to the nth element from the top of the stack, and pushes a
+		copy of that element on the stack.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+(a)(b)(c)(d) 0 index &rArr; (a)(b)(c)(d)(d)
+(a)(b)(c)(d) 3 index &rArr; (a)(b)(c)(d)(a)
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/copy.html">copy</a>, <a
+			href="../d/dup.html">dup</a>, <a href="../r/roll.html">roll</a>
+	</p>
+</body>
+</html>

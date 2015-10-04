@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>itransform</title>
+</head>
+<body>
+	<b>itransform</b>
+	<pre>       x' y' <b>itransform</b> x y
+x' y' matrix <b>itransform</b> x y</pre>
+	<p>With no matrix operand, itransform (inverse transform)
+		transforms the device space coordinate (x', y') by the inverse of CTM
+		to produce the corresponding user space coordinate (x, y). If the
+		matrix operand is supplied, itransform transforms (x', y') by the
+		inverse of matrix rather than by the inverse of CTM.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../t/transform.html">transform</a>, <a
+			href="../d/dtransform.html">dtransform</a>, <a
+			href="idtransform.html">idtransform</a>, <a href="invertmatrix.html">invertmatrix</a>
+	</p>
+</body>
+</html>

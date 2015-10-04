@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>undefined</title>
+</head>
+<body>
+	<b>undefined</b> (error)
+	<p>
+		A name used as a dictionary key in some context cannot be found. This
+		occurs if a name is looked up explicitly in a specified dictionary (<a
+			href="../g/get.html">get</a>) or in the current dictionary stack (<a
+			href="../l/load.html">load</a>) and is not found. It also occurs if
+		an executable name is encountered by the interpreter and is not found
+		in any dictionary on the dictionary stack.
+	</p>
+	<p>
+		A few PostScript operators are disabled in certain contexts-for
+		example, it is illegal to execute image, or operators that specify
+		colors or set color-related parameters in the graphics state, after a
+		<a href="../s/setcachedevice.html">setcachedevice</a> or <a
+			href="../s/setcachedevice2.html">setcachedevice2</a> in a BuildChar
+		or BuildGlyph procedure. Attempting to execute such disabled operators
+		results in an <b>undefined</b> error.
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../k/known.html">known</a>, <a
+			href="../w/where.html">where</a>, <a href="../l/load.html">load</a>,
+		<a href="../e/exec.html">exec</a>, <a href="../g/get.html">get</a>
+	</p>
+</body>
+</html>

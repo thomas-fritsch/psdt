@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setpacking</title>
+</head>
+<body>
+	<b>setpacking</b> LEVEL 2
+	<pre>bool <b>setpacking</b> -</pre>
+	<p>sets the array packing mode to bool. This determines the type of
+		executable arrays subsequently created by the PostScript language
+		scanner. The value true selects packed arrays; false selects ordinary
+		arrays.</p>
+	<p>The packing mode affects only the creation of procedures by the
+		scanner when it encounters program text bracketed by { and } during
+		interpretation of an executable file or string object, or during
+		execution of the token operator. It does not affect the creation of
+		literal arrays by the [ and ] operators or by the array operator.
+		Modifications to the array packing mode parameter are subject to save
+		and restore. In an interpreter that supports multiple contexts, this
+		parameter is maintained separately for each context.</p>
+	<p>
+		<b>Example</b>
+	</p>
+	<pre>
+systemdict /setpacking known
+{ /savepacking currentpacking def
+  true setpacking
+}
+if
+... Arbitrary procedure definitions ...
+systemdict /setpacking known
+{savepacking setpacking}
+if</pre>
+	<p>This example illustrates how to use packed arrays in a way that
+		is compatible with all LanguageLevels. If the packed array facility is
+		available, the procedures represented by the arbitrary procedure
+		definitions are defined as packed arrays; otherwise, they are defined
+		as ordinary arrays. The example is careful to preserve the array
+		packing mode in effect before its execution.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentpacking.html">currentpacking</a>,
+		<a href="../p/packedarray.html">packedarray</a>
+	</p>
+</body>
+</html>

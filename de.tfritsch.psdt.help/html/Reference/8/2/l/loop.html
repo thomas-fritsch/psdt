@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>loop</title>
+</head>
+<body>
+	<b>loop</b>
+	<pre>proc <b>loop</b> -</pre>
+	<p>
+		repeatedly executes proc until proc executes the <a
+			href="../e/exit.html">exit</a> operator, at which point
+		interpretation resumes at the object next in sequence after the loop.
+		Control also leaves proc if the <a href="../s/stop.html">stop</a>
+		operator is executed. If proc never executes <a href="../e/exit.html">exit</a>
+		or <a href="../s/stop.html">stop</a>, an infinite loop results, which
+		can be broken only via an external interrupt (see <a
+			href="../i/interrupt.html">interrupt</a>).
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../f/for.html">for</a>, <a
+			href="../r/repeat.html">repeat</a>, <a href="../f/forall.html">forall</a>,
+		<a href="../e/exit.html">exit</a>
+	</p>
+</body>
+</html>

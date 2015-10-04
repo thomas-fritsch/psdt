@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>showpage</title>
+</head>
+<body>
+	<b>showpage</b>
+	<pre>- <b>showpage</b> -</pre>
+	<p>transmits the contents of the current page to the current output
+		device, causing any marks painted on the page to be rendered on the
+		output medium. showpage then erases the current page and reinitializes
+		the graphics state in preparation for composing the next page. (The
+		actions of showpage may be modified by the EndPage procedure, as
+		discussed below.)</p>
+	<p>Whether or not the current device is a page device, the precise
+		manner in which the current page is transmitted is device-dependent.
+		For certain devices (such as displays), no action is required, because
+		the current page is visible while it is being composed.</p>
+	<p>If the current device is a page device that was installed by
+		setpagedevice (LanguageLevel 2), the precise behavior of showpage is
+		determined by the values of parameters in the page device dictionary
+		(see Sections 6.1.1, "Page Device Dictionary," and 6.2, "Page Device
+		Parameters"). Parameters affecting the behavior of showpage include
+		NumCopies, Collate, Duplex, and perhaps others as well.</p>
+	<p>The main actions of showpage are as follows:</p>
+	<ol>
+		<li>Executes the EndPage procedure in the page device dictionary,
+			passing an integer page count on the operand stack along with a
+			reason code indicating that the procedure was called from showpage;
+			see Section 6.2.6, "Device Initialization and Page Setup," for more
+			information.</li>
+		<li>If the boolean result returned by the EndPage procedure is
+			true, transmits the page’s contents to the current output device and
+			performs the equivalent of an erasepage operation, clearing the
+			contents of raster memory in preparation for the next page. If the
+			EndPage procedure returns false, showpage skips this step.</li>
+		<li>Performs the equivalent of an initgraphics operation,
+			reinitializing the graphics state for the next page.</li>
+		<li>Executes the BeginPage procedure in the page device
+			dictionary, passing an integer page count on the operand stack.</li>
+	</ol>
+	<p>If the BeginPage or EndPage procedure invokes showpage, an
+		undefined error occurs.</p>
+	<p>For a device that produces output on a physical medium such as
+		paper, showpage can optionally transmit multiple copies of the page in
+		step 2 above. In Language- Level 2 or 3, the page device parameter
+		NumCopies specifies the number of copies to be transmitted. In
+		LanguageLevel 1 (or in higher LanguageLevels if NumCopies is null),
+		the number of copies is given by the value associated with the name
+		#copies in the naming environment defined by the current dictionary
+		stack. (The default value of #copies is 1, defined in userdict.) For
+		example, the code</p>
+	<pre>
+/#copies 5 def showpage
+</pre>
+	<p>prints five copies of the current page, then erases the current
+		page and reinitializes the graphics state.</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/copypage.html">copypage</a>, <a
+			href="../e/erasepage.html">erasepage</a>, <a
+			href="setpagedevice.html">setpagedevice</a>
+	</p>
+</body>
+</html>

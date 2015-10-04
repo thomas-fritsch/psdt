@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setpagedevice</title>
+</head>
+<body>
+	<b>setpagedevice</b> LEVEL 2
+	<pre>dict <b>setpagedevice</b> -</pre>
+	<p>modifies the contents of the page device dictionary in the
+		graphics state based on the contents of the dictionary operand. The
+		operand is a request dictionary containing requested new values for
+		one or more page device parameters. If valid for the current page
+		device, these requested values are merged by setpagedevice into the
+		current page device dictionary. The interpretation of these parameters
+		is described in Section 6.2, "Page Device Parameters."</p>
+	<p>The results of setpagedevice are cumulative. The request
+		dictionary for any given invocation is not required to include any
+		particular keys; parameter values established in previous invocations
+		will persist unless explicitly overridden. This cumulative behavior
+		applies not only to the top-level dictionary, but also recursively to
+		the subdictionaries InputAttributes, OutputAttributes, and Policies,
+		as well as to some types of details dictionaries.</p>
+	<p>The result of executing setpagedevice is to instantiate a page
+		device dictionary, perform the equivalent of initgraphics and
+		erasepage, and install the new device dictionary as an implicit part
+		of the graphics state. The effects of setpagedevice are subject to
+		save and restore, gsave and grestore, and setgstate.</p>
+	<p>setpagedevice can be used by system administrators to establish
+		a default state for a device by invoking it as part of an
+		unencapsulated job (see Section 3.7.7, "Job Execution Environment").
+		This default state persists until the next restart of the PostScript
+		interpreter. Some PostScript implementations store some of the device
+		parameters in persistent storage when setpagedevice is executed as
+		part of an unencapsulated job, making those parameters persist through
+		interpreter restart.</p>
+	<p>setpagedevice reinitializes everything in the graphics state
+		except the font parameter, including parameters not affected by
+		initgraphics. Device-dependent rendering parameters, such as the
+		halftone screen, transfer functions, flatness tolerance, and color
+		rendering dictionary, are reset to built-in default values or to ones
+		provided in the Install procedure of the page device dictionary.</p>
+	<p>When the current device in the graphics state is not a page
+		device&mdash;for example, after nulldevice has been invoked or when an
+		interactive display device is active&mdash; setpagedevice creates a
+		new device dictionary from scratch before merging in the parameters
+		from dict. The contents of this dictionary are
+		implementationdependent.</p>
+	<p>If a device's BeginPage or EndPage procedure invokes
+		setpagedevice, an undefined error occurs.</p>
+	<p>
+		<b>Errors:</b> <a href="../c/configurationerror.html">configurationerror</a>,
+		<a href="../t/typecheck.html">typecheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentpagedevice.html">currentpagedevice</a>,
+		<a href="../n/nulldevice.html">nulldevice</a>, <a
+			href="../g/gsave.html">gsave</a>, <a href="../g/grestore.html">grestore</a>
+	</p>
+</body>
+</html>

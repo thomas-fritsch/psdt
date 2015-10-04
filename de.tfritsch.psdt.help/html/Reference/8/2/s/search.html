@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>search</title>
+</head>
+<body>
+	<b>search</b>
+	<pre>string seek <b>search</b> post match pre true (if found)
+                   string false        (if not found)</pre>
+	<p>looks for the first occurrence of the string seek within string
+		and returns results of this search on the operand stack. The topmost
+		result is a boolean that indicates if the search succeeded. If search
+		finds a subsequence of string whose elements are equal to the elements
+		of seek, it splits string into three segments: pre, the portion of
+		string preceding the match; match, the portion of string that matches
+		seek; and post, the remainder of string. It then pushes the string
+		objects post, match, and pre on the operand stack, followed by the
+		boolean true. All three of these strings are substrings sharing
+		intervals of the value of the original string. If search does not find
+		a match, it pushes the original string and the boolean false.</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+(abbc) (ab) search  &rArr;  (bc) (ab) ( ) true
+(abbc) (bb) search  &rArr;  (c) (bb) (a) true
+(abbc) (bc) search  &rArr;  () (bc) (ab) true
+(abbc) (B) search   &rArr;  (abbc) false
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="stackoverflow.html">stackoverflow</a>, <a
+			href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../a/anchorsearch.html">anchorsearch</a>, <a
+			href="../t/token.html">token</a>
+	</p>
+</body>
+</html>

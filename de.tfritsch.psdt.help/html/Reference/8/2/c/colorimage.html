@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>colorimage</title>
+</head>
+<body>
+	<b>colorimage</b> LEVEL 2
+	<pre>width height bits/comp matrix datasrc<sub>0</sub> ... datasrc<sub>n-1</sub> multi ncomp <b>colorimage</b> -</pre>
+	<p>paints a sampled image onto the current page. The description
+		here only summarizes the colorimage operator.</p>
+	<p>
+		The sampled image is a rectangular array of width x height sample
+		values. colorimage interprets the width, height, and matrix operands
+		in the same way as does <a href="../i/image.html">image</a>.
+	</p>
+	<p>Each image sample consists of 1, 3, or 4 color components, as
+		specified by the ncomp operand. Each component consists of bits/comp
+		bits (1, 2, 4, 8, or 12). All components are the same size.</p>
+	<p>If ncomp is 1, the samples have only one (gray) component; the
+		operation of colorimage is equivalent to that of image using the first
+		five operands. If ncomp is 3, the samples consist of red, green, and
+		blue components. If ncomp is 4, the samples consist of cyan, magenta,
+		yellow, and black components. The 1, 3, and 4 component values are
+		interpreted according to the DeviceGray, DeviceRGB, and DeviceCMYK
+		color spaces, respectively, regardless of the current color space.</p>
+	<p>
+		The multi operand is a boolean that determines how colorimage is to
+		obtain sample data from its data sources. If multi is false, there is
+		a single data source, datasrc<sub>0</sub>; colorimage obtains all
+		components from that source, interleaved on a per-sample basis. If
+		multi is true, there are ncomp data sources, datasrc<sub>0</sub> ...
+		datasrc<sub>n-1</sub>, one for each component. The data sources can be
+		procedures, strings, or files, including filtered files. They must all
+		be of the same type.
+	</p>
+	<p>
+		Unlike <a href="../i/image.html">image</a> and <a
+			href="../i/imagemask.html">imagemask</a>, colorimage does not have an
+		alternate form in which the parameters are bundled into a single image
+		dictionary operand. In Level 2 implementations, given the appropriate
+		image dictionary, the image operator can do anything that colorimage
+		can do, and many other things. For example, image can interpret color
+		samples in any color space, whereas colorimage is limited to the
+		DeviceGray, DeviceRGB, and DeviceCMYK color spaces.
+	</p>
+	<p>Execution of this operator is not permitted in certain
+		circumstances.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../i/image.html">image</a>, <a
+			href="../i/imagemask.html">imagemask</a>
+	</p>
+</body>
+</html>

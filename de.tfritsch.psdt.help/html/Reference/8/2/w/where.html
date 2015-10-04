@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>where</title>
+</head>
+<body>
+	<b>where</b>
+	<pre>key <b>where</b> dict true  (if found)
+          false      (if not found)</pre>
+	<p>determines which dictionary on the dictionary stack, if any,
+		contains an entry whose key is key. where searches for key in each
+		dictionary on the dictionary stack, starting with the topmost
+		(current) dictionary. If key is found in some dictionary, where
+		returns that dictionary object and the boolean true. If key is not
+		found in any dictionary on the dictionary stack, where simply returns
+		false.</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../k/known.html">known</a>, <a
+			href="../l/load.html">load</a>, <a href="../g/get.html">get</a>
+	</p>
+</body>
+</html>

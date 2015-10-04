@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcmykcolor</title>
+</head>
+<body>
+	<b>setcmykcolor</b> LEVEL 2
+	<pre>cyan magenta yellow black <b>setcmykcolor</b> -</pre>
+	<p>sets the current color space in the graphics state to DeviceCMYK
+		and the current color to the component values specified by cyan,
+		magenta, yellow, and black. Each component must be a number in the
+		range 0.0 to 1.0. If any of the operands is outside this range, the
+		nearest valid value is substituted without error indication. Color
+		values set by setcmykcolor are not affected by black-generation and
+		undercolor- removal computations (see Section 7.2.3, "Conversion from
+		DeviceRGB to DeviceCMYK").</p>
+	<p>Execution of this operator is not permitted in certain
+		circumstances; see Section 4.8.1, "Types of Color Space."</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="setcolorspace.html">setcolorspace</a>, <a
+			href="setcolor.html">setcolor</a>, <a
+			href="../c/currentcmykcolor.html">currentcmykcolor</a>
+	</p>
+</body>
+</html>

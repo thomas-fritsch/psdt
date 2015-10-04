@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setoverprint</title>
+</head>
+<body>
+	<b>setoverprint</b>
+	<pre>bool <b>setoverprint</b> - LEVEL 2</pre>
+	<p>sets the overprint parameter in the graphics state to bool. On
+		output devices capable of producing separations or of generating
+		composite output in multiple colorants, this parameter controls
+		whether painting in one separation or colorant causes the
+		corresponding areas of other separations or colorants to be erased
+		(false) or left unchanged (true); see Section 4.8.5, "Overprint
+		Control." The default value is false.</p>
+	<p>When overprint is false, the color marked at any position on the
+		page is whatever was painted there last; this is consistent with the
+		normal opaque painting behavior of the Adobe imaging model. When
+		overprint is true, the color at a given position may be a combined
+		result of several painting operations in different colorants.</p>
+	<p>Because the effect of the overprint parameter is
+		device-dependent, setoverprint should not be used in a program that is
+		intended to be device-independent.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/currentoverprint.html">currentoverprint</a>,
+		<a href="setcolorspace.html">setcolorspace</a>
+	</p>
+</body>
+</html>

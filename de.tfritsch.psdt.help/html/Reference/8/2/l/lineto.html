@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lineto</title>
+</head>
+<body>
+	<b>lineto</b>
+	<pre>x y <b>lineto</b> -</pre>
+	<p>
+		appends a straight line segment to the current path. The line extends
+		from the current point to the point (x, y) in user space; (x, y) then
+		becomes the current point. If the current point is undefined because
+		the current path is empty, lineto executes the error <a
+			href="no.html#nocurrentpoint">nocurrentpoint</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="limitcheck.html">limitcheck</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../r/rlineto.html">rlineto</a>, <a
+			href="../m/moveto.html">moveto</a>, <a href="../a/arc.html">arc</a>,
+		<a href="../c/curveto.html">curveto</a>, <a href="../c/closepath.html">closepath</a>
+	</p>
+</body>
+</html>

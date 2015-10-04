@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>setcachedevice2</title>
+</head>
+<body>
+	<b>setcachedevice2</b> LEVEL 2
+	<pre>w0<sub>x</sub> w0<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> w1<sub>x</sub> w1<sub>y</sub> v<sub>x</sub> v<sub>y</sub> <b>setcachedevice2</b> -</pre>
+	<p>
+		passes two sets of glyph metrics to the font machinery (see Section
+		5.4, "Glyph Metric Information"). w0<sub>x</sub> and w0<sub>y</sub>
+		are the distances from the current point to the new current point when
+		showing text in writing mode 0. ll<sub>x</sub>, ll<sub>y</sub> and ur<sub>x</sub>,
+		ur<sub>y</sub> are the distances from origin 0 to the lower-left and
+		upper-right corners of the glyph bounding box. w1<sub>x</sub> and w1<sub>y</sub>
+		are the distances from the current point to the new current point when
+		showing text in writing mode 1. v<sub>x</sub> and v<sub>y</sub> are
+		the distances from origin 0 to origin 1.
+	</p>
+	<p>Aside from its interpretation of the operands, setcachedevice2
+		works the same as setcachedevice in all respects.</p>
+	<p>
+		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="setcachedevice.html">setcachedevice</a>, <a
+			href="setcharwidth.html">setcharwidth</a>, <a
+			href="setcachelimit.html">setcachelimit</a>, <a
+			href="../c/cachestatus.html">cachestatus</a>
+	</p>
+</body>
+</html>

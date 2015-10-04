@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gcheck</title>
+</head>
+<body>
+	<b>gcheck</b> LEVEL 2
+	<pre>any <b>gcheck</b> bool</pre>
+	<p>returns true if the operand is simple or if it is composite and
+		its value resides in global VM. It returns false if the operand is
+		composite and its value resides in local VM. In other words, gcheck
+		returns true if one could legally store its operand as an element of
+		another object in global VM.</p>
+	<p>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>
+	</p>
+</body>
+</html>

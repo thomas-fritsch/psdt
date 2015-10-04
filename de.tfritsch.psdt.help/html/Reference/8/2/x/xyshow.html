@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>xyshow</title>
+</head>
+<body>
+	<b>xyshow</b> LEVEL 2
+	<pre>string numarray  <b>xyshow</b> -
+string numstring <b>xyshow</b> -</pre>
+	<p>
+		paints successive characters of string in a manner similar to <a
+			href="../s/show.html">show</a>. After painting each character, it
+		extracts two successive numbers from the array numarray or the encoded
+		number string numstring. These two numbers, interpreted in user space,
+		determine the position of the origin of the next character relative to
+		the origin of the character just shown. The first number is the x
+		displacement and the second number is the y displacement. In other
+		words, the two numbers override the character's normal width. If
+		numarray or numstring is exhausted before all the characters of string
+		have been shown, a <a href="../r/rangecheck.html">rangecheck</a> error
+		will occur.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="xshow.html">xshow</a>, <a
+			href="../y/yshow.html">yshow</a>, <a href="../s/show.html">show</a>
+	</p>
+</body>
+</html>

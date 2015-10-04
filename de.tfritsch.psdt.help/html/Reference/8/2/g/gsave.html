@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>gsave</title>
+</head>
+<body>
+	<b>gsave</b>
+	<pre>- <b>gsave</b> -</pre>
+	<p>
+		pushes a copy of the current graphics state on the graphics state
+		stack. All elements of the graphics state are saved, including the
+		CTM, current path, clip path, and identity of the raster output
+		device, but not the contents of raster memory. The saved state may
+		later be restored by a matching <a href="grestore.html">grestore</a>.
+	</p>
+	<p>
+		The save operator implicitly performs a gsave, but restoring a
+		graphics state saved by save is slightly different from restoring one
+		saved by gsave (see the descriptions of <a href="grestore.html">grestore</a>
+		and <a href="grestoreall.html">grestoreall</a>).
+	</p>
+	<p>
+		Note that, unlike <a href="../s/save.html">save</a>, gsave does not
+		return a save object on the operand stack to represent the saved
+		state. gsave and <a href="grestore.html">grestore</a> work strictly in
+		a stack-like fashion, except for the wholesale restoration performed
+		by <a href="../r/restore.html">restore</a> and <a
+			href="grestoreall.html">grestoreall</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="grestore.html">grestore</a>, <a
+			href="grestoreall.html">grestoreall</a>, <a href="../r/restore.html">restore</a>,
+		<a href="../s/save.html">save</a>, <a href="gstate.html">gstate</a>, <a
+			href="../c/currentgstate.html">currentgstate</a>
+	</p>
+</body>
+</html>

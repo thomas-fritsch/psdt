@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>rectstroke</title>
+</head>
+<body>
+	<b>rectstroke</b> LEVEL 2
+	<pre>       x y width height <b>rectstroke</b> -
+x y width height matrix <b>rectstroke</b> -
+               numarray <b>rectstroke</b> -
+        numarray matrix <b>rectstroke</b> -
+              numstring <b>rectstroke</b> -
+       numstring matrix <b>rectstroke</b> -</pre>
+	<p>strokes a path consisting of one or more rectangles the operands
+		describe. In the first two forms, the operands are four numbers that
+		describe a single rectangle. In the remaining forms, the operand is an
+		array or an encoded number string that describes an arbitrary number
+		of rectangles rectstroke neither reads nor alters the current path in
+		the graphics state.</p>
+	<p>If the matrix operand is present, rectstroke concatenates matrix
+		to the CTM after defining the path, but before stroking it. The matrix
+		applies to the line width and dash pattern, if any, but not to the
+		path itself.</p>
+	<p>In the first two forms, assuming width and height are positive,
+		rectstroke is equivalent to:</p>
+	<pre>
+gsave
+  newpath
+  x y moveto
+  width 0 rlineto
+  0 height rlineto
+  width neg 0 rlineto
+  closepath
+  matrix concat       % If matrix operand is supplied
+  stroke
+grestore
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/stroke.html">stroke</a>, <a
+			href="rectclip.html">rectclip</a>, <a href="rectfill.html">rectfill</a>
+	</p>
+</body>
+</html>

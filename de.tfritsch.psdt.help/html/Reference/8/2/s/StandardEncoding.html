@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>StandardEncoding</title>
+</head>
+<body>
+	<b>StandardEncoding</b>
+	<pre>- <b>StandardEncoding</b> array</pre>
+	<p>
+		pushes the standard encoding vector on the operand stack. This is a
+		256-element literal array object, indexed by character codes, whose
+		values are the character names for those codes. For an explanation of
+		encoding vectors. StandardEncoding is not an operator; it is a name in
+		<a href="systemdict.html">systemdict</a> associated with the array
+		object. StandardEncoding is the Adobe standard encoding vector used by
+		most Roman text fonts, but not by special fonts, such as Symbol. A new
+		Roman text font having no unusual encoding requirements should specify
+		its Encoding entry to be the value of StandardEncoding rather than
+		define its own private array.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="stackoverflow.html">stackoverflow</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../i/ISOLatin1Encoding.html">ISOLatin1Encoding</a>,
+		<a href="../f/findencoding.html">findencoding</a>
+	</p>
+</body>
+</html>

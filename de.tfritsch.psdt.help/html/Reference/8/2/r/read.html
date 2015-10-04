@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>read</title>
+</head>
+<body>
+	<b>read</b>
+	<pre>file <b>read</b> int true  (if not end-of-file)
+              false (if end-of-file)</pre>
+	<p>
+		reads the next character from the input file file, pushes it on the
+		stack as an integer, and pushes true as an indication of success. If
+		an end-of-file indication is encountered before a character has been
+		read, read closes the file and returns false. If some other error
+		indication is encountered (for example, parity or checksum error),
+		read executes <a href="../i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a
+			href="../s/stackoverflow.html">stackoverflow</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="readhexstring.html">readhexstring</a>, <a
+			href="readline.html">readline</a>, <a href="readstring.html">readstring</a>,
+		<a href="../b/bytesavailable.html">bytesavailable</a>
+	</p>
+</body>
+</html>

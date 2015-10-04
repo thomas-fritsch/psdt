@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>translate</title>
+</head>
+<body>
+	<b>translate</b>
+	<pre>       t<sub>x</sub> t<sub>y</sub> <b>translate</b> -
+t<sub>x</sub> t<sub>y</sub> matrix <b>translate</b> matrix</pre>
+	<p>With no matrix operand, translate builds a temporary matrix and
+		concatenates this matrix with the current transformation matrix (CTM).
+		Precisely, translate replaces the CTM by T x CTM. The effect of this
+		is to move the origin of the user coordinate system by tx units in the
+		x direction and ty units in the y direction relative to the former
+		user coordinate system. The sizes of the x and y units and the
+		orientation of the axes are unchanged.</p>
+	<p>If the matrix operand is supplied, translate replaces the value
+		of matrix by T and pushes the modified matrix back on the operand
+		stack. In this case, translate does not affect the CTM.</p>
+	<p>
+		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../q/rotate.html">rotate</a>, <a
+			href="../s/scale.html">scale</a>, <a href="../c/concat.html">concat</a>,
+		<a href="../s/setmatrix.html">setmatrix</a>
+	</p>
+</body>
+</html>

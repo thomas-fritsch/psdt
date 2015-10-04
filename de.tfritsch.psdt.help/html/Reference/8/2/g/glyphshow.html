@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>glyphshow</title>
+</head>
+<body>
+	<b>glyphshow</b> LEVEL 2
+	<pre>name <b>glyphshow</b> -</pre>
+	<p>shows a single character, identified by name, from the current
+		font. Unlike all other show variants, glyphshow bypasses the current
+		font's Encoding. It can access any character in the font, whether or
+		not that character's name is present in the font's encoding vector.</p>
+	<p>The behavior of glyphshow depends on the current font's
+		FontType. For FontType 1, glyphshow looks up name in the font's
+		CharStrings dictionary to obtain a character description to execute.
+		If name is not present in the CharStrings dictionary, glyphshow
+		substitutes the .notdef entry, which must be present in every Type 1
+		font.</p>
+	<p>
+		For FontType 3, if the font dictionary contains a BuildGlyph
+		procedure, glyphshow pushes the current font dictionary and name on
+		the operand stack, then invokes BuildGlyph in the usual way . If there
+		is no BuildGlyph procedure, but only a BuildChar procedure, glyphshow
+		searches the font's Encoding array for an occurrence of name. If it
+		finds one, it pushes the font dictionary and the array index on the
+		operand stack, then invokes BuildChar in the usual way. If name is not
+		present in the encoding, glyphshow substitutes the name .notdef and
+		repeats the search. If .notdef isn't present either, an <a
+			href="../i/invalidfont.html">invalidfont</a> error occurs.
+	</p>
+	<p>Like show, glyphshow can access characters that are already in
+		the font cache. glyphshow does not always need to execute the
+		character's description.</p>
+	<p>
+		glyphshow operates only with base fonts. If the current font is
+		composite (FontType 0), an <a href="../i/invalidfont.html">invalidfont</a>
+		error occurs.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/show.html">show</a>
+	</p>
+</body>
+</html>

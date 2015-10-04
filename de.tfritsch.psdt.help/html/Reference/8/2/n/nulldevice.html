@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>nulldevice</title>
+</head>
+<body>
+	<b>nulldevice</b>
+	<pre>- <b>nulldevice</b> -</pre>
+	<p>
+		installs the &quot;null device&quot; as the current output device. The
+		null device corresponds to no physical output device and has no raster
+		memory associated with it. Marks placed on the current page by
+		painting operators (for example, <a href="../s/show.html">show</a> or
+		<a href="../s/stroke.html">stroke</a>) are discarded; output operators
+		(<a href="../s/showpage.html">showpage</a> and <a
+			href="../c/copypage.html">copypage</a>) do nothing. However, in all
+		other respects the null device behaves like a real raster output
+		device: the graphics operators have their normal side-effects on the
+		graphics state, the character operators invoke the font machinery, and
+		so on.
+	</p>
+	<p>
+		nulldevice sets the default transformation matrix to be the identity
+		transform [1.0 0.0 0.0 1.0 0.0 0.0]. A PostScript language program may
+		change this to any other matrix (using <a href="s.html#setmatrix">setmatrix</a>)
+		if it desires to simulate the device coordinate system of some real
+		device. nulldevice also establishes the clipping path as a degenerate
+		path consisting of a single point at the origin.
+	</p>
+	<p>
+		The null device is useful for exercising the PostScript interpreter's
+		graphics and font machinery for such purposes as operating on paths,
+		computing bounding boxes for graphical shapes, and performing
+		coordinate transformations using CTM without generating output. Such
+		manipulations should be bracketed by <a href="../g/gsave.html">gsave</a>
+		and <a href="../g/grestore.html">grestore</a> so the former device can
+		be reinstated and the other side effects of nulldevice undone.
+	</p>
+	<p>
+		<b>Errors:</b> (none)
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/setpagedevice.html">setpagedevice</a>
+	</p>
+</body>
+</html>

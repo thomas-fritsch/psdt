@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>def</title>
+</head>
+<body>
+	<b>def</b>
+	<pre>key value <b>def</b> -</pre>
+	<p>associates key with value in the current dictionary-the one on
+		the top of the dictionary stack. If key is already present in the
+		current dictionary, def simply replaces its value. Otherwise, def
+		creates a new entry for key and stores value with it.</p>
+	<p>
+		If the current dictionary is in global VM and value is a composite
+		object whose value is in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+	</p>
+	<p>
+		<b>Examples</b>
+	</p>
+	<pre>
+/ncnt 1 def               % Define ncnt to be 1 in current dict
+/ncnt ncnt 1 add def      % ncnt now has value 2
+</pre>
+	<p>
+		<b>Errors:</b> <a href="../d/dictfull.html">dictfull</a>, <a
+			href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a href="../v/VMerror.html">VMerror</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/store.html">store</a>, <a
+			href="../p/put.html">put</a>
+	</p>
+</body>
+</html>
