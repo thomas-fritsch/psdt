@@ -88,7 +88,7 @@
 		<topic label="&gt;&gt;"                 href="html/Reference/8/2/@/gt-gt.html" />
 		<topic label="="                        href="html/Reference/8/2/@/equals.html" />
 		<topic label="=="                       href="html/Reference/8/2/@/equals-equals.html" />
-		<topic label="$error"                   href="html/Reference/8/2/@/$error.html" />
+		<topic label="$error"                   href="html/Reference/8/2/@/dollar-error.html" />
 	</topic>
 	<topic     label="a">
 		<topic label="abs"                      href="html/Reference/8/2/a/abs.html" />
