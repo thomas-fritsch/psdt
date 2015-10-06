@@ -8,13 +8,18 @@
 		findencoding <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>key <b>findencoding</b> array</pre>
-	<p>obtains an encoding vector identified by the specified key and
-		pushes it onto the operand stack.</p>
 	<p>
-		findencoding is a special case of findresource applied to the Encoding
-		category. If the encoding array specified by key does not exist or
-		cannot be found, findencoding executes the <a
-			href="../u/undefinedresource.html">undefinedresource</a> error.
+		obtains an encoding vector identified by <i>key</i> and pushes it onto
+		the operand stack. <b>Encoding</b> vectors are described in Section <a
+			href="../../../5/3">5.3, "Character Encoding."</a>
+	</p>
+	<p>
+		<b>findencoding</b> is a special case of <a href="findresource.html">findresource</a>
+		applied to the Encoding category (see Section <a
+			href="../../../3/9.html">3.9, "Named Resources"</a>). If the encoding
+		array specified by key does not exist or cannot be found, an <a
+			href="../u/undefinedresource.html">undefinedresource</a> error
+		occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,

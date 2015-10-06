@@ -8,16 +8,22 @@
 	<pre>- <b>currentscreen</b> frequency angle proc
 - <b>currentscreen</b> frequency angle halftone</pre>
 	<p>
-		returns the current halftone screen parameters (frequency, angle, and
-		proc) in the graphics state, assuming the current screen was
-		established by setscreen. If <a href="../s/setcolorscreen.html">setcolorscreen</a>
-		was executed, currentscreen returns the parameters for the gray
-		screen.
+		returns the frequency, angle, and spot function of the current
+		halftone screen parameter in the graphics state (see Section <a
+			href="../../../7/4.html">7.4, "Halftones"</a>), assuming that the
+		halftone was established via the <a href="../s/setscreen.html">setscreen</a>
+		operator. If <a href="../s/setcolorscreen.html">setcolorscreen</a> was
+		used instead, the values returned describe the screen for the gray
+		color component only.
 	</p>
 	<p>
-		If <a href="../s/sethalftone.html">sethalftone</a> was executed,
-		currentscreen returns a frequency of 60, an angle of 0, and the
-		halftone dictionary.
+		If the current halftone was defined via the <a
+			href="../s/sethalftone.html">sethalftone</a> operator, <b>currentscreen</b>
+		returns a halftone dictionary describing its properties in place of
+		the spot function. For type 1 halftone dictionaries, the values
+		returned for frequency and angle are taken from the dictionary’s <b>Frequency</b>
+		and <b>Angle</b> entries; for all other halftone types, currentscreen
+		returns a frequency of 60 and an angle of 0.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>

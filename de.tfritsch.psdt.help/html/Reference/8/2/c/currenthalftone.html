@@ -8,16 +8,22 @@
 		currenthalftone <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>- <b>currenthalftone</b> halftone</pre>
-	<p>returns the current halftone dictionary in the graphics state.
-		If the current halftone was defined by setscreen or setcolorscreen
-		instead of by sethalftone, currenthalftone fabricates and returns a
-		halftone dictionary (type 1 or 2) that contains the screen parameters.</p>
+	<p>
+		returns a halftone dictionary describing the current halftone screen
+		parameter in the graphics state. If the current halftone was
+		established via the <a href="../s/setscreen.html">setscreen</a> or <a
+			href="../s/setcolorscreen.html">setcolorscreen</a> operator instead
+		of <a href="../s/sethalftone.html">sethalftone</a>, <b>currenthalftone</b>
+		fabricates and returns a halftone dictionary of type 1 or 2.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../v/VMerror.html">VMerror</a>
 	<p>
 		<b>See Also:</b> <a href="../s/setscreen.html">setscreen</a>, <a
 			href="../s/setcolorscreen.html">setcolorscreen</a>, <a
-			href="../s/sethalftone.html">sethalftone</a>
+			href="../s/sethalftone.html">sethalftone</a>, <a
+			href="currentscreen.html">currentscreen</a>, <a
+			href="currentcolorscreen.html">currentcolorscreen</a>
 </body>
 </html>

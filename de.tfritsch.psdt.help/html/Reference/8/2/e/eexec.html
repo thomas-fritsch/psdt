@@ -7,51 +7,58 @@
 	<h3>eexec</h3>
 	<pre>  file <b>eexec</b> -
 string <b>eexec</b> -</pre>
-	<p>causes the contents of file (open for reading) or string to be
-		decrypted and then executed in a manner similar to the exec operator.
-		The decryption operation does not cause the file or string to be
-		modified.</p>
-	<p>eexec creates a new file object that serves as a decryption
-		filter on the specified file or string. It pushes the new file object
-		on the execution stack, making it the current file for the PostScript
-		interpreter. Subsequently, each time the interpreter reads a character
-		from this file, or a program reads explicitly from currentfile, the
-		decryption filter reads one character from the original file or string
-		and decrypts it.</p>
 	<p>
-		The decryption filter file is closed automatically when the end of the
-		original file or string is encountered. It may also be closed
-		explicitly by <a href="c.html#closefile">closefile</a>. If the file
-		passed to eexec was <a href="c.html#currentfile">currentfile</a>, this
-		resumes direct execution of that file with the decryption filter
-		removed. The file may consist of encrypted text followed by
-		unencrypted text if the last thing executed in the encrypted text is
-		currentfile closefile.
+		causes the contents of <i>file</i> (open for reading) or <i>string</i>
+		to be decrypted and then executed in a manner similar to the <a
+			href="exec.html">exec</a> operator. The decryption operation does not
+		cause <i>file</i> or <i>string</i> to be modified.
 	</p>
 	<p>
-		Before beginning execution, eexec pushes <a
-			href="../s/systemdict.html">systemdict</a> on the dictionary stack.
-		This ensures that the operators executed by the encrypted program have
-		their standard meanings. When the decryption filter file is closed
-		either explicitly or implicitly, the dictionary stack is popped. The
-		program must be aware that it is being executed with <a
+		<b>eexec</b> creates a new file object that serves as a decryption
+		filter on <i>file</i> or <i>string</i>. It pushes the new file object
+		on the execution stack, making it the current file for the PostScript
+		interpreter. Subsequently, each time the interpreter reads a character
+		from this file, or a program reads explicitly from the file returned
+		by <a href=",,/c/currentfile.html">currentfile</a>, the decryption
+		filter reads one character from the original <i>file</i> or <i>string</i>
+		and decrypts it.
+	</p>
+	<p>
+		The decryption filter file is closed automatically when the end of the
+		original <i>file</i> or <i>string</i> is encountered, or it can be
+		closed explicitly by <a href="../c/closefile.html">closefile</a>. If
+		the file passed to <b>eexec</b> was the current file, this resumes
+		direct execution of that file with the decryption filter removed. The
+		file may consist of encrypted text followed by unencrypted text if the
+		last thing executed in the encrypted text is currentfile closefile.
+	</p>
+	<p>
+		Before beginning execution, <b>eexec</b> pushes <a
+			href="../s/systemdict.html">systemdict</a> on the dictionary stack,
+		thus ensuring that the operators executed by the encrypted program
+		have their standard meanings. When the decryption filter file is
+		closed either explicitly or implicitly, the dictionary stack is
+		popped. The program must be aware that it is being executed with <a
 			href="../s/systemdict.html">systemdict</a> as the current dictionary;
 		in particular, any definitions that it makes must be into a specific
 		dictionary rather than the current one, since <a
 			href="../s/systemdict.html">systemdict</a> is read-only.
 	</p>
-	<p>The encrypted file may be represented in either binary or hex;
-		the eexec operator can decrypt it without being told which type it is.
-		The recommended representation is hex, because hex data can be
-		transmitted through communication channels that are not completely
-		transparent. Regardless of the representation of the encrypted file,
-		the encryption and decryption processes are transparent. That is, an
-		arbitrary binary file can be encrypted, transmitted as either binary
-		or hex, and decrypted to yield the original information.</p>
-	<p>The encryption employed by eexec is intended primarily for use
-		in Type 1 font programs. The book Adobe Type 1 Font Format contains a
-		complete description of the encryption algorithm and recommended uses
-		of eexec.</p>
+	<p>The encrypted file may be represented in either binary or
+		hexadecimal; eexec can decrypt it without being told which type it is.
+		The recommended representation is hexadecimal, because hexadecimal
+		data can be transmitted through communication channels that are not
+		completely transparent. Regardless of the representation of the
+		encrypted file, the encryption and decryption processes are
+		transparent&mdash;that is, an arbitrary binary file can be encrypted,
+		transmitted as either binary or hexadecimal, and decrypted to yield
+		the original information.</p>
+	<p>
+		The encryption employed by <b>eexec</b> is intended primarily for use
+		in Type 1 font programs. The book <i>Adobe Type 1 Font Format</i>
+		contains a complete description of the encryption algorithm and
+		recommended uses of <b>eexec</b>.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../d/dictstackoverflow.html">dictstackoverflow</a>,
 		<a href="../i/invalidaccess.html">invalidaccess</a>, <a

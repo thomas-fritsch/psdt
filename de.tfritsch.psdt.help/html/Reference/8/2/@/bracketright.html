@@ -6,18 +6,21 @@
 <body>
 	<h3>]</h3>
 	<pre>mark obj<sub>0</sub> ... obj<sub>n-1</sub> <b>]</b> array</pre>
-	<p>creates a new array of n elements, where n is the number of
-		elements above the topmost mark on the operand stack; stores those
+	<p>
+		creates a new array of <i>n</i> elements, where <i>n</i> is the number
+		of elements above the topmost mark on the operand stack; stores those
 		elements into the array; and returns the array on the operand stack.
-		The ] operator stores the topmost object from the stack into element
-		n-1 of array and the bottommost one (the one immediately above the
-		mark) into element 0 of array. It removes all the array elements from
-		the stack, as well as the mark object.</p>
+		The ] operator stores the topmost object from the stack into element <i>n</i>-1
+		of array and the bottommost one (the one immediately above the mark)
+		into element 0 of <i>array</i>. It removes all the array elements from
+		the stack, as well as the mark object.
+	</p>
 	<p>
 		The array is allocated in local or global VM according to the current
 		VM allocation mode. An <a href="../i/invalidaccess.html">invalidaccess</a>
-		error occurs if the array is in global VM and any of obj<sub>0</sub>
-		... obj<sub>n-1</sub> are in local VM.
+		error occurs if the array is in global VM and any of <i>obj<sub>0</sub>
+			... obj<sub>n-1</sub></i> are in local VM. See Section <a
+			href="../../../3/7/2.html">3.7.2, “Local and Global VM.”</a>
 	</p>
 	<p>
 		<b>Examples</b>
@@ -28,13 +31,15 @@ mark 5 4 3 counttomark array astore exch pop &rArr; [5 4 3]
 
 [1 2 add] &rArr;  % a 1-element array, with element 3
 </pre>
-	<p>The second line of the example has the same effect as the first,
-		but uses lowerlevel array and stack manipulation primitives instead of
-		[ and ] In the last line of the example, note that the PostScript
+	<p>
+		The second line of the example has the same effect as the first, but
+		uses lower-level array and stack manipulation primitives instead of [
+		and ] In the last line of the example, note that the PostScript
 		interpreter acts on all of the array elements as it encounters them
 		(unlike its behavior with the {...} syntax for executable array
-		construction) so the add operator is executed before the array is
-		constructed.</p>
+		construction) so the <b>add</b> operator is executed before the array
+		is constructed.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../u/unmatchedmark.html">unmatchedmark</a>, <a

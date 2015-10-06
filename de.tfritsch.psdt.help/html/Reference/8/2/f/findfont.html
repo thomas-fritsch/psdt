@@ -8,32 +8,40 @@
 	<pre>key <b>findfont</b> font</pre>
 	<p>
 		obtains a font dictionary identified by the specified key and pushes
-		it on the operand stack . key may be a key previously passed to <a
-			href="../d/definefont.html">definefont</a>, in which case the font
-		dictionary associated with key (in the font directory) is returned.
+		the instance (which may be a font or CIDFont dictionary) on the
+		operand stack (see Section <a href="../../../5/1.html">5.1,
+			"Organization and Use of Fonts"</a>). <i>key</i> may be a key previously
+		passed to <a href="../d/definefont.html">definefont</a>, in which case
+		the <b>Font</b> resource instance associated with <i>key</i> (in the
+		font directory) is returned.
 	</p>
 	<p>
-		If key is not registered as a font in VM, findfont takes an action
-		that varies according to the environment in which the PostScript
-		interpreter is operating. In some environments, findfont may attempt
-		to read a font definition from an external source, such as a file. In
-		other environments, findfont substitutes a default font or executes
-		the error <a href="../i/invalidfont.html">invalidfont</a>. findfont is
-		a special case of <a href="findresource.html">findresource</a> applied
-		to the Font category.
+		If the <b>Font</b> resource identified by <i>key</i> is not defined in
+		virtual memory, <b>findfont</b> takes an action that varies according
+		to the environment in which the PostScript interpreter is operating.
+		In some environments, <b>findfont</b> may attempt to read a font
+		definition from an external source, such as a file. In other
+		environments, <b>findfont</b> substitutes a default font or executes
+		the <a href="../i/invalidfont.html">invalidfont</a> error. <b>findfont</b>
+		is a special case of <a href="findresource.html">findresource</a>
+		applied to the <b>Font</b> category.
 	</p>
 	<p>
-		findfont, like <a href="findresource.html">findresource</a>, normally
-		looks first for fonts defined in local VM, then for fonts defined in
-		global VM. However, if the current VM allocation mode is global,
-		findfont considers only fonts defined in global VM. If findfont needs
-		to load a font into VM, it may use either local or global VM,
-		depending on the font. Generally, Type 1 fonts are loaded into global
-		VM; fonts of other types are loaded in to local VM.
+		<b>findfont</b>, like <a href="findresource.html">findresource</a>,
+		normally looks first for fonts defined in local VM, then for fonts
+		defined in global VM. However, if the current VM allocation mode is
+		global, <b>findfont</b> considers only fonts defined in global VM.
+		However, if the current VM allocation mode is global, <b>findfont</b>
+		considers only <b>Font</b> resources defined in global VM. If <b>findfont</b>
+		needs to load a font or CIDFont into VM, it may use either local or
+		global VM; see Section <a href="../../../3/9/2.html">3.9.2,
+			"Resource Categories,"</a> for more information.
 	</p>
-	<p>findfont is not an operator, but rather a built-in procedure. It
-		may be redefined by a PostScript language program that requires
-		different strategies for finding fonts.</p>
+	<p>
+		<b>findfont</b> is not an operator, but rather a built-in procedure.
+		It may be redefined by a PostScript language program that requires
+		different strategies for finding fonts.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
@@ -45,7 +53,7 @@
 		<a href="../s/selectfont.html">selectfont</a>, <a
 			href="../d/definefont.html">definefont</a>, <a
 			href="findresource.html">findresource</a>, <a
-			href="F.htmlontDirectory">FontDirectory</a>, <a
+			href="FontDirectory.html">FontDirectory</a>, <a
 			href="../g/GlobalFontDirectory.html">GlobalFontDirectory</a>
 	</p>
 </body>

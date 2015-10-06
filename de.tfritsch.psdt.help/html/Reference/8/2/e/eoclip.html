@@ -6,21 +6,23 @@
 <body>
 	<h3>eoclip</h3>
 	<pre>- <b>eoclip</b> -</pre>
-	<p>intersects the inside of the current clipping path with the
-		inside of the current path to produce a new, smaller current clipping
-		path. The inside of the current path is determined by the even-odd
-		rule, while the inside of the current clipping path is determined by
-		whatever rule was used at the time that path was created.</p>
 	<p>
-		Except for the choice of insideness rule, the behavior of eoclip is
-		identical to that of <a href="../c/clip.html">clip</a>.
+		intersects the area inside the current clipping path with the area
+		inside the current path to produce a new, smaller clipping path. The
+		even-odd rule (see <a href="../../../4/5/3.html#2">"Even-Odd Rule"
+			on page 196</a>) is used to determine what points lie inside the current
+		path, while the inside of the current clipping path is determined by
+		whatever rule was used at the time the path was created. In all other
+		respects, the behavior of <b>eoclip</b> is identical to that of <a
+			href="../c/clip.html">clip</a>.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/clip.html">clip</a>, <a
-			href="../c/clippath.html">clippath</a>, <a href="../i/initclip.html">initclip</a>
+			href="../c/clippath.html">clippath</a>, <a href="../i/initclip.html">initclip</a>,
+		<a href="../r/rectclip.html">rectclip</a>
 	</p>
 </body>
 </html>

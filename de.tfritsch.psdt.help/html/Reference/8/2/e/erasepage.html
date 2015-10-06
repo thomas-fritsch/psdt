@@ -10,21 +10,24 @@
 	<p>This standard PostScript operator has the following effect in
 		the NeXT implementation of the Display PostScript system: It erases
 		the entire window to opaque white.</p>
-	<p>erases the entire current page by painting it with gray level 1,
-		which is ordinarily white, but may be some other color if an atypical
-		transfer function has been defined. The entire page is erased,
-		regardless of the clip path currently in force. erasepage affects only
-		the contents of raster memory. It does not modify the graphics state
-		nor does it cause a page to be transmitted to the output device.</p>
 	<p>
-		erasepage is executed automatically by <a href="../s/showpage.html">showpage</a>
-		after imaging. There are few situations in which a PostScript language
-		page description should execute erasepage explicitly, because the
-		operator affects portions of the current page outside the current clip
-		path. It is usually more appropriate to erase just the inside of the
-		current clip path (see <a href="../c/clippath.html">clippath</a>).
-		Then the page description can be embedded within another, composite
-		page without undesirable effects.
+		erases the current page by painting it with gray level 1.0 (which is
+		ordinarily white, but may be some other color if an atypical transfer
+		function has been defined). The entire page is erased, without
+		reference to the clipping path currently in force. <b>erasepage</b>
+		affects only the contents of raster memory; it does not modify the
+		graphics state, nor does it cause a page to be transmitted to the
+		output device.
+	</p>
+	<p>
+		The <a href="../s/showpage.html">showpage</a> operator automatically
+		invokes <b>erasepage</b> after imaging a page. There are few
+		situations in which a PostScript page description should invoke <b>erasepage</b>
+		explicitly, since it affects portions of the page outside the current
+		clipping path. It is usually more appropriate to erase just the area
+		inside the current clipping path (see <a href="../c/cippath.html">clippath</a>).
+		This allows the page description to be embedded within another,
+		composite page without undesirable effects.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidid.html">invalidid</a>

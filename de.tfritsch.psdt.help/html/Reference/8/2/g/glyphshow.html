@@ -7,36 +7,56 @@
 	<h3>
 		glyphshow <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
-	<pre>name <b>glyphshow</b> -</pre>
-	<p>shows a single character, identified by name, from the current
-		font. Unlike all other show variants, glyphshow bypasses the current
-		font's Encoding. It can access any character in the font, whether or
-		not that character's name is present in the font's encoding vector.</p>
-	<p>The behavior of glyphshow depends on the current font's
-		FontType. For FontType 1, glyphshow looks up name in the font's
-		CharStrings dictionary to obtain a character description to execute.
-		If name is not present in the CharStrings dictionary, glyphshow
-		substitutes the .notdef entry, which must be present in every Type 1
-		font.</p>
+	<pre>name <b>glyphshow</b> -
+ cid <b>glyphshow</b>
+	</pre>
 	<p>
-		For FontType 3, if the font dictionary contains a BuildGlyph
-		procedure, glyphshow pushes the current font dictionary and name on
-		the operand stack, then invokes BuildGlyph in the usual way . If there
-		is no BuildGlyph procedure, but only a BuildChar procedure, glyphshow
-		searches the font's Encoding array for an occurrence of name. If it
-		finds one, it pushes the font dictionary and the array index on the
-		operand stack, then invokes BuildChar in the usual way. If name is not
-		present in the encoding, glyphshow substitutes the name .notdef and
-		repeats the search. If .notdef isn't present either, an <a
-			href="../i/invalidfont.html">invalidfont</a> error occurs.
+		shows the glyph for a single character from the current font or
+		CIDFont; the character is identified by <i>name</i> if a base font or
+		by CID if a CIDFont. If the current font is a composite (Type 0) font,
+		an <a href="../i/invalidfont.html">invalidfont</a> error occurs.
 	</p>
-	<p>Like show, glyphshow can access characters that are already in
-		the font cache. glyphshow does not always need to execute the
-		character's description.</p>
 	<p>
-		glyphshow operates only with base fonts. If the current font is
-		composite (FontType 0), an <a href="../i/invalidfont.html">invalidfont</a>
+		Unlike all other <a href="../s/show.html">show</a> variants, <b>glyphshow</b>
+		bypasses the current font's <b>Encoding</b> array; it can access any
+		character in the font, whether or not that character's name is present
+		in the font's encoding vector. <b>glyphshow</b> is the only show
+		variant that works directly with a CIDFont.
+	</p>
+	<p>
+		For a base font, the behavior of <b>glyphshow</b> depends on the
+		current font's <b>FontType</b> value. For fonts that contain a <b>CharStrings</b>
+		dictionary, such as Type 1 fonts, <b>glyphshow</b> looks up name there
+		to obtain a glyph description to execute. If <i>name</i> is not
+		present in the <b>CharStrings</b> dictionary, <b>glyphshow</b>
+		substitutes the .notdef entry, which must be present.
+	</p>
+	<p>
+		For Type 3 fonts, if the font dictionary contains a <b>BuildGlyph</b>
+		procedure, <b>glyphshow</b> pushes the current font dictionary and <i>name</i>
+		on the operand stack and then invokes <b>BuildGlyph</b> in the usual
+		way (see Section <a href="../../../5/7.html">5.7, "Type 3 Fonts"</a>).
+		If there is no <b>BuildGlyph</b> procedure, but only a <b>BuildChar</b>
+		procedure, <b>glyphshow</b> searches the font's <b>Encoding</b> array
+		for an occurrence of <i>name</i>. If it finds one, it pushes the font
+		dictionary and the array index on the operand stack, then invokes <b>BuildChar</b>
+		in the usual way. If <i>name</i> is not present in the encoding, <b>glyphshow</b>
+		substitutes the name .notdef and repeats the search. If .notdef isn't
+		present either, an <a href="../i/invalidfont.html">invalidfont</a>
 		error occurs.
+	</p>
+	<p>
+		For a CIDFont, <b>glyphshow</b> proceeds as show would for a CID-keyed
+		font whose mapping algorithm yields this CIDFont with <i>cid</i> as
+		the character selector. A <a href="../r/rangecheck.html">rangecheck</a>
+		error occurs if <i>cid</i> is outside the valid range of CIDs (see <a
+			href="../../../B.html">Appendix B</a>).
+	</p>
+	<p>
+		Except for the means of selecting the character to be shown, <b>glyphshow</b>
+		behaves the same as show. Like <a href="../s/show.html">show</a>, <b>glyphshow</b>
+		can access glyphs that are already in the font cache; <b>glyphshow</b>
+		does not always need to execute the character's glyph description.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

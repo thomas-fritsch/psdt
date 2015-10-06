@@ -6,17 +6,21 @@
 <body>
 	<h3>concat</h3>
 	<pre>matrix <b>concat</b> -</pre>
-	<p>concatenates matrix with the current transformation matrix
-		(CTM). Precisely, concat replaces the CTM by matrix x CTM . The effect
-		of this is to define a new user space whose coordinates are
-		transformed into the former user space according to matrix.</p>
+	<p>
+		concatenates <i>matrix</i> with the current transformation matrix
+		(CTM). <b>concat</b> accomplishes this by concatenating <i>matrix</i>
+		with the current transformation matrix (CTM); that is, it replaces the
+		CTM with the matrix product <i>matrix</i> &times; CTM (see Section <a
+			href="../../../4/3.html">4.3, "Coordinate Systems and
+			Transformations"</a>).
+	</p>
 	<p>Examples</p>
 	<pre>
 [72 0 0 72 0 0] concat
 72 72 scale
 </pre>
-	<p>The two examples have the same effect on the current
-		transformation.</p>
+	<p>Both lines of code above have the same effect on the user
+		coordinate space.</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
@@ -24,9 +28,10 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="concatmatrix.html">concatmatrix</a>, <a
-			href="../m/matrix.html">matrix</a>, <a href="../r/rotate.html">rotate</a>,
-		<a href="../s/scale.html">scale</a>, <a href="../s/setmatrix.html">setmatrix</a>,
-		<a href="../t/translate.html">translate</a>
+			href="../s/setmatrix.html">setmatrix</a>, <a
+			href="currentmatrix.html">currentmatrix</a>, <a
+			href="../t/translate.html">translate</a>, <a href="../s/scale.html">scale</a>,
+		<a href="../r/rotate.html">rotate</a>
 	</p>
 </body>
 </html>

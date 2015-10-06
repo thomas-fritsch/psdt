@@ -7,27 +7,42 @@
 	<h3>bind</h3>
 	<pre>proc <b>bind</b> proc</pre>
 	<p>
-		replaces executable operator names in proc by their values. For each
-		element of proc that is an executable name, bind looks up the name in
-		the context of the current dictionary stack as if by <a
-			href="../l/load.html">load</a>. If the name is found and its value is
-		an operator object, bind replaces the name by the operator in proc. If
-		the name is not found or its value is not an operator, bind does not
-		make a change.
+		replaces executable operator names in <i>proc</i> by their values. For
+		each element of <i>proc</i> that is an executable name, <b>bind</b>
+		looks up the name in the context of the current dictionary stack as if
+		by the <a href="../l/load.html">load</a> operator. If the name is
+		found and its value is an operator object, <b>bind</b> replaces the
+		name with the operator in <b>proc</b>. If the name is not found or its
+		value is not an operator, <b>bind</b> does not make a change.
 	</p>
-	<p>For each procedure object in proc, bind applies itself
-		recursively to that procedure, makes the procedure read-only, and
-		stores it back into proc. The bind operator applies to both arrays and
-		packed arrays, but it treats their access attributes differently. It
-		will ignore a read-only array; that is, it will neither bind elements
-		of the array nor examine nested procedures. On the other hand, bind
-		will operate on a packed array (which is always read-only),
-		disregarding its access attribute. No error occurs in either case.</p>
-	<p>The effect of bind is that all operator names in proc and in
-		procedures nested in proc to any depth become &quot;tightly
-		bound&quot; to the operators themselves. During subsequent execution
-		of proc, the interpreter encounters the operators themselves rather
-		than the names of operators.</p>
+	<p>
+		For each procedure object contained within <i>proc</i>, <b>bind</b>
+		applies itself recursively to that procedure, makes the procedure
+		read-only, and stores it back into <i>proc</i>. <b>bind</b> applies to
+		both arrays and packed arrays, but it treats their access attributes
+		differently. It will ignore a read-only array; that is, it will
+		neither bind elements of the array nor examine nested procedures. On
+		the other hand, <b>bind</b> will operate on a packed array (which
+		always has read-only or even more restricted access), disregarding its
+		access attribute. No error occurs in either case.
+	</p>
+	<p>
+		The effect of <b>bind</b> is that all operator names in <i>proc</i>
+		and in procedures nested within <i>proc</i> to any depth become
+		tightly bound to the operators themselves. During subsequent execution
+		of <i>proc</i>, the interpreter encounters the operators themselves
+		rather than their names. See Section <a href="../../../3.12.html">3.12,
+			"Early Name Binding."</a>
+	</p>
+	<p>
+		In LanguageLevel 3, if the user parameter <b>IdiomRecognition</b> is
+		true, then after replacing executable names with operators, <b>bind</b>
+		compares <i>proc</i> with every template procedure defined in
+		instances of the <a href="../../../3/9/2.html#IdiomSet">IdiomSet</a>
+		resource category. If it finds a match, it returns the associated
+		substitute procedure. See Section <a href="../../../3/12/1.html">3.12.1,
+			"bind Operator."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../t/typecheck.html">typecheck</a>
 	</p>

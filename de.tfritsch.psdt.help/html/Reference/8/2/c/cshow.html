@@ -9,22 +9,47 @@
 	</h3>
 	<pre>proc string <b>cshow</b> -</pre>
 	<p>
-		invokes proc once for each operation of the font mapping algorithm.
-		The value of currentfont during the execution of proc is the base font
-		that the algorithm ultimately selects. When proc is invoked, the stack
-		contains three values: the selected character's code (an integer) and
-		the x and y components of the width vector for the character in the
-		user coordinate system. cshow does not paint the character and does
-		not change the current point, although proc may do so. When proc
-		completes execution, the value of <a href="currentfont.html">currentfont</a>
-		is restored.
+		invokes <i>proc</i> once for each operation of the font mapping
+		algorithm. <b>cshow</b> is intended primarily for use with composite
+		fonts (see Section <a href="../../../5/10.html">5.10, "Composite
+			Fonts"</a>&mdash;in particular, Section <a href="../../../5/10/1.html">5.10.1,
+			"Character Mapping"</a>).
 	</p>
-	<p>cshow can be used to provide careful positioning of individual
-		characters while taking advantage of the composite font mapping
-		machinery of the interpreter. cshow is intended primarily for use with
-		composite fonts . However, it can also be used with a base font. The
+	<p>
+		The value of <a href="currentfont.html">currentfont</a> during the
+		execution of <b>proc</b> is the base font or CIDFont that the
+		character mapping algorithm selects (unless <i>proc</i> calls <a
+			href="../s/setfont.html">setfont</a> or <a
+			href="../s/selectfont.html">selectfont</a>). When <i>proc</i> is
+		invoked, the stack contains three values: the selected character’s
+		code (an integer) and the <i>x</i> and <i>y</i> components of the
+		width vector for the character's glyph in the user coordinate system.
+		<b>cshow</b> does not paint the glyph and does not change the current
+		point, although <i>proc</i> may do so. When <i>proc</i> completes
+		execution, the value of <a href="currentfont.html">currentfont</a> is
+		restored.
+	</p>
+	<p>
+		<b>cshow</b> takes special measures so that <i>proc</i> can execute <a
+			href="../s/show.html">show</a> (or any of its variants) even when the
+		mapping algorithm selects a CIDFont&mdash;that is, when the CMap
+		yields a CID. In this case, the character code from <i>string</i> (or
+		its last byte, if the code is more than 1 byte long) is put on the
+		stack for <i>proc</i>. If <i>proc</i> executes a <a
+			href="../s/show.html">show</a> operator (without changing the current
+		font), the string passed to <a href="../s/show.html">show</a> must
+		consist of a single byte equal to the code given to <i>proc</i>, or a
+		<a href="../r/rangecheck.html">rangecheck</a> error occurs; however,
+		the code is otherwise ignored. The glyph that is actually shown is the
+		one identified by the originally selected CID.
+	</p>
+	<p>
+		<b>cshow</b> can be used to provide careful positioning of individual
+		glyphs while taking advantage of the composite font mapping machinery
+		of the interpreter. However, it can also be used with a base font; the
 		mapping algorithm for a base font simply selects consecutive
-		characters from the string.</p>
+		characters from the string.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
 			href="../i/invalidaccess.html">invalidaccess</a>, <a

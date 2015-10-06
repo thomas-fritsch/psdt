@@ -6,28 +6,33 @@
 <body>
 	<h3>==</h3>
 	<pre>any <b>==</b> -</pre>
-	<p>pops an object from the operand stack, produces a text
-		representation of that object followed by a newline character, and
-		writes the result to the standard output file. == attempts to produce
-		a result that resembles the PostScript syntax for creating the object.
-		It precedes literal names by /, brackets strings with (...), and
-		expands the values of arrays and packed arrays and brackets them with
-		[...] or {...}. For an object with no printable representation, ==
-		produces the name of its type in the form -mark- or -dict-. For an
-		operator object, it produces the operator's name in the form --add--.
-	</p>
-	<p>The name == is not special. In PostScript language programs it
-		must be delimited by white space or special characters the same as
-		names composed of alphabetical characters. The value of == is not an
-		operator, but rather a built-in procedure.</p>
 	<p>
-		The == operator is intended for convenience in debugging. The details
-		of how == formats its output are intentionally unspecified. A program
-		requiring detailed control over output format should do its own
-		formatting explicitly, using lowerlevel operators, such as <a
-			href="../c/cvs.html">cvs</a>. Also, and <a
-			href="../w/writeobject.html">writeobject</a> (Level 2 features) may
-		be more suitable for generating machine-readable output.
+		pops an object from the operand stack, produces a text representation
+		of that object followed by a newline character, and writes the result
+		to the standard output file. <b>==</b> attempts to produce a result
+		that resembles the PostScript syntax for creating the object. It
+		precedes literal names by /, brackets strings with (...), and expands
+		the values of arrays and packed arrays and brackets them with [...] or
+		{...}. For an object with no printable representation, <b>==</b>
+		produces the name of its type in the form -mark- or -dict-. For an
+		operator object, it produces the operator's name in the form
+		--operator--, such as --add--.
+	</p>
+	<p>
+		The name <b>==</b> is not special. In PostScript language programs it
+		must be delimited by white space or special characters the same as
+		names composed of alphabetical characters. The value of <b>==</b> is
+		not an operator, but rather a built-in procedure.
+	</p>
+	<p>
+		The <b>==</b> operator is intended for convenience in debugging. The
+		details of how <b>==</b> formats its output are intentionally
+		unspecified. A program requiring detailed control over output format
+		should do its own formatting explicitly, using lower-level operators,
+		such as <a href="../c/cvs.html">cvs</a>. Also, the LanguageLevel 2
+		operators <a href="../p/printobject.html">printobject</a> and <a
+			href="../w/writeobject.html">writeobject</a> may be more suitable for
+		generating machine-readable output.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>

@@ -7,18 +7,24 @@
 	<h3>currentpoint</h3>
 	<pre>- <b>currentpoint</b> x y</pre>
 	<p>
-		returns the x and y coordinates of the current point in the graphics
-		state (i.e., the trailing endpoint of the current path). If the
-		current point is undefined because the current path is empty,
-		currentpoint executes the <a href="../n/nocurrentpoint.html">nocurrentpoint</a>
-		error. The current point is reported in the user coordinate system.
-		Points entered into a path are immediately converted to device
-		coordinates by the current transformation matrix (CTM); existing
-		points are not changed by subsequent modifications to the CTM.
-		currentpoint computes the user space coordinate that corresponds to
-		the current point according to the current value of the CTM. If a
-		current point is set and then the CTM is changed, currentpoint will
-		report a different position in user space than it did before.
+		returns the <i>x</i> and <i>y</i> coordinates, in the user coordinate
+		system, of the current point in the graphics state (the trailing
+		endpoint of the current path).
+	</p>
+	<p>
+		As discussed in Section <a href="../../../4/4/1.html">4.4.1,
+			"Current Path,"</a> points entered into a path are immediately converted
+		to device coordinates by the current transformation matrix (CTM);
+		subsequent modifications to the CTM do not affect existing points. <b>currentpoint</b>
+		computes the user space coordinates corresponding to the current point
+		according to the current value of the CTM. Thus, if a current point is
+		set and then the CTM is changed, the coordinates returned by <b>currentpoint</b>
+		will be different from those that were originally specified for the
+		point.
+	</p>
+	<p>
+		If the current point is undefined because the current path is empty, a
+		<a href="../n/nocurrentpoint.html">nocurrentpoint</a> error occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../n/nocurrentpoint.html">nocurrentpoint</a>,

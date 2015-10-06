@@ -7,43 +7,76 @@
 	<h3>
 		filter <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
-	<pre>source/target param<sub>1</sub> ... param<sub>n</sub> name <b>filter</b> file</pre>
-	<p>creates and returns a filtered file.</p>
-	<p>The source/target operand specifies the underlying data source
-		or data target that the filter is to read or write. It can be a file,
-		procedure, or string.</p>
-	<p>
-		The param<sub>1</sub> ... param<sub>n</sub> operands are additional
-		parameters that control how the filter is to operate. The number and
-		types of these operands depend on the filter name. Most filters
-		require no additional parameters.
-	</p>
-	<p>The name operand identifies the data transformation that the
-		filter is to perform. The standard filter names are:</p>
-	<pre>
-  ASCIIHexEncode  ASCIIHexDecode 
-  ASCII85Encode   ASCII85Decode 
-  LZWEncode       LZWDecode 
-  RunLengthEncode RunLengthDecode 
-  CCITTFaxEncode  CCITTFaxDecode 
-  DCTEncode       DCTDecode 
-  NullEncode      SubFileDecode 
+	<pre>datasrc param<sub>1</sub> ... param<sub>n</sub> name <b>filter</b> file
+	datatgt param<sub>1</sub> ... param<sub>n</sub> name <b>filter</b> file
 </pre>
-	<p>An encoding filter is an output (writable) file. A decoding
-		filter is an input (readable) file. The file object returned by the
-		filter can be used as an operand of normal file input and output
-		operators, such as read and write. Reading from an input filtered file
-		causes the filter to read from the underlying data source and
-		transform the data. Similarly, writing to an output filtered file
-		causes the filter to transform the data and write it to the underlying
-		data target.</p>
 	<p>
-		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
-			href="../u/undefined.html">undefined</a>, <a
-			href="../t/typecheck.html">typecheck</a>, <a
-			href="../r/rangecheck.html">rangecheck</a>, <a
+		creates and returns a filtered file (see Sections <a
+			href="../../../3/8/4.html">3.8.4, "Filters,"</a> and <a
+			href="../../../3/13.html">3.13, "Filtered Files Details"</a>).
+	</p>
+	<p>The first operand specifies the underlying data source or data
+		target that the filter is to read or write. It can be a file, a
+		procedure, or a string.</p>
+	<p>
+		The <i>dict</i> operand contains additional parameters that control
+		how the filter is to operate. It can be omitted whenever all
+		dictionary-supplied parameters have their default values for the given
+		filter. The operands param<sub>1</sub> ... param<sub>n</sub> are
+		additional parameters that some filters require as operands rather
+		than in <i>dict</i>; most filters do not require these operands. Most
+		filters require no additional parameters. The number and types of
+		parameters specified in <i>dict</i> or as operands depends on the
+		filter name.
+	</p>
+	<p>
+		The <i>filtername</i> operand identifies the data transformation that
+		the filter is to perform. The standard filter names are as follows:
+	</p>
+	<pre>
+  ASCIIHexEncode                   ASCIIHexDecode 
+  ASCII85Encode                    ASCII85Decode
+  FlateEncode (LanguageLevel 3)    FlateDecode (LanguageLevel 3)
+  LZWEncode                        LZWDecode 
+  RunLengthEncode                  RunLengthDecode 
+  CCITTFaxEncode                   CCITTFaxDecode 
+  DCTEncode                        DCTDecode 
+  NullEncode                       SubFileDecode
+                                   ReusableStreamDecode (LanguageLevel 3)
+</pre>
+	<p>
+		An encoding filter is an output (writeable) file; a decoding filter is
+		an input (readable) file. The file object returned by the filter can
+		be used as an operand to normal file input and output operators, such
+		as <a href="../r/read.html">read</a> and <a href="../w/write.html">write</a>.
+		Reading from an input filtered file causes the filter to read from the
+		underlying data source and transform the data. Similarly, writing to
+		an output filtered file causes the filter to transform the data and
+		write it to the underlying data target.
+	</p>
+	<p>
+		The <b>filter</b> operator disregards the current VM allocation mode.
+		Instead, the returned file object is created in global VM if and only
+		if all the composite objects it retains after filter creation are in
+		global VM. These objects include the underlying source or target
+		object, the end-of-data string for <b>SubFileDecode</b>, and the <i>dict</i>
+		operand of <b>DCTDecode</b> or <b>DCTEncode</b> (which can contain
+		strings and arrays used during operation of the filter).
+	</p>
+	<p>
+		Note that the <i>dict</i> operand is not retained by filters other
+		than <b>DCTDecode</b> and <b>DCTEncode</b>. The dictionary is used
+		only as a container for parameters, which are completely processed by
+		the <b>filter</b> operator. Therefore, the VM allocation mode of this
+		dictionary is irrelevant.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
-			href="../i/invalidaccess.html">invalidaccess</a>
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="file.html">file</a>, <a

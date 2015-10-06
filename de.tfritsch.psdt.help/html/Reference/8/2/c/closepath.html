@@ -8,14 +8,18 @@
 	<pre>- <b>closepath</b> -</pre>
 	<p>
 		closes the current subpath by appending a straight line segment
-		connecting the current point to the subpath's starting
-		point-generally, the point most recently specified by <a
-			href="../m/moveto.html">moveto</a>. If the current subpath is already
-		closed or the current path is empty, closepath does not do anything.
+		connecting the current point to the subpath's starting point, which is
+		generally the point most recently specified by <a
+			href="../m/moveto.html">moveto</a> (see Section <a
+			href="../../../4/4.html">4.4, "Path Construction"</a>).
 	</p>
-	<p>closepath terminates the current subpath. Appending another
-		segment to the current path will begin a new subpath, even if it is
-		drawn from the endpoint reached by the closepath.</p>
+	<p>
+		<b>closepath</b> terminates the current subpath; appending another
+		segment to the current path will begin a new subpath, even if the new
+		segment begins at the endpoint reached by the <b>closepath</b>
+		operation. If the current subpath is already closed or the current
+		path is empty, <b>closepath</b> does nothing. .
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
 	</p>

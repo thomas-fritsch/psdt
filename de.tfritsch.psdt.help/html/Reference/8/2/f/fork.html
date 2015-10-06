@@ -13,13 +13,13 @@
 	<p>
 		The new context's environment is formed by copying the dictionary and
 		graphics state stacks of the current context. The initial operand
-		stack consists of obj1 through objn, pushed in the same order (obj<sub>1</sub>
-		through obj<sub>n</sub> are objects of any type other than <a
-			href="../m/mark.html">mark</a>). fork consumes all operands down to
-		and including the topmost mark. It then pushes an integer that
-		uniquely identifies the new context. The forked context inherits its
-		object format from the current context; other percontext parameters
-		are initialized to default values.
+		stack consists of <i>obj<ub>1</ub></i> through <i>obj<sub>n</sub></i>,
+		pushed in the same order (obj<sub>1</sub> through obj<sub>n</sub> are
+		objects of any type other than <a href="../m/mark.html">mark</a>).
+		fork consumes all operands down to and including the topmost mark. It
+		then pushes an integer that uniquely identifies the new context. The
+		forked context inherits its object format from the current context;
+		other per-context parameters are initialized to default values.
 	</p>
 	<p>
 		When the new context begins execution, it executes the procedure proc.

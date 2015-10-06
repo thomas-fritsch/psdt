@@ -7,25 +7,70 @@
 	<h3>copypage</h3>
 	<pre>- <b>copypage</b> -</pre>
 	<p>
-		transmits one copy of the current page to the current output device
-		without erasing the current page or changing the graphics state. This
-		is in contrast to showpage, which performs the equivalent of an <a
-			href="../e/erasepage.html">erasepage</a> and an <a
-			href="../i/initgraphics.html">initgraphics</a>. Aside from these
-		differences, the behavior of copypage is identical to that of <a
-			href="../s/showpage.html">showpage</a>.
+		transmits the contents of the current page to the current output
+		device, but without performing the additional reinitialization actions
+		that <a href="../s/showpage.html">showpage</a> performs. Specifically,
+		its behavior differs from that of <a href="../s/showpage.html">showpage</a>
+		in the following ways:
+	</p>
+	<ul>
+		<li><a href="../s/showpage.html">showpage</a> usually performs
+			the equivalent of an <a href="../e/erasepage.html">erasepage</a>
+			operation after transmitting the page, clearing the contents of
+			raster memory in preparation for the next page. <b>copypage</b>
+			performs this step only in LanguageLevel 3; in LanguageLevels 1 and
+			2, it does not erase the page after transmission.</li>
+		<li><a href="../s/showpage.html">showpage</a> then always
+			performs the equivalent of an <a href="../i/initgraphics.html">initgraphics</a>
+			operation, reinitializing the graphics state for the next page. <b>copypage</b>
+			never does this.</li>
+		<li>If an EndPage procedure is defined in the page device
+			dictionary, <a href="../s/showpage.html">showpage</a> passes it a
+			reason code of 0 on the operand stack, indicating that it is being
+			called from <a href="../s/showpage.html">showpage</a>. In
+			LanguageLevels 1 and 2, <b>copypage</b> passes a reason code of 1 to
+			inform the <b>EndPage</b> procedure that it is being called from <b>copypage</b>
+			rather than <a href="../s/showpage.html">showpage</a>; in
+			LanguageLevel 3, <b>copypage</b> passes a reason code of 0, as if the
+			call were coming from <a href="../s/showpage.html">showpage</a>
+			instead. See Section <a href="../../../6/2/6.html">6.2.6, "Device
+				Initialization and Page Setup,"</a> for more information on <b>EndPage</b>
+			procedures and reason codes.
+		</li>
+	</ul>
+	<p>
+		If a device's <b>BeginPage</b> or <b>EndPage</b> procedure invokes <b>copypage</b>,
+		an <a href="../u/undefined.html">undefined</a> error occurs.
 	</p>
 	<p>
-		copypage is intended primarily as a debugging aid or as a means of
-		printing successive pages with incrementally accumulated contents.
-		Routine use of copypage as a substitute for showpage may severely
-		degrade the page throughput of some PostScript printers. To print
-		multiple copies of the same page, use the #copies implicit parameter
-		of <a href="../s/showpage.html">showpage</a> or the NumCopies
-		parameter of <a href="../s/setpagedevice.html">setpagedevice</a>.
+		Note that because <b>copypage</b> behaves differently in LanguageLevel
+		3 than in LanguageLevels 1 and 2, some uses of this operator will
+		produce different results depending on LanguageLevel. For example,
+		some old applications used the code
+	</p>
+	<pre>  n {copypage} repeat
+  erasepage</pre>
+	<p>
+		to produce <i>n</i> copies of the current page; in LanguageLevel 3,
+		this will instead produce one copy followed by <i>n</i> - 1 blank
+		pages. Similarly, applications that used <b>copypage</b> to implement
+		forms in LanguageLevels 1 and 2 can no longer do so in LanguageLevel
+		3; the first page will be printed correctly, showing both fixed and
+		variable contents, but subsequent pages will show only the variable
+		contents, the fixed contents having been erased.
 	</p>
 	<p>
-		<b>Errors:</b> (none)
+		The use of this operator is discouraged. It is intended primarily as a
+		debugging aid. Routine use of <b>copypage</b> as a substitute for <a
+			href="../s/showpage.html">showpage</a> may <i>severely</i> degrade
+		the page throughput of some PostScript devices. To print multiple
+		copies of the same page, use the <b>#copies</b> implicit parameter of
+		<a href="../s/showpage.html">showpage</a> or the NumCopies parameter
+		of <a href="../s/setpagedevice.html">setpagedevice</a>.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../u/undefined.html">undefined</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/showpage.html">showpage</a>, <a

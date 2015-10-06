@@ -8,18 +8,29 @@
 	<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r <b>arcto</b> xt<sub>1</sub> yt<sub>1</sub> xt<sub>2</sub> yt<sub>2</sub>
 	</pre>
 	<p>
-		produces the same effect as arct. It also returns the two tangent
-		point coordinates (xt<sub>1</sub>, yt<sub>1</sub>) and (xt<sub>2</sub>,
-		yt<sub>2</sub>) in user space. arcto is not allowed as an element of a
-		user path, whereas arct is allowed.
+		appends an arc of a circle to the current path, possibly preceded by a
+		straight line segment. Its behavior is identical to that of <a
+			href="arct.html">arct</a>, except that it also returns the user space
+		coordinates of the two tangent points (<i>xt<sub>1</sub></i>, <i>yt<sub>1</sub></i>)
+		and (<i>xt<sub>2</sub></i>, <i>yt<sub>2</sub></i>) on the operand
+		stack.
+	</p>
+	<p>
+		<b>arcto</b> is not allowed as an element of a user path (see Section
+		<a href="../../../4/6.html">4.6, “User Paths”</a>), whereas <a
+			href="arct.html">arct</a> is allowed.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
 			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
 	<p>
 		<b>See Also:</b> <a href="arc.html">arc</a>, <a href="arcn.html">arcn</a>,
 		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+	</p>
 </body>
 </html>

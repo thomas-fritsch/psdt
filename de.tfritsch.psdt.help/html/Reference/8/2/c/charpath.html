@@ -6,33 +6,39 @@
 <body>
 	<h3>charpath</h3>
 	<pre>string bool <b>charpath</b> -</pre>
-	<p>obtains the character path outlines that would result if string
-		were shown at the current point using show. Instead of painting the
-		path, however, charpath appends the path to the current path. This
-		yields a result suitable for general filling, stroking, or clipping
-		false
 	<p>
-		The bool operand determines what happens if the character path is
-		designed to be stroked rather than filled or outlined. If bool is <a
-			href="../f/false.html">false</a>, charpath simply appends the
-		character path to the current path; the result is suitable only for
-		stroking. If bool is <a href="../t/true.html">true</a>, charpath
-		applies the strokepath operator to the character path; the result is
-		suitable for filling or clipping, but not for stroking. charpath does
-		not produce results for portions of a character defined as images or
-		masks rather than as paths.
+		obtains the character path outlines that would result if <i>string</i>
+		were shown at the current point using <a href="../s/show.html">show</a>.
+		Instead of painting the path, however, <b>charpath</b> appends the
+		path to the current path. This yields a result suitable for general
+		filling, stroking, or clipping (see Section <a
+			href="../../../4/4.html">4.4, “Path Construction”</a>; <a
+			href="../../../4/5.html">4.5, “Painting”</a>; and <a
+			href="../../../5/1.html">5.1, “Organization and Use of Fonts”</a>).
+	</p>
+	<p>
+		The <i>bool</i> operand determines what happens if the character path
+		is designed to be stroked rather than filled or outlined. If <i>bool</i>
+		is <i>false</i>, charpath simply appends the character path to the
+		current path; the result is suitable only for stroking. If bool is <i>true</i>,
+		<b>charpath</b> applies the <a href="../s/strokepath.html">strokepath</a>
+		operator to the character path; the result is suitable for filling or
+		clipping, but not for stroking. <b>charpath</b> does not produce
+		results for portions of a character defined as images or masks rather
+		than as paths.
 	</p>
 	<p>
 		The outlines of some fonts are protected. (In Level 1 implementations,
 		this applies to all fonts; in Level 2, only to certain special fonts
 		and not to ordinary Type 1 or Type 3 fonts.) If the current font is
-		protected, using charpath to obtain its outlines causes the <a
+		protected, using <b>charpath</b> to obtain its outlines causes the <a
 			href="../p/pathforall.html">pathforall</a> and <a
 			href="../u/upath.html">upath</a> operators to be disabled for as long
 		as those outlines remain in the current path.
 	</p>
 	<p>
-		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>

@@ -6,12 +6,26 @@
 <body>
 	<h3>currentgray</h3>
 	<pre>- <b>currentgray</b> num</pre>
-	<p>returns the gray value of the current color parameter in the
-		graphics state. If the current color space is DeviceGray, currentgray
-		returns the color value most recently specified to setgray or
-		setcolor. If the current color space is DeviceRGB or DeviceCMYK,
-		currentgray converts the current color to a gray value. For any other
-		color space, currentgray returns 0.0.</p>
+	<p>returns the gray level equivalent to the current color in the
+		graphics state. The result is determined in various ways, depending on
+		the current color space:</p>
+	<ul>
+		<li>If the current color space is <b>DeviceGray</b>, <b>currentgray</b>
+			returns the value of the current color directly.
+		</li>
+		<li>If the current color space is <b>DeviceRGB</b> or <b>DeviceCMYK</b>,
+			<b>currentgray</b> converts the current color to an equivalent gray
+			level by the formulas discussed in Section <a
+			href="../../../7/2.html">7.2, "Conversions among Device Color
+				Spaces."</a>
+		</li>
+		<li>If the current color space is an <b>Indexed</b> space or is a
+			<b>Separation</b> space with its alternative color space selected, <b>currentgray</b>
+			applies the methods above to the underlying color space.
+		</li>
+		<li>For any other color space, <b>currentgray</b> returns 0.0.
+		</li>
+	</ul>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
@@ -20,7 +34,8 @@
 			href="currentcolor.html">currentcolor</a>, <a
 			href="currentcolorspace.html">currentcolorspace</a>, <a
 			href="currenthsbcolor.html">currenthsbcolor</a>, <a
-			href="currentrgbcolor.html">currentrgbcolor</a>
+			href="currentrgbcolor.html">currentrgbcolor</a>, , <a
+			href="currentcmykcolor.html">currentcmykcolor</a>
 	</p>
 </body>
 </html>

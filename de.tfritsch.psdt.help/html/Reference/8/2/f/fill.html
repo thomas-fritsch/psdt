@@ -6,21 +6,31 @@
 <body>
 	<h3>fill</h3>
 	<pre>- <b>fill</b> -</pre>
-	<p>paints the area enclosed by the current path with the current
-		color. Any previous contents of that area on the current page are
-		obscured, so areas may be erased by filling with color set to white.</p>
-	<p>Before painting, fill implicitly closes any open subpaths of the
-		current path. The inside of the current path is determined by the
-		normal non-zero winding number rule.</p>
-	<p>fill implicitly performs a newpath after it has finished filling
-		the current path. To preserve the current path across a fill
-		operation, use the sequence:</p>
-	<p>gsave fill grestore</p>
+	<p>
+		paints the area inside the current path with the current color. The
+		nonzero winding number rule is used to determine what points lie
+		inside the path (see <a href="../../../4/5/2.html#1">"Nonzero
+			Winding Number Rule" on page 195</a>).
+	</p>
+	<p>
+		<b>fill</b> implicitly closes any open subpaths of the current path
+		before painting. Any previous contents of the filled area are
+		obscured, so an area can be erased by filling it with the current
+		color set to white.
+	</p>
+	<p>
+		After filling the current path, <b>fill</b> clears it with an implicit
+		<a href="../n/newpath.html">newpath</a> operation. To preserve the
+		current path across a <b>fill</b> operation, use the sequence
+	</p>
+	<pre>gsave
+  fill
+grestore</pre>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../c/clip">clip.html</a>, <a
+		<b>See Also:</b> <a href="../c/clip.html">clip</a>, <a
 			href="../e/eofill.html">eofill</a>, <a href="../s/stroke.html">stroke</a>,
 		<a href="../u/ufill.html">ufill</a>
 	</p>

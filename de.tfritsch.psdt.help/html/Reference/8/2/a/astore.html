@@ -7,18 +7,19 @@
 	<h3>astore</h3>
 	<pre>any<sub>0</sub> ... any<sub>n-1</sub> array <b>astore</b> array</pre>
 	<p>
-		stores the objects any<sub>0</sub> through any<sub>n-1</sub> from the
-		operand stack into array, where n is the length of array. The astore
-		operator first removes the array operand from the stack and determines
-		its length. It then removes that number of objects from the stack,
-		storing the topmost one into element n - 1 of array and the bottommost
-		one into element 0 of array. Finally, it pushes array back on the
-		stack. Note that astore cannot be performed on <a
-			href="../p/packedarray.html">packed arrays</a>.
+		stores the objects <i>any<sub>0</sub></i> through <i>any<sub>n-1</sub></i>
+		from the operand stack into <i>array</i>, where <i>n</i> is the length
+		of <i>array<</i>. The <b>astore</b> operator first removes the <i>array</i>
+		operand from the stack and determines its length. It then removes that
+		number of objects from the stack, storing the topmost one into element
+		<i>n</i>-1 of <i>array</i> and the bottommost one into element 0 of <i>array</i>.
+		Finally, it pushes <i>array</i> back on the stack. Note that <b>astore</b>
+		cannot be performed on packed arrays.
 	<p>
-		If the value of array is in global VM and any of any<sub>0</sub> ...
-		any<sub>n-1</sub> are composite objects whose values are in local VM,
-		an <a href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+		If the value of <i>array</i> is in global VM and any of <i>any<sub>0</sub></i>
+		... <i>any<sub>n-1</sub></i> are composite objects whose values are in
+		local VM, an <a href="../i/invalidaccess.html">invalidaccess</a> error
+		occurs.
 	<p>
 		<b>Example</b>
 	<pre>

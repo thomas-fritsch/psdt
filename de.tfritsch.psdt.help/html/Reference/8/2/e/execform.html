@@ -8,18 +8,27 @@
 		execform <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>form <b>execform</b> -</pre>
-	<p>paints a form specified by a form dictionary. The graphical
-		output produced by execform is defined by the form dictionary's
-		PaintProc procedure.</p>
-	<p>If this is the first invocation of execform for form, execform
+	<p>
+		paints a form defined by a form dictionary constructed as described in
+		Section <a href="../../../4/7.html">4.7, "Forms."</a> The graphical
+		output produced by execform is defined by the form dictionary's <b>PaintProc</b>
+		procedure.
+	</p>
+	<p>
+		If this is the first invocation of <b>execform</b> for form, <b>execform</b>
 		first verifies that the dictionary contains the required entries. Then
-		it adds an entry to the dictionary with the key Implementation, whose
-		value is private to the implementation. Finally, it makes the
-		dictionary read-only. (execform performs these alterations directly to
-		the operand dictionary; it does not copy the dictionary.)</p>
-	<p>When execform needs to call the PaintProc procedure, it pushes
-		the form dictionary on the operand stack, then executes the equivalent
-		of</p>
+		it adds an entry to the dictionary with the key <i>Implementation</i>,
+		whose value is private to the PostScript interpreter. Finally, it
+		makes the dictionary read-only. (<b>execform</b> performs these
+		alterations directly to the operand dictionary; it does not copy the
+		dictionary. These actions succeed even if the dictionary is already
+		read-only.)
+	</p>
+	<p>
+		When <b>execform</b> needs to call the <b>PaintProc</b> procedure, it
+		pushes the form dictionary on the operand stack, then executes the
+		equivalent of the following code:
+	</p>
 	<pre>
 gsave                          % Operand stack: dict
   dup /Matrix get concat
@@ -31,15 +40,20 @@ gsave                          % Operand stack: dict
   exec                         % Execute PaintProc with dict on stack
 grestore
 </pre>
-	<p>The PaintProc procedure is expected to consume the dictionary
+	<p>
+		The <b>PaintProc</b> procedure is expected to consume the dictionary
 		operand and to execute a sequence of graphics operators to paint the
-		form. The PaintProc must always produce the same output, given the
-		same graphics state parameters, independent of the number of times it
-		is called and independent, for example, of the contents of userdict.
-		The PostScript language program should not expect any particular
-		execution of execform to cause execution of the specified PaintProc.</p>
-	<p>The documented errors are those produced directly by execform.
-		Obviously, the PaintProc can cause other errors.</p>
+		form. The <b>PaintProc</b> procedure must always produce the same
+		output given the same graphics state parameters, independently of the
+		number of times it is called and independently, for example, of the
+		contents of <a href="../u/userdict.html">userdict</a>. The PostScript
+		program should not expect any particular invocation of <b>execform</b>
+		to cause the specified PaintProc procedure to be executed.
+	</p>
+	<p>
+		The errors listed below are those produced directly by <b>execform</b>.
+		The <b>PaintProc</b> procedure can, of course, cause other errors.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a

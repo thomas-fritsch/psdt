@@ -6,35 +6,51 @@
 <body>
 	<h3>imagemask</h3>
 	<pre>width height polarity matrix datasrc <b>imagemask</b> -
-                                dict <b>imagemask</b> -</pre>
-	<p>is similar to the image operator. However, it treats the source
-		image as a mask of 1-bit samples that are used to control where to
-		apply paint with the current color and where not to apply any paint.</p>
-	<p>In the first form of imagemask, the parameters are specified as
+                                dict <b>imagemask</b> -  <i>(LanguageLevel 2)</i>
+	</pre>
+	<p>
+		uses a monochrome sampled image as a <i>stencil</i> mask of 1-bit
+		samples to control where to apply paint to the current page in the
+		current color (see <a href="../../../4/10/6.html#1">"Stencil
+			Masking"</a> on page 302.)
+	</p>
+	<p>
+		In the first form of <b>imagemask</b>, the parameters are specified as
 		separate operands. This is the only form Level 1 implementations
 		support. In the second form, the parameters are contained as key-value
 		pairs in an image dictionary. The second form is a Level 2 feature.
-		The semantics of imagemask do not depend on which way the operands are
-		specified.</p>
-	<p>imagemask uses the width, height, matrix, and datasrc operands
-		in precisely the same way image uses them. The polarity operand is a
-		boolean that determines the polarity of the mask. It controls the
-		sense of the mask only; it has no effect on the color of the pixels
-		that are painted. If polarity is false, portions of the image
-		corresponding to source sample values of 0 are painted, while those
-		corresponding to sample values of 1 are left unchanged. If polarity is
-		true, sample values of 1 are painted and sample values of 0 are left
-		unchanged.</p>
-	<p>In the second form of imagemask, the polarity is specified by
-		means of the Decode entry in the image dictionary. Decode values of [0
-		1] and [1 0] correspond to polarity values of false and true,
-		respectively.</p>
-	<p>In Level 1, datasrc must be a procedure. In Level 2, datasrc may
-		be any data source &mdash;a procedure, string, or readable file object
-		(including a filtered file).</p>
-	<p>imagemask is most useful for painting characters represented as
+		The semantics of <b>imagemask</b> do not depend on which way the
+		operands are specified.
+	</p>
+	<p>
+		<b>imagemask</b> uses the <i>width</i>, <i>height</i>, <i>matrix</i>,
+		and <i>datasrc</i> operands in precisely the same way the <a
+			href="image.html">image</a> operator uses them. The <i>polarity</i>
+		operand is a boolean that determines the polarity of the mask. If <i>polarity</i>
+		is <i>true</i>, portions of the page corresponding to mask values of 1
+		are painted in the current color, while those corresponding to mask
+		values of 0 are left unchanged; if <i>polarity</i> is <i>false</i>,
+		these polarities are reversed. The polarity controls the
+		interpretation of mask samples only; it has no effect on the color of
+		the pixels that are painted.
+	</p>
+	<p>
+		In the second form of <b>imagemask</b>, the polarity is specified by
+		means of the <b>Decode</b> entry in the image dictionary. <b>Decode</b>
+		values of [0 1] and [1 0] correspond to polarity values of <i>false</i>
+		and <i>true</i>, respectively.
+	</p>
+	<p>
+		In LanguageLevel 1, <i>datasrc</i> must be a procedure. In
+		LanguageLevel 2 or 3, it may be any data source&mdash;a procedure, a
+		string, or a readable file, including a filtered file (see Section <a
+			href="../../../3/13.html">3.13, "Filtered Files Details"</a>).
+	</p>
+	<p>
+		<b>imagemask</b> is most useful for painting characters represented as
 		bitmaps. Such bitmaps represent masks through which a color is to be
-		transferred; the bitmaps themselves do not have a color.</p>
+		transferred; the bitmaps themselves do not have a color.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -60,12 +76,19 @@ true                            % Set polarity to paint the 1 bits
    03F800 1E1800 1FF800&gt;}       % Mask data
 imagemask
 </pre>
+	<p>This example paints the image shown in Figure 8.7.</p>
+	<figure>
+		<img src="figure-8.7.png" />
+		<figcaption>
+			<b>FIGURE 8.7</b> imagemask example
+		</figcaption>
+	</figure>
 	<p>
-		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
-		<a href="../t/typecheck.html">typecheck</a>, <a
-			href="../u/undefinedresult.html">undefinedresult</a>, <a
-			href="../l/limitcheck.html">limitcheck</a>, <a
-			href="invalidaccess.html">invalidaccess</a>, <a href="#ioerror">ioerror</a>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</</a>,
+		<a href="../i/ioerror">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,
+		<a href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="image.html">image</a>, <a

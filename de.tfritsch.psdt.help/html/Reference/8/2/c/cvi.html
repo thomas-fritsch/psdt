@@ -9,17 +9,19 @@
 string <b>cvi</b> int</pre>
 	<p>
 		(convert to integer) takes an integer, real, or string object from the
-		stack and produces an integer result. If the operand is an integer,
-		cvi simply returns it. If the operand is a real, it truncates any
-		fractional part (i.e., rounds it toward 0) and converts it to an
-		integer. If the operand is a string, it interprets the characters of
-		the string as a number according to the PostScript syntax rules. If
-		that number is a real, cvi converts it to an integer. cvi executes a <a
-			href="../r/rangecheck.html">rangecheck</a> error if a real is too
-		large to convert to an integer. (See the <a href="../r/round.html">round</a>,
-		<a href="--/t/truncate.html">truncate</a>, <a href="../f/floor.html">floor</a>,
-		and <a href="ceiling.html">ceiling</a> operators, which remove
-		fractional parts without performing type conversion.)
+		stack and produces an integer result. If the operand is an integer, <b>cvi</b>
+		simply returns it. If the operand is a real number, it truncates any
+		fractional part (that is, rounds it toward 0) and converts it to an
+		integer. If the operand is a string, <b>cvi</b> invokes the equivalent
+		of the <a href="../t/token.html">token</a> operator to interpret the
+		characters of the string as a number according to the PostScript
+		syntax rules. If that number is a real number, <b>cvi</b> converts it
+		to an integer. A <a href="../r/rangecheck.html">rangecheck</a> error
+		occurs if a real number is too large to convert to an integer. (See
+		the <a href="../r/round.html">round</a>, <a href="../t/truncate.html">truncate</a>,
+		<a href="../f/floor.html">floor</a>, and <a href="ceiling.html">ceiling</a>
+		operators, which remove fractional parts without performing type
+		conversion.)
 	</p>
 	<p>
 		<b>Examples</b>
@@ -30,11 +32,12 @@ string <b>cvi</b> int</pre>
 520.9 cvi    &rArr;   520
 </pre>
 	<p>
-		<b>Errors:</b> <a href="ik.html#invalidaccess">invalidaccess</a>, <a
-			href="qr.html#rangecheck">rangecheck</a>, <a
-			href="s.html#stackunderflow">stackunderflow</a>, <a
-			href="s.html#syntaxerror">syntaxerror</a>, <a href="t.html#typecheck">typecheck</a>,
-		<a href="u.html#undefinedresult">undefinedresult</a>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../s/syntaxerror.html">syntaxerror</a>, <a
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="#cvr">cvr</a>, <a href="#ceiling">ceiling</a>,

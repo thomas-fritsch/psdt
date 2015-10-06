@@ -15,11 +15,13 @@
 	</pre>
 	<p>performs two entirely different functions, depending on the type
 		of the topmost operand.</p>
-	<p>In the first instance, where the top element on the operand
-		stack is a non-negative integer n, copy pops n from the stack and
-		duplicates the top n elements on the operand stack as shown above.
-		This form of copy operates only on the objects themselves, not on the
-		values of composite objects.</p>
+	<p>
+		In the first instance, where the top element on the operand stack is a
+		non-negative integer <i>n</i>, <b>copy</b> pops <i>n</i> from the
+		stack and duplicates the top <i>n</i> elements on the operand stack as
+		shown above. This form of <b>copy</b> operates only on the objects
+		themselves, not on the values of composite objects.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -28,41 +30,47 @@
 1 2 3 0 copy  &rArr;  1 2 3
 </pre>
 	<p>
-		In the other instances, copy copies all the elements of the first
+		In the other forms, <b>copy</b> copies all the elements of the first
 		composite object into the second. The composite object operands must
 		be of the same type, except that a packed array can be copied into an
-		array. This form of copy copies the value of a composite object. This
-		is quite different from <a href="../d/dup.html"></a> and other
-		operators that copy only the objects themselves . However, copy
-		performs only one level of copying. It does not apply recursively to
-		elements that are themselves composite objects; instead, the values of
-		those elements become shared.
+		array (and only into an array&mdash;<b>copy</b> cannot copy into
+		packed arrays, because they are read-only). This form of <b>copy</b>
+		copies the value of a composite object. This is quite different from <a
+			href="../d/dup.html">dup</a> and other operators that copy only the
+		objects themselves (see Section <a href="../../../3/3/1.html">3.3.1,
+			"Simple and Composite Objects"</a>). However, <b>copy</b> performs only
+		one level of copying. It does not apply recursively to elements that
+		are themselves composite objects; instead, the values of those
+		elements become shared.
 	</p>
 	<p>
 		In the case of arrays or strings, the length of the second object must
-		be at least as great as the first; copy returns the initial subarray
-		or substring of the second operand into which the elements were
-		copied. Any remaining elements of array<sub>2</sub> or string<sub>2</sub>
-		are unaffected. copy cannot copy into packed arrays, because they are
-		read-only, but it can copy packed arrays into ordinary arrays.
+		be at least as great as the first; <b>copy</b> returns the initial <i>subarray</i>
+		or <i>substringy</i> of the second operand into which the elements
+		were copied. Any remaining elements of <i>array<sub>2</sub></i> or <i>string<sub>2</sub></i>
+		are unaffected.
 	</p>
 	<p>
-		In the case of dictionaries, Level 1 implementations require that dict<sub>2</sub>
-		have a length of zero and a maxlength at least as great as the length
-		of dict<sub>1</sub>. Level 2 implementations do not impose this
-		restriction, since dictionaries can expand when necessary.
+		In the case of dictionaries, LanguageLevel 1 requires that <i>dict<sub>2</sub></i>
+		have a length (as returned by the <a href="../l/length.html">length</a>
+		operator) of 0 and a maximum capacity (as returned by the <a
+			href="../m/maxlength.html">maxlength</a> operator) at least as great
+		as the length of <i>dict<sub>1</sub></i>. LanguageLevels 2 and 3 do
+		not impose this restriction, since dictionaries can expand when
+		necessary.
 	</p>
 	<p>
-		The attributes (literal or executable and access) of the result are
-		normally the same as those of the second operand. However, in Level 1
-		implementations, the access attribute of dict<sub>2</sub> is copied
-		from that of dict<sub>1</sub>.
+		The literal/executable and access attributes of the result are
+		normally the same as those of the second operand. However, in
+		LanguageLevel 1 the access attribute of <i>dict<sub>2</sub></i> is
+		copied from that of <i>dict<sub>1</sub></i>.
 	</p>
 	<p>
 		If the value of the destination object is in global VM and any of the
 		elements copied from the source object are composite objects whose
 		values are in local VM, an <a href="../i/invalidaccess.html">invalidaccess</a>
-		error occurs.
+		error occurs (see Section <a href="../../../3/7/2.html">3.7.2,
+			"Local and Global VM"</a>).
 	</p>
 	<p>
 		<b>Example</b>
@@ -73,8 +81,8 @@ a1 dup length array copy  &rArr;  [1 2 3]
 </pre>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
-			href=",,/s/stackoverflow.html">stackoverflow</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
+			href=",,/s/stackoverflow.html">stackoverflow</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>

@@ -7,10 +7,11 @@
 	<h3>currenttransfer</h3>
 	<pre>- <b>currenttransfer</b> proc</pre>
 	<p>
-		returns the current transfer function in the graphics state, assuming
-		that it was established by <a href="../s/settransfer.html">settransfer</a>.
-		If <a href="../s/setcolortransfer.html">setcolortransfer</a> was
-		executed, currenttransfer returns the gray transfer function.
+		returns the current transfer function in the graphics state (see
+		Section <a href="../../../7/3.html">7.3, "Transfer Functions"</a>),
+		assuming that the transfer function was established via the
+		settransfer operator. If setcolortransfer was used instead, only the
+		transfer function for the gray color component is returned.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>

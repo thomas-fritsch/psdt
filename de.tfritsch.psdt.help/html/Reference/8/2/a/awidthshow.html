@@ -7,18 +7,24 @@
 	<h3>awidthshow</h3>
 	<pre>c<sub>x</sub> c<sub>y</sub> char a<sub>x</sub> a<sub>y</sub> string <b>awidthshow</b> -</pre>
 	<p>
-		paints the characters of string in a manner similar to show, but
-		combines the special effects of ashow and widthshow. awidthshow
-		adjusts the width of each character shown by adding a<sub>x</sub> to
-		its x width and a<sub>y</sub> to its y width, thus modifying the
-		spacing between characters. Furthermore, awidthshow modifies the width
-		of each occurrence of the character char by an additional amount (c<sub>x</sub>,
-		c<sub>y</sub>). The interpretation of char is as described for the <a
-			href="../w/widthshow.html">widthshow</a> operator.
-	<p>This operator enables fitting a string of text to a specific
-		width by adjusting all of the spaces between characters by a uniform
-		amount, while independently controlling the width of some specific
-		character, such as the space character.
+		paints the characters of <i>string</i> in a manner similar to <a
+			href="../s/show.html">show</a>, but combines the special effects of <a
+			href="ashow.html">ashow</a> and <a href="../w/widthshow.html">widthshow</a>.
+		<b>awidthshow</b> adjusts the width of each character shown by adding
+		<i>a<sub>x</sub></i> to its <i>x</i> width and <i>a<sub>y</sub></i> to
+		its <i>y</i> width, thus modifying the spacing between characters.
+		Furthermore, <b>awidthshow</b> modifies the width of each occurrence
+		of the character <i>char</i> by an additional amount (<i>c<sub>x</sub></i>,
+		<i>c<sub>y</sub></i>). The interpretation of <i>char</i> is as
+		described for the <a href="../w/widthshow.html">widthshow</a>
+		operator.
+	<p>
+		This operator enables fitting a string of text to a specific width by
+		adjusting the spacing between all glyphs by a uniform amount, while
+		independently controlling the width of the glyph for a specific
+		character, such as the space character. For a discussion of glyph
+		widths, see Section <a href="../../../5/4.html">5.4, "Glyph Metric
+			Information."</a>
 	<p>
 		<b>Example</b>
 	<pre>

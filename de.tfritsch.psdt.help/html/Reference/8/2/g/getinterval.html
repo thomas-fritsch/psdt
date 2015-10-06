@@ -8,18 +8,27 @@
 	<pre>      array index count <b>getinterval</b> subarray
 packedarray index count <b>getinterval</b> subarray
      string index count <b>getinterval</b> substring</pre>
-	<p>creates a new array, packed array, or string object whose value
+	<p>
+		creates a new array, packed array, or string object whose value
 		consists of some subsequence of the original array, packed array, or
-		string. The subsequence consists of count elements starting at the
-		specified index in the original object. The elements in the
-		subsequence are shared between the original and new objects.</p>
-	<p>The returned subarray or substring is an ordinary array, packed
-		array, or string object whose length is count and whose elements are
-		indexed starting at 0. The element at index 0 in subarray is the same
-		as the element at index index in the original array.</p>
-	<p>getinterval requires index to be a valid index in the original
-		object and count to be a non-negative integer such that index + count
-		is not greater than the length of the original object.</p>
+		string. The subsequence consists of <i>count</i> elements starting at
+		the specified <i>index</i> in the original object. The elements in the
+		subsequence are shared between the original and new objects (see
+		Section <a href="../../../3/3/1.html">3.3.1, "Simple and Composite
+			Objects"</a>).
+	</p>
+	<p>
+		The returned subarray or substring is an ordinary array, packed array,
+		or string object whose length is <i>count</i> and whose elements are
+		indexed starting at 0. The element at index 0 in the result is the
+		same as the element at <i>index</i> in the original object
+	</p>
+	<p>
+		<b>getinterval</b> requires <i>index</i> to be a valid index in the
+		original object and <i>count</i> to be a nonnegative integer such that
+		<i>index</i> + <i>count</i> is not greater than the length of the
+		original object.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

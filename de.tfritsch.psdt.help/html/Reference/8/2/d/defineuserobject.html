@@ -9,10 +9,11 @@
 	</h3>
 	<pre>index any <b>defineuserobject</b> -</pre>
 	<p>
-		establishes an association between the non-negative integer index and
-		the object any in the <a href="../u/UserObjects.html">UserObjects</a>
-		array. First, it creates a UserObjects array in userdict if one is not
-		already present. It extends an existing UserObjects array if
+		establishes an association between the non-negative integer <i>index</i>
+		and the object <i>any</i> in the <a href="../u/UserObjects.html">UserObjects</a>
+		array. First, it creates a <a href="../u/UserObjects.html">UserObjects</a>
+		array in userdict if one is not already present. It extends an
+		existing <a href="../u/UserObjects.html">UserObjects</a> array if
 		necessary. It then executes the equivalent of
 	</p>
 	<pre>
@@ -21,17 +22,20 @@ userdict /UserObjects get
 </pre>
 	<p>In other words, it simply stores any into the array at the
 		position specified by index.</p>
-	<p>If defineuserobject creates or extends the UserObjects array, it
-		allocates the array in local VM, regardless of the current VM
-		allocation mode.</p>
 	<p>
-		The behavior of defineuserobject obeys normal PostScript language
-		semantics in all respects. In particular, the modification to the
-		UserObjects array and to userdict, if any, is immediately visible to
-		all contexts that share the same local VM. It can be undone by a
-		subsequent <a href="../r/restore.html">restore</a> according to the
-		usual VM rules. index values must be within the range permitted for
-		arrays; a large index value may cause allocation of an array that
+		If <b>defineuserobject</b> creates or extends the <a
+			href="../u/UserObjects.html">UserObjects</a> array, it allocates the
+		array in local VM, regardless of the current VM allocation mode.
+	</p>
+	<p>
+		The behavior of <b>defineuserobject</b> obeys normal PostScript
+		language semantics in all respects. In particular, the modification to
+		the <a href="../u/UserObjects.html">UserObjects</a> array and to <a
+			href="../u/userdict.html">userdict</a>, if any, is immediately
+		visible to all contexts that share the same local VM. It can be undone
+		by a subsequent <a href="../r/restore.html">restore</a> according to
+		the usual VM rules. index values must be within the range permitted
+		for arrays; a large index value may cause allocation of an array that
 		would exhaust VM resources. Assigning index values sequentially
 		starting at zero is strongly recommended.
 	</p>

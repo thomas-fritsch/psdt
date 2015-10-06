@@ -7,19 +7,28 @@
 	<h3>currentfont</h3>
 	<pre>- <b>currentfont</b> font</pre>
 	<p>
-		returns the current font dictionary in the graphics state. Normally,
-		this is the font most recently established by setfont or selectfont.
-		However, when executed inside a font's BuildGlyph or BuildChar
-		procedure or a procedure invoked by <a href="cshow.html">cshow</a>,
-		currentfont returns the currently selected base font (descendant of a
-		composite font).
+		returns the current font or CIDFont dictionary, based on the font
+		parameter in the graphics state. Normally, <b>currentfont</b> returns
+		the value of the font parameter, as set by <a href="../s/setfont.html">setfont</a>
+		or <a href="../s/selectfont.html">selectfont</a> (and also returned by
+		<a href="../r/rootfont.html">rootfont</a>). However, when the font
+		parameter denotes a composite font, and <b>currentfont</b> is executed
+		inside the <b>BuildGlyph</b>, <b>BuildChar</b>, or <b>CharStrings</b>
+		procedure of a descendant base font or CIDFont (or inside a procedure
+		invoked by <a href="cshow.html">cshow</a>), <b>currentfont</b> returns
+		the current descendant base font or CIDFont. (Of course, if the
+		procedure calls <a href="../s/setfont.html">setfont</a> or <a
+			href="../s/selectfont.html">selectfont</a> first, <a
+			href="../r/rootfont.html">rootfont</a> and <b>currentfont</b> both
+		return the newly selected font.)
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../r/rootfont.html">rootfont</a>, <a
-			href="../s/selectfont.html">selectfont</a>, <a href="s.html#setfont">setfont</a>
+			href="../s/selectfont.html">selectfont</a>, <a
+			href="../s/setfont.html">setfont</a>
 	</p>
 </body>
 </html>

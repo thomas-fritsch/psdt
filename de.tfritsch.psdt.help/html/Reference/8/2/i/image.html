@@ -7,50 +7,71 @@
 	<h3>image</h3>
 	<pre>width height bits/sample matrix datasrc <b>image</b> -
                                    dict <b>image</b> -</pre>
-	<p>paints a sampled image onto the current page. The description
-		here only summarizes the image operator.</p>
-	<p>The sampled image is a rectangular array of width x height
-		sample values, each of which consists of bits/sample bits of data (1,
-		2, 4, 8, or 12). The data is received as a sequence of characters-in
-		other words, 8-bit integers in the range 0 to 255. If bits/sample is
-		less than 8, sample values are packed left to right within a character</p>
-	<p>In the first form of image, the parameters are specified as
-		separate operands. This is the only form Level 1 implementations
-		support. image renders a monochrome image according to the DeviceGray
-		color space, regardless of the current color space.</p>
-	<p>In the second form, the parameters are contained as key-value
-		pairs in an image dictionary, which is specified as the single operand
-		of image. This form is a Level 2 feature. image renders either a
-		monochrome or color image according to the current color space
-		parameter in the graphics state. The number of component values per
-		source sample and the interpretations of those values depend on the
-		current color space.</p>
-	<p>The image is considered to exist in its own coordinate system.
-		The rectangular boundary of the image has its lower-left corner at (0,
-		0) and its upper-right corner at (width, height). The matrix operand
-		specifies a transformation from user space to the image coordinate
-		system.</p>
-	<p>In Level 1, datasrc must be a procedure. In Level 2, datasrc may
-		be any data source &mdash;a procedure, string, or readable file object
-		(including a filtered file).</p>
-	<p>If datasrc is a procedure, image executes datasrc repeatedly to
-		obtain the actual image data. datasrc must return (on the operand
-		stack) a string containing any number of additional characters of
-		sample data.</p>
-	<p>If datasrc returns a string of length zero, image will terminate
-		execution prematurely. The sample values are assumed to be received in
-		a fixed order: (0, 0) through (width-1, 0), then (0, 1) through
-		(width-1, 1), and so on.</p>
-	<p>Execution of this operator is not permitted in certain
-		circumstances.</p>
+	<p>
+		paints a sampled image onto the current page. This description only
+		summarizes the general behavior of the image operator; see Section <a
+			href="../../../4/10.html">4.10, "Images,"</a> for full details.
+	</p>
+	<p>
+		The image is a rectangular array of <i>width</i> &times; <i>height</i>
+		sample values, each consisting of <i>bits/sample</i> bits of data.
+		Valid values of <i>bits/sample</i> are 1, 2, 4, 8, or 12. The data is
+		received as a sequence of characters&mdash;that is, 8-bit integers in
+		the range 0 to 255. If <i>bits/sample</i> is less than 8, sample
+		values are packed from left to right within a character (see Section <a
+			href="../../../4/10/2.html">4.10.2, “Sample Representation”</a>).
+	</p>
+	<p>
+		The image is considered to exist in its own coordinate system, or <i>image</i>
+		space. The rectangular boundary of the image has its lower-left corner
+		at coordinates (0, 0) and its upper-right corner at (<i>width</i>, <i>height</i>).
+		The matrix operand defines a transformation from user space to image
+		space.
+	</p>
+	<p>
+		In the first form of the operator, the parameters are specified as
+		separate operands. This form always renders a monochrome image
+		according to the <b>DeviceGray</b> color space, regardless of the
+		current color space in the graphics state. This is the only form
+		supported in LanguageLevel 1.
+	</p>
+	<p>
+		In the second form <i>(LanguageLevel 2)</i>, the parameters are
+		contained as entries in an image dictionary <i>dict</i>, which is
+		supplied as the single operand. This form renders either a monochrome
+		or a color image, according to the current color space. The number of
+		component values per source sample and the interpretation of those
+		values depend on the color space.
+	</p>
+	<p>
+		In LanguageLevel 1, <i>datasrc</i> must be a procedure. In
+		LanguageLevel 2 or 3, it may be any data source&mdash;a procedure, a
+		string, or a readable file, including a filtered file (see Section <a
+			href="../../../3/13.html">3.13, "Filtered Files Details"</a>).
+	</p>
+	<p>
+		If <i>datasrc</i> is a procedure, it is executed repeatedly to obtain
+		the actual image data. <i>datasrc</i> must return a string on the
+		operand stack containing any number of additional characters of sample
+		data. The sample values are assumed to be received in a fixed order:
+		(0, 0) to (<i>width</i> - 1, 0), then (0, 1) to (<i>width</i> - 1, 1),
+		and so on. If <i>datasrc</i> returns a string of length 0, image will
+		terminate execution prematurely.
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="invalidaccess.html">invalidaccess</a>, <a href="ioerror.html">ioerror</a>,
-		<a href="../r/html#rangecheck.html">rangecheck</a>, <a
+		<a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
-			href="../u/undefinedresult.html">undefinedresult</a>, <a
-			href="../u/undefined.html">undefined</a>
+			href="../u/undefined.html">undefined</a>, <a
+			href="../u/undefinedresult.html">undefinedresult</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="imagemask.html">imagemask</a>, <a

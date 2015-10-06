@@ -8,10 +8,9 @@
 	<pre>matrix<sub>1</sub> matrix<sub>2</sub> matrix<sub>3</sub> <b>concatmatrix</b> matrix<sub>3</sub>
 	</pre>
 	<p>
-		replaces the value of matrix<sub>3</sub> by the result of multiplying
-		matrix<sub>1</sub> x matrix<sub>2</sub>, and pushes the modified
-		matrix<sub>3</sub> back on the operand stack. This operator does not
-		affect the CTM.
+		replaces the value of matrix<sub>3</sub> with the matrix product <i>matrix<sub>1</sub></i>
+		&times; <i>matrix<sub>2</sub></i> and pushes the result back on the
+		operand stack. The current transformation matrix is not affected.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
@@ -19,10 +18,11 @@
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="concat.html">concat</a>, <a
-			href="../m/matrix.html">matrix</a>, <a href="../r/rotate.html">rotate</a>,
-		<a href="../s/scale.html">scale</a>, <a href="../s/setmatrix.html">setmatrix</a>,
-		<a href="../t/translate.html">translate</a>
+		<b>See Also:</b> <a href="concatmatrix.html">concatmatrix</a>, <a
+			href="../s/setmatrix.html">setmatrix</a>, <a
+			href="currentmatrix.html">currentmatrix</a>, <a
+			href="../t/translate.html">translate</a>, <a href="../s/scale.html">scale</a>,
+		<a href="../r/rotate.html">rotate</a>
 	</p>
 </body>
 </html>

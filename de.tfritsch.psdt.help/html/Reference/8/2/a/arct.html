@@ -10,51 +10,73 @@
 	<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> r <b>arct</b> -</pre>
 	<p>
 		appends an arc of a circle to the current path, possibly preceded by a
-		straight line segment. The arc is defined by a radius r and two
-		tangent lines.The tangent lines are those drawn from the current
-		point, here called (x<sub>0</sub>, y<sub>0</sub>), to (x<sub>1</sub>,
-		y<sub>1</sub>), and from (x<sub>1</sub>, y<sub>1</sub>) to (x<sub>2</sub>,
-		y<sub>2</sub>). If the current point is undefined, arct executes the
-		error <a href="../n/nocurrentpoint.html">nocurrentpoint</a>.
+		straight line segment. The arc is defined by a radius <i>r</i> and two
+		tangent lines, drawn from the current point (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>)
+		to (<i>x<sub>1</sub></i>, <i>y<sub>1</sub></i>), and from (<i>x<sub>1</sub></i>,
+		<i>y<sub>1</sub></i>) to (<i>x<sub>2</sub></i>, <i>y<sub>2</sub></i>).
+		The center of the arc is located within the inner angle formed by the
+		two tangent lines (see Figure 8.4), and is the only point located at a
+		perpendicular distance r from both lines. The arc begins at the
+		tangent point (<i>xt<sub>1</sub></i>, <i>yt<sub>1</sub></i>) on the
+		first tangent line, passes between the center and the point (<i>x<sub>1</sub></i>,
+		<i>y<sub>1</sub></i>), and ends at the tangent point (xt2, yt2) on the
+		second tangent line. If the current point is undefined, a <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a> error occurs.
+	</p>
 	<p>
-		The center of the arc is located within the inner angle between the
-		tangent lines. It is the only point located at distance r in a
-		direction perpendicular to both lines. The arc begins at the first
-		tangent point (xt<sub>1</sub>, yt<sub>1</sub>) on the first tangent
-		line, passes between its center and the point (x<sub>1</sub>, y<sub>1</sub>),
-		and ends at the second tangent point (xt<sub>2</sub>, yt<sub>2</sub>)
-		on the second tangent line.
+		The arc produced is circular in user space. If user space is scaled
+		nonuniformly (that is, differently in the <i>x</i> and <i>y</i>
+		dimensions), the resulting curve will be elliptical in device space.
+	</p>
 	<p>
-		Before constructing the arc, arct adds a straight line segment from
-		the current point (x<sub>0</sub>, y<sub>0</sub>) to (xt<sub>1</sub>,
-		yt<sub>1</sub>), unless those points are the same. In any event, (xt<sub>2</sub>,
-		yt<sub>2</sub>) becomes the new current point.
-	<p>The curve produced is circular in user space. If user space is
-		scaled non-uniformly (i.e., differently in x and y) arct will produce
-		elliptical curves in device space.
+		If the first tangent point (<i>xt<sub>1</sub></i>, <i>yt<sub>1</sub></i>)
+		is different from the current point (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>),
+		a straight line segment joining those two points is added to the
+		current path preceding the arc. In any event, the second tangent point
+		(<i>xt<sub>2</sub></i>, <i>yt<sub>2</sub></i>) becomes the new current
+		point.
+	</p>
 	<p>
-		If the two tangent lines are collinear, arct merely appends a straight
-		line segment from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>1</sub>, y<sub>1</sub>),
-		considering the arc to be part of a degenerate circle with radius 0 at
-		that point.
+		If the two tangent lines are collinear, the points (<i>xt<sub>1</sub></i>,
+		<i>yt<sub>1</sub></i>) and (<i>xt<sub>2</sub></i>, <i>yt<sub>2</sub></i>)
+		are identical. In this case, the joining arc has length 0 and <b>arct</b>
+		merely appends to the current path a straight line segment from (<i>x<sub>0</sub></i>,
+		<i>y<sub>0</sub></i>) to (<i>x<sub>1</sub></i>, <i>y<sub>1</sub></i>).
+	</p>
 	<p>
 		<b>Examples</b>
+	</p>
+	<figure>
+		<img src="figure-8.4.png" />
+		<figcaption>
+			<b>FIGURE 8.4</b> arct operator
+		</figcaption>
+	</figure>
 	<pre>
 newpath
 0 0 moveto
 0 4 4 4 1 arct
 4 4 lineto
 </pre>
-	<p>This constructs a 4-unit wide, 4-unit high right angle with a
-		1-unit radius &quot;rounded corner.&quot;
+	<p>This example constructs a right angle 4 units wide and 4 units
+		high, with a rounded corner of radius 1 unit (see Figure 8.5).</p>
+	<figure>
+		<img src="figure-8.5.png" />
+		<figcaption>
+			<b>FIGURE 8.5</b> arct operator example
+		</figcaption>
+	</figure>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../s/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
 			href="../u/undefinedresult.html">undefinedresult</a>
+	</p>
 	<p>
 		<b>See Also:</b> <a href="arc.html">arc</a>, <a href="arcn.html">arcn</a>,
 		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+	</p>
 </body>
 </html>

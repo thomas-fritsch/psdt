@@ -6,14 +6,19 @@
 <body>
 	<h3>def</h3>
 	<pre>key value <b>def</b> -</pre>
-	<p>associates key with value in the current dictionary-the one on
-		the top of the dictionary stack. If key is already present in the
-		current dictionary, def simply replaces its value. Otherwise, def
-		creates a new entry for key and stores value with it.</p>
 	<p>
-		If the current dictionary is in global VM and value is a composite
-		object whose value is in local VM, an <a
-			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+		associates <i>key</i> with <i>value</i> in the current
+		dictionary&mdash;the one on the top of the dictionary stack (see
+		Section <a href="../../../3/4.html">3.4, "Stacks"</a>). If <i>key</i>
+		is already present in the current dictionary, <b>def</b> simply
+		replaces its value; otherwise, <b>def</b> creates a new entry for <i>key</i>
+		and stores <i>value</i> with it.
+	</p>
+	<p>
+		If the current dictionary is in global VM and <i>value</i> is a
+		composite object whose value is in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs (see
+		Section <a href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>).
 	</p>
 	<p>
 		<b>Examples</b>

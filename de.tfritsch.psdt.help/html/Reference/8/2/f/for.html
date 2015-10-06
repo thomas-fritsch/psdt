@@ -6,27 +6,34 @@
 <body>
 	<h3>for</h3>
 	<pre>initial increment limit proc <b>for</b> -</pre>
-	<p>executes proc repeatedly, passing it a sequence of values from
-		initial by steps of increment to limit. The for operator expects
-		initial, increment, and limit to be numbers. It maintains a temporary
-		internal variable, known as the control variable, which it first sets
-		to initial. Then, before each repetition, it compares the control
-		variable with the termination value limit. If limit has not been
-		exceeded, it pushes the control variable on the operand stack,
-		executes proc, and adds increment to the control variable.</p>
 	<p>
-		The termination condition depends on whether increment is positive or
-		negative. If increment is positive, for terminates when the control
-		variable becomes greater than limit. If increment is negative, for
-		terminates when the control variable becomes less than limit. If
-		initial meets the termination condition, for does not execute proc at
-		all. If proc executes the <a href="../e/exit.html">exit</a> operator,
-		for terminates prematurely.
+		executes the procedure <i>proc</i> repeatedly, passing it a sequence
+		of values from <i>initial</i> by steps of <i>increment</i> to <i>limit</i>.
+		The <b>for</b> operator expects <i>initial</i>, <i>increment</i>, and
+		<i>limit</i> to be numbers. It maintains a temporary internal
+		variable, known as the control variable, which it first sets to <i>initial</i>.
+		Then, before each repetition, it compares the control variable to the
+		termination value <i>limit</i>. If <i>limit</i> has not been exceeded,
+		<b>for</b> pushes the control variable on the operand stack, executes
+		<i>proc</i>, and adds <i>increment</i> to the control variable.
 	</p>
-	<p>Usually, proc will use the value on the operand stack for some
-		purpose. However, if proc does not remove the value, it will remain
-		there. Successive executions of proc will cause successive values of
-		the control variable to accumulate on the operand stack.</p>
+	<p>
+		The termination condition depends on whether <i>increment</i> is
+		positive or negative. If <i>increment</i> is positive, <b>for</b>
+		terminates when the control variable becomes greater than <i>limit</i>.
+		If <i>increment</i> is negative, <b>for</b> terminates when the
+		control variable becomes less than <i>limit</i>. If <i>initial</i>
+		meets the termination condition, <b>for</b> does not execute <i>proc</i>
+		at all. If <i>proc</i> executes the <a href="../e/exit.html">exit</a>
+		operator, <b>for</b> terminates prematurely.
+	</p>
+	<p>
+		Usually, <i>proc</i> will use the value on the operand stack for some
+		purpose. However, if <i>proc</i> does not remove the value, it will
+		remain there. Successive executions of <i>proc</i> will cause
+		successive values of the control variable to accumulate on the operand
+		stack.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>
@@ -41,13 +48,15 @@
 		procedure, so the successive values of the control variable are left
 		on the stack. The last example counts backward from 3 to 1 by halves,
 		leaving the successive values on the stack.</p>
-	<p>Beware of using reals instead of integers for any of the first
-		three operands. Most real numbers are not represented exactly. This
-		can cause an error to accumulate in the value of the control variable,
+	<p>
+		Beware of using reals instead of integers for any of the first three
+		operands. Most real numbers are not represented exactly. This can
+		cause an error to accumulate in the value of the control variable,
 		with possibly surprising results. In particular, if the difference
-		between initial and limit is a multiple of increment, as in the third
-		line of the example, the control variable may not achieve the limit
-		value.</p>
+		between <i>initial</i> and <i>limit</i> is a multiple of <i>increment</i>,
+		as in the third line of the example, the control variable may not
+		achieve the <i>limit</i> value.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a> <a
 			href="../s/stackunderflow.html">stackunderflow,</a> <a

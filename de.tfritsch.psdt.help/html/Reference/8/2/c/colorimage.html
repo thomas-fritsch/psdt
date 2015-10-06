@@ -8,45 +8,66 @@
 		colorimage <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>width height bits/comp matrix datasrc<sub>0</sub> ... datasrc<sub>n-1</sub> multi ncomp <b>colorimage</b> -</pre>
-	<p>paints a sampled image onto the current page. The description
-		here only summarizes the colorimage operator.</p>
 	<p>
-		The sampled image is a rectangular array of width x height sample
-		values. colorimage interprets the width, height, and matrix operands
-		in the same way as does <a href="../i/image.html">image</a>.
+		paints a sampled color image onto the current page. This description
+		only summarizes the general behavior of the <b>colorimage</b>
+		operator; see Section <a href="../../../4/10.html">4.10, “Images,”</a>
+		for full details.
 	</p>
-	<p>Each image sample consists of 1, 3, or 4 color components, as
-		specified by the ncomp operand. Each component consists of bits/comp
-		bits (1, 2, 4, 8, or 12). All components are the same size.</p>
-	<p>If ncomp is 1, the samples have only one (gray) component; the
-		operation of colorimage is equivalent to that of image using the first
-		five operands. If ncomp is 3, the samples consist of red, green, and
-		blue components. If ncomp is 4, the samples consist of cyan, magenta,
-		yellow, and black components. The 1, 3, and 4 component values are
-		interpreted according to the DeviceGray, DeviceRGB, and DeviceCMYK
-		color spaces, respectively, regardless of the current color space.</p>
 	<p>
-		The multi operand is a boolean that determines how colorimage is to
-		obtain sample data from its data sources. If multi is false, there is
-		a single data source, datasrc<sub>0</sub>; colorimage obtains all
-		components from that source, interleaved on a per-sample basis. If
-		multi is true, there are ncomp data sources, datasrc<sub>0</sub> ...
-		datasrc<sub>n-1</sub>, one for each component. The data sources can be
-		procedures, strings, or files, including filtered files. They must all
-		be of the same type.
+		The image is a rectangular array of <i>width</i> &times; <i>height</i>
+		sample values, each consisting of 1, 3, or 4 color components, as
+		specified by <i>ncomp</i>. Each component consists of <i>bits/comp</i>
+		bits of data; valid values of <i>bits/comp</i> are 1, 2, 4, 8, or 12.
+		All components are the same size.
+	</p>
+	<p>
+		The image is considered to exist in its own source coordinate system,
+		or <i>image space</i>. The rectangular boundary of the image has its
+		lower-left corner at coordinates (0, 0) and its upper-right corner at
+		(<i>width</i>, <i>height</i>). The <i>matrix</i> operand defines a
+		transformation from user space to image space.
+	</p>
+	<p>
+		If <i>ncomp</i> is 1, image samples have only one (gray) component;
+		the behavior of <b>colorimage</b> is equivalent to that of <a
+			href="../i/image.html">image</a> using the first five operands. If <i>ncomp</i>
+		is 3, samples consist of red, green, and blue components; if <i>ncomp</i>
+		is 4, they consist of cyan, magenta, yellow, and black components. The
+		1-, 3-, and 4-component sample values are interpreted according to the
+		<b>DeviceGray</b>, <b>DeviceRGB</b>, and <b>DeviceCMYK</b> color
+		spaces, respectively (see Section <a href="../../../4/8/2.html">4.8.2,
+			"Device Color Spaces"</a>), regardless of the current color space.
+	</p>
+	<p>
+		The multi operand is a boolean value that determines how <b>colorimage</b>
+		obtains sample data from its data sources. If <i>multi</i> is <i>false</i>,
+		there is a single data source, <i>datasrc<sub>0</sub></i>; <b>colorimage</b>
+		obtains all components from that source, interleaved on a per-sample
+		basis. If <i>multi</i> is <i>true</i>, there are multiple data
+		sources, <i>datasrc<sub>0</sub></i> through <i>datasrc<sub>ncomp-1</sub></i>&mdash;one
+		for each color component. The data sources may be procedures, strings,
+		or files (including filtered files), but must all be of the same type
+		(see Section <a href="../../../4/10/2.html">4.10.2, "Sample
+			Representation"</a>).
 	</p>
 	<p>
 		Unlike <a href="../i/image.html">image</a> and <a
-			href="../i/imagemask.html">imagemask</a>, colorimage does not have an
-		alternate form in which the parameters are bundled into a single image
-		dictionary operand. In Level 2 implementations, given the appropriate
-		image dictionary, the image operator can do anything that colorimage
-		can do, and many other things. For example, image can interpret color
-		samples in any color space, whereas colorimage is limited to the
-		DeviceGray, DeviceRGB, and DeviceCMYK color spaces.
+			href="../i/imagemask.html">imagemask</a>, <b>colorimage</b> does not
+		have an alternate form in which the parameters are bundled into a
+		single image dictionary operand. In LanguageLevels 2 and 3, given the
+		appropriate image dictionary, the <a href="../i/image.html">image</a>
+		operator can do anything that <b>colorimage</b> can do, and much more.
+		For example, <a href="../i/image.html">image</a> can interpret color
+		samples in any color space, whereas <b>colorimage</b> is limited to
+		the <b>DeviceGray</b>, <b>DeviceRGB</b>, and <b>DeviceCMYK</b> color
+		spaces.
 	</p>
-	<p>Execution of this operator is not permitted in certain
-		circumstances.</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, “Types of Color
+			Space.”</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../i/ioerror.html">ioerror</a>, <a href="../l/limitcheck.html">limitcheck</a>,

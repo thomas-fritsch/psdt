@@ -7,12 +7,16 @@
 	<h3>cvr</h3>
 	<pre>   num <b>cvr</b> real
 string <b>cvr</b> real</pre>
-	<p>(convert to real) takes an integer, real, or string object and
-		produces a real result. If the operand is an integer, cvr converts it
-		to a real. If the operand is a real, cvr simply returns it. If the
-		operand is a string, it interprets the characters of the string as a
-		number according to the PostScript syntax rules. If that number is an
-		integer, cvr converts it to a real.</p>
+	<p>
+		(convert to real) takes an integer, real, or string object and
+		produces a real result. If the operand is an integer, <b>cvr</b>
+		converts it to a real number. If the operand is a real number, <b>cvr</b>
+		simply returns it. If the operand is a string, <b>cvr</b> invokes the
+		equivalent of the <a href="../t/token.html">token</a> operator to
+		interpret the characters of the string as a number according to the
+		PostScript syntax rules. If that number is an integer, <b>cvr</b>
+		converts it to a real number.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../l/limitcheck.html">limitcheck</a>, <a

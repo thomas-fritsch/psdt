@@ -8,18 +8,23 @@
 		gstate <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>- <b>gstate</b> gstate</pre>
-	<p>creates a new gstate (graphics state) object and pushes it on
-		the operand stack. Its initial value is a copy of the current graphics
-		state.</p>
-	<p>This operator consumes VM; it is the only graphics state
-		operator that does. The gstate is allocated in either local or global
-		VM according to the current VM allocation mode.</p>
-	<p>If gstate is allocated in global VM, gstate will generate an
-		invalidaccess error if any of the composite objects in the current
-		graphics state are in local VM. Such objects might include the current
-		font, screen function, halftone dictionary, transfer function, or dash
-		pattern. In general, allocating gstate objects in global VM is risky
-		and should be avoided.</p>
+	<p>returns a copy of the current graphics state on the operand
+		stack.</p>
+	<p>
+		The result is returned as a new gstate (graphics state) object,
+		allocated in either local or global VM according to the current VM
+		allocation mode (see Section <a href="../../../3/7/2.html">3.7.2,
+			"Local and Global VM"</a>). <b>gstate</b> is thus the only graphics state
+		operator that consumes VM.
+	</p>
+	<p>
+		If <i>gstate</i> is allocated in global VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error will occur if
+		any of the composite objects in the current graphics state are in
+		local VM. Such objects might include the current halftone screen,
+		transfer function, or dash pattern. In general, allocating gstate
+		objects in global VM is risky and should be avoided.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackoverflow.html">stackoverflow</a>, <a

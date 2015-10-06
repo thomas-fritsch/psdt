@@ -7,7 +7,7 @@
 	<h3>
 		&gt;&gt; <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
-	<pre>mark key<sub>1</sub> value<sub>1</sub> ... key<sub>n</sub> value<sub>n</sub> <b>>&gt;&gt;</b> dict</pre>
+	<pre>mark key<sub>1</sub> value<sub>1</sub> ... key<sub>n</sub> value<sub>n</sub> <b>&gt;&gt;</b> dict</pre>
 	<p>creates and returns a dictionary containing the specified
 		key-value pairs. The operands are a mark followed by an even number of
 		objects, which the operator uses alternately as keys and values to be
@@ -21,7 +21,9 @@
 		occurs if there is an odd number of objects above the topmost mark on
 		the stack.
 	</p>
-	<p>&gt;&gt; is equivalent to:</p>
+	<p>
+		The <b>&gt;&gt;</b> operator is equivalent to:
+	</p>
 	<pre>
 counttomark 2 idiv
 dup dict
@@ -40,11 +42,14 @@ end
   /Collate false
 &gt;&gt; setpagedevice
 </pre>
-	<p>This example constructs a dictionary containing three key-value
-		pairs, which it immediately passes to the setpagedevice operator.</p>
+	<p>
+		This example constructs a dictionary containing three key-value pairs,
+		which it immediately passes to the <b>setpagedevice</b> operator.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
+			href="../r/typecheck.html">typecheck</a>, <a
 			href="../u/unmatchedmark.html">unmatchedmark</a>, <a
 			href="../v/VMerror.html">VMerror</a>
 	</p>

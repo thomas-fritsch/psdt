@@ -8,18 +8,37 @@
 		currentcmykcolor <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>- <b>currentcmykcolor</b> cyan magenta yellow black</pre>
-	<p>returns the current color in the graphics state according to the
-		cyan-magenta-yellow-black color space. If the current color space is
-		DeviceCMYK, currentcmykcolor returns the color values most recently
-		specified by setcmykcolor or setcolor. If the current color space is
-		DeviceRGB or DeviceGray, currentcmykcolor converts the current color
-		to CMYK. For any other color space, currentcmykcolor returns 0.0 0.0
-		0.0 1.0.</p>
+	<p>returns the four components of the current color in the graphics
+		state according to the CMYK (cyan-magenta-yellow-black) color model.
+		The result is determined in various ways, depending on the current
+		color space:</p>
+	<ul>
+		<li>If the current color space is <b>DeviceCMYK</b>, <b>currentcmykcolor</b>
+			returns the value of the current color directly.
+		</li>
+		<li>If the current color space is <b>DeviceGray</b> or <b>DeviceRGB</b>,
+			<b>currentcmykcolor</b> converts the current color to equivalent CMYK
+			components by the formulas discussed in Section <a
+			href="../../../7/2.html">7.2, “Conversions among Device Color
+				Spaces.”</a></li>
+		<li>If the current color space is an <b>Indexed</b> space or is a
+			<b>Separation</b> or <b>DeviceN</b> space with its alternative color
+			space selected, <b>currentcmykcolor</b> applies the methods above to
+			the underlying color space.
+		</li>
+		<li>For any other color space, <b>currentcmykcolor</b> returns
+			0.0 for all four CMYK components.
+		</li>
+	</ul>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../s/setcmykcolor.html">setcmykcolor</a>
+		<b>See Also:</b> <a href="../s/setcmykcolor.html">setcmykcolor</a>, <a
+			href="currentcolorspace.html">currentcolorspace</a>, <a
+			href="currentcolor.html">currentcolor</a>, <a href="currentgray.html">currentgray</a>,
+		<a href="currentrgbcolor.html">currentrgbcolor</a>, <a
+			href="currenthsbcolor.html">currenthsbcolor</a>
 	</p>
 </body>
 </html>

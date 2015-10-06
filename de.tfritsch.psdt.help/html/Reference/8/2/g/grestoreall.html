@@ -6,12 +6,19 @@
 <body>
 	<h3>grestoreall</h3>
 	<pre>- <b>grestoreall</b> -</pre>
-	<p>repeatedly pops the graphics state stack until it encounters
-		either the bottommost graphics state or one that was saved by save as
-		opposed to gsave, leaving that state on top of the graphics state
-		stack. It then resets the current graphics state from that saved one.</p>
 	<p>
-		<b>Errors:</b> (none)
+		repeatedly performs <a href="grestore.html">grestore</a> operations
+		until it encounters a graphics state that was saved by a <a
+			href="../s/save.html">save</a> operation (as opposed to <a
+			href="gsave.html">gsave</a>), leaving that state on the top of the
+		graphics state stack and resetting the current graphics state from it.
+		If no such graphics state is encountered (which can happen only during
+		an unencapsulated job), the current graphics state is reset to the
+		bottommost state on the stack and the stack is cleared to empty. If
+		the graphics state stack is empty, <b>grestoreall</b> has no effect.
+	</p>
+	<p>
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="gsave.html">gsave</a>, <a

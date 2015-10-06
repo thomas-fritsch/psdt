@@ -5,49 +5,77 @@
 </head>
 <body>
 	<h3>arc</h3>
-	<pre>x y r ang<sub>1</sub> ang<sub>2</sub> <b>arc</b> -</pre>
+	<pre>x y r angle<sub>1</sub> angle<sub>2</sub> <b>arc</b> -</pre>
 	<p>
-		appends a counterclockwise arc of a circle to the current path,
-		possibly preceded by a straight line segment. The arc has (x, y) as
-		center, r as radius, ang<sub>1</sub> the angle of a vector from (x, y)
-		of length r to the first endpoint of the arc, and ang<sub>2</sub> the
-		angle of a vector from (x, y) of length r to the second endpoint of
-		the arc. arc
-	<p>If there is a current point, the arc operator includes a
-		straight line segment from the current point to the first endpoint of
-		this arc and then adds the arc into the current path. If the current
-		path is empty, the arc operator does not produce the initial straight
-		line segment. In any event, the second endpoint of the arc becomes the
-		new current point.
-	<p>Angles are measured in degrees counterclockwise from the
-		positive x-axis of the current user coordinate system. The curve
-		produced is circular in user space. If user space is scaled
-		non-uniformly (i.e., differently in x and y) arc will produce
-		elliptical curves in device space.
+		appends an arc of a circle to the current path, possibly preceded by a
+		straight line segment. The arc is centered at coordinates (<i>x</i>, <i>y</i>)
+		in user space, with radius <i>r</i>. The operands angle<sub>1</sub>
+		and angle<sub>2</sub> define the endpoints of the arc by specifying
+		the angles of the vectors joining them to the center of the arc. The
+		angles are measured in degrees counterclockwise from the positive x
+		axis of the current user coordinate system (see Figure 8.1).
+	</p>
+	<figure>
+		<img src="figure-8.1.png" />
+		<figcaption>
+			<b>FIGURE 8.1</b> arc operator
+		</figcaption>
+	</figure>
 	<p>
-		The operators that produce arcs (<a href="arc.html"></a>, <a
-			href="arcn.html">arcn</a>, <a href="arct.html">arct</a>, and <a
-			href="arcto.html">arcto</a> represent them internally as one or more
-		Bezier cubic curves. This is done with sufficient accuracy that a
-		faithful rendition of an arc is produced. However, a program that
-		reads the constructed path using pathforall will encounter <a
-			href="../c/curveto.html">curveto</a> segments where arcs were
-		specified originally.
+		The arc produced is circular in user space. If user space is scaled
+		nonuniformly (that is, differently in the <i>x</i> and <i>y</i>
+		dimensions), the resulting curve will be elliptical in device space.
+	</p>
+	<p>If there is a current point, a straight line segment from the
+		current point to the first endpoint of the arc is added to the current
+		path preceding the arc itself. If the current path is empty, this
+		initial line segment is omitted. In either case, the second endpoint
+		of the arc becomes the new current point.</p>
+	<p>
+	<p>
+		If <i>angle<sub>2</sub></i> is less than <i>angle<sub>1</sub></i>, it
+		is increased by multiples of 360 until it becomes greater than or
+		equal to <i>angle<sub>1</sub></i>. No other adjustments are made to
+		the two angles. In particular, the angle subtended by the arc is not
+		reduced modulo 360; if the difference <i>angle<sub>2</sub></i> - <i>angle<sub>1</sub></i>
+		exceeds 360, the resulting path will trace portions of the circle more
+		than once.
+	</p>
+	<p>
+		The arc is represented internally by one or more cubic Bézier curves
+		(see <a href="../c/curveto.html">curveto</a>) approximating the
+		required shape. This is done with sufficient accuracy to produce a
+		faithful rendition of the required arc. However, a program that reads
+		the constructed path using <a href="../p/pathforall.html">pathforall</a>
+		will encounter <a href="../c/curveto.html">curveto</a> segments where
+		arcs were specified originally.
+	</p>
 	<p>
 		<b>Example</b>
+	</p>
 	<pre>
 newpath
   0 0 moveto
   0 0 1 0 45 arc
 closepath
 </pre>
-	This constructs a 1-unit radius, 45-degree &quot;pie slice.&quot;
+	<p>This example constructs a 45-degree &quot;pie slice&quot; with a
+		1-unit radius, centered at the coordinate origin (see Figure 8.2).</p>
+	<figure>
+		<img src="figure-8.2.png" />
+		<figcaption>
+			<b>FIGURE 8.2</b> arc operator example
+		</figcaption>
+	</figure>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
+	</p>
 	<p>
 		<b>See Also:</b> <a href="#arcn">arcn</a>, <a href="arct.html">arct</a>,
 		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+	</p>
 </body>
 </html>

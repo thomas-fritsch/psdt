@@ -5,31 +5,62 @@
 </head>
 <body>
 	<h3>definefont</h3>
-	<pre>key font <b>definefont</b> font</pre>
-	<p>registers font as a font dictionary associated with key (usually
-		a name). definefont first checks that font is a well-formed font
-		dictionary-in other words, contains all required key-value pairs. It
-		inserts an additional entry whose key is FID and whose value is an
-		object of type fontID. The dictionary must be large enough to
-		accommodate this additional entry. It makes the dictionary's access
-		read-only. Finally, it associates key with font in the font directory.</p>
-	<p>In Level 2, it is permissible to associate a font dictionary
-		with more than one key. If font has already been registered,
-		definefont does not alter it in any way.</p>
-	<p>If font is a composite font, definefont also inserts the entries
-		MIDVector and CurMID, and adds entries PrefEnc, EscChar, ShiftIn, and
-		ShiftOut if they are required and are not already present. All the
-		descendant fonts must have been registered by definefont previously.</p>
+	<pre>   key font <b>definefont</b> font
+key cidfont <b>definefont</b> cidfont</pre>
 	<p>
-		Subsequent invocation of findfont with key will return font. Font
-		registration is subject to the normal semantics of VM . In particular,
-		the lifetime of the definition depends on the VM allocation mode at
-		the time definefont is executed. A local definition can be undone by a
-		subsequent <a href="../r/restore.html">restore</a>.
+		registers <i>font</i> or <i>cidfont</i> in the <b>Font</b> resource
+		category as an instance associated with <i>key</i> (usually a name). <b>definefont</b>
+		first checks that <i>font</i> or <i>cidfont</i> is a well-formed
+		dictionary&mdash;in other words, that it contains all entries required
+		in that type of dictionary. It inserts an additional entry whose key
+		is <b>FID</b> and whose value is an object of type fontID. It makes
+		the dictionary's access read-only. Finally, it associates <i>key</i>
+		with <i>font</i> or <i>cidfont</i> in the font directory.
 	</p>
 	<p>
-		definefont is actually a special case of <a href="defineresource.html">defineresource</a>
-		operating on the Font category.
+		<b>definefont</b> distinguishes between a CIDFont and a font by the
+		presence or absence of a <b>CIDFontType</b> entry. If the operand is a
+		CIDFont, <b>definefont</b> also inserts a <b>FontType</b> entry with
+		an appropriate value (see Table 5.11 on page 370).
+	</p>
+	<p>
+		If the operand is a composite font (see Section <a
+			href="../../../5/10.html">5.10, "Composite Fonts"</a>), <b>definefont</b>
+		inserts the entries <b>EscChar</b>, <b>ShiftIn</b>, and <b>ShiftOut</b>
+		if they are not present but are required; it may also insert the
+		implementation-dependent entries <b>PrefEnc</b>, <b>MIDVector</b>, and
+		<b>CurMID</b>. All the descendant fonts must have been registered by <b>definefont</b>
+		previously; descendant CIDFonts must have been either registered by <b>definefont</b>
+		or defined as CIDFont resource instances (with <a
+			href="defineresource.html">defineresource</a>).
+	</p>
+	<p>
+		In LanguageLevel 1, the dictionary must be large enough to accommodate
+		all of the additional entries inserted by <b>definefont</b>. The font
+		must not have been registered previously, and an <b>FID</b> entry must
+		not be present.
+	</p>
+	<p>
+		In LanguageLevels 2 and 3, a <b>Font</b> resource instance can be
+		associated with more than one key. If <i>font</i> or <i>cidfont</i>
+		has already been registered, <b>definefont</b> does not alter it in
+		any way.
+	</p>
+	<p>
+		Subsequent invocation of <a href="../f/findfont.html">findfont</a>
+		with key will return the same resource instance. Font registration is
+		subject to the normal semantics of virtual memory (see Section <a
+			href="../../../3/7.html">3.7, "Memory Management"</a>). In
+		particular, the lifetime of the definition depends on the VM
+		allocation mode at the time <b>definefont</b> is executed. A local
+		definition can be undone by a subsequent <a href="../r/restore.html">restore</a>
+		operation.
+	</p>
+	<p>
+		<b>definefont</b> is actually a special case of <a
+			href="defineresource.html">defineresource</a> operating on the <b>Font</b>
+		category. For details, see <a href="defineresource.html">defineresource</a>
+		and Section <a href="../../../3/9.html">3.9, "Named Resources."</a>
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a

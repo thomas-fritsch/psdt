@@ -9,29 +9,36 @@
 packedarray proc <b>forall</b> -
        dict proc <b>forall</b> -
      string proc <b>forall</b> -</pre>
-	<p>enumerates the elements of the first operand, executing the
-		procedure proc for each element. If the first operand is an array,
-		string, or packed array, forall pushes an element on the operand stack
-		and executes proc for each element in the array, string, or packed
-		array, beginning with the element whose index is 0 and continuing
-		sequentially. The objects pushed on the operand stack are the array,
-		packed array, or string elements. In the case of a string, these
-		elements are integers in the range 0 to 255, not one-character
-		strings.</p>
-	<p>If the first operand is a dictionary, forall pushes a key and a
-		value on the operand stack and executes proc for each key-value pair
-		in the dictionary. The order in which forall enumerates the entries in
-		the dictionary is arbitrary. New entries put in the dictionary during
-		execution of proc may or may not be included in the enumeration.</p>
 	<p>
-		If the first operand is empty (i.e., has length 0), forall does not
-		execute proc at all. If proc executes the <a href="../e/exit.html">exit</a>
-		operator, forall terminates prematurely.
+		enumerates the elements of the first operand, executing the procedure
+		<i>proc</i> for each element. If the first operand is an array, packed
+		array, or string object, <b>forall</b> pushes an element on the
+		operand stack and executes <i>proc</i> for each element in the object,
+		beginning with the element whose index is 0 and continuing
+		sequentially. In the case of a string, the elements pushed on the
+		operand stack are integers in the range 0 to 255, <i>not</i>
+		1-character strings.
 	</p>
-	<p>Although forall does not leave any results on the operand stack
-		when it is finished, the execution of proc may leave arbitrary results
-		there. If proc does not remove each enumerated element from the
-		operand stack, the elements will accumulate there.</p>
+	<p>
+		If the first operand is a dictionary, <b>forall</b> pushes a key and a
+		value on the operand stack and executes <i>proc</i> for each key-value
+		pair in the dictionary. The order in which <b>forall</b> enumerates
+		the entries in the dictionary is arbitrary. New entries put in the
+		dictionary during execution of <i>proc</i> may or may not be included
+		in the enumeration.
+	</p>
+	<p>
+		If the first operand is empty (i.e., has length 0), <b>forall</b> does
+		not execute <i>proc</i> at all. If <i>proc</i> executes the <a
+			href="../e/exit.html">exit</a> operator, <b>forall</b> terminates
+		prematurely.
+	</p>
+	<p>
+		Although <b>forall</b> does not leave any results on the operand stack
+		when it is finished, the execution of <i>proc</i> may leave arbitrary
+		results there. If <i>proc</i> does not remove each enumerated element
+		from the operand stack, the elements will accumulate there.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

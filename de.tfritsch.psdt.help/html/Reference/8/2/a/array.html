@@ -6,13 +6,18 @@
 <body>
 	<h3>array</h3>
 	<pre>int <b>array</b> array</pre>
-	<p>creates an array of length int, each of whose elements is
+	<p>
+		creates an array of length <i>int</i>, each of whose elements is
 		initialized with a null object, and pushes this array on the operand
-		stack. The int operand must be a non-negative integer not greater than
-		the maximum allowable array length . The array is allocated in local
-		or global VM according to the current VM allocation mode.
+		stack. The <i>int</i> operand must be a non-negative integer not
+		greater than the maximum allowable array length (see Appendix B). The
+		array is allocated in local or global VM according to the current VM
+		allocation mode (see Section <a href="../../../3/7/2.html">3.7.2,
+			“Local and Global VM”</a> ).
+	</p>
 	<p>
 		<b>Example</b>
+	</p>
 	<pre>
 3 array  &rArr;  [null null null]
 </pre>

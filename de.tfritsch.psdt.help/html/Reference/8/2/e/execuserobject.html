@@ -9,21 +9,27 @@
 	</h3>
 	<pre>index <b>execuserobject</b> -</pre>
 	<p>
-		executes the object associated with the non-negative integer index in
-		the <a href="../u/UserObjects.html">UserObjects</a> array.
-		execuserobject is equivalent to:
+		executes the object associated with the nonnegative integer <i>index</i>
+		in the <a href="../u/UserObjects.html">UserObjects</a> array (see
+		Section <a href="../../../3/7/6.html">3.7.6, "User Objects"</a>). <b>execuserobject</b>
+		is equivalent to:
 	</p>
 	<p>userdict /UserObjects get exch get exec</p>
-	<p>execuserobject's semantics are similar to those of exec or other
-		explicit execution operators. That is, if the object is executable, it
-		is executed; otherwise, it is pushed on the operand stack.</p>
 	<p>
-		If <a href="../u/UserObjects.html">UserObjects</a> is not defined in
-		userdict because defineuserobject has never been executed, an <a
-			href="../u/undefined.html">undefined</a> error occurs. If index is
-		not a valid index for the existing <a href="../u/UserObjects.html">UserObjects</a>
-		array, a <a href="../r/rangecheck.html">rangecheck</a> error occurs.
-		If index is a valid index but <a href="../d/defineuserobject.html">defineuserobject</a>
+		<b>execuserobject</b>'s behavior is similar to that of <a
+			href="exec.html">exec</a> or other explicit execution operators. That
+		is, if the object is executable, it is executed; otherwise, it is
+		pushed on the operand stack.
+	</p>
+	<p>
+		If <a href="../u/UserObjects.html">UserObjects</a> is not defined in <a
+			href="../u/userdict.html">userdict</a> because <a
+			href="../d/defineuserobject.html">defineuserobject</a> has never been
+		executed, an <a href="../u/undefined.html">undefined</a> error occurs.
+		If <i>index</i> is not a valid index for the existing <a
+			href="../u/UserObjects.html">UserObjects</a> array, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs. If <i>index</i>
+		is a valid index but <a href="../d/defineuserobject.html">defineuserobject</a>
 		has not been executed previously for that index, a null object is
 		returned.
 	</p>

@@ -6,12 +6,15 @@
 <body>
 	<h3>bytesavailable</h3>
 	<pre>file <b>bytesavailable</b> int</pre>
-	<p>returns the number of bytes that are immediately available for
-		reading from file without waiting. The result is -1 if end-of-file has
-		been encountered or if the number of bytes available cannot be
-		determined for other reasons.</p>
 	<p>
-		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a
+		returns the number of bytes immediately available for reading from <i>file</i>
+		without waiting. The result is -1 if end-of-file has been encountered
+		or if the number of bytes available cannot be determined for other
+		reasons.
+	</p>
+	<p>
+		<b>Errors:</b><a href="../i/invalidaccess.html">invalidaccess</a> <a
+			href="../i/ioerror.html">ioerror</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>

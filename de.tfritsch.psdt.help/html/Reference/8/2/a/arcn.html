@@ -5,25 +5,43 @@
 </head>
 <body>
 	<h3>arcn</h3>
-	<pre>x y r ang<sub>1</sub> ang<sub>2</sub> <b>arcn</b> -</pre>
-	<p>(arc negative) behaves like arc, but arcn builds its arc segment
-		in a clockwise direction in user space.
+	<pre>x y r angle<sub>1</sub> angle<sub>2</sub> <b>arcn</b> -</pre>
+	<p>
+		(arc negative) appends an arc of a circle to the current path,
+		possibly preceded by a straight line segment. Its behavior is
+		identical to that of <a href="arc.html">arc</a>, except that the
+		angles defining the endpoints of the arc are measured clockwise from
+		the positive <i>x</i> axis of the user coordinate system, rather than
+		counterclockwise. If <i>angle<sub>2</sub></i> is greater than <i>angle<sub>1</sub></i>,
+		it is decreased by multiples of 360 until it becomes less than or
+		equal to <i>angle<sub>1</sub></i>.
+	</p>
 	<p>
 		<b>Example</b>
+	</p>
 	<pre>
 newpath
   0 0 2 0 90 arc
   0 0 1 90 0 arcn
 closepath
 </pre>
-	This constructs a 2-unit radius, 1-unit wide, 90-degree
-	&quot;windshield wiper swath.&quot;
+	<p>This constructs a 2-unit radius, 1-unit wide, 90-degree
+		&quot;windshield wiper swath.&quot;</p>
+	<figure>
+		<img src="figure-8.3.png" />
+		<figcaption>
+			<b>FIGURE 8.3</b> arcn operator example
+		</figcaption>
+	</figure>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
+	</p>
 	<p>
 		<b>See Also:</b> <a href="arc.html">arc</a>, <a href="arct.html">arct</a>,
 		<a href="arcto.html">arcto</a>, <a href="../c/curveto.html">curveto</a>
+	</p>
 </body>
 </html>

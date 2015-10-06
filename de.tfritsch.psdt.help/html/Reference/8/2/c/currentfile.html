@@ -7,25 +7,33 @@
 	<h3>currentfile</h3>
 	<pre>- <b>currentfile</b> file</pre>
 	<p>returns the file object from which the PostScript interpreter is
-		currently or was most recently reading program input. Precisely,
-		currentfile returns the topmost file object on the execution stack. If
-		there isn't one, it returns an invalid file object that doesn't
-		correspond to any file. This never occurs during execution of ordinary
-		user programs.</p>
-	<p>The file returned by currentfile is usually but not always the
+		currently or was most recently reading program input&mdash;that is,
+		the topmost file object on the execution stack. The returned file has
+		the literal attribute.</p>
+	<p>
+		If there is no file object on the execution stack, <b>currentfile</b>
+		returns an invalid file object that does not correspond to any file.
+		This never occurs during execution of ordinary user programs.
+	</p>
+	<p>
+		The file returned by <b>currentfile</b> is usually but not always the
 		standard input file. An important exception occurs during interactive
-		mode operation. In this case, the interpreter does not read directly
-		from the standard input file; instead, it reads from a file
+		mode operation (see Section <a href="../../../3/8/3.html">3.8.3,
+			"Special Files"</a>). In this case, the interpreter does not read
+		directly from the standard input file; instead, it reads from a file
 		representing an edited statement (each statement is represented by a
-		different file).</p>
-	<p>The currentfile operator is useful for obtaining images or other
-		data residing in the program file itself (see the example below). At
-		any given time, this file is positioned at the end of the last
-		PostScript language token read from the file by the interpreter. If
-		that token was a number or a name immediately followed by a white
-		space character, the file is positioned after the white space
-		character (the first, if there are several). Otherwise it is
-		positioned after the last character of the token.</p>
+		different file).
+	</p>
+	<p>
+		The <b>currentfile</b> operator is useful for obtaining images or
+		other data residing in the program file itself (see the example
+		below). At any given time, this file is positioned at the end of the
+		last PostScript token read from the file by the interpreter. If that
+		token was a number or a name immediately followed by a white-space
+		character, the file is positioned after the white-space character (the
+		first, if there are several); otherwise, it is positioned after the
+		last character of the token.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>

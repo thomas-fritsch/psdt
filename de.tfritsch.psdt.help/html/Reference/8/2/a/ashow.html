@@ -7,16 +7,20 @@
 	<h3>ashow</h3>
 	<pre>a<sub>x</sub> a<sub>y</sub> string <b>ashow</b> -</pre>
 	<p>
-		paints the characters of string in a manner similar to <a
-			href="../s/show.html">show</a>. But while doing so, ashow adjusts the
-		width of each character shown by adding a<sub>x</sub> to the
-		character's x width and a<sub>y</sub> to its y width, thus modifying
-		the spacing between characters. The numbers ax and ay are x and y
-		displacements in the user coordinate system, not in the character
-		coordinate system.
-	<p>This operator enables a string of text to be fitted to a
-		specific width by adjusting all the spaces between characters by a
-		uniform amount.
+		paints glyphs for the characters of <i>string</i> in a manner similar
+		to <a href="../s/show.html">show</a>. But while doing so, <b>ashow</b>
+		adjusts the width of each glyph shown by adding <i>a<sub>x</sub></i>
+		to the glyph's <i>x</i> width and <i>a<sub>y</sub></i> to its <i>y</i>
+		width, thus modifying the spacing between glyphs. The numbers <i>a<sub>x</sub></i>
+		and <i>a<sub>y</sub></i> are <i>x</i> and <i>y</i> displacements in
+		the user coordinate system, not in the glyph system.
+	</p>
+	<p>
+		This operator enables fitting a string of text to a specific width by
+		adjusting all the spacing between glyphs by a uniform amount. For a
+		discussion of glyph widths, see Section <a href="../../../5/4.html">5.4,
+			“Glyph Metric Information.”</a>
+	</p>
 	<p>
 		<b>Example</b>
 	<pre>

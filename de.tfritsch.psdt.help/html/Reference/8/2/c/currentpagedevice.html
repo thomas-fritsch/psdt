@@ -9,18 +9,26 @@
 	</h3>
 	<pre>- <b>currentpagedevice</b> dict</pre>
 	<p>
-		returns a read-only dictionary that describes the page-oriented output
-		device in the current graphics state. currentpagedevice creates a new
-		dictionary if necessary. If the device in the current graphics state
-		is not a page device, currentpagedevice returns an empty dictionary
-		(length of 0). Changes made to the hardware state of the output device
-		since the last execution of <a href="../s/setpagedevice.html">setpagedevice</a>,
-		such as changing paper trays or switches, are not immediately
-		reflected in this dictionary. If the current context is under the
-		control of a job server, the server sets up a device that matches the
-		hardware state before starting each job. At the beginning of each job,
-		therefore, the dictionary currentpagedevice returns matches the
-		current hardware state.
+		returns a read-only dictionary reflecting the current contents of the
+		page device dictionary in the graphics state (see Section <a
+			href="../../../6./1/1.html">6.1.1, "Page Device Dictionary"</a>). If
+		the current output device is not a page device, the dictionary
+		returned will be empty. <b>currentpagedevice</b> creates a new
+		dictionary if necessary. It is unspecified whether parameters that are
+		composite objects are copied from or shared with the original
+		parameters that were given to <a href="../s/setpagedevice.html">setpagedevice</a>.
+	</p>
+	<p>
+		Changes made to the hardware state of the output device since the last
+		execution of <a href="../s/setpagedevice.html">setpagedevice</a>, such
+		as changing paper trays or switch settings, are not immediately
+		reflected in the dictionary returned by <b>currentpagedevice</b>. If
+		the execution environment is under the control of a job server (see
+		Section <a href="../../../3/7/7.html">3.7.7, "Job Execution
+			Environment"</a>), the server sets up a page device dictionary that
+		matches the hardware state before starting each job. At the beginning
+		of each job, therefore, the dictionary returned by <b>currentpagedevice</b>
+		correctly matches the current hardware state of the device.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a

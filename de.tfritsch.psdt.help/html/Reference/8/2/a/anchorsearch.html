@@ -8,17 +8,19 @@
 	<pre>string seek <b>anchorsearch</b> post match true  (if found)
                          string false     (if not found)</pre>
 	<p>
-		determines if the string seek matches the initial substring of string
-		(that is, string is at least as long as seek and the corresponding
-		characters are equal). If it matches, anchorsearch splits string into
-		two segments: match, the portion of string that matches seek, and
-		post, the remainder of string; it then pushes the string objects post
-		and match and the boolean <a href="../t/true.html">true</a>. If not,
-		anchorsearch pushes the original string and the boolean false.
-		anchorsearch is a special case of the <a href="../s/search.html">search</a>
-		operator.
+		determines if the string <i>seek</i> matches the initial substring of
+		<i>string</i> (that is, <i>string</i> is at least as long as <i>seek</i>
+		and the corresponding characters are equal). If it matches, <b>anchorsearch</b>
+		splits <i>string</i> into two segments: <i>match</i>, the portion of <i>string</i>
+		that matches <i>seek</i>, and <i>post</i>, the remainder of <i>string</i>;
+		it then pushes the string objects <i>post</i> and <i>match</i>
+		followed by the boolean value <i>true</i>. Otherwise, it pushes the
+		original string followed by <i>false</i>. <b>anchorsearch</b> is a
+		special case of the <a href="../s/search.html">search</a> operator.
+	</p>
 	<p>
 		<b>Examples</b>
+	</p>
 	<pre>
 (abbc) (ab) anchorsearch  &rArr;  (bc) (ab) true
 (abbc) (bb) anchorsearch  &rArr;  (abbc) false
@@ -30,8 +32,10 @@
 			href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
+	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/search.html">search</a>, <a
 			href="../t/token.html">token</a>
+	</p>
 </body>
 </html>

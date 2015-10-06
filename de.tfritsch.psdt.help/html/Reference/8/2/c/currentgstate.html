@@ -8,14 +8,17 @@
 		currentgstate <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>gstate <b>currentgstate</b> gstate</pre>
-	<p>replaces the value of the gstate object by a copy of the current
-		graphics state and pushes gstate back on the operand stack. If gstate
-		is in global VM, currentgstate will generate an invalidaccess error if
-		any of the composite objects in the current graphics state are in
-		local VM. Such objects might include the current font, screen
-		function, halftone dictionary, transfer function, or dash pattern. In
-		general, allocating gstate objects in global VM is risky and should be
-		avoided.</p>
+	<p>
+		copies the current graphics state to a gstate (graphics state) object
+		and pushes the result back on the operand stack. An <a
+			href="../i/invalidaccess.html">invalidaccess</a> error will occur if
+		<i>gstate</i> is in global VM and any of the composite objects in the
+		current graphics state are in local VM (see Section <a
+			href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>). Such
+		objects might include the current halftone screen, transfer function,
+		or dash pattern. In general, allocating gstate objects in global VM is
+		risky and should be avoided.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

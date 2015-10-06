@@ -8,21 +8,26 @@
 	<pre>any string <b>cvs</b> substring</pre>
 	<p>
 		(convert to string) produces a text representation of an arbitrary
-		object any, stores the text into the supplied string (overwriting some
-		initial portion of its value), and returns a string object designating
-		the substring actually used. If the string is too small to hold the
-		result of conversion, cvs executes the error <a
-			href="../r/rangecheck.html">rangecheck</a>.
+		object <i>any</i>, stores the text into <i>string</i> (overwriting
+		some initial portion of its value), and returns a string object
+		designating the substring actually used. If <i>string</i> is too small
+		to hold the result of the conversion, a <a href="../r/rangecheck.html">rangecheck</a>
+		error occurs.
 	</p>
-	<p>If any is a number, cvs produces a string representation of that
-		number. If any is a boolean, cvs produces either the string true or
-		the string false. If any is a string, cvs copies its contents into
-		string. If any is a name or an operator, cvs produces the text
-		representation of that name or the operator's name. If any is any
-		other type, cvs produces the text --nostringval--.</p>
-	<p>If any is a real number, the precise format of the result string
-		is implementation dependent and not under program control. For
-		example, the value 0.001 might be represented as 0.001 or as 1.0E-3.</p>
+	<p>
+		If <i>any</i> is a number, <b>cvs</b> produces a string representation
+		of that number. If <i>any</i> is a boolean value, <b>cvs</b> produces
+		either the string true or the string false. If <i>any</i> is a string,
+		<b>cvs</b> copies its contents into <i>string</i>. If <i>any</i> is a
+		name or an operator, <b>cvs</b> produces the text representation of
+		that name or the operator's name. If <i>any</i> is any other type, <b>cvs</b>
+		produces the text --nostringval--.
+	</p>
+	<p>
+		If <i>any</i> is a real number, the precise format of the result
+		string is implementation-dependent and not under program control. For
+		example, the value 0.001 might be represented as 0.001 or as 1.0E-3.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

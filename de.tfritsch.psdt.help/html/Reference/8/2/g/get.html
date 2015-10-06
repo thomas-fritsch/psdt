@@ -9,21 +9,20 @@
 packedarray index <b>get</b> any
          dict key <b>get</b> any
      string index <b>get</b> int</pre>
-	<p>gets a single element from the value of an array, packed array,
-		dictionary, or string.</p>
 	<p>
-		If the first operand is an array, packed array, or string, get treats
-		the second operand as an index and returns the element identified by
-		the index, counting from zero. index must be in the range 0 to n-1,
-		where n is the length of the array, packed array, or string. If it is
-		outside this range, get will execute a <a href="../r/rangecheck.html">rangecheck</a>
-		error.
+		returns a single element from the value of the first operand. If the
+		first operand is an array, a packed array, or a string, <b>get</b>
+		treats the second operand as an index and returns the element
+		identified by the index, counting from 0. <i>index</i> must be in the
+		range 0 to <i>n</i> - 1, where <i>n</i> is the length of the array,
+		packed array, or string. If it is outside this range, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs.
 	</p>
 	<p>
-		If the first operand is a dictionary, get looks up the second operand
-		as a key in the dictionary and returns the associated value. If the
-		key is not present in the dictionary, get executes the <a
-			href="../u/undefined.html">undefined</a> error.
+		If the first operand is a dictionary, <b>get</b> looks up the second
+		operand as a key in the dictionary and returns the associated value.
+		If the key is not present in the dictionary, an <a
+			href="../u/undefined.html">undefined</a> error occurs.
 	</p>
 	<p>
 		<b>Examples</b>

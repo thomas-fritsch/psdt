@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Operator Summary</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>8.1 Operator Summary</h2>
+	<h3 id="1">Operand Stack Manipulation Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/p/pop.html">pop</a> -</td>
+			<td>Discard top element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> any<sub>2</sub></i></td>
+			<td><a href="2/e/exch.html">exch</a> <i>any<sub>2</sub> any<sub>1</sub></i></td>
+			<td>Exchange top two elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/d/dup.html">dup</a> <i>any any</i></td>
+			<td>Duplicate top element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> ... any<sub>n</sub>
+					n
+			</i></td>
+			<td><a href="2/c/copy.html">copy</a> <i>any<sub>1</sub> ...
+					any<sub>n</sub> any<sub>1</sub> ... any<sub>n</sub></i></td>
+			<td>Duplicate top n elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>n</sub> ... any<sub>0</sub>
+					n
+			</i></td>
+			<td><a href="2/i/index.html">index</a> <i>any<sub>n</sub>
+					... any<sub>0</sub> any<sub>n</sub></i></td>
+			<td>Duplicate arbitrary element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>n-1</sub> ... any<sub>0</sub>
+					n j
+			</i></td>
+			<td><a href="2/r/roll.html">roll</a> <i>any<sub>(j-1)
+						mod n</sub> ... any<sub>0</sub> any<sub>n-1</sub> ... any<sub>j
+						mod n</sub></i></td>
+			<td>Roll n elements up j times</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="2/c/clear.html">clear</a> &#x251c;</td>
+			<td>Discard all elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="2/c/count.html">count</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub> n
+			</i></td>
+			<td>Count elements on stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/m/mark.html">mark</a> <i>mark</i></td>
+			<td>Push mark on stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark obj<sub>1</sub> ...
+					obj<sub>n</sub></i></td>
+			<td><a href="2/c/cleartomark.html">cleartomark</a> -</td>
+			<td>Discard elements down through mark</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark obj<sub>1</sub> ...
+					obj<sub>n</sub></i></td>
+			<td><a href="2/c/counttomark.html">counttomark</a> <i>mark
+					obj<sub>1</sub> ... obj<sub>n</sub> n
+			</i></td>
+			<td>Count elements down to mark</td>
+		</tr>
+	</table>
+	<h3 id="2">Arithmetic and Math Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub> num<sub>2</sub></i></td>
+			<td><a href="2/a/add.html">add</a> <i>sum</i></td>
+			<td>Return <i>num<sub>1</sub></i> plus <i>num<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub> num<sub>2</sub></i></td>
+			<td><a href="2/d/div.html">div</a> <i>quotient</i></td>
+			<td>Return <i>num<sub>1</sub></i> divided by <i>num<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int<sub>1</sub> int<sub>2</sub></i></td>
+			<td><a href="2/i/idiv.html">idiv</a> <i>quotient</i></td>
+			<td>Return <i>int<sub>1</sub></i> divided by <i>int<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int<sub>1</sub> int<sub>2</sub></i></td>
+			<td><a href="2/m/mod.html">mod</a> <i>remainder</i></td>
+			<td>Return remainder after dividing <i>int<sub>1</sub></i> by <i>int<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub> num<sub>2</sub></i></td>
+			<td><a href="2/m/mul.html">mul</a> <i>product</i></td>
+			<td>Return <i>num<sub>1</sub></i> times <i>num<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub> num<sub>2</sub></i></td>
+			<td><a href="2/s/sub.html">sub</a> <i>difference</i></td>
+			<td>Return <i>num<sub>1</sub></i> minus <i>num<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/a/abs.html">abs</a> <i>num<sub>2</sub></i></td>
+			<td>Return absolute value of <i>num<sub>1</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/n/neg.html">neg</a> <i>num<sub>2</sub></i></td>
+			<td>Return negative of <i>num<sub>1</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/c/ceiling.html">ceiling</a> <i>num<sub>2</sub></i></td>
+			<td>Return ceiling of <i>num<sub>1</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/f/floor.html">floor</a> <i>num<sub>2</sub></i></td>
+			<td>Return floor of <i>num<sub>1</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/r/round.html">round</a> <i>num<sub>2</sub></i></td>
+			<td>Round <i>num<sub>1</sub></i> to nearest integer
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub></i></td>
+			<td><a href="2/t/truncate.html">truncate</a> <i>num<sub>2</sub></i></td>
+			<td>Remove fractional part of <i>num<sub>1</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="2/s/sqrt.html">sqrt</a> <i>real</i></td>
+			<td>Return square root of <i>num</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num den</i></td>
+			<td><a href="2/a/atan.html">atan</a> <i>angle</i></td>
+			<td>Return arctangent of <i>num</i>/<i>den</i> in degrees
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>angle</i></td>
+			<td><a href="2/c/cos.html">cos</a> <i>real</i></td>
+			<td>Return cosine of <i>angle</i> degrees
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>angle</i></td>
+			<td><a href="2/s/sin.html">sin</a> <i>real</i></td>
+			<td>Return sine of <i>angle</i> degrees
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>base exponent</i></td>
+			<td><a href="2/e/exp.html">exp</a> <i>real</i></td>
+			<td>Raise <i>base</i> to <i>exponent</i> power
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="2/l/ln.html">ln</a> <i>real</i></td>
+			<td>Return natural logarithm (base <i>e</i>)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="2/l/log.html">log</a> <i>real</i></td>
+			<td>Return common logarithm (base 10)</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/r/rand.html">rand</a> <i>int</i></td>
+			<td>Generate pseudo-random integer</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="2/s/srand.html">srand</a> -</td>
+			<td>Set random number seed</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/r/rrand.html">rrand</a> <i>int</i></td>
+			<td>Return random number seed</td>
+		</tr>
+	</table>
+	<h3 id="3">Array Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="2/a/array.html">array</a> <i>array</i></td>
+			<td>Create array of length <i>int</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/@/bracketleft.html">[</a> <i>mark</i></td>
+			<td>Start array construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark obj<sub>0</sub> ...
+					obj<sub>n-1</sub></i></td>
+			<td><a href="2/@/bracketright.html">]</a> <i>array</i></td>
+			<td>End array construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array</i></td>
+			<td><a href="2/l/length.html">length</a> <i>int</i></td>
+			<td>Return number of elements in <i>array</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array index</i></td>
+			<td><a href="2/g/get.html">get</a> <i>any</i></td>
+			<td>Return <i>array</i> element indexed by <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array index any</i></td>
+			<td><a href="2/p/put.html">put</a> -</td>
+			<td>Put <i>any</i> into <i>array</i> at <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array index count</i></td>
+			<td><a href="2/g/getinterval.html">getinterval</a> <i>subarray</i></td>
+			<td>Return subarray of <i>array</i> starting at <i>index</i> for
+				<i>count</i> elements
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array<sub>1</sub> index
+					array<sub>2</sub></i>|<i>packedarray<sub>2</sub></i></td>
+			<td><a href="2/p/putinterval.html">putinterval</a> -</td>
+			<td>Replace subarray of <i>array<sub>1</sub></i> starting at <i>index</i><br />
+				by <i>array<sub>2</sub></i>|<i>packedarray<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>0</sub> ... any<sub>n-1</sub>
+					array
+			</i></td>
+			<td><a href="2/a/astore.html">astore</a> <i>array</i></td>
+			<td>Pop elements from stack into <i>array</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array</i></td>
+			<td><a href="2/a/aload.html">aload</a> <i>any<sub>0</sub>
+					... any<sub>n-1</sub> array
+			</i></td>
+			<td>Push all elements of <i>array</i> on stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array<sub>1</sub> array<sub>2</sub></i></td>
+			<td><a href="2/c/copy.html">copy</a> <i>subarray<sub>2</sub></i></td>
+			<td>Copy elements of <i>array<sub>1</sub></i> to initial
+				subarray of <i>array<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array proc</i></td>
+			<td><a href="2/f/forall.html">forall</a> -</td>
+			<td>Execute <i>proc</i> for each element of <i>array</i></td>
+		</tr>
+	</table>
+	<h3 id="4">Packed Array Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any<sub>0</sub> ... any<sub>n-1</sub>
+					n
+			</i></td>
+			<td><a href="2/p/packedarray.html">packedarray</a> <i>packedarray</i></td>
+			<td>Create packed array consisting of <i>n</i> elements from
+				stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="2/s/setpacking.html">setpacking</a> -</td>
+			<td>Set array packing mode for { ... } syntax (<i>true</i> =
+				packed array)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/currentpacking.html">currentpacking</a> <i>bool</i></td>
+			<td>Return array packing mode</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray</i></td>
+			<td><a href="2/l/length.html">length</a> int</td>
+			<td>Return number of elements in <i>packedarray</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray index</i></td>
+			<td><a href="2/g/get.html">get</a> <i>any</i></td>
+			<td>Return <i>packedarray</i> element indexed by <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray index count</i></td>
+			<td><a href="2/g/getinterval.html">getinterval</a> <i>subarray</i></td>
+			<td>Return subarray of <i>packedarray</i> starting at <i>index</i>
+				for <i>count</i> elements
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray</i></td>
+			<td><a href="2/a/aload.html">aload</a> <i>any<sub>0</sub>
+					... any<sub>n-1</sub> packedarray
+			</i></td>
+			<td>Push all elements of <i>packedarray</i> on stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray<sub>1</sub>
+					array<sub>2</sub></i></td>
+			<td><a href="2/c/copy.html">copy</a> <i>subarray<sub>2</sub></i></td>
+			<td>Copy elements of <i>packedarray<sub>1</sub></i> to initial
+				subarray of <i>array<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>packedarray proc</i></td>
+			<td><a href="2/f/forall.html">forall</a> -</td>
+			<td>Execute <i>proc</i> for each element of packedarray
+			</td>
+		</tr>
+	</table>
+	<h3 id="5">Dictionary Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="2/d/dict.html">dict</a> dict</td>
+			<td>Create dictionary with capacity for <i>int</i> elements
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/@/lt-lt.html">&lt;&lt;</a> <i>mark</i></td>
+			<td>Start dictionary construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark key<sub>1</sub> value<sub>1</sub>
+					... key<sub>n</sub> value<sub>n</sub>
+			</i></td>
+			<td><a href="2/@/gt-gt.html">&gt;&gt;</a> <i>dict</i></td>
+			<td>End dictionary construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="2/l/length.html">length</a> <i>int</i></td>
+			<td>Return number of entries in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="2/m/maxlength.html">maxlength</a> <i>int</i></td>
+			<td>Return current capacity of <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="2/b/begin.html">begin</a> -</td>
+			<td>Push <i>dict</i> on dictionary stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/e/end.html">end</a> -</td>
+			<td>Pop current dictionary off dictionary stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i> <i>value</i></td>
+			<td><a href="2/d/def.html">def</a> -</td>
+			<td>Associate <i>key</i> and <i>value</i> in current dictionary
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="2/l/load.html">load</a> <i>value</i></td>
+			<td>Search dictionary stack for <i>key</i> and return associated
+				<i>value</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key value</i></td>
+			<td><a href="2/s/store.html">store</a> -</td>
+			<td>Replace topmost definition of <i>key</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="2/g/get.html">get</a> <i>any</i></td>
+			<td>Return <i>value</i> associated with <i>key</i> in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key value</i></td>
+			<td><a href="2/p/put.html">put</a> -</td>
+			<td>Associate <i>key</i> with <i>value</i> in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="2/u/undef.html">undef</a> -</td>
+			<td>Remove <i>key</i> and its <i>value</i> from <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="2/k/known.html">known</a> bool</td>
+			<td>Test whether <i>key</i> is in <i>dict</i>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="2/w/where.html">where</a> <i>dict true</i><br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or <i>false</i></td>
+			<td>Find dictionary in which <i>key</i> is defined
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict<sub>1</sub> dict<sub>2</sub></i></td>
+			<td><a href="2/c/copy.html">copy</a> <i>dict<sub>2</sub></i></td>
+			<td>Copy contents of <i>dict<sub>1</sub></i> to <i>dict<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict proc</i></td>
+			<td><a href="2/f/forall.html">forall</a> -</td>
+			<td>Execute <i>proc</i>> for each entry in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/currentdict.html">currentdict</a> <i>dict</i></td>
+			<td>Return current dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/e/errordict.html">errordict</a> <i>dict</i></td>
+			<td>Return error handler dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/@/dollar-error.html">$error</a> <i>dict</i></td>
+			<td>Return error control and status dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/systemdict.html">systemdict</a> <i>dict</i></td>
+			<td>Return system dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/u/userdict.html">userdict</a> <i>dict</i></td>
+			<td>Return writeable dictionary in local VM</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/g/globaldict.html">globaldict</a> <i>dict</i></td>
+			<td>Return writeable dictionary in global VM</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/statusdict.html">statusdict</a> <i>dict</i></td>
+			<td>Return product-dependent dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/countdictstack.html">countdictstack</a> <i>int</i></td>
+			<td>Count elements on dictionary stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array</i></td>
+			<td><a href="2/d/dictstack.html">dictstack</a> <i>subarray</i></td>
+			<td>Copy dictionary stack into <i>array</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/cleardictstack.html">cleardictstack</a> -</td>
+			<td>Pop all nonpermanent dictionaries off dictionary stack</td>
+		</tr>
+	</table>
+	<h3 id="6">String Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="2/s/string.html">string</a> <i>string</i></td>
+			<td>Create string of length <i>int</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="2/l/length.html">length</a> <i>int</i></td>
+			<td>Return number of elements in <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string index</i></td>
+			<td><a href="2/g/get.html">get</a> <i>int</i></td>
+			<td>Return string element indexed by <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string index int</i></td>
+			<td><a href="2/p/put.html">put</a> -</td>
+			<td>Put <i>int</i> into <i>string</i> at <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string index count</i></td>
+			<td><a href="2/g/getinterval.html">getinterval</a> <i>substring</i></td>
+			<td>Return substring of <i>string</i> starting at <i>index</i>
+				for <i>count</i> elements
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string<sub>1</sub> index
+					string<sub>2</sub>
+			</i></td>
+			<td><a href="2/p/putinterval.html">putinterval</a> -</td>
+			<td>Replace substring of <i>string<sub>1</sub></i> starting at <i>index</i>
+				by <i>string<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string<sub>1</sub> string<sub>2</sub></i></td>
+			<td><a href="2/c/copy.html">copy</a> <i>substring<sub>2</sub></i></td>
+			<td>Copy elements of <i>string<sub>1</sub></i> to initial
+				substring of <i>string<sub>2</sub></i>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string proc</i></td>
+			<td><a href="2/f/forall.html">forall</a> -</td>
+			<td>Execute <i>proc</i> for each element of <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string seek</i></td>
+			<td><a href="2/a/anchorsearch.html">anchorsearch</a> <i>post
+					match true</i><br />&nbsp;&nbsp;&nbsp;&nbsp; or <i>string false</i></td>
+			<td>Search for <i>seek</i> at start of <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string seek</i></td>
+			<td><a href="2/s/search.html">search</a> <i>post match pre
+					true</i><br />&nbsp;&nbsp;&nbsp;&nbsp; or <i>string false</i></td>
+			<td>Search for <i>seek</i> in <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="2/t/token.html">token</a> <i>post any true</i><br />&nbsp;&nbsp;&nbsp;&nbsp;
+				or <i>false</i></td>
+			<td>Read token from start of <i>string</i></td>
+		</tr>
+	</table>
+	<h3 id="7">Relational, Boolean, and Bitwise Operators</h3>
+	<table></table>
+	<h3 id="8">Control Operators</h3>
+	<table></table>
+	<h3 id="9">Type, Attribute, and Conversion Operators</h3>
+	<table></table>
+	<h3 id="10">File Operators</h3>
+	<table></table>
+	<h3 id="11">Resource Operators</h3>
+	<table></table>
+	<h3 id="12">Virtual Memory Operators</h3>
+	<table></table>
+	<h3 id="13">Miscellaneous Operators</h3>
+	<table></table>
+	<h3 id="14">Graphics State Operators (Device-Independent)</h3>
+	<table></table>
+	<h3 id="15">Graphics State Operators (Device-Dependent)</h3>
+	<table></table>
+	<h3 id="16">Coordinate System and Matrix Operators</h3>
+	<table></table>
+	<h3 id="17">Path Construction Operators</h3>
+	<table></table>
+	<h3 id="18">Painting Operators</h3>
+	<table></table>
+	<h3 id="19">Insideness-Testing Operators</h3>
+	<table></table>
+	<h3 id="20">Form and Pattern Operators</h3>
+	<table></table>
+	<h3 id="21">Device Setup and Output Operators</h3>
+	<table></table>
+	<h3 id="22">Glyph and Font Operators</h3>
+	<table></table>
+	<h3 id="23">Interpreter Parameter Operators</h3>
+	<table></table>
+	<h3 id="24">Errors</h3>
+	<table></table>
+</body>
+</html>

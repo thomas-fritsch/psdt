@@ -7,23 +7,23 @@
 	<h3>currenthsbcolor</h3>
 	<pre>- <b>currenthsbcolor</b> hue saturation brightness</pre>
 	<p>
-		returns the current color parameter in the graphics state according to
-		the huesaturation-brightness model. If the current color space is
-		DeviceRGB, currenthsbcolor returns the color values most recently
-		specified by <a href="../s/sethsbcolor.html">sethsbcolor</a>, <a
-			href="../s/setrgbcolor.html">setrgbcolor</a>, or <a
-			href="../s/setcolor.html">setcolor</a>, converting them from RGB to
-		HSB coordinates if necessary. If the current color space is DeviceGray
-		or DeviceCMYK, currenthsbcolor first converts the current color to
-		RGB. For any other color space, currenthsbcolor returns 0.0 0.0 0.0
+		returns the three components of the current color in the graphics
+		state according to the HSB (hue-saturation-brightness) color model. If
+		the current color space is not <b>DeviceRGB</b>, the current color is
+		first converted to RGB as described for the <a
+			href="currentrgbcolor.html">currentrgbcolor</a> operator. The
+		resulting RGB color is then converted to HSB form; see the
+		Bibliography for further sources of information on this conversion.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../s/sethsbcolor.html">sethsbcolor</a>, <a
+		<b>See Also:</b> <a href="../s/sethsbcolor.html">sethsbcolor</a>,<a
+			href="currentcolorspace.html">currentcolorspace</a>, <a
 			href="currentcolor.html">currentcolor</a>, <a href="currentgray.html">currentgray</a>,
-		<a href="currentrgbcolor.html">currentrgbcolor</a>
+		<a href="currentrgbcolor.html">currentrgbcolor</a>, <a
+			href="currentcmykcolor.html">currentcmykcolor</a>
 	</p>
 </body>
 </html>

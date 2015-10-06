@@ -6,21 +6,26 @@
 <body>
 	<h3>dict</h3>
 	<pre>int <b>dict</b> dict</pre>
-	<p>creates an empty dictionary with an initial capacity of int
+	<p>
+		creates an empty dictionary with an initial capacity of <i>int</i>
 		elements and pushes the created dictionary object on the operand
-		stack. int is expected to be a nonnegative integer. The dictionary is
-		allocated in local or global VM according to the VM allocation mode.</p>
+		stack. <i>int</i> is expected to be a nonnegative integer. The
+		dictionary is allocated in local or global VM according to the VM
+		allocation mode (see Section <a href="../../../3/7/2.html">3.7.2,
+			"Local and Global VM"</a>).
+	</p>
 	<p>
 		In Level 1 implementations, the resulting dictionary has a maximum
-		capacity of int elements. Attempting to exceed that limit causes a <a
-			href="dictfull.html">dictfull</a> error.
+		capacity of <i>int</i> elements. Attempting to exceed that limit
+		causes a <a href="dictfull.html">dictfull</a> error.
 	</p>
-	<p>In Level 2 implementations, the int operand specifies only the
-		initial capacity; the dictionary can grow beyond that capacity if
-		necessary. The dict operator immediately consumes sufficient VM to
-		hold int key-value pairs. If more than that number of entries are
-		subsequently stored in the dictionary, additional VM is consumed at
-		that time.</p>
+	<p>
+		In LanguageLevels 2 and 3, the int operand specifies only the initial
+		capacity; the dictionary can grow beyond that capacity if necessary.
+		The <b>dict</b> operator immediately consumes sufficient VM to hold <i>int</i>
+		entries. If more than that number of entries are subsequently stored
+		in the dictionary, additional VM is consumed at that time.
+	</p>
 	<p>
 		There is a cost associated with expanding a dictionary beyond its
 		initial allocation. For efficiency reasons, a dictionary is expanded

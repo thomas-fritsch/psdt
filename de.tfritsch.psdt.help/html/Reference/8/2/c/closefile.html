@@ -7,11 +7,14 @@
 	<h3>closefile</h3>
 	<pre>file <b>closefile</b> -</pre>
 	<p>
-		closes file-in other words, breaks the association between the file
-		object and the underlying file. For an output file, closefile first
-		performs a <a href="../f/flushfile.html">flushfile</a>. It may also
-		take device-dependent actions, such as truncating a disk file to the
-		current position or transmitting an end-of-file indication.
+		closes file, breaking the association between the file object and the
+		underlying file (see Section <a href="../../../4/8.html">3.8,
+			"File Input and Output"</a>). For an output file, <b>closefile</b> first
+		performs a <a href="../f/flushfile.html">flushfile</a> operation. It
+		may also take device-dependent actions, such as truncating a disk file
+		to the current position or transmitting an end-of-file indication.
+		Executing <b>closefile</b> on a file that has already been closed has
+		no effect; it does not cause an error.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a

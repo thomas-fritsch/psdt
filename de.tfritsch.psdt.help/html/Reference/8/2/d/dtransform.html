@@ -7,25 +7,32 @@
 	<h3>dtransform</h3>
 	<pre>       dx dy <b>dtransform</b> dx' dy'
 dx dy matrix <b>dtransform</b> dx' dy'</pre>
-	<p>With no matrix operand, dtransform (delta transform) transforms
-		the distance vector (dx, dy) by the CTM to produce the corresponding
-		distance vector (dx', dy') in device space. If the matrix operand is
-		supplied, dtransform transforms the distance vector by matrix rather
-		than by CTM.</p>
-	<p>A delta transformation is similar to a normal transformation,
-		but the translation components (tx and ty) of the transformation
-		matrix are not used, making the distance vectors positionless in both
-		user space and device space. This is useful for determining how
-		distances map from user space to device space.</p>
+	<p>
+		(delta transform) applies a transformation matrix to the distance
+		vector (<i>dx</i>, <i>dy</i>), returning the transformed distance
+		vector (<i>dx'</i>, <i>dy'</i>). The first form of the operator uses
+		the current transformation matrix in the graphics state to transform
+		the distance vector from user space to device space coordinates. The
+		second form applies the transformation specified by the matrix operand
+		rather than the CTM.
+	</p>
+	<p>
+		A delta transformation is similar to an ordinary transformation (see
+		Section <a href="../../../4/3.html">4.3, "Coordinate Systems and
+			Transformations"</a>), but does not use the translation components <i>t<sub>x</sub></i>
+		and <i>t<sub>y</sub></i> of the transformation matrix. The distance
+		vectors are thus positionless in both the original and target
+		coordinate spaces, making this operator useful for determining how
+		distances map from user space to device space.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../i/idtransform">idtransform</a>, <a
-			href="../t/transform.html">transform</a>, <a
-			href="../i/itransform.html">itransform</a>
+		<b>See Also:</b> <a href="../t/transform.html">transform</a>, <a
+			href="../i/idtransform.html">idtransform</a>
 	</p>
 </body>
 </html>

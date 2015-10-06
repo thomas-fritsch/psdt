@@ -6,26 +6,32 @@
 <body>
 	<h3>grestore</h3>
 	<pre>- <b>grestore</b> -</pre>
-	<p>resets the current graphics state from the one on the top of the
-		graphics state stack and pops the graphics state stack, restoring the
-		graphics state in effect at the time of the matching gsave. This
-		operator provides a simple way to undo complicated transformations and
-		other graphics state modifications without having to re-establish all
-		graphics state parameters individually.</p>
 	<p>
-		If there is no matching <a href="gsave.html">gsave</a> or if the most
-		recent <a href="gsave.html">gsave</a> preceded the most recent
-		unmatched save, grestore does not pop the graphics state stack,
-		although it does restore the graphics state from the top of the
-		graphics state stack.
+		resets the current graphics state from the one on the top of the
+		graphics state stack and pops the graphics state stack, restoring the
+		graphics state in effect at the time of the matching <b>gsave</b>
+		operation. This operator provides a simple way to undo complicated
+		transformations and other graphics state modifications without having
+		to reestablish all graphics state parameters individually.
 	</p>
 	<p>
-		<b>Errors:</b> (none)
+		If the topmost graphics state on the stack was saved with <a
+			href="../s/save.html">save</a> rather than <a href="gsave.html">gsave</a>
+		(that is, if there has been no <a href="gsave.html">gsave</a>
+		operation since the most recent unmatched save), <b>grestore</b>
+		restores that topmost graphics state without popping it from the
+		stack. If there is no unmatched <a href="../s/save.html">save</a>
+		(which can happen only during an unencapsulated job) and the graphics
+		state stack is empty, <b>grestore</b> has no effect.
+	</p>
+
+	<p>
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="gsave.html">gsave</a>, <a
-			href="grestoreall.html">grestoreall</a>, <a
-			href="../s/setgstate.html">setgstate</a>
+			href="grestoreall.html">grestoreall</a>, <a href="../s/save.html">save</a>
+		<a href="../s/setgstate.html">setgstate</a>
 	</p>
 </body>
 </html>

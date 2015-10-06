@@ -11,16 +11,20 @@ packedarray <b>executeonly</b> packedarray
      string <b>executeonly</b> string</pre>
 	<p>
 		reduces the access attribute of an array, packed array, file, or
-		string object to execute-only .Access can only be reduced by these
-		means, never increased. When an object is execute-only, its value
+		string object to execute-only (see Section <a href="../../3/3/2.html">3.3.2,
+			"Attributes of Objects"</a>). Access can only be reduced by this
+		operator, never increased. When an object is execute-only, its value
 		cannot be read or modified explicitly by PostScript operators (an <a
 			href="../i/invalidaccess.html">invalidaccess</a> error will result),
-		but it can still be executed by the PostScript interpreter-for
-		example, by invoking it with exec.
+		but it can still be executed by the PostScript interpreter&mdash;for
+		example, by invoking it with the <a href="exec.html">exec</a>
+		operator.
 	</p>
-	<p>executeonly affects the access attribute only of the object that
-		it returns. If there are other composite objects that share the same
-		value, their access attributes are unaffected.</p>
+	<p>
+		<b>executeonly</b> affects the access attribute only of the object
+		that it returns. If there are other composite objects that share the
+		same value, their access attributes are unaffected.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

@@ -7,39 +7,59 @@
 	<h3>curveto</h3>
 	<pre>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> x<sub>3</sub> y<sub>3</sub> <b>curveto</b> -</pre>
 	<p>
-		adds a Bezier cubic section to the current path between the current
-		point, referred to here as (x<sub>0</sub>, y<sub>0</sub>), and the
-		point (x<sub>3</sub>, y<sub>3</sub>), using (x<sub>1</sub>, y<sub>1</sub>)
-		and (x<sub>2</sub>, y<sub>2</sub>) as the Bezier cubic control points.
-		After constructing the curve, curveto makes (x<sub>3</sub>, y<sub>3</sub>)
-		the new current point. If the current point is undefined because the
-		current path is empty, curveto executes the error <a
-			href="../n/nocurrentpoint.html">nocurrentpoint</a>.
+		appends a section of a cubic B&eacute;zier curve to the current path
+		between the current point (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>) and the
+		endpoint (<i>x<sub>3</sub></i>, <i>y<sub>3</sub></i>), using (<i>x<sub>1</sub></i>,
+		<i>y<sub>1</sub></i>) and (<i>x<sub>2</sub></i>, <i>y<sub>2</sub></i>)
+		as the B&eacute;zier control points. The endpoint (<i>x<sub>3</sub></i>, <i>y<sub>3</sub></i>)
+		becomes the new current point. If the current point is undefined
+		because the current path is empty, a <a
+			href="../n/nocurrentpoint.html">nocurrentpoint</a> error occurs.
 	</p>
 	<p>
-		The four points define the shape of the curve geometrically. The curve
-		starts at (x<sub>0</sub>, y<sub>0</sub>), it is tangent to the line
-		from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>1</sub>, y<sub>1</sub>)
+		The four points define the shape of the curve geometrically (see
+		Figure 8.6). The curve is always entirely enclosed by the convex
+		quadrilateral defined by the four points. It starts at (<i>x<sub>0</sub></i>,
+		<i>y<sub>0</sub></i>), it is tangent to the line from (<i>x<sub>0</sub></i>,
+		<i>y<sub>0</sub></i>) to (<i>x<sub>1</sub></i>, <i>y<sub>1</sub></i>)
 		at that point, and it leaves the point in that direction. The curve
-		ends at (x<sub>3</sub>, y<sub>3</sub>), it is tangent to the line from
-		(x<sub>2</sub>, y<sub>2</sub>) to (x<sub>3</sub>, y<sub>3</sub>) at
-		that point, and it approaches the point from that direction. The
-		lengths of the lines (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>1</sub>,
-		y<sub>1</sub>) and (x<sub>2</sub>, y<sub>2</sub>) to (x<sub>3</sub>, y<sub>3</sub>)
-		represent, in a sense, the &quot;velocity&quot; of the path at the
-		endpoints. The curve is always entirely enclosed by the convex
-		quadrilateral defined by the four points.
+		ends at (<i>x<sub>3</sub></i>, <i>y<sub>3</sub></i>), it is tangent to
+		the line from (<i>x<sub>2</sub></i>, <i>y<sub>2</sub></i>) to (<i>x<sub>3</sub></i>,
+		<i>y<sub>3</sub></i>) at that point, and it approaches the point from
+		that direction. The lengths of the lines (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>)
+		to (<i>x<sub>1</sub></i>, <i>y<sub>1</sub></i>) and (<i>x<sub>2</sub></i>,
+		<i>y<sub>2</sub></i>) to (<i>x<sub>3</sub></i>, <i>y<sub>3</sub></i>)
+		represent, in a sense, the "velocity" of the path at the endpoints.
 	</p>
-	<p>The mathematical formulation of a Bezier cubic curve is derived
+	<figure>
+		<img src="figure-8.6.png" />
+		<figcaption>
+			<b>FIGURE 8.6</b> curveto operator
+		</figcaption>
+	</figure>
+	<p>The mathematical formulation of a B&eacute;zier cubic curve is derived
 		from a pair of parametric cubic equations:</p>
-	<p>The cubic section produced by curveto is the path traced by x(t)
-		and y(t) as t ranges from 0 to 1. The Bezier control points
-		corresponding to this curve are:</p>
+	<p>
+		The cubic section produced by <b>curveto</b> is the path traced by
+		x(t) and y(t) as t ranges from 0 to 1. The B&eacute;zier control points
+		corresponding to this curve are:
+	</p>
+	<pre>
+	<i>x(t) = a<sub>x</sub>t<sup>3</sup> + b<sub>x</sub>t<sup>2</sup> + c<sub>x</sub>t + x<sub>0</sub></i>
+	<i>y(t) = a<sub>y</sub>t<sup>3</sup> + b<sub>y</sub>t<sup>2</sup> + c<sub>y</sub>t + y<sub>0</sub></i>
+	</pre>
+	<p></p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		The cubic section produced by <b>curveto</b> is the path traced by <i>x(t)</i>
+		and <i>y(t)</i> as <i>t</i> ranges from 0 to 1. The B&eacute;zier control
+		points corresponding to this curve are:
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../l/lineto.html">lineto</a>, <a

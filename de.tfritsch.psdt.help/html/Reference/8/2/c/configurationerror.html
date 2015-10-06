@@ -10,17 +10,18 @@
 	</h3>
 	<p>
 		occurs when <a href="../s/setpagedevice.html">setpagedevice</a> or <a
-			href="../s/setdevparams.html">setdevparams</a> has been executed with
-		a request for a feature that either is not available in the
-		interpreter implementation or is not currently available because of
-		the state of the hardware. For <a href="../s/setpagedevice.html">setpagedevice</a>,
-		this error is generated only if the PolicyDict entry in a page device
-		dictionary specifies that an error should be generated.
+			href="../s/setdevparams.html">setdevparams</a> operator has been
+		executed with a request for a feature that either is not available in
+		the interpreter implementation or is not currently available because
+		of the state of the hardware. For <a href="../s/setpagedevice.html">setpagedevice</a>,
+		this error is generated only if the <b>Policies</b> entry in a page
+		device dictionary specifies that an error should be generated.
 	</p>
 	<p>
-		When a configurationerror is generated, a two-element array called
-		errorinfo is placed in <a href="../@/dollar-error.html">$error</a>. This
-		array contains the key and value of the request that could not be met.
+		When a <b>configurationerror</b> is generated, a two-element array
+		called <b>errorinfo</b> is placed in <a href="../@/dollar-error.html">$error</a>.
+		This array contains the key and value of the request that could not be
+		met. See Section <a href="../../../3/11.html">3.11, "Errors."</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/setpagedevice.html">setpagedevice</a>,

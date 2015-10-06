@@ -8,23 +8,27 @@
 	<pre>- <b>gsave</b> -</pre>
 	<p>
 		pushes a copy of the current graphics state on the graphics state
-		stack. All elements of the graphics state are saved, including the
-		CTM, current path, clip path, and identity of the raster output
-		device, but not the contents of raster memory. The saved state may
-		later be restored by a matching <a href="grestore.html">grestore</a>.
+		stack (see Section <a href="../../../4/2-html">4.2, "Graphics
+			State"</a>). All elements of the graphics state are saved, including the
+		current transformation matrix, current path, clipping path, and
+		identity of the raster output device, but not the contents of raster
+		memory. The saved state can later be restored by a matching <a
+			href="grestore.html">grestore</a>. After saving the graphics state, <b>gsave</b>
+		resets the clipping path stack in the current graphics state to empty.
 	</p>
 	<p>
-		The save operator implicitly performs a gsave, but restoring a
-		graphics state saved by save is slightly different from restoring one
-		saved by gsave (see the descriptions of <a href="grestore.html">grestore</a>
-		and <a href="grestoreall.html">grestoreall</a>).
+		The save operator also implicitly performs a <b>gsave</b> operation,
+		but restoring a graphics state saved by <a href="../s/save.html">save</a>
+		is slightly different from restoring one saved by <b>gsave</b>; see
+		the descriptions of <a href="grestore.html">grestore</a> and <a
+			href="grestoreall.html">grestoreall</a>.
 	</p>
 	<p>
-		Note that, unlike <a href="../s/save.html">save</a>, gsave does not
-		return a save object on the operand stack to represent the saved
-		state. gsave and <a href="grestore.html">grestore</a> work strictly in
-		a stack-like fashion, except for the wholesale restoration performed
-		by <a href="../r/restore.html">restore</a> and <a
+		Note that, unlike <a href="../s/save.html">save</a>, <b>gsave</b> does
+		not return a save object on the operand stack to represent the saved
+		state. <b>gsave</b> and <a href="grestore.html">grestore</a> work
+		strictly in a stack-like fashion, except for the wholesale restoration
+		performed by <a href="../r/restore.html">restore</a> and <a
 			href="grestoreall.html">grestoreall</a>.
 	</p>
 	<p>
@@ -34,7 +38,8 @@
 		<b>See Also:</b> <a href="grestore.html">grestore</a>, <a
 			href="grestoreall.html">grestoreall</a>, <a href="../r/restore.html">restore</a>,
 		<a href="../s/save.html">save</a>, <a href="gstate.html">gstate</a>, <a
-			href="../c/currentgstate.html">currentgstate</a>
+			href="../c/currentgstate.html">currentgstate</a>, <a
+			href="../clipsave.html">clipsave</a>, <a href="../c/cliprestore.html">cliprestore</a>
 	</p>
 </body>
 </html>

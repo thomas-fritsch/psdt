@@ -6,13 +6,23 @@
 <body>
 	<h3>cachestatus</h3>
 	<pre>- <b>cachestatus</b> bsize bmax msize mmax csize cmax blimit</pre>
-	<p>returns measurements of several aspects of the font cache.
-		cachestatus reports the current consumption and limit for each of
-		three font cache resources: bytes of bitmap storage (bsize and bmax),
-		font/matrix combinations (msize and mmax), and total number of cached
-		characters (csize and cmax). It also reports the limit on the number
-		of bytes occupied by a single cached character (blimit). Characters
-		whose bitmaps are larger than this are not cached.</p>
+	<p>
+		returns measurements of several aspects of the font cache (see Section
+		<a href="../../../5/5.html">5.5, “Font Cache”</a>). This operator
+		reports the current consumption and limit for each of three font cache
+		resources: bytes of bitmap storage (<i>bsize</i> and <i>bmax</i>),
+		font/matrix combinations (<i>msize</i> and <i>mmax</i>), and total
+		number of cached glyphs (<i>csize</i> and <i>cmax</i>). It also
+		reports the limit on the number of bytes occupied by a single cached
+		glyph (<i>blimit</i>); glyph bitmaps larger than this are not cached.
+	</p>
+	<p>
+		Except for <i>blimit</i>, which corresponds to the <b>MaxFontItem</b>
+		user parameter, the values returned by <b>cachestatus</b> cannot be
+		controlled directly by a PostScript program. They will vary as a
+		function of the <b>MaxFontCache</b> system parameter, but the behavior
+		is implementation-dependent.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>

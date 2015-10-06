@@ -10,20 +10,22 @@
 	</h3>
 	<pre>- <b>currentcolortransfer</b> redproc greenproc blueproc grayproc</pre>
 	<p>
-		returns the current transfer functions in the graphics state for all
-		four color components. If the current transfer functions were
-		specified by <a href="../s/setcolortransfer.html">setcolortransfer</a>,
-		currentcolortransfer returns those four operands. If <a
-			href="../s/settransfer.html">settransfer</a> was used,
-		currentcolortransfer returns the single transfer function, repeated
-		four times.
+		returns the current transfer functions in the graphics state (see
+		Section <a href="../../../7/3.html">7.3, "Transfer Functions"</a>) for
+		all four primary color components of the output device (cyan, magenta,
+		yellow, and black). If the current transfer functions were established
+		via the <a href="../s/setcolortransfer.html">setcolortransfer</a>
+		operator, the four transfer functions are returned independently; if <a
+			href="../s/settransfer.html">settransfer</a> was used, the same
+		transfer function is repeated for all four.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/setcolortransfer.html">setcolortransfer</a>,
-		<a href="../s/settransfer.html">settransfer</a>
+		<a href="../s/settransfer.html">settransfer</a>, <a
+			href="currenttransfer.html">currenttransfer</a>
 	</p>
 </body>
 </html>

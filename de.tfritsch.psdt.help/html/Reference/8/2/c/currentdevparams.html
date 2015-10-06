@@ -8,13 +8,17 @@
 		currentdevparams <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>string <b>currentdevparams</b> dict</pre>
-	<p>returns a dictionary containing the keys and current values of
-		all parameters for the device identified by string. The returned
-		dictionary is merely a container for key-value pairs. Each execution
-		of currentdevparams allocates and returns a new dictionary.</p>
+	<p>
+		returns a dictionary containing the keys and current values of all
+		parameters for the device or other named parameter set identified by <i>string</i>
+		(see Section <a href="../../../C/4.html">C.4, "Device Parameters"</a>).
+		The returned dictionary is merely a container for key-value pairs.
+		Each execution of <b>currentdevparams</b> allocates and returns a new
+		dictionary.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
-			href="../v/VMerror.html">VMerror</a>
+			href="../u/undefined.html">undefined</a>, <a href="../v/VMerror.html">VMerror</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/setdevparams.html">setdevparams</a>

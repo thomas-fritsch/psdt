@@ -9,21 +9,28 @@
 			align="middle" />
 	</h3>
 	<pre>- <b>currentcolorscreen</b> redfreq redang redproc
-                     greenfreq greenang greenpro
+                     greenfreq greenang greenproc
                      bluefreq blueang blueproc
-                     grayfreq grayang grayproc</pre>
+                     grayfreq grayang grayproc
+	- <b>currentcolorscreen</b> redfreq redang redhalftone
+                     greenfreq greenang greenhalftone
+                     bluefreq blueang bluehalftone
+                     grayfreq grayang grayhalftone</pre>
 	<p>
-		If the current halftone screen was specified by <a
-			href="../s/setcolorscreen-html">setcolorscreen</a>,
-		currentcolorscreen returns all 12 current halftone screen parameters
-		in the graphics state. If the current screen was specified by <a
-			href="../s/setscreen.html">setscreen</a>, currentcolorscreen returns
-		the three screen parameters repeated four times.
+		returns the frequency, angle, and spot function for all four color
+		components of the current halftone screen parameter in the graphics
+		state (see Section <a href="../../../7/4.html">7.4, "Halftones"</a>).
+		If the current halftone was established via the <a
+			href="../s/setcolorscreen.html">setcolorscreen</a> operator, the four
+		screens are described independently; if <a href="../s/setscreen.html">setscreen</a>
+		was used instead, the same parameter values are repeated for all four.
 	</p>
 	<p>
-		If the current screen was specified by <a href="../s/sethalftone.html">sethalftone</a>,
-		currentcolorscreen returns 60, 0, and the halftone dictionary,
-		repeated four times.
+		If the current halftone was defined via the <a
+			href="../s/sethalftone.html">sethalftone</a> operator, <b>currentcolorscreen</b>
+		returns a frequency of 60 and an angle of 0 for each of the four
+		screens, along with a halftone dictionary describing the properties of
+		the halftone screen, substituted in place of the spot function.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
@@ -31,7 +38,9 @@
 	<p>
 		<b>See Also:</b> <a href="../s/setcolorscreen.html">setcolorscreen</a>,
 		<a href="../s/setscreen.html">setscreen</a>, <a
-			href="../s/sethalftone.html">sethalftone</a>
+			href="../s/sethalftone.html">sethalftone</a>, <a
+			href="../currentscreen.html">currentscreen</a>, <a
+			href="currenthalftone.html">currentthalftone</a>
 	</p>
 </body>
 </html>
