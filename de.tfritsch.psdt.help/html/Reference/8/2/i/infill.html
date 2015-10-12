@@ -9,20 +9,32 @@
 	</h3>
 	<pre>     x y <b>infill</b> bool
 userpath <b>infill</b> bool</pre>
-	<p>The first form returns true if the device pixel containing the
-		point (x, y) in user space would be painted by a fill of the current
-		path in the graphics state. Otherwise, it returns false.</p>
-	<p>In the second form, the device pixels that would be painted by
-		filling userpath become an &quot;aperture.&quot; This form of the
-		operator returns true if any of the pixels in the aperture would be
-		painted by a fill of the current path in the graphics state.
-		Otherwise, it returns false.</p>
-	<p>Both forms of this operator ignore the current clipping path and
-		current view clip; that is, they detect a &quot;hit&quot; anywhere
-		within the current path, even if filling that path would not mark the
-		current page due to clipping. They do not place any marks on the
-		current page nor do they disturb the current path. The following
-		program fragment takes the current clipping path into account:</p>
+	<p>
+		tests whether the area that would be painted by filling the current
+		path with the <a href="../f/fill.html">fill</a> operator includes a
+		specified point or intersects a specified region. The area inside the
+		current path is determined according to the nonzero winding number
+		rule (see <a href="../../../4/5/2.html#1">"Nonzero Winding Number
+			Rule" on page 195</a>). The operation does not actually place any marks
+		on the current page, nor does it disturb the current path in the
+		graphics state.
+	</p>
+	<p>
+		The first form of the operator returns <i>true</i> if the device pixel
+		containing the point at coordinates (<i>x</i>, <i>y</i>) in user space
+		would be painted by applying the <a href="../f/fill.html">fill</a>
+		operator to the current path. The second form returns <i>true</i> if
+		any of the pixels enclosed by <i>userpath</i> would be painted. If the
+		stated conditions are not met, both forms return <i>false</i>.
+	</p>
+	<p>
+		The operator ignores the current clipping path; that is, it returns <i>true</i>
+		for any pixel that lies within the current path, even if the <a
+			href="../f/fill.html">fill</a> operator would not actually mark that
+		pixel because it lies outside the clipping path. The following program
+		fragment performs an <b>infill</b> test taking the current clipping
+		path into account:
+	</p>
 	<p>
 	<pre>
 gsave

@@ -11,13 +11,20 @@
 	<p>
 		pushes the ISO Latin-1 encoding vector on the operand stack. This is a
 		256-element literal array object, indexed by character codes whose
-		values are the character names for those codes. ISOLatin1Encoding is
-		not an operator; it is a name in <a href="../s/systemdict.html">systemdict</a>
+		values are the character names for those codes. <b>ISOLatin1Encoding</b>
+		is not an operator; it is a name in <a href="../s/systemdict.html">systemdict</a>
 		associated with the array object.
 	</p>
-	<p>Roman text fonts produced by Adobe usually use the
-		StandardEncoding encoding vector. However, they contain all the
-		characters needed to support the use of ISOLatin1Encoding.</p>
+	<p>
+		Roman text fonts produced by Adobe usually use the <a
+			href="../s/StandardEncoding.html">StandardEncoding</a> encoding
+		vector. However, they contain all the characters needed to support the
+		use of <b>ISOLatin1Encoding</b>. A font can have its <b>Encoding</b>
+		array changed to <b>ISOLatin1Encoding</b> by means of the procedure
+		shown in Section <a href="../../../5/9/1.html">5.9.1, "Changing
+			the Encoding Vector."</a> The contents of <b>ISOLatin1Encoding</b> are
+		documented in <a href="../../../E.html">Appendix E</a>.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>

@@ -6,13 +6,18 @@
 <body>
 	<h3>internaldict</h3>
 	<pre>int <b>internaldict</b> dict</pre>
-	<p>pushes the internal dictionary object on the operand stack. The
-		int operand must be the integer 1183615869. The internal dictionary is
-		in local VM and is writable. It contains operators and other
+	<p>
+		pushes the internal dictionary object on the operand stack. The <i>int</i>
+		operand <i>must</i> be the integer 1183615869. The internal dictionary
+		is in local VM and is writeable. It contains operators and other
 		information whose purpose is internal to the PostScript interpreter.
 		It should be referenced only in special circumstances, such as during
-		construction of Type 1 font programs. The contents of internaldict are
-		undocumented and subject to change at any time.</p>
+		construction of Type 1 font programs. (See the book <a
+			href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
+			Type 1 Font Format</a> for specific information about constructing Type 1
+		fonts.) The contents of <b>internaldict</b> are undocumented and subject to
+		change at any time.
+	</p>
 	<p>This operator is not present in some PostScript interpreters.</p>
 	<p>
 		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a

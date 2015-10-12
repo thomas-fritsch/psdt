@@ -8,11 +8,23 @@
 		inueofill <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>       x y userpath <b>inueofill</b> bool
-userpath1 userpath2 <b>inueofill</b> bool</pre>
+userpath<sub>1</sub> userpath<sub>2</sub> <b>inueofill</b> bool</pre>
 	<p>
-		is similar to <a href="inufill.html">inufill</a>, but its
-		&quot;insideness&quot; test is based on <a href="../u/ueofill.html">ueofill</a>
-		instead of <a href="../u/ufill.html">ufill</a>.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and tests whether the
+		area that would be painted by filling the resulting path with the <a
+			href="../u/ueofill.html">ueofill</a> operator includes a specified
+		point or intersects a specified region. The area inside the path is
+		determined according to the even-odd rule (see <a
+			href="../../../4/5/2.html#2">"Even-Odd Rule" on page 196</a>). In all
+		other respects, the behavior of <b>inueofill</b> is identical to that
+		if <a href="inufill.html">inufill</a>.
+	</p>
+	<p>
+		Note that in the second form of the operator, the area inside
+		userpath1 is determined by the nonzero winding number rule (see <a
+			href="../../../4/5/2.html#1">"Nonzero Winding Number Rule" on
+			page 195</a>), not by the even-odd rule.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a

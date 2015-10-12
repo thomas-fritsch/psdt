@@ -7,11 +7,15 @@
 	<h3>itransform</h3>
 	<pre>       x' y' <b>itransform</b> x y
 x' y' matrix <b>itransform</b> x y</pre>
-	<p>With no matrix operand, itransform (inverse transform)
-		transforms the device space coordinate (x', y') by the inverse of CTM
-		to produce the corresponding user space coordinate (x, y). If the
-		matrix operand is supplied, itransform transforms (x', y') by the
-		inverse of matrix rather than by the inverse of CTM.</p>
+	<p>
+		(inverse transform) applies the inverse of a transformation matrix to
+		the coordinates (<i>x'</i>, <i>y'</i>), returning the transformed
+		coordinates (<i>x</i>, <i>y</i>). The first form of the operator uses
+		the inverse of the current transformation matrix in the graphics state
+		to transform device space coordinates to user space. The second form
+		applies the inverse of the transformation specified by the matrix
+		operand rather than that of the CTM.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
@@ -20,7 +24,6 @@ x' y' matrix <b>itransform</b> x y</pre>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../t/transform.html">transform</a>, <a
-			href="../d/dtransform.html">dtransform</a>, <a
 			href="idtransform.html">idtransform</a>, <a href="invertmatrix.html">invertmatrix</a>
 	</p>
 </body>

@@ -10,9 +10,19 @@
 	<pre>     x y <b>ineofill</b> bool
 userpath <b>ineofill</b> bool</pre>
 	<p>
-		is similar to <a href="#infill">infill</a>, but its
-		&quot;insideness&quot; test is based on <a href="../e/eofill.html">eofill</a>
-		instead of <a href="../f/fill.html">fill</a>.
+		tests whether the area that would be painted by filling the current
+		path with the <a href="../e/eofill.html">eofill</a> operator includes
+		a specified point or intersects a specified region. The area is
+		determined according to the even-odd rule (see <a
+			href="../../../4/5/2.html#2">"Even-Odd Rule" on page 196</a>). In all
+		other respects, the behavior of <b>ineofill</b> is identical to that
+		of <a href="infill.html">infill</a>.
+	</p>
+	<p>
+		Note that in the second form of the operator, the area inside <i>userpath</i>
+		is determined by the nonzero winding number rule (see <a
+			href="../../../4/5/2.html#1">"Nonzero Winding Number Rule" on
+			page 195</a>), <i>not</i> by the even-odd rule.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a
@@ -23,7 +33,7 @@ userpath <b>ineofill</b> bool</pre>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../e/eofill.html">eofill</a>, <a
-			href="infill.html">infill</a>
+			href="../f/fill.html">fill</a>,<a href="infill.html">infill</a>
 	</p>
 </body>
 </html>

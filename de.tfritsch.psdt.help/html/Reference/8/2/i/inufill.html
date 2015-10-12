@@ -8,39 +8,44 @@
 		inufill <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>       x y userpath <b>inufill</b> bool
-userpath1 userpath2 <b>inufill</b> bool</pre>
+userpath<sub>1</sub> userpath<sub>2</sub> <b>inufill</b> bool</pre>
 	<p>
-		The first form returns <a href="t.html#true">true</a> if the device
-		pixel containing the point (x, y) in user space would be painted by a
-		<a href="u.html#ufill">ufill</a> of the specified userpath .
-		Otherwise, it returns <a href="f.html#false">false</a>.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and tests whether the
+		area that would be painted by filling the resulting path with the <a
+			href="../u/ufill.html">ufill</a> operator includes a specified point
+		or intersects a specified region. The area inside the path is
+		determined according to the nonzero winding number rule (see <a
+			href="../../../4/5/2.html#1">"Nonzero Winding Number Rule" on
+			page 195</a>). The operation does not actually place any marks on the
+		current page, nor does it disturb the current path in the graphics
+		state. Except for the manner in which the path is specified, the
+		behavior of <b>inufill</b> is identical to that of <a
+			href="infill.html">infill</a>.
 	</p>
 	<p>
-		In the second form, the device pixels that would be painted by filling
-		userpath1 become an &quot;aperture.&quot; inufill returns true if any
-		of the pixels in the aperture would be painted by a <a
-			href="u.html#ufill">ufill</a> of userpath2. Otherwise, it returns
-		false.
+		The first form of the operator returns <i>true</i> if the device pixel
+		containing the point at coordinates (<i>x</i>, <i>y</i>) in user space
+		would be painted by applying the <a href="../u/ufill.html">ufill</a>
+		operator to <i>userpath</i>. The second form returns true if any of
+		the pixels enclosed by <i>userpath<sub>1</sub></i> would be painted by
+		applying <a href="../u/ufill.html">ufill</a> to <i>userpath<sub>2</sub></i>.
+		If the stated conditions are not met, both forms return <i>false</i>.
 	</p>
-	<p>
-		This operator does not place any marks on the current page nor does it
-		disturb the current path in the graphics state. Except for the manner
-		in which the path is specified, inufill behaves the same as <a
-			href="#infill">infill</a>.
-	</p>
-	<p>By itself, this operator is seemingly a trivial composition of
+	<p>In itself, inufill would seem to be a trivial composition of
 		several other operators:</p>
 	<pre>
-gsave
-  newpath
-  uappend
-  infill
-grestore
+gsave             % Save graphics state
+   newpath        % Clear current path
+   uappend        % Interpret userpath
+   infill         % Test for inclusion
+grestore          % Restore graphics state
 </pre>
 	<p>
-		However, when used with a user path that specifies <a
-			href="../u/ucache.html">ucache</a>, inufill can access the user path
-		cache, potentially resulting in improved performance.
+		However, when used with a user path that includes the <a
+			href="../u/ucache.html">ucache</a> operator, <b>inufill</b> can
+		potentially take advantage of cached information to optimize
+		execution.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a
@@ -50,8 +55,9 @@ grestore
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="inueofill.html">inueofill</a>, <a
-			href="infill.html">infill</a>, <a href="../u/ufill.html">ufill</a>
+		<b>See Also:</b> , <a href="../f/fill.html">fill</a>, <a
+			href="../u/ufill.html">ufill</a>, <a href="inueofill.html">inueofill</a>,
+		<a href="infill.html">infill</a>
 	</p>
 </body>
 </html>

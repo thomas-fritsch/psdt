@@ -5,29 +5,34 @@
 </head>
 <body>
 	<h3>join [DPS]</h3>
-	<pre>context <b>join</b> mark obj<sub>1</sub> ... obj<sub>n</sub></pre>
+	<pre>context <b>join</b> mark obj<sub>1</sub> ... obj<sub>n</sub>
+	</pre>
 	<p>
-		waits for the execution context identified by the integer context to
-		finish executing its top-level procedure (the proc operand of <a
-			href="../f/fork">fork</a>). It then pushes a mark followed by the
-		entire contents of that context's operand stack onto the current
+		waits for the execution context identified by the integer <i>context</i>
+		to finish executing its top-level procedure (the <i>proc</i> operand
+		of <a href="../f/fork">fork</a>). It then pushes a mark followed by
+		the entire contents of that context's operand stack onto the current
 		context's operand stack. Finally, it causes the other context to
 		terminate.
 	</p>
-	<p>The objects obj1 through objn are those left on the operand
-		stack by the context that is terminating. Ordinarily, there should not
-		be a mark among those objects, because its presence might cause
-		confusion in the context that executes the join.</p>
 	<p>
-		If context is not a valid context identifier, perhaps because the
-		context has terminated prematurely due to executing quit or
-		encountering an error, join executes an <a href="invalidcontext.html">invalidcontext</a>
-		error. This also occurs if the context has already been joined or
-		detached, if context identifies the current context, or if the context
+		The objects <i>obj<sub>1</sub></i> through <i>obj<sub>n</sub></i> are
+		those left on the operand stack by the context that is terminating.
+		Ordinarily, there should not be a mark among those objects, because
+		its presence might cause confusion in the context that executes the
+		join.
+	</p>
+	<p>
+		If <i>context</i> is not a valid context identifier, perhaps because
+		the context has terminated prematurely due to executing <a
+			href="../q/quit.html">quit</a> or encountering an error, <b>join</b>
+		executes an <a href="invalidcontext.html">invalidcontext</a> error.
+		This also occurs if the context has already been joined or detached,
+		if <i>context</i> identifies the current context, or if the context
 		does not share the current context's local and global VM.
 	</p>
 	<p>
-		It is illegal to execute join if there has been any previous <a
+		It is illegal to execute <b>join</b> if there has been any previous <a
 			href="../s/save.html">save</a> not yet matched by a <a
 			href="../r/restore.html">restore</a>. Attempting to do so will cause
 		an <a href="invalidcontext.html">invalidcontext</a> error.

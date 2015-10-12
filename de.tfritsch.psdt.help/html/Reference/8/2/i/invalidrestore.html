@@ -6,10 +6,11 @@
 <body>
 	<h3>invalidrestore (error)</h3>
 	<p>
-		An improper restore has been attempted. One or more of the operand,
-		dictionary, or execution stacks contains composite objects whose
-		values were created more recently than the <a href="../s/save.html">save</a>
-		whose context is being restored. Since <a href="../r/restore.html">restore</a>
+		An improper <a href="../r/restore.html">restore</a> operation has been
+		attempted. One or more of the operand, dictionary, and execution
+		stacks contain composite objects whose values were created more
+		recently than the <a href="../s/save.html">save</a> operation whose
+		context is being restored. Since <a href="../r/restore.html">restore</a>
 		would destroy those values, but the stacks are unaffected by <a
 			href="../r/restore.html">restore</a>, the outcome would be <a
 			href="../u/undefined.html">undefined</a> and cannot be allowed.

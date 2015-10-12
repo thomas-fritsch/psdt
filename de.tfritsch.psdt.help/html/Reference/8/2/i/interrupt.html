@@ -7,20 +7,25 @@
 	<h3>interrupt (error)</h3>
 	<p>
 		processes an external request to interrupt execution of a PostScript
-		language program. When the interpreter receives an interrupt request,
-		it executes interrupt as if it were an error-in other words, it looks
-		up the name interrupt in <a href="../e/errordict.html">errordict</a>.
-		Execution of interrupt is sandwiched between execution of two objects
-		being interpreted in normal sequence.
+		program. When the interpreter receives an interrupt request, it
+		executes <b>interrupt</b> as if it were an error&mdash;in other words,
+		it looks up the name interrupt in <a href="../e/errordict.html">errordict</a>.
+		Execution of <b>interrupt</b> is sandwiched between execution of two
+		objects being interpreted in normal sequence.
 	</p>
-	<p>Unlike most other errors, occurrence of an interrupt does not
-		cause the object being executed to be pushed on the operand stack nor
-		does it disturb the operand stack in any way.</p>
-	<p>The precise nature of an external interrupt request depends on
-		the environment in which the PostScript interpreter is running. For
-		example, in some environments, receipt of a control-C character from a
-		serial communication channel gives rise to the interrupt error. This
-		enables a user to explicitly abort a PostScript computation. The
-		default definition of interrupt executes a stop.</p>
+	<p>
+		Unlike most other errors, occurrence of an <b>interrupt</b> error does
+		not cause the object being executed to be pushed on the operand stack,
+		nor does it disturb the operand stack in any way.
+	</p>
+	<p>
+		The precise nature of an external interrupt request depends on the
+		environment in which the PostScript interpreter is running. For
+		example, in some environments, receipt of a Control.C character from a
+		serial communication channel gives rise to the <b>interrupt</b> error.
+		This enables a user to explicitly abort a PostScript computation. The
+		default definition of interrupt executes a <a href="../s/stop.html">stop</a>
+		operation.
+	</p>
 </body>
 </html>

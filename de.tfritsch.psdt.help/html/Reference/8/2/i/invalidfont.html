@@ -6,10 +6,15 @@
 <body>
 	<h3>invalidfont (error)</h3>
 	<p>
-		Either the operand to <a href="../f/findfont.html">findfont</a> is not
-		a valid font name or the operand to <a href="../f/makefont.html">makefont</a>
-		or <a href="../f/setfont.html">setfont</a> is not a well-formed font
-		dictionary. The invalidfont error may also be executed by other font
-		operators upon discovering a font dictionary is malformed.
+		The <i>key</i> operand to <a href="../f/findfont.html">findfont</a> is
+		not a valid <b>Font</b> resource name, the dictionary operand to other
+		font operators is not a well-formed or valid font or CIDFont
+		dictionary, as required, or the <a href="../s/show.html">show</a>
+		operator (or <a href="../s/show.html">show</a> variant) is executed
+		before the font parameter in the graphics state has been set. The <b>invalidfont</b>
+		error may also be executed by other font operators upon discovering
+		that a font or CIDFont dictionary has the wrong <b>FontType</b> or <b>CIDFontType</b>
+		value for the operation or that a glyph description is malformed.
+	</p>
 </body>
 </html>

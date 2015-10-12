@@ -6,33 +6,31 @@
 <body>
 	<h3>initgraphics</h3>
 	<pre>- <b>initgraphics</b> -</pre>
-	<p>% different in the NeXT implementation</p>
-	<p>This standard PostScript operator has these additional effects
-		in the NeXT implementation of the Display PostScript System:</p>
-	<p>S Sets the coverage parameter in the current window's graphics
-		state to 1 (opaque)</p>
-	<p>S Turns off instance drawing</p>
-	<p>resets several values in the current graphics state to their
-		default values:</p>
+	<p>resets the following parameters of the current graphics state to
+		their default values, as follows:</p>
 	<ul>
-		<li>current transformation matrix (default for current device)</li>
-		<li>current path (empty)</li>
-		<li>current point (undefined)</li>
-		<li>current clipping path (default for current device)</li>
-		<li>current color space (DeviceGray)</li>
-		<li>current color (black)</li>
-		<li>current line width (one user space unit)</li>
-		<li>current line cap style (butt end caps)</li>
-		<li>current line join style (miter joins)</li>
-		<li>current dash description (undashed, i.e., solid lines)</li>
-		<li>current miter limit (10)</li>
+		<li>current transformation matrix (CTM)&mdash;default for device</li>
+		<li>current position (current point)&mdash;undefined</li>
+		<li>current path&mdash;empty</li>
+		<li>current clipping path&mdash;default for current device</li>
+		<li>current color space&mdash;<b>DeviceGray</b></li>
+		<li>current color&mdash;black</li>
+		<li>current line width&mdash;one user space unit</li>
+		<li>current line cap&mdash;butt end caps</li>
+		<li>current line join&mdash;miter joins</li>
+		<li>current miter limit&mdash;10</li>
+		<li>current dash pattern&mdash;solid, unbroken lines</li>
 	</ul>
-	<p>The initgraphics operator does not change the other graphics
-		state parameters. These include the current output device, font,
-		stroke adjust, and all devicedependent parameters. This operator
+	<p>
+		All other graphics state parameters are left unchanged. These include
+		the current output device, font parameter, stroke adjustment, clipping
+		path stack, and all device-dependent parameters. <b>initgraphics</b>
 		affects only the graphics state, not the contents of raster memory or
-		the output device.</p>
-	<p>initgraphics is equivalent to the PostScript language sequence:</p>
+		the configuration of the current output device.
+	</p>
+	<p>
+		<b>initgraphics</b> is equivalent to the following code:
+	</p>
 	<pre>
 initmatrix
 newpath
@@ -44,19 +42,20 @@ initclip
 0 setgray
 10 setmiterlimit
 </pre>
-	<p>There are few situations in which a PostScript language program
-		should execute initgraphics explicitly. A page description that
-		executes initgraphics usually produces incorrect results if it is
-		embedded within another, composite page. A program requiring
-		information about its initial graphics state should read and save that
-		state at the beginning of the program rather than assume that the
-		default state prevailed initially.</p>
 	<p>
-		<b>Errors:</b> (none)
+		There are few situations in which a PostScript program should invoke <b>initgraphics</b>
+		explicitly. A page description that invokes <b>initgraphics</b>
+		usually produces incorrect results if it is embedded within another,
+		composite page. A program requiring information about its initial
+		graphics state should explicitly read and save that state at the
+		beginning of the program rather than assume that the default state
+		prevailed initially.
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../g/grestoreall.html">grestoreall</a>,
-		hideinstance, newinstance, setalpha, setinstance
+		<b>Errors:</b> none
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../g/grestoreall.html">grestoreall</a>
 	</p>
 </body>
 </html>

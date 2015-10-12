@@ -7,20 +7,24 @@
 	<h3>idtransform</h3>
 	<pre>       dx' dy' <b>idtransform</b> dx dy
 dx' dy' matrix <b>idtransform</b> dx dy</pre>
-	<p>With no matrix operand, idtransform (inverse delta transform)
-		transforms the device space distance vector (dx', dy') by the inverse
-		of CTM to produce the corresponding distance vector (dx, dy) in user
-		space.</p>
-	<p>If the matrix operand is supplied, idtransform transforms the
-		distance vector by the inverse of matrix rather than by the inverse of
-		CTM.</p>
 	<p>
-		A delta transformation is similar to a normal transformation, but the
-		translation components (tx and ty) of the transformation matrix are
-		not used, making the distance vectors be positionless in both user
-		space and device space. idtransform is the inverse of <a
-			href="../d/dtransform.html">dtransform</a>. It is useful for
-		determining how distances map from device space to user space.
+		(inverse delta transform) applies the inverse of a transformation
+		matrix to the distance vector (<i>dx'</i>, <i>dy'</i>), returning the
+		transformed distance vector (<i>dx</i>, <i>dy</i>). The first form of
+		the operator uses the inverse of the current transformation matrix in
+		the graphics state to transform the distance vector from device space
+		to user space coordinates. The second form applies the inverse of the
+		transformation specified by the matrix operand rather than that of the
+		CTM.
+	</p>
+	<p>
+		A delta transformation is similar to an ordinary transformation (see
+		Section <a href="../../../4/3.html">4.3, "Coordinate Systems and
+			Transformations"</a>), but does not use the translation components <i>t<sub>x</sub></i>
+		and <i>t<sub>y</sub></i> of the transformation matrix. The distance
+		vectors are thus positionless in both the original and target
+		coordinate spaces, making this operator useful for determining how
+		distances map from device space to user space.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
@@ -30,7 +34,7 @@ dx' dy' matrix <b>idtransform</b> dx dy</pre>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../d/dtransform.html">dtransform</a>, <a
-			href="../t/transform.html">transform</a>, <a href="itransform.html">itransform</a>
+			href="../t/transform.html">transform</a>, <a href="invertmatrix.html">invertmatrix</a>
 	</p>
 </body>
 </html>

@@ -5,15 +5,17 @@
 </head>
 <body>
 	<h3>invalidaccess (error)</h3>
-	<p>An access violation has occurred. Principal causes of
-		invalidaccess are:</p>
+	<p>An access violation has occurred. The principal causes of this
+		error are:</p>
 	<ul>
 		<li>Accessing the value of a composite object in violation of its
-			accessattribute (for example, storing into a read-only array).</li>
+			access attribute (for example, storing into a read-only array or
+			reading an execute-only string)</li>
 		<li>Storing a composite object in local VM as an element of a
-			composite object in global VM.</li>
-		<li>Executing pathforall if the current path contains an outline
-			for a protected font.</li>
+			composite object in global VM</li>
+		<li>Executing <a href="../p/pathforall.html">pathforall</a> if
+			the current path contains an outline for a protected font
+		</li>
 	</ul>
 	<p>
 		<b>See Also:</b> <a href="../r/rcheck.html">rcheck</a>, <a

@@ -6,9 +6,12 @@
 <body>
 	<h3>if</h3>
 	<pre>bool proc <b>if</b> -</pre>
-	<p>removes both operands from the stack, then executes proc if bool
-		is true. The if operator pushes no results of its own on the operand
-		stack, but the proc may do so.</p>
+	<p>
+		removes both operands from the stack, then executes <i>proc</i> if <i>bool</i>
+		is <i>true</i>. The <b>if</b> operator pushes no results of its own on
+		the operand stack, but <i>proc</i> may do so (see Section <a
+			href="../../../3/5.html">3.5, "Execution"</a>).
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -16,8 +19,8 @@
 3 4 lt {(3 is less than 4)} if &rArr; (3 is less than 4)
 </pre>
 	<p>
-		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>, <a
-			href="../t/typecheck.html">typecheck</a>
+		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
+		<a href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="ifelse.html">ifelse</a>

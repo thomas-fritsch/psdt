@@ -9,43 +9,45 @@
 	</h3>
 	<pre>              x y userpath <b>inustroke</b> bool
        x y userpath matrix <b>inustroke</b> bool
-       userpath1 userpath2 <b>inustroke</b> bool
-userpath1 userpath2 matrix <b>inustroke</b> bool</pre>
+       userpath<sub>1</sub> userpath<sub>2</sub> <b>inustroke</b> bool
+userpath<sub>1</sub> userpath<sub>2</sub> matrix <b>inustroke</b> bool</pre>
 	<p>
-		The first form returns <a href="../t/true.html">true</a> if the device
-		pixel containing the point (x, y) in user space would be painted by a
-		<a href="../u/ustroke.html">ustroke</a> applied to the same operands.
-		Otherwise it returns <a href="../f/false.html">false</a>.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and tests whether the
+		area that would be painted by stroking the resulting path with the <a
+			href="../u/ustroke.html">ustroke</a> operator includes a specified
+		point or intersects a specified region. The operation does not
+		actually place any marks on the current page, nor does it disturb the
+		current path in the graphics state. Except for the manner in which the
+		path is specified, the behavior of <b>inustroke</b> is identical to
+		that of <a href="instroke.html">instroke</a>.
 	</p>
 	<p>
-		In the second form, inustroke concatenates matrix to the CTM after
-		interpreting the user paths, but before computing the stroke (see <a
-			href="../u/ustroke.html">ustroke</a> operator).
+		The first and second forms of the operator return <i>true</i> if the
+		device pixel containing the point at coordinates (<i>x</i>, <i>y</i>)
+		in user space would be painted by applying the <a
+			href="../u/ustroke.html">ustroke</a> operator to <i>userpath</i>. The
+		third and fourth forms return <i>true</i> if any of the pixels
+		enclosed by <i>userpath<sub>1</sub></i> would be painted by applying <a
+			href="../u/ustroke.html">ustroke</a> to <i>userpath<sub>2</sub></i>.
+		If the stated conditions are not met, all four forms return <i>false</i>.
 	</p>
 	<p>
-		In the third and fourth forms, the device pixels that would be painted
-		by filling userpath1 become an &quot;aperture.&quot; inustroke returns
-		true if any of the pixels in the aperture would be painted by a <a
-			href="../u/ustroke.html">ustroke</a> of userpath2. Otherwise it
-		returns false.
+		The second and fourth forms concatenate <i>matrix</i> to the current
+		transformation matrix after interpreting the user paths, but before
+		computing the area occupied by the stroke (see <a
+			href="../u/ustroke.html">ustroke</a>).
 	</p>
 	<p>
-		This operator does not place any marks on the current page nor does it
-		disturb the current path in the graphics state. Except for the manner
-		in which the path is specified, inustroke behaves the same as <a
-			href="instroke.html">instroke</a>.
-	</p>
-	<p>
-		As with <a href="inufill.html">inufill</a>, if userpath is already
-		present in the user path cache, inustroke can take advantage of the
-		cached information to optimize execution.
+		If <i>userpath</i> is already present in the user path cache, <b>inustroke</b>
+		can take advantage of the cached information to optimize execution.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="invalidaccess.html">invalidaccess</a>, <a
 			href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
-			href="t.html#typecheck">typecheck</a>
+			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../s/stroke.html">stroke</a>, <a

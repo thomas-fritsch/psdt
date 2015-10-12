@@ -6,11 +6,14 @@
 <body>
 	<h3>identmatrix</h3>
 	<pre>matrix <b>identmatrix</b> matrix</pre>
-	<p>replaces the value of matrix with the value of the identity
-		matrix</p>
-	<p>[1 0 0 1 0 0]
-	<p>and pushes this modified matrix back on the operand stack. The
-		identity matrix transforms any coordinate to itself.</p>
+	<p>
+		replaces the value of <i>matrix</i> with the value of the identity
+		matrix
+	</p>
+	<p>[1 0 0 1 0 0]</p>
+	<p>and pushes the result back on the operand stack. This matrix
+		represents the identity transformation, which leaves all coordinates
+		unchanged.</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
@@ -18,9 +21,10 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../m/matrix.html">matrix</a>, <a
-			href="../c/currentmatrix.html">currentmatrix</a>, <a
+			href="initmatrix.html">initmatrix</a>, <a
 			href="../d/defaultmatrix.html">defaultmatrix</a>, <a
-			href="initmatrix.html">initmatrix</a>
+			href="../s/setmatrix.html">setmatrix</a>, <a
+			href="../c/currentmatrix.html">currentmatrix</a>
 	</p>
 </body>
 </html>

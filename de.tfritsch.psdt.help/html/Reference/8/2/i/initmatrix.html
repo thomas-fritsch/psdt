@@ -7,23 +7,27 @@
 	<h3>initmatrix</h3>
 	<pre>- <b>initmatrix</b> -</pre>
 	<p>
-		sets the current transformation matrix (CTM) to the default matrix for
-		the current output device. This matrix transforms the default user
-		coordinate system to device space. For a page-oriented device, the
-		default matrix is initially established by the <a
-			href="../s/setpagedevice.html">setpagedevice</a> operator.
+		sets the current transformation matrix (CTM) in the graphics state to
+		the default matrix for the current output device. This matrix
+		transforms the default user coordinate system to device space (see
+		Section <a href="../../../4/3/1-html">4.3.1, "User Space and
+			Device Space"</a>). For a page device, the default matrix is initially
+		established by the <a href="../s/setpagedevice.html">setpagedevice</a>
+		operator.
 	</p>
-	<p>There are few situations in which a PostScript language program
-		should execute initmatrix explicitly. A page description that executes
-		initmatrix usually produces incorrect results if it is embedded within
-		another, composite page.</p>
 	<p>
-		<b>Errors:</b> (none)
+		There are few situations in which a PostScript language program should
+		execute <b>initmatrix</b> explicitly. A page description that executes
+		<b>initmatrix</b> usually produces incorrect results if it is embedded
+		within another, composite page.
+	</p>
+	<p>
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../d/defaultmatrix.html">defaultmatrix</a>,
-		<a href="../c/currentmatrix.html">currentmatrix</a>, <a
-			href="../s/setmatrix.html">setmatrix</a>
+		<a href="../s/setmatrix.html">setmatrix</a>, <a
+			href="../c/currentmatrix.html">currentmatrix</a>
 	</p>
 </body>
 </html>

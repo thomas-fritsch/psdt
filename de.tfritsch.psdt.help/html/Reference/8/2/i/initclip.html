@@ -7,27 +7,32 @@
 	<h3>initclip</h3>
 	<pre>- <b>initclip</b> -</pre>
 	<p>
-		replaces the current clip path parameter in the graphics state by the
-		default clip path for the current output device. This path usually
-		corresponds to the boundary of the maximum imageable area for the
-		current output device. For a pageoriented output device, its
-		dimensions are those established by the setpagedevice operator. For a
-		display device, the clipping region established by initclip is not
-		well defined. Display PostScript applications should not make the
-		assumption that the clipping region corresponds to the window boundary
-		(see <a href="../v/viewclippath.html">viewclippath</a>).
+		sets the current clipping path in the graphics state to the default
+		clipping path for the current output device. This path usually
+		corresponds to the boundary of the maximum imageable area on the
+		current device. For a page device, its dimensions are those
+		established by the <a href="../s/setpagedevice.html">setpagedevice</a>
+		operator. For a display device, the clipping region established by <b>initclip</b>
+		is not well defined.
 	</p>
-	<p>There are few situations in which a PostScript language program
-		should execute initclip explicitly. A page description that executes
-		initclip usually produces incorrect results if it is embedded within
-		another, composite page.</p>
 	<p>
-		<b>Errors:</b> (none)
+		Display PostScript applications should not make the assumption that
+		the clipping region corresponds to the window boundary (see <a
+			href="../v/viewclippath.html">viewclippath</a>).
+	</p>
+	<p>
+		There are few situations in which a PostScript program should invoke <b>initclip</b>
+		explicitly. A page description that invokes <b>initclip</b> usually
+		produces incorrect results if it is embedded within another, composite
+		page.
+	</p>
+	<p>
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/clip.html">clip</a>, <a
-			href="../e/eoclip.html">eoclip</a>, <a href="../c/clippath.html">clippath</a>,
-		<a href="initgraphics.html">initgraphics</a>
+			href="../e/eoclip.html">eoclip</a>, <a href="../r/rectclip.html">rectclip</a>,
+		<a href="../c/clippath.html">clippath</a>, <a href="initgraphics.html">initgraphics</a>
 	</p>
 </body>
 </html>
