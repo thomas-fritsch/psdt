@@ -9,13 +9,13 @@
 	</h3>
 	<pre>gstate <b>setgstate</b> -</pre>
 	<p>
-		replaces the current graphics state by the value of the gstate object.
-		This is a copying operation, so subsequent modifications to the value
-		of gstate will not affect the current graphics state or vice versa.
-		Note that this is a wholesale replacement of all components of the
-		graphics state; in particular, the current clipping path is replaced
-		by the value in <a href="../g/gstate.html">gstate</a>, not intersected
-		with it.
+		replaces the current graphics state by the value of the gstate
+		(graphics state) object (see Section <a href="../../../4/2.html">4.2,
+			"Graphics State"</a>). The contents of <i>gstate</i> are <i>copied</i> to
+		the graphics state, so subsequent modifications to one will not affect
+		the other. Note that this operation replaces <i>all</i> components of
+		the graphics state; in particular, the current clipping path is
+		replaced by the value in <i>gstate</i>, not intersected with it.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

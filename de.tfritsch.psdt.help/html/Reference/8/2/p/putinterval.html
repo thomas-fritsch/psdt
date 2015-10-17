@@ -8,27 +8,33 @@
 	<pre>      array<sub>1</sub> index array<sub>2</sub> <b>putinterval</b> -
 array<sub>1</sub> index packedarray<sub>2</sub> <b>putinterval</b> -
     string<sub>1</sub> index string<sub>2</sub> <b>putinterval</b> -</pre>
-	<p>replaces a subsequence of the elements of the first operand by
-		the entire contents of the third operand. The subsequence that is
-		replaced begins at the specified index in the first operand; its
-		length is the same as the length of the third operand.</p>
+	<p>
+		replaces a subsequence of the elements of the first operand by the
+		entire contents of the third operand. The subsequence that is replaced
+		begins at <i>index</i> in the first operand; its length is the same as
+		the length of the third operand.
+	</p>
 	<p>
 		The objects are copied from the third operand to the first, as if by a
-		sequence of individual gets and puts. In the case of arrays, if the
+		sequence of individual <a href="../g/get.html">get</a> and <a
+			href="put.html">put</a> operations. In the case of arrays, if the
 		copied elements are themselves composite objects, the values of those
-		objects are shared between array<sub>2</sub> and array<sub>1</sub>.
+		objects are shared between <i>array<sub>2</sub></i> and <i>array<sub>1</sub></i>
+		(see Section <a href="../../../3/3/1.html">3.3.1, "Simple and
+			Composite Objects"</a>).
 	</p>
 	<p>
-		putinterval requires index to be a valid index in array<sub>1</sub> or
-		string<sub>1</sub> such that index plus the length of array<sub>2</sub>
-		or string<sub>2</sub> is not greater than the length of array<sub>1</sub>
-		or string<sub>1</sub>.
+		<b>putinterval</b> requires <i>index</i> to be a valid index in <i>array<sub>1</sub></i>
+		or <i>string<sub>1</sub></i> such that <i>index</i> plus the length of
+		<i>array<sub>2</sub></i> or <i>string<sub>2</sub></i> is not greater
+		than the length of <i>array<sub>1</sub></i> or <i>string<sub>1</sub></i>.
 	</p>
 	<p>
-		If the value of array<sub>1</sub> is in global VM and any of the
-		elements copied from array<sub>2</sub> or packedarray<sub>2</sub> are
-		composite objects whose values are in local VM, an <a
-			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+		If the value of <i>array<sub>1</sub></i> is in global VM and any of
+		the elements copied from <i>array<sub>2</sub></i> or <i>packedarray<sub>2</sub></i>
+		are composite objects whose values are in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs (see
+		Section <a href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>).
 	</p>
 	<p>
 		<b>Examples</b>

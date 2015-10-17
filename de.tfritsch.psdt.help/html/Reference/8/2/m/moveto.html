@@ -6,16 +6,19 @@
 <body>
 	<h3>moveto</h3>
 	<pre>x y <b>moveto</b> -</pre>
-	<p>starts a new subpath of the current path. moveto sets the
-		current point in the graphics state to the user space coordinate (x,
-		y) without adding any line segments to the current path.</p>
 	<p>
-		If the previous path operation in the current path was also a moveto
+		starts a new subpath of the current path (see Section <a
+			href="../../../4/4.html">4.4, "Path Construction"</a>) by setting the
+		current point in the graphics state to the coordinates (x, y) in user
+		space. No new line segments are added to the current path./p>
+	<p>
+		If the previous path operation in the current path was also a <b>moveto</b>
 		or <a href="../r/rmoveto.html">rmoveto</a>, that point is deleted from
-		the current path and the new moveto point replaces it.
+		the current path and the new <b>moveto</b> point replaces it.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>

@@ -6,16 +6,18 @@
 <body>
 	<h3>setrgbcolor</h3>
 	<pre>red green blue <b>setrgbcolor</b> -</pre>
-	<p>sets the color space to DeviceRGB, then sets the current color
-		parameter in the graphics state to a color described by the parameters
-		red, green, and blue, each of which must be a number in the range 0 to
-		1. This establishes the color subsequently used to paint shapes, such
-		as lines, areas, and characters, on the current page. For an
-		explanation of these color parameters. setrgbcolor does not give a
-		rangecheck for a value outside the range 0 to 1; it substitutes the
-		nearest legal value.</p>
-	<p>Execution of this operator is not permitted in certain
-		circumstances.</p>
+	<p>
+		sets the current color space in the graphics state to <b>DeviceRGB</b>
+		and the current color to the component values specified by <i>red</i>,
+		<i>green</i>, and <i>blue</i>. Each component must be a number in the
+		range 0.0 to 1.0. If any of the operands is outside this range, the
+		nearest valid value is substituted without error indication.
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
@@ -23,9 +25,10 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentrgbcolor.html">currentrgbcolor</a>,
-		<a href="setgray.html">setgray</a>, <a href="sethsbcolor.html">sethsbcolor</a>,
 		<a href="setcolorspace.html">setcolorspace</a>, <a
-			href="setcolor.html">setcolor</a>
+			href="setcolor.html">setcolor</a>, <a href="setgray.html">setgray</a>,
+		<a href="sethsbcolor.html">sethsbcolor</a>, <a
+			href="setcmykcolor.html">setcmyk</a>
 	</p>
 </body>
 </html>

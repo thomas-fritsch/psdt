@@ -6,29 +6,40 @@
 <body>
 	<h3>stroke</h3>
 	<pre>- <b>stroke</b> -</pre>
-	<p>paints a line centered on the current path, with sides parallel
-		to the path segments. The line’s graphical properties are defined by
-		various parameters of the graphics state. Its thickness is determined
-		by the current line width parameter (see setlinewidth) and its color
-		by the current color (see setcolor). The joints between connected path
-		segments and the ends of open subpaths are painted with the current
-		line join (see setlinejoin) and the current line cap (see setlinecap),
-		respectively. The line is either solid or broken according to the dash
-		pattern established by setdash. Uniform stroke width can be ensured by
-		enabling automatic stroke adjustment (see setstrokeadjust). All of
-		these graphics state parameters are consulted at the time stroke is
-		executed; their values during the time the path is being constructed
-		are irrelevant.</p>
-	<p>If a subpath is degenerate (consists of a single-point closed
-		path or of two or more points at the same coordinates), stroke paints
-		it only if round line caps have been specified, producing a filled
-		circle centered at the single point. If butt or projecting square line
-		caps have been specified, stroke produces no output, because the
-		orientation of the caps would be indeterminate. A subpath consisting
-		of a singlepoint open path produces no output.</p>
-	<p>After painting the current path, stroke clears it with an
-		implicit newpath operation. To preserve the current path across a
-		stroke operation, use the sequence</p>
+	<p>
+		paints a line centered on the current path, with sides parallel to the
+		path segments. The line's graphical properties are defined by various
+		parameters of the graphics state. Its thickness is determined by the
+		current line width parameter (see <a href="setlinewidth.html">setlinewidth</a>)
+		and its color by the current color (see <a href="setcolor.html">setcolor</a>).
+		The joints between connected path segments and the ends of open
+		subpaths are painted with the current line join (see <a
+			href="setlinejoin.html">setlinejoin</a>) and the current line cap
+		(see <a href="setlinecap.html">setlinecap</a>), respectively. The line
+		is either solid or broken according to the dash pattern established by
+		<a href="setdash.html">setdash</a>. Uniform stroke width can be
+		ensured by enabling automatic stroke adjustment (see <a
+			href="setstrokeadjust.html">setstrokeadjust</a>). All of these
+		graphics state parameters are consulted at the time <a
+			href="stroke.html">stroke</a> is executed; their values during the
+		time the path is being constructed are irrelevant.
+	</p>
+	<p>
+		If a subpath is degenerate (consists of a single-point closed path or
+		of two or more points at the same coordinates), <a href="stroke.html">stroke</a>
+		paints it only if round line caps have been specified, producing a
+		filled circle centered at the single point. If butt or projecting
+		square line caps have been specified, <a href="stroke.html">stroke</a>
+		produces no output, because the orientation of the caps would be
+		indeterminate. A subpath consisting of a singlepoint open path
+		produces no output.
+	</p>
+	<p>
+		After painting the current path, <a href="stroke.html">stroke</a>
+		clears it with an implicit <a href="../n/newpath.html">newpath</a>
+		operation. To preserve the current path across a <a href="stroke.html">stroke</a>
+		operation, use the sequence
+	</p>
 	<pre>
 gsave
   stroke
@@ -42,7 +53,7 @@ grestore
 			href="setlinejoin.html">setlinejoin</a>, <a href="setmiterlimit.html">setmiterlimit</a>,
 		<a href="setlinecap.html">setlinecap</a>, <a href="setdash.html">setdash</a>,
 		<a href="setstrokeadjust.html">setstrokeadjust</a>, <a
-			href="../u/ustroke.html">ustroke</a>
+			href="../u/ustroke.html">ustroke</a>, <a href="../f/fill.html">fill</a>
 	</p>
 </body>
 </html>

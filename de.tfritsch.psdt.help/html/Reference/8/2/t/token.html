@@ -5,38 +5,54 @@
 </head>
 <body>
 	<h3>token</h3>
-	<pre>  file <b>token</b> any true (if found)
-             false    (if not found)
-string <b>token</b> post any true (if found)
-             false         (if not found)</pre>
-	<p>reads characters from file or string, interpreting them
-		according to the PostScript language syntax rules, until it has
-		scanned and constructed an entire object.</p>
-	<p>In the file case, token normally pushes the scanned object
-		followed by true. If token reaches end-of-file before encountering any
-		characters besides white space, it closes file and returns false.</p>
-	<p>In the string case, token normally pushes post (the substring of
-		string beyond the portion consumed by token), the scanned object, and
-		true. If token reaches the end of string before encountering any
-		characters besides white space, it simply returns false.</p>
-	<p>In either case, the any result is an ordinary object. It may be
-		simple-an integer, real, or name-or composite-a string bracketed by
-		(...) or a procedure bracketed by {...}. The object returned by token
-		is the same as the object that would be encountered by the interpreter
-		if the file or string were executed directly. However, token scans
+	<pre>  file <b>token</b> any true <i>(if found)</i>
+             false    <i>(if not found)</i>
+string <b>token</b> post any true <i>(if found)</i>
+             false         <i>(if not found)</i>
+	</pre>
+	<p>
+		reads characters from <i>file</i> or <i>string</i>, interpreting them
+		according to the PostScript language syntax rules (see Section <a
+			href="../../../3/2.html">3.2, "Syntax"</a>), until it has scanned and
+		constructed an entire object.
+	</p>
+	<p>
+		In the <i>file</i> case, <b>token</b> normally pushes the scanned
+		object followed by <i>true</i>. If <b>token</b> reaches end-of-file
+		before encountering any characters besides white-space characters, it
+		returns <i>false</i>.
+	</p>
+	<p>
+		In the <i>string</i> case, <b>token</b> normally pushes <i>post</i>
+		(the substring of <i>string</i> beyond the portion consumed by <b>token</b>),
+		the scanned object, and <i>true</i>. If <b>token</b> reaches the end
+		of <i>string</i> before encountering any characters besides white
+		space, it simply returns <i>false</i>.
+	</p>
+	<p>
+		In either case, the <i>any</i> result is an ordinary object. It may be
+		a simple object&mdash;an integer, a real number, or a name&mdash;or a
+		composite object&mdash;a string bracketed by ( ... ) or a procedure
+		bracketed by { ... }. The object returned by <b>token</b> is the same
+		as the object that would be encountered by the interpreter if <i>file</i>
+		or <i>string</i> were executed directly. However, <b>token</b> scans
 		just a single object and it always pushes that object on the operand
-		stack rather than executing it.</p>
-	<p>token consumes all characters of the token and sometimes the
+		stack rather than executing it.
+	</p>
+	<p>
+		<b>token</b> consumes all characters of the token and sometimes the
 		terminating character as well. If the token is a name or a number
-		followed by a white-space character, token consumes the white-space
-		character (only the first one if there are several). If the token is
-		terminated by a special character that is part of the token-one of ),
-		&gt;, ], or }-token consumes that character, but no following ones. If
+		followed by a white-space character, <b>token</b> consumes the
+		white-space character (only the first one if there are several). If
 		the token is terminated by a special character that is part of the
-		next token-one of /, (, &lt;, [, or {-token does not consume that
-		character, but leaves it in the input sequence. If the token is a
-		binary token or a binary object sequence, token consumes no additional
-		characters.</p>
+		token&mdash;one of ), &gt;, ], or }&mdash;<b>token</b> consumes that
+		character, but no following ones. If the token is terminated by a
+		special character that is part of the next token&mdash;one of /, (,
+		&lt;, [, or {&mdash;<b>token</b> does not consume that character, but
+		leaves it in the input sequence. If the token is a binary token or a
+		binary object sequence, <b>token</b> consumes no additional
+		characters.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

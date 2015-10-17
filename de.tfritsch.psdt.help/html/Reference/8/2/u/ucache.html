@@ -9,25 +9,28 @@
 	</h3>
 	<pre>- <b>ucache</b> -</pre>
 	<p>
-		notifies the PostScript interpreter that the enclosing user path is to
-		be retained in the cache if it is not already there. If present, this
-		operator must appear as the first element of a user path definition
-		(before the mandatory <a href="../s/setbbox.html">setbbox</a>).
+		notifies the PostScript interpreter that the user path in which the
+		operator occurs is to be retained in the user path cache if it is not
+		already there (see Section <a href="../../../4/6/3.html">4.6.3,
+			"User Path Cache"</a>). If present, this operator must appear as the
+		first element of a user path definition (before the mandatory <a
+			href="../s/setbbox.html">setbbox</a>); if executed outside a user
+		path definition, the operator does nothing.
 	</p>
 	<p>
-		The ucache operator has no effect of its own when executed; if
-		executed outside a user path definition, it does nothing. It is useful
-		only with a user path painting operator, such as <a href="ufill.html">ufill</a>
-		or <a href="ustroke.html">ustroke</a>, that takes the user path as an
-		operand. If the user path is not already in the cache, the painting
-		operator performs the path construction operations specified in the
-		user path and places the results (referred to as the reduced path) in
-		the cache. If the user path is already present in the cache, the
-		painting operator does not interpret the user path, but rather obtains
+		The <b>ucache</b> operator has no effect of its own when executed. It
+		is useful only with a user path painting operator, such as <a
+			href="ufill.html">ufill</a> or <a href="ustroke.html">ustroke</a>,
+		that takes the enclosing user path as an operand. If the user path is
+		not already in the cache, the painting operator performs the path
+		construction operations specified in the user path definition and
+		places the results (referred to as the <i>reduced path</i>) in the
+		cache. If the user path is already present in the cache, the painting
+		operator does not interpret the user path, but rather obtains and uses
 		the reduced path from the cache.
 	</p>
 	<p>
-		<b>Errors:</b> (none)
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="uappend.html">uappend</a>, <a

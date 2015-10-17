@@ -13,27 +13,36 @@ x y width height matrix <b>rectstroke</b> -
         numarray matrix <b>rectstroke</b> -
               numstring <b>rectstroke</b> -
        numstring matrix <b>rectstroke</b> -</pre>
-	<p>strokes a path consisting of one or more rectangles the operands
-		describe. In the first two forms, the operands are four numbers that
-		describe a single rectangle. In the remaining forms, the operand is an
-		array or an encoded number string that describes an arbitrary number
-		of rectangles rectstroke neither reads nor alters the current path in
-		the graphics state.</p>
-	<p>If the matrix operand is present, rectstroke concatenates matrix
-		to the CTM after defining the path, but before stroking it. The matrix
-		applies to the line width and dash pattern, if any, but not to the
-		path itself.</p>
-	<p>In the first two forms, assuming width and height are positive,
-		rectstroke is equivalent to:</p>
+	<p>
+		strokes a path consisting of one or more rectangles defined by the
+		operands. In the first two forms, the operands <i>x</i>, <i>y</i>, <i>width</i>,
+		and <i>height</i> are four numbers that define a single rectangle. In
+		the remaining forms, <i>numarray</i> or <i>numstring</i> is an array
+		or an encoded number string that defines an arbitrary number of
+		rectangles ((see Sections <a href="../../../3/14/5.html">3.14.5,
+			"Encoded Number Strings,"</a> and <a href="../../../4/6/5.html">4.6.5,
+			"Rectangles"</a>). <b>rectstroke</b> neither reads nor alters the current
+		path in the graphics state.
+	</p>
+	<p>
+		The forms of the operator that include a <i>matrix</i> operand
+		concatenate it to the current transformation matrix after defining the
+		path, but before stroking it. The resulting matrix affects the line
+		width and dash pattern, if any, but not the path itself.
+	</p>
+	<p>
+		Assuming <i>width</i> and <i>height</i> are positive, the first two
+		forms of the operator are equivalent to the following code:
+	</p>
 	<pre>
 gsave
   newpath
-  x y moveto
-  width 0 rlineto
-  0 height rlineto
-  width neg 0 rlineto
+  <i>x</i> <i>y</i> moveto
+  <i>width</i> 0 rlineto
+  0 <i>height</i> rlineto
+  <i>width</i> neg 0 rlineto
   closepath
-  matrix concat       % If matrix operand is supplied
+  <i>matrix</i> concat       % Second form only
   stroke
 grestore
 </pre>

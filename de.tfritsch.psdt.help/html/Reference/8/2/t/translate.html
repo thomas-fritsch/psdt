@@ -7,25 +7,39 @@
 	<h3>translate</h3>
 	<pre>       t<sub>x</sub> t<sub>y</sub> <b>translate</b> -
 t<sub>x</sub> t<sub>y</sub> matrix <b>translate</b> matrix</pre>
-	<p>With no matrix operand, translate builds a temporary matrix and
-		concatenates this matrix with the current transformation matrix (CTM).
-		Precisely, translate replaces the CTM by T x CTM. The effect of this
-		is to move the origin of the user coordinate system by tx units in the
-		x direction and ty units in the y direction relative to the former
-		user coordinate system. The sizes of the x and y units and the
-		orientation of the axes are unchanged.</p>
-	<p>If the matrix operand is supplied, translate replaces the value
-		of matrix by T and pushes the modified matrix back on the operand
-		stack. In this case, translate does not affect the CTM.</p>
+	<p>
+		moves the origin of the user coordinate space by <i>t<sub>x</sub></i>
+		units horizontally and <i>t<sub>y</sub></i> units vertically, or
+		returns a matrix representing this transformation. The orientation of
+		the axes and the sizes of the coordinate units are unaffected.
+	</p>
+	<p>The transformation is represented by the matrix</p>
+	<pre>
+       | 1  0  0 |
+   <i>T</i> = | 0  1  0 |
+       | <i>t<sub>x</sub> t<sub>y</sub></i>  1 |</pre>
+	<p>
+		The first form of the operator applies this transformation to the user
+		coordinate system by concatenating matrix <i>T</i> with the current
+		transformation matrix (CTM); that is, it replaces the CTM with the
+		matrix product <i>T</i> &times; CTM. The second form replaces the
+		value of the <i>matrix</i> operand with an array representing matrix <i>T</i>
+		and pushes the result back on the operand stack without altering the
+		CTM. See Section <a href="../../../4/3/3.html">4.3.3, "Matrix
+			Representation and Manipulation,"</a> for a discussion of how matrices
+		are represented as arrays.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../q/rotate.html">rotate</a>, <a
-			href="../s/scale.html">scale</a>, <a href="../c/concat.html">concat</a>,
-		<a href="../s/setmatrix.html">setmatrix</a>
+		<b>See Also:</b> <a href="../s/setmatrix.html">setmatrix</a>, <a
+			href="../c/currentmatrix.html">currentmatrix</a>, <a
+			href="../s/scale.html">scale</a>, <a href="../q/rotate.html">rotate</a>,
+		<a href="../c/concat.html">concat</a>
+
 	</p>
 </body>
 </html>

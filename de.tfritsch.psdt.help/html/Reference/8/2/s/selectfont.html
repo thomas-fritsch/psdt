@@ -4,33 +4,38 @@
 <title>selectfont</title>
 </head>
 <body>
-	<h3>selectfont <img src="../LL2.png" alt="[LEVEL 2]" align="middle" /></h3>
+	<h3>
+		selectfont <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
+	</h3>
 	<pre> key scale <b>selectfont</b> -
 key matrix <b>selectfont</b> -</pre>
-	<p>obtains a font whose name is key, transforms it according to
-		scale or matrix, and establishes it as the current font dictionary in
-		the graphics state. selectfont is equivalent to one of the following,
-		according to whether the second operand is a number or a matrix:</p>
+	<p>
+		obtains a <b>Font</b> resource instance whose name is <i>key</i>,
+		transforms the instance (which may be a font or CIDFont dictionary)
+		according to <i>scale</i> or <i>matrix</i>, and establishes it as the
+		font parameter in the graphics state. <b>selectfont</b> is equivalent
+		to one of the following, according to whether the second operand is a
+		number or a matrix:
+	</p>
 	<pre>
-key <a href="../f/findfont.html">findfont</a> <a href="scale.html">scale</a> <a
-			href="scalefont.html">scalefont</a> <a href="setfont.html">setfont</a>
-key <a href="../f/findfont.html">findfont</a> <a href="../m/matrix.html">matrix</a> <a
-			href="../m/makefont.html">makefont</a> <a href="setfont.html">setfont</a>
+<i>key</i> findfont <i>scale</i> scalefont setfont
+<i>key</i> findfont <i>matrix</i> makefont setfont</a>
 </pre>
 	<p>
-		If the font named by key is already defined in VM, selectfont obtains
-		the font dictionary directly and does not execute findfont. However,
-		if the font is not defined, selectfont invokes findfont in the normal
-		way. In the latter case, it actually executes the name object <a
-			href="../f/findfont.html">findfont</a>, so it uses the current
-		definition of that name in the environment of the dictionary stack. On
-		the other hand, redefining <a href="../e/exch.html">exch</a>, <a
+		If the <b>Font</b> resource instance named by <i>key</i> is already
+		defined in virtual memory, <b>selectfont</b> obtains the corresponding
+		dictionary directly and does not execute <a href="../f/findfont.html">findfont</a>.
+		However, if the Font resource instance is not defined, <b>selectfont</b>
+		invokes <a href="../f/findfont.html">findfont</a>. In the latter case,
+		it actually executes the name object <a href="../f/findfont.html">findfont</a>,
+		so it uses the current definition of that name in the environment of
+		the dictionary stack. On the other hand, redefining <a
 			href="scalefont.html">scalefont</a>, <a href="../m/makefont.html">makefont</a>,
 		or <a href="setfont.html">setfont</a> would not alter the behavior of
-		selectfont.
+		<b>selectfont</b>.
 	</p>
 	<p>
-		selectfont can give rise to any of the errors possible for the
+		<b>selectfont</b> can give rise to any of the errors possible for the
 		component operations, including arbitrary errors from a user-defined <a
 			href="../f/findfont.html">findfont</a> procedure.
 	</p>
@@ -41,14 +46,8 @@ key <a href="../f/findfont.html">findfont</a> <a href="../m/matrix.html">matrix<
 /Helvetica 10 selectfont
 /Helvetica findfont 10 scalefont setfont
 </pre>
-	<p>The two lines of the example have the same effect, but the first
-		one is almost always more efficient.</p>
-	<p>The makefont, scalefont, and selectfont operators produce a font
-		dictionary derived from an original font dictionary, but with the
-		FontMatrix entry altered. The derived font dictionary is allocated in
-		local or global VM according to whether the original font dictionary
-		is in local or global VM. This is independent of the current VM
-		allocation mode.</p>
+	<p>Both lines of code above have the same effect, but the first one
+		is almost always more efficient.</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a

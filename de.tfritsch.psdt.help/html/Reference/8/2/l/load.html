@@ -7,16 +7,18 @@
 	<h3>load</h3>
 	<pre>key <b>load</b> value</pre>
 	<p>
-		searches for key in each dictionary on the dictionary stack, starting
-		with the topmost (current) dictionary. If key is found in some
-		dictionary, load pushes the associated value on the operand stack. If
-		key is not found in any dictionary on the dictionary stack, load
-		executes the error <a href="../u/undefined.html">undefined</a>.
+		searches for <i>key</i> in each dictionary on the dictionary stack,
+		starting with the topmost (current) dictionary. If <i>key</i> is found
+		in some dictionary, <b>load</b> pushes the associated value on the
+		operand stack; a <a href="../u/undefined.html">undefined</a> error
+		occurs.
 	</p>
-	<p>load looks up key the same way the interpreter looks up
-		executable names that it encounters during execution. However, load
+	<p>
+		<b>load</b> looks up <i>key</i> the same way the interpreter looks up
+		executable names that it encounters during execution. However, <b>load</b>
 		always pushes the associated value on the operand stack; it never
-		executes that value.</p>
+		executes the value.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>

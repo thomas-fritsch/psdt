@@ -14,13 +14,13 @@
 		in any dictionary on the dictionary stack.
 	</p>
 	<p>
-		A few PostScript operators are disabled in certain contexts-for
-		example, it is illegal to execute image, or operators that specify
-		colors or set color-related parameters in the graphics state, after a
-		<a href="../s/setcachedevice.html">setcachedevice</a> or <a
-			href="../s/setcachedevice2.html">setcachedevice2</a> in a BuildChar
-		or BuildGlyph procedure. Attempting to execute such disabled operators
-		results in an <b>undefined</b> error.
+		A few PostScript operators are disabled in certain contexts&mdash;for
+		example, it is illegal to execute <a href="../i/image.html">image</a>,
+		or operators that specify colors or set color-related parameters in
+		the graphics state, after a <a href="../s/setcachedevice.html">setcachedevice</a>
+		or <a href="../s/setcachedevice2.html">setcachedevice2</a> in a <b>BuildChar</b>
+		or <b>BuildGlyph</b> procedure. Attempting to execute such disabled
+		operators results in an <b>undefined</b> error.
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../k/known.html">known</a>, <a

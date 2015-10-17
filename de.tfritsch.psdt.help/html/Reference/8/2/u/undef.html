@@ -8,14 +8,20 @@
 		undef <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>dict key <b>undef</b> -</pre>
-	<p>removes key and its associated value from the dictionary dict.
-		dict does not need to be on the dictionary stack. No error occurs if
-		key is not present in dict.</p>
-	<p>If the value of dict is in local VM, the effect of undef can be
-		undone by a subsequent restore. That is, if key was present in dict at
-		the time of the matching save, restore will reinstate key and its
-		former value. But if dict is in global VM, the effect of undef is
-		permanent.</p>
+	<p>
+		removes <i>key</i> and its associated value from the dictionary <i>dict</i>.
+		<i>dict</i> does not need to be on the dictionary stack. No error
+		occurs if <i>key</i> is not present in <i>dict</i>.
+	</p>
+	<p>
+		If the value of <i>dict</i> is in local VM, the effect of <b>undef</b>
+		can be undone by a subsequent <a href="../r/restore.html">restore</a>
+		operation. That is, if <i>key</i> was present in <i>dict</i> at the
+		time of the matching <a href="../s/save.html">save</a> operation, <a
+			href="../r/restore.html">restore</a> will reinstate <i>key</i> and
+		its former value. But if <i>dict</i> is in global VM, the effect of <b>undef</b>
+		is permanent
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

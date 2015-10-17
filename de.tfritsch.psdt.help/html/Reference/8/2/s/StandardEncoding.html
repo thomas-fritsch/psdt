@@ -9,14 +9,18 @@
 	<p>
 		pushes the standard encoding vector on the operand stack. This is a
 		256-element literal array object, indexed by character codes, whose
-		values are the character names for those codes. For an explanation of
-		encoding vectors. StandardEncoding is not an operator; it is a name in
-		<a href="systemdict.html">systemdict</a> associated with the array
-		object. StandardEncoding is the Adobe standard encoding vector used by
+		values are the character names for those codes. See Section <a
+			href="../../../5/3.html">5.3, "Character Encoding,"</a> for an
+		explanation of encoding vectors. <b>StandardEncoding</b> is not an
+		operator; it is a name in <a href="systemdict.html">systemdict</a>
+		associated with the array object.
+	</p>
+	<p>
+		<b>StandardEncoding</b> is the Adobe standard encoding vector used by
 		most Roman text fonts, but not by special fonts, such as Symbol. A new
 		Roman text font having no unusual encoding requirements should specify
-		its Encoding entry to be the value of StandardEncoding rather than
-		define its own private array.
+		its <b>Encoding</b> entry to be the value of <b>StandardEncoding</b>
+		rather than define its own private array.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="stackoverflow.html">stackoverflow</a>

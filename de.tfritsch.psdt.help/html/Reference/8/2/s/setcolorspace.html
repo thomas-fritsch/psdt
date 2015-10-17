@@ -9,26 +9,37 @@
 	</h3>
 	<pre>array <b>setcolorspace</b> -
  name <b>setcolorspace</b> -</pre>
-	<p>sets the current color space in the graphics state. It also
+	<p>
+		sets the current color space in the graphics state. It also
 		initializes the current color to a value that depends on the specific
 		color space selected. The initial value of the current color space is
-		DeviceGray.</p>
+		<b>DeviceGray</b>.
+	</p>
 	<p>In the first form of the operator, the color space is specified
 		by an array of the form</p>
 	<pre>
-[family param<sub>1</sub> ... param<sub>n</sub>]
+[<i>family</i> <i>param<sub>1</sub></i> ... <i>param<sub>n</sub></i>]
 </pre>
-	<p>where family is the name of the color space family and the
-		parameters param1 through paramn further describe the space within
-		that family. The number and meanings of these parameters vary
-		depending on the family; see Section 4.8, "Color Spaces," for details.</p>
-	<p>In the second form, the color space is specified by its family
-		name only. This is allowed only for those color space families that
-		require no parameters: DeviceGray, DeviceRGB, DeviceCMYK, and Pattern.
-		Specifying a color space by name is equivalent to specifying it by a
-		one-element array containing just that name with no other parameters</p>
-	<p>Execution of this operator is not permitted in certain
-		circumstances; see Section 4.8.1, "Types of Color Space."</p>
+	<p>
+		where <i>family</i> is the name of the color space family and the
+		parameters <i>param<sub>1</sub></i> through <i>param<sub>n</sub></i>
+		further describe the space within that family. The number and meanings
+		of these parameters vary depending on the family; see Section <a
+			href="../../../4/8.html">4.8, "Color Spaces,"</a> for details.
+	</p>
+	<p>
+		In the second form, the color space is specified by its family name
+		only. This is allowed only for those color space families that require
+		no parameters: <b>DeviceGray</b>, <b>DeviceRGB</b>, <b>DeviceCMYK</b>,
+		and <b>Pattern</b>. Specifying a color space by name is equivalent to
+		specifying it by a one-element array containing just that name with no
+		other parameters
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a

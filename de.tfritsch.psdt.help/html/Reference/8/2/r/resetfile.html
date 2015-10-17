@@ -8,16 +8,21 @@
 		resetfile <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>file <b>resetfile</b> -</pre>
-	<p>discards buffered characters belonging to a file object. For an
-		input file, resetfile discards any characters that have been received
-		from the source, but not yet consumed. For an output file, it discards
-		any characters that have been written to the file, but not yet
-		delivered to their destination.</p>
-	<p>resetfile may have other side effects that depend on the
+	<p>
+		discards buffered characters belonging to a file object. For an input
+		file, <b>resetfile</b> discards any characters that have been received
+		from the source but not yet consumed. For an output file, it discards
+		any characters that have been written to the file but not yet
+		delivered to their destination. <b>resetfile</b> never generates an <a
+			href="../i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		This operator may have other side effects that depend on the
 		properties of the underlying file. For example, it may restart
 		communication via a channel that was blocked waiting for buffer space
-		to become available. resetfile never waits for characters to be
-		received or transmitted.</p>
+		to become available. <b>resetfile</b> never waits for characters to be
+		received or transmitted.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackunderflow.html">stackunderflow</a>,
 		<a href="../t/typecheck.html">typecheck</a>

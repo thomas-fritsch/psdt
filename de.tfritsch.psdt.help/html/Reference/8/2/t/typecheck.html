@@ -5,15 +5,19 @@
 </head>
 <body>
 	<h3>typecheck (error)</h3>
-	<p>Some operand's type is different from what an operator expects.
-		This is probably the most frequent error encountered. It is often the
-		result of faulty stack manipulation, such as operands supplied in the
-		wrong order or procedures leaving results on the stack when they are
-		not supposed to.</p>
-	<p>Certain operators require dictionaries or other composite
-		objects as operands, constructed according to specific rules (for
-		example, pattern dictionaries or user paths). A typecheck error can
+	<p>An operand's type is different from what an operator expects, or
+		an operand is a literal array or a literal packed array when an
+		operator expects a procedure (an executable array or an executable
+		packed array). This is probably the most frequently occurring error.
+		It is often the result of faulty stack manipulation, such as operands
+		supplied in the wrong order or procedures leaving results on the stack
+		when they are not supposed to.</p>
+	<p>
+		Certain operators require dictionaries or other composite objects as
+		operands, constructed according to specific rules (for example,
+		pattern dictionaries or user paths). A <b>typecheck</b> error can
 		occur if the contents of such objects are of incorrect type or are
-		otherwise malformed.</p>
+		otherwise malformed.
+	</p>
 </body>
 </html>

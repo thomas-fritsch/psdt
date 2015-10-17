@@ -7,23 +7,28 @@
 	<h3>widthshow</h3>
 	<pre>c<sub>x</sub> c<sub>y</sub> char string <b>widthshow</b> -</pre>
 	<p>
-		paints the characters of string in a manner similar to <a
-			href="../s/show.html">show</a>. But while doing so, widthshow adjusts
-		the width of each occurrence of the character char by adding c<sub>x</sub>
-		to its x width and c<sub>y</sub> to its y width, thus modifying the
-		spacing between it and the next character. char is an integer used as
-		a character code. This operator enables fitting a string of text to a
-		specific width by adjusting the width of all occurrences of some
-		specific character, such as the space character.
+		paints glyphs for the characters of <i>string</i> in a manner similar
+		to <a href="../s/show.html">show</a>; however, while doing so, it
+		adjusts the width of each occurrence of the character <i>char</i>'s
+		glyph by adding <i>c<sub>x</sub></i> to its <i>x</i> width and <i>c<sub>y</sub></i>
+		to its <i>y</i> width, thus modifying the spacing between it and the
+		next glyph. This operator enables fitting a string of text to a
+		specific width by adjusting the width of the glyph for a specific
+		character, such as the space character.
 	</p>
-	<p>For a base font, char is simply an integer in the range 0 to 255
-		compared to successive elements of string. For a composite font, char
-		is compared to an integer computed from the font mapping algorithm.
-		The font number, f, and character code, c, that are selected by the
-		font mapping algorithm are combined into a single integer according to
-		the FMapType of the immediate parent of the selected base font. For
-		FMapType values of 4 and 5, the integer value is (f x 128) + c; for
-		all other FMapType values, it is (f x 256) + c.</p>
+	<p>
+		<i>char</i> is an integer used as a character code. For a base font, <i>char</i>
+		is simply an integer in the range 0 to 255 that is compared to
+		successive elements of <i>string</i>. For a composite font, <i>char</i>
+		is compared to integers computed from the character mapping algorithm
+		(see Section <a href="../../../5/10/1.html">5.10.1, "Character
+			Mapping"</a>). The font number, <i>f</i>, and character code, <i>c</i>,
+		that are selected by the character mapping algorithm are combined into
+		a single integer according to the <b>FMapType</b> of the immediate
+		parent of the selected base font. For <b>FMapType</b> values of 4 and
+		5, the integer value is (<i>f</i> &times; 128) + <i>c</i>; for all
+		other <b>FMapType</b> values, it is (<i>f</i> &times; 256) + <i>c</i>.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -32,6 +37,10 @@
 14 60 moveto (Normal spacing) show
 14 46 moveto 6 0 8#040 (Wide word spacing) widthshow
 </pre>
+	<p>
+		and <i>string</i> is <81406140>, <i>char</i> is compared to 33308
+		(16#8140), 97 (16#61), and 425 ((1 &times; 256) + 16#A9), in sequence.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../i/invalidfont.html">invalidfont</a>, <a

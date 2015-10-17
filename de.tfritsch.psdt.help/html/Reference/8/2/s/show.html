@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
+<title>show</title>
 </head>
 <body>
 	<h3>show</h3>
 	<pre>string <b>show</b> -</pre>
-	<p>paints glyphs for the characters identified by the elements of
-		string on the current page starting at the current point, using the
-		font face, size, and orientation specified by the current font (as
-		returned by currentfont). The spacing from each glyph to the next is
-		determined by the glyph’s width, which is an (x, y) displacement that
-		is part of the glyph description. When it is finished, show adjusts
-		the current point in the graphics state by the sum of the widths of
-		all the glyphs shown. show requires that the current point initially
-		be defined (for example, by moveto); otherwise, a nocurrentpoint error
-		occurs.</p>
-	<p>If a character code would index beyond the end of the font’s
-		Encoding array, or if the character mapping algorithm goes out of
-		bounds in other ways, a rangecheck error occurs.</p>
-	<p>See Chapter 5 for complete information about the definition,
-		manipulation, and rendition of fonts.</p>
+	<p>
+		paints glyphs for the characters identified by the elements of <i>string</i>
+		on the current page starting at the current point, using the font
+		face, size, and orientation specified by the current font (as returned
+		by <a href="../c/currentfont.html">currentfont</a>). The spacing from
+		each glyph to the next is determined by the glyph's width, which is an
+		(<i>x</i>, <i>y</i>) displacement that is part of the glyph
+		description. When it is finished, <b>show</b> adjusts the current
+		point in the graphics state by the sum of the widths of all the glyphs
+		shown. <b>show</b> requires that the current point initially be
+		defined (for example, by <a href="../m/moveto.html">moveto</a>);
+		otherwise, a <a href="../n/nocurrentpoint.html">nocurrentpoint</a>
+		error occurs.
+	</p>
+	<p>
+		If a character code would index beyond the end of the font's <b>Encoding</b>
+		array, or if the character mapping algorithm goes out of bounds in
+		other ways, a <a href="../r/rangecheck.html">rangecheck</a> error
+		occurs.
+	</p>
+	<p>
+		See <a href="../../../5.html">Chapter 5</a> for complete information
+		about the definition, manipulation, and rendition of fonts.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../i/invalidfont.html">invalidfont</a>, <a

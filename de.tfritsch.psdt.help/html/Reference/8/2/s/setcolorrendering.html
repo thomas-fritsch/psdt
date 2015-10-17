@@ -8,18 +8,26 @@
 		setcolorrendering <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>dict <b>setcolorrendering</b> -</pre>
-	<p>sets the current CIE-based color rendering dictionary (CRD) in
-		the graphics state to dict. The default CRD is device-dependent (see
-		Section 7.1, "CIE-Based Color to Device Color").</p>
-	<p>Because the effect of the CRD is device-dependent, this operator
+	<p>
+		sets the current CIE-based color rendering dictionary (CRD) in the
+		graphics state to <i>dict</i>. The default CRD is device-dependent
+		(see Section <a href="../../../7/1.html">7.1, "CIE-Based Color to
+			Device Color"</a>).
+	</p>
+	<p>
+		Because the effect of the CRD is device-dependent, this operator
 		ordinarily should not be used in a page description that is intended
-		to be deviceindependent. However, it is acceptable to use it to
-		establish a CRD that has been obtained by means of the
-		findcolorrendering operator; this does not compromise the device
-		independence of the page description, even though the CRD itself is
-		device-dependent.</p>
-	<p>Execution of this operator is not permitted in certain
-		circumstances; see Section 4.8.1, "Types of Color Space."</p>
+		to be device-independent. However, it is acceptable to use it to
+		establish a CRD that has been obtained by means of the <a
+			href="../f/findcolorrendering.html">findcolorrendering</a> operator;
+		this does not compromise the device independence of the page
+		description, even though the CRD itself is device-dependent.
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a> <a
@@ -28,7 +36,8 @@
 			href="../u/undefined.html">undefined</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../c/currentcolorrendering.html">currentcolorrendering</a>
+		<b>See Also:</b> <a href="../c/currentcolorrendering.html">currentcolorrendering</a>,
+		<a href="../f/findcolorrendering.html">findcolorrendering</a>
 	</p>
 </body>
 </html>

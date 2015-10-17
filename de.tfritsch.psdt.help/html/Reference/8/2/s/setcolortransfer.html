@@ -8,28 +8,34 @@
 		setcolortransfer <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>redproc greenproc blueproc grayproc <b>setcolortransfer</b> -</pre>
-	<p>sets the transfer function parameter in the graphics state.
-		setcolortransfer specifies transfer functions for all four primary
-		color components of the output device (red, green, blue, and gray) or
-		their complements (cyan, magenta, yellow, and black). Each operand
-		must be a PostScript procedure that is called with a number in the
-		range 0.0 to 1.0 on the operand stack and will return a number in the
-		same range.</p>
-	<p>These procedures adjust the values of device color components
-		(see Section 7.3, "Transfer Functions"). A device's output will be
+	<p>
+		sets the transfer function parameter in the graphics state. <b>setcolortransfer</b>
+		specifies transfer functions for all four primary color components of
+		the output device (red, green, blue, and gray) or their complements
+		(cyan, magenta, yellow, and black). Each operand must be a PostScript
+		procedure that is called with a number in the range 0.0 to 1.0 on the
+		operand stack and will return a number in the same range.
+	</p>
+	<p>
+		These procedures adjust the values of device color components (see
+		Section <a>7.3, "Transfer Functions"</a>). A device's output will be
 		affected only by those transfer functions corresponding to color
-		components that the device supports. For example, redproc, greenproc,
-		and blueproc will have no effect on a black-and-white device, while
-		grayproc will have no effect on an RGB device. On a device whose
-		ProcessColorModel is DeviceN, none of the transfer functions set by
-		setcolortransfer have any effect; in this case, all components'
-		transfer functions must be specified via TransferFunction entries in a
-		halftone dictionary supplied to sethalftone.</p>
-	<p>Because the effect of the transfer function parameter is
-		device-dependent, setcolortransfer should not be used in a page
+		components that the device supports. For example, <i>redproc</i>, <i>greenproc</i>,
+		and <i>blueproc</i> will have no effect on a black-and-white device,
+		while <i>grayproc</i> will have no effect on an RGB device. On a
+		device whose <b>ProcessColorModel</b> is <b>DeviceN</b>, none of the
+		transfer functions set by <b>setcolortransfer</b> have any effect; in
+		this case, all components' transfer functions must be specified via <b>TransferFunction</b>
+		entries in a halftone dictionary supplied to <a
+			href="sethalftone.html">sethalftone</a>.
+	</p>
+	<p>
+		Because the effect of the transfer function parameter is
+		device-dependent, <b>setcolortransfer</b> should not be used in a page
 		description that is intended to be device-independent. Execution of
-		this operator is not permitted in certain circumstances; see Section
-		4.8.1, "Types of Color Space."</p>
+		this operator is not permitted in certain circumstances; see Section <a
+			href="../../--/4/8/1.html">4.8.1, "Types of Color Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a

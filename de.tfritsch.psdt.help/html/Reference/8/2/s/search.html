@@ -5,19 +5,30 @@
 </head>
 <body>
 	<h3>search</h3>
-	<pre>string seek <b>search</b> post match pre true (if found)
-                   string false        (if not found)</pre>
-	<p>looks for the first occurrence of the string seek within string
-		and returns results of this search on the operand stack. The topmost
-		result is a boolean that indicates if the search succeeded. If search
-		finds a subsequence of string whose elements are equal to the elements
-		of seek, it splits string into three segments: pre, the portion of
-		string preceding the match; match, the portion of string that matches
-		seek; and post, the remainder of string. It then pushes the string
-		objects post, match, and pre on the operand stack, followed by the
-		boolean true. All three of these strings are substrings sharing
-		intervals of the value of the original string. If search does not find
-		a match, it pushes the original string and the boolean false.</p>
+	<pre>string seek <b>search</b> post match pre true  <i>(if found)</i>
+                   string false         <i>(if not found)</i>
+	</pre>
+	<p>
+		looks for the first occurrence of the string <i>seek</i> within <i>string</i>
+		and returns the results of this search on the operand stack. The
+		topmost result is a boolean value that indicates whether the search
+		succeeded.
+	</p>
+	<p>
+		If <b>search</b> finds a subsequence of <i>string</i> whose elements
+		are equal to the elements of <i>seek</i>, it splits <i>string</i> into
+		three segments: <i>pre</i>, the portion of <i>string</i> preceding the
+		match; <i>match</i>, the portion of <i>string</i> that matches <i>seek</i>;
+		and <i>post</i>, the remainder of <i>string</i>. It then pushes the
+		string objects <i>post</i>, <i>match</i>, and <i>pre</i> on the
+		operand stack, followed by the boolean value <i>true</i>. All three of
+		these strings are substrings sharing intervals of the value of the
+		original <i>string</i>.
+	</p>
+	<p>
+		If <b>search</b> does not find a match, it pushes the original <i>string</i>
+		followed by <i>false</i>.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

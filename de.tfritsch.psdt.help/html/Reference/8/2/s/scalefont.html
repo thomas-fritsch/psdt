@@ -5,39 +5,32 @@
 </head>
 <body>
 	<h3>scalefont</h3>
-	<pre>font scale <b>scalefont</b> font'</pre>
+	<pre>   font scale <b>scalefont</b> font'
+cidfont scale <b>scalefont</b> cidfont'</pre>
 	<p>
-		applies the scale factor scale to font, producing a new font' whose
-		characters are scaled by scale (in both x and y) when they are shown.
-		scalefont first creates a copy of font, then replaces the new font's
-		FontMatrix entry with the result of scaling the existing FontMatrix by
-		scale. It inserts two additional entries, OrigFont and ScaleMatrix,
+		applies the scale factor scale to <i>font</i> or <i>cidfont</i>,
+		producing a new <i>font</i> or <i>cidfont</i> whose glyphs are scaled
+		by <i>scale</i> (in both the <i>x</i> and <i>y</i> dimensions) when
+		they are shown. <b>scalefont</b> first creates a copy of <i>font</i>
+		or <i>cidfont</i>. Then it replaces the copy's <b>FontMatrix</b> entry
+		with the result of scaling the existing <b>FontMatrix</b> by <i>scale</i>.
+		It inserts two additional entries, <b>OrigFont</b> and <b>ScaleMatrix</b>,
 		whose purpose is internal to the implementation. Finally, it returns
-		the result as font'. Showing characters from the transformed font
-		produces the same results as showing from the original font after
-		having scaled user space by the factor scale in both x and y by means
-		of the <a href="scale.html">scale</a> operator.
+		the result as <i>font</i> or <i>cidfont</i>.
 	</p>
-	<p>scalefont is essentially a convenience operator that enables the
-		desired scale factor to be encapsulated in the font description.
-		Another operator, makefont, performs more general transformations than
-		simple scaling. See the description of makefont for more information
-		on how the transformed font is derived. selectfont combines the
-		effects of findfont and scalefont. The interpreter keeps track of font
-		dictionaries recently created by scalefont.</p>
-	<p>Calling scalefont multiple times with the same font and scale
-		will usually return the same font' rather than create a new one each
-		time. However, it is usually more efficient for a PostScript language
-		program to apply scalefont only once for each font that it needs and
-		to keep track of the resulting font dictionaries on its own.</p>
 	<p>
-		The <a href="../m/makefont.html">makefont</a>, scalefont, and <a
-			href="selectfont.html">selectfont</a> operators produce a font
-		dictionary derived from an original font dictionary, but with the
-		FontMatrix entry altered. The derived font dictionary is allocated in
-		local or global VM according to whether the original font dictionary
-		is in local or global VM. This is independent of the current VM
-		allocation mode.
+		Showing glyphs from <i>font</i> or <i>cidfont</i> produces the same
+		results as showing from <i>font</i> or <i>cidfont</i> after having
+		scaled user space by <i>scale</i> in by means of the <a
+			href="../s/scale.html">scale</a> operator. <b>scalefont</b> is
+		essentially a convenience operator that enables the desired scale
+		factor to be encapsulated in the font or CIDFont description. Another
+		operator, <a href="../m/makefont.html">makefont</a>, performs more
+		general transformations than simple scaling. See the description of <a
+			href="../m/makefont.html">makefont</a> for more information on how
+		the transformed font is derived. <a href="selectfont.html">selectfont</a>
+		combines the effects of <a href="../f/findfont.html">findfont</a> and
+		<b>scalefont</b>.
 	</p>
 	<p>
 		<b>Example</b>
@@ -45,11 +38,13 @@
 	<pre>
 /Helvetica findfont 12 scalefont setfont
 </pre>
-	<p>This obtains the standard Helvetica font, which is defined with
-		a 1-unit line height, and scales it by a factor of 12 in both x and y
-		dimensions. This produces a 12-unit high font (i.e., a 12-point font
-		in default user space) whose characters have the same proportions as
-		those in the original font.</p>
+	<p>
+		This example obtains the standard Helvetica font, which is defined
+		with a 1-unit line height, and scales it by a factor of 12 in both the
+		<i>x</i> and <i>y</i> dimensions. This produces a font 12 units high
+		(that is, a 12-point font in default user space) whose glyphs have the
+		same proportions as those in the original font.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a

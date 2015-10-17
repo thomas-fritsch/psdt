@@ -5,45 +5,53 @@
 </head>
 <body>
 	<h3>pathbbox</h3>
-	<pre>- <b>pathbbox</b> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub></pre>
+	<pre>- <b>pathbbox</b> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub>
+	</pre>
 	<p>
-		returns the bounding box of the current path in the current user
-		coordinate system. The results are four real numbers: lower-left x,
-		lower-left y, upper-right x, and upper-right y. These coordinates
-		describe a rectangle, oriented with its sides parallel to the x and y
-		axes in user space, that completely encloses all elements of the path.
-		If the current path is empty, pathbbox executes the error <a
+		returns the bounding box of the current path, the smallest rectangle
+		enclosing all elements of the path. The results are four real numbers
+		describing a rectangle in user space, oriented with its sides parallel
+		to the axes of the user coordinate system: <i>ll<sub>x</sub></i> and <i>ll<sub>y</sub></i>
+		are the coordinates of the rectangle's lower-left corner, <i>ur<sub>x</sub></i>
+		and <i>ur<sub>y</sub></i> the upper-right corner. If the current path
+		is empty, pathbbox executes the error <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>.
 	</p>
-	<p>pathbbox first computes the bounding box of the current path in
-		device space. It then transforms these coordinates to user space by
-		the inverse of CTM and computes the bounding box of the resulting
-		figure in user space. If the user coordinate system is rotated (other
-		than by multiples of 90 degrees) or skewed, pathbbox may return a
-		bounding box that is larger than expected.</p>
 	<p>
-		If the path includes curve segments, the bounding box encloses the
-		control points of the curves as well as the curves themselves. To
-		obtain a bounding box that fits the path more tightly, one should
-		first &quot;flatten&quot; the curve segments by executing <a
-			href="../f/flattenpath.html">flattenpath</a>.
+		If an explicit bounding box has been established with the <a
+			href="../s/setbbox.html">setbbox</a> operator, <b>pathbbox</b>
+		returns a result derived from that bounding box rather than from the
+		actual path. Otherwise, <b>pathbbox</b> first computes the bounding
+		box of the current path in device space. It then transforms the
+		corners of this box from device to user coordinates, by applying the
+		inverse of the current transformation matrix, and constructs the
+		smallest rectangle in user space that is oriented parallel to the user
+		space axes and encloses all four corners of the resulting figure. If
+		the user coordinate system is rotated (other than by a multiple of 90
+		degrees) or skewed, the bounding box returned may be larger than
+		expected.
 	</p>
 	<p>
-		In Level 2 implementations of the PostScript language, if the current
-		path ends with a <a href="../m/moveto.html">moveto</a>, the bounding
-		box does not necessarily include it, unless the moveto is the only
-		element of the path. If an explicit bounding box has been established
-		by <a href="../s/setbbox.html">setbbox</a>, pathbbox returns a result
-		derived from that bounding box, not from the actual path.
+		If the current path includes curve segments, the computed bounding box
+		will enclose the curves' control points as well as the curves
+		themselves. A bounding box fitting the path more tightly can be
+		obtained by first "flattening" the curve segments with the<a
+			href="../f/flattenpath.html">flattenpath</a> operator.
+	</p>
+	<p>
+		In LanguageLevel 2 or 3, if the current path ends with a <a
+			href="../m/moveto.html">moveto</a> operation, the coordinates of the
+		<a href="../m/moveto.html">moveto</a> are not considered during the
+		computation of the bounding box unless the <a href="../m/moveto.html">moveto</a>
+		is the only element of the path.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../n/nocurrentpoint.html">nocurrentpoint</a>,
 		<a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../f/flattenpath.html">flattenpath</a>, <a
-			href="../c/clippath.html">clippath</a>, <a href="../c/charpath.html">charpath</a>,
-		<a href="../s/setbbox.html">setbbox</a>
+		<b>See Also:</b> <a href="../s/setbbox.html">setbbox</a>, <a
+			href="../f/flattenpath.html">flattenpath</a>
 	</p>
 </body>
 </html>

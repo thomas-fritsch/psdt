@@ -5,20 +5,25 @@
 </head>
 <body>
 	<h3>run</h3>
-	<pre>string <b>run</b> -</pre>
-	<p>executes the contents of the file identified by string-in other
-		words, interprets the characters in that file as a PostScript language
-		program. When run encounters end-of-file or terminates for some other
-		reason (for example, stop), it closes the file.</p>
+	<pre>filename <b>run</b> -</pre>
+	<p>
+		executes the contents of the specified file&mdash;in other words,
+		interprets the characters in that file as a PostScript program. When <b>run</b>
+		encounters end-of-file or terminates for some other reason (for
+		example, execution of the <a href="../s/stop.html">stop</a> operator),
+		it closes the file.
+	</p>
 	<p>run is essentially a convenience operator for the sequence</p>
 	<pre>
 (r) file cvx exec
 </pre>
-	<p>except for its behavior upon abnormal termination. Also, the
-		context of a run cannot be left by executing exit; an attempt to do so
-		produces the error invalidexit. The run operator leaves no results on
-		the operand stack, but the program executed by run may alter the
-		stacks arbitrarily.</p>
+	<p>
+		except for its behavior upon abnormal termination. Also, the context
+		of a <b>run</b> cannot be left by executing <a href="../e/exit.html">exit</a>;
+		an attempt to do so produces the error <a href="../i/invalidexit.html">invalidexit</a>.
+		The <b>run</b> operator leaves no results on the operand stack, but
+		the program executed by <b>run</b> may alter the stacks arbitrarily.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a
 			href="../l/limitcheck.html">limitcheck</a>, <a

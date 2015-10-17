@@ -6,30 +6,43 @@
 <body>
 	<h3>status</h3>
 	<pre>  file <b>status</b> bool
-string <b>status</b> pages bytes referenced created true   (if found)
-              false                                 (if not found)>
+string <b>status</b> pages bytes referenced created true   <i>(if found)</i>
+              false                                 <i>(if not found)</i>
 </pre>
-	<p>If the operand is a file object, status returns true if it is
-		still valid (i.e., is associated with an open file), false otherwise.
-		If the operand is a string, status treats it as a file name according
-		to the conventions of &quot;Named Files.&quot; If there is a file by
-		that name, status pushes four integers of status information followed
-		by the value true; otherwise, it pushes false. The four integer values
-		are:</p>
+	<p>
+		If the operand is a file object, <b>status</b> returns <i>true</i> if
+		it is still valid (i.e., is associated with an open file), <i>false</i>
+		otherwise.
+	</p>
+	<p>
+		If the operand is a string, <b>status</b> treats it as a file name
+		according to the conventions described in Section <a
+			href="../../../3/8/2.html">3.8.2, "Named Files."</a> If there is a
+		file by that name, <b>status</b> pushes four integers of status
+		information followed by the value <i>true</i>; otherwise, it pushes <i>false</i>.
+		The four integer values are:
+	</p>
 	<dl>
-		<dt>pages</dt>
+		<dt>
+			<i>pages</i>
+		</dt>
 		<dd>The storage space occupied by the file, in
-			implementationdependent units.</dd>
-		<dt>bytes</dt>
+			implementation-dependent units.</dd>
+		<dt>
+			<i>bytes</i>
+		</dt>
 		<dd>The length of the file in bytes.</dd>
-		<dt>referenced</dt>
+		<dt>
+			<i>referenced</i>
+		</dt>
 		<dd>The date and time the file was last referenced for reading or
 			writing. This value is interpreted according to the conventions of
 			the underlying operating system. The only assumption that a program
 			can make is that larger values indicate later times.</dd>
-		<dt>created</dt>
-		<dd>The date and time the contents of the file were created. or
-			writing.</dd>
+		<dt>
+			<i>created</i>
+		</dt>
+		<dd>The date and time the contents of the file were created.</dd>
 	</dl>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

@@ -6,46 +6,51 @@
 <body>
 	<h3>setcachedevice</h3>
 	<pre>w<sub>x</sub> w<sub>y</sub> ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> <b>setcachedevice</b> -</pre>
-	<p>passes width and bounding box information to the PostScript
-		interpreter's font machinery. setcachedevice can be executed only
-		within the context of a BuildGlyph, BuildChar, or CharStrings
-		procedure for a font or CIDFont. The procedure must invoke
-		setcachedevice, setcachedevice2, or setcharwidth before executing
-		graphics operators to define and paint the glyph. setcachedevice
-		requests the font machinery to transfer the results of those operators
-		both into the font cache, if possible, and onto the current page.</p>
 	<p>
-		The operands to setcachedevice are all numbers interpreted in the
-		glyph coordinate system (see Section 5.4, "Glyph Metric Information").
-		w<sub>x</sub> and w<sub>y</sub> define the basic width vector for this
-		glyph&mdash;in other words, the normal position of the origin of the
-		next glyph relative to origin of this one.
+		passes width and bounding box information to the PostScript
+		interpreter's font machinery. <b>setcachedevice</b> can be executed
+		only within the context of a <b>BuildGlyph</b>, <b>BuildChar</b>, or <b>CharStrings</b>
+		procedure for a font or CIDFont. The procedure must invoke <b>setcachedevice</b>,
+		<a href="setcachedevice2.html">setcachedevice2</a>, or <a
+			href="setcharwidth.html">setcharwidth</a> before executing graphics
+		operators to define and paint the glyph. <b>setcachedevice</b>
+		requests the font machinery to transfer the results of those operators
+		both into the font cache, if possible, and onto the current page.
 	</p>
 	<p>
-		ll<sub>x</sub> and ll<sub>y</sub> are the coordinates of the
-		lower-left corner, and urx and ury the upperright corner, of the glyph
-		bounding box. The glyph bounding box is the smallest rectangle,
-		oriented with the glyph coordinate system axes, that completely
-		encloses all marks placed on the page as a result of executing the
-		glyph's description. For a glyph defined as a path, this may be
-		determined by means of the pathbbox operator. The font machinery needs
-		this information to make decisions about clipping and caching. The
-		declared bounding box must be correct&mdash;in other words,
+		The operands to setcachedevice are all numbers interpreted in the
+		glyph coordinate system (see Section <a href="../../../5/4.html">5.4,
+			"Glyph Metric Information"</a>). <i>w<sub>x</sub></i> and <i>w<sub>y</sub></i>
+		define the basic width vector for this glyph&mdash;in other words, the
+		normal position of the origin of the next glyph relative to origin of
+		this one.
+	</p>
+	<p>
+		<i>ll<sub>x</sub></i> and <i>ll<sub>y</sub></i> are the coordinates of
+		the lower-left corner, and <i>ur<sub>x</sub></i> and <i>ur<sub>y</sub></i>
+		the upper-right corner, of the glyph bounding box. The glyph bounding
+		box is the smallest rectangle, oriented with the glyph coordinate
+		system axes, that completely encloses all marks placed on the page as
+		a result of executing the glyph's description. For a glyph defined as
+		a path, this may be determined by means of the <a
+			href="../p/pathbbox.html">pathbbox</a> operator. The font machinery
+		needs this information to make decisions about clipping and caching.
+		The declared bounding box must be correct&mdash;in other words,
 		sufficiently large to enclose the entire glyph. If any marks fall
 		outside this bounding box, the result is unpredictable.
 	</p>
-	<p>setcachedevice installs identical sets of metrics for writing
-		modes 0 and 1, while setcachedevice2 installs separate metrics.</p>
-	<p>After execution of setcachedevice and until the termination of
-		the BuildGlyph, BuildChar, or CharStrings procedure, invocation of
-		color-setting operators or the image operator is not allowed; see
-		Section 4.8, "Color Spaces." Note that use of the imagemask operator
-		is permitted.</p>
 	<p>
-		After execution of setcachedevice and until the termination of the
-		BuildGlyph or BuildChar procedure, execution of color setting
-		operators or image is not allowed. Note that use of the <a
-			href="../i/imagemask.html">imagemask</a> operator is permitted.
+		<b>setcachedevice</b> installs identical sets of metrics for writing
+		modes 0 and 1, while <a href="setcachedevice2.html">setcachedevice2</a>
+		installs separate metrics.
+	</p>
+	<p>
+		After execution of <b>setcachedevice</b> and until the termination of
+		the <b>BuildGlyph</b>, <b>BuildChar</b>, or <b>CharStrings</b>
+		procedure, invocation of color-setting operators or the <a
+			href="../i/image.html">image</a> operator is not allowed; see Section
+		<a href="../../../4/8.html">4.8, "Color Spaces."</a> Note that use of
+		the <a href="../i/imagemask.html">imagemask</a> operator is permitted.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a

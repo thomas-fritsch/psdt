@@ -9,31 +9,41 @@
 	</h3>
 	<pre>- <b>UserObjects</b> array</pre>
 	<p>
-		returns the current UserObjects array defined in <a
-			href="userdict.html">userdict</a>. UserObjects is not an operator; it
-		is simply a name associated with an array in userdict. This array is
-		created and managed by the operators <a
-			href="../d/defineuserobject.html">defineuserobject</a>, <a
-			href="undefineuserobject.html">undefineuserobject</a>, and <a
+		returns the current <b>UserObjects</b> array defined in <a
+			href="userdict.html">userdict</a>. <b>UserObjects</b> is not an
+		operator; it is simply a name associated with an array in <a
+			href="userdict.html">userdict</a>. This array is created and managed
+		by the operators <a href="../d/defineuserobject.html">defineuserobject</a>,
+		<a href="undefineuserobject.html">undefineuserobject</a>, and <a
 			href="../e/execuserobject.html">execuserobject</a>. It defines a
 		mapping from small integers (used as array indices) to arbitrary
-		objects (the elements of the <a href="../a/array.html">array</a>).
+		objects (the elements of the array). See Section <a
+			href="../../../3/7/6.html">3.7.6, “User Objects.”</a>
 	</p>
-	<p>The UserObjects entry in userdict is present only if
-		defineuserobject has been executed at least once by the current
-		execution context or a context that shares the same local VM. The
-		length of the array depends on the index operands of all previous
-		executions of defineuserobject.</p>
-	<p>Note that defineuserobject, undefineuserobject, and
-		execuserobject operate on the value of UserObjects in userdict,
+	<p>
+		The <b>UserObjects</b> entry in <a href="userdict.html">userdict</a>
+		is present only if <a href="../d/defineuserobject.html">defineuserobject</a>
+		has been executed at least once by the current execution context or a
+		context that shares the same local VM. The length of the array depends
+		on the index operands of all previous executions of <a
+			href="../d/defineuserobject.html">defineuserobject</a>.
+	</p>
+	<p>
+		Note that <a href="../d/defineuserobject.html">defineuserobject</a>, <a
+			href="undefineuserobject.html">undefineuserobject</a>, and <a
+			href="../e/execuserobject.html">execuserobject</a> operate on the
+		value of <b>UserObjects</b> in <a href="userdict.html">userdict</a>,
 		without regard to the dictionaries currently on the dictionary stack.
-		Defining UserObjects in some other dictionary on the dictionary stack
-		changes the value returned by executing the name object UserObjects,
-		but does not alter the behavior of the user object operators.</p>
-	<p>Although UserObjects is an ordinary array object, it should be
+		Defining <b>UserObjects</b> in some other dictionary on the dictionary
+		stack changes the value returned by executing the name object <b>UserObjects</b>,
+		but does not alter the behavior of the user object operators.
+	</p>
+	<p>
+		Although <b>UserObjects</b> is an ordinary array object, it should be
 		manipulated only by the user object operators. Improper direct
-		alteration of UserObjects can subsequently cause the user object
-		operators to malfunction.</p>
+		alteration of <b>UserObjects</b> can subsequently cause the user
+		object operators to malfunction.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="undefined.html">undefined</a>

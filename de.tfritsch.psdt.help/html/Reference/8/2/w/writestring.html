@@ -6,16 +6,19 @@
 <body>
 	<h3>writestring</h3>
 	<pre>file string <b>writestring</b> -</pre>
-	<p>writes the characters of string to the output file file.
-		writestring does not append a newline character or interpret the value
-		of string, which can contain arbitrary binary data. However, the
-		communication channel may usurp certain control characters or impose
-		other restrictions.</p>
+	<p>
+		writes the characters of <i>string</i> to <i>file</i>. <b>writestring</b>
+		does not append a newline character or interpret the value of <i>string</i>,
+		which can contain arbitrary binary data. However, the communication
+		channel may usurp certain control characters or impose other
+		restrictions; see Section <a href="../../../3/8.html">3.8, "File
+			Input and Output."</a>
+	</p>
 	<p>
 		As is the case for all operators that write to files, the output
-		produced by writestring may accumulate in a buffer instead of being
-		transmitted immediately. To ensure immediate transmission, a <a
-			href="../f/flushfile.html">flushfile</a> is required.
+		produced by <b>writestring</b> may accumulate in a buffer instead of
+		being transmitted immediately. To ensure immediate transmission,
+		invoking <a href="../f/flushfile.html">flushfile</a> is required.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

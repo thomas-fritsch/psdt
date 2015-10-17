@@ -7,14 +7,18 @@
 	<h3>store</h3>
 	<pre>key value <b>store</b> -</pre>
 	<p>
-		searches for key in each dictionary on the dictionary stack, starting
-		with the topmost (current) dictionary. If key is found in some
-		dictionary, store replaces its value by the value operand. If key is
-		not found in any dictionary on the dictionary stack, store creates a
-		new entry with key and value in the current dictionary. If the chosen
-		dictionary is in global VM and value is a composite object whose value
-		is in local VM, an <a href="../i/invalidaccess.html">invalidaccess</a>
-		error occurs.
+		searches for <i>key</i> in each dictionary on the dictionary stack,
+		starting with the topmost (current) dictionary. If <i>key</i> is found
+		in some dictionary, <b>store</b> replaces its value by the <i>value</i>
+		operand. If key is not found in any dictionary on the dictionary
+		stack, store creates a new entry with <i>key</i> and <i>value</i> in
+		the current dictionary.
+	</p>
+	<p>
+		If the chosen dictionary is in global VM and <i>value</i> is a
+		composite object whose value is in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs (see
+		Section <a href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>).
 	</p>
 	<p>
 		<b>Example</b>
@@ -22,7 +26,10 @@
 	<pre>
 /abc 123 store
 
-/abc where { } {currentdict} ifelse
+/abc where
+  {}
+  {currentdict}
+ifelse
 /abc 123 put
 </pre>
 	<p>The two code fragments above have the same effect.</p>

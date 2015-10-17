@@ -7,13 +7,18 @@
 	<h3>setfont</h3>
 	<pre>   font <b>setfont</b> -
 cidfont <b>setfont</b> -</pre>
-	<p>establishes font or cidfont as the font parameter in the
-		graphics state (subsequently returned by rootfont). This in turn
-		determines the current font or CIDFont (returned by currentfont)—the
-		font to be used by subsequent glyph operators, such as show and
-		stringwidth, or the CIDFont to be used by a subsequent glyphshow
+	<p>
+		establishes <i>font</i> or <i>cidfont</i> as the font parameter in the
+		graphics state (subsequently returned by <a href="../r/rootfont.html">rootfont</a>).
+		This in turn determines the current font or CIDFont (returned by <a
+			href="../c/currentfont.html">currentfont</a>)&mdash;the font to be
+		used by subsequent glyph operators, such as <a href="show.html">show</a>
+		and <a href="stringwidth.html">stringwidth</a>, or the CIDFont to be
+		used by a subsequent <a href="../g/glyphshow.html">glyphshow</a>
 		operator. The operand must be a valid font or CIDFont dictionary. See
-		Section 5.1, "Organization and Use of Fonts."</p>
+		Section <a href="../../../5/1.html">5.1, "Organization and Use of
+			Fonts."</a>
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -29,8 +34,9 @@ setfont                        % Establish it as current font
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentfont.html">currentfont</a>, <a
-			href="scalefont.html">scalefont</a>, <a href="../m/makefont.html">makefont</a>,
-		<a href="../f/findfont.html">findfont</a>, <a href="selectfont.html">selectfont</a>
+			href="../r/rootfont.html">rootfont</a>, <a href="scalefont.html">scalefont</a>,
+		<a href="../m/makefont.html">makefont</a>, <a
+			href="../f/findfont.html">findfont</a>, <a href="selectfont.html">selectfont</a>
 	</p>
 </body>
 </html>

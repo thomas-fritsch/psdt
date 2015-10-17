@@ -6,40 +6,59 @@
 <body>
 	<h3>restore</h3>
 	<pre>save <b>restore</b> -</pre>
-	<p>resets the virtual memory (VM) to the state represented by the
-		supplied save object-in other words, the state at the time the
-		corresponding save was executed.</p>
-	<p>If the current execution context supports job encapsulation and
-		if save represents the outermost saved VM state for this context, then
-		objects in both local and global VM revert to their saved state. If
-		the current context does not support job encapsulation or if save is
-		not the outermost saved VM state for this context, then only objects
-		in local VM revert to their saved state; objects in global VM are
-		undisturbed.</p>
-	<p>restore can reset the VM to the state represented by any save
-		object that is still valid, not necessarily the one produced by the
-		most recent save. After restoring the VM, restore invalidates its save
-		operand along with any other save objects created more recently than
-		that one. That is, a VM snapshot can be used only once; to restore the
-		same environment repeatedly, it is necessary to do a new save each
-		time.</p>
-	<p>restore does not alter the contents of the operand, dictionary,
-		or execution stack, except to pop its save operand. If any of these
-		stacks contains composite objects whose values reside in local VM and
-		are newer than the snapshot being restored, restore executes the
-		invalidrestore error. This restriction applies to save objects and, in
-		Level 1 implementations, to name objects.</p>
-	<p>restore does alter the graphics state stack: It performs the
-		equivalent of a grestoreall and then removes the graphics state
-		created by save from the graphics state stack. restore also resets
-		several per-context parameters to their state at the time of save.
-		These include:</p>
+	<p>
+		resets the virtual memory (VM) to the state represented by the
+		supplied save object&mdash;in other words, the state at the time the
+		corresponding <a href="../s/save.html">save</a> was executed. See
+		Section <a href="../../../3/7.html">3.7, "Memory Management,"</a> for
+		a description of VM and the effects of save and restore.
+	</p>
+	<p>
+		If the current execution context supports job encapsulation and if <i>save</i>
+		represents the outermost saved VM state for this context, then objects
+		in both local and global VM revert to their saved state. If the
+		current context does not support job encapsulation or if <i>save</i>
+		is not the outermost saved VM state for this context, then only
+		objects in local VM revert to their saved state; objects in global VM
+		are undisturbed. Job encapsulation is described in Section <a
+			href="../../../3/7/7.html">3.7.7, "Job Execution Environment."</a>
+	</p>
+	<p>
+		restore can reset the VM to the state represented by any save object
+		that is still valid, not necessarily the one produced by the most
+		recent <a href="../s/save.html">save</a>. After restoring the VM,
+		restore invalidates its <i>save</i> operand along with any other save
+		objects created more recently than that one. That is, a VM snapshot
+		can be used only once; to restore the same environment repeatedly, it
+		is necessary to do a new <a href="../s/save.html">save</a> each time.
+	</p>
+	<p>
+		<b>restore</b> does not alter the contents of the operand, dictionary,
+		or execution stack, except to pop its <i>save</i> operand. If any of
+		these stacks contains composite objects whose values reside in local
+		VM and are newer than the snapshot being restored, an <a
+			href="../i/invalidrestore.html">invalidrestore</a> error occurs. This
+		restriction applies to save objects and, in LanguageLevel 1, to name
+		objects.
+	</p>
+	<p>
+		restore does alter the graphics state stack: It performs the
+		equivalent of a <a href="../g/grestoreall.html">grestoreall</a> and
+		then removes the graphics state created by <a href="../s/save.html">save</a>
+		from the graphics state stack. <b>restore</b> also resets several
+		per-context parameters to their state at the time of <a
+			href="../s/save.html">save</a>. These include:
+	</p>
 	<ul>
-		<li>Array packing mode (see setpacking).</li>
-		<li>VM allocation mode (see setglobal).</li>
-		<li>Object output format (see setobjectformat).</li>
-		<li>View clipping path (see viewclip).</li>
-		<li>All user interpreter parameters (see setuserparams).</li>
+		<li>Array packing mode (see <a href="../s/setpacking.html">setpacking</a>).
+		</li>
+		<li>VM allocation mode (see <a href="../s/setglobal.html">setglobal</a>).
+		</li>
+		<li>Object output format (see <a href="../s/setobjectformat.html">setobjectformat</a>).
+		</li>
+		<li>All user interpreter parameters (see <a
+			href="../s/setuserparams.html">setuserparams</a>).
+		</li>
 	</ul>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidrestore.html">invalidrestore</a>,

@@ -8,15 +8,15 @@
 	<pre>      num<sub>1</sub> num<sub>2</sub> <b>le</b> bool
 string<sub>1</sub> string<sub>2</sub> <b>le</b> bool</pre>
 	<p>
-		pops two objects from the operand stack and pushes the boolean value
-		true if the first operand is less than or equal to the second, false
-		otherwise. If both operands are numbers, le compares their
-		mathematical values. If both operands are strings, le compares them
-		element by element (treating the elements as integers in the range 0
-		to 255) to determine whether the first string is lexically less than
-		or equal to the second. If the operands are of other types or one is a
-		string and the other is a number, le executes the <a
-			href="../t/typecheck.html">typecheck</a> error.
+		pops two objects from the operand stack and pushes <i>true</i> if the
+		first operand is less than or equal to the second, or <i>false</i>
+		otherwise. If both operands are numbers, <b>le</b> compares their
+		mathematical values. If both operands are strings, <b>le</b> compares
+		them element by element, treating the elements as integers in the
+		range 0 to 255, to determine whether the first string is lexically
+		less than or equal to the second. If the operands are of other types
+		or one is a string and the other is a number, a <a
+			href="../t/typecheck.html">typecheck</a> error occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
@@ -24,8 +24,8 @@ string<sub>1</sub> string<sub>2</sub> <b>le</b> bool</pre>
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="lt.html">lt</a>, <a href="e.html#eq">eq</a>,
-		<a href="../n/ne.html">ne</a>, <a href="../g/gehtml">ge</a>, <a
+		<b>See Also:</b> <a href="lt.html">lt</a>, <a href="../e/eq.html">eq</a>,
+		<a href="../n/ne.html">ne</a>, <a href="../g/ge.html">ge</a>, <a
 			href="../g/gt.html">gt</a>
 	</p>
 </body>

@@ -8,32 +8,42 @@
 		makepattern <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>dict matrix <b>makepattern</b> pattern</pre>
-	<p>verifies that dict is a prototype pattern dictionary with all
-		required key-value pairs . It then creates a copy of dict in local VM,
-		adding an entry, with key Implementation, for use by the
-		implementation. makepattern copies only the contents of dict itself,
-		not the values of subsidiary composite objects, which are shared with
-		the original dictionary.</p>
-	<p>makepattern saves a copy of the current graphics state, to be
-		used later when the interpreter calls the PaintProc to render the
-		pattern cell. It then modifies certain parameters in the saved
-		graphics state, as follows:</p>
+	<p>
+		instantiates the pattern defined by the pattern dictionary <i>dict</i>,
+		producing an instance of the pattern locked to the current user space.
+		After verifying that <i>dict</i> is a prototype pattern dictionary
+		with all required entries (see Section <a href="../../../4/9.html">4.9,
+			"Patterns"</a>), <b>makepattern</b> creates a copy of <i>dict</i> in
+		local VM, adding an <b>Implementation</b> entry for use by the
+		PostScript interpreter. Only the contents of <i>dict</i> itself are
+		copied; any subsidiary composite objects the dictionary contains are
+		not copied, but are shared with the original dictionary.
+	</p>
+	<p>
+		<b>makepattern</b> saves a copy of the current graphics state, to be
+		used later when the pattern's <b>PaintProc</b> procedure is called to
+		render the pattern cell. It then modifies certain parameters in the <i>saved</i>
+		graphics state, as follows:
+	</p>
 	<ul>
-		<li>Concatenates matrix with the saved copy of the CTM.</li>
+		<li>Concatenates <i>matrix</i> with the saved copy of the current
+			transformation matrix
+		</li>
 		<li>Adjusts the resulting matrix to ensure that the device space
 			can be tiled properly with a pattern cell of the given size in
-			accordance with the TilingType.</li>
+			accordance with the pattern's tiling type</li>
 		<li>Resets the path to empty.</li>
-		<li>Replaces the clipping path by the pattern cell bounding box
-			specified by the BBox entry in the pattern dictionary.</li>
-		<li>Replaces the device by a special one the implementation
-			provides.</li>
+		<li>Replaces the clipping path with the pattern cell bounding box
+			specified by the pattern dictionary's <b>BBox</b> entry
+		</li>
+		<li>Replaces the current device with a special one provided by
+			the PostScript implementation.</li>
 	</ul>
 	<p>
-		Finally, makepattern makes the new dictionary read-only and pushes it
-		on the operand stack. The resulting pattern dictionary is suitable for
-		use as an operand of <a href="../s/setpattern.html">setpattern</a> or
-		as a &quot;color value&quot; in the Pattern color space.
+		Finally, <b>makepattern</b> makes the new dictionary read-only and
+		returns it on the operand stack. The resulting pattern dictionary is
+		suitable for use as an operand to <a href="../s/setpattern.html">setpattern</a>
+		or as a color value in a <b>Pattern</b> color space.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
@@ -43,8 +53,7 @@
 			href="../u/undefined.html">undefined,</a> <a href="../v/VMerror.html">VMerror</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../s/setpattern.html">setpattern</a>, <a
-			href="../f/findresource.html">findresource</a>
+		<b>See Also:</b> <a href="../s/setpattern.html">setpattern</a>
 	</p>
 </body>
 </html>

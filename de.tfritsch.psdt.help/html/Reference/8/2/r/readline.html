@@ -6,20 +6,25 @@
 <body>
 	<h3>readline</h3>
 	<pre>file string <b>readline</b> substring bool</pre>
-	<p>reads a line of characters (terminated by a newline character)
-		from file and stores them into successive elements of string. readline
-		then returns the substring of string that was filled and a boolean
-		indicating the outcome (true normally, false if end-of-file was
-		encountered before a newline character was read).</p>
-	<p>A &quot;line of characters&quot; is a sequential string of ASCII
-		characters, including space, tab, and non-printing &quot;control&quot;
-		characters. A line terminates with a newline-a carriage return
-		character, a line-feed character, or both.</p>
 	<p>
-		The terminating newline character is not stored into string or
-		included at the end of the returned substring. If readline completely
-		fills string before encountering a newline character, it executes the
-		error <a href="rangecheck.html">rangecheck</a>.
+		reads a line of characters (terminated by a newline character) from <i>file</i>
+		and stores them into successive elements of <i>string</i>. <b>readline</b>
+		returns the substring of <i>string</i> that was filled and a boolean
+		indicating the outcome (<i>true</i> normally, <i>false</i> if
+		end-of-file was encountered before a newline character was read).
+	</p>
+	<p>
+		A line of characters is a sequence of ASCII characters, including
+		space, tab, and control characters, that terminates with a
+		newline&mdash;a carriage return character, a line feed character, or
+		both. See Sections <a href="../../../3/2.html">3.2, "Syntax,"</a> and
+		<a href="../../../3/8.html">3.8, "File Input and Output."</a>
+	</p>
+	<p>
+		The terminating newline character is not stored into <i>string</i> or
+		included at the end of the returned <i>substring</i>. If <b>readline</b>
+		completely fills <i>string</i> before encountering a newline
+		character, a <a href="rangecheck.html">rangecheck</a> error occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

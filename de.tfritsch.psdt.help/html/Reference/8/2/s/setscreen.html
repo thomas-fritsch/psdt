@@ -7,41 +7,59 @@
 	<h3>setscreen</h3>
 	<pre>frequency angle proc <b>setscreen</b> -
   num<sub>1</sub> num<sub>2</sub> halftone <b>setscreen</b> -</pre>
-	<p>sets the halftone screen parameter in the graphics state (see
-		Section 7.4, "Halftones") as specified by the operands. setscreen sets
-		the screen identically for all four primary color components of the
-		output device (red, green, blue, and gray); this distinguishes it from
-		setcolorscreen, which sets the four screens independently.</p>
-	<p>frequency is a number specifying the screen frequency, measured
-		in halftone cells per inch in device space. angle specifies the number
-		of degrees by which the cells are rotated counterclockwise with
+	<p>
+		sets the halftone screen parameter in the graphics state (see Section
+		<a href="../../../7/4.html">7.4, "Halftones"</a>) as specified by the
+		operands. <b>setscreen</b> sets the screen identically for all four
+		primary color components of the output device (red, green, blue, and
+		gray); this distinguishes it from <a href="setcolorscreen.html">setcolorscreen</a>,
+		which sets the four screens independently.
+	</p>
+	<p>
+		<i>frequency</i> is a number specifying the screen frequency, measured
+		in halftone cells per inch in device space. <i>angle</i> specifies the
+		number of degrees by which the cells are rotated counterclockwise with
 		respect to the device coordinate system. (Note, however, that most
 		output devices have left-handed device spaces; on such devices, a
 		counterclockwise angle in device space will correspond to a clockwise
-		angle in default user space and on the physical medium.)</p>
-	<p>In the first form of the operator, the proc operand is a
-		PostScript procedure defining the spot function, which determines the
-		order in which pixels within a halftone cell are whitened to produce
-		any desired shade of gray. In the second form, halftone is a halftone
-		dictionary defining the desired screen; in this case, setscreen
-		performs the equivalent of sethalftone, except that if the dictionary
-		is of type 1, the values of the frequency and angle operands are
-		copied into the dictionary’s Frequency and Angle entries, overriding
-		the original values of those entries. (If the dictionary is read-only,
-		setscreen makes a copy of it before copying the values.) For halftone
-		dictionaries of types other than 1, the frequency and angle operands
-		are ignored.</p>
-	<p>A rangecheck error occurs if proc returns a result outside the
-		range -1.0 to 1.0. A limitcheck error occurs if the size of the screen
-		cell exceeds implementation limits.</p>
-	<p>In LanguageLevel 3, the behavior of setscreen can be altered by
-		the user parameters AccurateScreens (see "Type 1 Halftone
-		Dictionaries" on page 487), HalftoneMode ("Halftone Setting" on page
-		757), and MaxSuperScreen (Section 7.4.8, "Supercells").</p>
-	<p>Because the effect of the halftone screen is device-dependent,
+		angle in default user space and on the physical medium.)
+	</p>
+	<p>
+		In the first form of the operator, the <i>proc</i> operand is a
+		PostScript procedure defining the <i>spot function</i>, which
+		determines the order in which pixels within a halftone cell are
+		whitened to produce any desired shade of gray. In the second form, <i>halftone</i>
+		is a halftone dictionary defining the desired screen; in this case, <b>setscreen</b>
+		performs the equivalent of <a href="sethalftone.html">sethalftone</a>,
+		except that if the dictionary is of type 1, the values of the <i>frequency</i>
+		and <i>angle</i> operands are copied into the dictionary's <b>Frequency</b>
+		and <b>Angle</b> entries, overriding the original values of those
+		entries. (If the dictionary is read-only, <b>setscreen</b> makes a
+		copy of it before copying the values.) For halftone dictionaries of
+		types other than 1, the <i>frequency</i> and <i>angle</i> operands are
+		ignored.
+	</p>
+	<p>
+		A <a href="../r/rangecheck.html">rangecheck</a> error occurs if <i>proc</i>
+		returns a result outside the range -1.0 to 1.0. A <a
+			href="../l/limitcheck.html">limitcheck</a> error occurs if the size
+		of the screen cell exceeds implementation limits.
+	</p>
+	<p>
+		In LanguageLevel 3, the behavior of <b>setscreen</b> can be altered by
+		the user parameters <b>AccurateScreens</b> (see <a
+			href="../../../7/4/4.html#1">"Type 1 Halftone Dictionaries" on
+			page 487</a>), HalftoneMode (<a href="../../../C/3/4.html#2">"Halftone
+			Setting" on page 757</a>), and MaxSuperScreen (Section <a
+			href="../../../7/4/8.html">7.4.8, "Supercells"</a>).
+	</p>
+	<p>
+		Because the effect of the halftone screen is device-dependent,
 		setscreen should not be used in a page description that is intended to
 		be device-independent. Execution of this operator is not permitted in
-		certain circumstances; see Section 4.8.1, "Types of Color Space."</p>
+		certain circumstances; see Section <a href="../../../4/8/1.html">4.8.1,
+			"Types of Color Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
@@ -50,7 +68,8 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentscreen.html">currentscreen</a>,
-		<a href="sethalftone.html">sethalftone</a>
+		<a href="setcolorscrern.html">setcolorscreen</a>, <a
+			href="sethalftone.html">sethalftone</a>
 	</p>
 </body>
 </html>

@@ -6,36 +6,48 @@
 <body>
 	<h3>setlinejoin</h3>
 	<pre>int <b>setlinejoin</b> -</pre>
-	<p>sets the line join parameter in the graphics state to int, which
-		must be one of the integers 0, 1, or 2. This establishes the shape to
-		be put at corners in paths painted by the stroke operator. The
-		integers select the following shapes:</p>
+	<p>
+		sets the line join parameter in the graphics state to <i>int</i>,
+		which must be 0, 1, or 2. This parameter controls the shape to be
+		painted at corners by subsequent invocations of <a href="stroke.html">stroke</a>
+		and related operators, such as <a href="../r/rectstroke.html">rectstroke</a>
+		and <a href="../u/ustroke.html">ustroke</a> (see Section <a
+			href="../../../4/5/1.html">4.5.1, “Stroking”</a>). Possible values
+		are as follows (see Figure 8.10):
+	</p>
 	<ol start="0">
-		<li>Miter join. the outer edges of the strokes for the two
+		<li><i>Miter join.</i> The outer edges of the strokes for the two
 			segments are extended until they meet at an angle, as in a picture
-			frame. If the segments meet at too sharp an angle, a bevel join is
-			used instead. This is controlled by the miter limit parameter
-			established by <a href="setmiterlimit.html">setmiterlimit</a>.
-		</li>
-		<li>Round join. A circular arc with diameter equal to the line
-			width is drawn around the point where the segments meet and is filled
-			in, producing a rounded corner. stroke draws a full circle at this
-			point. If path segments shorter than one-half the line width meet at
-			sharp angles, an unintentional &quot;wrong side&quot; of this circle
-			may appear.</li>
-		<li>Bevel join. The meeting path segments are finished with butt
-			end caps (see <a href="setlinecap.html">setlinecap</a>); then the
+			frame. If the segments meet at too sharp an angle (as defined by the
+			miter limit parameter&mdash;see <a href="setmiterlimit.html">setmiterlimit</a>),
+			a bevel join is used instead.</li>
+		<li><i>Round join.</i> A circular arc with a diameter equal to
+			the line width is drawn around the point where the two segments meet
+			and is filled in, producing a rounded corner. stroke draws a full
+			circle at this point; if path segments shorter than half the line
+			width meet at sharp angles, an unintended "wrong side" of this circle
+			may appear</li>
+		<li><i>Bevel join.</i> The two segments are finished with butt
+			caps (see <a href="setlinecap.html">setlinecap</a>), and the
 			resulting notch beyond the ends of the segments is filled with a
-			triangle. Join styles are significant only at points where
-			consecutive segments of a path connect at an angle. Segments that
-			meet or intersect fortuitously receive no special treatment. Curved
-			lines are actually rendered as sequences of straight line segments,
-			and the current line join is applied to the &quot;corners&quot;
-			between those segments. However, for typical values of the flatness
-			parameter (see <a href="setflat.html">setflat</a>), the corners are
-			so shallow that the difference between join styles is not visible.
-		</li>
+			triangle.</li>
 	</ol>
+	<figure>
+		<img src="figure-8.10.png" />
+		<figcaption>
+			<b>FIGURE 8.10</b> Line join parameter shapes
+		</figcaption>
+	</figure>
+	<p>
+		Join styles are significant only at points where consecutive segments
+		of a path connect at an angle. Segments that meet or intersect
+		fortuitously receive no special treatment. Curved segments are
+		actually rendered as sequences of straight line segments, and the
+		current line join is applied to the "corners" between these segments.
+		However, for typical values of the flatness parameter (see <a
+			href="setflat.html">setflat</a>), the corners are so shallow that the
+		difference between join styles is not visible.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
@@ -43,7 +55,7 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentlinejoin.html">currentlinejoin</a>,
-		<a href="setlinecap.html">setlinecap</a>, <a href="stroke.html">stroke</a>,
+		<a href="stroke.html">stroke</a>, <a href="setlinecap.html">setlinecap</a>,
 		<a href="setmiterlimit.html">setmiterlimit</a>
 	</p>
 </body>

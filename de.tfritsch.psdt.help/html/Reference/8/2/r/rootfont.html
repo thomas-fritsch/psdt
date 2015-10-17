@@ -9,13 +9,20 @@
 	</h3>
 	<pre>- <b>rootfont</b> font</pre>
 	<p>
-		returns the font that has been selected most recently by setfont or
-		selectfont. Normally, rootfont returns the same result as <a
-			href="../c/currentfont.html">currentfont</a>. If the current font is
-		a composite font and rootfont is invoked from a descendant font's
-		BuildGlyph or BuildChar procedure or from cshow, rootfont returns the
-		root composite font, whereas <a href="../c/currentfont.html">currentfont</a>
-		would return the currently selected base font.
+		returns the font or CIDFont most recently established by <a
+			href="../s/setfont.html">setfont</a> or <a
+			href="../s/selectfont.html">selectfont</a>. Normally, rootfont
+		returns the same result as <a href="../c/currentfont.html">currentfont</a>.
+		However, when executed inside the <b>BuildGlyph</b>, <b>BuildChar</b>,
+		or <b>CharStrings</b> procedure of a descendant base font or CIDFont,
+		or inside a procedure invoked by <a href="../c/cshow.html">cshow</a>,
+		<b>rootfont</b> returns the root composite font, whereas <a
+			href="../c/currentfont.html">currentfont</a> returns the current
+		descendant base font or CIDFont. (Of course, if the procedure calls <a
+			href="../s/setfont.html">setfont</a> or <a
+			href="../s/selectfont.html">selectfont</a> first, rootfont and <a
+			href="../c/currentfont.html">currentfont</a> both return the newly
+		selected font.)
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>

@@ -8,7 +8,9 @@
 		vmreclaim <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>int <b>vmreclaim</b> -</pre>
-	<p>controls the garbage collection machinery as specified by int:</p>
+	<p>
+		controls the garbage collection machinery as specified by <i>int</i>:
+	</p>
 	<dl>
 		<dt>-2</dt>
 		<dd>Disable automatic collection in both local and global VM.</dd>
@@ -21,34 +23,42 @@
 		<dt>2</dt>
 		<dd>Perform immediate collection in local and global VM.</dd>
 	</dl>
-	<p>This can take a long time, because it must consult the local VMs
-		of all execution contexts. Garbage collection causes the memory
-		occupied by the values of inaccessible objects to be reclaimed and
-		made available for reuse. It does not have any effects that are
-		visible to the PostScript language program. There is normally no need
-		to execute the vmreclaim operator, because garbage collection is
-		invoked automatically when necessary. However, there are a few
-		situations in which this operator may be useful: o In an interactive
-		application that is temporarily idle, the idle time can be put to good
-		use by invoking an immediate garbage collection. This defers the need
-		to perform an automatic collection subsequently. In a context that is
-		under the control of a job server.</p>
-	<p>garbage collection is invoked automatically between jobs.</p>
+	<p>
+		Garbage collection causes the memory occupied by the values of
+		inaccessible objects to be reclaimed and made available for reuse. It
+		does not have any effects that are visible to the PostScript program.
+		There is normally no need to execute the <b>vmreclaim</b> operator,
+		because garbage collection is invoked automatically when necessary.
+		However, there are a few situations in which this operator may be
+		useful:
+	</p>
 	<ul>
-		<li>When monitoring the VM consumption of a program, one must
-			invoke garbage collection before executing vmstatus to obtain
-			meaningful results.</li>
-		<li>When measuring the execution time of a program, one must
-			disable automatic garbage collection to obtain repeatable results.
-			The negative values that disable garbage collection apply only to the
-			current execution context; that is, they do not prevent collection
-			from occurring during execution of other contexts.</li>
+		<li>In an interactive application that is temporarily idle, an
+			immediate garbage collection can be invoked to put the idle time to
+			good use. This defers the need to perform an automatic collection
+			subsequently. In a context that is under the control of a job server
+			(described in Section <a href="../../../3/7/7.html">3.7.7, "Job
+				Execution Environment"</a>), garbage collection is invoked automatically
+			between jobs.
+		</li>
+		<li>For meaningful results when monitoring the VM consumption of
+			a program, garbage collection must be invoked before <a
+			href="vmstatus.html">vmstatus</a> is executed.
+		</li>
+		<li>For repeatable results when measuring a program's execution
+			time, automatic garbage collection must be disabled.</li>
 	</ul>
-	<p>Note that disabling garbage collection for too long may
-		eventually cause a program to run out of memory and fail with a
-		VMerror. Executing vmreclaim with an operand of 0, -1, or -2 has the
-		same effect as setting the VMReclaim user parameter to the same value
-		by means of setuserparams.</p>
+	<p>The negative values that disable garbage collection apply only
+		to the current execution context; they do not prevent collection from
+		occurring during execution of other contexts. Note that disabling
+		garbage collection for too long may eventually cause a program to run
+		out of memory and fail with a VMerror.</p>
+	<p>
+		Executing <b>vmreclaim</b> with an operand of 0, -1, or -2 has the
+		same effect as setting the <b>VMReclaim</b> user parameter to the same
+		value by means of <a href="../s/setuserparams.html">setuserparams</a>
+		(see <a href="../../../C.html">Appendix C</a>).
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

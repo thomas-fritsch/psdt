@@ -6,19 +6,23 @@
 <body>
 	<h3>start</h3>
 	<pre>- <b>start</b> -</pre>
-	<p>is executed by the PostScript interpreter when it starts up.
-		After setting up the virtual memory (restoring it from a file, if
-		appropriate), the interpreter executes the name start in the context
-		of the default dictionary stack (systemdict, globaldict, and
-		userdict). The procedure associated with the name start is expected to
-		provide whatever top-level control is required—for example, for
-		receiving page descriptions, interacting with a user, or recovering
-		from errors. The precise definition of start depends on the
-		environment in which the PostScript interpreter is operating. It is
-		not of any interest to ordinary PostScript programs and the effect of
-		executing it explicitly is undefined.</p>
 	<p>
-		<b>Errors:</b> (none)
+		is executed by the PostScript interpreter when it starts up. After
+		setting up the virtual memory (restoring it from a file, if
+		appropriate), the interpreter executes the name start in the context
+		of the default dictionary stack (<a href="systemdict.html">systemdict</a>,
+		<a href="../g/globaldict.html">globaldict</a>, and <a
+			href="../u/userdict.html">userdict</a>). The procedure associated
+		with the name start is expected to provide whatever top-level control
+		is required&mdash;for example, for receiving page descriptions,
+		interacting with a user, or recovering from errors. The precise
+		definition of <b>start</b> depends on the environment in which the
+		PostScript interpreter is operating. It is not of any interest to
+		ordinary PostScript programs and the effect of executing it explicitly
+		is undefined.
+	</p>
+	<p>
+		<b>Errors:</b> none
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../q/quit.html">quit</a>

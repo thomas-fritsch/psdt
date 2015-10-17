@@ -5,57 +5,71 @@
 </head>
 <body>
 	<h3>makefont</h3>
-	<pre>font matrix <b>makefont</b> font'</pre>
-	<p>applies matrix to font, producing a new font' whose characters
-		are transformed by matrix when they are shown. makefont first creates
-		a copy of font. Then it replaces the new font's FontMatrix entry with
-		the result of concatenating the existing FontMatrix with matrix. It
-		inserts two additional entries, OrigFont and ScaleMatrix, whose
-		purpose is internal to the implementation. Finally, it returns the
-		result as font'.</p>
+	<pre>  font matrix <b>makefont</b> font'
+cidfont matrix <b>makefont</b> cidfont'</pre>
 	<p>
-		The makefont, <a href="../s/scalefont.html">scalefont</a>, and <a
-			href="../s/selectfont.html">selectfont</a> operators produce a font
-		dictionary derived from an original font dictionary, but with the
-		FontMatrix entry altered. The derived font dictionary is allocated in
-		local or global VM according to whether the original font dictionary
-		is in local or global VM. This is independent of the current VM
-		allocation mode.
+		applies matrix to <i>font</i> or <i>cidfont</i>, producing a new <i>font'</i>
+		or <i>cidfont'</i> whose glyphs are transformed by <i>matrix</i> when
+		they are shown. <b>makefont</b> first creates a copy of <i>font</i> or
+		<i>cidfont</i>. Then it replaces the copy's <b>FontMatrix</b> entry
+		with the result of concatenating the existing entry with <i>matrix</i>.
+		It inserts two additional entries, <b>OrigFont</b> and <b>ScaleMatrix</b>,
+		whose purpose is internal to the implementation. Finally, it returns
+		the result as <i>font'</i> or <i>cidfont'</i>.
 	</p>
-	<p>Normally, makefont copies only the font dictionary. Subsidiary
-		objects, such as the CharStrings and FontInfo dictionaries, are shared
-		with the original font. However, if font is a composite font, makefont
-		also copies the font dictionaries of any descendant composite fonts.
-		It does not copy descendant base fonts.</p>
 	<p>
-		Showing characters from the transformed font produces the same results
-		as showing from the original font after having transformed user space
-		by the same matrix. makefont is essentially a convenience operator
-		that permits the desired transformation to be encapsulated in the font
-		description. The most common transformation is to scale a font by a
-		uniform factor in both x and y. scalefont is a special case of the
-		more general makefont and should be used for such uniform scaling.
-		Another operator, <a href="../s/selectfont.html">selectfont</a>,
-		combines the effects of <a href="../f/findfont.html">findfont</a> and
-		makefont.
+		Normally, <b>makefont</b> does not copy subsidiary objects in the
+		dictionary, such as the <b>CharStrings</b> and <b>FontInfo</b>
+		subdictionaries; these are shared with the original font or CIDFont.
+		However, if <i>font</i> is a composite font, <b>makefont</b>
+		recursively copies any descendant Type 0 font dictionaries and updates
+		their <b>FontMatrix</b> entries as well. It does not copy descendant
+		base fonts or CIDFonts.
 	</p>
-	<p>The interpreter keeps track of font dictionaries recently
-		created by makefont. Calling makefont multiple times with the same
-		font and matrix will usually return the same font' rather than create
-		a new one. However, it is usually more efficient for a PostScript
-		language program to apply makefont only once for each font that it
-		needs and to keep track of the resulting font dictionaries on its own.</p>
+	<p>
+		Showing glyphs from <i>font'</i> or <i>cidfont'</i> produces the same
+		results as showing from <i>font</i> or <i>cidfont</i> after having
+		transformed user space by <i>matrix</i>. <b>makefont</b> is
+		essentially a convenience operator that permits the desired
+		transformation to be encapsulated in the font or CIDFont description.
+		The most common transformation is to scale by a uniform factor in both
+		the <i>x</i> and <i>y</i> dimensions. <a href="../s/scalfont.html">scalefont</a>
+		is a special case of the more general <b>makefont</b> and should be
+		used for such uniform scaling. Another operator, <a
+			href="../s/selectfont.html">selectfont</a>, combines the effects of <a
+			href="../f/findfont.html">findfont</a> and <b>makefont</b>.
+	</p>
+	<p>
+		The interpreter keeps track of font or CIDFont dictionaries recently
+		created by <b>makefont</b>. Calling <b>makefont</b> multiple times
+		with the same <i>font</i> or <i>cidfont</i> and matrix will usually
+		return the same result. However, it is usually more efficient for a
+		PostScript program to apply <b>makefont</b> only once for each font or
+		CIDFont that it needs and to keep track of the resulting dictionaries
+		on its own.
+	</p>
+	<p>
+		See Chapter <a href="../../,,/5.html">5</a> for general information
+		about fonts and CIDFonts, and Section <a href="../../../4/3.html">4.3,
+			"Coordinate Systems and Transformations,"</a> for a discussion of
+		transformations.
+	</p>
+	<p>The derived dictionary is allocated in local or global VM
+		according to whether the original dictionary is in local or global VM.
+		This behavior is independent of the current VM allocation mode.</p>
 	<p>
 		<b>Example</b>
 	</p>
 	<pre>
 /Helvetica findfont [10 0 0 12 0 0] makefont setfont
 </pre>
-	<p>This obtains the standard Helvetica font, which is defined with
-		a one unit line height, and scales it by a factor of 10 in the x
-		dimension and 12 in the y dimension. This produces a 12-unit high font
-		(i.e., a 12-point font in default user space) whose characters are
-		&quot;condensed&quot; in the x dimension by a ratio of 10/12.</p>
+	<p>
+		This example obtains the standard Helvetica font, which is defined
+		with a 1-unit line height, and scales it by a factor of 10 in the <i>x</i>
+		dimension and 12 in the <i>y</i> dimension. This produces a font 12
+		units high (that is, a 12-point font in default user space) whose
+		glyphs are "condensed" in the <i>x</i> dimension by a ratio of 10/12.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfont.html">invalidfont</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a

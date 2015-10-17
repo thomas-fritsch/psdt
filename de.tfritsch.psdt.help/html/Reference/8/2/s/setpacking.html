@@ -8,18 +8,28 @@
 		setpacking <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>bool <b>setpacking</b> -</pre>
-	<p>sets the array packing mode to bool. This determines the type of
-		executable arrays subsequently created by the PostScript language
-		scanner. The value true selects packed arrays; false selects ordinary
-		arrays.</p>
-	<p>The packing mode affects only the creation of procedures by the
+	<p>
+		sets the array packing mode to <i>bool</i>. This determines the type
+		of executable arrays subsequently created by the PostScript language
+		scanner. The value <i>true</i> selects packed arrays; <i>false</i>
+		selects ordinary arrays.
+	</p>
+	<p>
+		The packing mode affects only the creation of procedures by the
 		scanner when it encounters program text bracketed by { and } during
 		interpretation of an executable file or string object, or during
-		execution of the token operator. It does not affect the creation of
-		literal arrays by the [ and ] operators or by the array operator.
-		Modifications to the array packing mode parameter are subject to save
-		and restore. In an interpreter that supports multiple contexts, this
-		parameter is maintained separately for each context.</p>
+		execution of the <a href="../t/token.html">token</a> operator. It does
+		not affect the creation of literal arrays by the <a
+			href="../@/bracketleft.html">[</a> and <a
+			href="../@/bracketright.html">]</a> operators or by the array
+		operator.
+	</p>
+	<p>
+		Modifications to the array packing mode parameter are subject to <a
+			href="save.html">save</a> and <a href="../r/restore.html">restore</a>.
+		In an interpreter that supports multiple contexts, this parameter is
+		maintained separately for each context.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -29,7 +39,7 @@ systemdict /setpacking known
   true setpacking
 }
 if
-... Arbitrary procedure definitions ...
+<i>... Arbitrary procedure definitions ...</i>
 systemdict /setpacking known
 {savepacking setpacking}
 if</pre>

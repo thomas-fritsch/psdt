@@ -6,17 +6,25 @@
 <body>
 	<h3>writehexstring</h3>
 	<pre>file string <b>writehexstring</b> -</pre>
-	<p>writes all of the characters of string to file as hexadecimal
-		digits. For each element of string (an integer in the range 0 to 255),
-		writehexstring appends a two-digit hexadecimal number composed of the
-		characters 0 through 9 and a through f. The example</p>
+	<p>
+		writes all of the characters of <i>string</i> to <i>file</i> as
+		hexadecimal digits. For each element of <i>string</i> (an integer in
+		the range 0 to 255), <b>writehexstring</b> appends a two-digit
+		hexadecimal number composed of the characters 0 to 9 and a through f.
+		The example
+	</p>
 	<pre>(%stdout)(w) file (abz) writehexstring</pre>
 	<p>writes the six characters 61627a to the standard output file.</p>
 	<p>
+		See Section <a href="../../../3/8/4.html">3.8.4, "Filters,"</a> for
+		more information about ASCII-encoded, binary data representations and
+		how to deal with them.
+	</p>
+	<p>
 		As is the case for all operators that write to files, the output
-		produced by writehexstring may accumulate in a buffer instead of being
-		transmitted immediately. To ensure immediate transmission, a <a
-			href="../f/flushfile.html">flushfile</a> is required.
+		produced by <b>writehexstring</b> may accumulate in a buffer instead
+		of being transmitted immediately. To ensure immediate transmission,
+		invoking <a href="../f/flushfile.html">flushfile</a> is required.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

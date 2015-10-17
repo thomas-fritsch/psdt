@@ -8,37 +8,49 @@
 		setsystemparams <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>dict <b>setsystemparams</b> -</pre>
-	<p>attempts to set one or more system parameters whose keys and new
-		values are contained in the dictionary dict. The dictionary is merely
-		a container for key-value pairs; setsystemparams reads the information
-		from the dictionary but does not retain the dictionary itself. System
-		parameters whose keys are not mentioned in the dictionary are left
-		unchanged.</p>
+	<p>
+		attempts to set one or more system parameters whose keys and new
+		values are contained in the dictionary <i>dict</i>. The dictionary is
+		merely a container for key-value pairs; <b>setsystemparams</b> reads
+		the information from the dictionary but does not retain the dictionary
+		itself. System parameters whose keys are not mentioned in the
+		dictionary are left unchanged.
+	</p>
 	<p>Each parameter is identified by a key, which is always a name
 		object. If the named system parameter does not exist in the
 		implementation, it is ignored. If a specified numeric value is not
 		achievable by the implementation, the nearest achievable value is
 		substituted without error indication.</p>
-	<p>String values should consist of nonnull characters; if a null
+	<p>
+		String values should consist of nonnull characters; if a null
 		character is present, it will terminate the string. String-valued
 		parameters may be subject not only to the general implementation limit
-		on strings (noted in Appendix B), but also to implementation-dependent
-		limits specific to certain parameters. If either limit is exceeded, a
-		limitcheck error occurs.</p>
-	<p>The names of system parameters and details of their semantics
-		are given in Appendix C. Additional parameters are described in the
-		PostScript Language Reference Supplement and in product-specific
-		documentation. Some user parameters have default values that can be
-		specified as system parameters with the same names.</p>
-	<p>Permission to alter system parameters is controlled by a
-		password. The dictionary usually must contain an entry named Password
-		whose value is a string or integer equal to the system parameter
-		password (see Section C.1.2, "System Parameters"). If the password is
-		incorrect, an invalidaccess error occurs and setsystemparams does not
-		alter any parameters.</p>
+		on strings (noted in <a href="../.././B.html">Appendix B</a>), but
+		also to implementation-dependent limits specific to certain
+		parameters. If either limit is exceeded, a <a
+			href="../l/limitcheck.html">limitcheck</a> error occurs.
+	</p>
+	<p>
+		The names of system parameters and details of their semantics are
+		given in <a href="../../../C.html">Appendix C</a>. Additional
+		parameters are described in the <a
+			href="https://partners.adobe.com/public/developer/en/ps/PS3010and3011.Supplement.pdf">PostScript
+			Language Reference Supplement</a> and in product-specific documentation.
+		Some user parameters have default values that can be specified as
+		system parameters with the same names.
+	</p>
+	<p>
+		Permission to alter system parameters is controlled by a password. The
+		dictionary usually must contain an entry named <b>Password</b> whose
+		value is a string or integer equal to the system parameter password
+		(see Section <a href="../../../C/1/2.html">C.1.2, "System
+			Parameters"</a>). If the password is incorrect, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs and <b>setsystemparams</b>
+		does not alter any parameters.
+	</p>
 	<p>Some system parameters can be set permanently in nonvolatile
 		storage that survives restarts of the PostScript interpreter. This
-		capability is implementationdependent. No error occurs if parameters
+		capability is implementation-dependent. No error occurs if parameters
 		cannot be stored permanently.</p>
 	<p>
 		<b>Example</b>
@@ -50,11 +62,14 @@
   /Password (xxxx)
 &gt;&gt; setsystemparams
 </pre>
-	<p>This attempts to set the MaxFontCache system parameter to 500000
-		and to set the default value of the MaxFontItem user parameter to
-		7500.</p>
+	<p>
+		This example attempts to set the <b>MaxFontCache</b> system parameter
+		to 500,000 and the default value of the <b>MaxFontItem</b> user
+		parameter to 7500.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>

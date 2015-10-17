@@ -6,35 +6,45 @@
 <body>
 	<h3>setdash</h3>
 	<pre>array offset <b>setdash</b> -</pre>
-	<p>sets the dash pattern parameter in the graphics state. This
-		parameter controls the lines to be drawn by subsequent invocations of
-		stroke and related operators, such as rectstroke and ustroke. An empty
-		(zero-length) array operand denotes solid, unbroken lines. If array is
-		not empty, its elements (which must be nonnegative numbers and not all
-		zero) define the sequence of dashes and gaps constituting the dash
-		pattern.</p>
-	<p>The elements of array alternately specify the length of a dash
+	<p>
+		sets the dash pattern parameter in the graphics state. This parameter
+		controls the lines to be drawn by subsequent invocations of <a
+			href="stroke.html">stroke</a> and related operators, such as <a
+			href="../r/rectstroke.html">rectstroke</a> and <a
+			href="../u/ustroke.html">ustroke</a>. An empty (zero-length) <i>array</i>
+		operand denotes solid, unbroken lines. If <i>array</i> is not empty,
+		its elements (which must be nonnegative numbers and not all zero)
+		define the sequence of dashes and gaps constituting the dash pattern.
+	</p>
+	<p>
+		The elements of <i>array</i> alternately specify the length of a dash
 		and the length of a gap between dashes, expressed in units of the user
-		coordinate system. The stroke operator uses these elements cyclically;
-		when it reaches the end of the array, it starts again at the
-		beginning.</p>
-	<p>Dashed strokes wrap around curves and corners in the same way as
-		solid strokes. The ends of each dash are treated with the current line
-		cap, and corners within a dash are treated with the current line join.
-		stroke takes no measures to coordinate the dash pattern with features
-		of the path itself; it simply dispenses dashes along the path in the
-		pattern defined by array. The offset operand can be thought of as the
-		"phase" of the dash pattern relative to the start of the path. It is
-		interpreted as a distance into the dash pattern (measured in user
-		space units) at which to start the pattern. Before beginning to stroke
-		a path, the stroke operator cycles through the elements of array,
-		adding up distances and alternating dashes and gaps as usual, but
-		without generating any output. When the accumulated distance reaches
-		the value specified by offset, it begins stroking from the starting
-		point of the path, using the dash pattern from the point that has been
-		reached. Each subpath of a path is treated independently; the dash
-		pattern is restarted and the offset reapplied at the beginning of each
-		subpath.</p>
+		coordinate system. The <a href="stroke.html">stroke</a> operator uses
+		these elements cyclically; when it reaches the end of the array, it
+		starts again at the beginning.
+	</p>
+	<p>
+		Dashed strokes wrap around curves and corners in the same way as solid
+		strokes. The ends of each dash are treated with the current line cap,
+		and corners within a dash are treated with the current line join. <a
+			href="stroke.html">stroke</a> takes no measures to coordinate the
+		dash pattern with features of the path itself; it simply dispenses
+		dashes along the path in the pattern defined by <i>array</i>.
+	</p>
+	<p>
+		The <i>offset</i> operand can be thought of as the "phase" of the dash
+		pattern relative to the start of the path. It is interpreted as a
+		distance into the dash pattern (measured in user space units) at which
+		to start the pattern. Before beginning to stroke a path, the <a
+			href="stroke.html">stroke</a> operator cycles through the elements of
+		array, adding up distances and alternating dashes and gaps as usual,
+		but without generating any output. When the accumulated distance
+		reaches the value specified by offset, it begins stroking from the
+		starting point of the path, using the dash pattern from the point that
+		has been reached. Each subpath of a path is treated independently; the
+		dash pattern is restarted and the offset reapplied at the beginning of
+		each subpath.
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>

@@ -6,12 +6,15 @@
 <body>
 	<h3>stackoverflow (error)</h3>
 	<p>
-		The operand stack has grown too large. Too many objects have been
-		pushed on the stack and not popped off. Before invoking this error,
-		the interpreter creates an array containing all elements of the
-		operand stack (stored as if by <a href="../a/astore.html">astore</a>),
-		resets the operand stack to empty, and pushes the array on the operand
-		stack.
+		The operand stack has grown too large; too many objects have been
+		pushed on the stack and not popped off. See <a href="../../../B.html">Appendix
+			B</a> for the limit on the size of the operand stack.
+	</p>
+	<p>
+		Before invoking this error, the interpreter creates an array
+		containing all elements of the operand stack (stored as if by <a
+			href="../a/astore.html">astore</a>), resets the operand stack to
+		empty, and pushes the array on the operand stack.
 	</p>
 </body>
 </html>

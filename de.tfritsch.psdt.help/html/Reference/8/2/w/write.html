@@ -7,16 +7,16 @@
 	<h3>write</h3>
 	<pre>file int <b>write</b> -</pre>
 	<p>
-		appends a single character to the output file file. The int operand
-		should be an integer in the range 0 to 255 representing a character
-		code (values outside this range are reduced modulo 256). If file is
-		not a valid output file or some error is encountered, write executes <a
-			href="../i/ioerror.html">ioerror</a>.
+		appends a single character to the output file <i>file</i>. The <i>int</i>
+		operand should be an integer in the range 0 to 255 representing a
+		character code (values outside this range are reduced modulo 256).If <i>file</i>
+		is not a valid output file or an error is encountered in writing to
+		the file, an <a href="../i/ioerror.html">ioerror</a> occurs.
 	</p>
 	<p>
 		As is the case for all operators that write to files, the output
-		produced by write may accumulate in a buffer instead of being
-		transmitted immediately. To ensure immediate transmission, a <a
+		produced by <b>write</b> may accumulate in a buffer instead of being
+		transmitted immediately. To ensure immediate transmission, invoking <a
 			href="../f/flushfile.html">flushfile</a> is required.
 	</p>
 	<p>

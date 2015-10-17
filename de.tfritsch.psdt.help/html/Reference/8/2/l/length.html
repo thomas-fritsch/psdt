@@ -11,14 +11,13 @@ packedarray <b>length</b> int
      string <b>length</b> int
        name <b>length</b> int</pre>
 	<p>
-		depends on the type of its operand. If the operand is an <a
-			href="../a/array.html">array</a>, packed array, or string, length
-		returns the number of elements in its value. If the operand is a
-		dictionary, length returns the current number of key-value pairs it
-		contains, as opposed to its maximum capacity, which is returned by <a
-			href="../m/maxlength.html">maxlength</a>. If the operand is a name
-		object, the length is the number of characters in the text string that
-		defines it.
+		returns the number of elements in the value of its operand if the
+		operand is an array, a packed array, or a string. If the operand is a
+		dictionary, <b>length</b> returns the current number of entries it
+		contains (as opposed to its maximum capacity, which is returned by <a
+			href="../m/maxlength.html">maxlength</a>). If the operand is a name
+		object, the length returned is the number of characters in the text
+		string that defines it.
 	</p>
 	<p>
 		<b>Examples</b>

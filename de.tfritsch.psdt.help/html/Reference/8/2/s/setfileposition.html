@@ -10,19 +10,24 @@
 	<pre>file position <b>setfileposition</b> -</pre>
 	<p>
 		repositions an existing open file to a new position so the next read
-		or write operation will commence at that position. The position
+		or write operation will commence at that position. The <i>position</i>
 		operand is a non-negative integer interpreted as number of bytes from
-		the beginning of the file. For an output file, setfileposition first
-		performs an implicit <a href="../f/flushfile.html">flushfile</a> . The
-		result of positioning beyond end-of-file for both reading and writing
-		depends on the behavior of the underlying file system. Typically,
-		positioning beyond the existing end-of-file will lengthen the file if
-		it is open for writing and the file's access permits. The storage
-		appended to the file has unspecified contents. If lengthening the file
-		is not permitted, an <a href="../i/ioerror.html">ioerror</a> occurs.
-		Possible causes of an ioerror are: the file object is not valid, the
-		underlying file is not positionable, the specified position is invalid
-		for the file, or a device-dependent error condition is detected.
+		the beginning of the file. For an output file, <b>setfileposition</b>
+		first performs an implicit <a href="../f/flushfile.html">flushfile</a>
+		operation (see Section <a href="../../../3/8.html">3.8, "File
+			Input and Output"</a>).
+	</p>
+	<p>
+		The result of positioning beyond end-of-file for both reading and
+		writing depends on the behavior of the underlying file system.
+		Typically, positioning beyond the existing end-of-file will lengthen
+		the file if it is open for writing and the file's access permits. The
+		storage appended to the file has unspecified contents. If lengthening
+		the file is not permitted, an <a href="../i/ioerror.html">ioerror</a>
+		occurs. Possible causes of an <a href="../i/ioerror.html">ioerror</a>
+		are: the file object is not valid, the underlying file is not
+		positionable, the specified position is invalid for the file, or a
+		device-dependent error condition is detected.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/ioerror.html">ioerror</a>, <a

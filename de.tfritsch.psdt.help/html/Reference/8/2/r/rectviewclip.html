@@ -10,21 +10,23 @@
 	<pre>x y width height <b>rectviewclip</b> -
         numarray <b>rectviewclip</b> -
        numstring <b>rectviewclip</b> -</pre>
-	<p>replaces the current view clip with a rectangular path the
-		operands describe. In the first form, the operands are four numbers
-		that describe a single rectangle. In the other two forms, the operand
-		is an array or an encoded number string that describes an arbitrary
-		number of rectangles. After computing the new view clipping path,
-		rectviewclip resets the current path to empty, as if by newpath.</p>
 	<p>
-		Except for the manner in which the path is defined, rectviewclip
-		behaves the same as viewclip. Note that if the second or third form is
-		used to specify multiple rectangles, the rectangles are treated
-		together as a single path and used for a single <a
-			href="../v/viewclip.html">viewclip</a> operation. The
-		&quot;inside&quot; of this combined path is the union of all the
-		rectangular subpaths, because the paths are all drawn in the same
-		direction and the nonzero winding number rule is used.
+		replaces the current view clip with a rectangular path the operands
+		describe. In the first form, the operands are four numbers that
+		describe a single rectangle. In the other two forms, the operand is an
+		array or an encoded number string that describes an arbitrary number
+		of rectangles. After computing the new view clipping path, <b>rectviewclip</b>
+		resets the current path to empty, as if by <a href="../n/newpath.html">newpath</a>.
+	</p>
+	<p>
+		Except for the manner in which the path is defined, <b>rectviewclip</b>
+		behaves the same as <a href="../v/viewclip.html">viewclip</a>. Note
+		that if the second or third form is used to specify multiple
+		rectangles, the rectangles are treated together as a single path and
+		used for a single <a href="../v/viewclip.html">viewclip</a> operation.
+		The "inside" of this combined path is the union of all the rectangular
+		subpaths, because the paths are all drawn in the same direction and
+		the nonzero winding number rule is used.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a

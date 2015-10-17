@@ -7,16 +7,19 @@
 	<h3>rlineto</h3>
 	<pre>dx dy <b>rlineto</b> -</pre>
 	<p>
-		(relative lineto) appends a straight line segment to the current path
-		in the same manner as <a href="../l/lineto.html">lineto</a>. However,
-		the number pair is interpreted as a displacement relative to the
-		current point (x, y) rather than as an absolute coordinate. That is,
-		rlineto constructs a line from (x, y) to (x + dx, y + dy) and makes (x
-		+ dx, y + dy) the new current point.
+		(relative <a href="../l/lineto.html">lineto</a>) appends a straight
+		line segment to the current path (see Section <a
+			href="../../../4/4.html">4.4, "Path Construction"</a>), starting from
+		the current point and extending <i>dx</i> user space units
+		horizontally and <i>dy</i> units vertically. That is, the operands <i>dx</i>
+		and <i>dy</i> are interpreted as relative displacements from the
+		current point rather than as absolute coordinates. In all other
+		respects, the behavior of <b>rlineto</b> is identical to that of <a
+			href="../l/lineto.html">lineto</a>.
 	</p>
 	<p>
-		If the current point is undefined because the current path is empty,
-		rlineto executes the error <a href="../n/nocurrentpoint.html">nocurrentpoint</a>.
+		If the current point is undefined because the current path is empty, a
+		<a href="../n/nocurrentpoint.html">nocurrentpoint</a> error occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a

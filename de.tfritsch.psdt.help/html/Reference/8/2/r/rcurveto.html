@@ -7,15 +7,19 @@
 	<h3>rcurveto</h3>
 	<pre>dx<sub>1</sub> dy<sub>1</sub> dx<sub>2</sub> dy<sub>2</sub> dx<sub>3</sub> dy<sub>3</sub> <b>rcurveto</b> -</pre>
 	<p>
-		(relative curveto) adds a Bezier cubic section to the current path in
-		the same manner as curveto. However, the three number pairs are
-		interpreted as displacements relative to the current point (x<sub>0</sub>,
-		y<sub>0</sub>) rather than as absolute coordinates. That is, rcurveto
-		constructs a curve from (x<sub>0</sub>, y<sub>0</sub>) to (x<sub>0</sub>+dx<sub>3</sub>,
-		y<sub>0</sub>+dy<sub>3</sub>), using (x<sub>0</sub>+dx<sub>1</sub>, y<sub>0</sub>+dy<sub>1</sub>)
-		and (x<sub>0</sub>+dx<sub>2</sub>, y<sub>0</sub>+dy<sub>2</sub>) as
-		Bezier control points. See the description of <a
-			href="../c/curveto.html">curveto</a> for complete information.
+		(relative curveto) adds a B&eacute;zier cubic section to the current
+		path in the same manner as <a href="../c/curveto.html">curveto</a>.
+		However, the operands are interpreted as relative displacements from
+		the current point (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>) rather
+		than as absolute coordinates. That is, <b>rcurveto</b> constructs a
+		curve between the current point (<i>x<sub>0</sub></i>, <i>y<sub>0</sub></i>)
+		and the endpoint (<i>x<sub>0</sub></i> + <i>dx<sub>3</sub></i>, <i>y<sub>0</sub></i>
+		+ <i>dy<sub>3</sub></i>), using (<i>x<sub>0</sub></i> + <i>dx</i><sub>1</sub>,
+		<i>y<sub>0</sub></i> + <i>dy<sub>1</sub></i>) and (<i>x<sub>0</sub></i>
+		+ <i>dx<sub>2</sub></i>, <i>y<sub>0</sub></i> + <i>dy<sub>2</sub></i>)
+		as the B&eacute;zier control points. In all other respects, the
+		behavior of <b>rcurveto</b> is identical to that of <a
+			href="../c/curveto.html">curveto</a>.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a

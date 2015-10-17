@@ -9,15 +9,15 @@
 	</h3>
 	<pre>file obj tag <b>writeobject</b> -</pre>
 	<p>
-		writes a binary object sequence to file. Except for taking an explicit
-		file operand, writeobject is identical to <a
+		writes a binary object sequence to <i>file</i>. Except for taking an
+		explicit <i>file</i> operand, <b>writeobject</b> is identical to <a
 			href="../p/printobject.html">printobject</a> in all respects.
 	</p>
 	<p>
 		As is the case for all operators that write to files, the output
-		produced by writeobject may accumulate in a buffer instead of being
-		transmitted immediately. To ensure immediate transmission, a <a
-			href="../f/flushfile.html">flushfile</a> is required.
+		produced by <b>writeobject</b> may accumulate in a buffer instead of
+		being transmitted immediately. To ensure immediate transmission,
+		invoking <a href="../f/flushfile.html">flushfile</a> is required.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

@@ -6,19 +6,21 @@
 <body>
 	<h3>mark</h3>
 	<pre>- <b>mark</b> mark</pre>
-	<p>pushes a mark (an object whose type is mark, not the mark
-		operator itself) on the operand stack. All marks are identical, and
-		the operand stack may contain any number of them at once.
+	<p>pushes a mark object on the operand stack. All marks are
+		identical, and the operand stack may contain any number of them at
+		once.
 	<p>
 		The primary use of marks is to indicate the stack position of the
 		beginning of an indefinitely long list of operands being passed to an
 		operator or procedure. The <a href="../@/bracketright.html">]</a>
 		operator (array construction) is the most common operator that works
-		this way. It treats as operands all elements of the stack down to a
-		mark that was pushed by the <a href="../@/bracketleft.html">[ </a>operator
-		( <a href="../@/bracketleft.html">[</a> is a synonym for mark). It is
-		possible to define procedures that work similarly. Operators such as
-		counttomark and cleartomark are useful within such procedures.
+		this way; it treats as operands all elements of the stack down to a
+		mark that was pushed by the <a href="../@/bracketleft.html">[</a>
+		operator (<a href="../@/bracketleft.html">[</a> is a synonym for <b>mark</b>).
+		It is possible to define procedures that work similarly. Operators
+		such as <a href="../c/counttomark.html">counttomark</a> and <a
+			href=../c/cleartomark.html>cleartomark</a> are useful within such
+		procedures.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>

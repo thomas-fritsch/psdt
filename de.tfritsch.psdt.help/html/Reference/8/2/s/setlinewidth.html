@@ -6,27 +6,34 @@
 <body>
 	<h3>setlinewidth</h3>
 	<pre>num <b>setlinewidth</b> -</pre>
-	<p>sets the line width parameter in the graphics state to num. This
-		controls the thickness of lines rendered by subsequent execution of
-		the stroke operator. stroke paints all points whose perpendicular
-		distance from the current path in user space is less than or equal to
-		one-half the absolute value of num. The effect produced in device
-		space depends on the current transformation matrix (CTM) in effect at
-		the time of the stroke. If the CTM specifies scaling by different
-		factors in the x and y dimensions, the thickness of stroked lines in
-		device space will vary according to their orientation.</p>
-	<p>A line width of zero is acceptable: It is interpreted as the
-		thinnest line that can be rendered at device resolution-in other
-		words, one device pixel wide. Some devices cannot reproduce one-pixel
-		lines, and on high-resolution devices, such lines are nearly
-		invisible. Since the results of rendering such &quot;zero-width&quot;
-		lines are device dependent, their use is not recommended.</p>
 	<p>
-		The actual line width achieved by stroke can differ from the requested
-		width by as much as two device pixels, depending on the positions of
-		lines with respect to the pixel grid. One can enable automatic stroke
-		adjustment (by <a href="setstrokeadjust.html">setstrokeadjust</a>) to
-		assure uniform line width.
+		sets the line width parameter in the graphics state to <i>num</i>.
+		This parameter controls the thickness of lines to be drawn by
+		subsequent invocations of <a href="stroke.html">stroke</a> and related
+		operators, such as <a href="../r/rectstroke.html">rectstroke</a> and <a
+			href="../u/ustroke.html">ustroke</a>. When stroking a path, <a
+			href="stroke.html">stroke</a> paints all points whose perpendicular
+		distance from the path in user space is less than or equal to half the
+		absolute value of <i>num</i>. The effect produced in device space
+		depends on the current transformation matrix (CTM) in effect at the
+		time the path is stroked. If the CTM specifies scaling by different
+		factors in the <i>x</i> and <i>y</i> dimensions, the thickness of
+		stroked lines in device space will vary according to their
+		orientation.
+	</p>
+	<p>A line width of 0 is acceptable, and is interpreted as the
+		thinnest line that can be rendered at device resolution&mdash;1 device
+		pixel wide. However, some devices cannot reproduce 1-pixel lines, and
+		on high-resolution devices, they are nearly invisible. Since the
+		results of rendering such "zero-width" lines are device-dependent,
+		their use is not recommended.</p>
+	<p>
+		The actual line width achieved by <a href="stroke.html">stroke</a> can
+		differ from the requested width by as much as 2 device pixels,
+		depending on the positions of lines with respect to the pixel grid.
+		One can enable automatic stroke adjustment (see <a
+			href="setstrokeadjust.html">setstrokeadjust</a>)can be used to ensure
+		uniform line width.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a

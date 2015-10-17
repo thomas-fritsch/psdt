@@ -9,30 +9,28 @@
 	</h3>
 	<pre>- <b>ucachestatus</b> mark bsize bmax rsize rmax blimit</pre>
 	<p>
-		reports the current consumption and limit for two user path cache
-		resources: bytes of reduced path storage (bsize and bmax) and total
-		number of cached reduced paths (rsize and rmax). It also reports the
-		limit on the number of bytes occupied by a single reduced path
-		(blimit)-reduced paths that are larger than this are not cached. All
-		ucachestatus results except blimit are for information only. A
-		PostScript language program can change blimit (see <a
-			href="../s/setucacheparams.html">setucacheparams</a>).
+		reports the current consumption and maximum limit for two quantities
+		related to the user path cache: bytes of storage occupied by reduced
+		paths (<i>bsize</i> and <i>bmax</i>) and total number of reduced paths
+		cached (<i>rsize</i> and <i>rmax</i>). It also reports the limit on
+		the number of bytes that can be occupied by a single reduced path (<i>blimit</i>);
+		reduced paths that exceed this limit are not cached. A PostScript
+		program can change <i>blimit</i> (see <a
+			href="../s/setucacheparams.html">setucacheparams</a>); all other
+		results are for information only.
 	</p>
 	<p>
-		The number of values pushed on the operand stack is variable. Future
-		versions of the PostScript interpreter may push additional values
-		between mark and bsize. The purpose of the mark is to delimit the
-		values returned by ucachestatus. This enables a program to determine
-		how many values were returned (by <a href="../c/counttomark.html">counttomark</a>)
-		and to discard any unused ones (by <a href="../c/cleartomark.html">cleartomark</a>).
+		The number of result values returned on the operand stack is variable.
+		They are preceded by a mark object pushed on the stack as a delimiter,
+		enabling a program to determine how many values were returned (using <a
+			href="../c/counttomark.html">counttomark</a>) and to discard any
+		unused ones (using <a href="../c/cleartomark.html">cleartomark</a>).
 	</p>
 	<p>
-		The bsize, bmax, and blimit parameters reported by ucachestatus are
-		the same as the CurUPathCache and MaxUPathCache system parameters and
-		MaxUPathItem user parameter reported by <a
-			href="../c/currentsystemparams.html">currentsystemparams</a> and <a
-			href="../c/currentuserparams.html">currentuserparams</a>,
-		respectively.
+		The <i>bsize</i>, <i>bmax</i>, and <i>blimit</i> results reported by <b>ucachestatus</b>
+		are the same as the system parameters <b>CurUPathCache</b> and <b>MaxUPathCache</b>
+		and the user parameter <b>MaxUPathItem</b> (see <a
+			href="../../../C.html">Appendix C</a>).
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>

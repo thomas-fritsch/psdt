@@ -6,19 +6,32 @@
 <body>
 	<h3>strokepath</h3>
 	<pre>- <b>strokepath</b> -</pre>
-	<p>replaces the current path with one enclosing the shape that
-		would result if the stroke operator were applied to the current path.
-		The path resulting from strokepath is suitable as the implicit operand
-		to fill, clip, or pathbbox. In general, this path is not suitable for
-		stroke, as it may contain interior segments or disconnected subpaths
-		produced by strokepath's stroke to outline conversion process.</p>
+	<p>
+		replaces the current path with one enclosing the shape of the line
+		that the <a href="stroke.html">stroke</a> operator would draw if
+		applied to the current path. The result is not influenced by the
+		current clipping path. The rules for degenerate subpaths (see <a
+			href="stroke.html">stroke</a>) apply to <a href="strokepath.html">strokepath</a>
+		as well: if <a href="stroke.html">stroke</a> would produce no output,
+		<a href="strokepath.html">strokepath</a> will produce an empty
+		subpath.
+	</p>
+	<p>
+		The path produced by <a href="strokepath.html">strokepath</a> is
+		suitable for use as the implicit operand to a subsequent <a
+			href="../f/fill.html">fill</a>, <a href="../c/clip.html">clip</a>, or
+		<a href="../p/pathbbox.html">pathbbox</a> operation. In general, it is
+		not suitable for <a href="stroke.html">stroke</a>, as it may contain
+		interior segments or disconnected subpaths produced by strokepath’s
+		conversion from stroke to outline.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../f/fill.html">fill</a>, <a
-			href="../c/clip.html">clip</a>, <a href="stroke.html">stroke</a>, <a
-			href="../p/pathbbox.html">pathbbox</a>, <a href="../c/charpath.html">charpath</a>
+		<b>See Also:</b> <a href="stroke.html">stroke</a>, <a
+			href="../f/fill.html">fill</a>, <a href="../c/clip.html">clip</a>, <a
+			href="../c/charpath.html">charpath</a>, <a href="../p/pathbbox.html">pathbbox</a>
 	</p>
 </body>
 </html>

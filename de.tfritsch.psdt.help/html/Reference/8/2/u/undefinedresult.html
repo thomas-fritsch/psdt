@@ -5,11 +5,15 @@
 </head>
 <body>
 	<h3>undefinedresult (error)</h3>
-	<p>A numeric computation would produce a meaningless result or one
-		that cannot be represented as a number. Possible causes include
-		numeric overflow or underflow, division by zero, or inverse
-		transformation of a non-invertible matrix. A large number of graphics
-		and font operators can generate an undefinedresult error if the CTM is
-		not invertible (scaled by zero, for instance).</p>
+	<p>
+		A numeric computation would produce a meaningless result or one that
+		cannot be represented as a number. Possible causes include numeric
+		overflow or underflow, division by 0, or inverse transformation of a
+		noninvertible matrix. A large number of graphics and font operators
+		can generate an <b>undefinedresult</b> error if the current
+		transformation matrix is not invertible (if it is scaled by 0, for
+		instance). See <a href="../../../B.html">Appendix B</a> for the limits
+		of the values representable as integers and real numbers.
+	</p>
 </body>
 </html>

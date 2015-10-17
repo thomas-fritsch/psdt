@@ -10,22 +10,31 @@
 	<pre>       userpath <b>ustrokepath</b> -
 userpath matrix <b>ustrokepath</b> - </pre>
 	<p>
-		replaces the current path with one enclosing the shape that would
-		result if the ustroke operator were applied to the same operands. The
-		path resulting from ustrokepath is suitable as the implicit operand to
-		a subsequent <a href="../f/fill.html">fill</a>, <a
-			href="../c/clip.html">clip</a>, or <a href="../p/pathbbox.html">pathbbox</a>.
-		In general, this path is not suitable for <a href="../s/stroke.html">stroke</a>,
-		as it may contain interior segments or disconnected subpaths produced
-		by ustrokepath's stroke to outline conversion process.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and replaces the
+		current path with one enclosing the shape of the line that the <a>ustroke</a>
+		operator would draw if applied to that user path. The resulting path
+		is suitable for use as the implicit operand to a subsequent <a
+			href="../f/fill.html">fill</a>, <a href="../c/clip.html">clip</a>, or
+		<a href="../p/pathbbox.html">pathbbox</a> operation. In general, it is
+		not suitable for <a>stroke</a>, as it may contain interior segments or
+		disconnected subpaths produced by <b>ustrokepath</b>'s conversion from
+		stroke to outline.
 	</p>
-	<p>In the first form, ustrokepath is equivalent to:</p>
+	<p>Rhe first form of the operator is equivalent to:</p>
 	<pre>
 newpath
 uappend
 strokepath
 </pre>
-	<p>In the second form, ustrokepath is equivalent to:</p>
+	<p>
+		The second form concatenates <i>matrix</i> to the current
+		transformation matrix after interpreting <i>userpath</i>, but before
+		executing <a href="../s/strokepath.html">strokepath</a>. The CTM is
+		restored to its original value afterward, so <b>ustrokepath</b> has no
+		lasting effect on it. This form of <b>ustrokepath</b> is equivalent to
+		the following code:
+	</p>
 	<pre>
 newpath
 exch uappend              % Interpret userpath

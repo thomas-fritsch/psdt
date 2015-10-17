@@ -10,27 +10,30 @@
 	</h3>
 	<pre>index <b>undefineuserobject</b> -</pre>
 	<p>
-		breaks the association between the non-negative integer index and an
-		object established by some previous execution of defineuserobject. It
-		does so simply by replacing the specified <a href="UserObjects.html">UserObjects</a>
-		array element by the null object. This is equivalent to:
+		breaks the association between the nonnegative integer index and an
+		object established by some previous execution of <a
+			href="../d/defineuserobject.html">defineuserobject</a>. It does so
+		simply by replacing the specified <a href="UserObjects.html">UserObjects</a>
+		array element with the null object. This operator is equivalent to the
+		following code:
 	</p>
 	<pre>
 userdict /UserObjects get
 exch null put
 </pre>
 	<p>
-		undefineuserobject does not take any other actions such as shrinking
-		the <a href="UserObjects.html">UserObjects</a> array. If index is not
-		a valid index for the existing <a href="UserObjects.html">UserObjects</a>
-		array, a <a href="../r/rangecheck.html">rangecheck</a> error occurs.
+		<b>undefineuserobject</b> does not take any other actions, such as
+		shrinking the UserObjects array. If index is not a valid index for the
+		existing <a href="UserObjects.html">UserObjects</a> array, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs. See Section
+		<a>3.7.6, “User Objects.”</a>
 	</p>
 	<p>
-		There is no need to execute undefineuserobject prior to executing a <a
-			href="../d/defineuserobject.html">defineuserobject</a> that reuses
-		the same index. The purpose of undefineuserobject is to eliminate
-		references to objects that are no longer needed. This may enable the
-		garbage collector to reclaim such objects.
+		There is no need to invoke <b>undefineuserobject</b> before invoking a
+		<a href=",,/d/defineuserobject.html">defineuserobject</a> operator
+		that reuses the same index. The purpose of <b>undefineuserobject</b>
+		is to eliminate references to objects that are no longer needed, which
+		may enable the garbage collector to reclaim such objects.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a

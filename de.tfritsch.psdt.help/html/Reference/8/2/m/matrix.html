@@ -6,14 +6,17 @@
 <body>
 	<h3>matrix</h3>
 	<pre>- <b>matrix</b> matrix</pre>
-	<p>creates a 6-element array object, fills it in with the values of
-		an identity matrix</p>
+	<p>returns a six-element array object filled with the identity
+		matrix</p>
 	<pre>
 [1 0 0 1 0 0]
 </pre>
-	<p>and pushes this array on the operand stack. The array is
-		allocated in local or global VM according to the current VM allocation
-		mode.</p>
+	<p>
+		This matrix represents the identity transformation, which leaves all
+		coordinates unchanged. The array is allocated in local or global VM
+		according to the current VM allocation mode (see Section <a
+			href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>).
+	</p>
 	<p>
 		<b>Examples</b>
 	</p>
@@ -21,16 +24,17 @@
 matrix               &rArr;  [1 0 0 1 0 0]
 6 array identmatrix  &rArr;  [1 0 0 1 0 0]
 </pre>
-	<p>The two lines in the example yield identical results.</p>
+	<p>Both lines of code above return the same result on the stack.</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../v/VMerror.html">VMerror</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../c/currentmatrix.html">currentmatrix</a>,
-		<a href="../d/defaultmatrix.html">defaultmatrix</a>, <a
-			href="../i/initmatrix.html">initmatrix</a>, <a
-			href="../s/setmatrix.html">setmatrix</a>, <a href="./a/array.html">array</a>
+		<b>See Also:</b> <a href="../i/initmatrix.html">initmatrix</a>, <a
+			href="../d/defaultmatrix.html">defaultmatrix</a>, <a
+			href="../s/setmatrix.html">setmatrix</a>, <a
+			href="../c/currentmatrix.html">currentmatrix</a>, <a
+			href="./a/array.html">array</a>
 	</p>
 </body>
 </html>

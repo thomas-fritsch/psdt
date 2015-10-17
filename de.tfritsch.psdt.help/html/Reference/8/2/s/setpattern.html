@@ -9,54 +9,71 @@
 	</h3>
 	<pre>                pattern <b>setpattern</b> -
 comp<sub>1</sub> ... comp<sub>n</sub> pattern <b>setpattern</b> -</pre>
-	<p>sets the current color space in the graphics state to Pattern
+	<p>
+		sets the current color space in the graphics state to <b>Pattern</b>
 		and establishes a specified pattern as the current color. Subsequent
-		painting operations (except image and colorimage) will use this
-		pattern to paint the required areas of the current page.</p>
-	<p>setpattern is a convenience operator for patterns that performs
-		the equivalent of setcolorspace and setcolor in a single operation. It
-		is equivalent to the following code:</p>
+		painting operations (except <a href="../i/image.html">image</a> and <a
+			href="../c/colorimage.html">colorimage</a>) will use this pattern to
+		paint the required areas of the current page.
+	</p>
+	<p>
+		<b>setpattern</b> is a convenience operator for patterns that performs
+		the equivalent of <a href="setcolorspace.html">setcolorspace</a> and <a
+			href="setcolor.html">setcolor</a> in a single operation. It is
+		equivalent to the following code:
+	</p>
 	<pre>
 currentcolorspace 0 get /Pattern ne
 { [/Pattern currentcolorspace] setcolorspace
 } if
 setcolor
 </pre>
-	<p>Normally, setpattern establishes a Pattern color space whose
-		underlying color space is the one in effect at the time setpattern is
-		invoked. However, if the current color space is already a Pattern
-		space, setpattern simply leaves it unchanged.</p>
-	<p>setpattern then invokes setcolor to establish the specified
-		pattern as the current color in the graphics state, passing it the
-		same operand values that were supplied to setpattern itself. The
-		pattern operand is a pattern dictionary constructed as specified in
-		Section 4.9, "Patterns," and instantiated by makepattern. The need for
-		the remaining operands depends on the value of the pattern
-		dictionary’s PatternType and PaintType entries:</p>
+	<p>
+		Normally, <a href="setpattern.html">setpattern</a> establishes a <b>Pattern</b>
+		color space whose underlying color space is the one in effect at the
+		time <b>setpattern</b> is invoked. However, if the current color space
+		is already a <b>Pattern</b> space, <b>setpattern</b> simply leaves it
+		unchanged.
+	</p>
+	<p>
+		<b>setpattern</b> then invokes <a href="setcolor.html">setcolor</a> to
+		establish the specified pattern as the current color in the graphics
+		state, passing it the same operand values that were supplied to <b>setpattern</b>
+		itself. The <i>pattern</i> operand is a pattern dictionary constructed
+		as specified in Section <a href="../../../4/9.html">4.9,
+			"Patterns,"</a> and instantiated by <a>makepattern</a>. The need for the
+		remaining operands depends on the value of the pattern dictionary’s <b>PatternType</b>
+		and <b>PaintType</b> entries:
+	</p>
 	<ul>
-		<li>Shading patterns (PatternType 2) and colored tiling patterns
-			(PatternType 1, PaintType 1) define their own colors as part of the
-			pattern itself; there is no underlying color space. Therefore, the
-			operands comp1 through compn should not be specified.</li>
-		<li>Uncolored tiling patterns (PatternType 1, PaintType 2) have
-			no inherent color; the color must be specified explicitly by the
-			components comp1 through compn in the underlying color space of the
-			Pattern space. If the Pattern color space does not have an underlying
-			color space, a rangecheck error occurs.</li>
+		<li>Shading patterns (<b>PatternType</b> 2) and colored tiling
+			patterns (<b>PatternType</b> 1, <b>PaintType</b> 1) define their own
+			colors as part of the pattern itself; there is no underlying color
+			space. Therefore, the operands <i>comp<sub>1</sub></i> through <i>comp<sub>n</sub></i>
+			should not be specified.
+		</li>
+		<li>Uncolored tiling patterns (<b>PatternType</b> 1, <b>PaintType</b>
+			2) have no inherent color; the color must be specified explicitly by
+			the components <i>comp<sub>1</sub></i> through <i>comp<sub>n</sub></i>
+			in the underlying color space of the <b>Pattern</b> space. If the <b>Pattern</b>
+			color space does not have an underlying color space, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs.
+		</li>
 	</ul>
-	<p>Execution of this operator is not permitted in certain
-		circumstances; see Section 4.8.1, "Types of Color Space."</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
-			href="../u/undefined.html">undefined</a>, <a
-			href="../i/invalidid.html">invalidid</a>
+			href="../u/undefined.html">undefined</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="../f/findresource.html">findresource</a>, <a
-			href="../m/makepattern.html">makepattern</a>, <a href="setcolor.html">setcolor</a>,
-		<a href="setcolorspace.html">setcolorspace</a>
+		<b>See Also:</b> <a href="../m/makepattern.html">makepattern</a>, <a
+			href="setcolor.html">setcolor</a>, <a href="setcolorspace.html">setcolorspace</a>
 	</p>
 </body>
 </html>

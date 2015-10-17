@@ -11,12 +11,17 @@
 		<li>An attempt to create a new composite object (string, array,
 			dictionary, or packed array) would exhaust VM resources. Either the
 			program's requirements exceed available capacity or, more likely, the
-			program has failed to use the save/restore facility appropriately.</li>
+			program has failed to use the <a>save</a>-<a>restore</a> facility
+			appropriately (see Section <a href="../../../3/7.html">3.7,
+				"Memory Management"</a>).
+		</li>
 		<li>The interpreter has attempted to perform an operation that
-			should be impossible due to access restrictions (for example, store
-			into systemdict, which is read-only). This represents an internal
-			error in the interpreter. The default handler for this error, unlike
-			those for all other errors, does not snapshot the stacks.</li>
+			should be impossible due to access restrictions (for example, storing
+			into <a href="../s/systemdict.html">systemdict</a>, which is
+			read-only). This represents an internal error in the interpreter.
+		</li>
 	</ul>
+	<p>The default handler for this error, unlike those for all other
+		errors, does not snapshot the stacks.</p>
 </body>
 </html>

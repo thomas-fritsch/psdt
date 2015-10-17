@@ -8,18 +8,26 @@
 		setvmthreshold <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>int <b>setvmthreshold</b> -</pre>
-	<p>sets the allocation threshold used to trigger garbage
-		collection. If int is less than the implementation-dependent minimum
-		value, the threshold is set to that minimum value. If int is greater
-		than the implementation-dependent maximum value, the threshold is set
-		to that maximum value. If int is -1, the threshold is set to the
-		implementation-dependent default value. All other negative values of
-		int result in a rangecheck error.</p>
-	<p>Modifications to the allocation threshold parameter are subject
-		to save and restore. In an interpreter that supports multiple
-		contexts, this parameter is maintained separately for each context.</p>
-	<p>The parameter specified by setvmthreshold is the same as the
-		VMThreshold user parameter set by setuserparams (see Appendix C).</p>
+	<p>
+		sets the allocation threshold used to trigger garbage collection. If <i>int</i>
+		is less than the implementation-dependent minimum value, the threshold
+		is set to that minimum value. If <i>int</i> is greater than the
+		implementation-dependent maximum value, the threshold is set to that
+		maximum value. If <i>int</i> is -1, the threshold is set to the
+		implementation-dependent default value. All other negative values of <i>int</i>
+		result in a <a href="../r/rangecheck.html">rangecheck</a> error.
+	</p>
+	<p>
+		Modifications to the allocation threshold parameter are subject to <a
+			href="save.html">save</a> and <a href="../r/restore.html">restore</a>.
+		In an interpreter that supports multiple contexts, this parameter is
+		maintained separately for each context.
+	</p>
+	<p>
+		The parameter specified by <b>setvmthreshold</b> is the same as the <b>VMThreshold</b>
+		user parameter set by <a href="setuserparams.html">setuserparams</a>
+		(see <a href="../../../C.html">Appendix C</a>).
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>
 	</p>

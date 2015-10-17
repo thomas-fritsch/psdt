@@ -8,25 +8,33 @@
 		setcacheparams <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>mark size lower upper <b>setcacheparams</b> -</pre>
-	<p>sets font cache parameters as specified by the integer objects
-		above the topmost mark on the stack, then removes all operands and the
-		mark object as if by cleartomark.</p>
-	<p>The number of cache parameters is variable. If more operands are
-		supplied to setcacheparams than are needed, the topmost ones are used
-		and the remainder ignored. If fewer are supplied than are needed,
-		setcacheparams implicitly inserts default values between the mark and
-		the first supplied operand.</p>
-	<p>The size, lower, and upper parameters set by setcacheparams are
-		the same as the MaxFontCache system parameter and the MinFontCompress
-		and MaxFontItem user parameters, respectively (see Appendix C). If a
-		specified value lies outside the range achievable by the
-		implementation, the nearest achievable value is substituted with no
-		error indication.</p>
-	<p>Changing the font cache size is allowed only in a system
-		administrator job, since it is equivalent to changing a system
-		parameter. If size is not specified, the font cache size is unchanged.</p>
 	<p>
-		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
+		sets font cache parameters as specified by the integer objects above
+		the topmost mark on the stack, then removes all operands and the mark
+		object as if by <a href="../c/cleartomark.html">cleartomark</a>.
+	</p>
+	<p>
+		The number of cache parameters is variable. If more operands are
+		supplied to <b>setcacheparams</b> than are needed, the topmost ones
+		are used and the remainder ignored. If fewer are supplied than are
+		needed, <b>setcacheparams</b> implicitly inserts default values
+		between the mark and the first supplied operand.
+	</p>
+	<p>
+		The <i>size</i>, <i>lower</i>, and <i>upper</i> parameters set by <b>setcacheparams</b>
+		are the same as the <b>MaxFontCache</b> system parameter and the <b>MinFontCompress</b>
+		and <b>MaxFontItem</b> user parameters, respectively (see <a
+			href="../../../C.html">Appendix C</a>). If a specified value lies
+		outside the range achievable by the implementation, the nearest
+		achievable value is substituted with no error indication.
+	</p>
+	<p>
+		Changing the font cache size is allowed only in a system administrator
+		job, since it is equivalent to changing a system parameter. If <i>size</i>
+		is not specified, the font cache size is unchanged.
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
 			href="../u/unmatchedmark.html">unmatchedmark</a>
 	</p>

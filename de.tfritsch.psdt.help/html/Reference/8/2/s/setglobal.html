@@ -9,15 +9,18 @@
 	</h3>
 	<pre>bool <b>setglobal</b> -</pre>
 	<p>
-		sets the VM allocation mode: true denotes global, false denotes local.
-		This controls the VM region in which the values of new composite
-		objects are to be allocated. It applies to objects created implicitly
-		by the scanner and to those created explicitly by PostScript
-		operators. Modifications to the VM allocation mode are subject to <a
-			href="save.html">save</a> and <a href="../r/restore.html">restore</a>.
-		In a Display PostScript system, which supports multiple execution
-		contexts, the VM allocation mode is maintained separately for each
-		context. The standard error handlers in <a href="../e/errordict.html">errordict</a>
+		sets the VM allocation mode: <i>true</i> denotes global, <i>false</i>
+		denotes local. This controls the VM region in which the values of new
+		composite objects are to be allocated (see Section <a
+			href="../../../3/7.html">3.7, "Memory Management"</a>). It applies to
+		objects created implicitly by the scanner and to those created
+		explicitly by PostScript operators.
+	</p>
+	<p>In a Display PostScript system, which supports multiple
+		execution contexts, the VM allocation mode is maintained separately
+		for each context.</p>
+	<p>
+		The standard error handlers in <a href="../e/errordict.html">errordict</a>
 		execute false setglobal, reverting to local VM allocation mode if an
 		error occurs.
 	</p>

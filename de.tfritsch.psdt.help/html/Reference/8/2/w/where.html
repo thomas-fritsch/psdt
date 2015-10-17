@@ -5,15 +5,17 @@
 </head>
 <body>
 	<h3>where</h3>
-	<pre>key <b>where</b> dict true  (if found)
-          false      (if not found)</pre>
-	<p>determines which dictionary on the dictionary stack, if any,
-		contains an entry whose key is key. where searches for key in each
-		dictionary on the dictionary stack, starting with the topmost
-		(current) dictionary. If key is found in some dictionary, where
-		returns that dictionary object and the boolean true. If key is not
-		found in any dictionary on the dictionary stack, where simply returns
-		false.</p>
+	<pre>key <b>where</b> dict true  <i>(if found)</i>
+          false      <i>(if not found)</i>
+	</pre>
+	<p>
+		determines which dictionary on the dictionary stack, if any, contains
+		an entry whose key is <i>key</i>. <b>where</b> searches for <i>key</i>
+		in each dictionary on the dictionary stack, starting with the topmost
+		(current) dictionary. If <i>key</i> is found in some dictionary, <b>where</b>
+		returns that dictionary object and the boolean value <i>true</i>;
+		otherwise, where simply returns <i>false</i>.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackoverflow.html">stackoverflow</a>, <a

@@ -6,13 +6,18 @@
 <body>
 	<h3>setgray</h3>
 	<pre>num <b>setgray</b> -</pre>
-	<p>sets the current color space in the graphics state to DeviceGray
-		and the current color to the gray level specified by num. The gray
+	<p>
+		sets the current color space in the graphics state to DeviceGray and
+		the current color to the gray level specified by <i>num</i>. The gray
 		level must be a number in the range 0.0 to 1.0, with 0.0 denoting
-		black and 1.0 denoting white. If num is outside this range, the
-		nearest valid value is substituted without error indication. Execution
-		of this operator is not permitted in certain circumstances; see
-		Section 4.8.1, "Types of Color Space."</p>
+		black and 1.0 denoting white. If <i>num</i> is outside this range, the
+		nearest valid value is substituted without error indication.
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a
@@ -20,7 +25,9 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentgray.html">currentgray</a>, <a
-			href="setcolorspace.html">setcolorspace</a>, <a href="setcolor.html">setcolor</a>
+			href="setcolorspace.html">setcolorspace</a>, <a href="setcolor.html">setcolor</a>,
+		<a href="setrgbcolor.html">setrgbcolor</a>, <a href="sethsbcolor.html">sethsbcolor</a>,
+		<a href="setcmykcolor.html">setcmykcolor</a>
 	</p>
 </body>
 </html>

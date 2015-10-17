@@ -10,14 +10,15 @@
 	<pre>       userpath <b>ustroke</b> -
 userpath matrix <b>ustroke</b> -</pre>
 	<p>
-		interprets a user path definition and strokes the resulting path as if
-		by <a href="../s/stroke.html">stroke</a>. The entire operation is
-		effectively enclosed by <a href="../g/gsave.html">gsave</a> and <a
-			href="../g/grestore.html">grestore</a>, so ustroke has no lasting
-		effect on the graphics state.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and strokes the
+		resulting path as if by the <a href="../s/stroke.html">stroke</a>
+		operator. The entire operation is effectively bracketed between <a
+			href="../g/gsave.html">gsave</a> and <a href="../g/grestore.html">grestore</a>,
+		so it has no lasting effect on the graphics state.
 	</p>
-	<p>In the first form (with no matrix operand), ustroke is
-		equivalent to:</p>
+	<p>The first form of the operator is equivalent to the following
+		code:</p>
 	<pre>
 gsave
   newpath
@@ -25,10 +26,14 @@ gsave
   stroke
 grestore
 </pre>
-	<p>In the second form, ustroke concatenates matrix to the CTM after
-		interpreting userpath, but before executing stroke. The matrix applies
-		to the line width and the dash pattern, if any, but not to the path
-		itself. This form of ustroke is equivalent to:</p>
+	<p>
+		The second form concatenates <i>matrix</i> to the current
+		transformation matrix after interpreting <i>userpath</i>, but before
+		executing <a href="../s/stroke.html">stroke</a>. The resulting matrix
+		affects the line width and the dash pattern, if any, but not the path
+		itself. This form of <b>ustroke</b> is equivalent to the following
+		code:
+	</p>
 	<pre>
 gsave
   newpath
@@ -37,11 +42,13 @@ gsave
   stroke
 grestore
 </pre>
-	<p>The main use of the second form of ustroke is to compensate for
-		variations in line width and dash pattern that occur if the CTM has
-		been scaled by different amounts in x and y. This is accomplished by
-		defining matrix to be the inverse of the unequal scaling
-		transformation.</p>
+	<p>
+		The main use of this second form is to compensate for variations in
+		line width and dash pattern that occur if the CTM has been scaled by
+		different amounts horizontally and vertically. This is accomplished by
+		defining <i>matrix</i> to be the inverse of the unequal scaling
+		transformation.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../l/limitcheck.html">limitcheck</a>, <a

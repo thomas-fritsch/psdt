@@ -6,50 +6,62 @@
 <body>
 	<h3>setbbox</h3>
 	<pre>ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> <b>setbbox</b> -</pre>
-	<p>establishes a bounding box for the current path, within which
-		the coordinates of all path construction operators must fall. Any
+	<p>
+		establishes a bounding box for the current path, within which the
+		coordinates of all path construction operators must fall. Any
 		subsequent attempt to append a path element with a coordinate lying
-		outside the bounding box will cause a rangecheck error; subsequent
-		invocations of pathbbox will return a result derived from the bounding
-		box rather than from the actual path. The bounding box remains in
-		effect for the lifetime of the current path&mdash;that is, until the
-		next newpath or any operator that resets the path implicitly.</p>
+		outside the bounding box will cause a <a href="../r/rangecheck.html">rangecheck</a>
+		error; subsequent invocations of <b>pathbbox</b> will return a result
+		derived from the bounding box rather than from the actual path. The
+		bounding box remains in effect for the lifetime of the current
+		path&mdash;that is, until the next <a href="../n/newpath.html">newpath</a>
+		or any operator that resets the path implicitly.
+	</p>
 	<p>
 		The operands define a rectangle in user space, oriented with its sides
-		parallel to the axes of the user coordinate system: ll<sub>x</sub> and
-		ll<sub>y</sub> are the coordinates of the rectangle's lower-left
-		corner, ur<sub>x</sub> and ur<sub>y</sub> the upper-right corner. The
-		upper-right coordinate values must be greater than or equal to the
-		lower-left values, or a rangecheck error will occur. setbbox
+		parallel to the axes of the user coordinate system: <i>ll<sub>x</sub></i>
+		and <i>ll<sub>y</sub></i> are the coordinates of the rectangle's
+		lower-left corner, <i>ur<sub>x</sub></i> and <i>ur<sub>y</sub></i> the
+		upper-right corner. The upper-right coordinate values must be greater
+		than or equal to the lower-left values, or a <a
+			href="../r/rangecheck.html">rangecheck</a> error will occur. <b>setbbox</b>
 		transforms the corners of the specified bounding box from user to
 		device coordinates, then constructs the smallest rectangle in device
 		space that is oriented parallel to the device space axes and encloses
 		all four corners. All subsequent bounding box checking is done in
 		device space.
 	</p>
-	<p>Note that arcs constructed with the arc, arcn, arct, and arcto
-		operators are converted to equivalent sequences of curveto operations.
-		The coordinates computed as control points for these curves must also
-		fall within the bounding box. This establishes a bounding box for the
-		current path, within which the coordinates means that the figure of
-		the arc must be entirely enclosed by the bounding box. On the other
-		hand, the bounding box only constrains the path itself, not the
-		results of rendering it. For example, stroking the path may place
-		marks outside the bounding box without causing an error.</p>
-	<p>Although the setbbox operator can be used for any path, its main
-		use is in defining user paths, where it is mandatory (see Section 4.6,
-		"User Paths"). Any user path procedure passed to one of the user path
-		rendering operators (such as ufill) must begin with a setbbox
-		operation (optionally preceded by ucache). The bounding box
-		information enables the user path rendering operator to optimize
-		execution.</p>
-	<p>If setbbox is invoked more than once during the definition of a
-		path, the path's effective bounding box is successively enlarged to
+	<p>
+		Note that arcs constructed with the <a href="../a/arc.html">arc</a>, <a
+			href="../a/arcn.html">arcn</a>, <a href="../a/arct.html">arct</a>,
+		and <a href="../a/arcto.html">arcto</a> operators are converted to
+		equivalent sequences of <a href="../c/curveto.html">curveto</a>
+		operations. The coordinates computed as control points for these
+		curves must also fall within the bounding box. This means that the
+		figure of the arc must be entirely enclosed by the bounding box. On
+		the other hand, the bounding box only constrains the path itself, not
+		the results of rendering it. For example, stroking the path may place
+		marks outside the bounding box without causing an error.
+	</p>
+	<p>
+		Although the <b>setbbox</b> operator can be used for any path, its
+		main use is in defining user paths, where it is mandatory (see Section
+		<a href="../../../4/6.html">4.6, "User Paths"</a>). Any user path
+		procedure passed to one of the user path rendering operators (such as
+		<a href="../u/ufill.html">ufill</a>) must begin with a <b>setbbox</b>
+		operation (optionally preceded by <a href="../u/ucache.html">ucache</a>).
+		The bounding box information enables the user path rendering operator
+		to optimize execution.
+	</p>
+	<p>
+		If <b>setbbox</b> is invoked more than once during the definition of a
+		path, the path’s effective bounding box is successively enlarged to
 		enclose the union of all of the individual bounding boxes specified.
 		Such multiple invocation is not permitted within a user path
 		definition, but could conceivably arise in building up a single
 		current path by concatenating several user paths with multiple
-		invocations of uappend.</p>
+		invocations of <a href="../u/uappend.html">uappend</a>.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a

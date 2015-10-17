@@ -6,19 +6,30 @@
 <body>
 	<h3>setlinecap</h3>
 	<pre>int <b>setlinecap</b> -</pre>
-	<p>sets the line cap parameter in the graphics state to int, which
-		must be one of the integers 0, 1, or 2. This establishes the shape to
-		be put at the ends of open subpaths painted by the stroke operator.</p>
-	<p>The integers select the following shapes:</p>
+	<p>
+		sets the line cap parameter in the graphics state to <i>int</i>, which
+		must be 0, 1, or 2. This parameter controls the shape to be painted at
+		the ends of open subpaths (and dashes, if any) by subsequent
+		invocations of <a href="stroke.html">stroke</a> and related operators,
+		such as <a href="../u/ustroke.html">ustroke</a> (see Section <a
+			href="../../../4/5/1.html">4.5.1, "Stroking"</a>). Possible values
+		are as follows (see Figure 8.9):
+	</p>
 	<ol start="0">
-		<li>Butt cap. The stroke is squared off at the endpoint of the
-			path. There is no projection beyond the end of the path.</li>
-		<li>Round cap. A semicircular arc with diameter equal to the line
-			width is drawn around the endpoint and filled in.</li>
-		<li>Projecting square cap. The stroke continues beyond the
+		<li><i>Butt cap.</i> The stroke is squared off at the endpoint of
+			the path. There is no projection beyond the end of the path.</li>
+		<li><i>Round cap.</i> A semicircular arc with diameter equal to
+			the line width is drawn around the endpoint and filled in.</li>
+		<li><i>Projecting square cap.</i> The stroke continues beyond the
 			endpoint of the path for a distance equal to half the line width and
 			is squared off.</li>
 	</ol>
+	<figure>
+		<img src="figure-8.9.png" />
+		<figcaption>
+			<b>FIGURE 8.9</b> Line cap parameter shapes
+		</figcaption>
+	</figure>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a

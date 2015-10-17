@@ -7,15 +7,13 @@
 	<h3>setmatrix</h3>
 	<pre>matrix <b>setmatrix</b> -</pre>
 	<p>
-		replaces the current transformation matrix (CTM) in the graphics state
-		by the value of matrix. This establishes an arbitrary transformation
-		from user space to device space without reference to the former CTM.
-		Except in device setup procedures, use of setmatrix should be very
-		rare. PostScript language programs should ordinarily modify the CTM
-		(by use of the <a href="../t/translate.html">translate</a>, <a
-			href="scale.html">scale</a>, <a href="qr.html#rotate">rotate</a>, and
-		<a href="../c/concat.html">concat</a> operators) rather than replace
-		it.
+		sets the current transformation matrix (CTM) in the graphics state to
+		matrix without reference to the former CTM. Except in device setup
+		procedures, the use of this operator should be very rare. PostScript
+		programs should ordinarily modify the CTM with the <a
+			href="../t/translate.html">translate</a>, <a href="scale.html">scale</a>,
+		<a href="../r/rotate.html">rotate</a>, and <a href="../c/concat.html">concat</a>
+		operators rather than replace it.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
@@ -24,10 +22,9 @@
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currentmatrix.html">currentmatrix</a>,
-		<a href="../d/defaultmatrix.html">defaultmatrix</a>, <a
-			href="../i/initmatrix.html">initmatrix</a>, <a
-			href="../r/rotate.html">rotate</a>, <a href="scale.html">scale</a>, <a
-			href="../t/translate.html">translate</a>, <a href="../c/concat.html">concat</a>
+		<a href="../i/initmatrix.html">initmatrix</a>, <a
+			href="../t/translate.html">translate</a>, <a href="scale.html">scale</a>,
+		<a href="../r/rotate.html">rotate</a>, <a href="../c/concat.html">concat</a>
 	</p>
 </body>
 </html>

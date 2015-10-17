@@ -7,15 +7,16 @@
 	<h3>maxlength</h3>
 	<pre>dict <b>maxlength</b> int</pre>
 	<p>
-		returns the capacity of dict-in other words, the maximum number of
-		key-value pairs that dict can hold using the VM currently allocated to
-		it. In Level 1 implementations, maxlength returns the length operand
-		of the dict operator that created the dictionary; this is the
-		dictionary's maximum capacity (exceeding it causes a <a
-			href="../d/dictfull.html">dictfull</a> error). In a Level 2
-		implementation, which permits a dictionary to grow beyond its initial
-		capacity, maxlength returns its current capacity, a number at least as
-		large as that returned by length.
+		returns the capacity of the dictionary <i>dict</i>&mdash;in other
+		words, the maximum number of entries that <i>dict</i> can hold using
+		the virtual memory currently allocated to it. In LanguageLevel 1, <b>maxlength</b>
+		returns the length operand of the <a href="../d/dict.html">dict</a>
+		operator that created the dictionary; this is the dictionary's maximum
+		capacity (exceeding it causes a <a href="../d/dictfull.html">dictfull</a>
+		error). In a LanguageLevels 2 and 3, which permit a dictionary to grow
+		beyond its initial capacity, <b>maxlength</b> returns its current
+		capacity, a number at least as largeas that returned by the <a
+			href="../l/length.html">length</a> operator.
 	</p>
 	<p>
 		<b>Examples</b>

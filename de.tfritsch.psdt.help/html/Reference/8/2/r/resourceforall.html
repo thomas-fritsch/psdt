@@ -8,51 +8,76 @@
 		resourceforall <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>template proc scratch category <b>resourceforall</b> -</pre>
-	<p>enumerates the names of all instances of a specified resource
-		category or a subset selected by template. category is a name object
-		that identifies a resource category, such as Font. template is a
-		string object to be matched against names of resource instances. For
-		each matching name, resourceforall copies the name into the supplied
-		scratch string, pushes a string object that is the substring of
-		scratch that was actually used, and calls proc. resourceforall does
-		not return any results of its own, but proc may do so.</p>
-	<p>The template is matched against the names of resource instances,
+	<p>
+		enumerates the names of all instances of a specified resource category
+		or a subset selected by <i>template</i>. <i>category</i> is a name
+		object that identifies a resource category, such as <b>Font</b> (see
+		Section <a href="../../../3/9/2.html">3.9.2, "Resource Categories"</a>).
+		<i>template</i> is a string object to be matched against names of
+		resource instances. For each matching name, <b>resourceforall</b>
+		copies the name into the supplied <i>scratch</i> string, pushes a
+		string object designating the substring of scratch actually used, and
+		calls <i>proc</i>. <b>resourceforall</b> does not return any results
+		of its own, but <i>proc</i> may do so.
+	</p>
+	<p>
+		<i>template</i> is matched against the names of resource instances,
 		treating them as if they were strings. Within the template, all
-		characters are treated literally and are case sensitive, with the
-		exception of the following:</p>
+		characters are treated literally and are case-sensitive, with the
+		exception of the following:
+	</p>
 	<p>
 	<dl>
 		<dt>*</dt>
-		<dd>matches zero or more consecutive characters.</dd>
+		<dd>Matches zero or more consecutive characters.</dd>
 		<dt>?</dt>
-		<dd>matches exactly one character.</dd>
+		<dd>Matches exactly one character.</dd>
 		<dt>\</dt>
-		<dd>causes the next character of the template to be treated
-			literally, even if it is *, ?, or \.</dd>
+		<dd>
+			Causes the next character of the template to be treated literally,
+			even if it is *, ?, or \. Note that \ is treated as an escape
+			character in a string literal. Thus, if <i>template</i> is a string
+			literal, \\ must be used to represent \ in the resulting string.
+		</dd>
 	</dl>
-	<p>Note that the scratch string is reused during every call to
-		proc. If proc wishes to save the string that is passed to it, it must
-		make a copy or use cvn to convert the string to a name. Use of strings
-		instead of names allows resourceforall to function without creating
-		new name objects, which would consume VM needlessly during a large
-		enumeration. It is prudent to provide a scratch string at least as
-		long as the implementation limit for names.</p>
-	<p>It is possible for a resource instance to have a key which is
-		not a name or string. Such a key matches only the template (*). In
-		this case, resourceforall passes the key directly to proc instead of
-		copying it into the scratch string. This case can arise only for a
-		resource instance defined in VM by a previous defineresource; the keys
-		for external resource instances are always names or strings.</p>
-	<p>Like resourcestatus, but unlike findresource, resourceforall
-		never loads a resource instance into VM.</p>
-	<p>resourceforall enumerates the resource instances in order of
-		status (the status value returned by resourcestatus); that is, it
-		enumerates groups in this order:</p>
+	<p>
+		The scratch string is reused during every call to <i>proc</i>. If <i>proc</i>
+		wishes to save the string that is passed to it, it must make a copy or
+		use <a href="../c/cvn.html">cvn</a> to convert the string to a name.
+		The use of strings instead of names allows <b>resourceforall</b> to
+		function without creating new name objects, which would consume
+		virtual memory needlessly during a large enumeration. It is prudent to
+		provide a scratch string at least as long as the implementation limit
+		for names (see <a href="../../../B.html">Appendix B</a>).
+	</p>
+	<p>
+		A resource instance can have a key that is not a name or a string, but
+		such a key matches only the template (*). In this case, <b>resourceforall</b>
+		passes the key directly to <i>proc</i> instead of copying it into the
+		scratch string. This case can arise only for a resource instance
+		defined in virtual memory by a previous <a
+			href="../d/defineresource.html">defineresource</a>; the keys for
+		external resource instances are always names or strings.
+	</p>
+	<p>
+		Like <a href="resourcestatus.html">resourcestatus</a>, but unlike <a
+			href="../f/findresource.html">findresource</a>, <b>resourceforall</b>
+		never loads a resource instance into VM.
+	</p>
+	<p>
+		<b>resourceforall</b> enumerates the resource instances in order of
+		status (the status value returned by <a href="resourcestatus.html">resourcestatus</a>);
+		that is, it enumerates groups in this order:
+	</p>
 	<ol>
-		<li>Instances defined in VM by an explicit defineresource; not
-			subject to automatic removal.</li>
-		<li>Instances defined in VM by a previous execution of
-			findresource; subject to automatic removal.</li>
+		<li>Instances defined in VM by an explicit <a
+			href="../d/defineresource.html">defineresource</a>; not subject to
+			automatic removal.
+		</li>
+		<li>Instances defined in VM by a previous execution of <a
+			href="../f/findresource.html">findresource</a>; subject to automatic
+			removal.
+		</li>
 		<li>Instances not currently defined in VM, but available from
 			external storage.</li>
 	</ol>
@@ -63,17 +88,18 @@
 		resource instances, those instances may or may not appear later in the
 		same enumeration.</p>
 	<p>
-		Like resourcestatus, resourceforall considers both local and global
-		definitions if the current VM allocation mode is local, but only
-		global definitions if the current VM allocation mode is global (see <a
-			href="resourcestatus.html">resourcestatus</a> and <a
-			href="../d/defineresource.html">defineresource</a>).
+		Like <a href="resourcestatus.html">resourcestatus</a>, <b>resourceforall</b>
+		considers both local and global definitions if the current VM
+		allocation mode is local, but only global definitions if the current
+		VM allocation mode is global (see <a href="resourcestatus.html">resourcestatus</a>
+		and <a href="../d/defineresource.html">defineresource</a>).
 	</p>
 	<p>
 		If the specified resource category does not exist, an <a
 			href="../u/undefined.html">undefined</a> error occurs. However, no
 		error occurs if there are no instances whose names match the template.
-		Of course, the proc that is called can generate errors of its own.
+		Of course, the <i>proc</i> that is called can generate errors of its
+		own.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

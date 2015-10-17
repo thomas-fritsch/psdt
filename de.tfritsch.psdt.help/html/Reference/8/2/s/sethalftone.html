@@ -9,22 +9,45 @@
 	</h3>
 	<pre>halftone <b>sethalftone</b> -</pre>
 	<p>
-		establishes halftone as the halftone parameter in the graphics state.
-		Once established, the halftone dictionary should be treated as
-		readonly. If the halftone dictionary's HalftoneType value is out of
-		bounds or is not supported by the PostScript interpreter, a <a
-			href="../r/rangecheck.html">rangecheck</a> error occurs. If a
-		required entry is missing or its value is of the wrong type, a <a
-			href="../t/typecheck.html">typecheck</a> error occurs. sethalftone
-		sets a graphics state parameter whose effect is device dependent. It
-		should not be used in a page description that is intended to be device
-		independent.
+		sets the halftone screen parameter in the graphics state (see Section
+		<a href="../../../7/4.html">7.4, "Halftones"</a>) as specified by a
+		halftone dictionary. This distinguishes it from setscreen and
+		setcolorscreen, which specify the halftone’s properties by passing
+		individual frequency, angle, and spot function operands directly on
+		the stack.
+	</p>
+	<p>
+		<i>halftone</i> must be a halftone dictionary constructed as described
+		in Section <a href="../../../7/4/3.html">7.4.3, "Halftone
+			Dictionaries."</a> If the dictionary's <b>HalftoneType</b> value is out
+		of bounds or is not supported by the PostScript interpreter, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs; if a
+		required entry is missing, an <a href="../u/undefined.html">undefined</a>
+		error occurs; if an entry's value is of the wrong type, a <a
+			href="../t/typecheck.html">typecheck</a> error occurs. Once
+		established as the current halftone, the dictionary should be treated
+		as read-only.
+	</p>
+	<p>
+		In LanguageLevel 3, the behavior of <b>sethalftone</b> can be altered
+		by the user parameters <b>HalftoneMode</b> (see <a
+			href="../../../C/3/4.html#2">"Halftone Setting" on page 757</a>) and
+		<b>MaxSuperScreen</b> (Section <a href="../../../7/4/8.html">7.4.8,
+			"Supercells"</a>).
+	</p>
+	<p>
+		Because the effect of the halftone screen is device-dependent, <b>sethalftone</b>
+		should not be used in a page description that is intended to be
+		device-independent. Execution of this operator is not permitted in
+		certain circumstances; see Section <a href="../../../4/8/1.html">4.8.1,
+			"Types of Color Space."</a>
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/imitcheck.html">limitcheck</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
-			href="../t/typecheck.html">typecheck</a>
+			href="../t/typecheck.html">typecheck</a>, <a
+			href="../u/undefined.html">undefined</a>
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../c/currenthalftone.html">currenthalftone</a>,

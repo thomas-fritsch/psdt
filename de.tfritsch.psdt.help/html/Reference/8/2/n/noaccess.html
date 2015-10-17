@@ -10,18 +10,25 @@ packedarray <b>noaccess</b> packedarray
        dict <b>noaccess</b> dict
        file <b>noaccess</b> file
      string <b>noaccess</b> string</pre>
-	<p>reduces the access attribute of an array, packed array,
-		dictionary, file, or string object to none. The value of a noaccess
-		object cannot be executed or accessed directly by PostScript
-		operators. Noaccess objects are of no use to PostScript language
+	<p>
+		reduces the access attribute of an array, packed array, dictionary,
+		file, or string object to none (see Section <a
+			href="../../../3/3/2.html">3.3.2, "Attributes of Objects"</a>). The
+		value of a no-access object cannot be executed or accessed directly by
+		PostScript operators. No-access objects are of no use to PostScript
 		programs, but serve certain internal purposes that are not documented
-		in this manual.</p>
-	<p>For an array, packed array, file, or string, noaccess affects
-		the access attribute only of the object that it returns. If there are
-		other objects that share the same value, their access attributes are
-		unaffected. However, in the case of a dictionary, noaccess affects the
-		value of the object, so all dictionary objects sharing the same
-		dictionary are affected.</p>
+		in this book.
+	</p>
+	<p>
+		For an array, packed array, file, or string object, <b>noaccess</b>
+		affects the access attribute only of the object that it returns. If
+		there are other objects that share the same value, their access
+		attributes are unaffected. However, in the case of a dictionary, <b>noaccess</b>
+		affects the value of the object, so all dictionary objects sharing the
+		same dictionary are affected. Applying <b>noaccess</b> to a dictionary
+		whose access is already read-only causes an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

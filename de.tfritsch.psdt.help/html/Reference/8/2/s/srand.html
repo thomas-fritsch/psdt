@@ -6,10 +6,14 @@
 <body>
 	<h3>srand</h3>
 	<pre>int <b>srand</b> -</pre>
-	<p>initializes the random number generator with the seed int, which
-		may be any integer value. Executing srand with a particular value
-		causes subsequent invocations of rand to generate a reproducible
-		sequence of results.</p>
+	<p>
+		initializes the random number generator with the seed <i>int</i>,
+		which may be any integer value. Executing <b>srand</b> with a
+		particular value causes subsequent invocations of <a
+			href="../r/rand.html">rand</a> to generate a reproducible sequence of
+		results. In an interpreter that supports multiple execution contexts,
+		the random number state is maintained separately for each context.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>

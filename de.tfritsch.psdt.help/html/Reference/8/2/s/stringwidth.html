@@ -7,22 +7,29 @@
 	<h3>stringwidth</h3>
 	<pre>string <b>stringwidth</b> w<sub>x</sub> w<sub>y</sub>
 	</pre>
-	<p>calculates the change in the current point that would occur if
-		string were given as the operand to show with the current font. wx and
-		wy are computed by adding together the width vectors of all the
-		individual characters in string and converting the result to user
-		space. They form a distance vector in x and y describing the width of
-		the entire string in user space.</p>
-	<p>To obtain the character widths, stringwidth may execute the
-		descriptions of one or more of the characters in the current font and
-		may cause the results to be placed in the font cache. However,
-		stringwidth prevents the graphics operators that are executed from
-		painting anything into the current page.</p>
 	<p>
-		Note that the &quot;width&quot; of a string is defined as movement of
-		the current point. It has nothing to do with the dimensions of the
-		character outlines (see <a href="../c/charpath.html">charpath</a> and
-		<a href="../p/pathbbox.html">pathbbox</a>).
+		calculates the change in the current point that would occur if <i>string</i>
+		were given as the operand to <a href="show.html">show</a> with the
+		current font. <i>w<sub>x</sub></i> and <i>w<sub>y</sub></i> are
+		computed by adding together the width vectors of all the individual
+		glyphs for <i>string</i> and converting the result to user space. They
+		form a distance vector in the <i>x</i> and <i>y</i> dimensions
+		describing the width of the glyphs for the entire string in user
+		space. See Section <a href="../../../5/4.html">5.4, "Glyph Metric
+			Information,"</a> for a discussion of glyph widths.
+	</p>
+	<p>
+		To obtain the glyph widths, <b>stringwidth</b> may execute the
+		descriptions of one or more of the glyphs in the current font and may
+		cause the results to be placed in the font cache. However, <b>stringwidth</b>
+		prevents the graphics operators that are executed from painting
+		anything onto the current page.
+	</p>
+	<p>
+		Note that the width returned by <b>stringwidth</b> is defined as
+		movement of the current point. It has nothing to do with the
+		dimensions of the character outlines (see <a href="../c/charpath.html">charpath</a>
+		and <a href="../p/pathbbox.html">pathbbox</a>).
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

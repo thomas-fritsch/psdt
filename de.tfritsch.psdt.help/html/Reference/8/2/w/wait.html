@@ -6,27 +6,31 @@
 <body>
 	<h3>wait [DPS]</h3>
 	<pre>lock condition <b>wait</b> -</pre>
-	<p>releases lock, waits for condition to be notified by some other
-		execution</p>
 	<p>
-		context, and finally reacquires lock. The lock must originally have
-		been acquired by the current context, which means that wait can be
-		invoked only within the execution of a monitor that references the
-		same <a href="../l/lock.html">lock</a>.
+		releases <i>lock</i>, waits for <i>condition</i> to be notified by
+		some other execution context, and finally reacquires <i>lock</i>. The
+		<i>lock</i> must originally have been acquired by the current context,
+		which means that <b>wait</b> can be invoked only within the execution
+		of a monitor that references the same <i>lock</i>.
 	</p>
 	<p>
-		If lock is initially held by some other context or is not held by any
-		context, wait executes an <a href="../i/invalidcontext.html">invalidcontext</a>
-		error. On the other hand, during the wait for condition, the lock can
-		be acquired by some other context. After condition is notified, wait
-		will wait an arbitrary length of time to reacquire <a
-			href="../l/lock.html">lock</a>.
+		If <i>lock</i> is initially held by some other context or is not held
+		by any context, an <a href="../i/invalidcontext.html">invalidcontext</a>
+		error occurs. On the other hand, during the <b>wait</b> for <i>condition</i>,
+		the <i>lock</i> can be acquired by some other context. After <i>condition</i>
+		is notified, <b>wait</b> will wait an arbitrary length of time to
+		reacquire <i>lock</i>.
 	</p>
-	<p>If the current context has previously executed a save not yet
-		matched by a restore, wait executes invalidcontext unless both lock
-		and condition are in global VM. The latter case is permitted under the
-		assumption that the wait is synchronizing with some context whose
-		local VM is different from that of the current context.</p>
+	<p>
+		If the current context has previously executed a <a
+			href="../s/save.html">save</a> not yet matched by a <a
+			href="../r/rrestore.html">restore</a>, an <a
+			href="../i/invalidcontext.html">invalidcontext</a> error occurs
+		unless both <i>lock</i> and <i>condition</i> are in global VM. The
+		latter case is permitted under the assumption that the <b>wait</b> is
+		synchronizing with some context whose local VM is different from that
+		of the current context.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidcontext.html">invalidcontext</a>,
 		<a href="../s/stackunderflow.html">stackunderflow</a>, <a

@@ -10,17 +10,15 @@
 	<pre>string numarray  <b>xyshow</b> -
 string numstring <b>xyshow</b> -</pre>
 	<p>
-		paints successive characters of string in a manner similar to <a
-			href="../s/show.html">show</a>. After painting each character, it
-		extracts two successive numbers from the array numarray or the encoded
-		number string numstring. These two numbers, interpreted in user space,
-		determine the position of the origin of the next character relative to
-		the origin of the character just shown. The first number is the x
-		displacement and the second number is the y displacement. In other
-		words, the two numbers override the character's normal width. If
-		numarray or numstring is exhausted before all the characters of string
-		have been shown, a <a href="../r/rangecheck.html">rangecheck</a> error
-		will occur.
+		paints glyphs for the characters of string in a manner similar to <a
+			href="../s/show.html">show</a>. After painting each glyph, it
+		extracts two successive numbers from the array <i>numarray</i> or the
+		encoded number string <i>numstring</i>. These two numbers, interpreted
+		in user space, determine the position of the origin of the next glyph
+		relative to the origin of the glyph just shown. The first number is
+		the <i>x</i> displacement and the second number is the <i>y</i>
+		displacement. In other words, the two numbers override the glyph's
+		normal width.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

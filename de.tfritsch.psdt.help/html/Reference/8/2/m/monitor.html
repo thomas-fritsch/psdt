@@ -8,17 +8,18 @@
 	<pre>lock proc <b>monitor</b> -</pre>
 	<p>
 		acquires <a href="../l/lock.html">lock</a>, first waiting if necessary
-		for it to become free, then executes proc, and finally releases lock
-		again. The release of lock occurs whether proc runs to completion or
-		terminates prematurely for any reason.
+		for it to become free, then executes <i>proc</i>, and finally releases
+		lock again. The release of <i>lock</i> occurs whether <i>proc</i> runs
+		to completion or terminates prematurely for any reason.
 	</p>
 	<p>
-		If <a href="../l/lock.html">lock</a> is already held by the current
-		context, monitor executes an <a href="../i/invalidcontext.html">invalidcontext</a>
-		error without disturbing the <a href="../l/lock.html">lock</a>. If the
-		current context has previously executed a save not yet matched by a
-		restore and lock is already held by another context sharing the same
-		local VM as the current context, an <a href="../i/invalidcontext.html">invalidcontext</a>
+		If <i>lock</i> is already held by the current context, an <a
+			href="../i/invalidcontext.html">invalidcontext</a> error occurs
+		without disturbing the <a href="../l/lock.html">lock</a>. If the
+		current context has previously executed a <a href="../s/save.html">save</a>
+		not yet matched by a <a href="../r/restore.html">restore</a> and <i>lock</i>
+		is already held by another context sharing the same local VM as the
+		current context, an <a href="../i/invalidcontext.html">invalidcontext</a>
 		error results. These restrictions prevent the most straightforward
 		cases of a context deadlocking with itself.
 	</p>

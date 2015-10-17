@@ -9,21 +9,27 @@
 			align="middle" />
 	</h3>
 	<pre>proc <b>setundercolorremoval</b> -</pre>
-	<p>sets the undercolor-removal function in the graphics state to
-		proc. The value of this parameter is a procedure that computes the
-		amount by which to reduce the cyan, magenta, and yellow color
-		components in order to compensate for black generation during the
-		conversion of color values from the DeviceRGB color space to
-		DeviceCMYK (see Section 7.2.3, "Conversion from DeviceRGB to
-		DeviceCMYK"). The procedure is called with a number in the range 0.0
-		to 1.0 on the operand stack and must return a number in the range -1.0
-		to +1.0. Negative result values increase the levels of the cyan,
-		magenta, and yellow color components; positive values decrease them.</p>
-	<p>Because the effect of the undercolor-removal function is
-		device-dependent, setundercolorremoval should not be used in a page
-		description that is intended to be device-independent. Execution of
-		this operator is not permitted in certain circumstances; see Section
-		4.8.1, "Types of Color Space."</p>
+	<p>
+		sets the undercolor-removal function in the graphics state to <i>proc</i>.
+		The value of this parameter is a procedure that computes the amount by
+		which to reduce the cyan, magenta, and yellow color components in
+		order to compensate for black generation during the conversion of
+		color values from the <b>DeviceRGB</b> color space to <b>DeviceCMYK</b>
+		(see Section <a href="../../../7/2/3.html">7.2.3, "Conversion from
+			DeviceRGB to DeviceCMYK"</a>). The procedure is called with a number in
+		the range 0.0 to 1.0 on the operand stack and must return a number in
+		the range -1.0 to +1.0. Negative result values increase the levels of
+		the cyan, magenta, and yellow color components; positive values
+		decrease them.
+	</p>
+	<p>
+		Because the effect of the undercolor-removal function is
+		device-dependent, <b>setundercolorremoval</b> should not be used in a
+		page description that is intended to be device-independent. Execution
+		of this operator is not permitted in certain circumstances; see
+		Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a

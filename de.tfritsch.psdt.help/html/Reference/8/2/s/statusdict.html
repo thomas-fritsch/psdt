@@ -6,28 +6,34 @@
 <body>
 	<h3>statusdict</h3>
 	<pre>- <b>statusdict</b> dict</pre>
-	<p>pushes a product-dependent dictionary on the operand stack.
-		statusdict is not an operator; it is a name associated with the
-		dictionary in systemdict. The statusdict dictionary is in local VM and
-		is writable.</p>
-	<p>statusdict contains product-dependent operators and other data
-		whose names and values vary from product to product, and sometimes
-		from one version of a product to another. Information in statusdict is
-		associated with unique features of a product that cannot be accessed
-		in any standard way. The contents of statusdict are not documented
-		here, but in product-specific documentation.</p>
 	<p>
-		In Level 1 implementations, statusdict includes operators to select
+		pushes a product-dependent dictionary on the operand stack. <b>statusdict</b>
+		is not an operator; it is a name associated with the dictionary in <a
+			href="systemdict.html">systemdict</a>. The <b>statusdict</b>
+		dictionary is in local VM and is writeable.
+	</p>
+	<p>
+		<b>statusdict</b> contains product-dependent operators and other data
+		whose names and values vary from product to product, and sometimes
+		from one version of a product to another. Information in <b>statusdict</b>
+		is associated with unique features of a product that cannot be
+		accessed in any standard way. The contents of <b>statusdict</b> are
+		not documented here, but in product-specific documentation.
+	</p>
+	<p>
+		In LanguageLevel 1, <b>statusdict</b> includes operators to select
 		print-engine features, to set communication parameters, and to control
-		other aspects of the interpreter's operating environment. In Level 2,
-		most of these functions have been subsumed by standard operators, such
-		as <a href="setpagedevice.html">setpagedevice</a>, <a
-			href="setdevparams.html">setdevparams</a>, and <a
+		other aspects of the interpreter's operating environment. In
+		LanguageLevel 2 or 3, most of these functions have been subsumed by
+		standard operators, such as <a href="setpagedevice.html">setpagedevice</a>,
+		<a href="setdevparams.html">setdevparams</a>, and <a
 			href="setsystemparams.html">setsystemparams</a>.
 	</p>
-	<p>statusdict is not necessarily defined in all products. Any
-		reference to statusdict in a PostScript language program impairs the
-		portability of that program.</p>
+	<p>
+		<b>statusdict</b> is not necessarily defined in all products. Any
+		reference to <b>statusdict</b> in a PostScript language program
+		impairs the portability of that program.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackoverflow.html">stackoverflow</a>, <a
 			href="../u/undefined.html">undefined</a>

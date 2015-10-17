@@ -7,16 +7,19 @@
 	<h3>rmoveto</h3>
 	<pre>dx dy <b>rmoveto</b> -</pre>
 	<p>
-		(relative moveto) starts a new subpath of the current path in the same
-		manner as <a href="../m/moveto.html">moveto</a>. However, the number
-		pair is interpreted as a displacement relative to the current point
-		(x, y) rather than as an absolute coordinate. That is, rmoveto makes
-		(x + dx, y + dy) the new current point, without connecting it to the
-		previous point.
+		(relative <a href="../m/moveto.html">moveto</a>) starts a new subpath
+		of the current path (see Section <a href="../../../4/4.html">4.4,
+			"Path Construction"</a>) by displacing the coordinates of the current
+		point <i>dx</i> user space units horizontally and <i>dy</i> units
+		vertically, without connecting it to the previous current point. That
+		is, the operands <i>dx</i> and <i>dy</i> are interpreted as relative
+		displacements from the current point rather than as absolute
+		coordinates. In all other respects, the behavior of <b>rmoveto</b> is
+		identical to that of <a href="../m/moveto.html">moveto</a>.
 	</p>
 	<p>
-		If the current point is undefined because the current path is empty,
-		rmoveto executes the error <a href="../n/nocurrentpoint.html">nocurrentpoint</a>.
+		If the current point is undefined because the current path is empty, a
+		<a href="../n/nocurrentpoint.html">nocurrentpoint</a> error occurs.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a

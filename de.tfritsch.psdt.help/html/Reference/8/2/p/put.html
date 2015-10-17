@@ -8,28 +8,29 @@
 	<pre> array index any <b>put</b> -
     dict key any <b>put</b> -
 string index int <b>put</b> -</pre>
-	<p>replaces a single element of the value of an array, dictionary,
-		or string.</p>
 	<p>
-		If the first operand is an array or string, put treats the second
-		operand as an index and stores the third operand at the position
-		identified by the index, counting from zero. index must be in the
-		range 0 to n-1,where n is the length of the array or string. If it is
-		outside this range, put will execute a <a href="../r/rangecheck.html">rangecheck</a>
-		error.
+		replaces a single element of the value of an array, dictionary, or
+		string. If the first operand is an array or string, <b>put</b> treats
+		the second operand as an index and stores the third operand at the
+		position identified by the index, counting from zero. <i>index</i>
+		must be in the range 0 to <i>n</i>-1,where n is the length of the
+		array or string. If it is outside this range, a <a
+			href="../r/rangecheck.html">rangecheck</a> error occurs.
 	</p>
 	<p>
-		If the first operand is a dictionary, put uses the second operand as a
-		key and the third operand as a value, and it stores this key-value
-		pair into dict. If key is already present as a key in dict, put simply
-		replaces its value by any. Otherwise, put creates a new entry for key
-		and associates any with it. In Level 1 implementations, if dict is
-		already full, put executes the error <a href="../d/dictfull.html">dictfull</a>.
+		If the first operand is a dictionary, <b>put</b> uses the second
+		operand as a key and the third operand as a value, and it stores this
+		key-value pair into <i>dict</i>. If <i>key</i> is already present as a
+		key in <i>dict</i>, <b>put</b> simply replaces its value by <i>any</i>;
+		otherwise, <b>put</b> creates a new entry for <i>key</i> and
+		associates any with it. In LanguageLevel 1, if <i>dict</i> is already
+		full, a <a href="../d/dictfull.html">dictfull</a> error occurs.
 	</p>
 	<p>
-		If the value of array or dict is in global VM and any is a composite
-		object whose value is in local VM, an <a
-			href="../i/invalidaccess.html">invalidaccess</a> error occurs.
+		If the value of <i>array</i> or <i>dict</i> is in global VM and <i>any</i>
+		is a composite object whose value is in local VM, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs (see
+		Section <a href="../../../3/7/2.html">3.7.2, "Local and Global VM"</a>).
 	</p>
 	<p>
 		<b>Examples</b>
@@ -44,7 +45,7 @@ d /abc 123 put
 d {} forall          &rArr; /abc 12
 
 /st (abc) def
-st 0 65 put          % 65 is ASCII code for character &quot;A&quot;
+st 0 65 put          % 65 is ASCII code for the character A
 st                   &rArr; (Abc)
 </pre>
 	<p>

@@ -7,16 +7,15 @@
 	<h3>
 		renamefile <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
-	<pre>old new <b>renamefile</b> -</pre>
-	<p>changes the name of a file from old to new, where old and new
-		are strings that specify file names on the same storage device.</p>
+	<pre>filename<sub>1</sub> filename<sub>2</sub> <b>renamefile</b> -</pre>
 	<p>
-		If no such file exists, an <a href="../u/undefinedfilename.html">undefinedfilename</a>
-		error occurs. If the device does not allow this operation, an <a
-			href="../i/invalidfileaccess.html">invalidfileaccess</a> error
-		occurs. If an environment-dependent error is detected, an <a
-			href="../i/ioerror.html">ioerror</a> occurs. Whether or not an error
-		occurs if a file named new already exists is environment dependent.
+		changes the name of a file from <i>filename<sub>1</sub></i> to <i>filename<sub>2</sub></i>.
+		The operands are strings that specify file names on the same storage
+		device (see Section <a href="../../../3/8/2.html">3.8.2, "Named
+			Files"</a>). If the file named <i>filename<sub>1</sub></i> does not
+		exist, an <a href="../u/undefinedfilename.html">undefinedfilename</a>
+		error occurs. Whether or not an error occurs if a file named <i>filename<sub>2</sub></i>
+		already exists is environment-dependent.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidfileaccess.html">invalidfileaccess</a>,

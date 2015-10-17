@@ -8,29 +8,36 @@
 		setuserparams <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>dict <b>setuserparams</b> -</pre>
-	<p>attempts to set one or more user parameters whose keys and new
-		values are contained in the dictionary dict. The dictionary is merely
-		a container for key-value pairs; setuserparams reads the information
-		from the dictionary but does not retain the dictionary itself. User
-		parameters whose keys are not mentioned in the dictionary are left
-		unchanged.</p>
+	<p>
+		attempts to set one or more user parameters whose keys and new values
+		are contained in the dictionary <i>dict</i>. The dictionary is merely
+		a container for key-value pairs; <b>setuserparams</b> reads the
+		information from the dictionary but does not retain the dictionary
+		itself. User parameters whose keys are not mentioned in the dictionary
+		are left unchanged.
+	</p>
 	<p>Each parameter is identified by a key, which is always a name
 		object. If the named user parameter does not exist in the
 		implementation, it is ignored. If a specified numeric value is not
 		achievable by the implementation, the nearest achievable value is
 		substituted without error indication.</p>
-	<p>String values should consist of nonnull characters; if a null
+	<p>
+		String values should consist of nonnull characters; if a null
 		character is present, it will terminate the string. String-valued
 		parameters may be subject not only to the general implementation limit
-		on strings (noted in Appendix B) but also to implementation-dependent
-		limits specific to certain parameters. If either limit is exceeded, a
-		limitcheck error occurs.</p>
-	<p>The names of user parameters and details of their semantics are
-		given in Appendix C. Additional parameters are described in the
-		PostScript Language Reference Supplement and in product-specific
-		documentation. Some user parameters have default values that are
-		system parameters with the same names. These defaults can be set by
-		setsystemparams.</p>
+		on strings (noted in <a href="../../../B.html">Appendix B</a>) but
+		also to implementation-dependent limits specific to certain
+		parameters. If either limit is exceeded, a <a
+			href="../l/limitcheck.html">limitcheck</a> error occurs.
+	</p>
+	<p>
+		The names of user parameters and details of their semantics are given
+		in <a href="../../../C.html">Appendix C</a>. Additional parameters are
+		described in the PostScript Language Reference Supplement and in
+		product-specific documentation. Some user parameters have default
+		values that are system parameters with the same names. These defaults
+		can be set by <a href="setsystemparams.html">setsystemparams</a>.
+	</p>
 	<p>User parameters, unlike system parameters, can be set without
 		supplying a password. Alterations to user parameters are subject to
 		save and restore. In an interpreter that supports multiple execution
@@ -41,10 +48,13 @@
 	<pre>
 &lt;&lt; /MaxFontItem 7500 &gt;&gt; setuserparams
 </pre>
-	<p>This example attempts to set the MaxFontItem user parameter to
-		7500.</p>
+	<p>
+		This example attempts to set the <b>MaxFontItem</b> user parameter to
+		7500.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>

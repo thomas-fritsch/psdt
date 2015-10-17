@@ -6,16 +6,24 @@
 <body>
 	<h3>sethsbcolor</h3>
 	<pre>hue saturation brightness <b>sethsbcolor</b> -</pre>
-	<p>sets the current color space in the graphics state to DeviceRGB
-		and the current color to the color described by the parameters hue,
-		saturation, and brightness. Each parameter must be a number in the
-		range 0.0 to 1.0. If any of the operands is outside this range, the
-		nearest value is substituted without error indication. Note that the
-		HSB parameter values supplied to sethsbcolor are immediately converted
-		into RGB color components. HSB is not a color space in its own right,
-		but merely an alternate way of specifying color values in the
-		DeviceRGB color space. Execution of this operator is not permitted in
-		certain circumstances; see Section 4.8.1, "Types of Color Space."</p>
+	<p>
+		sets the current color space in the graphics state to <b>DeviceRGB</b>
+		and the current color to the color described by the parameters <i>hue</i>,
+		<i>saturation</i>, and <i>brightness</i>. Each parameter must be a
+		number in the range 0.0 to 1.0. If any of the operands is outside this
+		range, the nearest value is substituted without error indication.
+	</p>
+	<p>
+		Note that the HSB parameter values supplied to <b>sethsbcolor</b> are
+		immediately converted into RGB color components. HSB is not a color
+		space in its own right, but merely an alternate way of specifying
+		color values in the <b>DeviceRGB</b> color space.
+	</p>
+	<p>
+		Execution of this operator is not permitted in certain circumstances;
+		see Section <a href="../../../4/8/1.html">4.8.1, "Types of Color
+			Space."</a>
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a

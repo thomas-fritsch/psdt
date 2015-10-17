@@ -6,17 +6,32 @@
 <body>
 	<h3>stopped</h3>
 	<pre>any <b>stopped</b> bool</pre>
-	<p>executes any, which is typically, but not necessarily, a
-		procedure, executable file, or executable string object. If any runs
-		to completion normally, stopped returns false on the operand stack. If
-		any terminates prematurely as a result of executing stop, stopped
-		returns true on the operand stack. Regardless of the outcome, the
-		interpreter resumes execution at the next object in normal sequence
-		after stopped.</p>
-	<p>This mechanism provides an effective way for a PostScript
-		language program to &quot;catch&quot; errors or other premature
-		terminations, retain control, and perhaps perform its own error
-		recovery.</p>
+	<p>
+		executes <i>any</i>, which is typically, but not necessarily, a
+		procedure, executable file, or executable string object. If <i>any</i>
+		runs to completion normally, <b>stopped</b> returns <i>false</i> on
+		the operand stack. If <i>any</i> terminates prematurely as a result of
+		executing <a href="stop.html">stop</a>, <b>stopped</b> returns <i>true</i>.
+		Regardless of the outcome, the interpreter resumes execution at the
+		next object in normal sequence after <b>stopped</b>.
+	</p>
+	<p>
+		This mechanism provides an effective way for a PostScript program to
+		"catch" errors or other premature terminations, retain control, and
+		perhaps perform its own error recovery. See Section <a
+			href="../../../3/11.html">3.11, "Errors."</a>
+	</p>
+	<p>
+		When an error occurs, the standard error handler sets <b>newerror</b>
+		to <i>true</i> in the <a href="../@/dollar-error.html">$error</a>
+		dictionary. When using <b>stopped</b> to catch and continue from an
+		error (without invoking <a href="../h/handleerror.html">handleerror</a>),
+		it is prudent to explicitly reset <b>newerror</b> to false in <a
+			href="../@/dollar-error.html">$error</a>; otherwise, any subsequent
+		execution of <b>stop</b> may result in inadvertent reporting of the
+		leftover error. Also, note that the standard error handler sets the VM
+		allocation mode to local.
+	</p>
 	<p>
 		<b>Example</b>
 	</p>
@@ -25,9 +40,12 @@
   {handleerror}
 if
 </pre>
-	<p>If execution of the procedure {...} causes an error, the default
-		error-reporting procedure is invoked (by handleerror). In any event,
-		normal execution continues at the token following the if.</p>
+	<p>
+		If execution of the procedure { ... } causes an error, the default
+		error-reporting procedure is invoked (by <a
+			href="../h/handleerror.html">handleerror</a>). In any event, normal
+		execution continues at the token following the if.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>
 	</p>

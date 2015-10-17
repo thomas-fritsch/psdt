@@ -7,56 +7,78 @@
 	<h3>pathforall</h3>
 	<pre>move line curve close <b>pathforall</b> -</pre>
 	<p>
-		removes four operands from the stack, all of which must be procedures.
-		pathforall then enumerates the current path in order, executing one of
-		the four procedures for each element in the path. The four basic kinds
-		of elements in a path are <a href="../m/moveto.html">moveto</a>, <a
-			href="../l/lineto.html">lineto</a>, <a href="../c/curveto.html">curveto</a>,
-		and <a href="../c/closepath.html">closepath</a>. The relative variants
-		<a href="../r/rmoveto.html">rmoveto</a>, <a href="../r/rlineto.html">rlineto</a>,
+		enumerates the elements of the current path in order, executing one of
+		the four procedures <i>move</i>, <i>line</i>, <i>curve</i>, or <i>close</i>
+		for each element, depending on its nature.
+	</p>
+	<p>
+		The four basic kinds of elements in a path are <a
+			href="../m/moveto.html">moveto</a>, <a href="../l/lineto.html">lineto</a>,
+		<a href="../c/curveto.html">curveto</a>, and <a
+			href="../c/closepath.html">closepath</a>. (The relative variants <a
+			href="../r/rmoveto.html">rmoveto</a>, <a href="../r/rlineto.html">rlineto</a>,
 		and <a href="../r/rcurveto.html">rcurveto</a> are converted to the
 		corresponding absolute forms; <a href="../a/arc.html">arc</a>, <a
 			href="../a/arcn.html">arcn</a>, and <a href="../a/arcto.html">arcto</a>
-		are converted to sequences of <a href="../c/curveto.html">curveto</a>.
-		For each element in the path, pathforall pushes the element's
+		are converted to sequences of <a href="../c/curveto.html">curveto</a>.)
+		For each element in the path, <b>pathforall</b> pushes the element's
 		coordinates on the operand stack and executes one of the four
 		procedures as follows:
 	</p>
 	<dl>
-		<dt>moveto</dt>
-		<dd>push x y; execute move</dd>
-		<dt>lineto</dt>
-		<dd>push x y; execute line</dd>
-		<dt>curveto</dt>
+		<dt>
+			<a href="../m/moveto.html">moveto</a>
+		</dt>
 		<dd>
-			push x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> x<sub>3</sub>
-			y<sub>3</sub>; execute curve
+			push <i>x y</i>; execute <i>move</i>
 		</dd>
-		<dt>closepath</dt>
-		<dd>execute close</dd>
+		<dt>
+			<a href="../l/lineto.html">lineto</a>
+		</dt>
+		<dd>
+			push <i>x y</i>; execute <i>line</i>
+		</dd>
+		<dt>
+			<a href="../c/curveto.html">curveto</a>
+		</dt>
+		<dd>
+			push <i>x<sub>1</sub> y<sub>1</sub> x<sub>2</sub> y<sub>2</sub> x<sub>3</sub>
+				y<sub>3</sub></i>; execute <i>curve</i>
+		</dd>
+		<dt>
+			<a href="../c/closepath.html">closepath</a>
+		</dt>
+		<dd>
+			execute <i>close</i>
+		</dd>
 	</dl>
-	<p>The operands passed to the procedures are coordinates in user
-		space. pathforall transforms them from device space to user space
-		using the inverse of the CTM. Ordinarily, these coordinates will be
-		the same as the ones originally entered by moveto, lineto, and so
-		forth. However, if the CTM has been changed since the path was
-		constructed, the coordinates reported by pathforall will be different
-		from those originally entered.</p>
-	<p>Among other uses, pathforall enables a path constructed in one
-		user coordinate system to be read out in another user coordinate
-		system.</p>
-	<p>pathforall enumerates the current path existing at the time it
+	<p>
+		The operands passed to the procedures are coordinates in user space. <b>pathforall</b>
+		transforms them from device space to user space using the inverse of
+		the current transformation matrix. Ordinarily, these coordinates will
+		be the same as the ones originally entered by <a
+			href="../m/moveto.html">moveto</a>, <a href="../l/lineto.html">lineto</a>,
+		and so forth. However, if the CTM has been changed since the path was
+		constructed, the coordinates reported by <b>pathforall</b> will be
+		different from those originally specified. Thus, among other uses, <b>pathforall</b>
+		enables a path constructed in one user coordinate system to be read
+		out in another user coordinate system.
+	</p>
+	<p>
+		<b>pathforall</b> enumerates the current path existing at the time it
 		begins execution. If any of the procedures change the current path,
-		such changes do not alter the behavior of pathforall.</p>
+		such changes do not affect the results of the operation.
+	</p>
 	<p>
 		If <a href="../c/charpath.html">charpath</a> was used to construct any
 		portion of the current path from a font whose outlines are protected,
-		pathforall is not allowed. Its execution will produce an <a
+		<b>pathforall</b> is not allowed. Its execution will produce an <a
 			href="../i/invalidaccess.html">invalidaccess</a> error (see <a
 			href="../c/charpath.html">charpath</a>).
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>

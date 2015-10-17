@@ -9,12 +9,19 @@
 	</h3>
 	<pre>userpath <b>ufill</b> -</pre>
 	<p>
-		interprets a user path definition and fills the resulting path as if
-		by fill. The entire operation is effectively enclosed by <a
-			href="../g/gsave.html">gsave</a> and <a href="../g/grestore.html">grestore</a>,
-		so ufill has no lasting effect on the graphics state.
+		interprets a user path definition (see Section <a
+			href="../../../4/6.html">4.6, "User Paths"</a>) and fills the
+		resulting path as if by the <a href="../f/fill.html">fill</a>
+		operator. The nonzero winding number rule is used to determine what
+		points lie inside the path (see <a href="../../../4/5/2.html#1">"Nonzero
+			Winding Number Rule" on page 195</a>). The entire operation is
+		effectively bracketed between <a href="../g/gsave.html">gsave</a> and
+		<a href="../g/grestore.html">grestore</a>, so it has no lasting effect
+		on the graphics state.
 	</p>
-	<p>ufill is equivalent to:</p>
+	<p>
+		<b>ufill</b> is equivalent to:
+	</p>
 	<pre>
 gsave
   newpath
@@ -30,8 +37,8 @@ grestore
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> fill, <a href="uappend.html">uappend</a>, <a
-			href="ueofill.html">ueofill</a>
+		<b>See Also:</b> <a href="../f/fill.html">fill</a>, <a
+			href="uappend.html">uappend</a>, <a href="ueofill.html">ueofill</a>
 	</p>
 </body>
 </html>

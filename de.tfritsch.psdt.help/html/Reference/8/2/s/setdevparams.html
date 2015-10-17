@@ -8,55 +8,72 @@
 		setdevparams <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>string dict <b>setdevparams</b> -</pre>
-	<p>attempts to set one or more parameters for the device identified
-		by string according to keys and new values contained in the dictionary
-		dict. string identifies a named parameter set, which usually but not
-		always corresponds to an input/ output or other device (see Section
-		C.4, "Device Parameters"). The dictionary is merely a container for
-		key-value pairs; setdevparams reads the information from the
-		dictionary but does not retain the dictionary itself. Device
-		parameters whose keys are not mentioned in the dictionary are left
-		unchanged.</p>
-	<p>Each parameter is identified by a key, which is always a name
-		object. The value is usually (but not necessarily) an integer. String
-		values should consist of nonnull characters; if a null character is
-		present, it will terminate the string. The names of parameter sets and
-		the names and semantics of the parameters are productdependent. They
-		are not documented in this book, but rather in the PostScript Language
-		Reference Supplement and in product-specific documentation.</p>
-	<p>Permission to alter device parameters is controlled by a
-		password. The dictionary may need to contain an entry named Password
-		whose value is a string or integer equal to the system parameter
-		password (see Section C.1.2, "System Parameters"). If the password is
-		incorrect, an invalidaccess error occurs and setdevparams does not
-		alter any parameters.</p>
-	<p>Some device parameters can be set permanently in nonvolatile
-		storage that survives restarts of the PostScript interpreter. This
-		capability is implementationdependent. No error occurs if parameters
-		cannot be stored permanently. For more details on device parameters,
-		see Appendix C.</p>
+	<p>
+		attempts to set one or more parameters for the device identified by <i>string</i>
+		according to keys and new values contained in the dictionary <i>dict</i>.
+		<i>string</i> identifies a named parameter set, which usually but not
+		always corresponds to an input/output or other device (see Section <a
+			href="../../../C/4.html">C.4, "Device Parameters"</a>). The
+		dictionary is merely a container for key-value pairs; <b>setdevparams</b>
+		reads the information from the dictionary but does not retain the
+		dictionary itself. Device parameters whose keys are not mentioned in
+		the dictionary are left unchanged.
+	</p>
+	<p>
+		Each parameter is identified by a key, which is always a name object.
+		The value is usually (but not necessarily) an integer. String values
+		should consist of nonnull characters; if a null character is present,
+		it will terminate the string. The names of parameter sets and the
+		names and semantics of the parameters are product-dependent. They are
+		not documented in this book, but rather in the <a
+			href="https://partners.adobe.com/public/developer/en/ps/PS3010and3011.Supplement.pdf">PostScript
+			Language Reference Supplement</a> and in product-specific documentation.
+	</p>
+	<p>
+		Permission to alter device parameters is controlled by a password. The
+		dictionary may need to contain an entry named <b>Password</b> whose
+		value is a string or integer equal to the system parameter password
+		(see Section <a href="../../../C/1/2.html">C.1.2, "System
+			Parameters"</a>). If the password is incorrect, an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error occurs and <b>setdevparams</b>
+		does not alter any parameters.
+	</p>
+	<p>
+		Some device parameters can be set permanently in nonvolatile storage
+		that survives restarts of the PostScript interpreter. This capability
+		is implementation-dependent. No error occurs if parameters cannot be
+		stored permanently. For more details on device parameters, see <a
+			href="../../../C.html">Appendix C</a>.
+	</p>
 	<p>Various errors are possible. Details of error behavior are
 		product-dependent, but the following behavior is typical:</p>
 	<ul>
-		<li>If a parameter name is not known to the implementation, an
-			undefined error occurs.</li>
-		<li>If a parameter value is of the wrong type, a typecheck error
-			occurs.</li>
+		<li>If a parameter name is not known to the implementation, an <a
+			href="../u/undefined.html">undefined</a> error occurs.
+		</li>
+		<li>If a parameter value is of the wrong type, a <a
+			href="../t/typecheck.html">typecheck</a> error occurs.
+		</li>
 		<li>If a numeric parameter value is unreasonable&mdash;for
 			instance, a negative integer for a parameter that must be
-			positive&mdash;a rangecheck error occurs.</li>
+			positive&mdash;a <a href="../r/rangecheck.html">rangecheck</a> error
+			occurs.
+		</li>
 		<li>If a numeric parameter value is reasonable but cannot be
 			achieved by the implementation, either the nearest achievable value
-			is substituted or a configurationerror occurs, depending on the
-			device and the parameter.</li>
+			is substituted or a <a href="../c/configurationerror.html">configurationerror</a>
+			occurs, depending on the device and the parameter.
+		</li>
 		<li>If a string parameter value exceeds either the general
-			implementation limit on strings (noted in Appendix B) or an
-			implementation-dependent limit specific to that parameter, a
-			limitcheck error occurs.</li>
+			implementation limit on strings (noted in <a href="../../../B.html">Appendix
+				B</a>) or an implementation-dependent limit specific to that parameter,
+			a <a href="../l/limitcheck.html">limitcheck</a> error occurs.
+		</li>
 	</ul>
 	<p>
 		<b>Errors:</b> <a href="../c/configurationerror.html">configurationerror</a>,
 		<a href="../i/invalidaccess.html">invalidaccess</a>, <a
+			href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>, <a

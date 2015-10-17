@@ -8,20 +8,19 @@
 		upath <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>bool <b>upath</b> userpath</pre>
-	<p>creates a new user path object that is equivalent to the current
-		path in the graphics state. upath creates a new executable array
-		object of the appropriate length and fills it with the operands and
-		operators needed to describe the current path. upath produces only an
-		ordinary user path array, not an encoded user path. It does not
-		disturb the current path in the graphics state.</p>
-	<p>The bool operand specifies whether the resulting user path is to
-		include ucache as its first element.</p>
-	<p>Since the current path's coordinates are maintained in device
-		space, upath transforms them to user space using the inverse of the
-		CTM while constructing the user path. Applying uappend to the
-		resulting user path will reproduce the same current path in the
-		graphics state, but only if the same CTM is in effect at that time.</p>
-	<p>upath is equivalent to:</p>
+	<p>
+		creates a new user path object equivalent to the current path in the
+		graphics state. The current path itself is not disturbed. The result
+		is an ordinary user path array, not an encoded user path. The <i>bool</i>
+		operand specifies whether the user path should include a <a
+			href="ucache.html">ucache</a> operator as its first element.
+	</p>
+	<p>
+		<b>upath</b> creates a new executable array object of the appropriate
+		length and fills it with the operands and operators needed to describe
+		the current path. It is approximately equivalent to the following
+		code:
+	</p>
 	<pre>
 [
   exch {/ucache cvx} if
@@ -30,10 +29,26 @@
 ] cvx
 </pre>
 	<p>
-		If charpath was used to construct any portion of the current path from
-		a font whose outlines are protected, upath is not allowed. Its
-		execution will produce an <a href="../i/invalidaccess.html">invalidaccess</a>
-		error (see <a href="../c/charpath.html">charpath</a>).
+		If the path ends with a <a href="../m/moveto.html">moveto</a>
+		operation, <b>upath</b> adjusts the bounding box if necessary to
+		enclose it. (Note that <a href="../p/pathbbox.html">pathbbox</a>
+		disregards a trailing <a href="../m/moveto.html">moveto</a>
+		operation.)
+	</p>
+	<p>
+		Since the current path's coordinates are maintained in device space, <b>upath</b>
+		transforms them to user space while constructing the user path, using
+		the inverse of the current transformation matrix. Applying <a
+			href="uappend.html">uappend</a> to the resulting user path will
+		reproduce the original current path only if the same CTM is in effect
+		as at the time the path was constructed.
+	</p>
+	<p>
+		If <a href="../c/charpath.html">charpath</a> was used to construct any
+		portion of the current path from a font whose outlines are protected,
+		<b>upath</b> is not allowed. Its execution will produce an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error (see <a
+			href="../c/charpath.html">charpath</a>).
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

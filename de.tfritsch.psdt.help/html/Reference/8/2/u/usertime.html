@@ -6,7 +6,7 @@
 <body>
 	<h3>usertime</h3>
 	<pre>- <b>usertime</b> int</pre>
-	<p>returns the value of a clock that increments by 1 for every
+	<p>returns the value of a clock that is incremented by 1 for every
 		millisecond of execution by the PostScript interpreter. The value has
 		no defined meaning in terms of calendar time or time of day; its only
 		use is interval timing. The accuracy and stability of the clock
@@ -14,13 +14,11 @@
 		running. As the time value becomes greater than the largest integer
 		allowed in the implementation, it wraps to the smallest (most
 		negative) integer.</p>
-	<p>In a Display PostScript system that supports multiple execution
-		contexts, the value returned by usertime reports execution time on
-		behalf of the current context only. A context that executes usertime
-		can subsequently execute with reduced efficiency, because in order to
-		perform user time accounting, the PostScript interpreter must perform
-		an operating system call whenever it switches control to and from that
-		context. Therefore, one should not execute usertime gratuitously.</p>
+	<p>
+		In an interpreter that supports multiple execution contexts, the value
+		returned by <b>usertime</b> reports execution time on behalf of the
+		current context only.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>
 	</p>

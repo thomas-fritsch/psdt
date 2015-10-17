@@ -7,34 +7,50 @@
 	<h3>
 		setcolorscreen <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
-	<pre>      redfreq redang redproc
-greenfreq greenang greenproc
-   bluefreq blueang blueproc
-   grayfreq grayang grayproc <b>setcolorscreen</b> -</pre>
-	<p>sets the halftone screen parameter in the graphics state (see
-		Section 7.4, "Halftones") as specified by the operands. setcolorscreen
-		sets independent halftone screens for the four primary color
-		components of the output device (red, green, blue, and gray) or their
-		complements (cyan, magenta, yellow, and black); this distinguishes it
-		from setscreen, which sets the screen identically for all four primary
-		components.</p>
-	<p>In the first form of the operator, the operands define a
-		separate frequency, angle, and spot function for each component, which
-		are interpreted the same as in the setscreen operator. The second form
-		substitutes halftone dictionaries in place of the spot functions. This
-		form sets all the halftone screens for all four components
-		identically, using the grayfreq, grayang, and grayhalftone operands in
-		the same manner as setscreen; the first nine operands (redfreq through
-		bluehalftone) are ignored. In LanguageLevel 3, the behavior of
-		setcolorscreen can be altered by the user parameters AccurateScreens
-		(see "Type 1 Halftone Dictionaries" on page 487), HalftoneMode
-		("Halftone Setting" on page 757), and MaxSuperScreen (Section 7.4.8,
-		"Supercells").</p>
-	<p>Because the effect of the halftone screen is device-dependent,
-		setcolorscreen should not be used in a page description that is
-		intended to be deviceindependent. Execution of this operator is not
-		permitted in certain circumstances; see Section 4.8.1, "Types of Color
-		Space."</p>
+	<pre>          redfreq redang redproc
+    greenfreq greenang greenproc
+       bluefreq blueang blueproc
+       grayfreq grayang grayproc <b>setcolorscreen</b> -
+
+      redfreq redang redhalftone
+greenfreq greenang greenhalftone
+   bluefreq blueang bluehalftone
+   grayfreq grayang grayhalftone <b>setcolorscreen</b> -</pre>
+	<p>
+		sets the halftone screen parameter in the graphics state (see Section
+		<a href="../../../7/4.html">7.4, "Halftones"</a>) as specified by the
+		operands. <b>setcolorscreen</b> sets independent halftone screens for
+		the four primary color components of the output device (red, green,
+		blue, and gray) or their complements (cyan, magenta, yellow, and
+		black); this distinguishes it from <a href="setscreen.html">setscreen</a>,
+		which sets the screen identically for all four primary components.
+	</p>
+	<p>
+		In the first form of the operator, the operands define a separate
+		frequency, angle, and spot function for each component, which are
+		interpreted the same as in the <a href="setscreen.html">setscreen</a>
+		operator. The second form substitutes halftone dictionaries in place
+		of the spot functions. This form sets all the halftone screens for all
+		four components identically, using the <i>grayfreq</i>, <i>grayang</i>,
+		and <i>grayhalftone</i> operands in the same manner as <a
+			href="setscreen.html">setscreen</a>; the first nine operands (<i>redfreq</i>
+		through <i>bluehalftone</i>) are ignored.
+	</p>
+	<p>
+		In LanguageLevel 3, the behavior of <b>setcolorscreen</b> can be
+		altered by the user parameters <b>AccurateScreens</b> (see <a
+			href="../../../7/4/4.html#1">"Type 1 Halftone Dictionaries" on
+			page 487</a>), <b>HalftoneMode</b> (<a href="../../../C/3/4.html#2">"Halftone
+			Setting" on page 757</a>), and <b>MaxSuperScreen</b> (Section <a
+			href="../../../7/4/8.html">7.4.8, "Supercells"</a>).
+	</p>
+	<p>
+		Because the effect of the halftone screen is device-dependent, <b>setcolorscreen</b>
+		should not be used in a page description that is intended to be
+		device-independent. Execution of this operator is not permitted in
+		certain circumstances; see Section <a href="../../../4/8/1.html">4.8.1,
+			"Types of Color Space."</a>
+	</p>
 	<p>
 		<b>Example</b>
 	</p>

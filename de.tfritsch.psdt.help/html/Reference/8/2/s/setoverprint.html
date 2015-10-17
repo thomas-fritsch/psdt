@@ -4,23 +4,32 @@
 <title>setoverprint</title>
 </head>
 <body>
-	<h3>setoverprint</h3>
-	<pre>bool <b>setoverprint</b> - LEVEL 2</pre>
-	<p>sets the overprint parameter in the graphics state to bool. On
+	<h3>
+		setoverprint <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
+	</h3>
+	<pre>bool <b>setoverprint</b> -</pre>
+	<p>
+		sets the overprint parameter in the graphics state to <i>bool</i>. On
 		output devices capable of producing separations or of generating
 		composite output in multiple colorants, this parameter controls
 		whether painting in one separation or colorant causes the
-		corresponding areas of other separations or colorants to be erased
-		(false) or left unchanged (true); see Section 4.8.5, "Overprint
-		Control." The default value is false.</p>
-	<p>When overprint is false, the color marked at any position on the
-		page is whatever was painted there last; this is consistent with the
-		normal opaque painting behavior of the Adobe imaging model. When
-		overprint is true, the color at a given position may be a combined
-		result of several painting operations in different colorants.</p>
-	<p>Because the effect of the overprint parameter is
-		device-dependent, setoverprint should not be used in a program that is
-		intended to be device-independent.</p>
+		corresponding areas of other separations or colorants to be erased (<i>false</i>)
+		or left unchanged (<i>true</i>); see Section <a
+			href="../../../4/8/5.html">4.8.5, "Overprint Control."</a> The
+		default value is <i>false</i>.
+	</p>
+	<p>
+		When overprint is <i>false</i>, the color marked at any position on
+		the page is whatever was painted there last; this is consistent with
+		the normal opaque painting behavior of the Adobe imaging model. When
+		overprint is <i>true</i>, the color at a given position may be a
+		combined result of several painting operations in different colorants.
+	</p>
+	<p>
+		Because the effect of the overprint parameter is device-dependent, <b>setoverprint</b>
+		should not be used in a program that is intended to be
+		device-independent.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>

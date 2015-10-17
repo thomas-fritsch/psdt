@@ -8,23 +8,29 @@
 		setstrokeadjust <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>bool <b>setstrokeadjust</b> -</pre>
-	<p>sets the stroke adjustment parameter in the graphics state to
-		bool. This parameter controls whether automatic stroke adjustment will
-		be performed during subsequent invocations of stroke and related
-		operators, including strokepath (see Section 7.5.2, "Automatic Stroke
-		Adjustment").</p>
-	<p>The initial value of the stroke adjustment parameter is
-		device-dependent; typically it is true for displays and false for
-		printers. It is set to false when a font’s BuildChar, BuildGlyph, or
-		CharStrings procedure is called, but the procedure can change it. It
-		is not altered by initgraphics.</p>
+	<p>
+		sets the stroke adjustment parameter in the graphics state to <i>bool</i>.
+		This parameter controls whether automatic stroke adjustment will be
+		performed during subsequent invocations of <a href="stroke.html">stroke</a>
+		and related operators, including <a href="strokepath.html">strokepath</a>
+		(see Section <a href="../../../7/5/2.html">7.5.2, "Automatic
+			Stroke Adjustment"</a>).
+	</p>
+	<p>
+		The initial value of the stroke adjustment parameter is
+		device-dependent; typically it is <i>true</i> for displays and <i>false</i>
+		for printers. It is set to <i>false</i> when a font's <b>BuildChar</b>,
+		<b>BuildGlyph</b>, or <b>CharStrings</b> procedure is called, but the
+		procedure can change it. It is not altered by <a
+			href="../i/initgraphics.html">initgraphics</a>.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
 	</p>
 	<p>
-		<b>See Also:</b> <a href="c.html#currentstrokeadjust">currentstrokeadjust</a>,
-		<a href="#stroke">stroke</a>
+		<b>See Also:</b> <a href="../c/currentstrokeadjust.html">currentstrokeadjust</a>,
+		<a href="stroke.html">stroke</a>, <a href="setlinewidth.html">setlinewidth</a>
 	</p>
 </body>
 </html>

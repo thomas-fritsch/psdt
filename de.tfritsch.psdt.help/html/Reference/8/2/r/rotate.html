@@ -7,17 +7,30 @@
 	<h3>rotate</h3>
 	<pre>       angle <b>rotate</b> -
 angle matrix <b>rotate</b> matrix -</pre>
-	<p>With no matrix operand, rotate builds a temporary matrix where q
-		is the operand angle in degrees, and concatenates this matrix with the
-		current transformation matrix (CTM). Precisely, rotate replaces the
-		CTM by R x CTM. The effect of this is to rotate the user coordinate
-		system axes about their origin by angle degrees (positive is
-		counterclockwise) with respect to their former orientation. The
-		position of the user coordinate origin and the sizes of the x and y
-		units are unchanged.</p>
-	<p>If the matrix operand is supplied, rotate replaces the value of
-		matrix by R and pushes the modified matrix back on the operand stack.
-		In this case, rotate does not affect the CTM.</p>
+	<p>
+		rotates the axes of the user coordinate space by <i>angle</i> degrees
+		counterclockwise about the origin, or returns a matrix representing
+		this transformation. The position of the coordinate origin and the
+		sizes of the coordinate units are unaffected.
+	</p>
+	<p>The transformation is represented by the matrix</p>
+	<pre>
+       |  cos<i>&theta;</i>  sin<i>&theta;</i>  0 |
+   <i>R</i> = | -sin<i>&theta;</i>  sin<i>&theta;</i>  0 |
+       |    0     0   1 |</pre>
+	<p>
+		where <i>&theta;</i> is the angle specified by the <i>angle</i> operand. The
+		first form of the operator applies this transformation to the user
+		coordinate system by concatenating matrix <i>R</i> with the current
+		transformation matrix (CTM); that is, it replaces the CTM with the
+		matrix product R &times; CTM. The second form replaces the value of
+		the matrix operand with an array representing matrix <i>R</i> and
+		pushes the result back on the operand stack without altering the CTM.
+		See Section <a href="../../../4/3/3.html">4.3.3, "Matrix
+			Representation and Manipulation,"</a> for a discussion of how matrices
+		are represented as arrays.
+	</p>
+
 	<p>
 		<b>Errors:</b> <a href="rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a

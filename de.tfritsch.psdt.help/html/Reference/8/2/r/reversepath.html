@@ -7,12 +7,22 @@
 	<h3>reversepath</h3>
 	<pre>- <b>reversepath</b> -</pre>
 	<p>replaces the current path with an equivalent one whose segments
-		are defined in the reverse order. Precisely, reversepath reverses the
+		are defined in the reverse order. The operation reverses the
 		directions and order of segments within each subpath of the current
-		path. However, it does not alter the order of the subpaths in the path
-		with respect to each other.</p>
+		path; the relative order of subpaths within the path as a whole is
+		unspecified and unpredictable.</p>
+	<p>
+		If a subpath ends with a <a href="../c/closepath.html">closepath</a>
+		operation, the reversed subpath begins at the point that was the
+		beginning of the original closepath segment. The segment added by <a
+			href="../c/closepath.html">closepath</a> thus remains at the end of
+		the subpath, though it is traversed in the opposite direction.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../c/closepath.html">closepath</a>
 	</p>
 </body>
 </html>

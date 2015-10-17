@@ -8,11 +8,16 @@
 		setobjectformat <img src="../LL2.png" alt="[LEVEL 2]" align="middle" />
 	</h3>
 	<pre>int <b>setobjectformat</b> -</pre>
-	<p>establishes the number representation to be used in binary
-		object sequences written by subsequent execution of printobject and
-		writeobject. Output produced by those operators will have a token type
-		that identifies the representation used. The int operand is one of the
-		following (see Section 3.14, "Binary Encoding Details"):</p>
+	<p>
+		establishes the number representation to be used in binary object
+		sequences written by subsequent execution of <a
+			href="../p/printobject.html">printobject</a> and <a
+			href="../w/writeobject.html">writeobject</a>. Output produced by
+		those operators will have a token type that identifies the
+		representation used. The <i>int</i> operand is one of the following
+		(see Section <a href="../../../3/14.html">3.14, "Binary Encoding
+			Details"</a>):
+	</p>
 	<ol start="0">
 		<li>Disable binary encodings (see below).</li>
 		<li>High-order byte first, IEEE standard real format.</li>
@@ -24,19 +29,28 @@
 		representation only for output. Incoming binary encoded numbers use a
 		representation that is specified as part of each token (in the initial
 		token type byte).</p>
-	<p>The value 0 disables all binary encodings for both input and
-		output. That is, the PostScript language scanner treats all incoming
+	<p>
+		The value 0 disables all binary encodings for both input and output.
+		That is, the PostScript language scanner treats all incoming
 		characters as part of the ASCII encoding, even if a token starts with
-		a character code in the range 128 to 159. The printobject and
-		writeobject operators are disabled; executing them will cause an
-		undefined error. This mode is provided for compatibility with certain
-		existing PostScript programs.</p>
-	<p>The initial value of this parameter is implementation-dependent.
-		A program must invoke setobjectformat to generate output with a
-		predictable number representation.</p>
-	<p>Modifications to the object format parameter are subject to save
-		and restore. In an interpreter that supports multiple contexts, this
-		parameter is maintained separately for each context.</p>
+		a character code in the range 128 to 159. The <a
+			href="../p/printobject.html">printobject</a> and <a
+			href="../w/writeobject.html">writeobject</a> operators are disabled;
+		executing them will cause an <a href="../u/undefined.html">undefined</a>
+		error. This mode is provided for compatibility with certain existing
+		PostScript programs.
+	</p>
+	<p>
+		The initial value of this parameter is implementation-dependent. A
+		program must invoke <a href="setobjectformat.html">setobjectformat</a>
+		to generate output with a predictable number representation.
+	</p>
+	<p>
+		Modifications to the object format parameter are subject to <a
+			href="save.html">save</a> and <a href="../r/restore.html">restore</a>.
+		In an interpreter that supports multiple contexts, this parameter is
+		maintained separately for each context.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../r/rangecheck.html">rangecheck</a>, <a
 			href="stackunderflow.html">stackunderflow</a>, <a
