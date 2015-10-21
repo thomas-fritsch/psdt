@@ -1318,30 +1318,30 @@
 		<topic label="documentation" href="html/Reference/5/7.html#BuildGlyph" />
 	</context>
 	<context id="/Encoding">
-		<topic label="documentation" href="html/Reference/5/2.html#Encoding" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#Encoding" />
 	</context>
 	<context id="/FID">
-		<topic label="documentation" href="html/Reference/5/2.html#FID" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FID" />
 	</context>
 	<context id="/FontBBox">
-		<topic label="documentation" href="html/Reference/5/2.html#FontBBox" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FontBBox" />
 	</context>
 	<context id="/FontInfo">
-		<topic label="documentation" href="html/Reference/5/2.html#FontInfo" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FontInfo" />
 	</context>
 	<context id="/FontMatrix">
-		<topic label="documentation" href="html/Reference/5/2.html#FontMatrix" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FontMatrix" />
 	</context>
 	<context id="/FontName">
-		<topic label="documentation" href="html/Reference/5/2.html#FontName" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FontName" />
 	</context>
 	<context id="/FontType">
-		<topic label="documentation" href="html/Reference/5/2.html#FontType" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#FontType" />
 	</context>
 	<context id="/LanguageLevel">
-		<topic label="documentation" href="html/Reference/5/2.html#LanguageLevel" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#LanguageLevel" />
 	</context>
 	<context id="/WMode">
-		<topic label="documentation" href="html/Reference/5/2.html#WMode" />
+		<topic label="documentation" href="html/Reference/5/2/1.html#WMode" />
 	</context>
 </contexts>

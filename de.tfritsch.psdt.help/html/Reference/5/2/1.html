@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Entries in Font Dictionaries</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.2.1 Entries in Font Dictionaries</h3>
+	<p>Table 5.2 lists the entries that have defined meanings in the
+		font dictionaries of all types of fonts. Table 5.3 lists additional
+		entries that are meaningful in all base fonts (fonts of type 1, 2, 3,
+		14, or 42). On top of that, Table 5.4 lists additional entries that
+		are meaningful in Type 1 fonts; most of them apply to other base font
+		formats as well. Entries specific to other types of fonts (and to
+		CIDFonts and CMaps) are described later in the sections that discuss
+		those types. Any font dictionary can have additional entries
+		containing information useful to PostScript procedures that are part
+		of the font’s definition; the interpreter pays no attention to such
+		entries.</p>
+	<table>
+		<caption>TABLE 5.2: Entries common to all font dictionaries</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<th id="FontType">FontType</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The font type; see Table 5.1. Indicates
+				where the glyph descriptions are to be found and how they are
+				represented.</td>
+		</tr>
+		<tr>
+			<th id="FontMatrix">FontMatrix</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array that transforms the <i>glyph
+					coordinate system</i> into the user coordinate system (see Section 5.4,
+				"Glyph Metric Information"). For example, Type 1 font programs from
+				Adobe are usually defined in terms of a 1000-unit glyph coordinate
+				system, and their initial font matrix is [0.001 0 0 0.001 0 0]. When
+				a font is derived by the <b>scalefont</b> or <b>makefont</b>
+				operator, the new matrix is concatenated with the existing font
+				matrix to yield a new copy of the font with a different font matrix.
+			</td>
+		</tr>
+		<tr>
+			<th id="FontName">FontName</th>
+			<td>name</td>
+			<td><i>(Optional)</i> The name of the font. This entry is for
+				information only; it is not used by the PostScript interpreter.
+				Ordinarily, it is the same as the key passed to <b>definefont</b>,
+				but it need not be.</td>
+		</tr>
+		<tr>
+			<th id="FontInfo">FontInfo</th>
+			<td>dictionary</td>
+			<td><i>(Optional)</i> A dictionary containing font information
+				that is not accessed by the PostScript interpreter; see Table 5.5 on
+				page 327.</td>
+		</tr>
+		<tr>
+			<th id="LanguageLevel">LanguageLevel</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> The minimum LanguageLevel required for
+				correct behavior of the font. For example, any font that uses
+				LanguageLevel 2 features for rendering glyphs (such as a glyph
+				description that uses <b>rectfill</b> or <b>glyphshow</b>) should
+				specify a <b>LanguageLevel</b> value of 2. On the other hand, the
+				presence of higher-LanguageLevel information that an interpreter can
+				safely ignore does not require LanguageLevel to be set to the higher
+				LanguageLevel. For example, an <b>XUID</b> entry in the font
+				dictionary&mdash;LanguageLevel 2 information that a LanguageLevel 1
+				interpreter can ignore&mdash;does not require setting <b>LanguageLevel</b>
+				to 2. Default value: 1.</td>
+		</tr>
+		<tr>
+			<th id="WMode">WMode</th>
+			<td>integer</td>
+			<td><i>(Optional; LanguageLevel 2)</i> The writing mode, which
+				determines which of two sets of metrics will be used when glyphs are
+				shown from the font. Mode 0 specifies horizontal writing; mode 1
+				specifies vertical writing (see Section 5.4, "Glyph Metric
+				Information"). LanguageLevel 1 implementations lacking composite
+				font extensions ignore this entry. Default value: 0.</td>
+		</tr>
+		<tr>
+			<th id="FID">FID</th>
+			<td>fontID</td>
+			<td><i>(Inserted by <b>definefont</b>)
+			</i> A special object of type fontID that serves internal purposes in the
+				font machinery. The <b>definefont</b> operator inserts this entry.
+				In LanguageLevel 1, an <b>FID</b> entry must not previously exist in
+				the dictionary presented to definefont; the dictionary must have
+				sufficient space to insert this entry.</td>
+		</tr>
+	</table>
+	<p />
+	<table>
+		<caption>TABLE 5.3: Additional entries common to all base
+			fonts</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<th id="Encoding">Encoding</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array of character names to which
+				character codes are mapped. See Section 5.3, "Character Encoding."</td>
+		</tr>
+		<tr>
+			<th id="FontBBox">FontBBox</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array of four numbers in the glyph
+				coordinate system giving the left, bottom, right, and top
+				coordinates, respectively, of the font bounding box. The font
+				bounding box is the smallest rectangle enclosing the shape that
+				would result if all of the glyphs of the font were placed with their
+				origins coincident, and then painted. This information is used in
+				making decisions about glyph caching and clipping. If all four
+				values are 0, the PostScript interpreter makes no assumptions based
+				on the font bounding box.
+				<P>If any value is nonzero, it is essential that the font
+					bounding box be accurate; if any glyph's marks fall outside this
+					bounding box, incorrect behavior may result.
+				<P>
+					In many Type 1 fonts, the <b>FontBBox</b> array is executable,
+					though there is no good reason for this to be so. Programs that
+					access <b>FontBBox</b> should invoke an explicit <b>get</b> or <b>load</b>
+					operator to avoid unintended execution.</td>
+		</tr>
+		<tr>
+			<th id="UniqueUID">UniqueID</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> An integer in the range 0 to 16,777,215 (2<sup>24</sup>
+				- 1) that uniquely identifies this font. See Section 5.6, "Unique ID
+				Generation."</td>
+		</tr>
+		<tr>
+			<th id="XUID">XUID</th>
+			<td>array</td>
+			<td><i>(Optional; LanguageLevel 2)</i> An array of integers that
+				uniquely identifies this font or any variant of it. See Section 5.6,
+				"Unique ID Generation."</td>
+		</tr>
+	</table>
+	<p />
+	<table>
+		<caption>TABLE 5.4 Additional entries specific to Type 1
+			fonts</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<th id="PaintType">PaintType</th>
+			<td>integer</td>
+			<td><i>(Required)</i> A code indicating how the glyphs of the
+				font are to be painted:
+				<ol>
+					<li value="0">Glyph outlines are filled.</li>
+					<li value="2">Glyph outlines (designed to be filled) are
+						stroked.</li>
+				</ol> To get a stroked-outline font, a program can copy the font
+				dictionary, change the <b>PaintType</b> from 0 to 2, add a <b>StrokeWidth</b>
+				entry, and define a new font using this dictionary. Note that the
+				previously documented <b>PaintType</b> values of 1 and 3 are not
+				supported.</td>
+		</tr>
+		<tr>
+			<th id="StrokeWidth">StrokeWidth</th>
+			<td>number</td>
+			<td><i>(Optional)</i> The stroke width (in units of the glyph
+				coordinate system) for stroked-outline fonts (<b>PaintType</b> 2).
+				This entry is not initially present in filled-outline fonts. It
+				should be added (with a nonzero value) when a stroked font is
+				created from an existing filled font. Default value: 0.</td>
+		</tr>
+		<tr>
+			<th id="Metrics">Metrics</th>
+			<td>dictionary</td>
+			<td><i>(Optional)</i> A dictionary containing metric information
+				(glyph widths and sidebearings) for writing mode 0. This entry is
+				not normally present in the original definition of a font. Adding a
+				<b>Metrics</b> entry to a font overrides the metric information
+				encoded in the glyph descriptions. See Sections 5.4, “Glyph Metric
+				Information,” and 5.9.2, "Changing Glyph Metrics."</td>
+		</tr>
+		<tr>
+			<th id="Metrics2">Metrics2</th>
+			<td>dictionary</td>
+			<td><i>(Optional; LanguageLevel 2)</i> Similar to Metrics, but
+				for writing mode 1.</td>
+		</tr>
+		<tr>
+			<th id="CDevProc">CDevProc</th>
+			<td>procedure</td>
+			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
+				algorithmically derives global changes to the font's metrics.
+				LanguageLevel 1 implementations lacking composite font extensions
+				ignore this entry.</td>
+		</tr>
+		<tr>
+			<th id="CharStrings">CharStrings</th>
+			<td>dictionary</td>
+			<td><i>(Required)</i> A dictionary associating character names
+				(the keys in the dictionary) with glyph descriptions. Each entry's
+				value is ordinarily a string (called a charstring) that represents
+				the glyph description for that character in a special encoded
+				format; see <a
+				href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
+					Type 1 Font Format</a> for details. The value can also be a PostScript
+				procedure; see Section 5.9.3, "Replacing or Adding Individual
+				Glyphs." This dictionary must have an entry whose key is .notdef.</td>
+		</tr>
+		<tr>
+			<th id="Private">Private</th>
+			<td>dictionary</td>
+			<td><i>(Required)</i> A dictionary containing other internal
+				information about the font. See <a
+				href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
+					Type 1 Font Format</a> for details.</td>
+		</tr>
+		<tr>
+			<th id="WeightVector">WeightVector</th>
+			<td>dictionary</td>
+			<td><i>(Required; multiple-master fonts only)</i> An array
+				specifying the contribution of each master design to the current
+				font instance. The array contains one number per master design, each
+				typically in the range 0.0 to 1.0; the sum of the array elements
+				must be 1.0. The values in the array are used for calculating the
+				weighted interpolation. Elements outside the allowed range may
+				produce unexpected results.</td>
+		</tr>
+	</table>
+	<p>
+		Any font dictionary can contain a <b>FontInfo</b> entry whose value is
+		a dictionary containing the information listed in Table 5.5. This
+		information is entirely for the benefit of PostScript programs using
+		the font, or for documentation; it is not accessed by the PostScript
+		interpreter, and all of its entries are optional.
+	</p>
+	<table>
+		<caption>TABLE 5.5 Entries in a FontInfo dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr>
+			<th>FamilyName</th>
+			<td>string</td>
+			<td>A human-readable name for a group of fonts that are
+				stylistic variants of a single design. All fonts that are members of
+				such a group should have exactly the same <b>FamilyName</b> value.
+			</td>
+		</tr>
+		<tr>
+			<th>FullName</th>
+			<td>string</td>
+			<td>A unique, human-readable name for an individual font.</td>
+		</tr>
+		<tr>
+			<th>Notice</th>
+			<td>string</td>
+			<td>A trademark or copyright notice, if applicable.</td>
+		</tr>
+		<tr>
+			<th>Weight</th>
+			<td>string</td>
+			<td>A human-readable name for the weight, or "boldness,"
+				attribute of a font.</td>
+		</tr>
+		<tr>
+			<th>version</th>
+			<td>string</td>
+			<td>The version number of the font program.</td>
+		</tr>
+		<tr>
+			<th>ItalicAngle</th>
+			<td>number</td>
+			<td>The angle, in degrees counterclockwise from the vertical, of
+				the dominant vertical strokes of the font.</td>
+		</tr>
+		<tr>
+			<th>isFixedPitch</th>
+			<td>boolean</td>
+			<td>A flag indicating whether the font is a fixed-pitch
+				(monospaced) font.</td>
+		</tr>
+		<tr>
+			<th>UnderlinePosition</th>
+			<td>number</td>
+			<td>The recommended distance from the baseline for positioning
+				underlining strokes. This number is the y coordinate (in the glyph
+				coordinate system) of the center of the stroke.</td>
+		</tr>
+		<tr>
+			<th>UnderlineThickness</th>
+			<td>number</td>
+			<td>The recommended stroke width for underlining, in units of
+				the glyph coordinate system.</td>
+		</tr>
+	</table>
+	<p>
+		The PostScript language does not specify any formal rules for the
+		names of fonts or for the entries in the <b>FontInfo</b> dictionary.
+		However, there are various conventions for organizing fonts that
+		facilitate their use by application programs.
+	</p>
+	<ul>
+		<li>Some applications use <b>FamilyName</b> as part of a
+			hierarchical font-selection user interface. This divides a very large
+			set of individual fonts into a smaller, more manageable set of "font
+			families." The <b>FamilyName</b> parameter should be suitable for use
+			in a font selection menu.
+		</li>
+		<li>Typically, <b>FullName</b> begins with <b>FamilyName</b> and
+			continues with various style descriptors separated by
+			spaces&mdash;for example, <code>Adobe Garamond Bold Italic</code>. In
+			some designs, a numbering system replaces or augments verbal
+			descriptors&mdash; for example, <code>Univers 55 Medium</code>.
+		</li>
+		<li><b>Weight</b> is derived from the <b>FullName</b> parameter
+			by dropping everything from <b>FullName</b> that does not explicitly
+			relate to weight. For example, the <b>FullName</b> entry <code>ITC
+				Franklin Gothic Condensed Extra Bold Oblique</code> reduces to a <b>Weight</b>
+			entry of <code>Extra Bold</code>.</li>
+		<li>The font dictionary's <b>FontName</b> parameter, which is
+			also usually used as the key passed to <b>definefont</b>, is a
+			condensation of <b>FullName</b>. It is customary to remove spaces and
+			to limit its length to fewer than 40 characters. The resulting name
+			should be unique.
+		</li>
+	</ul>
+</body>
+</html>

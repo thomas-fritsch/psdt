@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BuildChar</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.7.2 BuildChar</h3>
+	<p>
+		In LanguageLevel 2 or 3, if there is no <b>BuildGlyph</b> procedure
+		for the font, the interpreter calls the <b>BuildChar</b> procedure
+		instead. In LanguageLevel 1, <b>BuildChar</b> is always called,
+		whether or not a <b>BuildGlyph</b> procedure is present.
+	</p>
+	<p>
+		The semantics of <b>BuildChar</b> are essentially the same as for <b>BuildGlyph</b>.
+		The only difference is that <b>BuildChar</b> is called with the font
+		dictionary and the character code on the operand stack, instead of the
+		font dictionary and the character name. The <b>BuildChar</b> procedure
+		must then perform its own lookup to determine what glyph description
+		corresponds to the given character code.
+	</p>
+	<p>
+		For backward compatibility with the installed base of LanguageLevel 1
+		interpreters, all new Type 3 fonts should contain the following <b>BuildChar</b>
+		procedure:
+	</p>
+	<pre>/BuildChar
+    { 1 index /Encoding get exch get
+      1 index /BuildGlyph get exec
+    } bind def</pre>
+	<p>
+		This defines <b>BuildChar</b> in terms of the same font's <b>BuildGlyph</b>
+		procedure, which contains the actual commands for painting the glyph.
+		This permits the font to be used with higher-LanguageLevel
+		features&mdash;such as the LanguageLevel 2 operator <b>glyphshow</b>,
+		which requires <b>BuildGlyph</b> to be present&mdash;yet retains
+		compatibility with LanguageLevel 1.
+	</p>
+</body>
+</html>

@@ -54,8 +54,13 @@
 		</topic>
 	</topic>
 	<topic label="5 Fonts" href="html/Reference/5.html">
-		<topic label="5.2 Font Dictionaries" href="html/Reference/5/2.html" />
-		<topic label="5.7 Type 3 Fonts" href="html/Reference/5/7.html" />
+		<topic label="5.2 Font Dictionaries" href="html/Reference/5/2.html">
+			<topic label="5.2.1 Entries in Font Dictionaries" href="html/Reference/5/2/1.html" />
+		</topic>
+		<topic label="5.7 Type 3 Fonts" href="html/Reference/5/7.html">
+			<topic label="5.7.1 BuildGlyph" href="html/Reference/5/7/1.html" />
+			<topic label="5.7.2 BuildChar" href="html/Reference/5/7/2.html" />
+		</topic>
 	</topic>
 	<topic label="6 Device Control">
 		<topic label="6.2 Page Device Parameters" href="html/Reference/6/2.html">

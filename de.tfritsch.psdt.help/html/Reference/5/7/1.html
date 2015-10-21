@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>BuildGlyph</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.7.1 BuildGlyph</h3>
+	<p>When a PostScript program tries to show a glyph from a Type 3
+		font, and the glyph is not already present in the font cache, the
+		PostScript interpreter:</p>
+	<ol>
+		<li>Uses the character code as an index into the current font's <b>Encoding</b>
+			array, obtaining the corresponding character name. (This step is
+			omitted during a <b>glyphshow</b> operation.)
+		</li>
+		<li>Pushes the current font dictionary and the character name on
+			the operand stack.</li>
+		<li>Executes the font’s <b>BuildGlyph</b> procedure. <b>BuildGlyph</b>
+			must remove these two objects from the operand stack and use this
+			information to construct the requested glyph. This typically involves
+			determining the glyph description needed, supplying glyph metric
+			information, constructing the glyph, and painting it.
+		</li>
+	</ol>
+	<p>
+		All Type 3 fonts must include a character named .notdef. The <b>BuildGlyph</b>
+		procedure should be able to accept that character name regardless of
+		whether such a character is encoded in the <b>Encoding</b> array. If
+		the <b>BuildGlyph</b> procedure is given a character name it does not
+		recognize, it can handle that condition by painting the glyph for the
+		.notdef character instead.
+	</p>
+	<p>
+		<b>BuildGlyph</b> is called within the confines of a <b>gsave</b> and
+		a <b>grestore</b>, so any changes it makes to the graphics state do
+		not persist after it finishes. Each call to <b>BuildGlyph</b> is
+		independent of any other call. Because of the effects of font caching,
+		no assumptions can be made about the order in which glyph descriptions
+		will be executed. In particular, <b>BuildGlyph</b> should not depend
+		on any nonconstant information in VM, and it should not leave any side
+		effects in VM or on stacks.
+	</p>
+	<p>
+		When <b>BuildGlyph</b> gets control, the current transformation matrix
+		(CTM) is the concatenation of the font matrix (<b>FontMatrix</b> in
+		the current font dictionary) and the CTM that was in effect at the
+		time <b>show</b> was invoked. This means that shapes described in the
+		glyph coordinate system will be transformed into the user coordinate
+		system and will appear in the appropriate size and orientation on the
+		page. <b>BuildGlyph</b> should describe the glyph in terms of absolute
+		coordinates in the glyph coordinate system, placing the glyph origin
+		at (0, 0) in this space. It should make no assumptions about the
+		initial value of the current point parameter.
+	</p>
+	<p>
+		The results of <b>BuildGlyph</b> should depend only on the complete
+		transformation from glyph space to device space, and not on the
+		relative contributions of the font matrix and the CTM prior to <b>BuildGlyph</b>.
+		In particular, <b>BuildGlyph</b> should not attempt to vary its
+		results depending on the font dictionary’s <b>FontMatrix</b> entry.
+	</p>
+	<p>
+		Aside from the CTM, the graphics state is inherited from the
+		environment of the <b>show</b> operator (or show variant) that caused
+		<b>BuildGlyph</b> to be invoked. To ensure predictable results despite
+		font caching, <b>BuildGlyph</b> must initialize any graphics state
+		parameters on which it depends. In particular, if it invokes the <b>stroke</b>
+		operator, <b>BuildGlyph</b> should explicitly set the line width, line
+		join, line cap, and dash pattern to appropriate values. Normally, it
+		is unnecessary and undesirable to initialize the current color
+		parameter, because <b>show</b> is defined to paint glyphs with the
+		current color.
+	</p>
+	<p>
+		<b>BuildGlyph</b> must execute one of the following operators to pass
+		width and bounding box information to the PostScript interpreter. This
+		must precede execution of any path construction or painting operators
+		describing the glyph.
+	</p>
+	<ul>
+		<li><b>setcachedevice</b> establishes a single set of metrics for
+			both writing modes, and requests that the interpreter save the
+			results in the font cache if possible.</li>
+		<li><b>setcachedevice2</b> <i>(LanguageLevel 2)</i> establishes
+			separate sets of metrics for writing modes 0 and 1, and requests that
+			the interpreter save the results in the font cache.</li>
+		<li><b>setcharwidth</b> passes just the glyph's width (to be used
+			only once), and requests that the glyph not be cached. This operator
+			is typically used only if the glyph description includes operators to
+			set the color explicitly.</li>
+	</ul>
+	<p>
+		See the descriptions of <b>setcachedevice</b>, <b>setcachedevice2</b>,
+		and <b>setcharwidth</b> in Chapter 8 for more information.
+	</p>
+	<p>
+		After executing one of these operators, <b>BuildGlyph</b> should
+		execute a sequence of graphics operators to perform path construction
+		and painting. The PostScript interpreter transfers the results into
+		the font cache, if appropriate, and onto the page at the correct
+		position. It also uses the width information to control the spacing
+		between this glyph and the next. The final position of the current
+		point in the glyph coordinate system does not influence glyph spacing.
+	</p>
+</body>
+</html>
