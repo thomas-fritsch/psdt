@@ -10,26 +10,30 @@
 		<li>Restores the operand stack to the state it was in when it
 			began executing the current object.</li>
 		<li>Pushes that object on the operand stack.</li>
-		<li>Looks up the error's name in <b>errordict</b> and executes
-			the associated value, which is the <em>error handler</em> for that
-			error.
+		<li>Looks up the error's name in <a
+			href="../../8/2/e/errordict.html">errordict</a> and executes the
+			associated value, which is the <em>error handler</em> for that error.
 		</li>
 	</ol>
 	<p>
 		This is everything the interpreter itself does in response to an
-		error. The error handler in <b>errordict</b> is responsible for all
-		other actions. A PostScript program can modify error behavior by
-		defining its own error-handling procedures and associating them with
-		the names in <b>errordict</b>.
+		error. The error handler in <a href="../../8/2/e/errordict.html">errordict</a>
+		is responsible for all other actions. A PostScript program can modify
+		error behavior by defining its own error-handling procedures and
+		associating them with the names in <a
+			href="../../8/2/e/errordict.html">errordict</a>.
 	</p>
 	<p>
-		The <b>interrupt</b> and <b>timeout</b> errors, which are initiated by
-		events external to the PostScript interpreter, are treated specially.
-		The interpreter merely executes <b>interrupt</b> or <b>timeout</b>
-		from <b>errordict</b>, sandwiched between execution of two objects
-		being interpreted in normal sequence. It does not push the object
-		being executed, nor does it alter the operand stack in any other way.
-		In other words, it omits steps 1 and 2 above.
+		The <a href="../../8/2/i/interrupt.html">interrupt</a> and <a
+			href="../../8/2/t/timeout.html">timeout</a> errors, which are
+		initiated by events external to the PostScript interpreter, are
+		treated specially. The interpreter merely executes <a
+			href="../../8/2/i/interrupt.html">interrupt</a> or <a
+			href="../../8/2/t/timeout.html">timeout</a> from <a
+			href="../../8/2/e/errordict.html">errordict</a>, sandwiched between
+		execution of two objects being interpreted in normal sequence. It does
+		not push the object being executed, nor does it alter the operand
+		stack in any other way. In other words, it omits steps 1 and 2 above.
 	</p>
 </body>
 </html>

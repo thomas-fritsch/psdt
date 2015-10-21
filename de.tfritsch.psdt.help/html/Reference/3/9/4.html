@@ -13,11 +13,12 @@
 		and in environment-dependent installation software.</p>
 	<p>
 		Typically, resource instances are installed as named files, which can
-		also be accessed by ordinary PostScript file operators such as <b>file</b>
-		and <b>run</b>. There is a straightforward mapping from resource names
-		to file names, though the details of this mapping vary because of
-		restrictions on file name syntax imposed by the underlying file
-		system.
+		also be accessed by ordinary PostScript file operators such as <a
+			href="../../8/2/f/file.html">file</a> and <a
+			href="../../8/2/r/run.html">run</a>. There is a straightforward
+		mapping from resource names to file names, though the details of this
+		mapping vary because of restrictions on file name syntax imposed by
+		the underlying file system.
 	</p>
 	<p>
 		In some implementations, including many dedicated printers, the only
@@ -27,7 +28,7 @@
 		or remove them. Only resource installation or other system management
 		software should do this. Page descriptions should never attempt to
 		access resources as files; they should use only resource operators,
-		such as <b>findresource</b>.
+		such as <a href="../../8/2/f/findresource.html">findresource</a>.
 	</p>
 	<p>
 		The implementation dictionary for a category can contain an optional
@@ -51,8 +52,10 @@
 		<b>ResourceFileName</b> builds a complete file name in the scratch
 		string and returns on the operand stack the substring that was used.
 		This string can then be used as the filename operand of file operators
-		such as <b>file</b>, <b>deletefile</b>, <b>status</b>, and so on. For
-		example, the following program fragment obtains the file name for the
+		such as <a href="../../8/2/f/file.html">file</a>, <a
+			href="../../8/2/d/deletefile.html">deletefile</a>, <a
+			href="../../8/2/s/status.html">status</a>, and so on. For example,
+		the following program fragment obtains the file name for the
 		Times-Roman font:
 	</p>
 	<pre>/Font /Category findresource
@@ -91,18 +94,20 @@
 	</p>
 	<p>
 		Some implementations provide additional control over the behavior of <b>ResourceFileName</b>;
-		see Section C.3.6, "Resource File Location."
+		see Section <a href="../../C/3/6.html">C.3.6, "Resource File
+			Location."</a>
 	</p>
 	<p>
 		A resource file contains a PostScript program that can be executed to
 		load the resource instance into VM. The last action the program should
-		take is to execute <b>defineresource</b> or an equivalent operator,
-		such as <b>definefont</b>, to associate the resource instance with a
-		category and a name. In other words, each resource file must be
-		self-identifying and self-defining. The resource file must be well
-		behaved: it must leave the stacks in their original state and it must
-		not execute any operators (graphics operators, for instance) that are
-		not directly related to creating the resource instance.
+		take is to execute <a href="../../8/2/d/defineresource">defineresource</a>
+		or an equivalent operator, such as <a href="../../8/2/d/definefont">definefont</a>,
+		to associate the resource instance with a category and a name. In
+		other words, each resource file must be self-identifying and
+		self-defining. The resource file must be well behaved: it must leave
+		the stacks in their original state and it must not execute any
+		operators (graphics operators, for instance) that are not directly
+		related to creating the resource instance.
 	</p>
 </body>
 </html>

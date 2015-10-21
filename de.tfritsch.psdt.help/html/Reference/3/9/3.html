@@ -31,9 +31,11 @@
       /Widget catdict /Category defineresource pop
     false setglobal
 	</pre>
-	<p>In this example, catdict is a dictionary describing the
+	<p>
+		In this example, <i>catdict</i> is a dictionary describing the
 		implementation of the Widget category. Once it is defined, instances
-		of the Widget category can be manipulated like other categories:</p>
+		of the Widget category can be manipulated like other categories:
+	</p>
 	<pre>
     /Frob1 w /Widget defineresource          % Returns w
     /Frob1 /Widget findresource              % Returns w
@@ -48,10 +50,14 @@
 		correctly implements any special semantics of the category.</p>
 
 	<h4 id="1">Category Implementation Dictionary</h4>
-	<p>The behavior of all the resource operators, such as
-		defineresource, is determined by entries in the resource category's
-		implementation dictionary. This dictionary was supplied as an operand
-		to defineresource when the category was created. In the example</p>
+	<p>
+		The behavior of all the resource operators, such as <a
+			href="../../8/2/d/defineresource.html">defineresource</a>, is
+		determined by entries in the resource category's implementation
+		dictionary. This dictionary was supplied as an operand to <a
+			href="../../8/2/d/defineresource.html">defineresource</a> when the
+		category was created. In the example
+	</p>
 	<pre>
 	/Frob1 w /Widget defineresource</pre>
 	<p>
@@ -61,28 +67,34 @@
 		<li>Obtains catdict, the implementation dictionary for the <b>Widget</b>
 			category
 		</li>
-		<li>Executes <b>begin</b> on the implementation dictionary.
+		<li>Executes <a href="../../8/2/b/begin.html">begin</a> on the
+			implementation dictionary.
 		</li>
 		<li>Executes the dictionary’s <b>DefineResource</b> entry, which
 			is ordinarily a procedure but might be an operator. When the
 			procedure corresponding to the <b>DefineResource</b> entry is called,
-			the operand stack contains the operands that were passed to <b>defineresource</b>,
-			except that the category name (Widget in this example) has been
-			removed. <b>DefineResource</b> is expected to consume the remaining
-			operands, perform whatever action is appropriate for this resource
-			category, and return the appropriate result.
+			the operand stack contains the operands that were passed to <a
+			href="../../8/2/d/defineresource.html">defineresource</a>, except
+			that the category name (Widget in this example) has been removed. <b>DefineResource</b>
+			is expected to consume the remaining operands, perform whatever
+			action is appropriate for this resource category, and return the
+			appropriate result.
 		</li>
-		<li>Executes the <b>end</b> operator. If an error occurred during
-			step 3, it also restores the operand and dictionary stacks to their
-			initial state.
+		<li>Executes the <a href="../../8/2/e/end.html">end</a> operator.
+			If an error occurred during step 3, it also restores the operand and
+			dictionary stacks to their initial state.
 		</li>
 	</ol>
 	<p>
-		The other resource operators&mdash;<b>undefineresource</b>, <b>findresource</b>,
-		<b>resourcestatus</b>, and <b>resourceforall</b>&mdash;behave the same
-		way, with the exception that <b>resourceforall</b> does not restore
-		the stacks upon error. Aside from the steps described above, all of
-		the behavior of the resource operators is implemented by the
+		The other resource operators&mdash;<a
+			href="../../8/2/u/undefineresource.html">undefineresource</a>, <a
+			href="../../8/2/f/findresource.html">findresource</a>, <a
+			href="../../8/2/r/resourcestatus.html">resourcestatus</a>, and <a
+			href="../../8/2/r/resourceforall.html">resourceforall</a>&mdash;behave
+		the same way, with the exception that <a
+			href="../../8/2/r/resourceforall.html">resourceforall</a> does not
+		restore the stacks upon error. Aside from the steps described above,
+		all of the behavior of the resource operators is implemented by the
 		corresponding procedures in the dictionary.
 	</p>
 	<p>A category implementation dictionary contains the entries listed
@@ -101,59 +113,66 @@
 		<tr>
 			<th id="DefineResource">DefineResource</th>
 			<td>procedure</td>
-			<td><i>(Required)</i> A procedure that implements <b>defineresource</b>
-				behavior.</td>
+			<td><i>(Required)</i> A procedure that implements <a
+				href="../../8/2/d/defineresource.html">defineresource</a> behavior.</td>
 		</tr>
 		<tr>
 			<th id="UndefineResource">UndefineResource</th>
 			<td>procedure</td>
-			<td><i>(Required)</i> A procedure that implements <b>undefineresource</b>
+			<td><i>(Required)</i> A procedure that implements <a
+				href="../../8/2/u/undefineresource.html">undefineresource</a>
 				behavior.</td>
 		</tr>
 		<tr>
 			<th id="FindResource">FindResource</th>
 			<td>procedure</td>
-			<td><i>(Required)</i> A procedure that implements <b>findresource</b>
-				behavior. This procedure determines the policy for using global
-				versus current VM when loading a resource from an external source.</td>
+			<td><i>(Required)</i> A procedure that implements <a
+				href="../../8/2/f/findresource.html">findresource</a> behavior. This
+				procedure determines the policy for using global versus current VM
+				when loading a resource from an external source.</td>
 		</tr>
 		<tr>
 			<th id="ResourceStatus">ResourceStatus</th>
 			<td>procedure</td>
-			<td><i>(Required)</i> A procedure that implements <b>resourcestatus</b>
-				behavior.</td>
+			<td><i>(Required)</i> A procedure that implements <a
+				href="../../8/2/r/resourcestatus.html">resourcestatus</a> behavior.</td>
 		</tr>
 		<tr>
 			<th id="ResourceForAll">ResourceForAll</th>
 			<td>procedure</td>
-			<td><i>(Required)</i> A procedure that implements <b>resourceforall</b>
-				behavior. This procedure should remove the category implementation
-				dictionary from the dictionary stack before executing the procedure
-				operand of <b>resourceforall</b>, and should put that dictionary
-				back on the dictionary stack before returning. This ensures that the
-				procedure operand is executed in the dictionary context in effect at
-				the time <b>resourceforall</b> was invoked.</td>
+			<td><i>(Required)</i> A procedure that implements <a
+				href="../../8/2/r/resourceforall.html">resourceforall</a> behavior.
+				This procedure should remove the category implementation dictionary
+				from the dictionary stack before executing the procedure operand of
+				<a href="../../8/2/r/resourceforall.html">resourceforall</a>, and
+				should put that dictionary back on the dictionary stack before
+				returning. This ensures that the procedure operand is executed in
+				the dictionary context in effect at the time <a
+				href="../../8/2/r/resourceforall.html">resourceforall</a> was
+				invoked.</td>
 		</tr>
 		<tr>
 			<th id="Category">Category</th>
 			<td>name</td>
-			<td><i>(Required)</i> The category name. This entry
-				is inserted by <b>defineresource</b> when the category is defined.</td>
+			<td><i>(Required)</i> The category name. This entry is inserted
+				by <a href="../../8/2/d/defineresource.html">defineresource</a> when
+				the category is defined.</td>
 		</tr>
 		<tr>
 			<th id="InstanceType">InstanceType</th>
 			<td>name</td>
-			<td><i>(Optional)</i> The expected type of
-				instances of this category. If this entry is present, <b>defineresource</b>
-				checks that the instance's type, as returned by the <b>type</b>
-				operator, matches it.</td>
+			<td><i>(Optional)</i> The expected type of instances of this
+				category. If this entry is present, <a
+				href="../../8/2/d/defineresource.html">defineresource</a> checks
+				that the instance's type, as returned by the <a
+				href="../../8/2/t/type.html">type</a> operator, matches it.</td>
 		</tr>
 		<tr>
 			<th id="ResourceFileName">ResourceFileName</th>
 			<td>procedure</td>
-			<td><i>(Optional)</i> A procedure that translates a
-				resource instance name to a file name (see Section 3.9.4, "Resources
-				as Files").</td>
+			<td><i>(Optional)</i> A procedure that translates a resource
+				instance name to a file name (see Section <a href="4.html">3.9.4,
+					"Resources as Files"</a>).</td>
 		</tr>
 	</table>
 	<p>
@@ -162,8 +181,9 @@
 		local and global instances separately and must respect the VM
 		allocation mode in effect at the time each resource operator is
 		executed. The category implementation dictionary must be in global VM;
-		the <b>defineresource</b> operator that installs it in the <b>Category</b>
-		category must be executed while in global VM allocation mode.
+		the <a href="../../8/2/d/defineresource.html">defineresource</a>
+		operator that installs it in the <b>Category</b> category must be
+		executed while in global VM allocation mode.
 	</p>
 	<p>
 		The interpreter assumes that the category implementation procedures
@@ -171,7 +191,9 @@
 		circumstances not under their control. In this respect, they are
 		similar to the <b>BuildChar</b> procedure in a Type 3 font or to the <b>PaintProc</b>
 		procedure in a form or pattern, but are unlike the arbitrary
-		procedures invoked by operators such as <b>forall</b> or <b>resourceforall</b>.
+		procedures invoked by operators such as <a
+			href="../../8/2/f/forall.html">forall</a> or <a
+			href="../../8/2/r/resourcesforall.html">resourceforall</a>.
 	</p>
 	<p>If an error occurs in a category implementation procedure, the
 		resource operator makes a token attempt to restore the stacks and to
@@ -214,8 +236,9 @@
 		not have an <b>InstanceType</b> entry; instances need not be of any
 		particular type. The example above makes a copy of the dictionary with
 		space for one additional entry and inserts an <b>InstanceType</b>
-		entry with the value dicttype. As a result, <b>defineresource</b>
-		requires that instances of the Widget category be dictionaries.
+		entry with the value dicttype. As a result, <a
+			href="../../8/2/d/defineresource.html">defineresource</a> requires
+		that instances of the Widget category be dictionaries.
 	</p>
 
 </body>

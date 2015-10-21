@@ -111,11 +111,13 @@
 		<li>Real numbers, such as<pre>-.002 34.5 -3.62 123.6e10 1.0E-5 1E6 -1. 0.0</pre></li>
 		<li>Radix numbers, such as<pre>8#1777 16#FFFE 2#1000</pre></li>
 	</ul>
-	<p>An integer consists of an optional sign followed by one or more
+	<p>
+		An integer consists of an optional sign followed by one or more
 		decimal digits. The number is interpreted as a signed decimal integer
 		and is converted to an integer object. If it exceeds the
 		implementation limit for integers, it is converted to a real object.
-		(See Appendix B for implementation limits.)</p>
+		(See <a href="../../B.html">Appendix B</a> for implementation limits.)
+	</p>
 	<p>
 		A real number consists of an optional sign and one or more decimal
 		digits, with an embedded period (decimal point), a trailing exponent,
@@ -123,7 +125,8 @@
 		followed by an optional sign and one or more decimal digits. The
 		number is interpreted as a real number and is converted to a real
 		(floating-point) object. If it exceeds the implementation limit for
-		real numbers, a <b>limitcheck</b> error occurs.
+		real numbers, a <a href="../../8/2/l/limitcheck.html">limitcheck</a>
+		error occurs.
 	</p>
 	<p>
 		A radix number takes the form base#number, where base is a decimal
@@ -134,8 +137,8 @@
 		integer object having the same twos-complement binary representation.
 		This notation is intended for specifying integers in a nondecimal
 		radix, such as binary, octal, or hexadecimal. If the number exceeds
-		the implementation limit for integers, a <b>limitcheck</b> error
-		occurs.
+		the implementation limit for integers, a <a
+			href="../../8/2/l/limitcheck.html">limitcheck</a> error occurs.
 	</p>
 	<h3 id="3">Strings</h3>
 	<p>There are three conventions for quoting a literal string object:</p>
@@ -225,8 +228,10 @@
         )
         (So does this one.\n)
         </pre>
-	<p>For more information about end-of-line conventions, see Section
-		3.8, "File Input and Output."</p>
+	<p>
+		For more information about end-of-line conventions, see Section <a
+			href="../8.html">3.8, "File Input and Output."</a>
+	</p>
 	<p>
 		The <em>\ddd</em> form may be used to include any 8-bit character
 		constant in a string. One, two, or three octal digits may be
@@ -265,8 +270,9 @@
 		This notation represents arbitrary binary data using an encoding
 		technique that produces a 4:5 expansion as opposed to the 1:2
 		expansion for hexadecimal. The ASCII base-85 encoding algorithm is
-		described under "ASCII85Encode Filter" on page 131. If an ASCII
-		base-85 string is malformed, a <b>syntaxerror</b> occurs.
+		described under <a href="../13/3.html#4">"ASCII85Encode Filter" on
+			page 131</a>. If an ASCII base-85 string is malformed, a <a
+			href="../../8/2/s/syntaxerror.html">syntaxerror</a> occurs.
 	</p>
 
 	<h3 id="4">Names</h3>
@@ -291,9 +297,10 @@
 		characters between the / and the name. The characters // (two slashes)
 		introduce an <em>immediately evaluated name</em>. The important
 		properties and uses of names and the distinction between executable
-		and literal names are described in Section 3.3, "Data Types and
-		Objects"; immediately evaluated names are discussed in Section 3.12.2,
-		"Immediately Evaluated Names."
+		and literal names are described in Section <a href="../3.html">3.3,
+			"Data Types and Objects"</a>; immediately evaluated names are discussed
+		in Section <a href="../12/2.html">3.12.2, "Immediately Evaluated
+			Names."</a>
 	</p>
 	<p>
 		<em><b>Note:</b> The token / (a slash followed by no regular
@@ -348,12 +355,15 @@
 		will it be executed. Execution of the procedure&mdash; and of all
 		objects within the procedure, including any embedded procedures&mdash;
 		has been <em>deferred</em>. The matter of immediate versus deferred
-		execution is discussed in Section 3.5, "Execution."
+		execution is discussed in Section <a href="../5.html">3.5,
+			"Execution."</a>
 	</p>
-	<p>The procedure object created by { and } is either an array or a
-		packed array, according to the current setting of a mode switch. The
-		distinction between these array types is discussed in Section 3.3,
-		"Data Types and Objects."</p>
+	<p>
+		The procedure object created by { and } is either an array or a packed
+		array, according to the current setting of a mode switch. The
+		distinction between these array types is discussed in Section <a
+			href="../3.html">3.3, "Data Types and Objects."</a>
+	</p>
 	<h3 id="7">Dictionaries</h3>
 	<p>
 		The special character sequences &lt;&lt; and &gt;&gt; <em>(LanguageLevel
@@ -365,9 +375,11 @@
 		&lt;&lt; <em>key<sub>1</sub> value<sub>1</sub> key<sub>2</sub>
 			value<sub>2</sub> ... key<sub>n</sub> value<sub>n</sub></em> &gt;&gt;
 	</p>
-	<p>This creates a dictionary containing the bracketed key-value
-		pairs and pushes it on the operand stack. Dictionaries are introduced
-		in Section 3.3, "Data Types and Objects."</p>
+	<p>
+		This creates a dictionary containing the bracketed key-value pairs and
+		pushes it on the operand stack. Dictionaries are introduced in Section
+		<a href="../3.html">3.3, "Data Types and Objects."</a>
+	</p>
 	<p>The &lt;&lt; and >> tokens are self-delimiting, so they need not
 		be surrounded by white-space characters or other delimiters. Do not
 		confuse these tokens with &lt; and >, which delimit a hexadecimal

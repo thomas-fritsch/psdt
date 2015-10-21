@@ -13,16 +13,20 @@
 	<p>
 		Regular resources are those whose instances are ordinary useful
 		objects, such as font or halftone dictionaries. For example, a program
-		typically uses the result returned by <b>findresource</b> as an
-		operand of some other operator, such as <b>scalefont</b> or <b>sethalftone</b>.
+		typically uses the result returned by <a
+			href="../../8/2/f/findresource.html">findresource</a> as an operand
+		of some other operator, such as <a href="../../8/2/s/scalefont.html">scalefont</a>
+		or <a href="../../8/2/s/sethalftone.html">sethalftone</a>.
 	</p>
 	<p>
 		Implicit resources represent some built-in capability of the
 		PostScript interpreter. For example, the instances of the <b>Filter</b>
 		category are filter names, such as <b>ASCII85Decode</b> and <b>CCITTFaxDecode</b>,
 		that are passed directly to the filter operator. For such resources,
-		the <b>findresource</b> operator returns only its name operand.
-		However, <b>resourceforall</b> and <b>resourcestatus</b> are useful
+		the <a href="../../8/2/f/findresource.html">findresource</a> operator
+		returns only its name operand. However, <a
+			href="../../8/2/r/resourceforall.html">resourceforall</a> and <a
+			href="../../8/2/r/resourcestatus.html">resourcestatus</a> are useful
 		for inquiring about the availability of capabilities such as specific
 		filter algorithms.
 	</p>
@@ -230,12 +234,15 @@
 	</table>
 	<p>
 		The <b>Category</b> and <b>Generic</b> resources are used in defining
-		new categories of resources. This capability is described in Section
-		3.9.3, "Creating Resource Categories."
+		new categories of resources. This capability is described in Section <a
+			href="../../3/9/3.html">3.9.3, "Creating Resource Categories."</a>
 	</p>
 	<p>
-		The resource operators&mdash;<b>findresource</b>, <b>resourcestatus</b>,
-		<b>resourceforall</b>, <b>defineresource</b>, and <b>undefineresource</b>&mdash;have
+		The resource operators&mdash;<a href="../../8/2/f/findresource.html">findresource</a>,
+		<a href="../../8/2/r/resourcestatus.html">resourcestatus</a>, <a
+			href="../../8/2/r/resourceforall.html">resourceforall</a>, <a
+			href="../../8/2/d/defineresource.html">defineresource</a>, and <a
+			href="../../8/2/u/undefineresource.html">undefineresource</a>&mdash;have
 		standard behavior that is uniform across all resource categories. This
 		behavior is specified in the operator descriptions in Chapter 8. For
 		some categories, the operators have additional semantics that are
@@ -252,31 +259,43 @@
 	<p>
 		Instance names of the <b>Font</b> resource category are font names,
 		such as Times-Roman. The instances are font dictionaries that are
-		suitable for use as operands to <b>scalefont</b> or <b>makefont</b>,
-		which produce a transformed font dictionary that can be used to paint
-		characters on the page.
+		suitable for use as operands to <a href="../../8/2/s/scalefont.html">scalefont</a>
+		or <a href="../../8/2/m/makefont.html">makefont</a>, which produce a
+		transformed font dictionary that can be used to paint characters on
+		the page.
 	</p>
 	<p>The following special-purpose operators apply only to fonts but
 		are otherwise equivalent to the resource operators:</p>
 	<ul>
-		<li><b>findfont</b>, equivalent to /Font findresource</li>
-		<li><b>definefont</b>, equivalent to /Font defineresource</li>
-		<li><b>undefinefont</b>, equivalent to /Font undefineresource
+		<li><a href="../../8/2/f/findfont.html">findfont</a>, equivalent
+			to /Font findresource</li>
+		<li><a href="../../8/2/d/definefont.html">definefont</a>,
+			equivalent to /Font defineresource</li>
+		<li><a href="../../8/2/u/undefinefont.html">undefinefont</a>,
+			equivalent to /Font undefineresource
 	</ul>
 	<p>
-		The <b>definefont</b> and <b>undefinefont</b> operators have
+		The <a href="../../8/2/d/definefont.html">definefont</a> and <a
+			href="../../8/2/u/undefinefont.html">undefinefont</a> operators have
 		additional font-specific semantics, which are described under those
-		operators in Chapter 8. Those semantics also apply to <b>defineresource</b>
-		and <b>undefineresource</b> when applied to the Font category. <b>findfont</b>
-		and <b>definefont</b> are available in LanguageLevel 1, even though
-		the general facility for named resources is a LanguageLevel 2 feature.
+		operators in Chapter 8. Those semantics also apply to <a
+			href="../../8/2/d/defineresource.html">defineresource</a> and <a
+			href="../../8/2/u/undefineresource.html">undefineresource</a> when
+		applied to the <b>Font</b> category. <a
+			href="../../8/2/f/findfont.html">findfont</a> and <a
+			href="../../8/2/d/definefont.html">definefont</a> are available in
+		LanguageLevel 1, even though the general facility for named resources
+		is a LanguageLevel 2 feature.
 	</p>
-	<p>The font operators also maintain dictionaries of font names and
-		Font resource instances that are defined in VM. Those dictionaries are
-		FontDirectory (all Font resources in VM) and GlobalFontDirectory (only
-		Font resources in global VM). They are obsolete, but are provided for
-		compatibility with existing applications. The preferred method of
-		enumerating all available Font resources is</p>
+	<p>
+		The font operators also maintain dictionaries of font names and <b>Font</b>
+		resource instances that are defined in VM. Those dictionaries are <a
+			href="../../8/2/f/FontDirectory.html">FontDirectory</a> (all <b>Font</b>
+		resources in VM) and <a href="../../8/2/g/GlobalFontDirectory.html">GlobalFontDirectory</a>
+		(only <b>Font</b> resources in global VM). They are obsolete, but are
+		provided for compatibility with existing applications. The preferred
+		method of enumerating all available <b>Font</b> resources is
+	</p>
 	<pre>
     (*) proc scratch /Font resourceforall
     </pre>
@@ -301,72 +320,83 @@
 	<h4 id="2">CIDFont</h4>
 	<p>
 		Instances of the <b>CIDFont</b> resource category <i>(LanguageLevel
-			3)</i> are dictionaries that are suitable for use with the <b>composefont</b>
-		operator to construct CID-keyed fonts, as described in Section 5.11,
-		"CID-Keyed Fonts." The <b>defineresource</b> operator has certain
-		category-specific semantics when applied to the <b>CIDFont</b>
-		category; furthermore, the <b>definefont</b> and <b>undefinefont</b>
-		operators can be applied to CIDFonts as well as fonts. For more
-		information on the behavior of these operators, see Section 5.11.3,
-		"CIDFont Dictionaries."
+			3)</i> are dictionaries that are suitable for use with the <a
+			href="../../8/2/c/composefont.html">composefont</a> operator to
+		construct CID-keyed fonts, as described in Section <a
+			href="../../5/11.html">5.11, "CID-Keyed Fonts."</a> The <a
+			href="../../8/2/d/defineresource.html">defineresource</a> operator
+		has certain category-specific semantics when applied to the <b>CIDFont</b>
+		category; furthermore, the <a href="../../8/2/d/definefont.html">definefont</a>
+		and <a href="../../8/2/u/undefinefont.html">undefinefont</a> operators
+		can be applied to CIDFonts as well as fonts. For more information on
+		the behavior of these operators, see Section <a
+			href="../../5/11/3.html">5.11.3, "CIDFont Dictionaries."</a>
 	</p>
 	<h4 id="3">CMap</h4>
 	<p>
 		Instances of the <b>CMap</b> resource category <i>(LanguageLevel
 			3)</i> are character code mapping dictionaries that are suitable for use
-		with the <b>composefont</b> operator to construct CID-keyed fonts, as
-		described in Section 5.11, "CID-Keyed Fonts."
+		with the <a href="../../8/2/c/composefont.html">composefont</a>
+		operator to construct CID-keyed fonts, as described in Section <a
+			href="../../5/11.html">5.11, "CID-Keyed Fonts."</a>
 	</p>
 	<h4 id="4">FontSet</h4>
 	<p>
 		Instances of the <b>FontSet</b> resource category (LanguageLevel 3)
 		are bundles of font definitions that are represented in the Compact
 		Font Format (CFF) or other multiple-font representations, as described
-		in Section 5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)." Each
-		<b>FontSet</b> instance contains the material from which one or more <b>Font</b>
-		instances can be constructed.
+		in Section <a href="../../5/8/1.html">5.8.1, "Type 2 and Type 14
+			Fonts (CFF and Chameleon)."</a> Each <b>FontSet</b> instance contains the
+		material from which one or more <b>Font</b> instances can be
+		constructed.
 	</p>
 	<h4 id="5">Encoding</h4>
 	<p>
 		Instances of the <b>Encoding</b> resource category are array objects,
 		suitable for use as the <b>Encoding</b> entry of font dictionaries
-		(see Section 5.3, "Character Encoding"). An encoding array usually
-		contains 256 names, permitting it to be indexed by any 8-bit character
-		code. An encoding array for use with composite fonts (described in
-		Section 5.10, "Composite Fonts") contains integers instead of names,
-		and can be of any length.
+		(see Section <a href="../../5/3.html">5.3, "Character Encoding"</a>).
+		An encoding array usually contains 256 names, permitting it to be
+		indexed by any 8-bit character code. An encoding array for use with
+		composite fonts (described in Section <a href="../../5/10.html">5.10,
+			"Composite Fonts"</a>) contains integers instead of names, and can be of
+		any length.
 	</p>
 	<p>
 		There are two standard encodings that are permanently defined in VM
-		and available by name in <b>systemdict</b>:
+		and available by name in <a href="../../8/2/s/systemdict.html">systemdict</a>:
 	</p>
 	<ul>
-		<li><b>StandardEncoding</b>, whose value is the same as the array
-			returned by /StandardEncoding /Encoding findresource</li>
-		<li><b>ISOLatin1Encoding</b>, whose value is the same as the
-			array returned by /ISOLatin1Encoding /Encoding findresource</li>
+		<li><a href="../../8/2/s/StandardEncoding.html">StandardEncoding</a>,
+			whose value is the same as the array returned by /StandardEncoding
+			/Encoding findresource</li>
+		<li><a href="../../8/2/i/ISOLatin1Encoding.html">ISOLatin1Encoding</a>,
+			whose value is the same as the array returned by /ISOLatin1Encoding
+			/Encoding findresource</li>
 	</ul>
 	<p>
-		If any other encodings exist, they are available only through <b>findresource</b>.
-		The convenience operator <b>findencoding</b> is equivalent to
-		/Encoding findresource.
+		If any other encodings exist, they are available only through <a
+			href="../../8/2/f/findresource.html">findresource</a>. The
+		convenience operator <a href="../../8/2/f/findencoding.html">findencoding</a>
+		is equivalent to /Encoding findresource.
 	</p>
 	<h4 id="6">Form</h4>
 	<p>
 		Instances of the <b>Form</b> resource category are form dictionaries,
-		described in Section 4.7, "Forms." A form dictionary is suitable as
-		the operand to the <b>execform</b> operator to render the form on the
-		page.
+		described in Section <a href="../../4/7.html">4.7, "Forms."</a> A form
+		dictionary is suitable as the operand to the <a
+			href="../../8/2/e/execform.html">execform</a> operator to render the
+		form on the page.
 	</p>
 	<h4 id="7">Pattern</h4>
 	<p>
 		Instances of the <b>Pattern</b> resource category are prototype
-		pattern dictionaries, described in Section 4.9, "Patterns." A
-		prototype pattern dictionary is suitable as the operand to the <b>makepattern</b>
+		pattern dictionaries, described in Section <a href="../../4/9.html">4.9,
+			"Patterns."</a> A prototype pattern dictionary is suitable as the operand
+		to the <a href="../../8/2/m/makepattern.html">makepattern</a>
 		operator, which produces a transformed pattern dictionary; a
 		PostScript program can then use the resulting dictionary in painting
-		operations by establishing a Pattern color space or by invoking the <b>setpattern</b>
-		operator.
+		operations by establishing a Pattern color space or by invoking the <a
+			href="../../8/2/s/setpattern.html">setpattern</a> operator.
 	</p>
 	<h4 id="8">ProcSet</h4>
 	<p>
@@ -403,8 +433,9 @@
 		</tr>
 		<tr>
 			<th>ColorRendering</th>
-			<td>Selecting a color rendering dictionary (Section 7.1.3,
-				"Rendering Intents")</td>
+			<td>Selecting a color rendering dictionary (Section <a
+				href="../../7/1/3.html">7.1.3, "Rendering Intents"</a>)
+			</td>
 		</tr>
 		<tr>
 			<th>FontSetInit</th>
@@ -414,7 +445,9 @@
 		</tr>
 		<tr>
 			<th>Trapping</th>
-			<td>In-RIP trapping (Section 6.3, "In-RIP Trapping")</td>
+			<td>In-RIP trapping (Section <a href="../../6/3.html">6.3,
+					"In-RIP Trapping"</a>)
+			</td>
 		</tr>
 	</table>
 	<h4 id="9">ColorSpace</h4>
@@ -422,8 +455,8 @@
 		Instances of the <b>ColorSpace</b> resource category are array objects
 		that represent fully parameterized color spaces. The first element of
 		a color space array is a color space family name; the remaining
-		elements are parameters to the color space (see Section 4.8, "Color
-		Spaces").
+		elements are parameters to the color space (see Section <a
+			href="../../4/8.html">4.8, "Color Spaces"</a>).
 	</p>
 	<p>
 		<em>Note: The ColorSpace resource category is distinct from the <b>ColorSpaceFamily</b>
@@ -433,37 +466,41 @@
 	<h4 id="10">Halftone</h4>
 	<p>
 		Instances of the <b>Halftone</b> resource category are halftone
-		dictionaries, suitable as operands to the <b>sethalftone</b> operator
-		(see Section 7.4, "Halftones").
+		dictionaries, suitable as operands to the <a
+			href="../../8/2/s/sethalftone.html">sethalftone</a> operator (see
+		Section <a href="../../7/4.html">7.4, "Halftones"</a>).
 	</p>
 	<h4 id="11">ColorRendering</h4>
 	<p>
 		Instances of the <b>ColorRendering</b>b resource category are color
-		rendering dictionaries, suitable as operands to the <b>setcolorrendering</b>
-		operator (see Section 7.1, "CIE-Based Color to Device Color").
+		rendering dictionaries, suitable as operands to the <a
+			href="../../8/2/s/setcolorrendering.html">setcolorrendering</a>
+		operator (see Section <a href="../../7/1.html">7.1, "CIE-Based
+			Color to Device Color"</a>).
 	</p>
 	<h4 id="12">IdiomSet</h4>
 	<p>
 		Instances of the <b>IdiomSet</b> resource category <i>(LanguageLevel
-			3)</i> are procedure substitution dictionaries, for use with the <b>bind</b>
-		operator (see Section 3.12.1, "bind Operator").
+			3)</i> are procedure substitution dictionaries, for use with the <a
+			href="../../8/2/b/bind.html">bind</a> operator (see Section <a
+			href="../../3/12/1.html">3.12.1, "bind Operator"</a>).
 	</p>
 	<h4 id="13">InkParams and TrapParams</h4>
 	<p>
 		The LanguageLevel 3 resource categories <b>InkParams</b> and <b>TrapParams</b>
 		are present only in products that support in-RIP trapping (see Section
-		6.3, "In-RIP Trapping"). Instances of <b>InkParams</b> are
-		dictionaries that define trapping-related properties of device
+		<a href="../../6/3.html">6.3, "In-RIP Trapping"</a>). Instances of <b>InkParams</b>
+		are dictionaries that define trapping-related properties of device
 		colorants; instances of <b>TrapParams</b> are dictionaries that define
-		sets of trapping parameters suitable as operands to the <b>settrapparams</b>
-		operator.
+		sets of trapping parameters suitable as operands to the <a
+			href="../../8/2/s/settrapparams.html">settrapparams</a> operator.
 	</p>
 	<h4 id="14">OutputDevice</h4>
 	<p>
 		Instances of the <b>OutputDevice</b> resource category (LanguageLevel
 		3) are dictionaries that describe certain capabilities of a particular
 		page device, such as the possible page sizes or resolutions (see
-		Section 6.4, "Output Device Dictionary").
+		Section <a href="../../6/4.html">6.4, "Output Device Dictionary"</a>).
 	</p>
 	<h4 id="15">ControlLanguage, PDL, Localization, and HWOptions</h4>
 	<p>
@@ -493,11 +530,15 @@
 	</ul>
 	<h4 id="16">Implicit Resources</h4>
 	<p>
-		For all implicit resources, the <b>findresource</b> operator returns
-		the instance's key if the instance is defined. The <b>resourcestatus</b>
-		and <b>resourceforall</b> operators have their normal behavior,
-		although the status and size values returned by <b>resourcestatus</b>
-		are meaningless. The <b>defineresource</b> and <b>undefineresource</b>
+		For all implicit resources, the <a
+			href="../../8/2/f/findresource.html">findresource</a> operator
+		returns the instance's key if the instance is defined. The <a
+			href="../../8/2/r/resourcestatus.html">resourcestatus</a> and <a
+			href="../../8/2/r/resourceforall.html">resourceforall</a> operators
+		have their normal behavior, although the <i>status</i> and <i>size</i>
+		values returned by <a href="../../8/2/r/resourcestatus.html">resourcestatus</a>
+		are meaningless. The <a href="../../8/2/d/dfineresource.html">defineresource</a>
+		and <a href="../../8/2/u/undfineresource.html">undefineresource</a>
 		operators are ordinarily not allowed, but the ability to define new
 		instances of implicit resources may exist in some implementations. The
 		mechanisms are implementation-dependent.
@@ -505,8 +546,9 @@
 	<p>
 		The instances of the <b>Filter</b> category are filter names, such as
 		<b>ASCII85Decode</b> and <b>RunLengthEncode</b>, which are used as an
-		operand of the <b>filter</b> operator to determine its behavior.
-		Filters are described in Section 3.8.4, "Filters."
+		operand of the <a href="../../8/2/f/filter.html">filter</a> operator
+		to determine its behavior. Filters are described in Section <a
+			href="../../3/8/4.html">3.8.4, "Filters."</a>
 	</p>
 	<p>
 		The instances of the <b>ColorSpaceFamily</b> category are color space
@@ -514,7 +556,7 @@
 		object. Some color spaces, such as <b>DeviceRGB</b>, are completely
 		determined by their family name; others, such as <b>CIEBasedABC</b>,
 		require additional parameters to describe them. Color spaces are
-		described in Section 4.8, "Color Spaces."
+		described in Section <a href="../../4/8.html">4.8, "Color Spaces."</a>
 	</p>
 	<p>
 		The instances of the <b>Emulator</b> category are names of emulators
@@ -530,8 +572,8 @@
 		devices, from which the category name <b>IODevice</b> originates.
 		However, there are also some parameter sets that do not correspond to
 		physical devices. The keys for all instances of this category are
-		expressed as strings of the form %device%. See Section C.4, "Device
-		Parameters."
+		expressed as strings of the form %device%. See Section <a
+			href="../../C/4.html">C.4, "Device Parameters."</a>
 	</p>
 	<p>
 		The instances of the <b>ColorRenderingType</b>, <b>FMapType</b>, <b>FontType</b>,
