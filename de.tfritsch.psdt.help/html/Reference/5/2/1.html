@@ -35,22 +35,24 @@
 			<th id="FontMatrix">FontMatrix</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array that transforms the <i>glyph
-					coordinate system</i> into the user coordinate system (see Section 5.4,
-				"Glyph Metric Information"). For example, Type 1 font programs from
-				Adobe are usually defined in terms of a 1000-unit glyph coordinate
-				system, and their initial font matrix is [0.001 0 0 0.001 0 0]. When
-				a font is derived by the <b>scalefont</b> or <b>makefont</b>
-				operator, the new matrix is concatenated with the existing font
-				matrix to yield a new copy of the font with a different font matrix.
-			</td>
+					coordinate system</i> into the user coordinate system (see Section <a
+				href="../4.html">5.4, "Glyph Metric Information"</a>). For example,
+				Type 1 font programs from Adobe are usually defined in terms of a
+				1000-unit glyph coordinate system, and their initial font matrix is
+				[0.001 0 0 0.001 0 0]. When a font is derived by the <a
+				href="../../8/2/s/scalefont.html">scalefont</a> or <a
+				href="../../8/2/m/makefont.html">makefont</a> operator, the new
+				matrix is concatenated with the existing font matrix to yield a new
+				copy of the font with a different font matrix.</td>
 		</tr>
 		<tr>
 			<th id="FontName">FontName</th>
 			<td>name</td>
 			<td><i>(Optional)</i> The name of the font. This entry is for
 				information only; it is not used by the PostScript interpreter.
-				Ordinarily, it is the same as the key passed to <b>definefont</b>,
-				but it need not be.</td>
+				Ordinarily, it is the same as the key passed to <a
+				href="../../8/2/d/definefont.html">definefont</a>, but it need not
+				be.</td>
 		</tr>
 		<tr>
 			<th id="FontInfo">FontInfo</th>
@@ -65,7 +67,8 @@
 			<td><i>(Optional)</i> The minimum LanguageLevel required for
 				correct behavior of the font. For example, any font that uses
 				LanguageLevel 2 features for rendering glyphs (such as a glyph
-				description that uses <b>rectfill</b> or <b>glyphshow</b>) should
+				description that uses <a href="../../8/2/r/rectfill.html">rectfill</a>
+				or <a href="../../8/2/g/glyphshow.html">glyphshow</a>) should
 				specify a <b>LanguageLevel</b> value of 2. On the other hand, the
 				presence of higher-LanguageLevel information that an interpreter can
 				safely ignore does not require LanguageLevel to be set to the higher
@@ -80,19 +83,21 @@
 			<td><i>(Optional; LanguageLevel 2)</i> The writing mode, which
 				determines which of two sets of metrics will be used when glyphs are
 				shown from the font. Mode 0 specifies horizontal writing; mode 1
-				specifies vertical writing (see Section 5.4, "Glyph Metric
-				Information"). LanguageLevel 1 implementations lacking composite
-				font extensions ignore this entry. Default value: 0.</td>
+				specifies vertical writing (see Section <a href="../4.html">5.4,
+					"Glyph Metric Information"</a>). LanguageLevel 1 implementations
+				lacking composite font extensions ignore this entry. Default value:
+				0.</td>
 		</tr>
 		<tr>
 			<th id="FID">FID</th>
 			<td>fontID</td>
-			<td><i>(Inserted by <b>definefont</b>)
+			<td><i>(Inserted by <a href="../../8/2/d/definefont.html">definefont</a>)
 			</i> A special object of type fontID that serves internal purposes in the
-				font machinery. The <b>definefont</b> operator inserts this entry.
-				In LanguageLevel 1, an <b>FID</b> entry must not previously exist in
-				the dictionary presented to definefont; the dictionary must have
-				sufficient space to insert this entry.</td>
+				font machinery. The <a href="../../8/2/d/definefont.html">definefont</a>
+				operator inserts this entry. In LanguageLevel 1, an <b>FID</b> entry
+				must not previously exist in the dictionary presented to <a
+				href="../../8/2/d/definefont.html">definefont</a>; the dictionary
+				must have sufficient space to insert this entry.</td>
 		</tr>
 	</table>
 	<p />
@@ -108,7 +113,8 @@
 			<th id="Encoding">Encoding</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array of character names to which
-				character codes are mapped. See Section 5.3, "Character Encoding."</td>
+				character codes are mapped. See Section <a href="../3.html">5.3,
+					"Character Encoding."</a></td>
 		</tr>
 		<tr>
 			<th id="FontBBox">FontBBox</th>
@@ -135,15 +141,15 @@
 			<th id="UniqueUID">UniqueID</th>
 			<td>integer</td>
 			<td><i>(Optional)</i> An integer in the range 0 to 16,777,215 (2<sup>24</sup>
-				- 1) that uniquely identifies this font. See Section 5.6, "Unique ID
-				Generation."</td>
+				- 1) that uniquely identifies this font. See Section <a
+				href="../6.html">5.6, "Unique ID Generation."</a></td>
 		</tr>
 		<tr>
 			<th id="XUID">XUID</th>
 			<td>array</td>
 			<td><i>(Optional; LanguageLevel 2)</i> An array of integers that
-				uniquely identifies this font or any variant of it. See Section 5.6,
-				"Unique ID Generation."</td>
+				uniquely identifies this font or any variant of it. See Section <a
+				href="../6.html">5.6, "Unique ID Generation."</a></td>
 		</tr>
 	</table>
 	<p />
@@ -186,8 +192,9 @@
 				(glyph widths and sidebearings) for writing mode 0. This entry is
 				not normally present in the original definition of a font. Adding a
 				<b>Metrics</b> entry to a font overrides the metric information
-				encoded in the glyph descriptions. See Sections 5.4, “Glyph Metric
-				Information,” and 5.9.2, "Changing Glyph Metrics."</td>
+				encoded in the glyph descriptions. See Sections <a href="../4.html">5.4,
+					“Glyph Metric Information,”</a> and <a href="../9/2.html">5.9.2,
+					"Changing Glyph Metrics."</a></td>
 		</tr>
 		<tr>
 			<th id="Metrics2">Metrics2</th>
@@ -213,8 +220,9 @@
 				format; see <a
 				href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
 					Type 1 Font Format</a> for details. The value can also be a PostScript
-				procedure; see Section 5.9.3, "Replacing or Adding Individual
-				Glyphs." This dictionary must have an entry whose key is .notdef.</td>
+				procedure; see Section <a href="../9/3.html">5.9.3, "Replacing
+					or Adding Individual Glyphs."</a> This dictionary must have an entry
+				whose key is .notdef.</td>
 		</tr>
 		<tr>
 			<th id="Private">Private</th>
