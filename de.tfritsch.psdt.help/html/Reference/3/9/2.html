@@ -300,15 +300,16 @@
     (*) proc scratch /Font resourceforall
     </pre>
 	<p>
-		where proc is a procedure and scratch is a string used repeatedly to
-		hold font names. This method works for all available <b>Font</b>
+		where <i>proc</i> is a procedure and scratch is a string used
+		repeatedly to hold font names. This method works for all available <b>Font</b>
 		resources, whether or not they are in VM. Normally, it is preferable
-		to use <b>resourcestatus</b> to determine the availability of specific
-		resources rather than enumerate all resources and check whether those
-		of interest are in the list.
+		to use <a href="../../8/2/r/resourcestatus.html">resourcestatus</a> to
+		determine the availability of specific resources rather than enumerate
+		all resources and check whether those of interest are in the list.
 	</p>
 	<p>
-		When <b>findresource</b> or <b>findfont</b> loads a font from an
+		When <a href="../../8/2/f/findresource.html">findresource</a> or <a
+			href="../../8/2/f/findfont.html">findfont</a> loads a font from an
 		external source into VM, it may choose to use global VM rather than
 		the current VM allocation mode. This choice depends on memory
 		management algorithms used by the interpreter. It also depends on the
