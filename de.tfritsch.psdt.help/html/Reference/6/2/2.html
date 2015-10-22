@@ -17,19 +17,19 @@
 		<tr>
 			<th id="RollFedMedia">RollFedMedia</th>
 			<td>boolean</td>
-			<td>(LanguageLevel 3) A flag specifying whether the
-				medium is roll-fed. The value of this flag may affect the matching
-				criteria used for the <b>PageSize</b> page device parameter (see the
+			<td>(LanguageLevel 3) A flag specifying whether the medium is
+				roll-fed. The value of this flag may affect the matching criteria
+				used for the <b>PageSize</b> page device parameter (see the
 				description of <b>PageSize</b> in Table 6.4 on page 414).
 			</td>
 		</tr>
 		<tr>
 			<th id="Orientation">Orientation</th>
 			<td>integer</td>
-			<td>A code specifying the orientation of the page
-				image on the medium. (The <b>PageSize</b> page device parameter may
-				not determine this orientation unambiguously, since pages on a
-				roll-fed medium have no inherent orientation.)
+			<td>A code specifying the orientation of the page image on the
+				medium. (The <b>PageSize</b> page device parameter may not determine
+				this orientation unambiguously, since pages on a roll-fed medium
+				have no inherent orientation.)
 				<ol start="0">
 					<li>Use normal default orientation as specified by <b>PageSize</b>.
 					</li>
@@ -45,23 +45,26 @@
 		<tr>
 			<th id="AdvanceMedia">AdvanceMedia</th>
 			<td>integer</td>
-			<td>A code indicating whether and when to advance
-				the medium by an extra amount (specified by AdvanceDistance) in
-				addition to the space occupied by the page images themselves:
+			<td>A code indicating whether and when to advance the medium by
+				an extra amount (specified by AdvanceDistance) in addition to the
+				space occupied by the page images themselves:
 				<ol start="0">
 					<li>Do not advance the medium.</li>
 					<li>Advance the medium at device deactivation.</li>
 					<li>Advance the medium at the end of the job. Advancing
 						between jobs is controlled by the value of <b>AdvanceMedia</b> for
 						the page device that is current between jobs. Thus, this feature
-						can be turned on or off only by executing <b>setpagedevice</b> as
-						part of an unencapsulated job.
+						can be turned on or off only by executing <a
+						href="../../8/2/s/setpagedevice.html">setpagedevice</a> as part of
+						an unencapsulated job.
 					</li>
 					<li>Advance the medium after each page set, as defined by the
-						<b>Collate</b> parameter (see Section 6.2.4, "Page Delivery").
+						<b>Collate</b> parameter (see Section <a href="4.html">6.2.4,
+							"Page Delivery"</a>).
 					</li>
-					<li>Advance the medium after each <b>showpage</b> or <b>copypage</b>
-						operation.
+					<li>Advance the medium after each <a
+						href="../../8/2/s/showpage.html">showpage</a> or <a
+						href="../../8/2/c/copypage.html">copypage</a> operation.
 					</li>
 				</ol>
 			</td>
@@ -69,9 +72,8 @@
 		<tr>
 			<th id="AdvanceDistance">AdvanceDistance</th>
 			<td>integer</td>
-			<td>The extra distance, in units of the default
-				user space (72nds of an inch), by which to advance the medium as
-				indicated by <b>AdvanceMedia</b>.
+			<td>The extra distance, in units of the default user space
+				(72nds of an inch), by which to advance the medium as indicated by <b>AdvanceMedia</b>.
 			</td>
 		</tr>
 		<tr>
@@ -84,14 +86,15 @@
 					<li>Cut the medium at the end of the job. Cutting between jobs
 						is controlled by the value of <b>CutMedia</b> for the page device
 						that is current between jobs. Thus, this feature can be turned on
-						or off only by executing <b>setpagedevice</b> as part of an
-						unencapsulated job.
+						or off only by executing <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+						as part of an unencapsulated job.
 					</li>
 					<li>Cut the medium after each page set, as defined by the <b>Collate</b>
 						parameter (see Section 6.2.4, "Page Delivery").
 					</li>
-					<li>Cut the medium after each <b>showpage</b> or <b>copypage</b>
-						operation.
+					<li>Cut the medium after each <a
+						href="../../8/2/s/showpage.html">showpage</a> or <a
+						href="../../8/2/c/copypage.html">copypage</a> operation.
 					</li>
 				</ol>
 			</td>

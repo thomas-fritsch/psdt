@@ -17,11 +17,14 @@
 		<tr>
 			<th id="Install">Install</th>
 			<td>procedure</td>
-			<td>A procedure to install parameter values in the
-				graphics state during each invocation of <b>setpagedevice</b>. <b>setpagedevice</b>
-				calls this procedure after setting up the device and installing it
-				as the current device in the graphics state, but before invoking <b>erasepage</b>
-				and <b>initgraphics</b>.
+			<td>A procedure to install parameter values in the graphics
+				state during each invocation of <a
+				href="../../8/2/s/setpagedevice.html">setpagedevice</a>. <a
+				href="../../8/2/s/setpagedevice.html">setpagedevice</a> calls this
+				procedure after setting up the device and installing it as the
+				current device in the graphics state, but before invoking <a
+				href="../../8/2/e/erasepage.html">erasepage</a> and <a
+				href="../../8/2/i/initgraphics.html">initgraphics</a>.
 				<p>
 					The <b>Install</b> procedure should not do anything besides alter
 					parameters in the graphics state. In general, it can usefully alter
@@ -32,33 +35,38 @@
 				</p>
 				<p>
 					In a device that supports in-RIP trapping (see Section 6.3, "In-RIP
-					Trapping"), the <b>Install</b> procedure can invoke <b>settrapzone</b>
-					to establish default trapping zones to be reestablished at the
-					beginning of each page.
+					Trapping"), the <b>Install</b> procedure can invoke <a
+						href="../../8/2/s/settrapzone.html">settrapzone</a> to establish
+					default trapping zones to be reestablished at the beginning of each
+					page.
 				</p>
 			</td>
 		</tr>
 		<tr>
 			<th id="BeginPage">BeginPage</th>
 			<td>procedure</td>
-			<td>A procedure to be executed at the beginning of
-				each page. Before calling the procedure, the interpreter initializes
-				the graphics state, erases the current page if appropriate, and
-				pushes an integer on the operand stack indicating how many times <b>showpage</b>
-				has been invoked since the current device was activated.
+			<td>A procedure to be executed at the beginning of each page.
+				Before calling the procedure, the interpreter initializes the
+				graphics state, erases the current page if appropriate, and pushes
+				an integer on the operand stack indicating how many times <a
+				href="../../8/2/s/showpage.html">showpage</a> has been invoked since
+				the current device was activated.
 			</td>
 		</tr>
 		<tr>
 			<th id="EndPage">EndPage</th>
 			<td>procedure</td>
-			<td>A procedure to be executed at the end of each
-				page. Before calling the procedure, the interpreter pushes two
-				integers on the operand stack&mdash;a count of previous <b>showpage</b>
-				executions for this device and a reason code indicating the
-				circumstances under which this call is being made:
+			<td>A procedure to be executed at the end of each page. Before
+				calling the procedure, the interpreter pushes two integers on the
+				operand stack&mdash;a count of previous <a
+				href="../../8/2/s/showpage.html">showpage</a> executions for this
+				device and a reason code indicating the circumstances under which
+				this call is being made:
 				<ol start="0">
-					<li>During <b>showpage</b> or <i>(LanguageLevel 3)</i> <b>copypage</b></li>
-					<li>During <b>copypage</b> <i>(LanguageLevel 2 only)</i>
+					<li>During <a href="../../8/2/s/showpage.html">showpage</a> or
+						<i>(LanguageLevel 3)</i> <a href="../../8/2/c/copyimage.html">copypage</a></li>
+					<li>During <a href="../../8/2/c/copyimage.html">copypage</a> <i>(LanguageLevel
+							2 only)</i>
 					</li>
 					<li>At device deactivation</li>
 				</ol>

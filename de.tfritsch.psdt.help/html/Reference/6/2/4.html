@@ -17,10 +17,10 @@
 		<tr>
 			<th id="OutputDevice">OutputDevice</th>
 			<td>name or string</td>
-			<td><i>(LanguageLevel 3)</i> The name of the output
-				device for which this page description is destined. The name should
-				match that of an instance of the <b>OutputDevice</b> resource
-				category (see Section 6.4, "Output Device Dictionary"). In
+			<td><i>(LanguageLevel 3)</i> The name of the output device for
+				which this page description is destined. The name should match that
+				of an instance of the <b>OutputDevice</b> resource category (see
+				Section <a href="../4.html">6.4, "Output Device Dictionary"</a>). In
 				environments in which the PostScript interpreter can generate output
 				for multiple page devices, this parameter can be used to select
 				between devices of different types (such as a printer and an
@@ -28,7 +28,8 @@
 				imagesetters). In an interpreter that supports only a single page
 				device, the <b>OutputDevice</b> parameter is typically absent.
 				<p>
-					When a request dictionary passed to <b>setpagedevice</b> changes
+					When a request dictionary passed to <a
+						href="../../8/2/s/setpagedevice.html">setpagedevice</a> changes
 					the value of <b>OutputDevice</b>, all other page device parameters
 					not explicitly specified in the request dictionary are
 					reinitialized to default values specific to the new device, rather
@@ -40,36 +41,36 @@
 		<tr>
 			<th id="OutputType">OutputType</th>
 			<td>string or null</td>
-			<td>An arbitrary string representing special
-				attributes of the output destination, analogous to the <b>MediaType</b>
-				parameter for input (see Table 6.2 on page 400). If not null, this
-				parameter is used in conjunction with <b>OutputAttributes</b> to
-				select an appropriate output destination.
+			<td>An arbitrary string representing special attributes of the
+				output destination, analogous to the <b>MediaType</b> parameter for
+				input (see Table 6.2 on page 400). If not null, this parameter is
+				used in conjunction with <b>OutputAttributes</b> to select an
+				appropriate output destination.
 			</td>
 		</tr>
 		<tr>
 			<th id="NumCopies">NumCopies</th>
 			<td>integer or null</td>
-			<td>The number of copies to produce, either of each
-				page individually or of the document as a whole, depending on the
-				value of the <b>Collate</b> parameter (see below). A null value
-				indicates that the interpreter should consult the value associated
-				with the name <b>#copies</b> in the current dictionary stack each
-				time a page is printed (by <b>showpage</b>, <b>copypage</b>, or
-				device deactivation); this is compatible with the LanguageLevel 1
+			<td>The number of copies to produce, either of each page
+				individually or of the document as a whole, depending on the value
+				of the <b>Collate</b> parameter (see below). A null value indicates
+				that the interpreter should consult the value associated with the
+				name <b>#copies</b> in the current dictionary stack each time a page
+				is printed (by <a href="../../8/2/s/showpage.html">showpage</a>, <a
+				href="../../8/2/c/copypage.html">copypage</a>, or device
+				deactivation); this is compatible with the LanguageLevel 1
 				convention.
 			</td>
 		</tr>
 		<tr>
 			<th id="Collate">Collate</th>
 			<td>boolean</td>
-			<td>A flag specifying how the output is to be
-				organized when multiple copies are requested (via <b>NumCopies</b>
-				or <b>#copies</b>) for a multiple-page document. Output consists of
-				page sets that are delivered together. If <b>Collate</b> is true, a
-				page set consists of one copy of all pages of the document; if it is
-				false, a page set consists of all copies of one page of the
-				document.
+			<td>A flag specifying how the output is to be organized when
+				multiple copies are requested (via <b>NumCopies</b> or <b>#copies</b>)
+				for a multiple-page document. Output consists of page sets that are
+				delivered together. If <b>Collate</b> is true, a page set consists
+				of one copy of all pages of the document; if it is false, a page set
+				consists of all copies of one page of the document.
 				<p>
 					If the <b>Collate</b> flag is true, the exact manner in which
 					collation is performed is device-dependent. If the device has a
@@ -85,9 +86,10 @@
 					that do support it.
 				</p>
 				<p>
-					A collated page set can span multiple invocations of <b>setpagedevice</b>
-					within a single job, as long as the requested number of copies does
-					not change and the device is physically capable of delivering the
+					A collated page set can span multiple invocations of <a
+						href="../../8/2/s/setpagedevice.html">setpagedevice</a> within a
+					single job, as long as the requested number of copies does not
+					change and the device is physically capable of delivering the
 					output in collated form. If this is not possible, the document is
 					broken into sections determined by the device's collating capacity;
 					pages are collated only within each section.
@@ -97,16 +99,16 @@
 		<tr>
 			<th id="Jog">Jog</th>
 			<td>integer</td>
-			<td>A code specifying when output pages should be
-				"jogged" (physically shifted in the output tray):
+			<td>A code specifying when output pages should be "jogged"
+				(physically shifted in the output tray):
 				<ol start="0">
 					<li>Do not jog pages at all.</li>
 					<li>Jog at device deactivation.</li>
 					<li>Jog at the end of the job. Jogging between jobs is
 						controlled by the value of <b>Jog</b> for the page device that is
 						current between jobs. Thus, this feature can be turned on or off
-						only by executing <b>setpagedevice</b> as part of an
-						unencapsulated job.
+						only by executing <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+						as part of an unencapsulated job.
 					</li>
 					<li>Jog after each page set (as defined by the <b>Collate</b>
 						parameter).
@@ -117,14 +119,14 @@
 		<tr>
 			<th id="OutputFaceUp">OutputFaceUp</th>
 			<td>boolean</td>
-			<td>A flag specifying the order in which pages are
-				stacked in the output tray. If this flag is true, pages are stacked
-				with the back side of each page placed against the front of the
-				previous page; the resulting stack is thus ordered backwards from
-				normal reading order. If the flag is false, the pages are stacked
-				with the front side of each page placed against the back of the
-				previous page; this places the pages in correct reading order. These
-				are the effects usually produced by face-up and face-down stackers,
+			<td>A flag specifying the order in which pages are stacked in
+				the output tray. If this flag is true, pages are stacked with the
+				back side of each page placed against the front of the previous
+				page; the resulting stack is thus ordered backwards from normal
+				reading order. If the flag is false, the pages are stacked with the
+				front side of each page placed against the back of the previous
+				page; this places the pages in correct reading order. These are the
+				effects usually produced by face-up and face-down stackers,
 				respectively; however, the name <b>OutputFaceUp</b> is a misnomer,
 				since the parameter actually indicates stacking order rather than
 				orientation. Most devices support only one or the other of these two
@@ -136,20 +138,20 @@
 		<tr>
 			<th id="OutputAttributes">OutputAttributes</th>
 			<td>dictionary</td>
-			<td>A dictionary specifying the attributes of all
-				media destinations currently available for use by this output
-				device. The dictionary contains an entry for each available
-				destination—for example, each output paper tray on a printer. The
-				key for each entry is an arbitrary integer position number; the
-				value is a subdictionary describing the attributes of that
-				destination. Each such subdictionary must include an <b>OutputType</b>
-				entry, with the same meaning as the corresponding page device
-				parameter described in this table. Two other optional entries, <b>Priority</b>
-				and <b>MatchAll</b>, control details of the matching algorithm in a
-				way analogous to the corresponding entries in an <b>InputAttributes</b>
-				subdictionary; see “Matching Requests with Attributes” on page 403
-				for more information. The cumulative merging convention and the
-				interaction with deferred media selection are also the same as for
+			<td>A dictionary specifying the attributes of all media
+				destinations currently available for use by this output device. The
+				dictionary contains an entry for each available destination—for
+				example, each output paper tray on a printer. The key for each entry
+				is an arbitrary integer position number; the value is a
+				subdictionary describing the attributes of that destination. Each
+				such subdictionary must include an <b>OutputType</b> entry, with the
+				same meaning as the corresponding page device parameter described in
+				this table. Two other optional entries, <b>Priority</b> and <b>MatchAll</b>,
+				control details of the matching algorithm in a way analogous to the
+				corresponding entries in an <b>InputAttributes</b> subdictionary;
+				see “Matching Requests with Attributes” on page 403 for more
+				information. The cumulative merging convention and the interaction
+				with deferred media selection are also the same as for
 				InputAttributes.
 			</td>
 		</tr>
