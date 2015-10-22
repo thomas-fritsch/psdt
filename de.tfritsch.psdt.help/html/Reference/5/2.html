@@ -12,9 +12,11 @@
 		of a font dictionary are optional and userdefinable, while other
 		entries must be present and have the correct semantics in order for
 		the PostScript interpreter’s font machinery to operate properly.</p>
-	<p>In addition to fonts, LanguageLevel 3 supports two classes of
+	<p>
+		In addition to fonts, LanguageLevel 3 supports two classes of
 		font-related objects, called CIDFonts and CMaps, described in Section
-		5.11, "CID-Keyed Fonts."</p>
+		<a href="11.html">5.11, "CID-Keyed Fonts."</a>
+	</p>
 	<p>
 		There are several kinds of fonts, distinguished by the <b>FontType</b>
 		entry in the font dictionary. Each type of font has its own
@@ -31,8 +33,8 @@
 		<tr>
 			<td>Type 0</td>
 			<td><i>(LanguageLevel 2)</i> A composite font&mdash;a font
-				composed of other fonts, organized hierarchically. See Section 5.10,
-				"Composite Fonts."</td>
+				composed of other fonts, organized hierarchically. See Section <a
+				href="10.html">5.10, "Composite Fonts."</a></td>
 		</tr>
 		<tr>
 			<td>Type 1</td>
@@ -51,100 +53,119 @@
 		<tr>
 			<td>Type 2</td>
 			<td><i>(LanguageLevel 3)</i> A Compact Font Format (CFF) font.
-				See Section 5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)."</td>
+				See Section <a href="8/1.html">5.8.1, "Type 2 and Type 14 Fonts
+					(CFF and Chameleon)."</a></td>
 		</tr>
 		<tr>
 			<td>Type 3</td>
 			<td>A font that defines glyphs with ordinary PostScript
 				procedures, which are the values of entries named <b>BuildGlyph</b>
-				or <b>BuildChar</b> in the font dictionary. See Section 5.7, "Type 3
-				Fonts."
+				or <b>BuildChar</b> in the font dictionary. See Section <a
+				href="7.html">5.7, "Type 3 Fonts."</a>
 			</td>
 		</tr>
 		<tr>
 			<td>Type 9, 10, 11, 32</td>
 			<td><i>(LanguageLevel 3)</i> These <b>FontType</b> values
 				identify a class of fontlike objects, called CIDFonts, that can be
-				used as descendants in CIDkeyed fonts. See Section 5.11, "CID-Keyed
-				Fonts." CIDFonts have their own type numbering, specified by a
-				separate <b>CIDFontType</b> entry; a Type 0 font and a Type 0
-				CIDFont are entirely different kinds of objects. CIDFonts are not
-				considered to be base fonts.</td>
+				used as descendants in CIDkeyed fonts. See Section <a href="11.html">5.11,
+					"CID-Keyed Fonts."</a> CIDFonts have their own type numbering,
+				specified by a separate <b>CIDFontType</b> entry; a Type 0 font and
+				a Type 0 CIDFont are entirely different kinds of objects. CIDFonts
+				are not considered to be base fonts.</td>
 		</tr>
 		<tr>
 			<td>Type 14</td>
-			<td><i>(LanguageLevel 3)</i> A Chameleon font. See Section
-				5.8.1, "Type 2 and Type 14 Fonts (CFF and Chameleon)."</td>
+			<td><i>(LanguageLevel 3)</i> A Chameleon font. See Section <a
+				href="8/1.html">5.8.1, "Type 2 and Type 14 Fonts (CFF and
+					Chameleon)."</a></td>
 		</tr>
 		<tr>
 			<td>Type 42</td>
 			<td><i>(LanguageLevel 3)</i> A font based on the TrueType font
-				format. See Section 5.8.2, "Type 42 Fonts (TrueType)."</td>
+				format. See Section <a href="8/2.html">5.8.2, "Type 42 Fonts
+					(TrueType)."</a></td>
 		</tr>
 	</table>
 	<p>Some products support proprietary font types in addition to the
 		standard ones built into the PostScript language. These
 		product-specific font types are not described in this book, but rather
 		in the manufacturer’s documentation for individual products.</p>
-	<p>As stated earlier, most fonts (and related objects, such as
-		CIDFonts and CMaps) originate as programs contained in files that
-		conform to an external specification, such as Adobe Type 1 Font
-		Format. There are two main ways in which such a font program can be
-		introduced into a PostScript interpreter, causing a font dictionary to
-		be created in virtual memory:</p>
+	<p>
+		As stated earlier, most fonts (and related objects, such as CIDFonts
+		and CMaps) originate as programs contained in files that conform to an
+		external specification, such as <a
+			href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
+			Type 1 Font Format</a>. There are two main ways in which such a font
+		program can be introduced into a PostScript interpreter, causing a
+		font dictionary to be created in virtual memory:
+	</p>
 	<ul>
-		<li>Execution of the <b>findfont</b> operator causes the
-			interpreter to locate a font file in external storage and to load its
-			definition into VM on demand.
+		<li>Execution of the <a href="../8/2/f/findfont.html">findfont</a>
+			operator causes the interpreter to locate a font file in external
+			storage and to load its definition into VM on demand.
 		</li>
 		<li>The PostScript program defines the font explicitly, by
 			including a copy of the font file embedded directly within the job.
 			(To facilitate document management, a PostScript program containing
 			an embedded font program should use appropriate document structuring
-			comments; see Adobe Technical Note #5001, PostScript Language
-			Document Structuring Conventions Specification.)</li>
+			comments; see Adobe Technical Note #5001, <a
+			href="https://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf">PostScript
+				Language Document Structuring Conventions Specification</a>.)
+		</li>
 	</ul>
 	<p>
 		In either case, the PostScript interpreter executes the font program.
 		For some font types, a font program consists entirely of ordinary
-		operators, such as <b>dict</b>, <b>begin</b>, <b>end</b>, and <b>def</b>,
-		that construct the font dictionary directly. For other font types, a
-		font program invokes a special-purpose operator, such as <b>StartData</b>,
-		that interprets binary-encoded font data appearing in-line and
-		constructs a font dictionary using material extracted from that data.
+		operators, such as <a href="../8/2/d/dict.html">dict</a>, <a
+			href="../8/2/b/begin.html">begin</a>, <a href="../8/2/e/end.html">end</a>,
+		and <a href="../8/2/d/def.html">def</a>, that construct the font
+		dictionary directly. For other font types, a font program invokes a
+		special-purpose operator, such as <b>StartData</b>, that interprets
+		binary-encoded font data appearing in-line and constructs a font
+		dictionary using material extracted from that data.
 	</p>
 	<p>
 		The font program makes the new font dictionary known to the
-		interpreter by executing the <b>definefont</b> operator. <b>definefont</b>
-		takes a name and a dictionary, checks that the dictionary is a
-		well-formed font dictionary, makes the dictionary's access read-only,
-		and associates the font name with the dictionary in the font
-		directory. It performs additional modifications that are documented in
-		the <b>definefont</b> operator description in Chapter 8. Successful
-		execution of <b>definefont</b> makes the font dictionary valid for use
-		by other font operators (an <b>invalidfont</b> error will occur
+		interpreter by executing the <a href="../8/2/d/definefont.html">definefont</a>
+		operator. <a href="../8/2/d/definefont.html">definefont</a> takes a
+		name and a dictionary, checks that the dictionary is a well-formed
+		font dictionary, makes the dictionary's access read-only, and
+		associates the font name with the dictionary in the font directory. It
+		performs additional modifications that are documented in the <a
+			href="../8/2/d/definefont.html">definefont</a> operator description
+		in Chapter 8. Successful execution of <a
+			href="../8/2/d/definefont.html">definefont</a> makes the font
+		dictionary valid for use by other font operators (an <a
+			href="../8/2/i/invalidfont.html">invalidfont</a> error will occur
 		otherwise).
 	</p>
 	<p>
-		The operator <b>undefinefont</b> <i>(LanguageLevel 2)</i> removes a
-		named font from the font directory. A font dictionary that has been
-		removed in this fashion is still a valid font (assuming it is still
-		accessible), but it can no longer be returned by <b>findfont</b>.
+		The operator <a href="../8/2/u/undefinefont.html">undefinefont</a> <i>(LanguageLevel
+			2)</i> removes a named font from the font directory. A font dictionary
+		that has been removed in this fashion is still a valid font (assuming
+		it is still accessible), but it can no longer be returned by <a
+			href="../8/2/f/findfont.html">findfont</a>.
 	</p>
 	<p>
 		In LanguageLevels 2 and 3, fonts are actually a special case of named
-		resources: a font is an instance of the Font resource category. The <b>findfont</b>,
-		<b>definefont</b>, and <b>undefinefont</b> operators are merely
-		conveniences for invoking <b>findresource</b>, <b>defineresource</b>,
-		and <b>undefineresource</b>. Other classes of font-related objects,
-		CIDFonts and CMaps, are ordinarily defined as instances of separate
-		resource categories, not the <b>Font</b> category (however, a CIDFont
-		can be an instance of the <b>Font</b> category). Like fonts, these
-		objects become valid as a side effect of successful execution of <b>defineresource</b>.
+		resources: a font is an instance of the <b>Font</b> resource category.
+		The <a href="../8/2/f/findfont.html">findfont</a>, <a
+			href="../8/2/d/definefont.html">definefont</a>, and <a
+			href="../8/2/u/undefinefont.html">undefinefont</a> operators are
+		merely conveniences for invoking <a href="../8/2/f/findresource.html">findresource</a>,
+		<a href="../8/2/d/defineresource.html">defineresource</a>, and <a
+			href="../8/2/u/undefineresource.html">undefineresource</a>. Other
+		classes of font-related objects, CIDFonts and CMaps, are ordinarily
+		defined as instances of separate resource categories, not the <b>Font</b>
+		category (however, a CIDFont can be an instance of the <b>Font</b>
+		category). Like fonts, these objects become valid as a side effect of
+		successful execution of <a href="../8/2/d/defineresource.html">defineresource</a>.
 	</p>
 	<p>
 		A font dictionary can reside in either local or global VM. See Section
-		3.9, "Named Resources," and the description of the <b>defineresource</b>
+		<a href="../3/9.html">3.9, "Named Resources,"</a> and the description
+		of the <a href="../8/2/d/defineresource.html">defineresource</a>
 		operator for complete information on how resource instances are named
 		and are loaded into VM.
 	</p>
