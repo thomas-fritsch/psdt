@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data Types and Objects</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>3.3 Data Types and Objects</h2>
+	<p>
+		All data accessible to PostScript programs, including procedures that
+		are part of the programs themselves, exists in the form of <i>objects</i>.
+		Objects are produced, manipulated, and consumed by the PostScript
+		operators. They are also created by the scanner and executed by the
+		interpreter.
+	</p>
+	<p>
+		Each object has a <i>type</i>, some <i>attributes</i>, and a <i>value</i>.
+		Objects contain their own dynamic types; that is, an object's type is
+		a property of the object itself, not of where it is stored or what it
+		is called. Table 3.2 lists all the object types supported by the
+		PostScript language. Extensions to the language may introduce
+		additional object types. The distinction between simple and composite
+		objects is explained below.
+	</p>
+	<table>
+		<caption>TABLE 3.2 Types of objects</caption>
+		<tr>
+			<th>Simple objects</th>
+			<th>Composite objects</th>
+		</tr>
+		<tr>
+			<td>boolean<br />fontID<br />mark<br />name<br />null<br />operator<br />real
+			</td>
+			<td>array<br />dictionary<br />file<br />gstate <i>(LanguageLevel
+					2)</i><br />packedarray <i>(LanguageLevel 2)</i><br />save<br />string
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

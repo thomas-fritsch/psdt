@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Operator Objects</title>
+</head>
+<body>
+	<h3>3.3.10 Operator Objects</h3>
+	<p>
+		An <i>operator</i> object represents one of the PostScript language's
+		built-in actions. When the object is executed, its built-in action is
+		invoked. Much of this book is devoted to describing the semantics of
+		the various operators.
+	</p>
+	<p>
+		Operators have names. Most operators are associated with names in <a
+			href="../../8/2/s/systemdict.html">systemdict</a>: the names are the
+		keys and the operators are the associated values. When the interpreter
+		executes one of these names, it looks up the name in the context of
+		the dictionary stack. Unless the name has been defined in some
+		dictionary higher on the dictionary stack, the interpreter finds its
+		definition in <a href="../../8/2/s/systemdict.html">systemdict</a>,
+		fetches the associated value (the operator object itself), and
+		executes it.
+	</p>
+	<p>
+		All standard operators are defined in <a
+			href="../../8/2/s/systemdict.html">systemdict</a>. However, an
+		application that tests whether an operator is defined should not use
+		the <a href="../../8/2/k/known.html">known</a> operator to determine
+		whether the operator is in <a href="../../8/2/s/systemdict.html">systemdict</a>;
+		it should instead use the <a href="../../8/2/w/where.html">where</a>
+		operator to check all dictionaries on the dictionary stack. Using <a
+			href="../../8/2/w/where.html">where</a> enables proper handling of
+		operator emulations (see Appendix D).
+	</p>
+	<p>
+		<i><b>Note:</b> There are some special internal PostScript
+			operators whose names begin with an at sign (@). These operators are
+			not officially part of the PostScript language and are not defined in
+			<a href="../../8/2/s/systemdict.html">systemdict</a>. They may appear
+			as an "offending command" in error messages. </i>
+	</p>
+	<p>
+		There is nothing special about an operator name, such as <a
+			href="../../8/2/a/add.html">add</a>, that distinguishes it as an
+		operator. Rather, the name <a href="../../8/2/a/add.html">add</a> is
+		associated in <a href="../../8/2/s/systemdict.html">systemdict</a>
+		with the operator for performing addition, and execution of the
+		operator causes the addition to occur. Thus the name <a
+			href="../../8/2/a/add.html">add</a> is not a “reserved word,” as it
+		might be in other programming languages. Its meaning can be changed by
+		a PostScript program.
+	</p>
+	<p>
+		Throughout this book, the notation <a href="../../8/2/a/add.html">add</a>
+		means “the operator object associated with the name <a
+			href="../../8/2/a/add.html">add</a> in <a
+			href="../../8/2/s/systemdict.html">systemdict</a>” or, occasionally,
+		in some other dictionary.
+	</p>
+</body>
+</html>

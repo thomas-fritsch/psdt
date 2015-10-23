@@ -20,6 +20,26 @@
 				<topic label="Dictionaries" href="html/Reference/3/2/2.html#7" />
 			</topic>
 		</topic>
+		<topic label="3.3 Data Types and Objects" href="html/Reference/3/3.html">
+			<topic label="3.3.1 Simple and Composite Objects" href="html/Reference/3/3/1.html" />
+			<topic label="3.3.2 Attributes of Objects" href="html/Reference/3/3/2.html">
+				<topic label="Literal and Executable" href="html/Reference/3/3/2.html#1" />
+				<topic label="Access" href="html/Reference/3/3/2.html#2" />
+			</topic>
+			<topic label="3.3.3 Integer and Real Objects" href="html/Reference/3/3/3.html" />
+			<topic label="3.3.4 Boolean Objects" href="html/Reference/3/3/4.html" />
+			<topic label="3.3.5 Array Objects" href="html/Reference/3/3/5.html" />
+			<topic label="3.3.6 Packed Array Objects" href="html/Reference/3/3/6.html" />
+			<topic label="3.3.7 String Objects" href="html/Reference/3/3/7.html" />
+			<topic label="3.3.8 Name Objects" href="html/Reference/3/3/8.html" />
+			<topic label="3.3.9 Dictionary Objects" href="html/Reference/3/3/9.html" />
+			<topic label="3.3.10 Operator Objects" href="html/Reference/3/3/10.html" />
+			<topic label="3.3.11 File Objects" href="html/Reference/3/3/11.html" />
+			<topic label="3.3.12 Mark Objects" href="html/Reference/3/3/12.html" />
+			<topic label="3.3.13 Null Objects" href="html/Reference/3/3/13.html" />
+			<topic label="3.3.14 Save Objects" href="html/Reference/3/3/14.html" />
+			<topic label="3.3.15 Other Types" href="html/Reference/3/3/15.html" />
+		</topic>
 		<topic label="3.4 Stacks" href="html/Reference/3/4.html" />
 		<topic label="3.9 Named Resources" href="html/Reference/3/9.html">
 			<topic label="3.9.1 Resource Operators" href="html/Reference/3/9/1.html" />

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>File Objects</title>
+</head>
+<body>
+	<h3>3.3.11 File Objects</h3>
+	<p>
+		A <i>file</i> is a readable or writeable stream of characters
+		transferred between the Post- Script interpreter and its environment.
+		The characters in a file may be stored permanently&mdash; in a disk
+		file, for instance&mdash;or may be generated dynamically and
+		transferred via a communication channel.
+	</p>
+	<p>
+		A <i>file object</i> represents a file. There are operators to open a
+		file and create a file object for it. Other operators access an open
+		file to read, write, and process characters in various ways&mdash;as
+		strings, as PostScript tokens, as binary data represented in
+		hexadecimal, and so on.
+	</p>
+	<p>Standard input and output files are always available to a
+		PostScript program. The standard input file is the usual source of
+		programs to be interpreted; the standard output file is the usual
+		destination of such things as error and status messages.</p>
+	<p>Although a file object does not have components visible at the
+		PostScript language level, it is composite in the sense that all
+		copies of a file object share the same underlying file as their value.
+		If a file operator has a side effect on the underlying file, such as
+		closing it or changing the current position in the stream, all file
+		objects sharing the file are affected.</p>
+	<p>
+		The properties of files and the operations on them are described in
+		more detail in Section <a href="../8.html">3.8, "File Input and
+			Output."</a>
+	</p>
+</body>
+</html>

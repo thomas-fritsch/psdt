@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple and Composite Objects</title>
+</head>
+<body>
+	<h3>3.3.1 Simple and Composite Objects</h3>
+	<p>Objects of most types are simple, atomic entities. An atomic
+		object is always constant&mdash; a 2 is always a 2. There is no
+		visible substructure in the object; the type, attributes, and value
+		are irrevocably bound together and cannot be changed.</p>
+	<p>
+		However, objects of certain types indicated in Table 3.2 are <i>composite</i>.
+		Their values are separate from the objects themselves; for some types
+		of composite object, the values have internal substructure that is
+		visible and can sometimes be modified selectively. The details of the
+		substructures are presented later in the descriptions of these
+		individual types.
+	</p>
+	<p>
+		An important distinction between simple and composite objects is the
+		behavior of operations that <i>copy</i> objects. <i>Copy</i> refers to
+		any operation that transfers the contents of an object from one place
+		to another in the memory of the PostScript interpreter. "Fetching" and
+		"storing" objects are copying operations. It is possible to derive a
+		new object by copying an existing one, perhaps with modifications.
+	</p>
+	<p>
+		When a simple object is copied, all of its parts (type, attributes,
+		and value) are copied together. When a composite object is copied, the
+		value is not copied; instead, the original and copy objects <i>share</i>
+		the same value. Consequently, any changes made to the substructure of
+		one object’s value also appear as part of the other object's value.
+	</p>
+	<p>The sharing of composite objects' values in the PostScript
+		language corresponds to the use of pointers in system programming
+		languages such as C and Pascal. Indeed, the PostScript interpreter
+		uses pointers to implement shared values: a composite object contains
+		a pointer to its value. However, the PostScript language does not have
+		any explicit notion of a pointer. It is better to think in terms of
+		the copying and sharing notions presented here.</p>
+	<p>
+		The values of simple objects are contained in the objects themselves.
+		The values of composite objects reside in a special region of memory
+		called <i>virtual memory</i> or <i>VM</i>. Section <a href="../7.html">3.7,
+			"Memory Management,"</a> describes the behavior of VM.
+	</p>
+</body>
+</html>

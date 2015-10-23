@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Attributes of Objects</title>
+</head>
+<body>
+	<h3>3.3.2 Attributes of Objects</h3>
+	<p>
+		In addition to type and value, each object has one or more <i>attributes</i>.
+		These attributes affect the behavior of the object when it is executed
+		or when certain operations are performed on it. They do not affect its
+		behavior when it is treated strictly as data; so, for example, two
+		integers with the same value are considered "equal" even if their
+		attributes differ.
+	</p>
+	<h4 id="1">Literal and Executable</h4>
+	<p>
+		Every object is either <i>literal</i> or <i>executable</i>. This
+		distinction comes into play when the interpreter attempts to execute
+		the object.
+	</p>
+	<ul>
+		<li>If the object is <i>literal</i>, the interpreter treats it
+			strictly as data and pushes it on the operand stack for use as an
+			operand of some subsequent operator.
+		</li>
+		<li>If the object is <i>executable</i>, the interpreter executes
+			it.
+		</li>
+	</ul>
+	<p>
+		What it means to execute an object depends on the object's type; this
+		is described in Section <a href="../5.html">3.5, "Execution."</a> For
+		some object types, such as integers, execution consists of pushing the
+		object on the operand stack; the distinction between literal and
+		executable integers is meaningless. But for other types, such as
+		names, operators, and arrays, execution consists of performing a
+		different action.
+	</p>
+	<ul>
+		<li>Executing an <i>executable name</i> causes it to be looked up
+			in the current dictionary context and the associated value to be
+			executed.
+		</li>
+		<li>Executing an <i>executable operator</i> causes some built-in
+			action to be performed.
+		</li>
+		<li>Executing an <i>executable array</i> (otherwise known as a
+			procedure) causes the elements of the array to be executed in turn.
+		</li>
+	</ul>
+	<p>
+		As described in Section <a href="../2.html">3.2, "Syntax,"</a> some
+		tokens produce literal objects and some produce executable ones.
+	</p>
+	<ul>
+		<li>Integer, real, and string constants are always literal
+			objects.</li>
+		<li>Names are literal if they are preceded by / and executable if
+			they are not.</li>
+		<li>The [ and ] operators, when executed, produce a literal array
+			object with the enclosed objects as elements. Likewise, &lt;&lt; and
+			&gt;&gt; <i>(LanguageLevel 2)</i> produce a literal dictionary
+			object.
+		</li>
+		<li>{ and } enclose an executable array or procedure.</li>
+	</ul>
+	<p>
+		<i><b>Note:</b> As mentioned above, it does not matter whether an
+			object is literal or executable when it is accessed as data, only
+			when it is executed. However, referring to an executable object by
+			name often causes that object to be executed automatically; see
+			Section <a href="../5/5.html">3.5.5, "Execution of Specific
+				Types."</a> To avoid unintended behavior, it is best to use the
+			executable attribute only for objects that are meant to be executed,
+			such as procedures.</i>
+	</p>
+	<h4 id="2">Access</h4>
+	<p>The other attribute of an object is its access. Only composite
+		objects have access attributes, which restrict the set of operations
+		that can be performed on the object's value.</p>
+	<ol>
+		<li><i>Unlimited.</i> Normally, objects have unlimited access:
+			all operations defined for that object are allowed. However, packed
+			array objects always have read-only (or even more restricted) access.</li>
+		<li><i>Read-only.</i> An object with read-only access may not
+			have its value written, but may still be read or executed.</li>
+		<li><i>Execute-only.</i> An object with execute-only access may
+			not have its value either read or written, but may still be executed
+			by the PostScript interpreter.</li>
+		<li><i>None.</i> An object with no access may not be operated on
+			in any way by a PostScript program. Such objects are not of any
+			direct use to PostScript programs, but serve internal purposes that
+			are not documented in this book.</li>
+	</ol>
+	<p>The literal/executable distinction and the access attribute are
+		entirely independent, although there are combinations that are not of
+		any practical use (for example, a literal array that is execute-only).</p>
+	<p>
+		With one exception, attributes are properties of an <i>object</i>
+		itself and not of its <i>value</i>. Two composite objects can share
+		the same value but have different literal/executable or access
+		attributes. The exception is the dictionary type: a dictionary's
+		access attribute is a property of the value, so multiple dictionary
+		objects sharing the same value have the same access attribute.
+	</p>
+</body>
+</html>

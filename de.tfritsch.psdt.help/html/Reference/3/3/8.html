@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Name Objects</title>
+</head>
+<body>
+	<h3>3.3.8 Name Objects</h3>
+	<p>
+		A <i>name</i> is an atomic symbol uniquely defined by a sequence of
+		characters. Names serve the same purpose as "identifiers" in other
+		programming languages: as tags for variables, procedures, and so on.
+		However, PostScript names are not just language artifacts, but are
+		first-class data objects, similar to "atoms" in LISP.
+	</p>
+	<p>
+		A name object is ordinarily created when the scanner encounters a
+		PostScript token consisting entirely of regular characters, perhaps
+		preceded by /, as described in Section <a href="../2.html">3.2,
+			"Syntax."</a> However, a name may also be created by explicit conversion
+		from a string, so there is no restriction on the set of characters
+		that can be included in names. The length of a name, however, is
+		subject to an implementation limit; see Appendix B.
+	</p>
+	<p>
+		Unlike a string, a name is a <i>simple</i> object not made up of other
+		objects. Although a name is defined by a sequence of characters, those
+		characters are not "elements" of the name. A name object, although
+		logically simple, does have an invisible "value" that occupies space
+		in VM.
+	</p>
+	<p>
+		A name is <i>unique</i>. Any two name objects defined by the same
+		sequence of characters are identical copies of each other. Name
+		equality is based on an exact match between the corresponding
+		characters defining each name. The case of letters must match, so the
+		names A and a are different. Literal and executable objects can be
+		equal, however.
+	</p>
+	<p>The interpreter can efficiently determine whether two existing
+		name objects are equal without comparing the characters that define
+		the names. This makes names useful as keys in dictionaries.</p>
+	<p>
+		Names do not <i>have</i> values, unlike variable or procedure names in
+		other programming languages. However, names can be <i>associated</i>
+		with values in dictionaries.
+	</p>
+</body>
+</html>

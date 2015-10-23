@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dictionary Objects</title>
+</head>
+<body>
+	<h3>3.3.9 Dictionary Objects</h3>
+	<p>
+		A <i>dictionary</i> is an associative table whose entries are pairs of
+		PostScript objects. The first element of an entry is the <i>key</i>
+		and the second element is the <i>value</i>. The PostScript language
+		includes operators that insert an entry into a dictionary, look up a
+		key and fetch the associated value, and perform various other
+		operations.
+	</p>
+	<p>
+		Keys are normally name objects. The PostScript syntax and the
+		interpreter are optimized for this most common case. However, a key
+		may be any PostScript object except <a href="../../8/2/n/null.html">null</a>
+		(defined later). If you attempt to use a string as a key, the
+		PostScript interpreter will first convert the string to a name object;
+		thus, <i>strings and names are interchangeable when used as keys
+			in dictionaries</i>. Consequently, a string used as a dictionary key is
+		subject to the implementation limit on the length of a name.
+	</p>
+	<p>
+		A dictionary has the capacity to hold a certain maximum number of
+		entries; the capacity is specified when the dictionary is created.
+		PostScript interpreters of different LanguageLevels differ in their
+		behavior when a program attempts to insert an entry into a dictionary
+		that is full: in LanguageLevel 1, a <a
+			href="../../8/2/d/dictfull.html">dictfull</a> error occurs; in
+		LanguageLevels 2 and 3, the interpreter enlarges the dictionary
+		automatically. The length of a dictionary is also subject to an
+		implementation limit; see Appendix B.
+	</p>
+	<p>Dictionaries ordinarily associate the names and values of a
+		program's components, such as variables and procedures. This
+		association corresponds to the conventional use of identifiers in
+		other programming languages. But there are many other uses for
+		dictionaries. For example, a PostScript font program contains a
+		dictionary that associates the names of characters with the procedures
+		for drawing those characters’ shapes (see Chapter 5).</p>
+	<p>There are three primary methods for accessing dictionaries:</p>
+	<ul>
+		<li>Operators exist to access a specific dictionary supplied as
+			an operand.</li>
+		<li>There is a <i>current dictionary</i> and a set of operators
+			to access it implicitly.
+		</li>
+		<li>The interpreter automatically looks up executable names it
+			encounters in the program being executed.</li>
+	</ul>
+	<p>
+		The interpreter maintains a <i>dictionary stack</i> defining the
+		current dynamic name space. Dictionaries may be pushed on and popped
+		off the dictionary stack at will. The topmost dictionary on the stack
+		is the <i>current dictionary</i>.
+	</p>
+	<p>When the interpreter looks up a key implicitly&mdash;for
+		example, when it executes a name object&mdash;it searches for the key
+		in the dictionaries on the dictionary stack. It searches first in the
+		topmost dictionary, then in successively lower dictionaries on the
+		dictionary stack, until it either finds the key or exhausts the
+		dictionary stack.</p>
+	<p>
+		In LanguageLevel 1, there are two built-in dictionaries permanently on
+		the dictionary stack; they are called <a
+			href="../../8/2/s/systemdict.html">systemdict</a> and <a
+			href="../../8/2/u/userdict.html">userdict</a>. In LanguageLevels 2
+		and 3, there are three dictionaries: <a
+			href="../../8/2/s/systemdict.html">systemdict</a>, <a
+			href="../../8/2/g/globaldict.html">globaldict</a>, and <a
+			href="../../8/2/u/userdict.html">userdict</a>.
+	</p>
+	<ul>
+		<li><a href="../../8/2/s/systemdict.html">systemdict</a> is a
+			read-only dictionary that associates the names of all the Post-
+			Script operators (those defined in this book) with their values (the
+			built-in actions that implement them). It also contains other
+			definitions, including the standard local and global dictionaries
+			listed in Section <a href="../7/5.html">3.7.5, "Standard and
+				User-Defined Dictionaries,"</a> as well as various named constants such
+			as <i>true</i> and <i>false</i>.</li>
+		<li><a href="../../8/2/g/globaldict.html">globaldict</a> <i>(LanguageLevel
+				2)</i> is a writeable dictionary in <i>global VM</i>. This is explained
+			in Section <a href="../7/2.html">3.7.2, "Local and Global VM."</a></li>
+		<li><a href="../../8/2/u/userdict.html">userdict</a> is a
+			writeable dictionary in <i>local VM</i>. It is the default modifiable
+			naming environment normally used by PostScript programs.</li>
+	</ul>
+	<p>
+		<a href="../../8/2/u/userdict.html">userdict</a> is the topmost of the
+		permanent dictionaries on the dictionary stack. The <a
+			href="../../8/2/d/def.html">def</a> operator puts definitions there
+		unless the program has pushed some other dictionary on the dictionary
+		stack. Applications can and should create their own dictionaries
+		rather than put things in <a href="../../8/2/u/userdict.html">userdict</a>.
+	</p>
+	<p>A dictionary is a composite object. Copying a dictionary object
+		does not copy the dictionary's contents. Instead, the contents are
+		shared.</p>
+</body>
+</html>

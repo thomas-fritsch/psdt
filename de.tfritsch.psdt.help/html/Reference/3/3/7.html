@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>String Objects</title>
+</head>
+<body>
+	<h3>3.3.7 String Objects</h3>
+	<p>
+		A <i>string</i> is similar to an array, but its elements must be
+		integers in the range 0 to 255. The string elements are not integer
+		objects, but are stored in a more compact format. However, the
+		operators that access string elements accept or return ordinary
+		integer objects with values in the range 0 to 255. The length of a
+		string is subject to an implementation limit; see Appendix B.
+	</p>
+	<p>String objects are conventionally used to hold text, one
+		character per string element. However, the PostScript language does
+		not have a distinct "character" syntax or data type and does not
+		require that the integer elements of a string encode any particular
+		character set. String objects may also be used to hold arbitrary
+		binary data.</p>
+	<p>
+		To enhance program portability, strings appearing literally as part of
+		a PostScript program should be limited to characters from the
+		printable ASCII character set, with other characters inserted by means
+		of the \ddd escape convention (see Section <a href="../2/2.html">3.2.2,
+			"ASCII Encoding"</a>). ASCII text strings are fully portable; ASCII
+		base-85 text strings are fully portable among LanguageLevel 2 and
+		LanguageLevel 3 PostScript interpreters.
+	</p>
+	<p>Like an array, a string is a composite object. Copying a string
+		object or creating a subinterval (substring) results in sharing the
+		string's value.</p>
+</body>
+</html>

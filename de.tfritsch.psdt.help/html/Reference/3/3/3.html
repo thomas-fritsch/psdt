@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Integer and Real Objects</title>
+</head>
+<body>
+	<h3>3.3.3 Integer and Real Objects</h3>
+	<p>
+		The PostScript language provides two types of numeric object: <i>integer</i>
+		and <i>real</i>. Integer objects represent mathematical integers
+		within a certain interval centered at 0. Real objects approximate
+		mathematical real numbers within a much larger interval, but with
+		limited precision; they are implemented as floating-point numbers.
+	</p>
+	<p>
+		Most PostScript arithmetic and mathematical operators can be applied
+		to numbers of both types. The interpreter performs automatic type
+		conversion when necessary. Some operators expect only integers or a
+		subrange of the integers as operands. There are operators to convert
+		from one data type to another explicitly. Throughout this book, <i>number</i>
+		means an object whose type is either integer or real.
+	</p>
+	<p>The range and precision of numbers is limited by the internal
+		representations used in the machine on which the PostScript
+		interpreter is running. Appendix B gives these limits for typical
+		implementations of the PostScript interpreter.</p>
+	<p>
+		<i><b>Note:</b> The machine representation of integers is
+			accessible to a PostScript program through the bitwise operators.
+			However, the representation of integers may depend on the CPU
+			architecture of the implementation. The machine representation of
+			real numbers is not accessible to PostScript programs.</i>
+	</p>
+</body>
+</html>

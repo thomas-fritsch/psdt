@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array Objects</title>
+</head>
+<body>
+	<h3>3.3.5 Array Objects</h3>
+	<p>
+		An <i>array</i> is a one-dimensional collection of objects accessed by
+		a numeric index. Unlike arrays in many other computer languages,
+		PostScript arrays may be heterogeneous; that is, an array's elements
+		may be any combination of numbers, strings, dictionaries, other
+		arrays, or any other objects. A <i>procedure</i> is an array that can
+		be executed by the PostScript interpreter.
+	</p>
+	<p>
+		All arrays are indexed from 0, so an array of <i>n</i> elements has
+		indices from 0 through <i>n</i> - 1. All accesses to arrays are
+		bounds-checked, and a reference with an out-of-bounds index results in
+		a <a href="../../8/2/r/rangecheck.html">rangecheck</a> error. The
+		length of an array is subject to an implementation limit; see Appendix
+		B.
+	</p>
+	<p>The PostScript language directly supports only one-dimensional
+		arrays. Arrays of higher dimension can be constructed by using arrays
+		as elements of arrays, nested to any depth.</p>
+	<p>
+		As discussed earlier, an array is a composite object. When an array
+		object is copied, the value is <i>not</i> copied. Instead, the old and
+		new objects share the same value. Additionally, there is an operator (<a
+			href="../../8/2/g/getinterval.html">getinterval</a>) that creates a
+		new array object whose value is a subinterval of an existing array;
+		the old and new objects share the array elements in that subinterval.
+	</p>
+</body>
+</html>
