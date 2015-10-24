@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The Basics of Showing Text</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.1.1 The Basics of Showing Text</h3>
+	<p>Example 5.1 illustrates the most straightforward use of a font.
+		Suppose you want to place the text ABC 10 inches from the bottom of
+		the page and 4 inches from the left edge, using 12-point Helvetica.</p>
+	<p>
+		<b>Example 5.1</b>
+	</p>
+	<pre>/Helvetica findfont
+12 scalefont setfont
+288 720 moveto
+(ABC) show</pre>
+	<p>The four lines of this program perform the following steps:</p>
+	<ol>
+		<li>Select the font to use.</li>
+		<li>Scale it to the desired size and install it as the font
+			parameter in the graphics state.</li>
+		<li>Specify a starting position on the page.</li>
+		<li>Paint the glyphs for a string of characters there.</li>
+	</ol>
+	<p>The following paragraphs explain these operations in more
+		detail.</p>
+	<p>
+		Each PostScript implementation includes a collection of fonts that are
+		either built in or can be obtained automatically from sources such as
+		disks or cartridges. A user can download additional fonts, and a
+		PostScript program can define special fonts for its own use. The
+		interpreter maintains a <i>font directory</i> associating the names of
+		fonts, which are name objects, with their definitions, which are font
+		dictionaries. The <a href="../../8/2/f/findfont.html">findfont</a>
+		operator takes the name of the font and returns on the operand stack a
+		font dictionary containing all the information the PostScript
+		interpreter needs to render any of that font's glyphs.
+	</p>
+	<p>A font defines the glyphs for one standard size. This standard
+		is so arranged that the nominal height of tightly spaced lines of text
+		is 1 unit. In the default user coordinate system, this means the
+		standard glyph size is 1 unit in user space, or 1⁄72 inch. The
+		standard-size font must then be scaled to be usable.</p>
+	<p>
+		The <a href="../../8/2/s/scalefont.html">scalefont</a> operator scales
+		the glyphs in a font without affecting the user coordinate system. <a
+			href="../../8/2/s/scalefont.html">scalefont</a> takes two operands:
+		the original font dictionary and the desired scale factor. It returns
+		a new font dictionary that defines glyphs in the desired size. It is
+		possible to scale the user coordinate system with the coordinate
+		system operators, but it is usually more convenient to encapsulate the
+		desired size in the font dictionary. Another operator, <a
+			href="../../8/2/m/makefont.html">makefont</a>, applies more
+		complicated linear transformations to a font.
+	</p>
+	<p>
+		In Example 5.1, the <a href="../../8/2/s/scalefont.html">scalefont</a>
+		operator scales the Helvetica font left on the stack by <a
+			href="../../8/2/f/findfont.html">findfont</a> to a 12-unit size and
+		returns the scaled font on the operand stack. The <a
+			href="../../8/2/s/setfont.html">setfont</a> operator establishes the
+		resulting font dictionary as the font parameter in the graphics state.
+	</p>
+	<p>
+		Once the font has been selected, scaled, and set, it can be used to
+		paint glyphs. The moveto operator (described in Section <a
+			href="../../4/4.html">4.4, "Path Construction"</a>) sets the current
+		position to the specified <i>x</i> and <i>y</i> coordinates&mdash;in
+		units of 1⁄72 inch&mdash;in the default user coordinate system. This
+		determines the position on the page at which to begin painting glyphs.
+	</p>
+	<p>
+		The <a href="../../8/2/s/show.html">show</a> operator takes a string
+		from the operand stack and paints the corresponding glyphs using the <i>current
+			font</i> (usually the font parameter most recently established in the
+		graphics state by <a href="../../8/2/s/setfont.html">setfont</a>). The
+		show operator treats each element of the string (an integer in the
+		range 0 to 255) as a character code. Each code selects a glyph
+		description in the font dictionary; the glyph description is executed
+		to paint the desired glyph on the page. This is the behavior of <a
+			href="../../8/2/s/show.html">show</a> for base fonts, such as
+		ordinary Latin text fonts; interpretation of the <a
+			href="../../8/2/s/show.html">show</a> string as a sequence of
+		character codes is more complex for composite fonts, described in
+		Section <a href="../../5/10.html">5.10, "Composite Fonts."</a>
+	</p>
+	<p>
+		<i><b>Note:</b> What these steps produce on the page is not a
+			12-point glyph, but rather a 12- unit glyph, where the unit size is
+			that of the user space at the time the glyphs are rendered on the
+			page. If the user space is later scaled to make the unit size 1
+			centimeter, showing glyphs from the same 12-unit font will generate
+			results that are 12 centimeters high.</i>
+	</p>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Achieving Special Graphical Effects</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.1.3 Achieving Special Graphical Effects</h3>
+	<p>Normal uses of show and other glyph-painting operators cause
+		black-filled glyphs to be painted. Other effects can be obtained by
+		combining font operators with general graphics operators.</p>
+	<p>
+		The color used for painting glyphs is the current color in the
+		graphics state. The default color is black, but other colors can be
+		obtained by executing <a href="../../8/2/s/setgray.html">setgray</a>
+		or some other color-setting operator before painting glyphs. Example
+		5.3 paints glyphs in 50 percent gray, as shown in Figure 5.2.
+	</p>
+	<p>
+		<b>Example 5.3</b>
+	</p>
+	<pre>/Helvetica-Bold findfont 48 scalefont setfont
+20 40 moveto
+.5 setgray
+(ABC) show</pre>
+	<figure>
+		<img src="figure-5.2.png" />
+		<figcaption>
+			<b>FIGURE 5.2</b> Glyphs painted in 50% gray
+		</figcaption>
+	</figure>
+	<p>
+		More general graphical manipulations can be performed by treating the
+		glyph outline as a path instead of immediately painting it. <a
+			href="../../8/2/c/charpath.html">charpath</a> is a path construction
+		operator that appends the outlines of one or more glyphs to the
+		current path in the graphics state. This is useful mainly with glyphs
+		that are defined as outlines (as are most standard fonts). Paths
+		derived from glyphs defined as strokes can be used in limited ways. It
+		is not possible to obtain paths for glyphs defined as images or
+		bitmaps; <a href="../../8/2/c/charpath.html">charpath</a> produces an
+		empty path. Also, a path consisting of the outlines of more than a few
+		glyphs is likely to exceed the limit on number of path elements (see
+		Appendix B). If possible, it is best to deal with only one glyph's
+		path at a time.
+	</p>
+	<p>
+		Example 5.4 treats glyph outlines as a path to be stroked. This
+		program uses <a href="../../8/2/c/charpath.html">charpath</a> to
+		obtain the outlines for the string of characters ABC in the current
+		font. (The <i>false</i> operand to <a href="../../8/2/c/charpath.html">charpath</a>
+		is explained in the description of <a href="../../8/2/c/charpath.html">charpath</a>
+		in Chapter 8.) The program then strokes this path with a line 2 points
+		thick, rendering the glyph outlines on the page (see Figure 5.3).
+	</p>
+	<p>
+		<b>Example 5.4</b>
+	</p>
+	<pre>/Helvetica findfont 48 scalefont setfont
+20 38 moveto
+(ABC) false charpath
+2 setlinewidth stroke</pre>
+	<figure>
+		<img src="figure-5.3.png" />
+		<figcaption>
+			<b>FIGURE 5.3</b> Glyph outlines treated as a path
+		</figcaption>
+	</figure>
+	<p>Example 5.5 obtains the glyphs' path as before, then establishes
+		it as the current clipping path. All subsequent painting operations
+		will mark the page only within this path, as illustrated in Figure
+		5.4. This state persists until some other clipping path is
+		established—for example, by the grestore operator.</p>
+	<p>
+		<b>Example 5.5</b>
+	</p>
+	<pre>/Helvetica findfont 48 scalefont setfont
+newpath
+20 40 moveto
+(ABC) true charpath
+clip
+<i>... Graphics operators to draw a starburst ...</i>
+	</pre>
+	<figure>
+		<img src="figure-5.4.png" />
+		<figcaption>
+			<b>FIGURE 5.4</b> Graphics clipped by a glyph path
+		</figcaption>
+	</figure>
+</body>
+</html>

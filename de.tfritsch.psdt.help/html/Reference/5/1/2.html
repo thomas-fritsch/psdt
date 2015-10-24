@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Selecting Fonts</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.1.2 Selecting Fonts</h3>
+	<p>Example 5.1 used PostScript operators in a direct way. It is
+		usually desirable to define procedures to help the application that is
+		generating the text. To illustrate this point, assume that an
+		application is setting many independently positioned text strings and
+		requires switching frequently among three fonts: Helvetica,
+		Helvetica-Oblique, and Helvetica-Bold, all in a 10-point size. Example
+		5.2 shows the programming to do this, and Figure 5.1 shows the
+		results.</p>
+	<p>
+		<b>Example 5.2</b>
+	</p>
+	<pre>/FSD {findfont exch scalefont def} bind def    % In the document prolog: define
+/SMS {setfont moveto show} bind def            % some useful procedures
+/MS {moveto show} bind def
+
+/F1 10 /Helvetica FSD                          % At the start of the script: set up
+/F2 10 /Helvetica-Oblique FSD                  % commonly used font dictionaries
+/F3 10 /Helvetica-Bold FSD
+
+(This is in Helvetica.) 10 78 F1 SMS           % In the body of the script: show
+(And more in Helvetica.) 10 66 MS              % some text
+(This is in Helvetica-Oblique.) 10 54 F2 SMS
+(This is in Helvetica-Bold.) 10 42 F3 SMS
+(And more Helvetica-Bold.) 10 30 MS</pre>
+	<figure>
+		<img src="figure-5.1.png" />
+		<figcaption>
+			<b>FIGURE 5.1</b> Results of Example 5.2
+		</figcaption>
+	</figure>
+	<p>Several features of Example 5.2 are noteworthy. The document
+		prolog defines three procedures:</p>
+	<ul>
+		<li>FSD takes a variable name, a scale factor, and a font name.
+			It generates a font dictionary described by the font name and scale
+			factor, then executes <a href="../../8/2/d/def.html">def</a> to
+			associate the font dictionary with the variable name. This assists in
+			setting up fonts.
+		</li>
+		<li>SMS takes a string, a pair of coordinates, and a font
+			dictionary; it shows the glyphs for the string starting at those
+			coordinates, using the specified font.</li>
+		<li>MS takes a string and a pair of coordinates; it shows the
+			glyphs for the string at those coordinates, using the current font.</li>
+	</ul>
+	<p>At the beginning of the document script, the program sets up
+		font dictionaries and associates them with the names F1, F2, and F3.
+		The body of the script shows text using the procedures and font
+		dictionaries defined earlier. This example avoids switching fonts when
+		it is unnecessary to do so; taking care in this respect is important
+		for efficient execution.</p>
+	<p>
+		Many applications must switch frequently among arbitrarily named
+		fonts, where the names and sizes are not known in advance. To
+		facilitate this, the operator <a href="../../8/2/s/selectfont.html">selectfont</a>
+		<i>(LanguageLevel 2)</i> combines the actions of the <a
+			href="../../8/2/f/findfont.html">findfont</a>, <a
+			href="../../8/2/s/scalefont.html">scalefont</a> (or <a
+			href="../../8/2/m/makefont.html">makefont</a>), and <a
+			href="../../8/2/s/setfont.html">setfont</a> operators. <a
+			href="../../8/2/s/selectfont.html">selectfont</a> saves information
+		from one call to the next to avoid calling <a
+			href="../../8/2/f/findfont.html">findfont</a> or performing the <a
+			href="../../8/2/s/scalefont.html">scalefont</a> or <a
+			href="../../8/2/m/makefont.html">makefont</a> computations
+		unnecessarily. In the common case of selecting a font and size
+		combination that has been used recently, <a
+			href="../../8/2/s/selectfont.html">selectfont</a> works with great
+		efficiency.
+	</p>
+	<p>
+		The <a href="../../8/2/r/rootfont.html">rootfont</a> operator returns
+		the font parameter in the graphics state, which is the value most
+		recently specified by <a href="../../8/2/s/setfont.html">setfont</a>
+		or <a href="../../8/2/s/selectfont.html">selectfont</a>. The <a
+			href="../../8/2/c/currentfont.html">currentfont</a> operator returns
+		the same value, except in certain cases where it may return a
+		descendant of a composite font; see Section <a href="../../5/10.html">5.10,
+			"Composite Fonts."</a> The current font is the value returned by <a
+			href="../../8/2/c/currentfont.html">currentfont</a> and is the one
+		implicitly referenced by show.
+	</p>
+</body>
+</html>

@@ -74,6 +74,12 @@
 		</topic>
 	</topic>
 	<topic label="5 Fonts" href="html/Reference/5.html">
+		<topic label="5.1 Organization and Use of Fonts" href="html/Reference/5/1.html">
+			<topic label="5.1.1 The Basics of Showing Text" href="html/Reference/5/1/1.html" />
+			<topic label="5.1.2 Selecting Fonts" href="html/Reference/5/1/2.html" />
+			<topic label="5.1.3 Achieving Special Graphical Effects" href="html/Reference/5/1/3.html" />
+			<topic label="5.1.4 Glyph Positioning" href="html/Reference/5/1/4.html" />
+		</topic>
 		<topic label="5.2 Font Dictionaries" href="html/Reference/5/2.html">
 			<topic label="5.2.1 Entries in Font Dictionaries" href="html/Reference/5/2/1.html" />
 		</topic>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>5.1 Organization and Use of Fonts</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>5.1 Organization and Use of Fonts</h2>
+	<p>
+		A <i>character</i> is an abstract symbol, whereas a <i>glyph</i> is a
+		specific rendering of a character. For example, the glyphs A, <b>A</b>,
+		and <i>A</i> are renderings of the abstract "A" character.
+		Historically these two terms have often been used interchangeably in
+		computer typography (as evidenced by the names chosen for some
+		PostScript operators and keys), but advances in this area have made
+		the distinction more meaningful in recent times. Consequently this
+		book distinguishes between characters and glyphs, though with some
+		residual names that are inconsistent.
+	</p>
+	<p>
+		Glyphs are organized into <i>fonts</i>. A font defines glyphs for a
+		particular character set; for example, the Helvetica and Times-Roman
+		fonts define glyphs for a set of standard Latin characters. A font for
+		use with the PostScript interpreter is prepared in the form of a
+		program. When such a <i>font program</i> is introduced into a
+		PostScript interpreter, its execution causes a <i>font dictionary</i>
+		to come into existence and to be associated with a font name.
+	</p>
+	<p>
+		In the PostScript language, the term <i>font</i> refers to a font
+		dictionary, through which the PostScript interpreter obtains <i>glyph
+			descriptions</i> that generate glyphs. For each glyph to be painted, a
+		program specifies a font dictionary and (usually) a character code to
+		select the glyph description that represents the character. The glyph
+		description, which is usually encoded in a special compact
+		representation, consists of a sequence of graphics operators that
+		produce the specific shape for that character in this font. To render
+		a glyph, the PostScript interpreter executes the glyph description.
+	</p>
+	<p>If you have experience with scan conversion of general shapes,
+		you may be concerned about the amount of computation that this
+		description seems to imply. However, this is only the abstract
+		behavior of glyph descriptions and font programs, not how they are
+		implemented. In fact, the PostScript font machinery works very
+		efficiently.</p>
+</body>
+</html>
