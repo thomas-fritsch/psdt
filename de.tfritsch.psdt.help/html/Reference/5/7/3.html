@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Example of a Type 3 Font</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>5.7.3 Example of a Type 3 Font</h3>
+	<p>
+		Example 5.6 shows the definition of a Type 3 font with only two
+		glyphs&mdash;a filled square and a filled triangle, selected by the
+		characters a and b. Figure 5.8 shows the output from this example. The
+		glyph coordinate system is on a 1000-unit scale. This is not a
+		realistic example, but it does illustrate all the elements of a Type 3
+		font, including a <b>BuildGlyph</b> procedure, an <b>Encoding</b>
+		array, and a subsidiary dictionary for the individual glyph
+		descriptions.
+	</p>
+	<figure>
+		<img src="figure-5.8.png" />
+		<figcaption>
+			<b>FIGURE 5.8</b> Output from Example 5.6
+		</figcaption>
+	</figure>
+	<p>
+		<b>Example 5.6</b>
+	</p>
+	<pre>
+8 dict begin
+   /FontType 3 def                               % Required elements of font
+   /FontMatrix [.001 0 0 .001 0 0] def
+   /FontBBox [0 0 750 750] def
+   /Encoding 256 array def                       % Trivial encoding vector
+      0 1 255 {Encoding exch /.notdef put} for
+      Encoding 97 /square put                    % ASCII a = 97
+      Encoding 98 /triangle put                  % ASCII b = 98
+   /CharProcs 3 dict def                         % Subsidiary dictionary for
+      CharProcs begin                            % individual glyph descriptions
+         /.notdef { } def
+         /square
+            { 0 0 moveto
+              750 0 lineto
+              750 750 lineto
+              0 750 lineto
+              closepath
+              fill
+            } bind def
+         /triangle
+            { 0 0 moveto
+              375 750 lineto
+              750 0 lineto
+              closepath
+              fill
+            } bind def
+      end                                       % End of CharProcs
+   /CharProcs 3 dict def                        % Subsidiary dictionary for
+      CharProcs begin                           % individual glyph descriptions
+         /.notdef { } def
+         /square
+            { 0 0 moveto
+              750 0 lineto
+              750 750 lineto
+              0 750 lineto
+              closepath
+              fill
+            } bind def
+         /triangle
+            { 0 0 moveto
+              375 750 lineto
+              750 0 lineto
+              closepath
+              fill
+            } bind def
+      end                                       % End of CharProcs    
+   /BuildChar % LanguageLevel 1 compatibility
+      { 1 index /Encoding get exch get
+        1 index /BuildGlyph get exec
+      } bind def
+   currentdict
+end                                             % End of font dictionary
+/ExampleFont exch definefont pop
+/ExampleFont findfont 12 scalefont setfont      % Now show some characters
+36 52 moveto
+(ababab) show</pre>
+</body>
+</html>

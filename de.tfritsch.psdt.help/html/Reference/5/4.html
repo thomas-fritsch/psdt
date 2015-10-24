@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glyph Metric Information</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>5.4 Glyph Metric Information</h2>
+	<p>
+		The <i>glyph coordinate system</i> is the space in which an individual
+		character's glyph is defined. All path coordinates and metrics are
+		interpreted in glyph space. Figure 5.6 shows a typical glyph outline
+		and its metrics.
+	</p>
+	<figure>
+		<img src="figure-5.6.png" />
+		<figcaption>
+			<b>FIGURE 5.6</b> Glyph metrics
+		</figcaption>
+	</figure>
+	<p>The glyph origin, or reference point, is the point (0, 0) in the
+		glyph coordinate system. show and other glyph-painting operators
+		position the origin of the first glyph to be shown at the current
+		point in user space. For example,</p>
+	<pre>40 50 moveto
+(ABC) show</pre>
+	<p>places the origin of the A at coordinate (40, 50) in the user
+		coordinate system.</p>
+	<p>
+		The <i>glyph width</i> is the distance from the glyph's origin to the
+		point at which the origin of the next glyph should normally be placed
+		when painting the consecutive glyphs of a word. This distance is a
+		vector in the glyph coordinate system; it has <i>x</i> and <i>y</i>
+		components. Most Indo-European alphabets, including the Latin
+		alphabet, have a positive <i>x</i> width and a zero <i>y</i> width.
+		Semitic alphabets have a negative <i>x</i> width, and some Asian
+		writing systems have a nonzero <i>y</i> width.
+	</p>
+	<p>
+		The <i>glyph bounding box</i> is the smallest rectangle (oriented with
+		the axes of the glyph coordinate system) that will just enclose the
+		entire glyph shape. The bounding box is expressed in terms of its
+		left, bottom, right, and top coordinates relative to the glyph origin
+		in the glyph coordinate system.
+	</p>
+	<p>
+		The <i>left sidebearing</i> of a glyph is the position of the left
+		sidebearing point in glyph space. This is usually the intersection of
+		the left edge of the bounding box with the glyph's baseline; however,
+		the exact interpretation of the left sidebearing depends on details of
+		the font technology (for Type 1, see <a
+			href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
+			Type 1 Font Format</a>). Note that the <i>x</i> coordinate of the left
+		sidebearing can be negative for glyphs that extend to the left of
+		their origin. The <i>y</i> coordinate is almost always 0.
+	</p>
+	<p>
+		Type 1 fonts are defined in such a way that a glyph's left sidebearing
+		and width can be adjusted; that is, the glyph bounding box and the
+		position of the next glyph can be shifted relative to the origin (see
+		Section <a href="9.html">5.9, "Font Derivation and Modification"</a>).
+		Some other types of base fonts work similarly.
+	</p>
+	<p>In some writing systems, text is frequently aligned in two
+		different directions. For example, it is common to write Japanese and
+		Chinese glyphs either horizontally or vertically. To handle this, a
+		font can optionally contain a second set of metrics for each glyph.
+		This feature is available only in LanguageLevel 2 or 3 or in
+		LanguageLevel 1 implementations with composite font extensions.</p>
+	<p>
+		The metrics are accessed by <a href="../../8/2/s/show.html">show</a>
+		and other operators according to a writing mode, given by a <b>WMode</b>
+		entry in the font dictionary (or in some parent font dictionary in a
+		composite font). By convention, writing mode 0 (the default) specifies
+		horizontal writing and mode 1 specifies vertical writing. If a font
+		contains only one set of metrics, the <b>WMode</b> parameter is
+		ignored.
+	</p>
+	<p>
+		When a glyph has two sets of metrics, each set specifies a glyph
+		origin and a width vector. Figure 5.7 illustrates the relationship
+		between the two sets of metrics. The left diagram illustrates the
+		glyph metrics associated with writing mode 0. The coordinates <i>ll</i>
+		and <i>ur</i> specify the bounding box of the glyph relative to origin
+		0. <i>w0</i> is the glyph width vector that specifies how the current
+		point is changed after the glyph is shown in writing mode 0. The
+		center diagram illustrates writing mode 1; <i>w1</i> is the glyph
+		width vector for writing mode 1. In the right diagram, <i>v</i> is a
+		vector defining the position of origin 1 relative to origin 0.
+	</p>
+	<figure>
+		<img src="figure-5.7.png" />
+		<figcaption>
+			<b>FIGURE 5.7</b> Relationship between two sets of metrics
+		</figcaption>
+	</figure>
+	<p>
+		Glyph metric information can be accessed procedurally by a PostScript
+		program. The <a href="../../8/2/s/stringwidth.html">stringwidth</a>
+		operator obtains glyph widths. The sequence
+	</p>
+	<pre>charpath flattenpath pathbbox</pre>
+	<p>
+		computes glyph bounding boxes, though this is relatively inefficient.
+		The bounding box for an entire font appears in the font dictionary as
+		an array of four numbers associated with the key <b>FontBBox</b>.
+	</p>
+	<p>Glyph metric information is also available separately in the
+		form of Adobe font metrics (AFM) and Adobe composite font metrics
+		(ACFM) files. These files are for use by application programs that
+		generate PostScript page descriptions and must make formatting
+		decisions based on the widths and other metrics of glyphs. Kerning
+		information is also available in the AFM and ACFM files. When
+		possible, applications should use this information directly instead of
+		generating PostScript instructions to compute it.</p>
+	<p>
+		Specifications for the AFM and ACFM file formats are available in <a
+			href="https://partners.adobe.com/public/developer/en/font/5004.AFM_Spec.pdf">Adobe
+			Technical Note #5004, Adobe Font Metrics File Format Specification</a>.
+	</p>
+</body>
+</html>

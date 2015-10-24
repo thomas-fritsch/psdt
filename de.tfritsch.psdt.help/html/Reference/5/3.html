@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Character Encoding</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>5.3 Character Encoding</h2>
+	<p>
+		Font definitions use a flexible <i>encoding</i> scheme by which
+		character codes select glyph descriptions. The association between
+		character codes and glyph descriptions is not part of the glyph
+		descriptions themselves, but instead is described by a separate
+		encoding vector. A PostScript program can change a font's <i>encoding
+			vector</i> to match the requirements of the application generating the
+		description.
+	</p>
+	<p>
+		This section describes the character encoding scheme used with base
+		fonts. Composite fonts (Type 0) use a more complicated character
+		mapping algorithm, as discussed in Section <a href="10.html">5.10,
+			"Composite Fonts."</a>
+	</p>
+	<p>
+		<i><b>Note:</b> Every base font must have an Encoding entry, which
+			the PostScript font machinery accesses automatically as described
+			below. A Type 3 font's <b>BuildChar</b> procedure should use this
+			entry in the standard way; see Section <a href="7.html">5.7,
+				"Type 3 Fonts."</a></i>
+	</p>
+	<p>
+		In a font dictionary, the descriptions of the individual glyphs are
+		keyed by character <i>names</i>, not by character <i>codes</i>.
+		Character names are ordinary PostScript name objects. Descriptions of
+		Latin alphabetic characters are normally associated with names
+		consisting of single letters, such as A or a. Other characters are
+		associated with names composed of words, such as three, ampersand, or
+		parenleft.
+	</p>
+	<p>
+		The encoding vector is defined by the array object that is the value
+		of the <b>Encoding</b> entry in the font dictionary. The array is
+		indexed by character code (an integer in the range 0 to 255). The
+		elements of the array must be character names, and the array should be
+		256 elements long. (A base font used as a descendant in a composite
+		font may be accessed using a code that is not 8 bits long, in which
+		case the length of the <b>Encoding</b> array should be correspondingly
+		different.)
+	</p>
+	<p>
+		The operand to the <a href="../../8/2/s/show.html">show</a> operator
+		is a PostScript string object. Each element of the string is treated
+		as a character code. When <a href="../../8/2/s/show.html">show</a>
+		paints a character:
+	</p>
+	<ol>
+		<li>It uses the character code as an index into the current
+			font's <b>Encoding</b> array to obtain a character name.
+		</li>
+		<li>It invokes the glyph description by name. For a Type 1 font,
+			it looks up the name in the font's <b>CharStrings</b> dictionary to
+			obtain an encoded glyph description (called a <i>charstring</i>),
+			which it executes; Figure 5.5 illustrates this common case. For a
+			Type 3 font, it calls the font's <b>BuildGlyph</b> procedure (if
+			present) with the name as its operand; see Section <a href="7.html">5.7,
+				"Type 3 Fonts."</a> Other types of fonts have their own conventions for
+			associating character names with glyph descriptions.
+		</li>
+	</ol>
+	<figure>
+		<img src="figure-5.5.png" />
+		<figcaption>
+			<b>FIGURE 5.5</b> Encoding scheme for Type 1 fonts
+		</figcaption>
+	</figure>
+	<p>
+		For example, in the standard encoding vector used by Type 1 Latin-text
+		fonts such as Helvetica, the element at index 38 is the name object
+		ampersand. When show encounters the value 38 (the ASCII character code
+		for &amp;) as an element of a string it is printing, it fetches the
+		encoding vector entry at index 38, obtaining the name object
+		ampersand. It then uses ampersand as a key in the current font
+		dictionary's <b>CharStrings</b> subdictionary and executes the
+		associated charstring that renders the &amp; glyph.
+	</p>
+	<p>
+		Changing an existing font's encoding involves creating a new font
+		dictionary that is a copy of the existing one except for its <b>Encoding</b>
+		entry. The subsidiary dictionaries, such as <b>CharStrings</b> and <b>FontInfo</b>,
+		continue to be shared with the original font. Of course, a new font
+		may be created with any desired encoding vector. This flexibility in
+		character encoding is valuable for two reasons:
+	</p>
+	<ul>
+		<li>It permits showing text that is encoded according to any of
+			the various existing conventions. For example, the Microsoft Windows
+			and Apple Mac OS operating systems use different standard encodings
+			for Latin text, and many applications use their own special-purpose
+			encodings.</li>
+		<li>It allows applications to specify how characters selected
+			from a large character set are to be encoded. Some character sets
+			consist of more than 256 characters, including ligatures, accented
+			characters, and other symbols required for highquality typography or
+			non-Latin writing systems. Different encodings can select different
+			subsets of the same character set.</li>
+	</ul>
+	<p>
+		Latin-text font programs produced by Adobe Systems use the "Adobe
+		standard" encoding vector, which is associated with the name <a
+			href="../../8/2/s/StandardEncoding.html">StandardEncoding</a> in <a
+			href="../../8/2/s/systemdict.html">systemdict</a>. An alternate
+		encoding vector called ISO Latin-1 is associated with the name <a
+			href="../../8/2/i/ISOLatin1Encoding.html">ISOLatin1Encoding</a>.
+		Complete details of these encodings and of the characters present in
+		typical fonts are provided in Appendix E.
+	</p>
+	<p>All unused positions in an encoding vector must be filled with
+		the character name .notdef. Like any other character name, the name
+		.notdef is defined in the CharStrings dictionary. If an encoding maps
+		to a character name that does not exist in the font, the name .notdef
+		is substituted. Every font must contain a glyph description for the
+		.notdef character. The effect produced by showing the .notdef
+		character is at the discretion of the font designer. In Type 1 font
+		programs produced by Adobe, it is the same as the space character.</p>
+	<p>
+		The <a href="../../8/2/g/glyphshow.html">glyphshow</a> operator <i>(LanguageLevel
+			2)</i> shows the glyph for a single character specified by name instead
+		of by character code. This allows direct access to any character in
+		the font regardless of the font's <b>Encoding</b> array. The principal
+		use of <a href="../../8/2/g/glyphshow.html">glyphshow</a> is in
+		defining fonts whose glyph descriptions refer to other characters in
+		the same or a different font. Referring to such characters by name
+		ensures proper behavior if the font is subsequently reencoded.
+	</p>
+</body>
+</html>
