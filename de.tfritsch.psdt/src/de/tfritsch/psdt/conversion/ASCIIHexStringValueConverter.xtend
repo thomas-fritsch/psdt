@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.conversion
 
+import com.google.inject.Inject
 import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -10,7 +11,8 @@ import org.eclipse.xtext.nodemodel.INode
 
 class ASCIIHexStringValueConverter implements IValueConverter<byte[]> {
 
-	val filter = new ASCIIHexFilter
+	@Inject
+	ASCIIHexFilter filter
 
 	override byte[] toValue(String string, INode node) throws ValueConverterException {
 		if (!string.startsWith("<"))

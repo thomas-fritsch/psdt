@@ -1,11 +1,11 @@
 package de.tfritsch.psdt.tests
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.conversion.ASCIIHexStringValueConverter
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -15,9 +15,9 @@ import static org.junit.Assert.*
 @InjectWith(PostscriptInjectorProvider)
 class ASCIIHexStringValueConverterTest extends AbstractStringValueConverterTest {
 
-	@Before
-	def void init() {
-		converter = new ASCIIHexStringValueConverter
+	@Inject
+	def void setConverter(ASCIIHexStringValueConverter converter) {
+		this.converter = converter
 	}
 
 	@Test(expected=ValueConverterException)
