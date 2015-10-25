@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
 </head>
 <body>
 	<h3>
@@ -33,17 +34,17 @@
 		The <i>filtername</i> operand identifies the data transformation that
 		the filter is to perform. The standard filter names are as follows:
 	</p>
-	<pre>
-  ASCIIHexEncode                   ASCIIHexDecode 
-  ASCII85Encode                    ASCII85Decode
-  FlateEncode (LanguageLevel 3)    FlateDecode (LanguageLevel 3)
-  LZWEncode                        LZWDecode 
-  RunLengthEncode                  RunLengthDecode 
-  CCITTFaxEncode                   CCITTFaxDecode 
-  DCTEncode                        DCTDecode 
-  NullEncode                       SubFileDecode
-                                   ReusableStreamDecode (LanguageLevel 3)
-</pre>
+	<table>
+		<tr>
+			<td><b>ASCIIHexEncode</b><br /> <b>ASCII85Encode</b><br /> <b>FlateEncode</b>
+				<i>(LanguageLevel 3)</i><br /> <b>LZWEncode</b><br /> <b>RunLengthEncode</b><br />
+				<b>CCITTFaxEncode</b><br /> <b>DCTEncode</b><br /> <b>NullEncode</b></td>
+			<td><b>ASCIIHexDecode</b><br /> <b>ASCII85Decode</b><br /> <b>FlateDecode</b>
+				<i>(LanguageLevel 3)</i><br /> <b>LZWDecode</b><br /> <b>RunLengthDecode</b><br />
+				<b>CCITTFaxDecode</b><br /> <b>DCTDecode</b><br /> <b>SubFileDecode</b><br />
+				<b>ReusableStreamDecode</b> <i>(LanguageLevel 3)</i></td>
+		</tr>
+	</table>
 	<p>
 		An encoding filter is an output (writeable) file; a decoding filter is
 		an input (readable) file. The file object returned by the filter can
