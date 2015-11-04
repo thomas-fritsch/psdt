@@ -34,7 +34,7 @@
 		<module>../de.tfritscht.psdt.ui</module>
 		<module>../de.tfritscht.psdt.tests</module>
 		<module>../de.tfritscht.psdt.sdk</module>
-		<!-- <module>../de.tfritscht.psdt.updatesite</module> -->
+		<module>../de.tfritscht.psdt.updatesite</module>
 	</modules>
 
 	<properties>
