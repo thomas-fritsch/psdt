@@ -5,6 +5,7 @@ import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
 var projectName = "de.tfritsch.psdt"
+// grammarURI has to be platform:/resource as it is not on the classpath
 var grammarURI = "platform:/resource/${projectName}/src/de/tfritsch/psdt/Postscript.xtext"
 var fileExtensions = "ps,eps"
 var runtimeProject = "../${projectName}"
@@ -13,7 +14,9 @@ var encoding = "UTF-8"
 
 Workflow {
     bean = StandaloneSetup {
-    	scanClassPath = true
+    	// use an XtextResourceset throughout the process, which is able to resolve classpath:/ URIs.
+    	resourceSet = org.eclipse.xtext.resource.XtextResourceSet:theResourceSet {}
+    	
     	platformUri = "${runtimeProject}/.."
     	// The following two lines can be removed, if Xbase is not used.
     	// registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
@@ -44,6 +47,9 @@ Workflow {
     	projectNameUi = "${projectName}.ui"
     	encoding = encoding
     	language = auto-inject {
+    		// make sure we use the resourceSet created during standalone setup.
+    		forcedResourceSet = theResourceSet
+    		
     		uri = grammarURI
     
     		// Java API to access grammar elements (required by several other fragments)
