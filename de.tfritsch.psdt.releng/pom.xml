@@ -28,13 +28,13 @@
 		</developer>
 	</developers>
 	<modules>
-		<module>../de.tfritscht.psdt</module>
-		<module>../de.tfritscht.psdt.help</module>
-		<module>../de.tfritscht.psdt.debug</module>
-		<module>../de.tfritscht.psdt.ui</module>
-		<module>../de.tfritscht.psdt.tests</module>
-		<module>../de.tfritscht.psdt.sdk</module>
-		<module>../de.tfritscht.psdt.updatesite</module>
+		<module>../de.tfritsch.psdt</module>
+		<module>../de.tfritsch.psdt.help</module>
+		<module>../de.tfritsch.psdt.debug</module>
+		<module>../de.tfritsch.psdt.ui</module>
+		<module>../de.tfritsch.psdt.tests</module>
+		<module>../de.tfritsch.psdt.sdk</module>
+		<module>../de.tfritsch.psdt.updatesite</module>
 	</modules>
 
 	<properties>
