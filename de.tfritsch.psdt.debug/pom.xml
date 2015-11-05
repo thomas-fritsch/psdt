@@ -10,7 +10,7 @@
 		<version>1.0.0-SNAPSHOT</version>
 
 	</parent>
-	<artifactId>de.tfritsch.psdt.ui</artifactId>
+	<artifactId>de.tfritsch.psdt.debug</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<name>PostScript Language Debugger</name>
