@@ -48,7 +48,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>1.2.1</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -61,7 +61,6 @@
 					<includeProjectDependencies>false</includeProjectDependencies>
 					<includePluginDependencies>true</includePluginDependencies>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
-					<classpathScope>compile</classpathScope>
 					<arguments>
 						<argument>file://${project.basedir}/src/de/tfritsch/psdt/GeneratePostscript.mwe2</argument>
 						<argument>-p</argument>
