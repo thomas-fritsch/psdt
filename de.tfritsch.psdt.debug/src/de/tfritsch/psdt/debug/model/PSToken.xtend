@@ -1,48 +1,27 @@
 package de.tfritsch.psdt.debug.model
 
 import org.eclipse.osgi.util.NLS
+import org.eclipse.xtend.lib.annotations.Data
 
+@Data
 class PSToken {
 
-	new(String string, int lineNumber, int charStart, int charEnd) {
-		this.string = string
-		this.lineNumber = lineNumber
-		this.charStart = charStart
-		this.charEnd = charEnd
-	}
-
-	val String string
-
-	def getString() {
-		return string
-	}
-
-	val int lineNumber
+	String string
 
 	/**
 	 * The line number of this token in the associated source file.
 	 */
-	def int getLineNumber() {
-		return lineNumber
-	}
-
-	val int charStart
+	int lineNumber
 
 	/**
 	 * The index of the first character in the associated source file.
 	 */
-	def int getCharStart() {
-		return charStart
-	}
-
-	val int charEnd
+	int charStart
 
 	/**
 	 * The index of the last character in the associated source file.
 	 */
-	def int getCharEnd() {
-		return charEnd
-	}
+	int charEnd
 
 	override String toString() {
 		val Object[] inserts = #[string, lineNumber, charStart, charEnd]
