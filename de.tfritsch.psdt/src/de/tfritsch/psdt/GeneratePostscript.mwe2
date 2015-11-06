@@ -17,6 +17,7 @@ Workflow {
     	// use an XtextResourceset throughout the process, which is able to resolve classpath:/ URIs.
     	resourceSet = org.eclipse.xtext.resource.XtextResourceSet:theResourceSet {}
     	
+    	// register current projects and its siblings for platform URI map, as they are not on the classpath.
     	platformUri = "${runtimeProject}/.."
     	// The following two lines can be removed, if Xbase is not used.
     	// registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
@@ -56,7 +57,9 @@ Workflow {
     		fragment = grammarAccess.GrammarAccessFragment auto-inject {}
     
     		// generates Java API for the generated EPackages
-    		fragment = ecore.EMFGeneratorFragment auto-inject {}
+    		fragment = ecore.EMFGeneratorFragment auto-inject {
+                javaModelDirectory = "/${projectName}/src-gen"    			
+    		}
     
     		// the old serialization component
     		// fragment = parseTreeConstructor.ParseTreeConstructorFragment auto-inject {}    
