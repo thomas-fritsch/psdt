@@ -38,11 +38,11 @@ public class PSDebugModelPresentation extends LabelProvider implements IDebugMod
 	override IEditorInput getEditorInput(Object element) {
 		return switch (element) {
 			IFile:
-				new FileEditorInput(element as IFile)
+				new FileEditorInput(element)
 			IStorage:
-				new StorageEditorInput(element as IStorage)
+				new StorageEditorInput(element)
 			IBreakpoint:
-				getEditorInput((element as IBreakpoint).marker.resource) // recursion!
+				getEditorInput(element.marker.resource) // recursion!
 			default:
 				null
 		}

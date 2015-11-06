@@ -20,7 +20,7 @@ import static extension org.eclipse.core.filebuffers.FileBuffers.*
 public class PSSourceLocator implements IPersistableSourceLocator {
 	override Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof PSStackFrame) {
-			val psFile = (stackFrame as PSStackFrame).sourceName
+			val psFile = stackFrame.sourceName
 			val file = new Path(psFile).getWorkspaceFileAtLocation
 			return file ?: new LocalFileStorage(new File(psFile))
 		}

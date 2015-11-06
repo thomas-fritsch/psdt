@@ -32,9 +32,9 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 
 	override void launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {
-			val element = (selection as IStructuredSelection).firstElement
+			val element = selection.firstElement
 			if (element instanceof IFile)
-				launch(element as IFile, mode)
+				launch(element, mode)
 		}
 	}
 
