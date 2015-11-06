@@ -13,7 +13,7 @@
 	<artifactId>de.tfritsch.psdt.ui</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>PostScript Language UI</name>
+	<name>PostScript UI</name>
 
 	<build>
 		<plugins>

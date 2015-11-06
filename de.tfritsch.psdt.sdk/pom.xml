@@ -13,5 +13,5 @@
 	<artifactId>de.tfritsch.psdt.sdk</artifactId>
 	<packaging>eclipse-feature</packaging>
 
-	<name>PostScript Language Feature</name>
+	<name>PostScript Feature</name>
 </project>

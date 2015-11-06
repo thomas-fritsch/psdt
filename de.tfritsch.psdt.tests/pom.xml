@@ -13,7 +13,7 @@
 	<artifactId>de.tfritsch.psdt.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
 
-	<name>PostScript Language Tests</name>
+	<name>PostScript Tests</name>
 
 	<build>
 		<plugins>

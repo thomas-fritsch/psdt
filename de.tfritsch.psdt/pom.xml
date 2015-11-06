@@ -13,7 +13,7 @@
 	<artifactId>de.tfritsch.psdt</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>PostScript Language Core</name>
+	<name>PostScript Core</name>
 
 	<build>
 		<plugins>

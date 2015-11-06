@@ -13,5 +13,5 @@
 	<artifactId>de.tfritsch.psdt.help</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
-	<name>PostScript Language Help</name>
+	<name>PostScript Help</name>
 </project>
