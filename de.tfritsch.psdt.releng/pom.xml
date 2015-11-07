@@ -27,6 +27,13 @@
 			<organizationUrl>http://www.oce.com</organizationUrl>
 		</developer>
 	</developers>
+	<scm>
+		<url>https://github.com/thomas-fritsch/psdt</url>
+	</scm>
+	<issueManagement>
+		<url>https://github.com/thomas-fritsch/psdt/issues</url>
+	</issueManagement>
+
 	<modules>
 		<module>../de.tfritsch.psdt.help</module>
 		<module>../de.tfritsch.psdt</module>
