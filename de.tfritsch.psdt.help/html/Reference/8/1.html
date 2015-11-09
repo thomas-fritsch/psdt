@@ -552,19 +552,589 @@
 		</tr>
 	</table>
 	<h3 id="7">Relational, Boolean, and Bitwise Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> any<sub>2</sub></i></td>
+			<td><a href="2/e/eq.html">eq</a> <i>bool</i></td>
+			<td>Test equal</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> any<sub>2</sub></i></td>
+			<td><a href="2/n/ne.html">ne</a> <i>bool</i></td>
+			<td>Test not equal</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub>|str<sub>1</sub>
+					num<sub>2</sub>|str<sub>2</sub></i></td>
+			<td><a href="2/g/ge.html">ge</a> <i>bool</i></td>
+			<td>Test greater than or equal</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub>|str<sub>1</sub>
+					num<sub>2</sub>|str<sub>2</sub></i></td>
+			<td><a href="2/g/gt.html">gt</a> <i>bool</i></td>
+			<td>Test greater than</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub>|str<sub>1</sub>
+					num<sub>2</sub>|str<sub>2</sub></i></td>
+			<td><a href="2/l/le.html">le</a> <i>bool</i></td>
+			<td>Test less than or equal</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num<sub>1</sub>|str<sub>1</sub>
+					num<sub>2</sub>|str<sub>2</sub></i></td>
+			<td><a href="2/l/lt.html">lt</a> <i>bool</i></td>
+			<td>Test less than</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool<sub>1</sub>|int<sub>1</sub>
+					bool<sub>2</sub>|int<sub>2^</sub></i></td>
+			<td><a href="2/a/and.html">and</a> <i>bool<sub>3</sub>|int<sub>3</sub></i></td>
+			<td>Perform logical|bitwise and</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool<sub>1</sub>|int<sub>1</sub></i></td>
+			<td><a href="2/n/not.html">not</a> <i>bool<sub>2</sub>|int<sub>2</sub></i></td>
+			<td>Perform logical|bitwise not</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">bool<sub>1</sub>|int<sub>1</sub>
+				bool<sub>2</sub>|int<sub>2</sub></td>
+			<td><a href="2/o/or.html">or</a> <i>bool3|int3</i></td>
+			<td>Perform logical|bitwise inclusive or</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool<sub>1</sub>|int<sub>1</sub>
+					bool<sub>2</sub>|int<sub>2</sub></i></td>
+			<td><a href="2/x/xor.html">xor</a> <i>bool<sub>3</sub>|int<sub>3</sub></i></td>
+			<td>Perform logical|bitwise exclusive or</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/t/true.html">true</a> <i>true</i></td>
+			<td>Return boolean value <i>true</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/f/false.html">false</a> <i>false</i></td>
+			<td>Return boolean value <i>false</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int<sub>1</sub> shift
+			</i></td>
+			<td><a href="2/b/bitshift.html">bitshift</a> <i>int<sub>2</sub></i></td>
+			<td>Perform bitwise shift of <i>int<sub>1</sub></i> (positive is
+				left)
+			</td>
+		</tr>
+	</table>
 	<h3 id="8">Control Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/e/exec.html">exec</a> -</td>
+			<td>Execute arbitrary object</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool proc</i></td>
+			<td><a href="2/i/if.html">if</a> -</td>
+			<td>Execute <i>proc</i> if <i>bool</i> is <i>true</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool proc<sub>1</sub> proc<sub>2</sub></i></td>
+			<td><a href="2/i/ifelse.html">ifelse</a> -</td>
+			<td>Execute <i>proc<sub>1</sub></i> if <i>bool</i> is <i>true</i>,
+				<i>proc<sub>2</sub></i> if <i>false</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>initial increment limit
+					proc</i></td>
+			<td><a href="2/f/for.html">for</a> -</td>
+			<td>Execute <i>proc</i> with values from <i>initial</i> by steps
+				of <i>increment</i> to <i>limit</i>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int proc</i></td>
+			<td><a href="2/r/repeat.html">repeat</a> -</td>
+			<td>Execute <i>proc</i> <i>int</i> times
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc</i></td>
+			<td><a href="2/l/loop.html">loop</a> -</td>
+			<td>Execute <i>proc</i> an indefinite number of times
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/e/exit.html">exit</a> -</td>
+			<td>Exit innermost active loop</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/stop.html">stop</a> -</td>
+			<td>Terminate <a href="2/s/stopped.html">stopped</a> context
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/s/stopped.html">stopped</a> <i>bool</i></td>
+			<td>Establish context for catching <a href="2/s/stop.html">stop</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/countexecstack.html">countexecstack</a> <i>int</i></td>
+			<td>Count elements on execution stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array</i></td>
+			<td><a href="2/e/execstack.html">execstack</a> <i>subarray</i></td>
+			<td>Copy execution stack into <i>array</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/q/quit.html">quit</a> -</td>
+			<td>Terminate interpreter</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/start.html">start</a> -</td>
+			<td>Executed at interpreter startup</td>
+		</tr>
+	</table>
 	<h3 id="9">Type, Attribute, and Conversion Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/t/type.html">type</a> <i>name</i></td>
+			<td>Return type of <i>any</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/c/cvlit.html">cvlit</a> <i>any</i></td>
+			<td>Make object literal</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/c/cvx.html">cvx</a> <i>any</i></td>
+			<td>Make object executable</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/x/xcheck.html">xcheck</a> <i>bool</i></td>
+			<td>Test executable attribute</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|packedarray|file|string</i></td>
+			<td><a href="2/e/executeonly.html">executeonly</a> <i>array|packedarray|file|string</i></td>
+			<td>Reduce access to execute-only</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|packedarray|dict|file|string</i></td>
+			<td><a href="2/n/noaccess.html">noaccess</a> <i>array|packedarray|dict|file|string</i></td>
+			<td>Disallow any access</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|packedarray|dict|file|string</i></td>
+			<td><a href="2/r/readonly.html">readonly</a> <i>array|packedarray|dict|file|string</i></td>
+			<td>Reduce access to read-only</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|packedarray|dict|file|string</i></td>
+			<td><a href="2/r/rcheck.html">rcheck</a> <i>bool</i></td>
+			<td>Test read access</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|packedarray|dict|file|string</i></td>
+			<td><a href="2/w/wcheck.html">wcheck</a> <i>bool</i></td>
+			<td>Test write access</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num|string</i></td>
+			<td><a href="2/c/cvi.html">cvi</a> <i>int</i></td>
+			<td>Convert to integer</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="2/c/cvn.html">cvn</a> <i>name</i></td>
+			<td>Convert to name</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num|string</i></td>
+			<td><a href="2/c/cvr.html">cvr</a> <i>real</i></td>
+			<td>Convert to real</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num radix string</i></td>
+			<td><a href="2/c/cvrs.html">cvrs</a> <i>substring</i></td>
+			<td>Convert with radix to string</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any string</i></td>
+			<td><a href="2/c/cvs.html">cvs</a> <i>substring</i></td>
+			<td>Convert to string</td>
+		</tr>
+	</table>
 	<h3 id="10">File Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>filename access</i></td>
+			<td><a href="2/f/file.html">file</a> <i>file</i></td>
+			<td>Open named file with specified access</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>datasrc|datatgt dict<br />
+					param<sub>1</sub> ... param<sub>n</sub> filtername
+			</i></td>
+			<td><a href="2/f/filter.html">filter</a> <i>file</i></td>
+			<td>Establish filtered file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/c/closefile.html">closefile</a> -</td>
+			<td>Close <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/r/read.html">read</a> <i>int true</i><br />or <i>false</i>
+			</td>
+			<td>Read one character from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file int</i></td>
+			<td><a href="2/w/write.html">write</a> -</td>
+			<td>Write one character to <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="2/r/readhexstring.html">readhexstring</a> <i>substring
+					bool</i></td>
+			<td>Read hexadecimal numbers from <i>file</i> into <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="2/w/writehexstring.html">writehexstring</a> -</td>
+			<td>Write <i>string</i> to <i>file</i> as hexadecimal
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="2/r/readstring.html">readstring</a> <i>substring
+					bool</i></td>
+			<td>Read string from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="2/w/writestring.html">writestring</a> -</td>
+			<td>Write <i>string</i> to <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="2/r/readline.html">readline</a> <i>substring
+					bool</i></td>
+			<td>Read line from <i>file</i> into <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/t/token.html">token</a> <i>any true</i><br />&nbsp;&nbsp;&nbsp;&nbsp;
+				or <i>false</i></td>
+			<td>Read token from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/b/bytesavailable.html">bytesavailable</a> <i>int</i></td>
+			<td>Return number of bytes available to read</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/f/flush.html">flush</a> -</td>
+			<td>Send buffered data to standard output file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/f/flushfile.html">flushfile</a> -</td>
+			<td>Send buffered data or read to EOF</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/r/resetfile.html">resetfile</a> -</td>
+			<td>Discard buffered characters</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/s/status.html">status</a> <i>bool</i></td>
+			<td>Return status of file (<i>true</i> = valid)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="2/s/status.html">status</a> <i>pages bytes
+					referenced created true</i><br />&nbsp;&nbsp;&nbsp;&nbsp; or <i>false</i></td>
+			<td>Return information about named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="2/r/run.html">run</a> -</td>
+			<td>Execute contents of named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/currentfile.html">currentfile</a> <i>file</i></td>
+			<td>Return file currently being executed</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="2/d/deletefile.html">deletefile</a> -</td>
+			<td>Delete named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename<sub>1</sub>
+					filename<sub>2</sub></i></td>
+			<td><a href="2/r/renamefile.html">renamefile</a> -</td>
+			<td>Rename file <i>filename<sub>1</sub></i> to <i>filename<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>template proc scratch</i></td>
+			<td><a href="2/f/filenameforall.html">filenameforall</a> -</td>
+			<td>Execute <i>proc</i> for each file name matching <i>template</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file position</i></td>
+			<td><a href="2/s/setfileposition.html">setfileposition</a> -</td>
+			<td>Set <i>file</i> to specified position
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="2/f/fileposition.html">fileposition</a> <i>position</i></td>
+			<td>Return current position in <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="2/p/print.html">print</a> -</td>
+			<td>Write <i>string</i> to standard output file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/@/equals.html">=</a> -</td>
+			<td>Write text representation of <i>any</i> to standard output
+				file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/@/equals-equals.html">==</a> -</td>
+			<td>Write syntactic representation of <i>any</i> to standard
+				output file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="2/s/stack.html">stack</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td>Print stack nondestructively using <a href="2/@/equals.html">=</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="2/p/pstack.html">pstack</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td>Print stack nondestructively using <a
+				href="2/@/equals-equals.html">==</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>obj tag</i></td>
+			<td><a href="2/p/printobject.html">printobject</a> -</td>
+			<td>Write binary object to standard output file, using <i>tag</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file obj tag</i></td>
+			<td><a href="2/w/writeobject.html">writeobject</a> -</td>
+			<td>Write binary object to file, using <i>tag</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="2/s/setobjectformat.html">setobjectformat</a> -</td>
+			<td>Set binary object format (0 = disable, 1 = IEEE high, 2 =
+				IEEE low, 3 = native high, 4 = native low)</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/currentobjectformat.html">currentobjectformat</a>
+				<i>int</i></td>
+			<td>Return binary object format</td>
+		</tr>
+	</table>
 	<h3 id="11">Resource Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>key instance category</i></td>
+			<td><a href="2/d/defineresource.html">defineresource</a> <i>instance</i></td>
+			<td>Register named resource <i>instance</i> in <i>category</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key category</i></td>
+			<td><a href="2/u/undefineresource.html">undefineresource</a> -</td>
+			<td>Remove resource registration</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key category</i></td>
+			<td><a href="2/f/findresource.html">findresource</a> <i>instance</i></td>
+			<td>Return resource <i>instance</i> identified by <i>key</i> in
+				<i>category</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>renderingintent</i></td>
+			<td><a href="2/f/findcolorrendering.html">findcolorrendering</a>
+				<i>name bool</i></td>
+			<td>Select CIE-based color rendering dictionary by rendering
+				intent</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key category</i></td>
+			<td><a href="2/r/resourcestatus.html">resourcestatus</a> <i>status
+					size true</i><br />&nbsp;&nbsp;&nbsp;&nbsp; or <i>false</i></td>
+			<td>Return status of resource instance</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>template proc scratch
+					category</i></td>
+			<td><a href="2/r/resourceforall.html">resourceforall</a> -</td>
+			<td>Enumerate resource instances in <i>category</i></td>
+		</tr>
+	</table>
 	<h3 id="12">Virtual Memory Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/save.html">save</a> <i>save</i></td>
+			<td>Create VM snapshot</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>save</i></td>
+			<td><a href="2/r/restore.html">restore</a> -</td>
+			<td>Restore VM snapshot</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="2/s/setglobal.html">setglobal</a> -</td>
+			<td>Set VM allocation mode (<i>false</i> = local, <i>true</i> =
+				global)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/c/currentglobal.html">currentglobal</a> <i>bool</i></td>
+			<td>Return current VM allocation mode</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="2/g/gcheck.html">gcheck</a> <i>bool</i></td>
+			<td>Return <i>true</i> if any is simple or in global VM, <i>false</i>
+				if in local VM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool<sub>1</sub> password
+			</i></td>
+			<td><a href="2/s/startjob.html">startjob</a> <i>bool<sub>2</sub></i></td>
+			<td>Start new job that will alter initial VM if <i>bool<sub>1</sub></i>
+				is <i>true</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index any</i></td>
+			<td><a href="2/d/defineuserobject.html">defineuserobject</a> -</td>
+			<td>Define user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index</i></td>
+			<td><a href="2/e/execuserobject.html">execuserobject</a> -</td>
+			<td>Execute user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index</i></td>
+			<td><a href="2/u/undefineuserobject.html">undefineuserobject</a>
+				-</td>
+			<td>Remove user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2//.html">UserObjects</a> <i>array</i></td>
+			<td>Return current <a href="2/u/UserObjects.html">UserObjects</a>
+				array defined in <a href="2/u/userdict.html">userdict</a>
+			</td>
+		</tr>
+	</table>
 	<h3 id="13">Miscellaneous Operators</h3>
-	<table></table>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>proc</i></td>
+			<td><a href="2/b/bind.html">bind</a> <i>proc</i></td>
+			<td>Replace operator names in <i>proc</i> with operators;
+				perform idiom recognition
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/n/null.html">null</a> <i>null</i></td>
+			<td>Push <i>null</i> on stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/v/version.html">version</a> <i>string</i></td>
+			<td>Return interpreter version</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/r/realtime.html">realtime</a> <i>int</i></td>
+			<td>Return real time in milliseconds</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/u/usertime.html">usertime</a> <i>int</i></td>
+			<td>Return execution time in milliseconds</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/l/languagelevel.html">languagelevel</a> <i>int</i></td>
+			<td>Return LanguageLevel</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/p/product.html">product</a> <i>string</i></td>
+			<td>Return product name</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/r/revision.html">revision</a> <i>int</i></td>
+			<td>Return product revision level</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/s/serialnumber.html">serialnumber</a> <i>int</i></td>
+			<td>Return machine serial number</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/e/executive.html">executive</a> -</td>
+			<td>Invoke interactive executive</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="2/e/echo.html">echo</a> -</td>
+			<td>Turn echoing on or off</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="2/p/prompt.html">prompt</a> -</td>
+			<td>Executed when ready for interactive input</td>
+		</tr>
+	</table>
 	<h3 id="14">Graphics State Operators (Device-Independent)</h3>
 	<table></table>
 	<h3 id="15">Graphics State Operators (Device-Dependent)</h3>
