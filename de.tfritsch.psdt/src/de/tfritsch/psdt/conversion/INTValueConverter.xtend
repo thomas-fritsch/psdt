@@ -14,7 +14,9 @@ class INTValueConverter implements IValueConverter<Integer> {
 				val hashPos = string.indexOf('#')
 				val radix = string.substring(0, hashPos).parseInt
 				return string.substring(hashPos + 1).parseInt(radix)
-			} else
+			} else if (string.startsWith("+"))
+				return string.substring(1).parseInt(10)
+			else
 				return string.parseInt(10)
 		} catch (NumberFormatException e) {
 			throw new ValueConverterException("parse error", node, e)
