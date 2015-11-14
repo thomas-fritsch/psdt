@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glyph and Font Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Glyph and Font Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>key font|cidfont</i></td>
+			<td><a href="../2/d/definefont.html">definefont</a> <i>font|cidfont</i></td>
+			<td>Register <i>font|cidfont</i> in <b>Font</b> resource
+				category
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key name|string|dict array</i></td>
+			<td><a href="../2/c/composefont.html">composefont</a> <i>font</i></td>
+			<td>Register composite font dictionary created from CMap and
+				array of CIDFonts or fonts</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="../2/u/undefinefont.html">undefinefont</a> -</td>
+			<td>Remove Font resource registration</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="../2/f/findfont.html">findfont</a> <i>font|cidfont</i></td>
+			<td>Return <b>Font</b> resource instance identified by <i>key</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>font|cidfont scale</i></td>
+			<td><a href="../2/s/scalefont.html">scalefont</a> <i>font'|cidfont'</i></td>
+			<td>Scale <i>font|cidfont</i> by <i>scale</i> to produce <i>font'|cidfont'</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>font|cidfont matrix</i></td>
+			<td><a href="../2/m/makefont.html">makefont</a> <i>font'|cidfont'</i></td>
+			<td>Transform <i>font|cidfont</i> by <i>matrix</i> to produce <i>font'|cidfont'</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>font|cidfont</i></td>
+			<td><a href="../2/s/setfont.html">setfont</a> -</td>
+			<td>Set font or CIDFont in graphics state</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/r/rootfont.html">rootfont</a> <i>font|cidfont</i></td>
+			<td>Return last set font or CIDFont</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentfont.html">currentfont</a> <i>font|cidfont</i></td>
+			<td>Return current font or CIDFont, possibly a descendant of <a
+				href="../2/r/rootfont.html">rootfont</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key scale|matrix</i></td>
+			<td><a href="../2/s/selectfont.html">selectfont</a> -</td>
+			<td>Set font or CIDFont given name and transform</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="../2/s/.html">show</a> -</td>
+			<td>Paint glyphs for string in current font</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>a<sub>x</sub> a<sub>y</sub>
+					string
+			</i></td>
+			<td><a href="../2/a/ashow.html">ashow</a> -</td>
+			<td>Add (<i>a<sub>x</sub></i>, <i>a<sub>y</sub></i>) to width of
+				each glyph while showing <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>c<sub>x</sub> c<sub>y</sub>
+					char string
+			</i></td>
+			<td><a href="../2/w/widthshow.html">widthshow</a> -</td>
+			<td>Add (<i>c<sub>x</sub></i>, <i>c<sub>y</sub></i>) to width of
+				glyph for <i>char</i> while showing <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>c<sub>x</sub> c<sub>y</sub>
+					char a<sub>x</sub> a<sub>y</sub> string
+			</i></td>
+			<td><a href="../2/a/awidthshow.html">awidthshow</a> -</td>
+			<td>Combine effects of <a href="../2/a/ashow.html">ashow</a> and
+				<a href="../2/w/widthshow.html">widthshow</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string numarray|numstring</i></td>
+			<td><a href="../2/x/xshow.html">xshow</a> -</td>
+			<td>Paint glyphs for <i>string</i> using <i>x</i> widths in <i>numarray|numstring</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string numarray|numstring</i></td>
+			<td><a href="../2/x/xyshow.html">xyshow</a> -</td>
+			<td>Paint glyphs for <i>string</i> using <i>x</i> and <i>y</i>
+				widths in <i>numarray|numstring</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string numarray|numstring</i></td>
+			<td><a href="../2/y/yshow.html">yshow</a> -</td>
+			<td>Paint glyphs for <i>string</i> using <i>y</i> widths in <i>numarray|numstring</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>name|cid</i></td>
+			<td><a href="../2/g/glyphshow.html">glyphshow</a> -</td>
+			<td>Paint glyph for character identified by <i>name|cid</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="../2/s/stringwidth.html">stringwidth</a> <i>w<sub>x</sub>
+					w<sub>y</sub></i></td>
+			<td>Return width of glyphs for <i>string</i> in current font
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc string</i></td>
+			<td><a href="../2/c/cshow.html">cshow</a> -</td>
+			<td>Invoke character mapping algorithm and call <i>proc</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc string</i></td>
+			<td><a href="../2/k/kshow.html">kshow</a> -</td>
+			<td>Execute <i>proc</i> between characters shown from <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/f/FontDirectory.html">FontDirectory</a> <i>dict</i></td>
+			<td>Return dictionary of <b>Font</b> resource instances
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/GlobalFontDirectory.html">GlobalFontDirectory</a>
+				<i>dict</i></td>
+			<td>Return dictionary of <b>Font</b> resource instances
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/s/StandardEncoding.html">StandardEncoding</a>
+				<i>array</i></td>
+			<td>Return Adobe standard font encoding vector</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/i/ISOLatin1Encoding.html">ISOLatin1Encoding</a>
+				<i>array</i></td>
+			<td>Return ISO Latin-1 font encoding vector</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="../2/f/findencoding.html">findencoding</a> <i>array</i></td>
+			<td>Find encoding vector</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>w<sub>x</sub> w<sub>y</sub>
+					ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub>
+			</i></td>
+			<td><a href="../2/s/setcachedevice.html">setcachedevice</a> -</td>
+			<td>Declare cached glyph metrics</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>w0<sub>x</sub> w0<sub>y</sub>
+					ll<sub>x</sub> ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub> w1<sub>x</sub>
+					w1<sub>y</sub> v<sub>x</sub> v<sub>y</sub></i></td>
+			<td><a href="../2/s/setcachedevice2.html">setcachedevice2</a> -</td>
+			<td>Declare cached glyph metrics</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>w<sub>x</sub> w<sub>y</sub>
+			</i></td>
+			<td><a href="../2/s/setcharwidth.html">setcharwidth</a> -</td>
+			<td>Declare uncached glyph metrics</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Virtual Memory Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Virtual Memory Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/s/save.html">save</a> <i>save</i></td>
+			<td>Create VM snapshot</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>save</i></td>
+			<td><a href="../2/r/restore.html">restore</a> -</td>
+			<td>Restore VM snapshot</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="../2/s/setglobal.html">setglobal</a> -</td>
+			<td>Set VM allocation mode (<i>false</i> = local, <i>true</i> =
+				global)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentglobal.html">currentglobal</a> <i>bool</i></td>
+			<td>Return current VM allocation mode</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="../2/g/gcheck.html">gcheck</a> <i>bool</i></td>
+			<td>Return <i>true</i> if any is simple or in global VM, <i>false</i>
+				if in local VM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool<sub>1</sub> password
+			</i></td>
+			<td><a href="../2/s/startjob.html">startjob</a> <i>bool<sub>2</sub></i></td>
+			<td>Start new job that will alter initial VM if <i>bool<sub>1</sub></i>
+				is <i>true</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index any</i></td>
+			<td><a href="../2/d/defineuserobject.html">defineuserobject</a>
+				-</td>
+			<td>Define user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index</i></td>
+			<td><a href="../2/e/execuserobject.html">execuserobject</a> -</td>
+			<td>Execute user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>index</i></td>
+			<td><a href="../2/u/undefineuserobject.html">undefineuserobject</a>
+				-</td>
+			<td>Remove user object associated with <i>index</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2//.html">UserObjects</a> <i>array</i></td>
+			<td>Return current <a href="../2/u/UserObjects.html">UserObjects</a>
+				array defined in <a href="../2/u/userdict.html">userdict</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

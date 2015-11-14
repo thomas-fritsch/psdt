@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Operand Stack Manipulation Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Operand Stack Manipulation Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="../2/p/pop.html">pop</a> -</td>
+			<td>Discard top element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> any<sub>2</sub></i></td>
+			<td><a href="../2/e/exch.html">exch</a> <i>any<sub>2</sub>
+					any<sub>1</sub></i></td>
+			<td>Exchange top two elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="../2/d/dup.html">dup</a> <i>any any</i></td>
+			<td>Duplicate top element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>1</sub> ... any<sub>n</sub>
+					n
+			</i></td>
+			<td><a href="../2/c/copy.html">copy</a> <i>any<sub>1</sub>
+					... any<sub>n</sub> any<sub>1</sub> ... any<sub>n</sub></i></td>
+			<td>Duplicate top n elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>n</sub> ... any<sub>0</sub>
+					n
+			</i></td>
+			<td><a href="../2/i/index.html">index</a> <i>any<sub>n</sub>
+					... any<sub>0</sub> any<sub>n</sub></i></td>
+			<td>Duplicate arbitrary element</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any<sub>n-1</sub> ... any<sub>0</sub>
+					n j
+			</i></td>
+			<td><a href="../2/r/roll.html">roll</a> <i>any<sub>(j-1)
+						mod n</sub> ... any<sub>0</sub> any<sub>n-1</sub> ... any<sub>j
+						mod n</sub></i></td>
+			<td>Roll n elements up j times</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="../2/c/clear.html">clear</a> &#x251c;</td>
+			<td>Discard all elements</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="../2/c/count.html">count</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub> n
+			</i></td>
+			<td>Count elements on stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/m/mark.html">mark</a> <i>mark</i></td>
+			<td>Push mark on stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark obj<sub>1</sub> ...
+					obj<sub>n</sub></i></td>
+			<td><a href="../2/c/cleartomark.html">cleartomark</a> -</td>
+			<td>Discard elements down through mark</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark obj<sub>1</sub> ...
+					obj<sub>n</sub></i></td>
+			<td><a href="../2/c/counttomark.html">counttomark</a> <i>mark
+					obj<sub>1</sub> ... obj<sub>n</sub> n
+			</i></td>
+			<td>Count elements down to mark</td>
+		</tr>
+	</table>
+</body>
+</html>

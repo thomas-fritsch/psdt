@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graphics State Operators (Device-Dependent)</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Graphics State Operators (Device-Dependent)</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>halftone</i></td>
+			<td><a href="../2/s/sethalftone.html">sethalftone</a> -</td>
+			<td>Set halftone dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currenthalftone.html">currenthalftone</a> <i>halftone</i></td>
+			<td>Return current halftone dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>frequency angle proc</i></td>
+			<td><a href="../2/s/setscreen.html">setscreen</a> -</td>
+			<td>Set gray halftone screen by frequency, angle, and spot
+				function
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>frequency angle halftone</i></td>
+			<td><a href="../2/s/setscreen.html">setscreen</a> -</td>
+			<td>Set gray halftone screen from halftone dictionary
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentscreen.html">currentscreen</a> <i>frequency
+					angle proc|halftone</i></td>
+			<td>Return current gray halftone screen</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>redfreq redang
+					redproc|redhalftone<br /> greenfreq greenang
+					greenproc|greenhalftone<br /> bluefreq blueang
+					blueproc|bluehalftone<br /> grayfreq grayang grayproc|grayhalftone
+			</i></td>
+			<td><a href="../2/s/setcolorscreen.html">setcolorscreen</a> -</td>
+			<td>Set all four halftone screens
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcolorscreen.html">currentcolorscreen</a>
+				<i>redfreq redang redproc|redhalftone<br /> greenfreq greenang
+					greenproc|greenhalftone<br /> bluefreq blueang
+					blueproc|bluehalftone<br /> grayfreq grayang grayproc|grayhalftone
+			</i></td>
+			<td>Return all four halftone screens</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc</i></td>
+			<td><a href="../2/s/setttransfer.html">settransfer</a> -</td>
+			<td>Set gray transfer function</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentttransfer.html">currenttransfer</a> <i>proc</i></td>
+			<td>Return current gray transfer function</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>redproc greenproc blueproc
+					grayproc</i></td>
+			<td><a href="../2/s/setcolortransfer.html">setcolortransfer</a>
+				-</td>
+			<td>Set all four transfer functions</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcolortransfer.html">currentcolortransfer</a>
+				<i>redproc greenproc blueproc grayproc</i></td>
+			<td>Return current transfer functions</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc</i></td>
+			<td><a href="../2/s/setblackgeneration.html">setblackgeneration</a>
+				-</td>
+			<td>Set black-generation function</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentblackgeneration.html">currentblackgeneration</a>
+				<i>proc</i></td>
+			<td>Return current black-generation function</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>proc</i></td>
+			<td><a href="../2/s/setundercolorremoval.html">setundercolorremoval</a>
+				-</td>
+			<td>Set undercolor-removal function
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentundercolorremoval.html">currentundercolorremoval</a>
+				<i>proc</i></td>
+			<td>Return current undercolor-removal function</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="../2/s/setcolorrendering.html">setcolorrendering</a>
+				-</td>
+			<td>Set CIE-based color rendering dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcolorrendering.html">currentcolorrendering</a>
+				<i>dict</i></td>
+			<td>Return current CIE-based color rendering dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="../2/s/setflat.html">setflat</a> -</td>
+			<td>Set flatness tolerance</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentflat.html">currentflat</a> <i>num</i></td>
+			<td>Return current flatness</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="../2/s/setoverprint.html">setoverprint</a> -</td>
+			<td>Set overprint parameter</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentoverprint.html">currentoverprint</a>
+				<i>bool</i></td>
+			<td>Return current overprint parameter</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="../2/s/setsmoothness.html">setsmoothness</a> -</td>
+			<td>Set smoothness parameter</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentsmoothness.html">currentsmoothness</a>
+				<i>num</i></td>
+			<td>Return current smoothness parameter</td>
+		</tr>
+	</table>
+</body>
+</html>

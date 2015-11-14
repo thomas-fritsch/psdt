@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coordinate System and Matrix Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Coordinate System and Matrix Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/m/matrix.html">matrix</a> <i>matrix</i></td>
+			<td>Create identity matrix</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/i/initmatrix.html">initmatrix</a> -</td>
+			<td>Set CTM to device default</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix</i></td>
+			<td><a href="../2/i/identmatrix.html">identmatrix</a> <i>matrix</i></td>
+			<td>Fill <i>matrix</i> with identity transform
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix</i></td>
+			<td><a href="../2/d/defaultmatrix.html">defaultmatrix</a> <i>matrix</i></td>
+			<td>Fill <i>matrix</i> with device default matrix
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix</i></td>
+			<td><a href="../2/c/currentmatrix.html">currentmatrix</a> <i>matrix</i></td>
+			<td>Fill <i>matrix</i> with CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix</i></td>
+			<td><a href="../2/s/setmatrix.html">setmatrix</a> -</td>
+			<td>Replace CTM by <i>matrix</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>t<sub>x</sub> t<sub>y</sub></i></td>
+			<td><a href="../2/t/translate.html">translate</a> -</td>
+			<td>Translate user space by (<i>t<sub>x</sub></i>, <i>t<sub>y</sub></i>)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>t<sub>x</sub> t<sub>y</sub>
+					matrix
+			</i></td>
+			<td><a href="../2/t/translate.html">translate</a> <i>matrix</i></td>
+			<td>Define translation by (<i>t<sub>x</sub></i>, <i>t<sub>y</sub></i>)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>s<sub>x</sub> s<sub>y</sub></i></td>
+			<td><a href="../2/s/scale.html">scale</a> -</td>
+			<td>Scale user space by <i>s<sub>x</sub></i> and <i>s<sub>y</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>s<sub>x</sub> s<sub>y</sub>
+					matrix
+			</i></td>
+			<td><a href="../2/s/scale.html">scale</a> <i>matrix</i></td>
+			<td>Define scaling by <i>s<sub>x</sub></i> and <i>s<sub>y</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>angle</i></td>
+			<td><a href="../2/r/rotate.html">rotate</a> -</td>
+			<td>Rotate user space by <i>angle</i> degrees
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>angle matrix</i></td>
+			<td><a href="../2/r/rotate.html">rotate</a> <i>matrix</i></td>
+			<td>Define rotation by <i>angle</i> degrees
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix</i></td>
+			<td><a href="../2/c/concat.html">concat</a> -</td>
+			<td>Replace CTM by <i>matrix</i> &times; CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix<sub>1</sub> matrix<sub>2</sub>
+					matrix<sub>3</sub></i></td>
+			<td><a href="../2/c/concatmatrix.html">concatmatrix</a> <i>matrix<sub>3</sub></i></td>
+			<td>Fill <i>matrix<sub>3</sub></i> with <i>matrix<sub>1</sub></i>
+				&times; <i>matrix<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y</i></td>
+			<td><a href="../2/t/transform.html">transform</a> <i>x' y'</i></td>
+			<td>Transform (<i>x</i>, <i>y</i>) by CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y matrix</i></td>
+			<td><a href="../2/t/transform.html">transform</a> <i>x' y'</i></td>
+			<td>Transform (<i>x</i>, <i>y</i>) by <i>matrix</i>
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx dy</i></td>
+			<td><a href="../2/d/dtransform.html">dtransform</a> <i>dx'
+					dy'</i></td>
+			<td>Transform distance (<i>dx</i>, <i>dy</i>) by CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx dy matrix</i></td>
+			<td><a href="../2/d/dtransform.html">dtransform</a> <i>dx'
+					dy'</i></td>
+			<td>Transform distance (<i>dx</i>, <i>dy</i>) by <i>matrix</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x' y'</i></td>
+			<td><a href="../2/i/itransform.html">itransform</a> <i>x y</i></td>
+			<td>Perform inverse transform of (<i>x'</i>, <i>y'</i>) by CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x' y' matrix</i></td>
+			<td><a href="../2/i/itransform.html">itransform</a> <i>x y</i></td>
+			<td>Perform inverse transform of (<i>x'</i>, <i>y'</i>) by <i>matrix</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx' dy'</i></td>
+			<td><a href="../2/i/idtransform.html">idtransform</a> <i>dx
+					dy</i></td>
+			<td>Perform inverse transform of distance (<i>dx'</i>, <i>dy'</i>)
+				by CTM
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx' dy' matrix</i></td>
+			<td><a href="../2/i/idtransform.html">idtransform</a> <i>dx
+					dy</i></td>
+			<td>Perform inverse transform of distance (<i>dx'</i>, <i>dy'</i>)
+				by <i>matrix</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>matrix<sub>1</sub> matrix<sub>2</sub></i></td>
+			<td><a href="../2/i/invertmatrix.html">invertmatrix</a> <i>matrix<sub>2</sub></i></td>
+			<td>Fill <i>matrix<sub>2</sub></i> with inverse of <i>matrix<sub>1</sub></i></td>
+		</tr>
+	</table>
+</body>
+</html>

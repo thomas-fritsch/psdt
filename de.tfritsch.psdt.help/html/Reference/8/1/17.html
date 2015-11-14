@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Path Construction Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Path Construction Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/n/newpath.html">newpath</a> -</td>
+			<td>Initialize current path to be empty</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentpoint.html">currentpoint</a> <i>x
+					y</i></td>
+			<td>Return current point coordinates</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y</i></td>
+			<td><a href="../2/m/moveto.html">moveto</a> -</td>
+			<td>Set current point to (<i>x</i>, <i>y</i>)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx dy</i></td>
+			<td><a href="../2/r/rmoveto.html">rmoveto</a> -</td>
+			<td>Perform relative <a href="../2/m/moveto.html">moveto</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y</i></td>
+			<td><a href="../2/l/lineto.html">lineto</a> -</td>
+			<td>Append straight line to (<i>x</i>, <i>y</i>)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx dy</i></td>
+			<td><a href="../2/r/rlineto.html">rlineto</a> -</td>
+			<td>Perform relative <a href="../2/l/lineto.html">lineto</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y r angle<sub>1</sub>
+					angle<sub>2</sub></i></td>
+			<td><a href="../2/a/arc.html">arc</a> -</td>
+			<td>Append counterclockwise arc</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y r angle<sub>1</sub>
+					angle<sub>2</sub></i></td>
+			<td><a href="../2/a/arcn.html">arcn</a> -</td>
+			<td>Append clockwise arc</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x<sub>1</sub> y<sub>1</sub>
+					x<sub>2</sub> y<sub>2</sub> r
+			</i></td>
+			<td><a href="../2/a/arct.html">arct</a> -</td>
+			<td>Append tangent arc</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x<sub>1</sub> y<sub>1</sub>
+					x<sub>2</sub> y<sub>2</sub> r
+			</i></td>
+			<td><a href="../2/a/arcto.html">arcto</a> <i>xt<sub>1</sub>
+					yt<sub>1</sub> xt<sub>2</sub> yt<sub>2</sub></i></td>
+			<td>Append tangent arc</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x<sub>1</sub> y<sub>1</sub>
+					x<sub>2</sub> y<sub>2</sub> x<sub>3</sub> y<sub>3</sub></i></td>
+			<td><a href="../2/c/curveto.html">curveto</a> -</td>
+			<td>Append B&eacute;zier cubic section</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dx<sub>1</sub> dy<sub>1</sub>
+					dx<sub>2</sub> dy<sub>2</sub> dx<sub>3</sub> dy<sub>3</sub></i></td>
+			<td><a href="../2/r/rcurveto.html">rcurveto</a> -</td>
+			<td>Perform relative <a href="../2/c/curveto.html">curveto</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/closepath.html">closepath</a> -</td>
+			<td>Connect subpath back to its starting point</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/f/flattenpath.html">flattenpath</a> -</td>
+			<td>Convert curves to sequences of straight lines</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/r/reversepath.html">reversepath</a> -</td>
+			<td>Reverse direction of current path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/s/strokepath.html">strokepath</a> -</td>
+			<td>Compute outline of stroked path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>userpath</i></td>
+			<td><a href="../2/u/ustrokepath.html">ustrokepath</a> -</td>
+			<td>Compute outline of stroked <i>userpath</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>userpath matrix</i></td>
+			<td><a href="../2/u/ustrokepath.html">ustrokepath</a> -</td>
+			<td>Compute outline of stroked <i>userpath</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i></i><i>string bool</i></td>
+			<td><a href="../2/c/charpath.html">charpath</a> -</td>
+			<td>Append glyph outline to current path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>userpath</i></td>
+			<td><a href="../2/u/uappend.html">uappend</a> -</td>
+			<td>Interpret <i>userpath</i> and append to current path
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/clippath.html">clippath</a> -</td>
+			<td>Set current path to clipping path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>ll<sub>x</sub> ll<sub>y</sub>
+					ur<sub>x</sub> ur<sub>y</sub></i></td>
+			<td><a href="../2/s/setbbox.html">setbbox</a> -</td>
+			<td>Set bounding box for current path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/p/pathbbox.html">pathbbox</a> <i>ll<sub>x</sub>
+					ll<sub>y</sub> ur<sub>x</sub> ur<sub>y</sub></i></td>
+			<td>Return bounding box of current path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>move line curve close</i></td>
+			<td><a href="../2/p/pathforall.html">pathforall</a> -</td>
+			<td>Enumerate current path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="../2/u/upath.html">upath</a> <i>userpath</i></td>
+			<td>Create <i>userpath</i> for current path; include <a
+				href="../2/u/ucache.html">ucache</a> if <i>bool</i> is <i>true</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/i/initclip.html">initclip</a> -</td>
+			<td>Set clipping path to device default</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/clip.html">clip</a> -</td>
+			<td>Clip using nonzero winding number rule</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/e/eoclip.html">eoclip</a> -</td>
+			<td>Clip using even-odd rule</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>x y width height</i></td>
+			<td><a href="../2/r/rectclip.html">rectclip</a> -</td>
+			<td>Clip with rectangular path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>numarray|numstring</i></td>
+			<td><a href="../2/r/rectclip.html">rectclip</a> -</td>
+			<td>Clip with rectangular paths</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/u/ucache.html">ucache</a> -</td>
+			<td>Declare that user path is to be cached</td>
+		</tr>
+	</table>
+</body>
+</html>

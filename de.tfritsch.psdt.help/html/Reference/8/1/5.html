@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dictionary Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Dictionary Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="../2/d/dict.html">dict</a> <i>dict</i></td>
+			<td>Create dictionary with capacity for <i>int</i> elements
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/@/lt-lt.html">&lt;&lt;</a> <i>mark</i></td>
+			<td>Start dictionary construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>mark key<sub>1</sub> value<sub>1</sub>
+					... key<sub>n</sub> value<sub>n</sub>
+			</i></td>
+			<td><a href="../2/@/gt-gt.html">&gt;&gt;</a> <i>dict</i></td>
+			<td>End dictionary construction</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="../2/l/length.html">length</a> <i>int</i></td>
+			<td>Return number of entries in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="../2/m/maxlength.html">maxlength</a> <i>int</i></td>
+			<td>Return current capacity of <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict</i></td>
+			<td><a href="../2/b/begin.html">begin</a> -</td>
+			<td>Push <i>dict</i> on dictionary stack
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/e/end.html">end</a> -</td>
+			<td>Pop current dictionary off dictionary stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i> <i>value</i></td>
+			<td><a href="../2/d/def.html">def</a> -</td>
+			<td>Associate <i>key</i> and <i>value</i> in current dictionary
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="../2/l/load.html">load</a> <i>value</i></td>
+			<td>Search dictionary stack for <i>key</i> and return associated
+				<i>value</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key value</i></td>
+			<td><a href="../2/s/store.html">store</a> -</td>
+			<td>Replace topmost definition of <i>key</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="../2/g/get.html">get</a> <i>any</i></td>
+			<td>Return <i>value</i> associated with <i>key</i> in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key value</i></td>
+			<td><a href="../2/p/put.html">put</a> -</td>
+			<td>Associate <i>key</i> with <i>value</i> in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="../2/u/undef.html">undef</a> -</td>
+			<td>Remove <i>key</i> and its <i>value</i> from <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict key</i></td>
+			<td><a href="../2/k/known.html">known</a> <i>bool</i></td>
+			<td>Test whether <i>key</i> is in <i>dict</i>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>key</i></td>
+			<td><a href="../2/w/where.html">where</a> <i>dict true</i><br />
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; or <i>false</i></td>
+			<td>Find dictionary in which <i>key</i> is defined
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict<sub>1</sub> dict<sub>2</sub></i></td>
+			<td><a href="../2/c/copy.html">copy</a> <i>dict<sub>2</sub></i></td>
+			<td>Copy contents of <i>dict<sub>1</sub></i> to <i>dict<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>dict proc</i></td>
+			<td><a href="../2/f/forall.html">forall</a> -</td>
+			<td>Execute <i>proc</i>> for each entry in <i>dict</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentdict.html">currentdict</a> <i>dict</i></td>
+			<td>Return current dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/e/errordict.html">errordict</a> <i>dict</i></td>
+			<td>Return error handler dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/@/dollar-error.html">$error</a> <i>dict</i></td>
+			<td>Return error control and status dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/s/systemdict.html">systemdict</a> <i>dict</i></td>
+			<td>Return system dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/u/userdict.html">userdict</a> <i>dict</i></td>
+			<td>Return writeable dictionary in local VM</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/globaldict.html">globaldict</a> <i>dict</i></td>
+			<td>Return writeable dictionary in global VM</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/s/statusdict.html">statusdict</a> <i>dict</i></td>
+			<td>Return product-dependent dictionary</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/countdictstack.html">countdictstack</a> <i>int</i></td>
+			<td>Count elements on dictionary stack</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array</i></td>
+			<td><a href="../2/d/dictstack.html">dictstack</a> <i>subarray</i></td>
+			<td>Copy dictionary stack into <i>array</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/cleardictstack.html">cleardictstack</a> -</td>
+			<td>Pop all nonpermanent dictionaries off dictionary stack</td>
+		</tr>
+	</table>
+</body>
+</html>

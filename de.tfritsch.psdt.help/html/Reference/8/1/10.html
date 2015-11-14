@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>File Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>File Operators</h3>
+	<table>
+		<tr>
+			<td style="text-align: right"><i>filename access</i></td>
+			<td><a href="../2/f/file.html">file</a> <i>file</i></td>
+			<td>Open named file with specified access</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>datasrc|datatgt dict<br />
+					param<sub>1</sub> ... param<sub>n</sub> filtername
+			</i></td>
+			<td><a href="../2/f/filter.html">filter</a> <i>file</i></td>
+			<td>Establish filtered file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/c/closefile.html">closefile</a> -</td>
+			<td>Close <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/r/read.html">read</a> <i>int true</i><br />or
+				<i>false</i></td>
+			<td>Read one character from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file int</i></td>
+			<td><a href="../2/w/write.html">write</a> -</td>
+			<td>Write one character to <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="../2/r/readhexstring.html">readhexstring</a> <i>substring
+					bool</i></td>
+			<td>Read hexadecimal numbers from <i>file</i> into <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="../2/w/writehexstring.html">writehexstring</a> -</td>
+			<td>Write <i>string</i> to <i>file</i> as hexadecimal
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="../2/r/readstring.html">readstring</a> <i>substring
+					bool</i></td>
+			<td>Read string from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="../2/w/writestring.html">writestring</a> -</td>
+			<td>Write <i>string</i> to <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file string</i></td>
+			<td><a href="../2/r/readline.html">readline</a> <i>substring
+					bool</i></td>
+			<td>Read line from <i>file</i> into <i>string</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/t/token.html">token</a> <i>any true</i><br />&nbsp;&nbsp;&nbsp;&nbsp;
+				or <i>false</i></td>
+			<td>Read token from <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/b/bytesavailable.html">bytesavailable</a> <i>int</i></td>
+			<td>Return number of bytes available to read</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/f/flush.html">flush</a> -</td>
+			<td>Send buffered data to standard output file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/f/flushfile.html">flushfile</a> -</td>
+			<td>Send buffered data or read to EOF</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/r/resetfile.html">resetfile</a> -</td>
+			<td>Discard buffered characters</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/s/status.html">status</a> <i>bool</i></td>
+			<td>Return status of file (<i>true</i> = valid)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="../2/s/status.html">status</a> <i>pages bytes
+					referenced created true</i><br />&nbsp;&nbsp;&nbsp;&nbsp; or <i>false</i></td>
+			<td>Return information about named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="../2/r/run.html">run</a> -</td>
+			<td>Execute contents of named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentfile.html">currentfile</a> <i>file</i></td>
+			<td>Return file currently being executed</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename</i></td>
+			<td><a href="../2/d/deletefile.html">deletefile</a> -</td>
+			<td>Delete named file</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>filename<sub>1</sub>
+					filename<sub>2</sub></i></td>
+			<td><a href="../2/r/renamefile.html">renamefile</a> -</td>
+			<td>Rename file <i>filename<sub>1</sub></i> to <i>filename<sub>2</sub></i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>template proc scratch</i></td>
+			<td><a href="../2/f/filenameforall.html">filenameforall</a> -</td>
+			<td>Execute <i>proc</i> for each file name matching <i>template</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file position</i></td>
+			<td><a href="../2/s/setfileposition.html">setfileposition</a> -</td>
+			<td>Set <i>file</i> to specified position
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file</i></td>
+			<td><a href="../2/f/fileposition.html">fileposition</a> <i>position</i></td>
+			<td>Return current position in <i>file</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>string</i></td>
+			<td><a href="../2/p/print.html">print</a> -</td>
+			<td>Write <i>string</i> to standard output file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="../2/@/equals.html">=</a> -</td>
+			<td>Write text representation of <i>any</i> to standard output
+				file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>any</i></td>
+			<td><a href="../2/@/equals-equals.html">==</a> -</td>
+			<td>Write syntactic representation of <i>any</i> to standard
+				output file
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="../2/s/stack.html">stack</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td>Print stack nondestructively using <a
+				href="../2/@/equals.html">=</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right">&#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td><a href="../2/p/pstack.html">pstack</a> &#x251c; <i>any<sub>1</sub>
+					... any<sub>n</sub></i></td>
+			<td>Print stack nondestructively using <a
+				href="../2/@/equals-equals.html">==</a></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>obj tag</i></td>
+			<td><a href="../2/p/printobject.html">printobject</a> -</td>
+			<td>Write binary object to standard output file, using <i>tag</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>file obj tag</i></td>
+			<td><a href="../2/w/writeobject.html">writeobject</a> -</td>
+			<td>Write binary object to file, using <i>tag</i></td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="../2/s/setobjectformat.html">setobjectformat</a> -</td>
+			<td>Set binary object format (0 = disable, 1 = IEEE high, 2 =
+				IEEE low, 3 = native high, 4 = native low)</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentobjectformat.html">currentobjectformat</a>
+				<i>int</i></td>
+			<td>Return binary object format</td>
+		</tr>
+	</table>
+</body>
+</html>

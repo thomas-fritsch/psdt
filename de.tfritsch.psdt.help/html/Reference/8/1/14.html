@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graphics State Operators (Device-Independent)</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>Graphics State Operators (Device-Independent)</h3>
+	<table>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/gsave.html">gsave</a> -</td>
+			<td>Push graphics state</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/grestore.html">grestore</a> -</td>
+			<td>Pop graphics state</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/clipsave.html">clipsave</a> -</td>
+			<td>Push clipping path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/cliprestore.html">cliprestore</a> -</td>
+			<td>Pop clipping path</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/grestoreall.html">grestoreall</a> -</td>
+			<td>Pop to bottommost graphics state</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/i/initgraphics.html">initgraphics</a> -</td>
+			<td>Reset graphics state parameters</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/g/gstate.html">gstate</a> <i>gstate</i></td>
+			<td>Create graphics state object</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>gstate</i></td>
+			<td><a href="../2/s/setgstate.html">setgstate</a> -</td>
+			<td>Set graphics state from gstate</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>gstate</i></td>
+			<td><a href="../2/c/currentgstate.html">currentgstate</a> <i>gstate</i></td>
+			<td>Copy current graphics state into gstate</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="../2/s/setlinewidth.html">setlinewidth</a> -</td>
+			<td>Set line width</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentlinewidth.html">currentlinewidth</a>
+				<i>num</i></td>
+			<td>Return current line width</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="../2/s/setlinecap.html">setlinecap</a> -</td>
+			<td>Set shape of line ends for stroke (0 = butt, 1 = round, 2 =
+				square)</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentlinecap.html">currentlinecap</a> <i>int</i></td>
+			<td>Return current line cap</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>int</i></td>
+			<td><a href="../2/s/setlinejoin.html">setlinejoin</a> -</td>
+			<td>Set shape of corners for stroke (0 = miter, 1 = round, 2 =
+				bevel)</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentlinejoin.html">currentlinejoin</a> <i>int</i></td>
+			<td>Return current line join</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="../2/s/setmiterlimit.html">setmiterlimit</a> -</td>
+			<td>Set miter length limit</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentmiterlimit.html">currentmiterlimit</a>
+				<i>num</i></td>
+			<td>Return current miter limit</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>bool</i></td>
+			<td><a href="../2/s/setstrokeadjust.html">setstrokeadjust</a> -</td>
+			<td>Set stroke adjustment (<i>false</i> = disable, <i>true</i> =
+				enable)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentstrokeadjust.html">currentstrokeadjust</a>
+				<i>bool</i></td>
+			<td>Return current stroke adjustment</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array offset</i></td>
+			<td><a href="../2/s/setdash.html">setdash</a> -</td>
+			<td>Set dash pattern for stroking</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentdash.html">currentdash</a> <i>array
+					offset</i></td>
+			<td>Return current dash pattern</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>array|name</i></td>
+			<td><a href="../2/s/setcolorspace.html">setcolorspace</a> -</td>
+			<td>Set color space</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcolorspace.html">currentcolorspace</a>
+				<i>array</i></td>
+			<td>Return current color space</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>comp<sub>1</sub> ... comp<sub>n</sub></i></td>
+			<td><a href="../2/s/setcolor.html">setcolor</a> -</td>
+			<td>Set color components</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>pattern</i></td>
+			<td><a href="../2/s/setcolor.html">setcolor</a> -</td>
+			<td>Set colored tiling pattern as current color</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>comp<sub>1</sub> ... comp<sub>n</sub>
+					pattern
+			</i></td>
+			<td><a href="../2/s/setcolor.html">setcolor</a> -</td>
+			<td>Set uncolored tiling pattern as current color</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcolor.html">currentcolor</a> <i>comp<sub>1</sub>
+					... comp<sub>n</sub></i></td>
+			<td>Return current color components</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>num</i></td>
+			<td><a href="../2/s/setgray.html">setgray</a> -</td>
+			<td>Set color space to <b>DeviceGray</b> and color to specified
+				gray value (0 = black, 1 = white)
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2//.html">currentgray</a> <i>num</i></td>
+			<td>Return current color as gray value</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>hue saturation brightness</i></td>
+			<td><a href="../2/s/sethsbcolor.html">sethsbcolor</a> -</td>
+			<td>Set color space to <b>DeviceRGB</b> and color to specified
+				hue, saturation, brightness
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currenthsbcolor.html">currenthsbcolor</a> <i>hue
+					saturation brightness</i></td>
+			<td>Return current color as hue, saturation, brightness</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>red green blue</i></td>
+			<td><a href="../2/s/setrgbcolor.html">setrgbcolor</a> -</td>
+			<td>Set color space to <b>DeviceRGB</b> and color to specified
+				red, green, blue
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentrgbcolor.html">currentrgbcolor</a> <i>red
+					green blue</i></td>
+			<td>Return current color as red, green, blue</td>
+		</tr>
+		<tr>
+			<td style="text-align: right"><i>cyan magenta yellow black</i></td>
+			<td><a href="../2/s/setcmykcolor.html">setcmykcolor</a> -</td>
+			<td>Set color space to <b>DeviceCMYK</b> and color to specified
+				cyan, magenta, yellow, black
+			</td>
+		</tr>
+		<tr>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcmykcolor.html">currentcmykcolor</a>
+				<i>cyan magenta yellow black</i></td>
+			<td>Return current color as cyan, magenta, yellow, black</td>
+		</tr>
+	</table>
+</body>
+</html>

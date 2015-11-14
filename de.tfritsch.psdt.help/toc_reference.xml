@@ -103,33 +103,33 @@
 		</topic>
 	</topic>
 	<topic label="8 Operators">
-		<topic label="8.1 Operator Summary" href="html/Reference/8/1.html">
-			<topic label="Operand Stack Manipulation Operators" href="html/Reference/8/1.html#1" />
-			<topic label="Arithmetic and Math Operators" href="html/Reference/8/1.html#2" />
-			<topic label="Array Operators" href="html/Reference/8/1.html#3" />
-			<topic label="Packed Array Operators" href="html/Reference/8/1.html#4" />
-			<topic label="Dictionary Operators" href="html/Reference/8/1.html#5" />
-			<topic label="String Operators" href="html/Reference/8/1.html#6" />
-			<topic label="Relational, Boolean, and Bitwise Operators" href="html/Reference/8/1.html#7" />
-			<topic label="Control Operators" href="html/Reference/8/1.html#8" />
-			<topic label="Type, Attribute, and Conversion Operators" href="html/Reference/8/1.html#9" />
-			<topic label="File Operators" href="html/Reference/8/1.html#10" />
-			<topic label="Resource Operators" href="html/Reference/8/1.html#11" />
-			<topic label="Virtual Memory Operators" href="html/Reference/8/1.html#12" />
-			<topic label="Miscellaneous Operators" href="html/Reference/8/1.html#13" />
+		<topic label="8.1 Operator Summary">
+			<topic label="Operand Stack Manipulation Operators" href="html/Reference/8/1/1.html" />
+			<topic label="Arithmetic and Math Operators" href="html/Reference/8/1/2.html" />
+			<topic label="Array Operators" href="html/Reference/8/1/3.html" />
+			<topic label="Packed Array Operators" href="html/Reference/8/1/4.html" />
+			<topic label="Dictionary Operators" href="html/Reference/8/1/5.html" />
+			<topic label="String Operators" href="html/Reference/8/1/6.html" />
+			<topic label="Relational, Boolean, and Bitwise Operators" href="html/Reference/8/1/7.html" />
+			<topic label="Control Operators" href="html/Reference/8/1/8.html" />
+			<topic label="Type, Attribute, and Conversion Operators" href="html/Reference/8/1/9.html" />
+			<topic label="File Operators" href="html/Reference/8/1/10.html" />
+			<topic label="Resource Operators" href="html/Reference/8/1/11.html" />
+			<topic label="Virtual Memory Operators" href="html/Reference/8/1/12.html" />
+			<topic label="Miscellaneous Operators" href="html/Reference/8/1/13.html" />
 			<topic label="Graphics State Operators (Device-Independent)"
-				href="html/Reference/8/1.html#14" />
+				href="html/Reference/8/1/14.html" />
 			<topic label="Graphics State Operators (Device-Dependent)"
-				href="html/Reference/8/1.html#15" />
-			<topic label="Coordinate System and Matrix Operators" href="html/Reference/8/1.html#16" />
-			<topic label="Path Construction Operators" href="html/Reference/8/1.html#17" />
-			<topic label="Painting Operators" href="html/Reference/8/1.html#18" />
-			<topic label="Insideness-Testing Operators" href="html/Reference/8/1.html#19" />
-			<topic label="Form and Pattern Operators" href="html/Reference/8/1.html#20" />
-			<topic label="Device Setup and Output Operators" href="html/Reference/8/1.html#21" />
-			<topic label="Glyph and Font Operators" href="html/Reference/8/1.html#22" />
-			<topic label="Interpreter Parameter Operators" href="html/Reference/8/1.html#23" />
-			<topic label="Errors" href="html/Reference/8/1.html#24" />
+				href="html/Reference/8/1/15.html" />
+			<topic label="Coordinate System and Matrix Operators" href="html/Reference/8/1/16.html" />
+			<topic label="Path Construction Operators" href="html/Reference/8/1/17.html" />
+			<topic label="Painting Operators" href="html/Reference/8/1/18.html" />
+			<topic label="Insideness-Testing Operators" href="html/Reference/8/1/19.html" />
+			<topic label="Form and Pattern Operators" href="html/Reference/8/1/20.html" />
+			<topic label="Device Setup and Output Operators" href="html/Reference/8/1/21.html" />
+			<topic label="Glyph and Font Operators" href="html/Reference/8/1/22.html" />
+			<topic label="Interpreter Parameter Operators" href="html/Reference/8/1/23.html" />
+			<topic label="Errors" href="html/Reference/8/1/24.html" />
 		</topic>
 		<topic label="8.2 Operator Details">
 			<topic label="@">
