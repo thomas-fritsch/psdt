@@ -6,5 +6,72 @@
 </head>
 <body>
 	<h3>5.1.4 Glyph Positioning</h3>
+	<p>
+		A glyph's <i>width</i> is the amount of space the glyph occupies along
+		the baseline of a line of text. In other words, it is the distance the
+		current point moves when the glyph is shown. Note that the width is
+		distinct from the dimensions of the glyph outline (see Section <a
+			href="../4.html">5.4, "Glyph Metric Information"</a>).
+	</p>
+	<p>
+		In some fonts, the width is constant; it does not vary from glyph to
+		glyph. Such fonts are called <i>fixed-pitch</i> or <i>monospaced</i>.
+		They are used mainly for typewriter-style printing. However, most
+		fonts used for high-quality typography associate a different width
+		with each glyph. Such fonts are called <i>proportional</i> fonts or <i>variable-pitch</i>
+		fonts. In either case, the <a href="../../8/2/s/show.html">show</a>
+		operator positions the glyphs for consecutive characters of a string
+		according to their widths.
+	</p>
+	<p>
+		The width information for each glyph is stored in the font dictionary.
+		A PostScript program can use any of several glyph-painting
+		operators&mdash;<a href="../../8/2//.html">show</a>, <a
+			href="../../8/2/x/xshow.html">xshow</a>, <a
+			href="../../8/2/y/yshow.html">yshow</a>, <a
+			href="../../8/2/x/xyshow.html">xyshow</a>, <a
+			href="../../8/2/w/widthshow.html">widthshow</a>, <a
+			href="../../8/2/a/ashow.html">ashow</a>, <a
+			href="../../8/2/a/awidthshow.html">awidthshow</a>&mdash;to obtain a
+		variety of width modification effects. If necessary, it can execute <a
+			href="../../8/2/s/stringwidth.html">stringwidth</a> to obtain the
+		width information itself.
+	</p>
+	<p>
+		The standard operators for showing text (<a
+			href="../../8/2/s/show.html">show</a> and its variants) are designed
+		on the assumption that glyphs are ordinarily shown with their standard
+		metrics. (See Section <a href="../4.html">5.4, "Glyph Metric
+			Information"</a>.) However, means are provided to vary the metrics in
+		certain limited ways. For example, the <a
+			href="../../8/2/a/ashow.html">ashow</a> operator systematically
+		adjusts the widths of all the glyphs it paints. The optional <b>Metrics</b>
+		entry of a font dictionary can be added to adjust the widths of all
+		instances of particular glyphs of a font.
+	</p>
+	<p>
+		Certain applications that show text require very precise control of
+		the positioning of each glyph. There are three LanguageLevel 2
+		operators to streamline the operation of showing individually
+		positioned glyphs: <a href="../../8/2/x/xyshow.html">xyshow</a>, <a
+			href="../../8/2/x/xshow.html">xshow</a>, and <a
+			href="../../8/2/y/yshow.html">yshow</a>. Each operator is given a
+		string of text to be shown, the same as <a
+			href="../../8/2/s/show.html">show</a>. In addition, it expects a
+		second operand, which is either an array of numbers or a string that
+		can be interpreted as an encoded number string, as described in
+		Section <a href="../../3/14/5.html">3.14.5, "Encoded Number
+			Strings."</a> The numbers are used in sequence to control the widths of
+		the glyphs being shown. <i>They completely override the standard
+			widths of the glyphs.</i>
+	</p>
+	<p>
+		The <a href="../../8/2/k/kshow.html">kshow</a> and <a
+			href="../../8/2/c/cshow.html">cshow</a> operators provide ways for an
+		arbitrary PostScript procedure to intervene in the positioning and
+		painting of each glyph they show. <a href="../../8/2/c/cshow.html">cshow</a>
+		is a LanguageLevel 2 operator. These are the most general but least
+		efficient glyph-painting operations.
+	</p>
 </body>
 </html>
