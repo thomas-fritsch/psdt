@@ -1,7 +1,5 @@
 package de.tfritsch.psdt.debug.model;
 
-import java.util.List;
-
 import org.eclipse.debug.core.DebugException;
 
 interface IPSDebugCommander {
@@ -21,7 +19,7 @@ interface IPSDebugCommander {
 	
 	public void requestStatus() throws DebugException;
 	
-	public void sendInstrumentedCode(List<PSToken> tokens) throws DebugException;
+	public void sendInstrumentedCode(PSSourceMapping sourceMapping) throws DebugException;
 
 	public void sendCommand(String string) throws DebugException;
 }

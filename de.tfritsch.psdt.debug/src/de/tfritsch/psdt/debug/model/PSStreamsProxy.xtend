@@ -4,7 +4,6 @@ import java.io.IOException
 import java.io.OutputStreamWriter
 import java.io.UnsupportedEncodingException
 import java.io.Writer
-import java.util.List
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.debug.core.DebugException
@@ -111,11 +110,11 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		sendCommand("@@status") //$NON-NLS-1$
 	}
 
-	override void sendInstrumentedCode(List<PSToken> tokens) throws DebugException {
+	override void sendInstrumentedCode(PSSourceMapping sourceMapping) throws DebugException {
 		sendCommand("{") //$NON-NLS-1$
-		for (i : 0 ..< tokens.size) {
-			val token = tokens.get(i)
-			sendCommand(i + " @@$ " + token.string) //$NON-NLS-1$
+		for (i : 0 ..< sourceMapping.size) {
+			val string = sourceMapping.getString(i)
+			sendCommand(i + " @@$ " + string) //$NON-NLS-1$
 		}
 		sendCommand("quit") //$NON-NLS-1$
 		sendCommand("} exec") //$NON-NLS-1$

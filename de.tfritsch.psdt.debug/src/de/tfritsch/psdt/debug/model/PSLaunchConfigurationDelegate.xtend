@@ -7,7 +7,6 @@ import java.io.FileInputStream
 import java.io.IOException
 import java.text.DateFormat
 import java.util.Date
-import java.util.List
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
@@ -70,7 +69,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			setAttribute(IProcess.ATTR_PROCESS_TYPE, "PostScript") //$NON-NLS-1$
 		]
 		if (mode == ILaunchManager.DEBUG_MODE) {
-			val target = new PSDebugTarget(process, psFile, createTokens(psFile))
+			val target = new PSDebugTarget(process, psFile, createSourceMapping(psFile))
 			launch.addDebugTarget(target)
 		}
 	}
@@ -92,20 +91,20 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		return env.join("\n") //$NON-NLS-1$
 	}
 
-	def private List<PSToken> createTokens(String psFile) throws CoreException {
-		val tokens = <PSToken>newArrayList
+	def private PSSourceMapping createSourceMapping(String psFile) throws CoreException {
+		val sourceMapping = new PSSourceMapping
 		try {
 			val input = new PSInputStream(new FileInputStream(psFile))
 			var token = input.readToken
 			while (token != null) {
-				tokens += token
+				sourceMapping.add(token)
 				token = input.readToken
 			}
 			input.close
 		} catch (IOException e) {
 			abort(e.toString, e)
 		}
-		return tokens
+		return sourceMapping
 	}
 
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {

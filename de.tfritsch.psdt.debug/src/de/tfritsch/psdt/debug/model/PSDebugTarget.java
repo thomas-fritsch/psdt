@@ -54,9 +54,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 */
 	private IVariable[] fVariables;
 
-	private PSToken fCurrentToken;
+	private int fCurrentTokenIndex;
 	
-	private List<PSToken> fTokens;
+	private PSSourceMapping fSourceMapping;
 	
 	private IPSDebugCommander fDebugCommander;
 
@@ -66,13 +66,13 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	PSDebugTarget(IProcess process, String sourceName, List<PSToken> tokens) throws CoreException {
+	PSDebugTarget(IProcess process, String sourceName, PSSourceMapping sourceMapping) throws CoreException {
 		super(null);
 		fProcess = process;
 		fSourceName = sourceName;
 		fThread = new PSThread(this);
 		fBreakpoints = new IBreakpoint[0];
-		fTokens = tokens;
+		fSourceMapping = sourceMapping;
 		DebugPlugin.getDefault().getBreakpointManager().addBreakpointListener(
 				this);
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
@@ -88,7 +88,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 			public void run() {
 				try {
 					fDebugCommander.hideDicts(true, false, false);
-					fDebugCommander.sendInstrumentedCode(fTokens);
+					fDebugCommander.sendInstrumentedCode(fSourceMapping);
 				} catch (DebugException e) {
 					terminated();
 				}
@@ -135,8 +135,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 
 	@Override
 	public void breakReceived(int depth, int ref, String value) {
-		fCurrentToken = fTokens.get(ref);
-		debug("       " + fCurrentToken); //$NON-NLS-1$
+		fCurrentTokenIndex = ref;
+		debug("       " + fCurrentTokenIndex); //$NON-NLS-1$
 		fVariables = null;
 		try {
 			switch (fState) {
@@ -179,12 +179,20 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		fireTerminateEvent();
 	}
 
-    IBreakpoint[] getBreakpoints() {
+	IBreakpoint[] getBreakpoints() {
 		return fBreakpoints;
 	}
-
-	PSToken getCurrentToken() {
-		return fCurrentToken;
+	
+	int getLineNumber() {
+		return fSourceMapping.getLineNumber(fCurrentTokenIndex);
+	}
+	
+	int getCharStart() {
+		return fSourceMapping.getCharStart(fCurrentTokenIndex);
+	}
+	
+	int getCharEnd() {
+		return fSourceMapping.getCharEnd(fCurrentTokenIndex);
 	}
 	
 	String getSourceName() {
@@ -228,7 +236,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	}
 
 	private void step(int detail) throws DebugException {
-		fCurrentToken = null;
+		fCurrentTokenIndex = -1;
 		fireResumeEvent(detail);
 		fThread.fireResumeEvent(detail);
 		getPSDebugCommander().sendCommand("globaldict /@@e countexecstack put"); //$NON-NLS-1$
@@ -309,7 +317,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	public void resume() throws DebugException {
 		debug("GUI -> resume"); //$NON-NLS-1$
 		fState = State.RESUMED;
-		fCurrentToken = null;
+		fCurrentTokenIndex = -1;
 		fireResumeEvent(DebugEvent.CLIENT_REQUEST);
 		fThread.fireResumeEvent(DebugEvent.CLIENT_REQUEST);
 		getPSDebugCommander().setSingleStep(false);
@@ -330,9 +338,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 			try {
 				int lineNumber = ((ILineBreakpoint)breakpoint).getLineNumber();
 				boolean enabled = breakpoint.isEnabled();
-				for (int i = 0; i < fTokens.size(); i++) {
-					PSToken token = fTokens.get(i);
-					if (enabled && token.getLineNumber() == lineNumber) {
+				for (int i = 0; i < fSourceMapping.getSize(); i++) {
+					if (enabled && fSourceMapping.getLineNumber(i) == lineNumber) {
 						fDebugCommander.addBreakpoint(i);
 						break; // 1 breakpoint per line is enough
 					}
@@ -363,9 +370,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		if (supportsBreakpoint(breakpoint)) {
 			try {
 				int lineNumber = ((ILineBreakpoint)breakpoint).getLineNumber();
-				for (int i = 0; i < fTokens.size(); i++) {
-					PSToken token = fTokens.get(i);
-					if (token.getLineNumber() == lineNumber)
+				for (int i = 0; i < fSourceMapping.getSize(); i++) {
+					if (fSourceMapping.getLineNumber(i) == lineNumber)
 						fDebugCommander.removeBreakpoint(i);
 				}
 			} catch (CoreException e) {

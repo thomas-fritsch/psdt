@@ -33,27 +33,20 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	String getSourceName() {
 		return getPSDebugTarget().getSourceName();
 	}
-	
-	PSToken getCurrentToken() {
-		return getPSDebugTarget().getCurrentToken();
-	}
 
 	@Override
 	public int getCharStart() {
-		PSToken token = getCurrentToken();
-		return (token != null) ? token.getCharStart(): -1;
+		return getPSDebugTarget().getCharStart();
 	}
 
 	@Override
 	public int getCharEnd() {
-		PSToken token = getCurrentToken();
-		return (token != null) ? token.getCharEnd() : -1;
+		return getPSDebugTarget().getCharEnd();
 	}
 
 	@Override
 	public int getLineNumber() {
-		PSToken token = getCurrentToken();
-		return (token != null) ? token.getLineNumber() : -1;
+		return getPSDebugTarget().getLineNumber();
 	}
 
 	@Override
