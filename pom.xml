@@ -32,7 +32,12 @@
 	</scm>
 	<issueManagement>
 		<url>https://github.com/thomas-fritsch/psdt/issues</url>
+		<system>github</system>
 	</issueManagement>
+	<ciManagement>
+		<url>https://travis-ci.org/thomas-fritsch/psdt</url>
+		<system>travis</system>
+	</ciManagement>
 
 	<modules>
 		<module>de.tfritsch.psdt.help</module>
