@@ -49,6 +49,13 @@ public class PSDebugModelPresentation extends LabelProvider implements IDebugMod
 	}
 
 	override String getEditorId(IEditorInput input, Object element) {
-		return PostscriptEditor.ID
+		return switch (element) {
+			IFile,
+			IStorage,
+			IBreakpoint:
+				PostscriptEditor.ID
+			default:
+				null
+		}
 	}
 }
