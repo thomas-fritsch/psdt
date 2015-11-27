@@ -371,8 +371,10 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 			try {
 				int lineNumber = ((ILineBreakpoint)breakpoint).getLineNumber();
 				for (int i = 0; i < fSourceMapping.getSize(); i++) {
-					if (fSourceMapping.getLineNumber(i) == lineNumber)
+					if (fSourceMapping.getLineNumber(i) == lineNumber) {
 						fDebugCommander.removeBreakpoint(i);
+						breakpoint.delete();
+					}
 				}
 			} catch (CoreException e) {
 				DebugPlugin.log(e);
