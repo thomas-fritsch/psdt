@@ -54,8 +54,7 @@ public class PSPlugin extends AbstractUIPlugin {
         try {
             url = FileLocator.toFileURL(url);
         } catch (IOException e) {
-            IStatus status = new Status(IStatus.ERROR, ID, e.getMessage(), e);
-            throw new CoreException(status);
+            abort(e.getMessage(), e);
         }
         return new Path(url.getFile());
 	}
@@ -73,4 +72,15 @@ public class PSPlugin extends AbstractUIPlugin {
 		return image;
 	}
 
+	/**
+	 * Throws an exception with the given message and underlying exception.
+	 *
+	 * @param message error message
+	 * @param e underlying exception, or <code>null</code>
+	 * @throws CoreException always
+	 */
+	public static void abort(String message, Exception e) throws CoreException {
+		IStatus status = new Status(IStatus.ERROR, ID, message, e);
+		throw new CoreException(status);
+	}
 }

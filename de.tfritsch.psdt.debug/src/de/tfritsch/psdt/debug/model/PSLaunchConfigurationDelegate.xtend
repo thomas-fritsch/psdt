@@ -10,9 +10,7 @@ import java.util.Date
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Path
-import org.eclipse.core.runtime.Status
 import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.debug.core.DebugPlugin
@@ -54,7 +52,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			cmdLineList += "-c" //$NON-NLS-1$
 			cmdLineList += "(%stdin) (r) file cvx exec" //$NON-NLS-1$
 		} else {
-			abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
+			PSPlugin.abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
 		}
 		val cmdLine = cmdLineList as String[]
 		val workingDir = cfg.verifyWorkingDirectory
@@ -72,11 +70,6 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			val target = new PSDebugTarget(process, psFile, createSourceMapping(psFile))
 			launch.addDebugTarget(target)
 		}
-	}
-
-	def private void abort(String message, Throwable e) throws CoreException {
-		val status = new Status(IStatus.ERROR, PSPlugin.ID, message, e)
-		throw new CoreException(status)
 	}
 
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
@@ -102,7 +95,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			}
 			input.close
 		} catch (IOException e) {
-			abort(e.toString, e)
+			PSPlugin.abort(e.toString, e)
 		}
 		return sourceMapping
 	}
@@ -110,10 +103,10 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {
 		val String psFile = configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)
 		if (psFile == null) {
-			abort("PostScript program not specified.", null)
+			PSPlugin.abort("PostScript program not specified.", null)
 		}
 		if (!(new File(psFile)).exists) {
-			abort(NLS.bind("PostScript program \"{0}\" not existing.", psFile), null)
+			PSPlugin.abort(NLS.bind("PostScript program \"{0}\" not existing.", psFile), null)
 		}
 		return psFile
 	}
@@ -121,7 +114,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	def protected String verifyInterpreter() throws CoreException {
 		val exe = PSPlugin.^default.preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
 		if (exe.nullOrEmpty) {
-			abort("Interpreter not specified", null)
+			PSPlugin.abort("Interpreter not specified", null)
 		}
 		return exe
 	}
