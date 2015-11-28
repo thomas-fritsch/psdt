@@ -107,17 +107,22 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		return sourceMapping
 	}
 
-	def private File createInstrumentedFile(PSSourceMapping sourceMapping) throws IOException{
-		val file = File.createTempFile("tmp", ".ps");
-		val writer = new FileWriter(file)
-		writer.write("@@breakpoints 0 null put\n")
-		writer.write("true false false @@stathide\n")
-		for (i : 0 ..< sourceMapping.size) {
-			val string = sourceMapping.getString(i)
-			writer.write(i + " @@$ " + string + "\n")
+	def private File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
+		try {
+			val file = File.createTempFile("tmp", ".ps");
+			val writer = new FileWriter(file)
+			writer.write("@@breakpoints 0 null put\n")
+			writer.write("true false false @@stathide\n")
+			for (i : 0 ..< sourceMapping.size) {
+				val string = sourceMapping.getString(i)
+				writer.write(i + " @@$ " + string + "\n")
+			}
+			writer.close
+			return file
+		} catch (IOException e) {
+			PSPlugin.abort(e.message, e)
+			return null
 		}
-		writer.close
-		return file
 	}
 
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {
