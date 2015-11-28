@@ -20,17 +20,25 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor  {
 
 	synchronized void setListener(IPSDebugStreamListener listener) {
 		fListener = listener;
+		notifyAll();
 	}
 
 	@Override
 	protected synchronized void appendLine(String line) {
-		if (fListener != null && line.startsWith("@@")) //$NON-NLS-1$
+		if (line.startsWith("@@")) //$NON-NLS-1$
 			processDebugLine(line);
 		else
 			super.appendLine(line);
 	}
 
 	protected void processDebugLine(String line) {
+		while (fListener == null) {
+			try {
+				wait();
+			} catch(InterruptedException e) {
+				// ignore
+			}
+		}
 		if (line.startsWith("@@break")) { //$NON-NLS-1$
 			StringTokenizer tok = new StringTokenizer(line);
 			tok.nextToken(); // "@@break"

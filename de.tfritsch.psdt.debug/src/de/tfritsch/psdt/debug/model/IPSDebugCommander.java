@@ -18,8 +18,6 @@ interface IPSDebugCommander {
 			boolean hideUserDict) throws DebugException;
 	
 	public void requestStatus() throws DebugException;
-	
-	public void sendInstrumentedCode(PSSourceMapping sourceMapping) throws DebugException;
 
 	public void sendCommand(String string) throws DebugException;
 }

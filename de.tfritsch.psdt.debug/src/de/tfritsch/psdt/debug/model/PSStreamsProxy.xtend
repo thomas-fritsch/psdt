@@ -110,14 +110,4 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		sendCommand("@@status") //$NON-NLS-1$
 	}
 
-	override void sendInstrumentedCode(PSSourceMapping sourceMapping) throws DebugException {
-		sendCommand("{") //$NON-NLS-1$
-		for (i : 0 ..< sourceMapping.size) {
-			val string = sourceMapping.getString(i)
-			sendCommand(i + " @@$ " + string) //$NON-NLS-1$
-		}
-		sendCommand("quit") //$NON-NLS-1$
-		sendCommand("} exec") //$NON-NLS-1$
-	}
-
 }

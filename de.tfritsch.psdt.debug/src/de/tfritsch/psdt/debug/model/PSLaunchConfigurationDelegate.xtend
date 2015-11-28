@@ -4,12 +4,14 @@ import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import java.io.FileInputStream
+import java.io.FileWriter
 import java.io.IOException
 import java.text.DateFormat
 import java.util.Date
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Path
 import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.core.variables.VariablesPlugin
@@ -43,14 +45,17 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		val psFile = cfg.verifyPSFile
+		var PSSourceMapping sourceMapping = null
+		var File instrumentedFile = null
 		val cmdLineList = <String>newArrayList(verifyInterpreter)
 		cmdLineList += DebugPlugin.parseArguments(cfg.getAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "")) //$NON-NLS-1$
 		if (mode == ILaunchManager.RUN_MODE) {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
 			cmdLineList += PSPlugin.getFile("psdebug.ps").toOSString //$NON-NLS-1$
-			cmdLineList += "-c" //$NON-NLS-1$
-			cmdLineList += "(%stdin) (r) file cvx exec" //$NON-NLS-1$
+			sourceMapping = createSourceMapping(psFile)
+			instrumentedFile = createInstrumentedFile(sourceMapping)
+			cmdLineList += instrumentedFile.absolutePath
 		} else {
 			PSPlugin.abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
 		}
@@ -67,7 +72,9 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			setAttribute(IProcess.ATTR_PROCESS_TYPE, "PostScript") //$NON-NLS-1$
 		]
 		if (mode == ILaunchManager.DEBUG_MODE) {
-			val target = new PSDebugTarget(process, psFile, createSourceMapping(psFile))
+			val operation = new DeleteFileOperation(instrumentedFile, process)
+			operation.run(new NullProgressMonitor)
+			val target = new PSDebugTarget(process, psFile, sourceMapping)
 			launch.addDebugTarget(target)
 		}
 	}
@@ -98,6 +105,19 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			PSPlugin.abort(e.toString, e)
 		}
 		return sourceMapping
+	}
+
+	def private File createInstrumentedFile(PSSourceMapping sourceMapping) throws IOException{
+		val file = File.createTempFile("tmp", ".ps");
+		val writer = new FileWriter(file)
+		writer.write("@@breakpoints 0 null put\n")
+		writer.write("true false false @@stathide\n")
+		for (i : 0 ..< sourceMapping.size) {
+			val string = sourceMapping.getString(i)
+			writer.write(i + " @@$ " + string + "\n")
+		}
+		writer.close
+		return file
 	}
 
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {

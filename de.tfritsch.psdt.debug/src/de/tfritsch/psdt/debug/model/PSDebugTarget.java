@@ -46,6 +46,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 */
 	private PSThread fThread;
 
+	private boolean fBreakOnFirstToken;
+
 	private IBreakpoint[] fBreakpoints;
 
 	/**
@@ -77,25 +79,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				this);
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
 		fDebugCommander.setDebugStreamListener(this);
-		boolean breakOnFirstToken = getLaunch().getLaunchConfiguration()
+		fBreakOnFirstToken = getLaunch().getLaunchConfiguration()
 				.getAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false);
-		if (breakOnFirstToken)
-			fDebugCommander.addBreakpoint(0);
 		installDeferredBreakpoints();
-
-		Thread inputThread = new Thread("PostScript %stdin feeder") { //$NON-NLS-1$
-			@Override
-			public void run() {
-				try {
-					fDebugCommander.hideDicts(true, false, false);
-					fDebugCommander.sendInstrumentedCode(fSourceMapping);
-				} catch (DebugException e) {
-					terminated();
-				}
-			}
-		};
-		inputThread.setDaemon(true);
-		inputThread.start();
 	}
 
 	private void installDeferredBreakpoints() {
@@ -140,6 +126,12 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		fVariables = null;
 		try {
 			switch (fState) {
+			case CREATED:
+				if (fBreakOnFirstToken)
+					getPSDebugCommander().requestStatus();
+				else
+					resume();
+			break;
 			case STEPPING_INTO:
 				getPSDebugCommander().requestStatus();
 				break;
