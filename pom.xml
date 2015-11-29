@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>PostScript Development Tools</name>
+	<description>PostScript IDE for Eclipse, including editor, debugger and documentation</description>
 
 	<inceptionYear>2015</inceptionYear>
 	<licenses>
@@ -29,14 +30,16 @@
 	</developers>
 	<scm>
 		<url>https://github.com/thomas-fritsch/psdt</url>
+		<connection>scm:git:https://github.com/thomas-fritsch/psdt</connection>
+		<developerConnection>scm:git:https://github.com/thomas-fritsch/psdt</developerConnection>
 	</scm>
 	<issueManagement>
+		<system>GitHub</system>
 		<url>https://github.com/thomas-fritsch/psdt/issues</url>
-		<system>github</system>
 	</issueManagement>
 	<ciManagement>
+		<system>Travis CI</system>
 		<url>https://travis-ci.org/thomas-fritsch/psdt</url>
-		<system>travis</system>
 	</ciManagement>
 
 	<modules>
