@@ -68,7 +68,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	PSDebugTarget(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
+	PSDebugTarget(IProcess process, PSSourceMapping sourceMapping) {
 		super(null);
 		fProcess = process;
                 fSourceName = PSLaunchExtensions.getProgram(getLaunch().getLaunchConfiguration());
@@ -80,7 +80,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
 		fDebugCommander.setDebugStreamListener(this);
 		fBreakOnFirstToken = PSLaunchExtensions.isBreakOnFirstToken(getLaunch().getLaunchConfiguration());
-		installDeferredBreakpoints();
 	}
 
 	private void installDeferredBreakpoints() {
@@ -126,6 +125,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		try {
 			switch (fState) {
 			case CREATED:
+				installDeferredBreakpoints();
 				if (fBreakOnFirstToken)
 					getPSDebugCommander().requestStatus();
 				else
