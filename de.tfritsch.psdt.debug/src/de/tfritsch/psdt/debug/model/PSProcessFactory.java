@@ -2,13 +2,13 @@ package de.tfritsch.psdt.debug.model;
 
 import java.util.Map;
 
-import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.ILaunch;
 import org.eclipse.debug.core.IProcessFactory;
 import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IStreamsProxy;
 import org.eclipse.debug.core.model.RuntimeProcess;
 
+import de.tfritsch.psdt.debug.LaunchExtensions;
 import de.tfritsch.psdt.debug.PSPlugin;
 
 /**
@@ -36,7 +36,7 @@ public class PSProcessFactory implements IProcessFactory {
 			
 			@Override
 			protected IStreamsProxy createStreamsProxy() {
-				String encoding = getLaunch().getAttribute(DebugPlugin.ATTR_CONSOLE_ENCODING);
+				String encoding = LaunchExtensions.getConsoleEncoding(getLaunch());
 				return new PSStreamsProxy(getSystemProcess(), encoding);
 			}
 		};

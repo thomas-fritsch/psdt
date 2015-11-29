@@ -1,6 +1,5 @@
 package de.tfritsch.psdt.debug.ui
 
-import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
@@ -15,6 +14,7 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Text
 
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension org.eclipse.ui.dialogs.PreferencesUtil.*
 
 public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
@@ -69,7 +69,7 @@ public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab 
 	}
 
 	def private String getInterpreter() {
-		return PSPlugin.^default.preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
+		return PSPlugin.^default.preferenceStore.interpreter
 	}
 
 }

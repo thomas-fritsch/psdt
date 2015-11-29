@@ -1,6 +1,5 @@
 package de.tfritsch.psdt.debug.ui
 
-import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.model.PSProcessFactory
 import org.eclipse.core.resources.IFile
@@ -17,6 +16,8 @@ import org.eclipse.ui.IEditorPart
 import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.dialogs.ElementListSelectionDialog
 
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension org.eclipse.debug.ui.DebugUITools.*
 
 /**
@@ -66,8 +67,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 		try {
 			val configurations = type.launchConfigurations
 			for (configuration : configurations) {
-				if (!configuration.isPrivate && program ==
-					configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)) {
+				if (!configuration.isPrivate && program == configuration.program) {
 					result += configuration
 				}
 			}
@@ -77,14 +77,14 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 		return result
 	}
 
-	def private ILaunchConfiguration createConfiguration(String program) {
+	def private ILaunchConfiguration createConfiguration(String program_) {
 		val type = PSLaunchConfigurationDelegate.ID.launchConfigurationType
 		val name = type.name.generateLaunchConfigurationName
 		try {
 			val workingCopy = type.newInstance(null, name) => [
-				setAttribute(IPSConstants.ATTR_PROGRAM, program)
-				setAttribute(DebugPlugin.ATTR_PROCESS_FACTORY_ID, PSProcessFactory.ID)
-				setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "-dBATCH") //$NON-NLS-1$
+				program = program_
+				processFactoryId = PSProcessFactory.ID
+				ghostscriptArguments = "-dBATCH" //$NON-NLS-1$
 			]
 			return workingCopy.doSave
 		} catch (CoreException e) {

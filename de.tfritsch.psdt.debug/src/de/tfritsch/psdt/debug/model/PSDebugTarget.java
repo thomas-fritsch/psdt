@@ -18,7 +18,7 @@ import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
 
-import de.tfritsch.psdt.debug.IPSConstants;
+import de.tfritsch.psdt.debug.PSLaunchExtensions;
 
 
 /**
@@ -79,8 +79,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				this);
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
 		fDebugCommander.setDebugStreamListener(this);
-		fBreakOnFirstToken = getLaunch().getLaunchConfiguration()
-				.getAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false);
+		fBreakOnFirstToken = PSLaunchExtensions.isBreakOnFirstToken(getLaunch().getLaunchConfiguration());
 		installDeferredBreakpoints();
 	}
 

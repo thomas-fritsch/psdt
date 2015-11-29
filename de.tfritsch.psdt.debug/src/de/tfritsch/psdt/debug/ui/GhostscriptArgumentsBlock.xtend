@@ -1,6 +1,5 @@
 package de.tfritsch.psdt.debug.ui
 
-import de.tfritsch.psdt.debug.IPSConstants
 import java.net.MalformedURLException
 import java.net.URL
 import org.eclipse.core.runtime.CoreException
@@ -21,6 +20,8 @@ import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.PartInitException
 import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
+
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
 /**
  * 
@@ -66,13 +67,12 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "-dBATCH") //$NON-NLS-1$
+		configuration.ghostscriptArguments = "-dBATCH" //$NON-NLS-1$
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			val arguments = configuration.getAttribute(IPSConstants.ATTR_GS_ARGUMENTS, "") //$NON-NLS-1$
-			fArgumentsText.text = arguments
+			fArgumentsText.text = configuration.ghostscriptArguments ?: ""
 		} catch (CoreException e) {
 			DebugPlugin.log(e)
 		}
@@ -90,8 +90,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		val arguments = fArgumentsText.text
-		configuration.setAttribute(IPSConstants.ATTR_GS_ARGUMENTS, arguments)
+		configuration.ghostscriptArguments = fArgumentsText.text
 	}
 
 	override String getName() {

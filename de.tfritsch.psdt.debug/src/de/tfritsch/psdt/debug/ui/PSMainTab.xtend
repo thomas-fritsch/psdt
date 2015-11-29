@@ -1,11 +1,9 @@
 package de.tfritsch.psdt.debug.ui
 
-import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.model.PSProcessFactory
 import java.io.File
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -20,6 +18,9 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.FileDialog
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Text
+
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
 /**
  * Tab to specify the PostScript program to run/debug.
@@ -88,13 +89,13 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.setAttribute(DebugPlugin.ATTR_PROCESS_FACTORY_ID, PSProcessFactory.ID)
-		configuration.setAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false)
+		configuration.processFactoryId = PSProcessFactory.ID
+		configuration.breakOnFirstToken = false
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
 		try {
-			val program = configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)
+			val program = configuration.program
 			if (program != null) {
 				fProgramText.text = program
 			}
@@ -102,8 +103,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 			errorMessage = e.message
 		}
 		try {
-			fBreakOnFirstTokenButton.selection = configuration.getAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN,
-				false)
+			fBreakOnFirstTokenButton.selection = configuration.breakOnFirstToken
 		} catch (CoreException e) {
 			errorMessage = e.message
 		}
@@ -114,8 +114,8 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		if (program.empty) {
 			program = null
 		}
-		configuration.setAttribute(IPSConstants.ATTR_PROGRAM, program)
-		configuration.setAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, fBreakOnFirstTokenButton.selection)
+		configuration.program = program
+		configuration.breakOnFirstToken = fBreakOnFirstTokenButton.selection
 	}
 
 	override boolean isValid(ILaunchConfiguration launchConfig) {
