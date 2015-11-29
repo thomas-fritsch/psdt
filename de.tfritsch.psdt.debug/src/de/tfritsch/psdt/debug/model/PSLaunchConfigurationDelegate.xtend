@@ -65,7 +65,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		]
 		if (mode == ILaunchManager.DEBUG_MODE) {
 			instrumentedFile.deleteOnTerminate(process)
-			val target = new PSDebugTarget(process, psFile, sourceMapping)
+			val target = new PSDebugTarget(process, sourceMapping)
 			launch.addDebugTarget(target)
 		}
 	}

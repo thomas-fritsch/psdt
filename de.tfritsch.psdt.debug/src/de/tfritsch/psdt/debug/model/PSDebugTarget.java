@@ -68,10 +68,10 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	PSDebugTarget(IProcess process, String sourceName, PSSourceMapping sourceMapping) throws CoreException {
+	PSDebugTarget(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
 		super(null);
 		fProcess = process;
-		fSourceName = sourceName;
+                fSourceName = PSLaunchExtensions.getProgram(getLaunch().getLaunchConfiguration());
 		fThread = new PSThread(this);
 		fBreakpoints = new IBreakpoint[0];
 		fSourceMapping = sourceMapping;
