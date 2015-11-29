@@ -28,9 +28,6 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
 
-	public new() {
-	}
-
 	override void launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {
 			val element = selection.firstElement
@@ -48,14 +45,14 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 
 	def private void launch(IFile file, String mode) {
 		val program = file.location.toFile.toString
-		val configurations = getConfigurations(program)
+		val configurations = program.configurations
 		val configuration = switch (configurations.length) {
 			case 0:
-				createConfiguration(program)
+				program.createConfiguration
 			case 1:
 				configurations.get(0)
 			default:
-				chooseConfiguration(configurations)
+				configurations.chooseConfiguration
 		}
 		if (configuration != null)
 			configuration.launch(mode)
