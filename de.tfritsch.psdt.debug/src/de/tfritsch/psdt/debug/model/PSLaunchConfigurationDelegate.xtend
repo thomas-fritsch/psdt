@@ -88,8 +88,9 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	def private File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
 		try {
-			val file = File.createTempFile("tmp", ".ps");
+			val file = File.createTempFile("psdt", ".ps");
 			val writer = new FileWriter(file)
+			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")
 			writer.write("true false false @@stathide\n")
 			for (i : 0 ..< sourceMapping.size) {
