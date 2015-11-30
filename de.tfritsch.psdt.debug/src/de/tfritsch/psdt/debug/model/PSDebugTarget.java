@@ -72,6 +72,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		super(null);
 		fProcess = process;
                 fSourceName = PSLaunchExtensions.getProgram(getLaunch().getLaunchConfiguration());
+                fBreakOnFirstToken = PSLaunchExtensions.isBreakOnFirstToken(getLaunch().getLaunchConfiguration());
 		fThread = new PSThread(this);
 		fBreakpoints = new IBreakpoint[0];
 		fSourceMapping = sourceMapping;
@@ -79,7 +80,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				this);
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
 		fDebugCommander.setDebugStreamListener(this);
-		fBreakOnFirstToken = PSLaunchExtensions.isBreakOnFirstToken(getLaunch().getLaunchConfiguration());
 	}
 
 	private void installDeferredBreakpoints() {
