@@ -40,7 +40,7 @@ class PSThread extends PSDebugElement implements IThread {
 
 	@Override
 	public String getName() {
-		return "Thread [main]"; //$NON-NLS-1$
+		return "main"; //$NON-NLS-1$
 	}
 
 	@Override

@@ -7,7 +7,6 @@ import org.eclipse.debug.core.model.IRegisterGroup;
 import org.eclipse.debug.core.model.IStackFrame;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
-import org.eclipse.osgi.util.NLS;
 
 
 /**
@@ -52,9 +51,7 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	@Override
 	public String getName() {
 		String s = getSourceName();
-		s = s.substring(s.lastIndexOf(File.separatorChar) + 1);
-		int line = getLineNumber();
-		return NLS.bind("{0}: line {1}", s, new Integer(line));
+		return s.substring(s.lastIndexOf(File.separatorChar) + 1);
 	}
 
 	@Override

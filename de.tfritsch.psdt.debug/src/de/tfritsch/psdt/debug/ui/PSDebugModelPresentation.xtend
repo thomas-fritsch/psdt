@@ -4,6 +4,8 @@ import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IStorage
 import org.eclipse.debug.core.model.IBreakpoint
+import org.eclipse.debug.core.model.IStackFrame
+import org.eclipse.debug.core.model.IThread
 import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.debug.ui.IValueDetailListener
@@ -28,7 +30,16 @@ public class PSDebugModelPresentation extends LabelProvider implements IDebugMod
 	}
 
 	override String getText(Object element) {
-		return null // The view will show a default label
+		return switch (element) {
+			IThread: '''
+				Thread [«element.name»] («IF element.suspended»Suspended«ELSEIF element.stepping»Stepping«ELSE»Running«ENDIF»)
+			'''
+			IStackFrame: '''
+				«element.name» line: «element.lineNumber»
+			'''
+			default:
+				null // The view will show a default icon
+		}
 	}
 
 	override void computeDetail(IValue value, IValueDetailListener listener) {
