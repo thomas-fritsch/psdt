@@ -9,7 +9,6 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.core.runtime.Path
-import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchManager
@@ -18,6 +17,7 @@ import org.eclipse.osgi.util.NLS
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension org.eclipse.debug.core.DebugPlugin.*
 
 /**
  * Launches PostScript program on Ghostscript interpreter
@@ -40,13 +40,13 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		var PSSourceMapping sourceMapping = null
 		var File instrumentedFile = null
 		val cmdLineList = <String>newArrayList(verifyInterpreter)
-		cmdLineList += DebugPlugin.parseArguments(cfg.ghostscriptArguments)
+		cmdLineList += cfg.ghostscriptArguments.parseArguments
 		if (mode == ILaunchManager.RUN_MODE) {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
 			cmdLineList += PSPlugin.getFile("psdebug.ps").toOSString //$NON-NLS-1$
-			sourceMapping = createSourceMapping(psFile)
-			instrumentedFile = createInstrumentedFile(sourceMapping)
+			sourceMapping = psFile.createSourceMapping
+			instrumentedFile = sourceMapping.createInstrumentedFile
 			cmdLineList += instrumentedFile.absolutePath
 		} else {
 			PSPlugin.abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
@@ -54,11 +54,11 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val cmdLine = cmdLineList as String[]
 		val workingDir = cfg.verifyWorkingDirectory
 		val env = cfg.environment
-		val p = DebugPlugin.exec(cmdLine, workingDir, env)
-		val process = DebugPlugin.newProcess(launch, p, cmdLine.renderProcessLabel) => [
+		val p = cmdLine.exec(workingDir, env)
+		val process = launch.newProcess(p, cmdLine.renderProcessLabel) => [
 			path = cmdLine.get(0)
 			launchTimestamp = launch.launchTimestamp
-			commandLine = cmdLine.renderArguments
+			commandLine = cmdLine.renderArguments(null)
 			workingDirectory = workingDir?.absolutePath
 			environment = env.renderEnvironment
 			processType = "PostScript" //$NON-NLS-1$

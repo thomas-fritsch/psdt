@@ -61,10 +61,6 @@ class LaunchExtensions {
 		process.setAttribute(IProcess.ATTR_PROCESS_TYPE, "PostScript")
 	}
 
-	def static String renderArguments(String[] cmdLine) {
-		return DebugPlugin.renderArguments(cmdLine, null)
-	}
-
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
 	def static String renderProcessLabel(String[] commandLine) {
 		val timeStamp = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(new Date)

@@ -22,6 +22,7 @@ import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
 
 /**
  * 
@@ -79,8 +80,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	override boolean isValid(ILaunchConfiguration configuration) {
-		val arguments = fArgumentsText.text
-		for (s : DebugPlugin.parseArguments(arguments)) {
+		for (s : fArgumentsText.text.parseArguments) {
 			if (!s.startsWith("-") || s == "-") { //$NON-NLS-1$ //$NON-NLS-2$
 				errorMessage = NLS.bind("{0} is not a valid option", s)
 				return false
