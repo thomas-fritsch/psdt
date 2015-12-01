@@ -11,25 +11,31 @@ and [documentation](#user-content-documentation).
 The PostScript editor (implemented using [Xtext](http://www.eclipse.org/Xtext/)) has most
 features as expected from a state-of-the-art editor, like syntax coloring, outline view,
 code folding, auto-edit for brackets, marked syntax errors.
+
 ![](de.tfritsch.psdt.help/html/getting_started/editing.png)
 
 ### Debugger
 Before using the PostScript debugger, you need to tell Eclipse about where [Ghostscript]
 (http://www.ghostscript.com) is installed on your machine.
+
 ![](de.tfritsch.psdt.help/html/getting_started/preferences_ghostscript.png)
 
-Then you can step through your PostScript application, set breakpoints,
-inspect the stacks, and watch the rendered page image.
+The debugger (implemented using Nigel Hathaway's [PostScript debugger]
+(de.tfritsch.psdt.debug/psdebug.ps)) lets you step through your PostScript application,
+set breakpoints, inspect the stacks, and watch the rendered page image.
+
 ![](de.tfritsch.psdt.help/html/getting_started/debugging.png)
 
 ### Documentation
 Large parts of Adobe's [PostScript Language Reference Manual]
 (https://www.adobe.com/products/postscript/pdfs/PLRM.pdf)
 are integrated into the Eclipse help contents.
+
 ![](de.tfritsch.psdt.help/html/getting_started/documentation.png)
 
 When you move the mouse over an identifier in the PostScript editor,
 a hover with the corresponding documentation section is shown.
+
 ![](de.tfritsch.psdt.help/html/getting_started/documentation_hover.png)
 
 ### Build
