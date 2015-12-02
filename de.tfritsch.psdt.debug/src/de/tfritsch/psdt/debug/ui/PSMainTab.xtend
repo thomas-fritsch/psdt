@@ -81,7 +81,8 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 	def protected void browseWorkspace() {
 		val dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider, new BaseWorkbenchContentProvider)
 		dialog.input = ResourcesPlugin.workspace.root
-		dialog.title = "Select file"
+		dialog.title = "File selection"
+		dialog.message = "Choose a PostScript file"
 		dialog.allowMultiple = false
 		dialog.open
 		val file = dialog.firstResult as IFile
