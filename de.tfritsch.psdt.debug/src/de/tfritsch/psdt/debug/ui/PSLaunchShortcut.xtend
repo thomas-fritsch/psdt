@@ -59,19 +59,13 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 	}
 
 	def private ILaunchConfiguration[] getConfigurations(String program) {
-		val result = <ILaunchConfiguration>newArrayList
 		val type = PSLaunchConfigurationDelegate.ID.launchConfigurationType
 		try {
-			val configurations = type.launchConfigurations
-			for (configuration : configurations) {
-				if (!configuration.isPrivate && program == configuration.program.performStringSubstitution) {
-					result += configuration
-				}
-			}
+			type.launchConfigurations.filter[c|!c.private && program == c.program.performStringSubstitution]
 		} catch (CoreException e) {
 			DebugPlugin.log(e)
+			#[]
 		}
-		return result
 	}
 
 	def private ILaunchConfiguration createConfiguration(String program_) {

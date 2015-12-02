@@ -59,30 +59,20 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		]
 		fProgramText = new Text(group, SWT.SINGLE.bitwiseOr(SWT.BORDER)) => [
 			layoutData = new GridData(GridData.FILL_HORIZONTAL)
-			addModifyListener [
-				updateLaunchConfigurationDialog
-			]
+			addModifyListener [updateLaunchConfigurationDialog]
 		]
 		val buttonComposite = SWTFactory.createComposite(group, 3, 2, GridData.HORIZONTAL_ALIGN_END)
 		fWorkspaceButton = createPushButton(buttonComposite, "&Workspace...", null) => [
-			addListener(SWT.Selection) [
-				browseWorkspace
-			]
+			addListener(SWT.Selection)[browseWorkspace]
 		]
 		fFileSystemButton = createPushButton(buttonComposite, "&File System...", null) => [
-			addListener(SWT.Selection) [
-				browseFileSystem
-			]
+			addListener(SWT.Selection)[browseFileSystem]
 		]
 		fVariablesButton = createPushButton(buttonComposite, "&Variables...", null) => [
-			addListener(SWT.Selection) [
-				browseVariables
-			]
+			addListener(SWT.Selection)[browseVariables]
 		]
 		fBreakOnFirstTokenButton = createCheckButton(comp, "Break on first token") => [
-			addListener(SWT.Selection) [
-				updateLaunchConfigurationDialog
-			]
+			addListener(SWT.Selection)[updateLaunchConfigurationDialog]
 		]
 	}
 
