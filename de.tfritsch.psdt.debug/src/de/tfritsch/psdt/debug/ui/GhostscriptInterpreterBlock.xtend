@@ -5,8 +5,6 @@ import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.swt.SWT
-import org.eclipse.swt.events.SelectionAdapter
-import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Button
@@ -34,15 +32,12 @@ public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab 
 			layoutData = new GridData(GridData.FILL_BOTH)
 		]
 		fInterpreterButton = createPushButton(group, "Preference...", null) => [
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent e) {
-						val id = GhostscriptPreferencePage.ID
-						fInterpreterButton.shell.createPreferenceDialogOn(id, #[id], null).open()
-						fInterpreterText.text = interpreter
-						updateLaunchConfigurationDialog
-					}
-				})
+			addListener(SWT.Selection) [
+				val id = GhostscriptPreferencePage.ID
+				fInterpreterButton.shell.createPreferenceDialogOn(id, #[id], null).open()
+				fInterpreterText.text = interpreter
+				updateLaunchConfigurationDialog
+			]
 		]
 	}
 

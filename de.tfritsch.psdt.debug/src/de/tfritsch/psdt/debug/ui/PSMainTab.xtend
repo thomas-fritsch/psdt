@@ -12,8 +12,6 @@ import org.eclipse.debug.internal.ui.SWTFactory
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.debug.ui.StringVariableSelectionDialog
 import org.eclipse.swt.SWT
-import org.eclipse.swt.events.SelectionAdapter
-import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
@@ -67,36 +65,24 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		]
 		val buttonComposite = SWTFactory.createComposite(group, 3, 2, GridData.HORIZONTAL_ALIGN_END)
 		fWorkspaceButton = createPushButton(buttonComposite, "&Workspace...", null) => [
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent e) {
-						browseWorkspace
-					}
-				})
+			addListener(SWT.Selection) [
+				browseWorkspace
+			]
 		]
 		fFileSystemButton = createPushButton(buttonComposite, "&File System...", null) => [
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent e) {
-						browseFileSystem
-					}
-				})
+			addListener(SWT.Selection) [
+				browseFileSystem
+			]
 		]
 		fVariablesButton = createPushButton(buttonComposite, "&Variables...", null) => [
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent e) {
-						browseVariables
-					}
-				})
+			addListener(SWT.Selection) [
+				browseVariables
+			]
 		]
 		fBreakOnFirstTokenButton = createCheckButton(comp, "Break on first token") => [
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent e) {
-						updateLaunchConfigurationDialog
-					}
-				})
+			addListener(SWT.Selection) [
+				updateLaunchConfigurationDialog
+			]
 		]
 	}
 

@@ -9,8 +9,6 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.osgi.util.NLS
 import org.eclipse.swt.SWT
-import org.eclipse.swt.events.SelectionAdapter
-import org.eclipse.swt.events.SelectionEvent
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Composite
@@ -41,7 +39,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 			layoutData = new GridData(GridData.FILL_BOTH)
 			text = "Ghostscript arguments:"
 		]
-		setControl(group)
+		control = group
 
 		fArgumentsText = new Text(group, SWT.MULTI.bitwiseOr(SWT.WRAP).bitwiseOr(SWT.BORDER).bitwiseOr(SWT.V_SCROLL)) => [
 			layoutData = new GridData(GridData.FILL_BOTH)
@@ -51,19 +49,15 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		]
 		new Link(group, SWT.NONE) => [
 			text = "Show <A>Ghostscript documentation</A> in web browser"
-			addSelectionListener(
-				new SelectionAdapter {
-					override void widgetSelected(SelectionEvent event) {
-						try {
-							val browser = "gs".createBrowser //$NON-NLS-1$
-							browser.openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$
-						} catch (PartInitException e) {
-							DebugPlugin.log(e)
-						} catch (MalformedURLException e) {
-							DebugPlugin.log(e)
-						}
-					}
-				})
+			addListener(SWT.Selection) [
+				try {
+					"gs".createBrowser.openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
+				} catch (PartInitException e) {
+					DebugPlugin.log(e)
+				} catch (MalformedURLException e) {
+					DebugPlugin.log(e)
+				}
+			]
 		]
 	}
 
