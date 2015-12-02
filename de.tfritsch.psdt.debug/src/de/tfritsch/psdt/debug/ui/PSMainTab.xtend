@@ -8,7 +8,6 @@ import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
-import org.eclipse.debug.internal.ui.SWTFactory
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.debug.ui.StringVariableSelectionDialog
 import org.eclipse.swt.SWT
@@ -61,7 +60,10 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 			layoutData = new GridData(GridData.FILL_HORIZONTAL)
 			addModifyListener [updateLaunchConfigurationDialog]
 		]
-		val buttonComposite = SWTFactory.createComposite(group, 3, 2, GridData.HORIZONTAL_ALIGN_END)
+		val buttonComposite = new Composite(group, SWT.NONE) => [
+			layout = new GridLayout(3, false)
+			layoutData = new GridData(GridData.HORIZONTAL_ALIGN_END) => [horizontalSpan = 2]
+		]
 		fWorkspaceButton = createPushButton(buttonComposite, "&Workspace...", null) => [
 			addListener(SWT.Selection)[browseWorkspace]
 		]
