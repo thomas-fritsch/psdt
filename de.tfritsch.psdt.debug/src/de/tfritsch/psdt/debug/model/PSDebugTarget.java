@@ -18,6 +18,7 @@ import org.eclipse.debug.core.model.IProcess;
 import org.eclipse.debug.core.model.IThread;
 import org.eclipse.debug.core.model.IVariable;
 
+import de.tfritsch.psdt.debug.LaunchExtensions;
 import de.tfritsch.psdt.debug.PSLaunchExtensions;
 
 
@@ -68,10 +69,11 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	PSDebugTarget(IProcess process, PSSourceMapping sourceMapping) {
+	PSDebugTarget(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
 		super(null);
 		fProcess = process;
                 fSourceName = PSLaunchExtensions.getProgram(getLaunch().getLaunchConfiguration());
+                fSourceName = LaunchExtensions.performStringSubstitution(fSourceName);
                 fBreakOnFirstToken = PSLaunchExtensions.isBreakOnFirstToken(getLaunch().getLaunchConfiguration());
 		fThread = new PSThread(this);
 		fBreakpoints = new IBreakpoint[0];

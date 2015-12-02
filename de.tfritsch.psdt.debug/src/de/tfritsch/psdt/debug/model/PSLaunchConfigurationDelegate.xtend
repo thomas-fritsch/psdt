@@ -106,10 +106,11 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	}
 
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {
-		val String psFile = configuration.program
+		var String psFile = configuration.program
 		if (psFile == null) {
 			PSPlugin.abort("PostScript program not specified.", null)
 		}
+		psFile = psFile.performStringSubstitution
 		if (!(new File(psFile)).exists) {
 			PSPlugin.abort(NLS.bind("PostScript program \"{0}\" not existing.", psFile), null)
 		}

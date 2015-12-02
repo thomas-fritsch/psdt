@@ -64,7 +64,7 @@ public class PSLaunchShortcut implements ILaunchShortcut {
 		try {
 			val configurations = type.launchConfigurations
 			for (configuration : configurations) {
-				if (!configuration.isPrivate && program == configuration.program) {
+				if (!configuration.isPrivate && program == configuration.program.performStringSubstitution) {
 					result += configuration
 				}
 			}

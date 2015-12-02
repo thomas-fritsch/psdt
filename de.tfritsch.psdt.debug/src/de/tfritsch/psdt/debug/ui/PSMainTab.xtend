@@ -3,10 +3,14 @@ package de.tfritsch.psdt.debug.ui
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.model.PSProcessFactory
 import java.io.File
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
+import org.eclipse.debug.internal.ui.SWTFactory
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
+import org.eclipse.debug.ui.StringVariableSelectionDialog
 import org.eclipse.swt.SWT
 import org.eclipse.swt.events.SelectionAdapter
 import org.eclipse.swt.events.SelectionEvent
@@ -18,6 +22,9 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.FileDialog
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Text
+import org.eclipse.ui.dialogs.ElementTreeSelectionDialog
+import org.eclipse.ui.model.BaseWorkbenchContentProvider
+import org.eclipse.ui.model.WorkbenchLabelProvider
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -28,7 +35,9 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 public class PSMainTab extends AbstractLaunchConfigurationTab {
 
 	Text fProgramText
-	Button fProgramButton
+	Button fWorkspaceButton
+	Button fFileSystemButton
+	Button fVariablesButton
 	Button fBreakOnFirstTokenButton
 
 	override String getName() {
@@ -56,11 +65,28 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 				updateLaunchConfigurationDialog
 			]
 		]
-		fProgramButton = createPushButton(group, "&Browse...", null) => [
+		val buttonComposite = SWTFactory.createComposite(group, 3, 2, GridData.HORIZONTAL_ALIGN_END)
+		fWorkspaceButton = createPushButton(buttonComposite, "&Workspace...", null) => [
 			addSelectionListener(
 				new SelectionAdapter {
 					override void widgetSelected(SelectionEvent e) {
-						browsePSFiles
+						browseWorkspace
+					}
+				})
+		]
+		fFileSystemButton = createPushButton(buttonComposite, "&File System...", null) => [
+			addSelectionListener(
+				new SelectionAdapter {
+					override void widgetSelected(SelectionEvent e) {
+						browseFileSystem
+					}
+				})
+		]
+		fVariablesButton = createPushButton(buttonComposite, "&Variables...", null) => [
+			addSelectionListener(
+				new SelectionAdapter {
+					override void widgetSelected(SelectionEvent e) {
+						browseVariables
 					}
 				})
 		]
@@ -74,10 +100,23 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		]
 	}
 
+	def protected void browseWorkspace() {
+		val dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider, new BaseWorkbenchContentProvider)
+		dialog.input = ResourcesPlugin.workspace.root
+		dialog.title = "Select file"
+		dialog.allowMultiple = false
+		dialog.open
+		val file = dialog.firstResult as IFile
+		if (file !== null) {
+			val program = '''${workspace_loc:/«file.project.name»/«file.projectRelativePath»}'''
+			fProgramText.text = program
+		}
+	}
+
 	/**
      * Open a file dialog to select a PostScript program 
      */
-	def protected void browsePSFiles() {
+	def protected void browseFileSystem() {
 		val dialog = new FileDialog(shell, SWT.OPEN) => [
 			fileName = fProgramText.text
 			filterExtensions = #["*.ps;*.eps", "*"] //$NON-NLS-1$ //$NON-NLS-2$
@@ -86,6 +125,14 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		if (s != null) {
 			fProgramText.text = s
 		}
+	}
+
+	def protected void browseVariables() {
+		val dialog = new StringVariableSelectionDialog(shell)
+		dialog.open
+		val variableText = dialog.variableExpression
+		if (variableText !== null)
+			fProgramText.insert(variableText)
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
@@ -124,7 +171,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 			errorMessage = "Specify a program"
 			return false
 		}
-		if (!(new File(program)).exists) {
+		if (!(new File(program.performStringSubstitution)).exists) {
 			errorMessage = "Specified program does not exist"
 			return false
 		}
