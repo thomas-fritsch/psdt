@@ -85,6 +85,14 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 			title = "File selection"
 			message = "Choose a PostScript file"
 			allowMultiple = false
+			addFilter[ viewer, parentElement, element |
+				return switch (element) {
+					IFile:
+						#["ps", "eps"].contains(element.fileExtension)
+					default: // IFolder, IProject
+						true
+				}
+			]
 			initialSelection = new Path(fProgramText.text.performStringSubstitution).fileForLocation
 		]
 		dialog.open
