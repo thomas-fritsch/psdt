@@ -342,6 +342,14 @@
             extensions="ps,eps">
     </provider>
   </extension>
+  <extension point="org.eclipse.ui.perspectives">
+     <perspective
+           class="de.tfritsch.psdt.ui.perspective.PostscriptPerspectiveFactory"
+           icon="icons/postscript.png"
+           id="de.tfritsch.psdt.ui.perspective"
+           name="Postscript">
+     </perspective>
+  </extension>
   <extension point="org.eclipse.ui.views">
         <category
               id="de.tfritsch.psdt.ui"
