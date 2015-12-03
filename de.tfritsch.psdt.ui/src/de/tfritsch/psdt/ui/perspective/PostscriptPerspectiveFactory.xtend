@@ -1,11 +1,13 @@
 package de.tfritsch.psdt.ui.perspective
 
 import de.tfritsch.psdt.ui.views.PostscriptDocView
+import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.ui.IPageLayout
 import org.eclipse.ui.IPerspectiveFactory
 import org.eclipse.ui.console.IConsoleConstants
 import org.eclipse.ui.progress.IProgressConstants
-import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard
+import org.eclipse.ui.wizards.newresource.BasicNewFolderResourceWizard
 
 class PostscriptPerspectiveFactory implements IPerspectiveFactory {
 
@@ -24,9 +26,13 @@ class PostscriptPerspectiveFactory implements IPerspectiveFactory {
 			addView(IPageLayout.ID_OUTLINE)
 		]
 
-		// ToolBar contributions
+		// Menu/ToolBar contributions
 		layout.addActionSet(IDebugUIConstants.LAUNCH_ACTION_SET);
 		layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
+
+		// 'File' > 'New' contributions
+		layout.addNewWizardShortcut(BasicNewFileResourceWizard.WIZARD_ID)
+		layout.addNewWizardShortcut(BasicNewFolderResourceWizard.WIZARD_ID);
 
 		// 'Window' > 'Show View' contributions
 		layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
