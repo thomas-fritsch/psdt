@@ -347,20 +347,20 @@
            class="de.tfritsch.psdt.ui.perspective.PostscriptPerspectiveFactory"
            icon="icons/postscript.png"
            id="de.tfritsch.psdt.ui.perspective"
-           name="Postscript">
+           name="PostScript">
      </perspective>
   </extension>
   <extension point="org.eclipse.ui.views">
         <category
               id="de.tfritsch.psdt.ui"
-              name="Postscript">
+              name="PostScript">
         </category>
         <view
               category="de.tfritsch.psdt.ui"
               class="de.tfritsch.psdt.ui.views.PostscriptDocView"
               icon="icons/doc.gif"
               id="de.tfritsch.psdt.ui.docView"
-              name="Postscript Doc">
+              name="PostScript Doc">
         </view>
   </extension>
 

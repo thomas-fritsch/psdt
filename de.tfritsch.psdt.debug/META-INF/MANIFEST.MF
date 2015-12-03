@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Postscript Debugger
+Bundle-Name: PostScript Debugger
 Bundle-SymbolicName: de.tfritsch.psdt.debug;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.tfritsch.psdt.debug.PSPlugin
