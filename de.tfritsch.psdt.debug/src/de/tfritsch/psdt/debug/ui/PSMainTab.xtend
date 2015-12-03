@@ -6,6 +6,7 @@ import java.io.File
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -79,11 +80,21 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 	}
 
 	def protected void browseWorkspace() {
-		val dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider, new BaseWorkbenchContentProvider)
-		dialog.input = ResourcesPlugin.workspace.root
-		dialog.title = "File selection"
-		dialog.message = "Choose a PostScript file"
-		dialog.allowMultiple = false
+		val dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider, new BaseWorkbenchContentProvider) => [
+			input = ResourcesPlugin.workspace.root
+			title = "File selection"
+			message = "Choose a PostScript file"
+			allowMultiple = false
+			addFilter[ viewer, parentElement, element |
+				return switch (element) {
+					IFile:
+						#["ps", "eps"].contains(element.fileExtension)
+					default: // IFolder, IProject
+						true
+				}
+			]
+			initialSelection = new Path(fProgramText.text.performStringSubstitution).fileForLocation
+		]
 		dialog.open
 		val file = dialog.firstResult as IFile
 		if (file !== null) {
