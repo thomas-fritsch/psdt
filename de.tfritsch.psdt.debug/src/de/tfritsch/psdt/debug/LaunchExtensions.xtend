@@ -3,7 +3,10 @@ package de.tfritsch.psdt.debug
 import java.io.File
 import java.text.DateFormat
 import java.util.Date
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IPath
 import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugPlugin
@@ -59,6 +62,10 @@ class LaunchExtensions {
 
 	def static void setProcessType(IProcess process, String processType) {
 		process.setAttribute(IProcess.ATTR_PROCESS_TYPE, "PostScript")
+	}
+
+	def static IFile getFileForLocation(IPath path) {
+		return ResourcesPlugin.workspace.root.getFileForLocation(path)
 	}
 
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner

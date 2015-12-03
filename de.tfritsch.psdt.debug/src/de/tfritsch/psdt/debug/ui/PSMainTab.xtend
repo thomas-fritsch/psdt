@@ -6,6 +6,7 @@ import java.io.File
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -84,6 +85,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 			title = "File selection"
 			message = "Choose a PostScript file"
 			allowMultiple = false
+			initialSelection = new Path(fProgramText.text.performStringSubstitution).fileForLocation
 		]
 		dialog.open
 		val file = dialog.firstResult as IFile
