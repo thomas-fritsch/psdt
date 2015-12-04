@@ -1,8 +1,8 @@
 package de.tfritsch.psdt.debug.ui
 
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
+import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IStorage
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.IThread
@@ -12,6 +12,7 @@ import org.eclipse.debug.ui.IValueDetailListener
 import org.eclipse.jface.viewers.LabelProvider
 import org.eclipse.swt.graphics.Image
 import org.eclipse.ui.IEditorInput
+import org.eclipse.ui.ide.FileStoreEditorInput
 import org.eclipse.ui.part.FileEditorInput
 
 /**
@@ -50,8 +51,8 @@ public class PSDebugModelPresentation extends LabelProvider implements IDebugMod
 		return switch (element) {
 			IFile:
 				new FileEditorInput(element)
-			IStorage:
-				new StorageEditorInput(element)
+			IFileStore:
+				new FileStoreEditorInput(element)
 			IBreakpoint:
 				getEditorInput(element.marker.resource) // recursion!
 			default:
@@ -62,7 +63,7 @@ public class PSDebugModelPresentation extends LabelProvider implements IDebugMod
 	override String getEditorId(IEditorInput input, Object element) {
 		return switch (element) {
 			IFile,
-			IStorage,
+			IFileStore,
 			IBreakpoint:
 				PostscriptEditor.ID
 			default:

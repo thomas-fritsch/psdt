@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: de.tfritsch.psdt.debug.PSPlugin
 Bundle-Vendor: Thomas Fritsch
 Require-Bundle: de.tfritsch.psdt.ui,
+ org.eclipse.core.filesystem,
  org.eclipse.core.runtime,
  org.eclipse.core.variables,
  org.eclipse.debug.ui,

@@ -1,12 +1,10 @@
 package de.tfritsch.psdt.debug.model
 
-import java.io.File
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.model.IPersistableSourceLocator
 import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.debug.core.sourcelookup.containers.LocalFileStorage
 
 import static extension org.eclipse.core.filebuffers.FileBuffers.*
 
@@ -20,9 +18,9 @@ import static extension org.eclipse.core.filebuffers.FileBuffers.*
 public class PSSourceLocator implements IPersistableSourceLocator {
 	override Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof PSStackFrame) {
-			val psFile = stackFrame.sourceName
-			val file = new Path(psFile).getWorkspaceFileAtLocation
-			return file ?: new LocalFileStorage(new File(psFile))
+			val path = new Path(stackFrame.sourceName)
+			val file = path.getWorkspaceFileAtLocation
+			return file ?: path.getFileStoreAtLocation
 		}
 		return null
 	}
