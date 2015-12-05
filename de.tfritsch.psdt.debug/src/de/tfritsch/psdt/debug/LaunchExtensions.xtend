@@ -58,7 +58,7 @@ class LaunchExtensions {
 	}
 
 	def static void setProcessType(IProcess process, String processType) {
-		process.setAttribute(IProcess.ATTR_PROCESS_TYPE, "PostScript")
+		process.setAttribute(IProcess.ATTR_PROCESS_TYPE, processType)
 	}
 
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
