@@ -136,10 +136,9 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	// copied from org.eclipse.jdt.launching.AbstractJavaLaunchConfigurationDelegate
 	def protected IPath getWorkingDirectoryPath(ILaunchConfiguration config) throws CoreException {
-		var path = config.workingDirectory
+		val path = config.workingDirectory
 		if (path == null)
 			return null
-		path = path.performStringSubstitution
-		return new Path(path)
+		return new Path(path.performStringSubstitution)
 	}
 }

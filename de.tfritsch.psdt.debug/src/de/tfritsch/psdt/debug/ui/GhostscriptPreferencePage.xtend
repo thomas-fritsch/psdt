@@ -44,14 +44,17 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage impleme
 	}
 
 	override void createFieldEditors() {
-		val editor = new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent)
-		val os = Platform.OS
-		if (os == Platform.OS_WIN32) {
-			editor.fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
-			editor.filterPath = new File("C:") //$NON-NLS-1$
-		} else if (os == Platform.OS_LINUX) {
-			editor.filterPath = new File("/usr/bin") //$NON-NLS-1$
-		}
+		val editor = new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
+			switch (Platform.OS) {
+				case Platform.OS_WIN32: {
+					fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
+					filterPath = new File("C:") //$NON-NLS-1$
+				}
+				case Platform.OS_LINUX: {
+					filterPath = new File("/usr/bin") //$NON-NLS-1$
+				}
+			}
+		]
 		addField(editor)
 	}
 
