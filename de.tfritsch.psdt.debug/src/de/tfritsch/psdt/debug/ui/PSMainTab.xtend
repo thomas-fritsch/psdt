@@ -26,6 +26,7 @@ import org.eclipse.ui.model.WorkbenchLabelProvider
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension org.eclipse.core.filebuffers.FileBuffers.*
 
 /**
  * Tab to specify the PostScript program to run/debug.
@@ -93,7 +94,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 						true
 				}
 			]
-			initialSelection = new Path(fProgramText.text.performStringSubstitution).fileForLocation
+			initialSelection = new Path(fProgramText.text.performStringSubstitution).workspaceFileAtLocation
 		]
 		dialog.open
 		val file = dialog.firstResult as IFile
