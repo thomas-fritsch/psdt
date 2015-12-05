@@ -56,10 +56,11 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val env = cfg.environment
 		val p = cmdLine.exec(workingDir, env)
 		val process = launch.newProcess(p, cmdLine.renderProcessLabel) => [
+			// things for display in "Process Properties"
 			path = cmdLine.get(0)
 			launchTimestamp = launch.launchTimestamp
 			commandLine = cmdLine.renderArguments(null)
-			workingDirectory = workingDir?.absolutePath
+			workingDirectory = workingDir.renderWorkingDirectory
 			environment = env.renderEnvironment
 			processType = "PostScript" //$NON-NLS-1$
 		]

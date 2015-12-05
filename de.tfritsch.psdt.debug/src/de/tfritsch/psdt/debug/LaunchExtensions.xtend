@@ -74,10 +74,19 @@ class LaunchExtensions {
 		return NLS.bind("{0} ({1})", commandLine.get(0), timeStamp) //$NON-NLS-1$
 	}
 
+	def static String renderWorkingDirectory(File workingDir) {
+		return if (workingDir !== null)
+			workingDir.absolutePath
+		else
+			System.getProperty("user.dir")
+	}
+
 	def static String renderEnvironment(String[] env) {
-		if (env == null)
-			return null
-		return env.join("\n") //$NON-NLS-1$
+		return if (env !== null)
+			env.join("\n") //$NON-NLS-1$
+		else {
+			System.getenv.entrySet.map[key + "=" + value].sort.join("\n")
+		}
 	}
 
 	def static String performStringSubstitution(String expression) throws CoreException {
