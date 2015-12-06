@@ -36,6 +36,9 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
+		if (monitor.canceled) {
+			return
+		}
 		val psFile = cfg.verifyPSFile
 		var PSSourceMapping sourceMapping = null
 		var File instrumentedFile = null
@@ -45,8 +48,14 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
 			cmdLineList += PSPlugin.getFile("psdebug.ps").toOSString //$NON-NLS-1$
-			sourceMapping = psFile.createSourceMapping
-			instrumentedFile = sourceMapping.createInstrumentedFile
+			sourceMapping = psFile.createSourceMapping(monitor)
+			if (sourceMapping === null) {
+				return
+			}
+			instrumentedFile = sourceMapping.createInstrumentedFile(monitor)
+			if (instrumentedFile === null) {
+				return
+			}
 			cmdLineList += instrumentedFile.absolutePath
 		} else {
 			PSPlugin.abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
@@ -71,12 +80,16 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		}
 	}
 
-	def private PSSourceMapping createSourceMapping(String psFile) throws CoreException {
+	def private PSSourceMapping createSourceMapping(String psFile, IProgressMonitor monitor) throws CoreException {
 		val sourceMapping = new PSSourceMapping
 		try {
 			val input = new PSInputStream(new FileInputStream(psFile))
 			var token = input.readToken
 			while (token != null) {
+				if (monitor.canceled) {
+					input.close
+					return null
+				}
 				sourceMapping.add(token)
 				token = input.readToken
 			}
@@ -87,7 +100,7 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		return sourceMapping
 	}
 
-	def private File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
+	def private File createInstrumentedFile(PSSourceMapping sourceMapping, IProgressMonitor monitor) throws CoreException {
 		try {
 			val file = File.createTempFile("psdt", ".ps");
 			val writer = new FileWriter(file)
@@ -95,6 +108,11 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			writer.write("@@breakpoints 0 null put\n")
 			writer.write("true false false @@stathide\n")
 			for (i : 0 ..< sourceMapping.size) {
+				if (monitor.canceled) {
+					writer.close
+					file.delete
+					return null
+				}
 				val string = sourceMapping.getString(i)
 				writer.write(i + " @@$ " + string + "\n")
 			}
