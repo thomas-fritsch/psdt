@@ -12,7 +12,6 @@ import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.ITerminate
-import org.eclipse.osgi.util.NLS
 
 class LaunchExtensions {
 
@@ -64,7 +63,7 @@ class LaunchExtensions {
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
 	def static String renderProcessLabel(String[] commandLine) {
 		val timeStamp = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(new Date)
-		return NLS.bind("{0} ({1})", commandLine.get(0), timeStamp) //$NON-NLS-1$
+		return commandLine.get(0) + " (" + timeStamp + ")"
 	}
 
 	def static String renderWorkingDirectory(File workingDir) {

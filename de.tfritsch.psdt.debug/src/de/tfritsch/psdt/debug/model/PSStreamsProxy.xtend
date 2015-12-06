@@ -84,30 +84,27 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 	}
 
 	override void setSingleStep(boolean singleStep) throws DebugException {
-		sendCommand(singleStep + " @@singlestep") //$NON-NLS-1$
+		sendCommand('''«singleStep» @@singlestep''')
 	}
 
 	override void resume() throws DebugException {
-		sendCommand("@@resume") //$NON-NLS-1$
+		sendCommand("@@resume")
 	}
 
 	override void addBreakpoint(int ref) throws DebugException {
-		sendCommand("@@breakpoints " + ref + " null put") //$NON-NLS-1$ //$NON-NLS-2$
+		sendCommand('''@@breakpoints «ref» null put''')
 	}
 
 	override void removeBreakpoint(int ref) throws DebugException {
-		sendCommand("@@breakpoints " + ref + " undef") //$NON-NLS-1$ //$NON-NLS-2$
+		sendCommand('''@@breakpoints «ref» undef''')
 	}
 
 	override void hideDicts(boolean hideSystemDict, boolean hideGlobalDict, boolean hideUserDict) throws DebugException {
-		sendCommand(
-			hideSystemDict + " " //$NON-NLS-1$
-			+ hideGlobalDict + " " //$NON-NLS-1$
-			+ hideUserDict + " @@stathide") //$NON-NLS-1$
+		sendCommand('''«hideSystemDict» «hideGlobalDict» «hideUserDict» @@stathide''')
 	}
 
 	override void requestStatus() throws DebugException {
-		sendCommand("@@status") //$NON-NLS-1$
+		sendCommand("@@status")
 	}
 
 }
