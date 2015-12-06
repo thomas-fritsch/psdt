@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Details Dictionaries</title>
+</head>
+<body>
+	<h3>6.1.2 Details Dictionaries</h3>
+	<p>
+		The operation of some page device features depends on the values of
+		variables (which may be quite different for different devices) that
+		determine precisely how the feature functions. Features of this type
+		are generally controlled by two separate page device parameters: a
+		boolean parameter that enables or disables the feature as a whole and
+		a <i>details dictionary</i> containing the variables that determine
+		its precise behavior. This allows an application that is not
+		knowledgeable about the feature to use it in a straightforward way,
+		while more sophisticated applications can exercise greater control
+		over the details of its operation.
+	</p>
+	<p>
+		Details dictionaries follow a consistent naming convention: the name
+		of the dictionary is taken from the name of the page device parameter
+		that enables or disables it, with the word <b>Details</b> appended.
+		For example, the feature enabled by the <b>Trapping</b> parameter is
+		controlled by a details dictionary named <b>TrappingDetails</b>.
+	</p>
+	<p>
+		Since the details of a particular feature may not be the same on all
+		devices, every details dictionary must contain a <b>Type</b> entry
+		indicating the overall composition of the dictionary. The value of
+		this entry is an integer that determines how the dictionary's entries
+		are organized and interpreted (as well as whether changes to its
+		contents are cumulative, as discussed in Section <a href="1.html">6.1.1,
+			"Page Device Dictionary"</a>). When a request dictionary passed to <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> includes a
+		details dictionary as the value of one of its entries, a configuration
+		error will occur if the device does not support the <b>Type</b> value
+		specified in the details dictionary.
+	</p>
+</body>
+</html>

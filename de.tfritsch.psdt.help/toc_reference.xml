@@ -92,6 +92,10 @@
 		</topic>
 	</topic>
 	<topic label="6 Device Control">
+		<topic label="6.1 Using Page Devices" href="html/Reference/6/1.html">
+			<topic label="6.1.1 Page Device Dictionary" href="html/Reference/6/1/1.html" />
+			<topic label="6.1.2 Details Dictionaries" href="html/Reference/6/1/2.html" />
+		</topic>
 		<topic label="6.2 Page Device Parameters" href="html/Reference/6/2.html">
 			<topic label="6.2.1 Media Selection" href="html/Reference/6/2/1.html" />
 			<topic label="6.2.2 Roll-Fed Media" href="html/Reference/6/2/2.html" />

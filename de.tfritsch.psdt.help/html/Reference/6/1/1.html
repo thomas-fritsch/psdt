@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Device Dictionary</title>
+</head>
+<body>
+	<h3>6.1.1 Page Device Dictionary</h3>
+	<p>
+		The current internal state of a page device is modeled by a <i>page
+			device dictionary</i> containing entries called <i>page device
+			parameters</i>. The keys in this dictionary represent device features or
+		processing options; the associated values represent the current
+		settings of those features or options. The page device dictionary is
+		not directly accessible to a PostScript program, but its contents can
+		be read and altered by the <a
+			href="../../8/2/c/currentpagedevice.html">currentpagedevice</a> and <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> operators.
+	</p>
+	<p>
+		<i><b>Note:</b> <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+			is a page-oriented operator used to control the output processing of
+			one or more pages of a page description. Any call to <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> implicitly
+			invokes <a href="../../8/2/e/erasepage.html">erasepage</a> and <a
+			href="../../8/2/i/initgraphics.html">initgraphics</a>, and thus must
+			precede the descriptions of the pages to be affected. If the current
+			device is not a page device, the effect of invoking <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> is
+			device-dependent.</i>
+	</p>
+	<p>
+		The operand to <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		is a <i>request dictionary</i> whose entries specify desired settings
+		or values for one or more page device parameters. The request
+		dictionary is simply a container that can hold multiple parameter
+		requests to be issued in a single call to <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a>. The
+		interpreter uses the contents of the request dictionary to alter the
+		state of the page device parameters, but it does not retain the
+		request dictionary itself. Note that the entries in the request
+		dictionary are merely requests for certain parameter settings;
+		depending on the capabilities of a given page device, these requests
+		may or may not be honored. The <a
+			href="../../8/2/c/currentpagedevice.html">currentpagedevice</a>
+		operator returns a dictionary whose entries reflect the actual current
+		settings of the page device parameters, not necessarily those that
+		have been requested via <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>.
+	</p>
+	<p>
+		Because <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		merges new parameter settings into the existing state of the device,
+		its effects are cumulative over multiple executions. That is, the
+		effect of setting a particular page device parameter persists through
+		subsequent invocations of <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		until explicitly overridden or until the device is restored to some
+		previous state by a <a href="../../8/2/r/restore.html">restore</a>, <a
+			href="../../8/2/g/grestore.html">grestore</a>, <a
+			href="../../8/2/g/grestoreall.html">grestoreall</a>, or <a
+			href="../../8/2/s/setgstate.html">setgstate</a> operation. This
+		cumulative behavior also applies recursively (to one level) to the
+		contents of subsidiary dictionaries that are the values of the page
+		device parameters <b>Policies</b>, <b>InputAttributes</b>, and <b>OutputAttributes</b>
+		(all of which are described in detail later in this chapter). It does
+		not apply to the contents of other entries whose values happen to be
+		dictionaries (except possibly to the contents of details dictionaries
+		passed to <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>;
+		see Section 6.1.2, "Details Dictionaries").
+	</p>
+	<p>
+		Because the effects of <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		are cumulative, a PostScript program can make multiple calls to <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a>, each
+		requesting particular parameter settings but leaving the settings of
+		other parameters undisturbed. This allows different features or
+		options to be specified independently. In particular:
+	</p>
+	<ul>
+		<li>When an application generates a page description, it can
+			include a call to <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+			specifying parameters that reflect assumptions the application has
+			made in formatting the document, such as the page size and bounding
+			box.
+		</li>
+		<li>When a user requests printing, an additional call to <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> can be
+			prepended to the page description to specify print-time options such
+			as twosided printing or the number of copies.
+		</li>
+
+		<li>The person operating the device can invoke <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a>, as part of
+			an unencapsulated job, to specify the available media, establish
+			recovery policies for dealing with unsatisfied requests, and
+			establish default values for other device options. (Jobs and
+			encapsulation are discussed in Section <a href="../../3/7/7.html">3.7.7,
+				"Job Execution Environment."</a>)
+		</li>
+	</ul>
+	<p>
+		For certain parameters, there is a null value that indicates the
+		absence of any specific request or preference. In all cases, the null
+		object (that is, the value of <b>null</b> in <a
+			href="../../8/2/s/systemdict.html">systemdict</a>) is used for this
+		purpose. For example, a null value for the <b>MediaColor</b> parameter
+		indicates that no specific paper color has been requested. Null values
+		are permitted only for certain features, as indicated in the relevant
+		table entries in Section <a href="../2.html">6.2, "Page Device
+			Parameters."</a>
+	</p>
+	<p>
+		Omitting a parameter key from the request dictionary has a different
+		meaning than including the key with a null value. Omitting the key
+		leaves the parameter's previous value unchanged; specifying a null
+		value sets it to the null object, canceling any previous value it may
+		have had. The dictionary returned by <a
+			href="../../8/2/c/currentpagedevice.html">currentpagedevice</a>
+		always contains an entry for every parameter supported by the device,
+		though the value for some parameters may be null (indicating that the
+		feature is supported but no setting has yet been requested for it).
+	</p>
+	<p>
+		<i><b>Note:</b> The PostScript language does not prescribe a
+			default value for any page device parameter. The usual default value
+			for optional features is either false or null, but this is not
+			invariably the case for all devices. A PostScript program can change
+			the default values by invoking <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> as part of an
+			unencapsulated job.</i>
+	</p>
+	<p>
+		If the request dictionary requests parameter settings that the device
+		cannot satisfy (for example, if a program requests duplex printing on
+		a device that does not support it), the PostScript interpreter invokes
+		a uniform <i>recovery policy</i> for determining what to do. This
+		policy may vary depending on the specific page device parameter
+		involved. For most parameters, there are three possibilities:
+	</p>
+	<ul>
+		<li>Ignore the request (for example, print simplex on a device
+			that cannot honor a request for duplex printing).</li>
+		<li>Generate a <a href="../../8/2/c/configurationerror.html">configurationerror</a>
+			(reject the job).
+		</li>
+		<li>Notify the human operator or the print management software to
+			determine what to do.</li>
+	</ul>
+	<p>
+		The choice is based on information in the Policies subdictionary of
+		the page device dictionary, which in turn can be altered by <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a>; see Section
+		<a href="../2/7.html">6.2.7, "Unsatisfied Parameter Requests,"</a> for
+		further details.
+	</p>
+	<p>
+		<i><b>Note:</b> In the descriptions of individual page device
+			parameters in this chapter, the statement “a configuration error will
+			occur” actually means that the PostScript interpreter will take one
+			of the three possible actions listed above, according to specified
+			policy. Thus a "configuration error" is not necessarily the same
+			thing as a PostScript <a href="../../8/2/c/configurationerror.html">configurationerror</a>.</i>
+	</p>
+	<p>
+		If a device does not support a particular feature, <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> will not
+		recognize any request to specify a value for the corresponding
+		parameter. For example, if a device does not have a duplexing
+		mechanism, <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		will not recognize the parameter key <b>Duplex</b>&mdash;even if the
+		request is to set the value of <b>Duplex</b> to <i>false</i>,
+		indicating no duplexing. Instead, <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> will consult
+		policy to determine what to do. (Note that this means a print job
+		cannot expand the set of keys in a device's page device dictionary,
+		though it can add new keys to the Policies dictionary.) This behavior
+		may seem surprising, but it is necessitated by the fact that the set
+		of device features is open-ended.
+	</p>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Using Page Devices</title>
+</head>
+<body>
+	<h2>6.1 Using Page Devices</h2>
+	<p>Many output devices have special hardware features, such as
+		multiple paper trays with different sizes of paper, duplex (two-sided)
+		printing, collation, finishing options, and so forth. Not all such
+		features are available on all devices, however. The PostScript
+		interpreter knows what features a device supports and which are
+		currently available and ready for use.</p>
+	<p>
+		A document's device configuration requirements may limit the set of
+		devices on which the document can be printed. Specifying such
+		configuration information within a PostScript page description allows
+		the interpreter to match the document's requirements with the features
+		and options available on a given output device. The <a
+			href="../8/2/s/setpagedevice.html">setpagedevice</a> operator
+		provides a uniform framework for specifying configuration requirements
+		and options. It uses a standard format to request features supported
+		by all devices (such as selecting a page size) and those supported
+		only by some devices (such as duplex printing). In addition, <a
+			href="../8/2/s/setpagedevice.html">setpagedevice</a> allows a user or
+		system administrator to establish default device configuration
+		parameters to be used when a page description does not specify them
+		explicitly. It also provides a standard mechanism for determining what
+		to do when a page description makes feature requests that the device
+		cannot fulfill.
+	</p>
+	<p>It is useful, at least in concept, to envision two separate
+		tasks when printing from an application:</p>
+	<ol>
+		<li>Generate a device-independent page description.</li>
+		<li>Request that the page description be rendered on a particular
+			device. At this point, the user should have an opportunity to add
+			processing options, including device-dependent ones, to the page
+			description.</li>
+	</ol>
+	<p>Even if a single application performs both of these functions,
+		it is best to maintain the distinction. Many applications have an
+		option to store the generated page description in a file for later
+		use. Such a file should not contain unnecessary device-dependent
+		processing options. The distinction between document generation and
+		document rendering is essential when using PostScript programs for
+		document storage and interchange.</p>
+	<p>While there is no clear division between device-independent
+		processing requests and device-dependent ones, you should keep in mind
+		the important goal of producing device-independent page descriptions.
+		One important criterion to apply is whether a particular feature is
+		inherently part of the document specification itself or merely a
+		processing option. For example, the page size&mdash;in particular, the
+		aspect ratio between width and height&mdash;is an important part of
+		the document specification, because the application generating the
+		document must make formatting decisions based on it. On the other
+		hand, the number of copies to be printed or the color of the paper to
+		be used is not an inherent part of the document description, but
+		rather a processing option.</p>
+</body>
+</html>
