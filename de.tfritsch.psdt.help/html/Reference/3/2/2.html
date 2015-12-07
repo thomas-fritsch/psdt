@@ -101,8 +101,8 @@
 		preceding it from the one following. Thus the ASCII-encoded program
 		fragment</p>
 	<pre>
-    abc% comment {/%) blah blah blah
-    123</pre>
+abc% comment {/%) blah blah blah
+123</pre>
 	<p>is treated by the scanner as just two tokens: abc and 123.</p>
 	<h3 id="2">Numbers</h3>
 	<p>Numbers in the PostScript language include:</p>
@@ -156,15 +156,14 @@
 		treatment.</p>
 	<p>The following lines show several valid strings:</p>
 	<pre>
-        (This is a string)
-        (Strings may contain newlines
-        and such.)
-        (Strings may contain special characters *!&amp;}^% and
-        balanced parentheses ( ) (and so on).)
-        (The following is an empty string.)
-        ()
-        (It has 0 (zero) length.)
-		</pre>
+(This is a string)
+(Strings may contain newlines
+and such.)
+(Strings may contain special characters *!&amp;}^% and
+balanced parentheses ( ) (and so on).)
+(The following is an empty string.)
+()
+(It has 0 (zero) length.)</pre>
 	<p>Within a text string, the \ (backslash) character is treated as
 		an "escape" for various purposes, such as including newline
 		characters, unbalanced parentheses, and the \ character itself in the
@@ -216,18 +215,16 @@
 		including the newline character as part of the string, as in the
 		following example:</p>
 	<pre>
-        (These \
-        two strings \
-        are the same.)
-        (These two strings are the same.)
-    </pre>
+(These \
+two strings \
+are the same.)
+(These two strings are the same.)</pre>
 	<p>But if a newline appears without a preceding \, the result is
 		equivalent to \n. For example:</p>
 	<pre>
-        (This string has a newline at the end of it.
-        )
-        (So does this one.\n)
-        </pre>
+(This string has a newline at the end of it.
+)
+(So does this one.\n)</pre>
 	<p>
 		For more information about end-of-line conventions, see Section <a
 			href="../8.html">3.8, "File Input and Output."</a>
@@ -284,8 +281,7 @@
 		characters ordinarily considered to be punctuation.
 	</p>
 	<p>The following are examples of valid names:</p>
-	<pre>
-    abc Offset $$ 23A 13-456 a.b $MyDict @pattern</pre>
+	<pre>abc Offset $$ 23A 13-456 a.b $MyDict @pattern</pre>
 	<p>Use care when choosing names that begin with digits. For
 		example, while 23A is a valid name, 23E1 is a real number, and 23#1 is
 		a radix number token that represents an integer.</p>
@@ -309,16 +305,14 @@
 	<h3 id="5">Arrays</h3>
 	<p>The characters [ and ] are self-delimiting tokens that specify
 		the construction of an array. For example, the program fragment</p>
-	<pre>
-    [ 123 /abc (xyz) ]</pre>
+	<pre>[ 123 /abc (xyz) ]</pre>
 	<p>results in the construction of an array object containing the
 		integer object 123, the literal name object abc, and the string object
 		xyz. Each token within the brackets is executed in turn.</p>
 	<p>The [ and ] characters are special syntax for names that, when
 		executed, invoke PostScript operators that collect objects and
 		construct an array containing them. Thus the example</p>
-	<pre>
-    [ 123 /abc (xyz) ]</pre>
+	<pre>[ 123 /abc (xyz) ]</pre>
 	<p>contains these five tokens:</p>
 	<ul>
 		<li>The name object [</li>
@@ -338,8 +332,7 @@
 		the procedure rather than <em>executing</em> it.
 	</p>
 	<p>Scanning the program fragment</p>
-	<pre>
-    {add 2 div}</pre>
+	<pre>{add 2 div}</pre>
 	<p>
 		produces a single procedure object that contains the name object <b>add</b>,
 		the integer object 2, and the name object <b>div</b>. When the scanner
@@ -371,10 +364,7 @@
 		dictionary, much the same as [ and ] denote the construction of an
 		array. They are intended to be used as follows:
 	</p>
-	<p>
-		&lt;&lt; <em>key<sub>1</sub> value<sub>1</sub> key<sub>2</sub>
-			value<sub>2</sub> ... key<sub>n</sub> value<sub>n</sub></em> &gt;&gt;
-	</p>
+	<pre>&lt;&lt; <em>key<sub>1</sub> value<sub>1</sub> key<sub>2</sub>value<sub>2</sub> ... key<sub>n</sub> value<sub>n</sub></em> &gt;&gt;</pre>
 	<p>
 		This creates a dictionary containing the bracketed key-value pairs and
 		pushes it on the operand stack. Dictionaries are introduced in Section

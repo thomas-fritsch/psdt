@@ -27,21 +27,19 @@
 		<b>Example 3.6</b>
 	</p>
 	<pre>
-    true setglobal
-      /Widget catdict /Category defineresource pop
-    false setglobal
-	</pre>
+true setglobal
+  /Widget catdict /Category defineresource pop
+false setglobal</pre>
 	<p>
 		In this example, <i>catdict</i> is a dictionary describing the
 		implementation of the Widget category. Once it is defined, instances
 		of the Widget category can be manipulated like other categories:
 	</p>
 	<pre>
-    /Frob1 w /Widget defineresource          % Returns w
-    /Frob1 /Widget findresource              % Returns w
-    /Frob1 /Widget resourcestatus            % Returns status size true
-    (*) proc scratch /Widget resourceforall  % Pushes (Frob1) on the stack, then calls proc
-    </pre>
+/Frob1 w /Widget defineresource          % Returns w
+/Frob1 /Widget findresource              % Returns w
+/Frob1 /Widget resourcestatus            % Returns status size true
+(*) proc scratch /Widget resourceforall  % Pushes (Frob1) on the stack, then calls proc</pre>
 	<p>Here w is an instance of the Widget category whose type is
 		whatever is appropriate for widgets, and /Frob1 is the name of that
 		instance.</p>
@@ -58,8 +56,7 @@
 			href="../../8/2/d/defineresource.html">defineresource</a> when the
 		category was created. In the example
 	</p>
-	<pre>
-	/Frob1 w /Widget defineresource</pre>
+	<pre>/Frob1 w /Widget defineresource</pre>
 	<p>
 		the <b>defineresource</b> operator does the following:
 	</p>
@@ -223,14 +220,13 @@
 		<b>Example 3.7</b>
 	</p>
 	<pre>
-        currentglobal                     % Save the current VM status on the stack.
-        true setglobal
-        /Generic /Category findresource
-        dup length 1 add dict copy
-        dup /InstanceType /dicttype put
-        /Widget exch /Category defineresource pop
-        setglobal                         % Restore the saved VM status.
-	</pre>
+currentglobal                     % Save the current VM status on the stack.
+true setglobal
+/Generic /Category findresource
+dup length 1 add dict copy
+dup /InstanceType /dicttype put
+/Widget exch /Category defineresource pop
+setglobal                         % Restore the saved VM status.</pre>
 	<p>
 		The <b>Generic</b> resource category's implementation dictionary does
 		not have an <b>InstanceType</b> entry; instances need not be of any
