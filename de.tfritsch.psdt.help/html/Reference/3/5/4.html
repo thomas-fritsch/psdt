@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Control Constructs</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.5.4 Control Constructs</h3>
+	<p>In the PostScript language, control constructs such as
+		conditionals and iterations are specified by means of operators that
+		take procedures as operands. Example 3.3 computes the maximum of the
+		values associated with the names a and b, as in the steps that follow.
+	</p>
+	<p>
+		<b>Example 3.3</b>
+	</p>
+	<pre>a b gt {a} {b} ifelse</pre>
+	<ol>
+		<li>The interpreter encounters the executable names a and b in
+			turn and looks them up. Assume both names are associated with
+			numbers. Executing the numbers causes them to be pushed on the
+			operand stack.</li>
+		<li>The <a href="../*../8/2/g/gt.html">gt</a> (greater than)
+			operator removes two operands from the stack and compares them. If
+			the first operand is greater than the second, it pushes the boolean
+			value <i>true</i>. Otherwise, it pushes <i>false</i>.
+		</li>
+		<li>The interpreter now encounters the procedure objects {a} and
+			{b}, which it pushes on the operand stack.</li>
+		<li>The <a href="../../8/2/i/ifelse.html">ifelse</a> operator
+			takes three operands: a boolean object and two procedures. If the
+			boolean object's value is <i>true</i>, <a
+			href="../../8/2/i/ifelse.html">ifelse</a> causes the first procedure
+			to be executed; otherwise, it causes the second procedure to be
+			executed. All three operands are removed from the operand stack
+			before the selected procedure is executed.
+		</li>
+	</ol>
+	<p>In this example, each procedure consists of a single element
+		that is an executable name (either a or b). The interpreter looks up
+		this name and, since it is associated with a number, pushes that
+		number on the operand stack. So the result of executing the entire
+		program fragment is to push on the operand stack the greater of the
+		values associated with a and b.</p>
+</body>
+</html>

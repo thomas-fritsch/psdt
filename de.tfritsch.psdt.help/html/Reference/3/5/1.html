@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Immediate Execution</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.5.1 Immediate Execution</h3>
+	<p>Some example PostScript program fragments will help clarify the
+		concept of execution. Example 3.1 illustrates the immediate execution
+		of a few operators and operands to perform some simple arithmetic.</p>
+	<p>
+		<b>Example 3.1</b>
+	</p>
+	<pre>40 60 add 2 div</pre>
+	<p>The interpreter first encounters the literal integer object 40
+		and pushes it on the operand stack. Then it pushes the integer object
+		60 on the operand stack.</p>
+	<p>
+		Next, it encounters the executable name object <a
+			href="../../8/2/a/add.html">add</a>, which it looks up in the
+		environment of the current dictionary stack. Unless <a
+			href="../../8/2/a/add.html">add</a> has been redefined elsewhere, the
+		interpreter finds it associated with an operator object, which it
+		executes. This invokes a built-in function that pops the two integer
+		objects off the operand stack, adds them together, and pushes the
+		result (a new integer object whose value is 100) back on the operand
+		stack.
+	</p>
+	<p>
+		The rest of the program fragment is executed similarly. The
+		interpreter pushes the integer 2 on the operand stack and then
+		executes the name <a href="../../8/2/d/div.html">div</a>. The <a
+			href="../../8/2/d/div.html">div</a> operator pops two operands off
+		the stack (the integers whose values are 2 and 100), divides the
+		second-to-top one by the top one (100 divided by 2, in this case), and
+		pushes the real result 50.0 on the stack.
+	</p>
+	<p>The source of the objects being executed by the PostScript
+		interpreter does not matter. They may have been contained within an
+		array or scanned in from a character stream. Executing a sequence of
+		objects produces the same result regardless of where the objects come
+		from.</p>
+</body>
+</html>

@@ -41,6 +41,13 @@
 			<topic label="3.3.15 Other Types" href="html/Reference/3/3/15.html" />
 		</topic>
 		<topic label="3.4 Stacks" href="html/Reference/3/4.html" />
+		<topic label="3.5 Execution" href="html/Reference/3/5.html">
+			<topic label="3.5.1 Immediate Execution" href="html/Reference/3/5/1.html" />
+			<topic label="3.5.2 Operand Order" href="html/Reference/3/5/2.html" />
+			<topic label="3.5.3 Deferred Execution" href="html/Reference/3/5/3.html" />
+			<topic label="3.5.4 Control Constructs" href="html/Reference/3/5/4.html" />
+			<topic label="3.5.5 Execution of Specific Types" href="html/Reference/3/5/5.html" />
+		</topic>
 		<topic label="3.9 Named Resources" href="html/Reference/3/9.html">
 			<topic label="3.9.1 Resource Operators" href="html/Reference/3/9/1.html" />
 			<topic label="3.9.2 Resource Categories" href="html/Reference/3/9/2.html">

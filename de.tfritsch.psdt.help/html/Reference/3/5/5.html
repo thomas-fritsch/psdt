@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Execution of Specific Types</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.5.5 Execution of Specific Types</h3>
+	<p>
+		An object with the literal attribute is <i>always</i> treated as
+		data&mdash;pushed on the operand stack by the
+		interpreter&mdash;regardless of its type. Even operator objects are
+		treated this way if they have the literal attribute.
+	</p>
+	<p>For many objects, executing them has the same effect as treating
+		them as data. This is true of integer, real, boolean, dictionary,
+		mark, save, gstate, and fontID objects. So the distinction between
+		literal and executable objects of these types is meaningless. The
+		following descriptions apply only to objects having the executable
+		attribute.</p>
+	<ul>
+		<li>An <i>executable array</i> or executable packed array
+			(procedure) object is pushed on the operand stack if it is
+			encountered directly by the interpreter. If it is invoked <i>indirectly</i>
+			as a result of executing some other object (a name or an operator),
+			it is called instead. The interpreter calls a procedure by pushing it
+			on the execution stack and then executing the array elements in turn.
+			When the interpreter reaches the end of the procedure, it pops the
+			procedure object off the execution stack. (Actually, it pops the
+			procedure object when there is one element remaining and then pushes
+			that element; this permits unlimited depth of "tail recursion"
+			without overflowing the execution stack.)
+		</li>
+		<li>An <i>executable string</i> object is pushed on the execution
+			stack. The interpreter then uses the string as a source of characters
+			to be converted to tokens and interpreted according to the PostScript
+			syntax rules. This continues until the interpreter reaches the end of
+			the string. Then it pops the string object from the execution stack.
+		</li>
+		<li>An <i>executable file</i> object is treated much the same as
+			a string: The interpreter pushes it on the execution stack. It reads
+			the characters of the file and interprets them as PostScript tokens
+			until it encounters end-of-file. Then it closes the file and pops the
+			file object from the execution stack. See Section <a href="../8.html">3.8,
+				"File Input and Output."</a>
+		</li>
+		<li>An <i>executable name</i> object is looked up in the
+			environment of the current dictionary stack and its associated value
+			is executed. The interpreter looks first in the top dictionary on the
+			dictionary stack and then in other dictionaries successively lower on
+			the stack. If it finds the name as a key in some dictionary, it
+			executes the associated value. To do that, it examines the value's
+			type and executable attribute and performs the appropriate action
+			described in this section. Note that if the value is a procedure, the
+			interpreter executes it. If the interpreter fails to find the name in
+			any dictionary on the dictionary stack, an <a
+			href="../../8/2/u/undefined.html">undefined</a> error occurs.
+		</li>
+		<li>An <i>executable operator</i> object causes the interpreter
+			to perform one of the builtin operations described in this book.
+		<li>An <i>executable null</i> object causes the interpreter to
+			perform no action. In particular, it does <i>not</i> push the object
+			on the operand stack.
+		</li>
+	</ul>
+</body>
+</html>

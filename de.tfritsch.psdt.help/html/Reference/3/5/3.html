@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Deferred Execution</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.5.3 Deferred Execution</h3>
+	<p>The first line of Example 3.2 defines a procedure named average
+		that computes the average of two numbers. The second line applies that
+		procedure to the integers 40 and 60, producing the same result as
+		Example 3.1.</p>
+	<p>
+		<b>Example 3.2</b>
+	</p>
+	<pre>/average {add 2 div} def
+40 60 average</pre>
+	<p>
+		The interpreter first encounters the literal name average. Recall from
+		Section <a href="../2.html">3.2, "Syntax,"</a> that / introduces a
+		literal name. The interpreter pushes this object on the operand stack,
+		as it would any object having the literal attribute.
+	</p>
+	<p>
+		Next, the interpreter encounters the executable array {add 2 div}.
+		Recall that { and } enclose a <i>procedure</i> (an executable array or
+		executable packed array object) that is produced by the scanner. This
+		procedure contains three elements: the executable name <a
+			href="../../8/2/a/add.html">add</a>, the literal integer 2, and the
+		executable name div. The interpreter has not encountered these
+		elements yet.
+	</p>
+	<p>Here is what the interpreter does:</p>
+	<ol>
+		<li>Upon encountering this procedure object, the interpreter
+			pushes it on the operand stack, even though the object has the
+			executable attribute. This is explained shortly.</li>
+		<li>The interpreter then encounters the executable name <a
+			href="../../8/2/d/def.html">def</a>. Looking up this name in the
+			current dictionary stack, it finds <a href="../../8/2/d/def.html">def</a>
+			to be associated in <a href="../../8/2/s/systemdict.html">systemdict</a>
+			with an operator object, which it invokes.
+		</li>
+		<li>The <a href="../../8/2/d/def.html">def</a> operator pops two
+			objects off the operand stack (the procedure {add 2 div} and the name
+			average). It enters this pair into the current dictionary (most
+			likely <a href="../../8/2/u/userdict.html">userdict</a>), creating a
+			new association having the name average as its key and the procedure
+			{add 2 div} as its value.
+		</li>
+		<li>The interpreter pushes the integer objects 40 and 60 on the
+			operand stack, then encounters the executable name average.</li>
+		<li>It looks up average in the current dictionary stack, finds it
+			to be associated with the procedure {add 2 div}, and executes that
+			procedure. In this case, execution of the array object consists of
+			executing the elements of the array&mdash;the objects <a
+			href="../../8/2/a/add.html">add</a>, 2, and <a
+			href="../../8/2/d/div.html">div</a>&mdash;in sequence. This has the
+			same effect as executing those objects directly. It produces the same
+			result: the real object 50.0.
+		</li>
+	</ol>
+	<p>
+		Why did the interpreter treat the procedure as data in the first line
+		of the example but execute it in the second, despite the procedure
+		having the executable attribute in both cases? There is a special rule
+		that determines this behavior: An executable array or packed array
+		encountered directly by the interpreter is treated as data (pushed on
+		the operand stack), but an executable array or packed array
+		encountered <i>indirectly</i>&mdash;as a result of executing some
+		other object, such as a name or an operator&mdash;is invoked as a
+		procedure.
+	</p>
+	<p>This rule reflects how procedures are ordinarily used.
+		Procedures appearing directly (either as part of a program being read
+		from a file or as part of some larger procedure in memory) are usually
+		part of a definition or of a construct, such as a conditional, that
+		operates on the procedure explicitly. But procedures obtained
+		indirectly&mdash;for example, as a result of looking up a
+		name&mdash;are usually intended to be executed. A PostScript program
+		can override these semantics when necessary.</p>
+</body>
+</html>
