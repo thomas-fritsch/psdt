@@ -32,9 +32,10 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	extension IWorkbenchBrowserSupport = PlatformUI.workbench.browserSupport
 
 	Text fArgumentsText
+	Link fLink
 
 	override void createControl(Composite parent) {
-		val Group group = new Group(parent, SWT.NONE) => [
+		val group = new Group(parent, SWT.NONE) => [
 			layout = new GridLayout
 			layoutData = new GridData(GridData.FILL_BOTH)
 			text = "Ghostscript arguments:"
@@ -43,22 +44,22 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 		fArgumentsText = new Text(group, SWT.MULTI.bitwiseOr(SWT.WRAP).bitwiseOr(SWT.BORDER).bitwiseOr(SWT.V_SCROLL)) => [
 			layoutData = new GridData(GridData.FILL_BOTH)
-			addModifyListener [
-				updateLaunchConfigurationDialog
-			]
+			addModifyListener [updateLaunchConfigurationDialog]
 		]
-		new Link(group, SWT.NONE) => [
+		fLink = new Link(group, SWT.NONE) => [
 			text = "Show <A>Ghostscript documentation</A> in web browser"
-			addListener(SWT.Selection) [
-				try {
-					"gs".createBrowser.openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
-				} catch (PartInitException e) {
-					DebugPlugin.log(e)
-				} catch (MalformedURLException e) {
-					DebugPlugin.log(e)
-				}
-			]
+			addListener(SWT.Selection)[browseGhostscriptDoc]
 		]
+	}
+
+	def protected void browseGhostscriptDoc() {
+		try {
+			"gs".createBrowser.openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
+		} catch (PartInitException e) {
+			DebugPlugin.log(e)
+		} catch (MalformedURLException e) {
+			DebugPlugin.log(e)
+		}
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
