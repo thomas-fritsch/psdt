@@ -10,6 +10,7 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlinePage;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
@@ -17,6 +18,7 @@ import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptDocumentProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 import de.tfritsch.psdt.ui.hover.PostscriptHoverProvider;
+import de.tfritsch.psdt.ui.outline.PostscriptOutlinePage;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptAntlrTokenToAttributeIdMapper;
 import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration;
 
@@ -57,5 +59,9 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public Class<? extends XtextDocumentProvider> bindXtextDocumentProvider() {
 		return PostscriptDocumentProvider.class;
+	}
+
+	public Class<? extends OutlinePage> bindOutlinePage() {
+		return PostscriptOutlinePage.class;
 	}
 }
