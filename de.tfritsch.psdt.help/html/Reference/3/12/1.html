@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bind Operator</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h2>3.12.1 bind Operator</h2>
+	<p>The bind operator takes a procedure operand and returns a
+		possibly modified procedure. There are two kinds of modification:
+		operator substitution and idiom recognition.</p>
+	<h3 id="1">Operator Substitution</h3>
+	<p>
+		The <a href="../../8/2/b/bind.html">bind</a> operator first
+		systematically replaces names with operators in a procedure. For each
+		executable name whose value is an operator (not an array, procedure,
+		or other type), it replaces the name with the operator object. This
+		lookup occurs in the dictionaries that are on the dictionary stack at
+		the time bind is executed. The effect of <a
+			href="../../8/2/b/bind.html">bind</a> applies not only to the
+		procedure being bound but to all subsidiary procedures (executable
+		arrays or executable packed arrays) contained within it, nested to
+		arbitrary depth.
+	</p>
+	<p>
+		When the interpreter subsequently executes this procedure, it
+		encounters the <i>operator objects</i>, not the <i>names</i> of
+		operators. For example, if the <b>average</b> procedure has been
+		defined as
+	</p>
+	<pre>/average {add 2 div} bind def</pre>
+	<p>
+		then during the execution of <b>average</b>, the interpreter executes
+		the <a href="../../8/2/a/add.html">add</a> and <a
+			href="../../8/2/d/div.html">div</a> operators directly, without
+		looking up the names <b>add</b> and <b>div</b>.
+	</p>
+	<p>
+		There are two main benefits to using <a href="../../8/2/b/bind.html">bind</a>:
+	</p>
+	<ul>
+		<li>A procedure that has been bound will execute the sequence of
+			operators that were intended when the procedure was defined, even if
+			one or more of the operator names have been redefined in the
+			meantime. This benefit is mainly of interest in procedures that are
+			part of the PostScript implementation, such as <a
+			href="../../8/2/f/findfont.html">findfont</a> and <a
+			href="../../8/2/@/equals.html">=</a>. Those procedures are expected
+			to behave correctly and uniformly, regardless of how a user program
+			may have altered its name environment.
+		</li>
+		<li>A bound procedure executes somewhat faster than one that has
+			not been bound, since the interpreter need not look up the operator
+			names each time, but can execute the operators directly. This benefit
+			is of interest in most PostScript programs, particularly in the
+			prologs of page descriptions. It is worthwhile to apply <a
+			href="../../8/2/b/bind.html">bind</a> to any procedure that will be
+			executed more than a few times.
+		</li>
+	</ul>
+	<p>
+		It is important to understand that <a href="../../8/2/b/bind.html">bind</a>
+		replaces only those names whose values are operators at the time <a
+			href="../../8/2/b/bind.html">bind</a> is executed. Names whose values
+		are of other types, particularly procedures, are not disturbed. If an
+		operator name has been redefined in some dictionary above <a
+			href="../../8/2/s/systemdict.html">systemdict</a> on the dictionary
+		stack before the execution of <a href="../../8/2/b/bind.html">bind</a>,
+		occurrences of that name in the procedure will not be replaced.
+	</p>
+	<p>
+		<i><b>Note:</b> Certain standard language features, such as <a
+			href="../../8/2/f/findfont.html">findfont</a>, are implemented as
+			built-in procedures rather than as operators. Also, certain names,
+			such as <a href="../../8/2/t/true.html">true</a>, <a
+			href="../../8/2/f/false.html">false</a>, and <a
+			href="../../8/2/n/null.html">null</a>, are associated directly with
+			literal values in <a href="../../8/2/s/systemdict.html">systemdict</a>.
+			Occurrences of such names in a procedure are not altered by <a
+			href="../../8/2/b/bind.html">bind</a>.</i>
+	</p>
+	<h3 id="2">Idiom Recognition</h3>
+	<p>
+		In LanguageLevel 3, the <a href="../../8/2/b/bind.html">bind</a>
+		operator performs an additional task, known as <i>idiom
+			recognition</i>, following the replacement of names in the bound
+		procedure with operators. The goal of idiom recognition is to replace
+		certain procedures ("idioms") with other procedures, typically ones
+		that have equivalent behavior but produce better-quality results or
+		execute more efficiently. Performing such substitution on procedures
+		in an application's prolog can take advantage of new language features
+		without changing the application.
+	</p>
+	<p>
+		The idioms and their replacements are stored as instances of the <b>IdiomSet</b>
+		resource category. An <b>IdiomSet</b> instance is a <i>procedure
+			substitution dictionary</i>, which typically contains idioms for a
+		particular application's prolog. The keys in this dictionary are
+		arbitrary. Each value in this dictionary is an array containing two
+		procedures, a <i>template procedure</i> and a <i>substitute
+			procedure</i>.
+	</p>
+	<p>
+		The <a href="../../8/2/b/bind.html">bind</a> operator first tests the
+		value of the user parameter <b>IdiomRecognition</b> to see whether
+		idiom recognition is enabled. If so, the bound procedure is compared
+		to every template procedure in every <b>IdiomSet</b> instance. If a
+		match is found, <a href="../../8/2/b/bind.html">bind</a> returns the
+		associated substitute procedure; otherwise, it returns the bound
+		procedure.
+	</p>
+	<p>
+		Two arrays or procedures are considered to match if corresponding
+		elements either are equal (in the sense of the <a
+			href="../../8/2/e/eq.html">eq</a> operator) or are both arrays whose
+		corresponding elements match in turn. The objects' attributes are
+		disregarded during this comparison, just as they are by <a
+			href="../../8/2/e/eq.html">eq</a>. Nested arrays or procedures are
+		compared to a maximum depth of ten levels.
+	</p>
+	<p>
+		If substitutions may have an undesirable effect, idiom recognition can
+		be disabled by setting the value of the user parameter <b>IdiomRecognition</b>
+		to false before invoking the <a href="../../8/2/b/bind.html">bind</a>
+		operator. For example, <b>IdiomRecognition</b> should be set to false
+		during the construction of instances of the <b>IdiomSet</b> resource
+		category, so that the template and substitute procedures are not
+		themselves recognized as idioms.
+	</p>
+	<p>
+		Example 3.9 demonstrates how to construct an instance of the <b>IdiomSet</b>
+		resource category.
+	</p>
+	<p>
+		<b>Example 3.9</b>
+	</p>
+	<pre>
+% Temporarily turn off idiom recognition so that bind does not change our template.
+currentuserparams /IdiomRecognition get % Save current value on stack
+&lt;&lt;/IdiomRecognition false&gt;&gt; setuserparams
+
+% Define an IdiomSet resource named AdobeWinDriver containing a single substitution.
+  /AdobeWinDriver
+    &lt;&lt; /snap % Name of this particular idiom (any name)
+                [ % The template procedure.
+                  % This is a common method in LanguageLevel 1 for aligning points
+                  % on a grid in device space.
+                  { transform
+                    0.25 sub round 0.25 add exch
+                    0.25 sub round 0.25 add exch
+                    itransform
+                  } bind
+                  
+                  % The substitute procedure.
+                  % This procedure does not change the coordinates.
+                  % Assume that setstrokeadjust is on.
+                  { } bind
+                ]
+    &gt;&gt;
+  /IdiomSet defineresource pop
+
+&lt;&lt;/IdiomRecognition 3 -1 roll&gt;&gt; setuserparams % Return idiom recognition
+% to its previous state</pre>
+	<p>
+		The template and substitute procedures should be bound explicitly
+		during the definition of the <b>IdiomSet</b> instance, since no
+		automatic binding occurs on either of these procedures during idiom
+		recognition. The comparison during idiom recognition occurs after the
+		candidate procedure is bound; a successful match depends on the
+		template also being bound. Generally, the substitute procedure should
+		be bound, unless lookup of operator names during each execution of the
+		substitute procedure is specifically desired.
+	</p>
+	<p>
+		Instances of the <b>IdiomSet</b> resource category reside in VM,
+		either local or global; if local, they are subject to the <a
+			href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> operators. The <a
+			href="../../8/2/b/bind.html">bind</a> operator follows the usual
+		rules about visibility of resources according to the current VM
+		allocation mode. That is, if the current VM allocation mode is global,
+		only globally defined instances of <b>IdiomSet</b> are considered,
+		whereas if the current allocation mode is local, both locally and
+		globally defined instances are considered. Additionally, substitution
+		will not occur if the candidate procedure is in global VM but the
+		proposed substitute procedure is in local VM.
+	</p>
+	<p>
+		Multiple instances of the <b>IdiomSet</b> resource category may
+		contain identical template procedures, but only one will be in effect
+		when idiom recognition is enabled. The instance that takes precedence
+		is not predictable.
+	</p>
+	<p>
+		As mentioned earlier, idiom recognition is performed by matching the
+		template procedures in the <b>IdiomSet</b> resource instances. This is
+		unlike all other resource categories, whose instances are selected
+		according to their keys. This matching by value occurs only for <b>IdiomSet</b>
+		instances that are defined in VM; <a href="../../8/2/b/bind.html">bind</a>
+		does not consider instances that are not in VM but only in external
+		storage.
+	</p>
+	<p>
+		To ensure that the instances in VM are consistent with the external
+		ones, the interpreter automatically invokes <a
+			href="../../8/2/f/findresource.html">findresource</a> to load
+		external <b>IdiomSet</b> instances into VM at the beginning of each
+		job and at certain other times. If a PostScript program installs an
+		external IdiomSet instance, it should then execute <a
+			href="../../8/2/u/undefineresource.html">undefineresource</a> to
+		ensure that any existing instance of <b>IdiomSet</b> in VM with the
+		same key is removed and replaced by the external instance.
+	</p>
+</body>
+</html>

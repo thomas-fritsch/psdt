@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Early Name Binding</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>3.12 Early Name Binding</h2>
+	<p>Normally, when the PostScript language scanner encounters an
+		executable name in the program being scanned, it simply produces an
+		executable name object; it does not look up the value of the name. It
+		looks up the name only when the name object is executed by the
+		interpreter. The lookup occurs in the dictionaries that are on the
+		dictionary stack at the time of execution.</p>
+	<p>A name object contained in a procedure is looked up each time
+		the procedure is executed. For example, given the definition</p>
+	<pre>/average {add 2 div} def</pre>
+	<p>
+		the names <b>add</b> and <b>div</b> are looked up, yielding operators
+		to be executed, every time the <b>average</b> procedure is invoked.
+	</p>
+	<p>
+		This so-called late <i>binding</i> of names is an important feature of
+		the PostScript language. However, there are situations in which <i>early
+			binding</i> is advantageous. There are two facilities for looking up the
+		values of names before execution: the bind operator and the <i>immediately
+			evaluated name</i>.
+	</p>
+</body>
+</html>
