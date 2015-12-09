@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Array, Packed Array, Dictionary, and String Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.6.3 Array, Packed Array, Dictionary, and String Operators</h3>
+	<p>A number of operators are polymorphic: they may be applied to
+		operands of several different types and their precise functions depend
+		on the types of the operands. Except where indicated otherwise, the
+		operators listed below apply to any of the following types of
+		composite objects: arrays, packed arrays, dictionaries, and strings.</p>
+	<ol>
+		<li><a href="../../8/2/g/get.html">get</a> takes a composite
+			object and an index (or a key, in the case of a dictionary) and
+			returns a single element of the object.</li>
+		<li><a href="../../8/2/p/put.html">put</a> stores a single
+			element in an array, dictionary, or string. This operator does not
+			apply to packed array objects, because they always have read-only (or
+			even more restrictive) access.</li>
+		<li><a href="../../8/2/c/copy.html">copy</a> copies the value of
+			a composite object to another composite object of the same type,
+			replacing the second object's former value. This is different from
+			merely copying the object. See Section <a href="../3/1.html">3.3.1,
+				"Simple and Composite Objects"</a> for a discussion of copying objects.</li>
+		<li><a href="../../8/2/l/length.html">length</a> returns the
+			number of elements in a composite object.</li>
+		<li><a href="../../8/2/f/forall.html">forall</a> accesses all of
+			the elements of a composite object in sequence, calling a procedure
+			for each one.</li>
+		<li><a href="../../8/2/g/getinterval.html">getinterval</a>
+			creates a new object that shares a subinterval of an array, a packed
+			array, or a string. This operator does not apply to dictionary
+			objects.</li>
+		<li><a href="../../8/2/p/putinterval.html">putinterval</a>
+			overwrites a subinterval of one array or string with the contents of
+			another. This operator does not apply to dictionary or packed array
+			objects, although it can overwrite a subinterval of an array with the
+			contents of a packed array.</li>
+	</ol>
+	<p>
+		In addition to the polymorphic operators, there are operators that
+		apply to only one of the array, packed array, dictionary, and string
+		types. For each type, there is an operator (<a
+			href="../../8/2/a/array.html">array</a>, <a
+			href="../../8/2/p/packedarray.html">packedarray</a>, <a
+			href="../../8/2/d/dict.html">dict</a>, <a
+			href="../../8/2/s/string.html">string</a>) that creates a new object
+		of that type and a specified length. These four operators explicitly
+		create new composite object values, consuming virtual memory (VM)
+		resources (see Section <a href="../7/1.html">3.7.1, "Virtual
+			Memory"</a>). Most other operators read and write the values of composite
+		objects but do not create new ones. Operators that return composite
+		results usually require an operand that is the composite object into
+		which the result values are to be stored. The operators are organized
+		this way to give programmers maximum control over consumption of VM.
+	</p>
+	<p>Array, packed array, and string objects have a fixed length that
+		is specified when the object is created. In LanguageLevel 1,
+		dictionary objects also have this property. In LanguageLevels 2 and 3,
+		a dictionary's capacity can grow beyond its initial allocation.</p>
+</body>
+</html>

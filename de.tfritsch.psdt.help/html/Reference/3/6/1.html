@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stack Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.6.1 Stack Operators</h3>
+	<p>
+		The operand stack is the PostScript interpreter’s mechanism for
+		passing arguments to operators and for gathering results from
+		operators. It is introduced in Section <a href="../4.html">3.4,
+			"Stacks."</a>
+	</p>
+	<p>There are various operators that rearrange or manipulate the
+		objects on the operand stack. Such rearrangement is often required
+		when the results of some operators are to be used as arguments to
+		other operators that require their operands in a different order.
+		These operators manipulate only the objects themselves; they do not
+		copy the values of composite objects.</p>
+	<ul>
+		<li><a href="../../8/2/d/dup.html">dup</a> duplicates an object.</li>
+		<li><a href="../../8/2/e/exch.html">exch</a> exchanges the top
+			two elements of the stack.</li>
+		<li><a href="../../8/2/p/pop.html">pop</a> removes the top
+			element from the stack.</li>
+		<li><a href="../../8/2/c/copy.html">copy</a> duplicates portions
+			of the operand stack.</li>
+		<li><a href="../../8/2/r/roll.html">roll</a> treats a portion of
+			the stack as a circular queue.
+		<li><a href="../../8/2/i/index.html">index</a> accesses the stack
+			as if it were an indexable array.</li>
+		<li><a href="../../8/2/m/mark.html">mark</a> marks a position on
+			the stack.</li>
+		<li><a href="../../8/2/c/clear.html">clear</a> clears the stack.</li>
+		<li><a href="../../8/2/c/count.html">count</a> counts the number
+			of elements on the stack.</li>
+		<li><a href="../../8/2/c/counttomark.html">counttomark</a> counts
+			the elements above the highest mark. This is used primarily for array
+			construction (described later), but has other applications as well.</li>
+		<li><a href="../../8/2/c/cleartomark.html">cleartomark</a>
+			reremoves all elements above the highest mark and then removes the
+			mark itself.</li>
+	</ul>
+</body>
+</html>

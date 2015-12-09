@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Control Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.6.5 Control Operators</h3>
+	<p>The control operators modify the interpreter’s usual sequential
+		execution of objects. Most of them take a procedure operand that they
+		execute conditionally or repeatedly.</p>
+	<ul>
+		<li><a href="../../8/2/i/if.html">if</a> and <a
+			href="../../8/2/i/ifelse.html">ifelse</a> execute a procedure
+			conditionally depending on the value of a boolean operand. (<a
+			href="../../8/2/i/ifelse.html">ifelse</a> is introduced in Section <a
+			href="../5.html">3.5, "Execution."</a>)</li>
+		<li><a href="../../8/2/e/exec.html">exec</a> executes an
+			arbitrary object unconditionally.</li>
+		<li><a href="../../8/2/f/for.html">for</a>, <a
+			href="../../8/2/r/repeat.html">repeat</a>, <a
+			href="../../8/2/l/loop.html">loop</a>, and <a
+			href="../../8/2/f/forall.html">forall</a> execute a procedure
+			repeatedly. Several specialized graphics and font operators, such as
+			<a href="../../8/2/p/pathforall.html">pathforall</a> and <a
+			href="../../8/2/k/kshow.html">kshow</a>, behave similarly.</li>
+		<li><a href="../../8/2/e/exit.html">exit</a> transfers control
+			out of the scope of any of these looping operators.</li>
+		<li><a href="../../8/2/c/countexecstack.html">countexecstack</a>
+			and <a href="../../8/2/e/execstack.html">execstack</a> are used to
+			read the execution stack.</li>
+	</ul>
+	<p>
+		A PostScript program may terminate prematurely by executing the <a
+			href="../../8/2/s/stop.html">stop</a> operator. This occurs most
+		commonly as a result of an error; the default error handlers (in <a
+			href="../../8/2/e/errordict.html">errordict</a>) all execute <a
+			href="../../8/2/s/stop.html">stop</a>.
+	</p>
+	<p>
+		The <a href="../../8/2/s/stopped.html">stopped</a> operator
+		establishes an execution environment that encapsulates the effect of a
+		<a href="../../8/2/s/stop.html">stop</a>. That is, <a
+			href="../../8/2/s/stopped.html">stopped</a> executes a procedure
+		given as an operand, just the same as <a href="../../8/2/e/exec.html">exec</a>.
+		If the interpreter executes <a href="../../8/2/s/stop.html">stop</a>
+		during that procedure, it terminates the procedure and resumes
+		execution at the object immediately after the <a
+			href="../../8/2/s/stopped.html">stopped</a> operator.
+	</p>
+</body>
+</html>

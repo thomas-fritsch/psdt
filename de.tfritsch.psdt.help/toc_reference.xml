@@ -48,6 +48,18 @@
 			<topic label="3.5.4 Control Constructs" href="html/Reference/3/5/4.html" />
 			<topic label="3.5.5 Execution of Specific Types" href="html/Reference/3/5/5.html" />
 		</topic>
+		<topic label="3.6 Overview of Basic Operators" href="html/Reference/3/6.html">
+			<topic label="3.6.1 Stack Operators" href="html/Reference/3/6/1.html" />
+			<topic label="3.6.2 Arithmetic and Mathematical Operators"
+				href="html/Reference/3/6/2.html" />
+			<topic label="3.6.3 Array, Packed Array, Dictionary, and String Operators"
+				href="html/Reference/3/6/3.html" />
+			<topic label="3.6.4 Relational, Boolean, and Bitwise Operators"
+				href="html/Reference/3/6/4.html" />
+			<topic label="3.6.5 Control Operators" href="html/Reference/3/6/5.html" />
+			<topic label="3.6.6 Type, Attribute, and Conversion Operators"
+				href="html/Reference/3/6/6.html" />
+		</topic>
 		<topic label="3.9 Named Resources" href="html/Reference/3/9.html">
 			<topic label="3.9.1 Resource Operators" href="html/Reference/3/9/1.html" />
 			<topic label="3.9.2 Resource Categories" href="html/Reference/3/9/2.html">
