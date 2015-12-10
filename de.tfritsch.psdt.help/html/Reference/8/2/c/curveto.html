@@ -48,18 +48,21 @@
 	<pre>
 <i>x(t) = a<sub>x</sub>t<sup>3</sup> + b<sub>x</sub>t<sup>2</sup> + c<sub>x</sub>t + x<sub>0</sub></i>
 <i>y(t) = a<sub>y</sub>t<sup>3</sup> + b<sub>y</sub>t<sup>2</sup> + c<sub>y</sub>t + y<sub>0</sub></i></pre>
-	<p></p>
+	<p>
+		The cubic section produced by <b>curveto</b> is the path traced by <i>x(t)</i>
+		and <i>y(t)</i> as <i>t</i> ranges from 0 to 1. The B&eacute;zier control
+		points corresponding to this curve are:
+	</p>
+	<pre>
+<i>x<sub>1</sub> = x<sub>0</sub> + c<sub>x</sub>/3             y<sub>1</sub> = y<sub>0</sub> + c<sub>y</sub>/3
+x<sub>2</sub> = x<sub>1</sub> + (b<sub>x</sub> + c<sub>x</sub>)/3      y<sub>2</sub> = y<sub>1</sub> + (b<sub>y</sub> + c<sub>y</sub>)/3
+x<sub>3</sub> = x<sub>0</sub> + a<sub>x</sub> + b<sub>x</sub> + c<sub>x</sub>     y<sub>3</sub> = y<sub>0</sub> + a<sub>y</sub> + b<sub>y</sub> + c<sub>y</sub></i></pre>
 	<p>
 		<b>Errors:</b> <a href="../l/limitcheck.html">limitcheck</a>, <a
 			href="../n/nocurrentpoint.html">nocurrentpoint</a>, <a
 			href="../r/rangecheck.html">rangecheck</a>, <a
 			href="../s/stackunderflow.html">stackunderflow</a>, <a
 			href="../t/typecheck.html">typecheck</a>
-	</p>
-	<p>
-		The cubic section produced by <b>curveto</b> is the path traced by <i>x(t)</i>
-		and <i>y(t)</i> as <i>t</i> ranges from 0 to 1. The B&eacute;zier control
-		points corresponding to this curve are:
 	</p>
 	<p>
 		<b>See Also:</b> <a href="../l/lineto.html">lineto</a>, <a
