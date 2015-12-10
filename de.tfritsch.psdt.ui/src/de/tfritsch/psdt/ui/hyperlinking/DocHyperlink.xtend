@@ -8,7 +8,7 @@ import org.eclipse.xtext.ui.editor.hyperlinking.AbstractHyperlink
 
 class DocHyperlink extends AbstractHyperlink {
 
-	extension IWorkbenchBrowserSupport = PlatformUI.workbench.browserSupport
+	IWorkbenchBrowserSupport browserSupport = PlatformUI.workbench.browserSupport
 
 	URL url
 
@@ -22,7 +22,12 @@ class DocHyperlink extends AbstractHyperlink {
 
 	override open() {
 		try {
-			"doc".createBrowser.openURL(url)
+			browserSupport.createBrowser(
+				IWorkbenchBrowserSupport.NAVIGATION_BAR,
+				"doc",
+				null,
+				null
+			).openURL(url)
 		} catch (PartInitException e) {
 			e.printStackTrace
 		}

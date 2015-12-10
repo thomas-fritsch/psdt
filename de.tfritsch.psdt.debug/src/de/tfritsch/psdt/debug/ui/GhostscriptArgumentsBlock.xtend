@@ -29,7 +29,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
  */
 class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
-	extension IWorkbenchBrowserSupport = PlatformUI.workbench.browserSupport
+	IWorkbenchBrowserSupport browserSupport = PlatformUI.workbench.browserSupport
 
 	Text fArgumentsText
 	Link fLink
@@ -54,7 +54,12 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	def protected void browseGhostscriptDoc() {
 		try {
-			"gs".createBrowser.openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
+			browserSupport.createBrowser(
+				IWorkbenchBrowserSupport.NAVIGATION_BAR,
+				"gs",
+				null,
+				null
+			).openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
 		} catch (PartInitException e) {
 			DebugPlugin.log(e)
 		} catch (MalformedURLException e) {
