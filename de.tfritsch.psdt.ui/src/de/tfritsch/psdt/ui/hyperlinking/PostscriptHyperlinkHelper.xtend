@@ -1,5 +1,7 @@
 package de.tfritsch.psdt.ui.hyperlinking
 
+import com.google.inject.Inject
+import com.google.inject.Provider
 import de.tfritsch.psdt.postscript.PSExecutableName
 import de.tfritsch.psdt.postscript.PSLiteralName
 import java.net.URL
@@ -13,6 +15,9 @@ import static extension org.eclipse.help.HelpSystem.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
 
 class PostscriptHyperlinkHelper extends HyperlinkHelper {
+
+	@Inject
+	Provider<DocHyperlink> docHyperlinkProvider;
 
 	override void createHyperlinksByOffset(XtextResource resource, int offset, IHyperlinkAcceptor acceptor) {
 		super.createHyperlinksByOffset(resource, offset, acceptor)
@@ -28,7 +33,7 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 		val href_ = name?.href
 		if (href_ !== null) {
 			val node = eObject.node
-			val hyperlink = new DocHyperlink => [
+			val hyperlink = docHyperlinkProvider.get => [
 				hyperlinkRegion = new Region(node.offset, node.length)
 				hyperlinkText = "Open Documentation - " + name
 				url = new URL("platform:/plugin" + href_).resolve

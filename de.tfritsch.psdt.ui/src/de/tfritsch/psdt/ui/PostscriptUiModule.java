@@ -5,6 +5,8 @@ package de.tfritsch.psdt.ui;
 
 import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
@@ -69,5 +71,9 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
 		return PostscriptHyperlinkHelper.class;
+	}
+
+	public IWorkbenchBrowserSupport bindIWorkbenchBrowserSupport() {
+		return PlatformUI.getWorkbench().getBrowserSupport();
 	}
 }
