@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.ui.hover;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
@@ -24,6 +25,16 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 	private IImageDescriptorHelper imageHelper;
 
 	private IInformationControlCreator presenterControlCreator;
+
+	@Override
+	protected boolean hasHover(EObject o) {
+		return super.hasHover(o) && getDocumentation(o) != null;
+	}
+
+	@Override
+	protected String getFirstLine(EObject o) {
+		return "";
+	}
 
 	@Override
 	public IInformationControlCreator getInformationPresenterControlCreator() {
