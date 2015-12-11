@@ -44,9 +44,7 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 
 	def private String getHref(String name) {
 		val context = ("de.tfritsch.psdt.help." + name).context
-		if (context == null)
-			return null
-		return context.relatedTopics.head?.href
+		return context?.relatedTopics.head?.href
 	}
 
 }
