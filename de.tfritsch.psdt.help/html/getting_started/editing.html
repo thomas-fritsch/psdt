@@ -1,9 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Editing Postscript files</title>
+<title>Editing PostScript files</title>
+<link rel="stylesheet" type="text/css" href="format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
 </head>
 <body>
 	<h1>Editing Postscript files</h1>
+	<h2 id="perspective">Perspective</h2>
+	<p>
+
+		Select <a class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.perspectives.showPerspective(org.eclipse.ui.perspectives.showPerspective.perspectiveId=de.tfritsch.psdt.ui.perspective)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> <b>Window
+				&gt; Open Perspective &gt; Other... &gt; Postscript</b>
+		</a> to open the PostScript perspective. It contains all what you will
+		probably need for PostScript editing.
+	</p>
+	<ul>
+		<li>toolbar: items for launching and navigating</li>
+		<li>center: editor area</li>
+		<li>left: Project Explorer</li>
+		<li>right: Outline</li>
+		<li>bottom: Problems, Console, Error Log</li>
+	</ul>
+	<img src="editing.png" />
+	<h2 id="project">Project</h2>
+	<p>
+		There is no special kind of project needed for PostScript development.
+		You can reuse any kind of project, or just select <a
+			class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.project)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> <b>File
+				&gt; New &gt; Project &gt; General &gt; Project</b>
+		</a> to create a new general project.
+	</p>
+	<h2 id="new-file">New file</h2>
+	<p>
+		Select <a class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> <b>File
+				&gt; New &gt; File</b>
+		</a> to create new file. Make sure the file name has extension ".ps" or
+		".eps".
+	</p>
+	<p>Enter some PostScript code, or just copy and paste this:</p>
+	<pre>%!PS-Adobe-2.0
+% The indispensable Hello World program in PostScript
+&lt;&lt;
+  /PageSize [595 841]
+&gt;&gt; setpagedevice
+/Times-Roman findfont 60 scalefont setfont
+50 600 moveto
+(Hello World) show
+showpage</pre>
+	<h2 id="editor">Editor</h2>
+	<p>Notice the syntax highlighting. Different kinds of elements in
+		the PostScript are rendered in unique colors:</p>
+	<ul>
+		<li>Regular comments</li>
+		<li>DSC comments</li>
+		<li>Numbers</li>
+		<li>Strings</li>
+		<li>Literal names</li>
+		<li>Executable names</li>
+	</ul>
+	<p>Notice also the code folding you get for multi-line procedures
+		{...}, arrays [...] and dictionaries &lt;&lt;...&gt;&gt;.</p>
+	<h2 id="outline">Outline</h2>
+	<p>The Outline view shows the hierarchical structure of the
+		PostScript code.</p>
 </body>
 </html>

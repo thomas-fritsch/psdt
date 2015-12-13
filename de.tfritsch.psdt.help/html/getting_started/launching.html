@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Launching PostScript files</title>
+<link rel="stylesheet" type="text/css" href="format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
+</head>
+<body>
+	<h1>Launching PostScript files</h1>
+	<h2 id="launch-configurations">Launch configurations</h2>
+	<p>
+		Select <a class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.debug.ui.commands.OpenRunConfigurations&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> Run
+			&gt; Run Configurations...
+		</a> or <a class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.debug.ui.commands.OpenDebugConfigurations&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> Run
+			&gt; Debug Configurations...
+		</a> from the workbench menu bar. This opens a dialog that lets you
+		create, modify, and delete launch configurations of different types.
+	</p>
+	<p>
+		Select <b>PostScript Application</b> in the left hand list of launch
+		configuration types, and press the <b>New</b> button in the toolbar.
+		This will create a new launch configuration for a PostScript
+		application. The tabs on the right hand side allow you control
+		specific aspects of the launch.
+	</p>
+	<ul>
+		<li>The <b>Main</b> tab defines the PostScript file to be
+			launched. Check the <b>Break on first token</b> checkbox if you want
+			the program to stop at the beginning whenever the program is launched
+			in debug mode
+		</li>
+		<li>The <b>Ghostscript</b> tab defines the arguments to be passed
+			to the Ghostscript interpreter (if any). You can also specify the
+			working directory to be used by the interpreter.
+		</li>
+		<li>The <b>Environment</b> tab defines the environment variable
+			values to use when running or debugging a PostScript application.
+		</li>
+		<li>The <b>Common</b> tab defines general information about the
+			launch configuration.
+		</li>
+	</ul>
+	<h2 id="launch-shortcuts">Launch shortcuts</h2>
+	<p>Launch shortcuts are a handy way for launching a PostScript
+		application.</p>
+	<p>
+		Right click on a PostScript file in the explorer tree, or into a
+		PostScript file opened in an editor. In the popup menu select <b>Run
+			As ... &gt; PostScript Application</b> or <b>Debug As... &gt;
+			PostScript Application</b>.
+	</p>
+	<ul>
+		<li>If there is already a launch configuration matching the
+			selected PostScript file, then this will be used right away.</li>
+		<li>If there is no launch configuration matching the selected
+			PostScript file, then a new launch configuration will be created on
+			the fly.</li>
+		<li>If there are more than one launch configurations matching the
+			selected PostScript file, then you will be asked to choose one of
+			those.
+	</ul>
+</body>
+</html>
