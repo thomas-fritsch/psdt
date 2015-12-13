@@ -36,7 +36,7 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 			val hyperlink = docHyperlinkProvider.get => [
 				hyperlinkRegion = new Region(node.offset, node.length)
 				hyperlinkText = "Open Documentation - " + name
-				url = new URL("platform:/plugin" + href_).resolve
+				url = new URL("platform:/plugin" + href_).toFileURL
 			]
 			acceptor.accept(hyperlink)
 		}
