@@ -99,8 +99,7 @@ public class PSMainTab extends AbstractLaunchConfigurationTab {
 		dialog.open
 		val file = dialog.firstResult as IFile
 		if (file !== null) {
-			val program = '''${workspace_loc:/«file.project.name»/«file.projectRelativePath»}'''
-			fProgramText.text = program
+			fProgramText.text = '''${workspace_loc:«file.fullPath»}'''
 		}
 	}
 
