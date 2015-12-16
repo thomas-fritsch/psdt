@@ -31,7 +31,7 @@ import static extension org.eclipse.core.filebuffers.FileBuffers.*
 /**
  * Tab to specify the PostScript program to run/debug.
  */
-public class PSMainTab extends AbstractLaunchConfigurationTab {
+class PSMainTab extends AbstractLaunchConfigurationTab {
 
 	Text fProgramText
 	Button fWorkspaceButton

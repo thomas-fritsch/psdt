@@ -15,7 +15,7 @@ import org.eclipse.debug.core.model.IWatchExpressionResult
  * extension[@point="org.eclipse.debug.core.watchExpressionDelegates"
  * ]/watchExpressionDelegate/@delgateClass
  */
-public class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
+class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 
 	override void evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
 		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame

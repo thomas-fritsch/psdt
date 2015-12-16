@@ -6,26 +6,15 @@ import java.io.File
 import org.eclipse.core.runtime.Platform
 import org.eclipse.jface.preference.FieldEditorPreferencePage
 import org.eclipse.jface.preference.FileFieldEditor
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.IWorkbenchPreferencePage
 
 /**
- * This class represents a preference page that
- * is contributed to the Preferences dialog. By 
- * subclassing <samp>FieldEditorPreferencePage</samp>, we
- * can use the field support built into JFace that allows
- * us to create a page that is small and knows how to 
- * save, restore and apply itself.
- * <p>
- * This page is used to modify preferences only. They
- * are stored in the preference store that belongs to
- * the PSPlugin class. That way, preferences can
- * be accessed directly via the preference store.
- * 
  * Matches plugin.xml
  * extension[@point="org.eclipse.ui.preferencePages"]/page/@class
  */
-public class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
 	/**
      * Unique identifier for the Ghostscript preference page (value 
@@ -40,10 +29,9 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage impleme
      */
 	new() {
 		super(GRID)
-		preferenceStore = PSPlugin.^default.preferenceStore
 	}
 
-	override void createFieldEditors() {
+	override protected void createFieldEditors() {
 		val editor = new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
 			switch (Platform.OS) {
 				case Platform.OS_WIN32: {
@@ -60,4 +48,9 @@ public class GhostscriptPreferencePage extends FieldEditorPreferencePage impleme
 
 	override void init(IWorkbench workbench) {
 	}
+
+	override protected IPreferenceStore doGetPreferenceStore() {
+		return PSPlugin.^default.preferenceStore
+	}
+
 }

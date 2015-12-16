@@ -14,7 +14,7 @@ import org.eclipse.jface.viewers.ISelection
 import org.eclipse.ui.IWorkbenchPart
 import org.eclipse.ui.texteditor.ITextEditor
 
-public class PSRunToLineTarget implements IRunToLineTarget {
+class PSRunToLineTarget implements IRunToLineTarget {
 
 	override void runToLine(IWorkbenchPart part, ISelection selection, ISuspendResume target) throws CoreException {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor

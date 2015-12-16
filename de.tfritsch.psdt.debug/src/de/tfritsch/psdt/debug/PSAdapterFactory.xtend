@@ -6,7 +6,7 @@ import org.eclipse.core.runtime.IAdapterFactory
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 
-public class PSAdapterFactory implements IAdapterFactory {
+class PSAdapterFactory implements IAdapterFactory {
 
 	val fToggleBreakpointsTarget = new PSToggleBreakpointsTarget
 

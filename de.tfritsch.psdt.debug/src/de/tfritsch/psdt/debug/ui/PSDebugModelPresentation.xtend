@@ -21,7 +21,7 @@ import org.eclipse.ui.part.FileEditorInput
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.ui.debugModelPresentations"]/debugModelPresentation/@class
  */
-public class PSDebugModelPresentation extends LabelProvider implements IDebugModelPresentation {
+class PSDebugModelPresentation extends LabelProvider implements IDebugModelPresentation {
 
 	override void setAttribute(String attribute, Object value) {
 	}

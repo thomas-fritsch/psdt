@@ -25,7 +25,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.*
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.core.launchConfigurationTypes"]/launchConfigurationType/@delegate
  */
-public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
+class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	/**
      * Unique identifier for the PostScript launch configuration type (value 

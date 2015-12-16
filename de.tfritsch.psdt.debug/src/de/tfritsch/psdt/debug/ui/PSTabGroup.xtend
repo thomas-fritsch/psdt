@@ -11,7 +11,7 @@ import org.eclipse.debug.ui.ILaunchConfigurationDialog
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.ui.launchConfigurationTabGroups"]/launchConfigurationTabGroup/@class
  */
-public class PSTabGroup extends AbstractLaunchConfigurationTabGroup {
+class PSTabGroup extends AbstractLaunchConfigurationTabGroup {
 
 	override void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		tabs = #[

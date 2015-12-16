@@ -11,7 +11,7 @@ import org.eclipse.debug.core.model.LineBreakpoint
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.core.breakpoints"]/breakpoint/@class
  */
-public class PSLineBreakpoint extends LineBreakpoint {
+class PSLineBreakpoint extends LineBreakpoint {
 
 	new() {
 	}

@@ -15,7 +15,7 @@ import static extension org.eclipse.core.filebuffers.FileBuffers.*
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.core.sourceLocators"]/sourceLocator/@class
  */
-public class PSSourceLocator implements IPersistableSourceLocator {
+class PSSourceLocator implements IPersistableSourceLocator {
 	override Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof PSStackFrame) {
 			val path = new Path(stackFrame.sourceName)

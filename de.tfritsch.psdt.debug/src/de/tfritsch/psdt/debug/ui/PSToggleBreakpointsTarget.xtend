@@ -12,7 +12,7 @@ import org.eclipse.jface.viewers.ISelection
 import org.eclipse.ui.IWorkbenchPart
 import org.eclipse.ui.texteditor.ITextEditor
 
-public class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
+class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 
 	val breakpointManager = DebugPlugin.^default.breakpointManager
 

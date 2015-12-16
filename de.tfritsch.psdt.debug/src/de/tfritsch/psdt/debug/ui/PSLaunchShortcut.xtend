@@ -24,7 +24,7 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.ui.launchShortcuts"]/shortcut/@class
  */
-public class PSLaunchShortcut implements ILaunchShortcut {
+class PSLaunchShortcut implements ILaunchShortcut {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
 

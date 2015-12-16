@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.Text
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension org.eclipse.ui.dialogs.PreferencesUtil.*
 
-public class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
+class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 
 	Text fInterpreterText
 	Button fInterpreterButton

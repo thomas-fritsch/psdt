@@ -15,7 +15,7 @@ import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Composite
 
-public class GhostscriptTab extends AbstractLaunchConfigurationTab {
+class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
 	ILaunchConfigurationTab[] fBlocks
 
