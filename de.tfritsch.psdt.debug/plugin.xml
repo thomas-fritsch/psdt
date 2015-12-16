@@ -100,6 +100,11 @@
             class="de.tfritsch.psdt.debug.ui.GhostscriptPreferencePage"
             category="de.tfritsch.psdt.Postscript">
       </page>
+      <page name="Debug"
+            id="de.tfritsch.psdt.debug.debugPreferencePage"
+            class="de.tfritsch.psdt.debug.ui.DebugPreferencePage"
+            category="de.tfritsch.psdt.Postscript">
+      </page>
    </extension>
    <extension point="org.eclipse.ui.editorActions">
       <editorContribution targetID="de.tfritsch.psdt.Postscript" 

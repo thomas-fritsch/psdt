@@ -106,7 +106,9 @@ public class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			val writer = new FileWriter(file)
 			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")
-			writer.write("true false false @@stathide\n")
+			val store = PSPlugin.^default.preferenceStore
+			writer.write(
+				!store.showSystemdict + " " + !store.showGlobaldict + " " + !store.showUserdict + " @@stathide\n")
 			for (i : 0 ..< sourceMapping.size) {
 				if (monitor.canceled) {
 					writer.close

@@ -10,6 +10,18 @@ class PSLaunchExtensions {
 		return preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
 	}
 
+	def static boolean isShowSystemdict(IPreferenceStore preferenceStore) {
+		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_SYSTEMDICT)
+	}
+
+	def static boolean isShowGlobaldict(IPreferenceStore preferenceStore) {
+		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_GLOBALDICT)
+	}
+
+	def static boolean isShowUserdict(IPreferenceStore preferenceStore) {
+		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_USERDICT)
+	}
+
 	def static String getProgram(ILaunchConfiguration configuration) {
 		return configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)
 	}

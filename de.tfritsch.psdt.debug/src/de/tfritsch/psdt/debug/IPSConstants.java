@@ -28,4 +28,8 @@ public interface IPSConstants {
      * an absolute path of a PostScript interpreter. 
      */
     public static final String PREF_INTERPRETER = "interpreter"; //$NON-NLS-1$
+
+    public static final String PREF_SHOW_SYSTEMDICT = "show.systemdict"; //$NON-NLS-1$
+    public static final String PREF_SHOW_GLOBALDICT = "show.globaldict"; //$NON-NLS-1$
+    public static final String PREF_SHOW_USERDICT = "show.userdict"; //$NON-NLS-1$
 }
