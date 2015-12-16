@@ -1,3 +1,5 @@
 language: java
 install: true
-script: mvn install
+script:
+  - export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=384m"
+  - mvn install
