@@ -108,6 +108,9 @@
    </extension>
    <extension point="org.eclipse.core.runtime.preferences">
       <initializer
+            class="de.tfritsch.psdt.debug.model.GhostscriptPreferenceInitializer">
+      </initializer>
+      <initializer
             class="de.tfritsch.psdt.debug.model.DebugPreferenceInitializer">
       </initializer>
    </extension>
