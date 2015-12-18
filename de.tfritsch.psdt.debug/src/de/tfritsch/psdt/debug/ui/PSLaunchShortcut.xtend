@@ -10,7 +10,6 @@ import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.ILaunchShortcut
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.IStructuredSelection
-import org.eclipse.jface.window.Window
 import org.eclipse.swt.widgets.Shell
 import org.eclipse.ui.IEditorPart
 import org.eclipse.ui.PlatformUI
@@ -32,19 +31,17 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		if (selection instanceof IStructuredSelection) {
 			val element = selection.firstElement
 			if (element instanceof IFile)
-				launch(element, mode)
+				element.launch(mode)
 		}
 	}
 
 	override void launch(IEditorPart editor, String mode) {
-		val editorInput = editor.editorInput
-		val file = editorInput.getAdapter(IFile) as IFile
-		if (file != null)
-			launch(file, mode)
+		val file = editor.editorInput.getAdapter(IFile) as IFile
+		file?.launch(mode)
 	}
 
 	def private void launch(IFile file, String mode) {
-		val program = file.location.toFile.toString
+		val program = file.location.toOSString
 		val configurations = program.configurations
 		val configuration = switch (configurations.length) {
 			case 0:
@@ -54,8 +51,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 			default:
 				configurations.chooseConfiguration
 		}
-		if (configuration != null)
-			configuration.launch(mode)
+		configuration?.launch(mode)
 	}
 
 	def private ILaunchConfiguration[] getConfigurations(String program) {
@@ -85,18 +81,14 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	}
 
 	def private ILaunchConfiguration chooseConfiguration(ILaunchConfiguration[] configs) {
-		val labelProvider = newDebugModelPresentation
-		val dialog = new ElementListSelectionDialog(shell, labelProvider) => [
+		val dialog = new ElementListSelectionDialog(shell, newDebugModelPresentation) => [
 			elements = configs
 			title = "Select PostScript Application"
 			message = "Select existing configuration:"
 			multipleSelection = false
 		]
-		val result = dialog.open
-		labelProvider.dispose
-		if (result == Window.OK)
-			return dialog.firstResult as ILaunchConfiguration
-		return null
+		dialog.open
+		return dialog.firstResult as ILaunchConfiguration
 	}
 
 	def private Shell getShell() {
