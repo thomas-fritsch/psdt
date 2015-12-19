@@ -116,7 +116,9 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 					return null
 				}
 				val string = sourceMapping.getString(i)
-				writer.write(i + " @@$ " + string + "\n")
+				if (string != "}")  // no stepping point just before }
+					writer.write(i + " @@$ ")
+				writer.write(string + "\n")
 			}
 			writer.close
 			return file
