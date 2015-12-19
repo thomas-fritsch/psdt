@@ -9,9 +9,10 @@ import java.io.UnsupportedEncodingException;
 import org.eclipse.core.runtime.ISafeRunnable;
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.SafeRunner;
-import org.eclipse.debug.core.DebugPlugin;
 import org.eclipse.debug.core.IStreamListener;
 import org.eclipse.debug.core.model.IFlushableStreamMonitor;
+
+import de.tfritsch.psdt.debug.PSPlugin;
 
 /**
  * Monitors the output stream of a system process and notifies listeners of
@@ -62,7 +63,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 				fReader = new BufferedReader(new InputStreamReader(stream,
 						encoding));
 			} catch (UnsupportedEncodingException e) {
-				DebugPlugin.log(e);
+				PSPlugin.log(e);
 				fReader = new BufferedReader(new InputStreamReader(stream));
 			}
 		}
@@ -99,12 +100,12 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 				line = readLine();
 			}
 		} catch (IOException e) {
-			DebugPlugin.log(e);
+			PSPlugin.log(e);
 		}
 		try {
 			fReader.close();
 		} catch (IOException e) {
-			DebugPlugin.log(e);
+			PSPlugin.log(e);
 		}
 	}
 
@@ -155,7 +156,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 
 		@Override
 		public void handleException(Throwable exception) {
-			DebugPlugin.log(exception);
+			PSPlugin.log(exception);
 		}
 
 		@Override

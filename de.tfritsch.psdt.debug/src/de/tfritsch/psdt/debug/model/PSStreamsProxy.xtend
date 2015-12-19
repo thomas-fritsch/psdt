@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.model
 
+import de.tfritsch.psdt.debug.PSPlugin
 import java.io.IOException
 import java.io.OutputStreamWriter
 import java.io.UnsupportedEncodingException
@@ -7,7 +8,6 @@ import java.io.Writer
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.debug.core.DebugException
-import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.model.IStreamMonitor
 import org.eclipse.debug.core.model.IStreamsProxy2
 
@@ -46,7 +46,7 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 			try {
 				return new OutputStreamWriter(process.outputStream, encoding)
 			} catch (UnsupportedEncodingException e) {
-				DebugPlugin.log(e)
+				PSPlugin.log(e)
 				return new OutputStreamWriter(process.outputStream)
 			}
 		}
@@ -78,7 +78,7 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 			write(command + "\n") //$NON-NLS-1$
 		} catch (IOException e) {
 			throw new DebugException(
-				new Status(IStatus.ERROR, DebugPlugin.uniqueIdentifier, DebugException.TARGET_REQUEST_FAILED,
+				new Status(IStatus.ERROR, PSPlugin.ID, DebugException.TARGET_REQUEST_FAILED,
 					"debug communication error", e))
 		}
 	}

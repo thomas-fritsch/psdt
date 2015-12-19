@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.ui
 
+import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.model.PSProcessFactory
 import org.eclipse.core.resources.IFile
@@ -59,7 +60,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		try {
 			type.launchConfigurations.filter[c|!c.private && program == c.program.performStringSubstitution]
 		} catch (CoreException e) {
-			DebugPlugin.log(e)
+			PSPlugin.log(e)
 			#[]
 		}
 	}
@@ -75,7 +76,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 			]
 			return workingCopy.doSave
 		} catch (CoreException e) {
-			DebugPlugin.log(e)
+			PSPlugin.log(e)
 			return null
 		}
 	}

@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import org.eclipse.debug.core.DebugPlugin;
-
+import de.tfritsch.psdt.debug.PSPlugin;
 import de.tfritsch.psdt.debug.model.IPSDebugStreamListener.StatusLine;
 
 class PSErrorStreamMonitor extends PSOutputStreamMonitor  {
@@ -61,7 +60,7 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor  {
 					line = readLine();
 				}
 			} catch (IOException e) {
-				DebugPlugin.log(e);
+				PSPlugin.log(e);
 			}
 			fListener.statusReceived(lines);
 		}

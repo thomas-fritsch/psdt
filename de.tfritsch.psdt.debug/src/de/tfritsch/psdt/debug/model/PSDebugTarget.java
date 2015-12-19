@@ -20,6 +20,7 @@ import org.eclipse.debug.core.model.IVariable;
 
 import de.tfritsch.psdt.debug.LaunchExtensions;
 import de.tfritsch.psdt.debug.PSLaunchExtensions;
+import de.tfritsch.psdt.debug.PSPlugin;
 
 
 /**
@@ -147,7 +148,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				break;
 			}
 		} catch (DebugException e) {
-			DebugPlugin.log(e);
+			PSPlugin.log(e);
 			statusReceived(Collections.<StatusLine> emptyList());
 		}
 	}
@@ -338,7 +339,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 					}
 				}
 			} catch (CoreException e) {
-				DebugPlugin.log(e);
+				PSPlugin.log(e);
 			}
 		}
 	}
@@ -353,7 +354,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				breakpointRemoved(breakpoint, null);
 			}
 		} catch (CoreException e) {
-			DebugPlugin.log(e);
+			PSPlugin.log(e);
 		}
 	}
 
@@ -370,7 +371,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 					}
 				}
 			} catch (CoreException e) {
-				DebugPlugin.log(e);
+				PSPlugin.log(e);
 			}
 		}
 	}

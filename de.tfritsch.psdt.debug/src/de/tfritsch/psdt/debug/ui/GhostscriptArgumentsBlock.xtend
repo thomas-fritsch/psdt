@@ -1,9 +1,9 @@
 package de.tfritsch.psdt.debug.ui
 
+import de.tfritsch.psdt.debug.PSPlugin
 import java.net.MalformedURLException
 import java.net.URL
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -61,9 +61,9 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 				null
 			).openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
 		} catch (PartInitException e) {
-			DebugPlugin.log(e)
+			PSPlugin.log(e)
 		} catch (MalformedURLException e) {
-			DebugPlugin.log(e)
+			PSPlugin.log(e)
 		}
 	}
 
@@ -75,7 +75,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		try {
 			fArgumentsText.text = configuration.ghostscriptArguments ?: ""
 		} catch (CoreException e) {
-			DebugPlugin.log(e)
+			PSPlugin.log(e)
 		}
 	}
 

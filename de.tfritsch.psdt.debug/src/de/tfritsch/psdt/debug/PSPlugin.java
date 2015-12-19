@@ -83,4 +83,14 @@ public class PSPlugin extends AbstractUIPlugin {
 		IStatus status = new Status(IStatus.ERROR, ID, message, e);
 		throw new CoreException(status);
 	}
+
+	/**
+	 * Logs the specified throwable with this plug-in's log.
+	 *
+	 * @param t throwable to log
+	 */
+	public static void log(Throwable t) {
+		IStatus status = new Status(IStatus.ERROR, ID, "Error", t);
+		INSTANCE.getLog().log(status);
+	}
 }
