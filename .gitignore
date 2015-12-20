@@ -1,1 +1,5 @@
+target/
+src-gen/
+xtend-gen/
+plugin.xml_gen
 .*.md.html
