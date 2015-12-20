@@ -3,5 +3,8 @@
    <feature url="features/de.tfritsch.psdt.sdk_0.0.0.jar" id="de.tfritsch.psdt.sdk" version="0.0.0">
       <category name="de.tfritsch.psdt"/>
    </feature>
+   <feature id="de.tfritsch.psdt.sdk.source" version="0.0.0">
+      <category name="de.tfritsch.psdt"/>
+   </feature>
    <category-def name="de.tfritsch.psdt" label="PostScript Language"/>
 </site>
