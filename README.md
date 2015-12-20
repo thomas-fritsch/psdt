@@ -39,10 +39,12 @@ a hover with the corresponding documentation section is shown.
 ![](de.tfritsch.psdt.help/html/getting_started/documentation_hover.png)
 
 ### Build
+You need Java 6 (or higher) and [Maven 3](http://maven.apache.org/) to
+build. The recommended build command is:
 
 	mvn clean install
 
-then check the `de.tfritsch.psdt.updatesite/target/repository` directory to find the generated update site.
+Then check the `de.tfritsch.psdt.updatesite/target/repository` directory to find the generated update site.
       
 ### Acknowledgements
 - [The Launching Framework in Eclipse](https://eclipse.org/articles/Article-Launch-Framework/launch.html) by  Joe Szurszewski
