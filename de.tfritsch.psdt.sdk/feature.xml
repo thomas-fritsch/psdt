@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="de.tfritsch.psdt.sdk"
-      label="PostScript SDK"
+      label="%featureName"
       version="1.0.0.qualifier"
-      provider-name="Thomas Fritsch">
+      provider-name="%providerName">
 
    <description>
-      PostScript Development Tools
+      %description
    </description>
 
    <copyright>
-      (c) Thomas Fritsch
+      %copyright
    </copyright>
 
-   <license url="http://opensource.org/licenses/EPL-1.0">
-      Eclipse Public License 1.0
+   <license url="%licenseURL">
+      %license
    </license>
 
    <requires>
