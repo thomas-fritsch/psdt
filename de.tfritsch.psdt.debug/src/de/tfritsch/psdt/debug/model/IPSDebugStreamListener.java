@@ -22,34 +22,6 @@ interface IPSDebugStreamListener {
 	/**
 	 * A @@status has been received from Ghostscript.
 	 */
-	public void statusReceived(List<StatusLine> lines);
-	
-	public static class StatusLine {
-		private int depth;
-		private String name;
-		private String value;
-
-		// line has the form "++++ name: value"
-		public StatusLine(String line) {
-			depth = 0;
-			while (line.charAt(depth) == '+')
-				depth++;
-			int pColon = line.indexOf(':');
-			name = line.substring(depth + 1, pColon);
-			value = line.substring(pColon + 2);
-		}
-		
-		public int getDepth() {
-			return depth;
-		}
-
-		public String getName() {
-			return name;
-		}
-
-		public String getValue() {
-			return value;
-		}
-	}
+	public void statusReceived(List<String> lines);
 
 }

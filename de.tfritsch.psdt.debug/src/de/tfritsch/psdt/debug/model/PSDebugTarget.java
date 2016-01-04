@@ -63,6 +63,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	private PSSourceMapping fSourceMapping;
 	
 	private IPSDebugCommander fDebugCommander;
+	private StatusParser fStatusParser;
 
 	/**
 	 * 
@@ -83,6 +84,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 				this);
 		fDebugCommander = (IPSDebugCommander) process.getStreamsProxy();
 		fDebugCommander.setDebugStreamListener(this);
+		fStatusParser = new StatusParser(this);
 	}
 
 	private void installDeferredBreakpoints() {
@@ -93,22 +95,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 		}
 	}
 
-	private IVariable[] convertStatus(List<StatusLine> lines) {
-		PSValue[] values = new PSValue[20];
-		values[0] = new PSValue(this, ""); //$NON-NLS-1$
-		for (StatusLine line : lines) {
-			PSValue value = new PSIndexedValue(this, line.getValue());
-			PSVariable variable = new PSVariable(this, line.getName(), value);
-			int depth = line.getDepth();
-			values[depth - 1].addVariable(variable);
-			values[depth] = value;			
-		}
-		return values[0].getVariables();
-	}
-
 	@Override
-	public void statusReceived(List<StatusLine> lines) {
-		fVariables = convertStatus(lines);
+	public void statusReceived(List<String> lines) {
+		fVariables = fStatusParser.toVariables(lines);
 		int detail = isStepping() ? DebugEvent.STEP_END : DebugEvent.BREAKPOINT;
 		fState = State.SUSPENDED;
 		fireSuspendEvent(detail);
@@ -149,7 +138,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 			}
 		} catch (DebugException e) {
 			PSPlugin.log(e);
-			statusReceived(Collections.<StatusLine> emptyList());
+			statusReceived(Collections.<String> emptyList());
 		}
 	}
 

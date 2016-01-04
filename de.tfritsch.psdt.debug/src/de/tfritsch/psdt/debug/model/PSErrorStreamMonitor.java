@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import de.tfritsch.psdt.debug.PSPlugin;
-import de.tfritsch.psdt.debug.model.IPSDebugStreamListener.StatusLine;
 
 class PSErrorStreamMonitor extends PSOutputStreamMonitor  {
 
@@ -52,11 +51,11 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor  {
 		} else if (line.startsWith("@@resume")) { //$NON-NLS-1$
 			fListener.resumeReceived();
 		} else if (line.startsWith("@@status +")) { //$NON-NLS-1$
-			List<StatusLine> lines = new ArrayList<StatusLine>();
+			List<String> lines = new ArrayList<String>();
 			try {
 				line = readLine();
 				while (line != null && line.startsWith("+")) { //$NON-NLS-1$
-					lines.add(new StatusLine(line));
+					lines.add(line);
 					line = readLine();
 				}
 			} catch (IOException e) {
