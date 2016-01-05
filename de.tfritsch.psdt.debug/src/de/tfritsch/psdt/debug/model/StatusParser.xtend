@@ -2,6 +2,7 @@ package de.tfritsch.psdt.debug.model
 
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.Data
+import java.util.List
 
 class StatusParser {
 
@@ -13,8 +14,7 @@ class StatusParser {
 
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = new PSValue(debugTarget, ""); //$NON-NLS-1$
-		val treePath = <PSValue>newArrayOfSize(20)
-		treePath.set(0, root)
+		val treePath = newArrayList(root)
 		for (line : lines) {
 			treePath.append(line.parseStatusLine)
 		}
@@ -39,11 +39,17 @@ class StatusParser {
 		String value
 	}
 
-	def protected PSValue[] append(PSValue[] treePath, StatusLine statusLine) {
+	def protected List<PSValue> append(List<PSValue> treePath, StatusLine statusLine) {
 		val value = new PSIndexedValue(debugTarget, statusLine.value)
 		val variable = new PSVariable(debugTarget, statusLine.name, value)
-		treePath.get(statusLine.depth - 1).addVariable(variable)
-		treePath.set(statusLine.depth, value)
+		treePath.shrinkToSize(statusLine.depth)
+		treePath.last.addVariable(variable)
+		treePath.add(value)
 		return treePath
+	}
+
+	def protected void shrinkToSize(List<?> list, int newSize) {
+		while (list.size > newSize)
+			list.remove(list.size - 1)
 	}
 }
