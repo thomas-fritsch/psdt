@@ -35,13 +35,20 @@
 				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
-					<useUIHarness>false</useUIHarness>
-					<useUIThread>false</useUIThread>
+					<useUIHarness>true</useUIHarness>
+					<useUIThread>true</useUIThread>
 					<excludes>
 						<!-- work-around for tests needing UI harness -->
 						<exclude>**/AutoEditTest*</exclude>
 						<exclude>**/DocumentationProviderTest*</exclude>
 					</excludes>
+					<dependencies>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.ui.ide.application</artifactId>
+							<version>0.0.0</version>
+						</dependency>
+					</dependencies>
 				</configuration>
 			</plugin>
 		</plugins>
