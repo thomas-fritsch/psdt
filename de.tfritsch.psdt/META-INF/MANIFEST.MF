@@ -32,4 +32,4 @@ Export-Package: de.tfritsch.psdt,
  de.tfritsch.psdt.parser.antlr.internal,
  de.tfritsch.psdt.validation
 Bundle-ClassPath: .,
- lib/pdfbox-1.8.7.jar
+ target/dependency/pdfbox-1.8.7.jar
