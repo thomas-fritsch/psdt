@@ -102,7 +102,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	def private File createInstrumentedFile(PSSourceMapping sourceMapping, IProgressMonitor monitor) throws CoreException {
 		try {
-			val file = File.createTempFile("psdt", ".ps");
+			val file = File.createTempFile("psdt", ".ps")
 			val writer = new FileWriter(file)
 			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")

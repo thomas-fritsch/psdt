@@ -19,7 +19,7 @@ class PSSourceLocator implements IPersistableSourceLocator {
 	override Object getSourceElement(IStackFrame stackFrame) {
 		if (stackFrame instanceof PSStackFrame) {
 			val path = new Path(stackFrame.sourceName)
-			return path.getWorkspaceFileAtLocation ?: path.getFileStoreAtLocation
+			return path.workspaceFileAtLocation ?: path.fileStoreAtLocation
 		}
 		return null
 	}

@@ -21,7 +21,7 @@ class PSProcessFactory implements IProcessFactory {
      * Matches plugin.xml
      * extension[@point="org.eclipse.debug.core.processFactories"]/processFactory/@id
      */
-	val public static ID = PSPlugin.ID + ".processFactory"; //$NON-NLS-1$
+	val public static ID = PSPlugin.ID + ".processFactory" //$NON-NLS-1$
 
 	@SuppressWarnings("rawtypes")
 	override IProcess newProcess(ILaunch launch, Process process, String label, Map attributes) {

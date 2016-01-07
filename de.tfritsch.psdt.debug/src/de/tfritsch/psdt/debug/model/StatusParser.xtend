@@ -13,7 +13,7 @@ class StatusParser {
 	}
 
 	def IVariable[] toVariables(Iterable<String> lines) {
-		val root = new PSValue(debugTarget, ""); //$NON-NLS-1$
+		val root = new PSValue(debugTarget, "") //$NON-NLS-1$
 		val treePath = newArrayList(root)
 		for (line : lines) {
 			treePath.append(line.parseStatusLine)
@@ -22,13 +22,13 @@ class StatusParser {
 	}
 
 	def protected StatusLine parseStatusLine(String line) {
-		var depth = 0;
+		var depth = 0
 		val char plus = '+'
 		while (line.charAt(depth) == plus)
-			depth++;
-		val pColon = line.indexOf(':');
-		val name = line.substring(depth + 1, pColon);
-		val value = line.substring(pColon + 2);
+			depth++
+		val pColon = line.indexOf(':')
+		val name = line.substring(depth + 1, pColon)
+		val value = line.substring(pColon + 2)
 		return new StatusLine(depth, name, value)
 	}
 
