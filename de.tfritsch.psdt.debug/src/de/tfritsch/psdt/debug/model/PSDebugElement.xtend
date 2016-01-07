@@ -1,14 +1,14 @@
-package de.tfritsch.psdt.debug.model;
+package de.tfritsch.psdt.debug.model
 
-import org.eclipse.debug.core.model.DebugElement;
-
-import de.tfritsch.psdt.debug.PSPlugin;
+import de.tfritsch.psdt.debug.PSPlugin
+import org.eclipse.debug.core.model.DebugElement
 
 /**
  * Common function of PostScript debug model elements
  */
 abstract class PSDebugElement extends DebugElement {
-    /**
+
+	/**
      * Unique identifier for the PostScript debug model (value 
      * <code>{@value}</code>).
      * Matches plugin.xml
@@ -16,40 +16,38 @@ abstract class PSDebugElement extends DebugElement {
      * and
      * extension[@point="org.eclipse.debug.core.watchExpressionDelegates"]/watchExpressionDelegate/@debugModel
      */
-    public final static String MODEL_ID = PSPlugin.ID;
+	public static val MODEL_ID = PSPlugin.ID
 
-    /**
+	/**
 	 * Constructs a new debug element contained in the given debug target.
 	 * 
 	 * @param target
 	 *            debug target containing this element
 	 */
-	PSDebugElement(PSDebugTarget target) {
-		super(target);
+	new(PSDebugTarget target) {
+		super(target)
 	}
 
-	@Override
-	public String getModelIdentifier() {
-		return MODEL_ID;
+	override String getModelIdentifier() {
+		return MODEL_ID
 	}
-	
+
 	/**
 	 * Gets the PSDebugTarget containing this element.
 	 */
-	PSDebugTarget getPSDebugTarget() {
-		return (PSDebugTarget) getDebugTarget();
+	def protected PSDebugTarget getPSDebugTarget() {
+		return debugTarget as PSDebugTarget
 	}
-	
+
 	/**
 	 * Gets the IPSDebugDebugCommander for this element.
 	 */
-	IPSDebugCommander getPSDebugCommander() {
-		return getPSDebugTarget().getPSDebugCommander();
+	def protected IPSDebugCommander getPSDebugCommander() {
+		return PSDebugTarget.getPSDebugCommander()
 	}
 
-	void debug(String s) {
-		if (PSPlugin.getDefault().isDebugging())
-			System.out.println(s);
+	def protected void debug(String s) {
+		if (PSPlugin.^default.debugging)
+			println(s)
 	}
-
 }

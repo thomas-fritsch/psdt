@@ -148,7 +148,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget,
 	}
 	
 	@Override
-	IPSDebugCommander getPSDebugCommander() {
+	protected IPSDebugCommander getPSDebugCommander() {
 		return fDebugCommander;
 	}
 	
