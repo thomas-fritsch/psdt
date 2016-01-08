@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.model
 
+import com.google.common.collect.AbstractIterator
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.IOException
 import java.io.InputStream
@@ -31,7 +32,7 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 		while (listener == null) {
 			try {
 				wait
-			} catch(InterruptedException e) {
+			} catch (InterruptedException e) {
 				// ignore
 			}
 		}
@@ -48,18 +49,14 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 			}
 		} else if (line.startsWith("@@resume")) { //$NON-NLS-1$
 			listener.resumeReceived()
-		} else if (line.startsWith("@@status +")) { //$NON-NLS-1$
-			val lines = <String>newArrayList
+		} else if (line == "@@status +") { //$NON-NLS-1$
 			try {
-				var line2 = readLine
-				while (line2 != null && line2.startsWith("+")) { //$NON-NLS-1$
-					lines += line2
-					line2 = readLine
-				}
+				val AbstractIterator<String> iterator = [readLine ?: self.endOfData]
+				val lines = iterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
+				listener.statusReceived(lines)
 			} catch (IOException e) {
 				PSPlugin.log(e)
 			}
-			listener.statusReceived(lines)
 		}
 	}
 
