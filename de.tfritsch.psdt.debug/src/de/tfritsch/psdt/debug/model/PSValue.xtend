@@ -1,7 +1,7 @@
 package de.tfritsch.psdt.debug.model
 
+import java.util.Comparator
 import java.util.SortedSet
-import java.util.TreeSet
 import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.core.model.IVariable
 
@@ -9,6 +9,8 @@ import org.eclipse.debug.core.model.IVariable
  * Value of a PostScript variable.
  */
 class PSValue extends PSDebugElement implements IValue {
+
+	static val Comparator<IVariable> VARIABLE_COMPARATOR = [a, b|a.name.compareToIgnoreCase(b.name)]
 
 	String valueString
 
@@ -39,7 +41,7 @@ class PSValue extends PSDebugElement implements IValue {
 	}
 
 	override IVariable[] getVariables() {
-		return if (variables !== null) variables else #[]
+		return if(variables !== null) variables else #[]
 	}
 
 	override boolean hasVariables() {
@@ -56,7 +58,7 @@ class PSValue extends PSDebugElement implements IValue {
 
 	def void addVariable(IVariable variable) {
 		if (variables === null)
-			variables = new TreeSet<IVariable>
+			variables = newTreeSet(VARIABLE_COMPARATOR)
 		variables += variable
 	}
 }

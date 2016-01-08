@@ -7,7 +7,7 @@ import org.eclipse.debug.core.model.IVariable
 /**
  * A variable in a PostScript stack frame
  */
-class PSVariable extends PSDebugElement implements IVariable, Comparable<PSVariable> {
+class PSVariable extends PSDebugElement implements IVariable {
 
 	String name
 
@@ -25,10 +25,6 @@ class PSVariable extends PSDebugElement implements IVariable, Comparable<PSVaria
 		super(target)
 		this.name = name
 		this.value = value
-	}
-
-	override int compareTo(PSVariable o) {
-		return name.compareToIgnoreCase(o.name)
 	}
 
 	override IValue getValue() {
