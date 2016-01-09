@@ -40,15 +40,15 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 			val tok = new StringTokenizer(line)
 			tok.nextToken // "@@break"
 			val depth = tok.nextToken.parseInt
-			if (tok.hasMoreTokens()) {
+			if (tok.hasMoreTokens) {
 				val ref = tok.nextToken.parseInt
-				val value = tok.nextToken()
+				val value = tok.nextToken
 				listener.breakReceived(depth, ref, value)
 			} else {
 				listener.breakReceived(depth)
 			}
 		} else if (line.startsWith("@@resume")) { //$NON-NLS-1$
-			listener.resumeReceived()
+			listener.resumeReceived
 		} else if (line == "@@status +") { //$NON-NLS-1$
 			try {
 				val AbstractIterator<String> iterator = [readLine ?: self.endOfData]

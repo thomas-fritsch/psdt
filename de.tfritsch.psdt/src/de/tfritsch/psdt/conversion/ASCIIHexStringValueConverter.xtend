@@ -23,7 +23,7 @@ class ASCIIHexStringValueConverter implements IValueConverter<byte[]> {
 			val input = new ByteArrayInputStream(string.substring(1).getBytes("ISO-8859-1"))
 			val output = new ByteArrayOutputStream
 			filter.decode(input, output, null, 0)
-			return output.toByteArray()
+			return output.toByteArray
 		} catch (IOException e) {
 			throw new ValueConverterException("decode error", node, e)
 		}
@@ -32,7 +32,7 @@ class ASCIIHexStringValueConverter implements IValueConverter<byte[]> {
 	override String toString(byte[] value) throws ValueConverterException {
 		try {
 			val input = new ByteArrayInputStream(value)
-			val output = new ByteArrayOutputStream()
+			val output = new ByteArrayOutputStream
 			filter.encode(input, output, null, 0)
 			return "<" + output.toString("ISO-8859-1") + ">"
 		} catch (IOException e) {

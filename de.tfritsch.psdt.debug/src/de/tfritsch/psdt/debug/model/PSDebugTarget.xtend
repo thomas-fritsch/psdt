@@ -123,7 +123,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 			}
 		} catch (DebugException e) {
 			PSPlugin.log(e)
-			statusReceived(emptyList())
+			statusReceived(emptyList)
 		}
 	}
 

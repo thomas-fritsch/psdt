@@ -21,14 +21,14 @@ class StatusParser {
 		return root.variables
 	}
 
-	def protected StatusLine parseStatusLine(String line) {
+	def protected StatusLine parseStatusLine(String it) {
 		var depth = 0
 		val char plus = '+'
-		while (line.charAt(depth) == plus)
+		while (charAt(depth) == plus)
 			depth++
-		val pColon = line.indexOf(':')
-		val name = line.substring(depth + 1, pColon)
-		val value = line.substring(pColon + 2)
+		val pColon = indexOf(':')
+		val name = substring(depth + 1, pColon)
+		val value = substring(pColon + 2)
 		return new StatusLine(depth, name, value)
 	}
 
@@ -39,17 +39,17 @@ class StatusParser {
 		String value
 	}
 
-	def protected List<PSValue> append(List<PSValue> treePath, StatusLine statusLine) {
+	def protected List<PSValue> append(List<PSValue> it, StatusLine statusLine) {
 		val value = new PSIndexedValue(debugTarget, statusLine.value)
 		val variable = new PSVariable(debugTarget, statusLine.name, value)
-		treePath.shrinkToSize(statusLine.depth)
-		treePath.last.addVariable(variable)
-		treePath.add(value)
-		return treePath
+		shrinkToSize(statusLine.depth)
+		last.addVariable(variable)
+		add(value)
+		return it
 	}
 
-	def protected void shrinkToSize(List<?> list, int newSize) {
-		while (list.size > newSize)
-			list.remove(list.size - 1)
+	def protected void shrinkToSize(List<?> it, int newSize) {
+		while (size > newSize)
+			remove(size - 1)
 	}
 }

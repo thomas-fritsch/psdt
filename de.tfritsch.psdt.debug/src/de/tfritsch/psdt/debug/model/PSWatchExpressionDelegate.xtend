@@ -21,7 +21,7 @@ class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame
 
 		// TODO evaluate expression
-		val result = new IWatchExpressionResult() {
+		val result = new IWatchExpressionResult {
 			override IValue getValue() {
 				return null
 			}

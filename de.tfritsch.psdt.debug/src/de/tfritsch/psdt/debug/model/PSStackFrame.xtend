@@ -45,7 +45,7 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	}
 
 	override String getName() {
-		val s = getSourceName()
+		val s = sourceName
 		return s.substring(s.lastIndexOf(File.separatorChar) + 1)
 	}
 

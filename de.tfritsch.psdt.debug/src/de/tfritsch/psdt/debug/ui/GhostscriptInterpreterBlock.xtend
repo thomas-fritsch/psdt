@@ -34,7 +34,7 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 		fInterpreterButton = createPushButton(group, "Preference...", null) => [
 			addListener(SWT.Selection) [
 				val id = GhostscriptPreferencePage.ID
-				fInterpreterButton.shell.createPreferenceDialogOn(id, #[id], null).open()
+				fInterpreterButton.shell.createPreferenceDialogOn(id, #[id], null).open
 				fInterpreterText.text = interpreter
 				updateLaunchConfigurationDialog
 			]
