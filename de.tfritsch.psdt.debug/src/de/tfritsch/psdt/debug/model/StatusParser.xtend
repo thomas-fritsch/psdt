@@ -14,10 +14,8 @@ class StatusParser {
 
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = new PSValue(debugTarget, "") //$NON-NLS-1$
-		val treePath = newArrayList(root)
-		for (line : lines) {
-			treePath.append(line.parseStatusLine)
-		}
+		val List<PSValue> treePath = newArrayList(root)
+		lines.map[parseStatusLine].fold(treePath)[it, statusLine|append(statusLine)]
 		return root.variables
 	}
 
