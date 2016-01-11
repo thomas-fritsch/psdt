@@ -19,10 +19,11 @@
 				href="html/getting_started/launching.html#launch-shortcuts" />
 		</topic>
 		<topic label="Debugging PostScript files" href="html/getting_started/debugging.html">
-			<topic label="Breakpoints"
-				href="html/getting_started/debugging.html#breakpoints" />
-			<topic label="Stepping"
-				href="html/getting_started/debugging.html#stepping" />
+			<topic label="Debug View" href="html/getting_started/debugging.html#debug_view" />
+			<topic label="Variables View"
+				href="html/getting_started/debugging.html#variables_view" />
+			<topic label="Breakpoints View"
+				href="html/getting_started/debugging.html#breakpoints_view" />
 		</topic>
 	</topic>
 	<topic label="Reference">

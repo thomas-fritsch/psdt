@@ -8,7 +8,88 @@
 </head>
 <body>
 	<h1>Debugging PostScript files</h1>
-	<h2 id="breakpoints">Breakpoints</h2>
-	<h2 id="stepping">Stepping</h2>
+	<h2 id="debug_view">Debug View</h2>
+	<p>
+		The <b>Debug View</b> allows you to manage the debugging or running of
+		a program in the workbench. It displays the stack frame for the
+		suspended threads for each target you are debugging. Each thread in
+		your program appears as a node in the tree. It displays the process
+		for each target you are running.
+	</p>
+	<p>If the thread is suspended, its stack frames are shown as child
+		elements.</p>
+	<p>
+		Because PostScript is a single-threaded language, you see only one
+		thread. And because PostScript has an execution-model very different
+		from other languages (like Java or C), the concept of stackframes
+		doesn't make much sense here, and hence you see only one stackframe.
+		However, you can inspect the stacks in the <a href="#variables_view"><b>Variables
+				View</b></a>
+	</p>
+	<img src="debug_view.png" />
+	<table>
+		<caption>Debug View Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/resume_co.png" /></td>
+			<td>Resume</td>
+			<td>Resumes a suspended thread.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepinto_co.png" />
+			</td>
+			<td>Step Into</td>
+			<td>Steps into the highlighted token.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepover_co.png" />
+			</td>
+			<td>Step Over</td>
+			<td>Steps over the highlighted token. Execution will continue at
+				the next token either in the same procedure or (if you are at the
+				end of a procedure) it will continue in the procedure from which the
+				current procedure was called.<br /> The cursor jumps to the
+				procedure and selects this token.
+			</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepreturn_co.png" />
+			</td>
+			<td>Step Return</td>
+			<td>Steps out of the current procedure. This option stops
+				execution after exiting the current procedure.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/terminate_co.png" />
+			</td>
+			<td>Terminate</td>
+			<td>Terminates the selected debug target.</td>
+		</tr>
+	</table>
+	<h2 id="variables_view">Variables View</h2>
+	<p>
+		The <b>Variables View</b> displays information about the variables
+		associated with the stack frame selected in the <a href="#debug_view"><b>Debug
+				View</b></a>. You can expand the <a href="../Reference/3/4.html">stacks</a>
+		and the state of the PostScript interpreter.
+	</p>
+	<img src="variables_view.png" />
+	<h2 id="breakpoints_view">Breakpoints View</h2>
+	<p>
+		The <b>Breakpoints View</b> lists all the breakpoints you currently
+		have set in your workspace.
+	</p>
+	<p>You can double-click a breakpoint to display its location in the
+		editor. You can also enable or disable breakpoints, or delete them.</p>
+	<img src="breakpoints_view.png" />
 </body>
 </html>
