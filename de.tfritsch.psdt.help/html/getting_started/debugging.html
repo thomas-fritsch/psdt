@@ -21,12 +21,13 @@
 	<p>
 		Because PostScript is a single-threaded language, you see only one
 		thread. And because PostScript has an execution-model very different
-		from other languages (like Java or C), the concept of stackframes
-		doesn't make much sense here, and hence you see only one stackframe.
-		However, you can inspect the stacks in the <a href="#variables_view"><b>Variables
-				View</b></a>
+		from other languages (like Java or C/C++), their concept of stack
+		frames doesn't really fit here, and hence you see only one stack
+		frame. However, you can inspect the stacks in the <a
+			href="#variables_view"><b>Variables View</b></a>.
 	</p>
 	<img src="debug_view.png" />
+	<p />
 	<table>
 		<caption>Debug View Commands</caption>
 		<tr>
@@ -73,6 +74,66 @@
 			</td>
 			<td>Terminate</td>
 			<td>Terminates the selected debug target.</td>
+		</tr>
+	</table>
+	<h2 id="editor_view">Editor View</h2>
+	<p>
+		The <b>Postscript Editor View</b> displays the PostScript file.
+	</p>
+	<p>
+		Breakpoints are displayed in the left ruler. Enabled breakpoints are
+		marked by blue circles [ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.png" />
+		], and disabled breakpoints by white circles [ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkpd_obj.png" />
+		].
+	</p>
+	<p>
+		If execution is suspended, the current line is marked by a blue arrow
+		[ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/inst_ptr_top.png" />
+		] in the left ruler, and the current token is highlighted.
+	</p>
+	<img src="editor_view.png" />
+	<p />
+	<table>
+		<caption>Ruler Context Menu Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.png" /></td>
+			<td>Toggle Breakpoint</td>
+			<td>Toggles the breakpoint selected in the ruler.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Enable Breakpoint</td>
+			<td>Enables the breakpoint selected in the ruler.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Disable Breakpoint</td>
+			<td>Disables the breakpoint selected in the ruler.</td>
+		</tr>
+	</table>
+	<p />
+	<table>
+		<caption>Editor Context Menu Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/runtoline_co.png" /></td>
+			<td>Run to Line</td>
+			<td>If execution is suspended, resumes and runs until the line
+				of the cursor position is reached.</td>
 		</tr>
 	</table>
 	<h2 id="variables_view">Variables View</h2>

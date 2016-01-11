@@ -20,6 +20,7 @@
 		</topic>
 		<topic label="Debugging PostScript files" href="html/getting_started/debugging.html">
 			<topic label="Debug View" href="html/getting_started/debugging.html#debug_view" />
+			<topic label="Editor View" href="html/getting_started/debugging.html#editor_view" />
 			<topic label="Variables View"
 				href="html/getting_started/debugging.html#variables_view" />
 			<topic label="Breakpoints View"
