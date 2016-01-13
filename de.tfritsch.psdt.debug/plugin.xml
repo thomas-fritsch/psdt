@@ -94,6 +94,13 @@
          </contextualLaunch>
       </shortcut>
    </extension>
+   <extension point="org.eclipse.debug.ui.consoleLineTrackers">
+      <consoleLineTracker 
+            id="de.tfritsch.postscript.consoleLineTracker"
+            class="de.tfritsch.psdt.debug.ui.PSConsoleLineTracker"
+            processType="PostScript">
+      </consoleLineTracker>
+   </extension>
    <extension point="org.eclipse.ui.preferencePages">
       <page name="Ghostscript"
             id="de.tfritsch.psdt.debug.ghostscriptPreferencePage"
