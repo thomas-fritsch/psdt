@@ -12,6 +12,7 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate
 import org.eclipse.osgi.util.NLS
 
@@ -64,14 +65,13 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val workingDir = cfg.verifyWorkingDirectory
 		val env = cfg.environment
 		val p = cmdLine.exec(workingDir, env)
-		val process = launch.newProcess(p, cmdLine.renderProcessLabel) => [
+		val process = launch.newProcess(p, cmdLine.renderProcessLabel, #{IProcess.ATTR_PROCESS_TYPE -> "PostScript"}) => [
 			// things for display in "Process Properties"
 			path = cmdLine.get(0)
 			launchTimestamp = launch.launchTimestamp
 			commandLine = cmdLine.renderArguments(null)
 			workingDirectory = workingDir.renderWorkingDirectory
 			environment = env.renderEnvironment
-			processType = "PostScript" //$NON-NLS-1$
 		]
 		if (mode == ILaunchManager.DEBUG_MODE) {
 			instrumentedFile.deleteOnTerminate(process)
@@ -116,7 +116,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 					return null
 				}
 				val string = sourceMapping.getString(i)
-				if (string != "}")  // no stepping point just before }
+				if (string != "}") // no stepping point just before }
 					writer.write(i + " @@$ ")
 				writer.write(string + "\n")
 			}
