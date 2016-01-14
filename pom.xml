@@ -200,11 +200,6 @@
 					<execution>
 						<id>source-feature</id>
 						<phase>package</phase>
-						<configuration>
-							<excludes>
-								<plugin id="de.tfritsch.psdt.help" />
-							</excludes>
-						</configuration>
 						<goals>
 							<goal>source-feature</goal>
 						</goals>
