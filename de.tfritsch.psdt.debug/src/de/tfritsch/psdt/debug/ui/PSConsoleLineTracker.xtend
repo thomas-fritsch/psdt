@@ -1,10 +1,15 @@
 package de.tfritsch.psdt.debug.ui
 
+import java.net.URL
 import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.debug.ui.console.IConsoleHyperlink
 import org.eclipse.debug.ui.console.IConsoleLineTracker
 import org.eclipse.jface.text.IRegion
+import org.eclipse.ui.PartInitException
+import org.eclipse.ui.PlatformUI
+import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 import static extension java.util.regex.Pattern.*
 
 /**
@@ -14,6 +19,8 @@ import static extension java.util.regex.Pattern.*
 class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	IConsole console
+
+	static IWorkbenchBrowserSupport browserSupport = PlatformUI.workbench.browserSupport
 
 	override init(IConsole console) {
 		this.console = console
@@ -25,13 +32,8 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		if (matcher.matches) {
 			val offset = line.offset + matcher.start(1)
 			val length = matcher.end(1) - matcher.start(1)
-			console.addLink(new Hyperlink(), offset, length)
-		}
-		matcher = "Current file position is (\\d+)".compile.matcher(text)
-		if (matcher.matches) {
-			val offset = line.offset + matcher.start(1)
-			val length = matcher.end(1) - matcher.start(1)
-			console.addLink(new Hyperlink, offset, length)
+			val url = matcher.group(1).substring(1).documentationURL
+			console.addLink(new Hyperlink(url), offset, length)
 		}
 	}
 
@@ -41,6 +43,12 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	static class Hyperlink implements IConsoleHyperlink {
 
+		URL url
+
+		new(URL url) {
+			this.url = url
+		}
+
 		override linkEntered() {
 		}
 
@@ -48,7 +56,16 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		}
 
 		override linkActivated() {
-			// TODO open link
+			try {
+				browserSupport.createBrowser(
+					IWorkbenchBrowserSupport.NAVIGATION_BAR,
+					"doc",
+					null,
+					null
+				).openURL(url)
+			} catch (PartInitException e) {
+				e.printStackTrace
+			}
 		}
 
 	}
