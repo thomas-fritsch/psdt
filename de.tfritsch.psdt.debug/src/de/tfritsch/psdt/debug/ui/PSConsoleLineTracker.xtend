@@ -1,6 +1,7 @@
 package de.tfritsch.psdt.debug.ui
 
 import org.eclipse.debug.ui.console.IConsole
+import org.eclipse.debug.ui.console.IConsoleHyperlink
 import org.eclipse.debug.ui.console.IConsoleLineTracker
 import org.eclipse.jface.text.IRegion
 
@@ -22,11 +23,15 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		val text = console.document.get(line.offset, line.length)
 		var matcher = "Error: (/\\w+) in .+".compile.matcher(text)
 		if (matcher.matches) {
-			// TODO add Hyperlink on errorName
+			val offset = line.offset + matcher.start(1)
+			val length = matcher.end(1) - matcher.start(1)
+			console.addLink(new Hyperlink(), offset, length)
 		}
 		matcher = "Current file position is (\\d+)".compile.matcher(text)
 		if (matcher.matches) {
-			// TODO add Hyperlink on filePosition
+			val offset = line.offset + matcher.start(1)
+			val length = matcher.end(1) - matcher.start(1)
+			console.addLink(new Hyperlink, offset, length)
 		}
 	}
 
@@ -34,4 +39,17 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		console = null
 	}
 
+	static class Hyperlink implements IConsoleHyperlink {
+
+		override linkEntered() {
+		}
+
+		override linkExited() {
+		}
+
+		override linkActivated() {
+			// TODO open link
+		}
+
+	}
 }
