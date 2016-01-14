@@ -304,7 +304,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 			if (breakpoint.enabled)
 				breakpointAdded(breakpoint)
 			else
-				breakpointRemoved(breakpoint, null)
+				breakpointRemoved(breakpoint, delta)
 		} catch (CoreException e) {
 			PSPlugin.log(e)
 		}
@@ -318,7 +318,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 				for (i : 0 ..< sourceMapping.size) {
 					if (sourceMapping.getLineNumber(i) == lineNumber) {
 						debugCommander.removeBreakpoint(i)
-						breakpoint.delete
+						if (delta == null)
+							breakpoint.delete
 					}
 				}
 			} catch (CoreException e) {
