@@ -76,6 +76,14 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
 		this.sourceMapping = sourceMapping
 		DebugPlugin.^default.breakpointManager.addBreakpointListener(this)
+		DebugPlugin.^default.addDebugEventListener [ events |
+			for (event : events) {
+				if (event.source === process && event.kind === DebugEvent.TERMINATE) {
+					onTerminated
+					DebugPlugin.^default.removeDebugEventListener(self)
+				}
+			}
+		]
 		debugCommander = process.streamsProxy as IPSDebugCommander
 		debugCommander.debugStreamListener = this
 	}
@@ -246,8 +254,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	override void terminate() throws DebugException {
 		debug("GUI -> terminate") //$NON-NLS-1$
 		process.terminate
-		state = State.TERMINATED
-		onTerminated
 	}
 
 	override boolean canResume() {
