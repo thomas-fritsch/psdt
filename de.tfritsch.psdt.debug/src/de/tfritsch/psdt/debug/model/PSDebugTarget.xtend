@@ -48,8 +48,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	boolean breakOnFirstToken
 
-	IBreakpoint[] breakpoints = #[]
-
 	/**
 	 * Ghostscript's top-level variables (dictstack, execstack, operandstack, ...)
 	 */
@@ -153,7 +151,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	def IBreakpoint[] getBreakpoints() {
-		return breakpoints
+		return DebugPlugin.^default.breakpointManager.breakpoints.filter[supportsBreakpoint]
 	}
 
 	def int getLineNumber() {
