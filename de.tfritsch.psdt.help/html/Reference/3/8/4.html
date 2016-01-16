@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Filters</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.8.4 Filters</h3>
+	<p>
+		A <i>filter (LanguageLevel 2)</i> is a special kind of file object
+		that can be layered on top of some other file to transform data being
+		read from or written to that file. When a PostScript program reads
+		characters from an input filter, the filter reads characters from its
+		underlying file and transforms the data in some way, depending on the
+		filter. Similarly, when a program writes characters to an output
+		filter, the filter transforms the data and writes the results to its
+		underlying file.
+	</p>
+	<p>
+		An <i>encoding filter</i> is an output file that takes the data
+		written to it, converts it to some encoded representation depending on
+		the filter, and writes the encoded data to the underlying file. For
+		example, the <b>ASCIIHexEncode</b> filter transforms binary data to an
+		ASCII hexadecimal-encoded representation, which it writes to its
+		underlying file. All encoding filters have <b>Encode</b> as part of
+		their names.
+	</p>
+	<p>
+		A <i>decoding filter</i> is an input file that reads encoded data from
+		its underlying file and decodes it. The program reading from the
+		filter receives the decoded data. For example, the <b>ASCIIHexDecode</b>
+		filter reads ASCII hexadecimal-encoded data from its underlying file
+		and transforms it to binary. All decoding filters have <b>Decode</b>
+		as part of their names.
+	</p>
+	<p>Decoding filters are most likely to be used in page
+		descriptions. An application program generating a page description can
+		encode certain information (for example, data for sampled images) to
+		compress it or to convert it to a portable ASCII representation. Then,
+		within the page description itself, it invokes the corresponding
+		decoding filter to convert the information back to its original form.</p>
+	<p>Encoding filters are unlikely to be used in most page
+		descriptions. However, a PostScript program can use them to encode
+		data to be sent back to the application or written to a disk file. In
+		the interest of symmetry, the PostScript language defines both
+		encoding and decoding filters for all of its standard data
+		transformation algorithms. However, encoding filters are optional; not
+		all PostScript interpreters support them.</p>
+	<h4 id="1">Creating Filters</h4>
+	<p>
+		Filter files are created by the <a href="../../8/2/f/filter.html">filter</a>
+		operator <i>(LanguageLevel 2)</i>. The <a
+			href="../../8/2/f/filter.html">filter</a> operator expects the
+		following operands in the order given:
+	</p>
+	<ol>
+		<li>A <i>data source</i> or <i>data target</i>. This is
+			ordinarily a file object that represents the underlying file the
+			filter is to read or write. However, it can also be a string or a
+			procedure. Details are provided in Section <a href="../13/1.html">3.13.1,
+				"Data Sources and Targets."</a>
+		</li>
+		<li><i>Filter parameters.</i> All filters may take additional
+			parameters, and some require additional parameters, to control how
+			they operate. These parameters may be specified in a dictionary given
+			as an operand following the data source or target; in some cases,
+			required parameters must be given as operands following the data
+			source or target or following the dictionary operand, if any. The
+			dictionary operand may be omitted whenever all the
+			dictionary-supplied parameters have the corresponding default values
+			for that filter. Exactly which parameters and operands are required
+			for the various filters is described in Section <a href="../13.html">3.13,
+				"Filtered Files Details."</a></li>
+		<li><i>Filter name.</i> This is a name object, such as <b>ASCIIHexDecode</b>,
+			that specifies the data transformation the filter is to perform. It
+			also determines how many parameters there are and how they are to be
+			interpreted.</li>
+	</ol>
+	<p>
+		The <a href="../../8/2/f/filter.html">filter</a> operator returns a
+		new file object that represents the filtered file. For an encoding
+		filter, this is an output file, and for a decoding filter, an input
+		file. The direction of the underlying file&mdash;that is, its
+		read/write attribute&mdash;must match that of the filter. Filtered
+		files can be used just the same as other files; they are valid as
+		operands to file operators such as <a href="../../8/2/r/read.html">read</a>,
+		<a href="../../8/2/w/write.html">write</a>, <a
+			href="../../8/2/r/readstring.html">readstring</a>, and <a
+			href="../../8/2/w/writestring.html">writestring</a>. Input filters
+		are also valid as data sources for operators such as <a
+			href="../../8/2/e/exec.html">exec</a> or <a
+			href="../../8/2/i/image.html">image</a>.
+	</p>
+	<p>
+		Since a filter is itself a file, it can be used as the underlying file
+		for yet another filter. Filters can be cascaded to form a <i>pipeline</i>
+		that passes the data stream through two or more encoding or decoding
+		transformations in sequence. Example 3.5 illustrates the construction
+		of an input pipeline for decoding sampled image data that is embedded
+		in the program. The application has encoded the image data twice: once
+		using the <b>RunLengthEncode</b> method to compress the data, and then
+		using the <b>ASCII85Encode</b> method to represent the binary
+		compressed data as ASCII text.
+	</p>
+	<p>
+		<b>Example 5.5</b>
+	</p>
+	<pre>256 256 8 [256 0 0 -256 0 256]   % Other operands of the image operator
+currentfile
+/ASCII85Decode filter
+/RunLengthDecode filter
+image
+<i>... Encoded image data ...</i>
+~>                               % ASCII85 end-of-data marker</pre>
+	<p>
+		The <a href="../../8/2/c/currentfile.html">currentfile</a> operator
+		returns the file object from which the PostScript interpreter is
+		currently executing. The first execution of <a
+			href="../../8/2/f/filter.html">filter</a> creates an <b>ASCII85Decode</b>
+		filter whose underlying file is the one returned by <a
+			href="../../8/2/c/currentfile.html">currentfile</a>. It pushes the
+		filter file object on the stack. The second execution of <a
+			href="../../8/2/f/filter.html">filter</a> creates a <b>RunLengthDecode</b>
+		filter whose underlying file is the first filter file; it pushes the
+		new filter file object on the stack. Finally, the <a
+			href="../../8/2/i/image.html">image</a> operator uses the second
+		filter file as its data source. As <a href="../../8/2/i/image.html">image</a>
+		reads from its data source, the data is drawn from the underlying file
+		and transformed by the two filters in sequence.
+	</p>
+	<h4 id="2">Standard Filters</h4>
+	<p>The PostScript language supports a standard set of filters that
+		fall into three main categories:</p>
+	<ul>
+		<li><i>ASCII encoding and decoding filters</i> enable arbitrary
+			8-bit binary data to be represented in the printable subset of the
+			ASCII character set. This improves the portability of the resulting
+			data, since it avoids the problem of interference by operating
+			systems or communication channels that preempt the use of control
+			characters, represent text as 7-bit bytes, or impose line-length
+			restrictions.</li>
+		<li><i>Compression and decompression filters</i> enable data to
+			be represented in a compressed form. Compression is particularly
+			valuable for large sampled images, since it reduces storage
+			requirements and transmission time. There are several compression
+			filters, each of which is best suited for particular kinds of data.
+			Note that the compressed data is in 8-bit binary format, even if the
+			original data happens to be ASCII text. For maximum portability of
+			the encoded data, these filters should be used with ASCII encoding
+			filters, as illustrated above in Example 3.5.</li>
+		<li><i>Subfile filters</i> pass data through without
+			modification. These filters permit the creation of file objects that
+			access arbitrary user-defined data sources or data targets. Input
+			filters also can read data from an underlying file up to a specified
+			end-of-data marker.</li>
+	</ul>
+	<p>
+		Table 3.6 summarizes the available filters. A program can determine
+		the complete set of filters that the PostScript interpreter supports
+		by applying the resourceforall operator to the Filter resource
+		category; see Section <a href="../9.html">3.9, "Named Resources."</a>
+	</p>
+	<table>
+		<caption>TABLE 3.6 Standard filters</caption>
+		<tr>
+			<th>Filter name</th>
+			<th>Required<br />parameters
+			</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<th id="ASCIIHexEncode">ASCIIHexEncode</th>
+			<td>(none)</td>
+			<td>Encodes binary data in an ASCII hexadecimal representation.
+				Each binary data byte is converted to two hexadecimal digits,
+				resulting in an expansion factor of 1:2 in the size of the encoded
+				data.</td>
+		</tr>
+		<tr>
+			<th id="ASCIIHexDecode">ASCIIHexDecode</th>
+			<td>(none)</td>
+			<td>Decodes ASCII hexadecimal-encoded data, producing the
+				original binary data.</td>
+		</tr>
+		<tr>
+			<th id="ASCII85Encode">ASCII85Encode</th>
+			<td>(none)</td>
+			<td>Encodes binary data in an ASCII base-85 representation. This
+				encoding uses nearly all of the printable ASCII character set. The
+				resulting expansion factor is 4:5, making this encoding much more
+				efficient than hexadecimal.</td>
+		</tr>
+		<tr>
+			<th id="ASCII85Decode">ASCII85Decode</th>
+			<td>(none)</td>
+			<td>Decodes ASCII base-85 data, producing the original binary
+				data.</td>
+		</tr>
+		<tr>
+			<th id="LZWEncode">LZWEncode</th>
+			<td>(none)</td>
+			<td>Compresses data using the LZW (Lempel-Ziv-Welch) adaptive
+				compression method, optionally after pretransformation by a
+				predictor function. This is a good general-purpose encoding that is
+				especially well suited for natural-language and PostScript-language
+				text, but it is also useful for image data.</td>
+		</tr>
+		<tr>
+			<th id="LZWDecode">LZWDecode</th>
+			<td>(none)</td>
+			<td>Decompresses LZW-encoded data, producing the original data.</td>
+		</tr>
+		<tr>
+			<th id="FlateEncode">FlateEncode</th>
+			<td>(none)</td>
+			<td><i>(LanguageLevel 3)</i> Compresses data using the
+				public-domain zlib/deflate compression method, optionally after
+				pretransformation by a predictor function. This is a variable-length
+				Lempel-Ziv adaptive compression method cascaded with adaptive
+				Huffman coding. It is a good general-purpose encoding that is
+				especially well suited for natural-language and PostScript-language
+				text, but it is also useful for image data.</td>
+		</tr>
+		<tr>
+			<th id="FlateDecode">FlateDecode</th>
+			<td>(none)</td>
+			<td><i>(LanguageLevel 3)</i> Decompresses data encoded in
+				zlib/deflate compressed format, producing the original data.</td>
+		</tr>
+		<tr>
+			<th id="RunLengthEncode">RunLengthEncode</th>
+			<td>record size</td>
+			<td>Compresses data using a simple byte-oriented run-length
+				encoding algorithm. This encoding is best suited to monochrome image
+				data, or any data that contains frequent long runs of a single byte
+				value.</td>
+		</tr>
+		<tr>
+			<th id="RunLengthDecode">RunLengthDecode</th>
+			<td>(none)</td>
+			<td>Decompresses data encoded in the run-length encoding format,
+				producing the original data.</td>
+		</tr>
+		<tr>
+			<th id="CCITTFaxEncode">CCITTFaxEncode</th>
+			<td>(none)</td>
+			<td>Compresses data using a bit-oriented encoding algorithm (the
+				CCITT facsimile standard). This encoding is specialized to
+				monochrome image data at 1 bit per pixel.</td>
+		</tr>
+		<tr>
+			<th id="CCITTFaxDecode">CCITTFaxDecode</th>
+			<td>(none)</td>
+			<td>Decompresses facsimile-encoded data, producing the original
+				data.</td>
+		</tr>
+		<tr>
+			<th id="DCTEncode">DCTEncode</th>
+			<td>dictionary</td>
+			<td>Compresses continuous-tone (grayscale or color) sampled
+				image data using a DCT (discrete cosine transform) technique based
+				on the JPEG standard. This encoding is specialized to image data. It
+				is "lossy," meaning that the encoding algorithm can lose some
+				information.</td>
+		</tr>
+		<tr>
+			<th id="DCTDecode">DCTDecode</th>
+			<td>(none)</td>
+			<td>Decompresses DCT-encoded data, producing image sample data
+				that approximate the original data.</td>
+		</tr>
+		<tr>
+			<th id="ReusableStreamDecode">ReusableStreamDecode</th>
+			<td>(none)</td>
+			<td><i>(LanguageLevel 3)</i> From any data source, creates an
+				input stream that can be treated as a random-access, repositionable
+				file.</td>
+		</tr>
+		<tr>
+			<th id="NullEncode">NullEncode</th>
+			<td>(none)</td>
+			<td>Passes all data through, without any modification. This
+				permits an arbitrary data target (procedure or string) to be treated
+				as an output file.</td>
+		</tr>
+		<tr>
+			<th id="SubFileDecode">SubFileDecode</th>
+			<td>count, size</td>
+			<td>Passes all data through, without any modification. This
+				permits an arbitrary data source (procedure or string) to be treated
+				as an input file. Optionally, this filter detects an end-of-data
+				marker in the source data stream, treating the preceding data as a
+				subfile.</td>
+		</tr>
+	</table>
+	<p>
+		<i><b>Note:</b> In LanguageLevel 3, all encoding filters, with the
+			exception of the <b>NullEncode</b> filter, are optional&mdash;that
+			is, they may or may not be present in a PostScript interpreter
+			product. Additional nonstandard filters may be available in some
+			products. To ensure portability, PostScript programs that are page
+			descriptions should not depend on optional or nonstandard filters.</i>
+	</p>
+	<p>
+		Section <a href="../13.html">3.13, "Filtered Files Details,"</a>
+		provides complete information about individual filters, including
+		specifications of the encoding algorithms for some of them. The
+		section also describes the semantics of data sources and data targets
+		in more detail.
+	</p>
+</body>
+</html>

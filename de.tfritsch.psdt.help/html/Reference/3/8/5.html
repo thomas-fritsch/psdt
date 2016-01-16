@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Additional File Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.8.5 Additional File Operators</h3>
+	<p>There are other miscellaneous file operators:</p>
+	<ul>
+		<li><a href="../../8/2/s/status.html">status</a> and <a
+			href="../../8/2/b/bytesavailable.html">bytesavailable</a> return
+			status information about a file.</li>
+		<li><a href="../../8/2/c/currentfile.html">currentfile</a>
+			returns the file object from which the interpreter is currently
+			reading.</li>
+		<li><a href="../../8/2/r/run.html">run</a> is a convenience
+			operator that combines the functions of <a
+			href="../../8/2/f/file.html">file</a> and <a
+			href="../../8/2/e/exec.html">exec</a>.</li>
+	</ul>
+	<p>Several built-in procedures print the values of objects on the
+		operand stack, sending a readable representation of those values to
+		the standard output file:</p>
+	<ul>
+		<li><a href="../../8/2/@/equals.html">=</a> pops one object from
+			the operand stack and writes a text representation of its value to
+			the standard output file, followed by a newline.</li>
+		<li><a href="../../8/2/@/equals-equals.html">==</a> is similar to
+			<a href="../../8/2/@/equals.html">=</a>, but produces results closer
+			to full PostScript language syntax and expands the values of arrays.</li>
+		<li><a href="../../8/2/s/stack.html">stack</a> prints the entire
+			contents of the operand stack with <a href="../../8/2/@/equals.html">=</a>,
+			but leaves the stack unchanged.</li>
+		<li><a href="../../8/2/p/pstack.html">pstack</a> performs a
+			similar operation to stack, but uses <a
+			href="../../8/2/@/equals-equals.html">==</a>.</li>
+	</ul>
+	<p>Input/output and storage devices can be manipulated individually
+		by LanguageLevel 2 operators. In particular:</p>
+	<ul>
+		<li><a href="../../8/2/s/setdevparams.html">setdevparams</a> and
+			<a href="../../8/2/c/currentdevparams.html">currentdevparams</a>
+			access device-dependent parameters (see <a href="../../C.html">Appendix
+				C</a>).</li>
+		<li><a href="../../8/2/r/resourceforall.html">resourceforall</a>,
+			applied to the <b>IODevice</b> resource category, enumerates all
+			available device parameter sets (see the next section).</li>
+	</ul>
+</body>
+</html>

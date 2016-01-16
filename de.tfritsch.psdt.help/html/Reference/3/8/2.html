@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Named Files</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.8.2 Named Files</h3>
+	<p>The PostScript language provides access to named files in
+		secondary storage. The file access capabilities are part of the
+		integration of the language with an underlying operating system; there
+		are variations from one such integration to another. Not all the file
+		system capabilities of the underlying operating system are necessarily
+		made available at the PostScript language level.</p>
+	<p>
+		The PostScript language provides a standard set of operators for
+		accessing named files. These operators are supported in LanguageLevels
+		2 and 3, as well as in certain LanguageLevel 1 implementations that
+		have access to file systems. The operators are <a
+			href="../../8/2/f/file.html">file</a>, <a
+			href="../../8/2/d/deletefile.html">deletefile</a>, <a
+			href="../../8/2/r/renamefile.html">renamefile</a>, <a
+			href="../../8/2/s/status.html">status</a>, <a
+			href="../../8/2/f/filenameforall.html">filenameforall</a>, <a
+			href="../../8/2/s/setfileposition.html">setfileposition</a>, and <a
+			href="../../8/2/f/fileposition.html">fileposition</a>. Even in
+		LanguageLevel 1 implementations that do not support named files, the
+		file operator is supported, because the special file names %stdin,
+		%stdout, and %stderr are always allowed (see Section <a href="3.html">3.8.3,
+			"Special Files"</a>). Although the language defines a standard framework
+		for dealing with files, the detailed semantics of the file system
+		operators, particularly file naming conventions, are operating
+		system-dependent.
+	</p>
+	<p>Files are stored in one or more "secondary storage devices,"
+		hereafter referred to simply as devices. (These are not to be confused
+		with the "current device," which is a raster output device identified
+		in the graphics state.) The PostScript language defines a uniform
+		convention for naming devices, but it says nothing about how files in
+		a given device are named. Different devices have different properties,
+		and not all devices support all operations.</p>
+	<p>
+		A complete file name has the form <i>%device%file</i>, where device
+		identifies the secondary storage device and file is the name of the
+		file within the device. When a complete file name is presented to a
+		file system operator, the device portion selects the device; the file
+		portion is in turn presented to the implementation of that device,
+		which is operating system-dependent and environment-dependent.
+	</p>
+	<p>
+		<i><b>Note:</b> Typically, file names cannot contain null
+			characters (ASCII code 0); if a file name is specified by a string
+			object containing a null character, the null character will
+			effectively terminate the file name.</i>
+	</p>
+	<p>
+		When a file name is presented without a <i>%device%</i> prefix, a
+		search rule determines which device is selected. The available storage
+		devices are consulted in order; the requested operation is attempted
+		on each device until the operation succeeds. The number of available
+		devices, their names, and the order in which they are searched is
+		environment-dependent. Not all devices necessarily participate in such
+		searches; some devices can be accessed only by explicitly naming them.
+	</p>
+	<p>
+		In an interpreter that runs on top of an operating system, there may
+		be a device that represents the complete file system provided by the
+		operating system. If so, by convention that device's name is os; thus,
+		complete file names are in the form %os%file, where <i>file</i>
+		conforms to underlying file system conventions. This device always
+		participates in searches, as described above; a program can access
+		ordinary files without specifying the %os% prefix. There may be more
+		than one device that behaves in this way; the names of such devices
+		are product-dependent.
+	</p>
+	<p>
+		<i><b>Note:</b> The os device may impose some restrictions on the
+			set of files that can be accessed. Restrictions are necessary when
+			the PostScript interpreter executes with a user identity different
+			from that of the user running the application program.</i>
+	</p>
+	<p>In an interpreter that controls a dedicated product, such as a
+		typical printer product, there can be one or more devices that
+		represent file systems on disks and cartridges. Files on these devices
+		have names such as %disk0%file, %disk1%file, and %cartridge0%file.
+		Again, these devices participate in searches when the device name is
+		not specified.</p>
+	<p>
+		Each of the operators <a href="../../8/2/f/file.html">file</a>, <a
+			href="../../8/2/d/deletefile.html">deletefile</a>, <a
+			href="../../8/2/r/renamefile.html">renamefile</a>, <a
+			href="../../8/2/s/status.html">status</a>, and <a
+			href="../../8/2/f/filenameforall.html">filenameforall</a> takes a <i>filename</i>
+		operand&mdash;a string object that identifies a file. The name of the
+		file can be in one of three forms:
+	</p>
+	<ul>
+		<li><i>%device%file</i> identifies a named file on a specific
+			device, as described above.</li>
+		<li><i>file</i> (first character not %) identifies a named file
+			on an unspecified device, which is selected by an
+			environment-specific search rule, as described above.</li>
+		<li><i>%device</i> or <i>%device%</i> identifies an unnamed file
+			on the device. Certain devices, such as cartridges, support a single
+			unnamed file as opposed to a collection of named files. Other devices
+			represent communication channels rather than permanent storage media.
+			There are also special files named %stdin, %stdout, %stderr,
+			%statementedit, and %lineedit, described in Section <a href="3.html">3.8.3,
+				"Special Files."</a> The <a href="../../8/2/d/deletefile.html">deletefile</a>,
+			<a href="../../8/2/r/renamefile.html">renamefile</a>, and <a
+			href="../../8/2/f/filenameforall.html">filenameforall</a> operators
+			do not apply to file names of this form.</li>
+	</ul>
+	<p>
+		"Wildcard" file names are recognized by the <a
+			href="../../8/2/f/filenameforall.html">filenameforall</a> operator;
+		see <a href="../../8/2/f/filenameforall.html">filenameforall</a> in
+		Chapter 8 for more information.
+	</p>
+	<h4 id="1">Creating and Closing a File Object</h4>
+	<p>
+		File objects are created by the <a href="../../8/2/f/file.html">file</a>
+		operator. This operator takes two strings: the first identifies the
+		file and the second specifies access. <a href="../../8/2/f/file.html">file</a>
+		returns a new file object associated with that file.
+	</p>
+	<p>
+		An <i>access string</i> is a string object that specifies how a file
+		is to be accessed. File access conventions are similar to the ones
+		defined by the ANSI C standard, although some file systems may not
+		support all access methods. The access string always begins with r, w,
+		or a, possibly followed by +; any additional characters supply
+		operating system–specific information. Table 3.5 lists access strings
+		and their meanings.
+	</p>
+	<table>
+		<caption>TABLE 3.5 Access strings</caption>
+		<tr>
+			<th>Access string</th>
+			<th>Meaning</th>
+		</tr>
+		<tr>
+			<td>r</td>
+			<td>Open for reading only. Generate an error if the file does
+				not already exist.</td>
+		</tr>
+		<tr>
+			<td>w</td>
+			<td>Open for writing only. Create the file if it does not
+				already exist. Truncate and overwrite it if it does exist.</td>
+		</tr>
+		<tr>
+			<td>a</td>
+			<td>Open for writing only. Create the file if it does not
+				already exist. Append to it if it does exist.</td>
+		</tr>
+		<tr>
+			<td>r+</td>
+			<td>Open for reading and writing. Generate an error if the file
+				does not already exist.</td>
+		</tr>
+		<tr>
+			<td>w+</td>
+			<td>Open for reading and writing. Create the file if it does not
+				already exist. Truncate and overwrite it if it does exist.</td>
+		</tr>
+		<tr>
+			<td>a+</td>
+			<td>Open for reading and writing. Create the file if it does not
+				already exist. Append to it if it does exist.</td>
+		</tr>
+	</table>
+	<p>
+		<i><b>Note:</b> The special files %stdin, %lineedit, and
+			%statementedit allow only r access; %stdout and %stderr allow only w
+			access (see Section <a href="3.html">3.8.3, "Special Files"</a>).</i>
+	</p>
+	<p>
+		Like other composite objects, such as strings and arrays, file objects
+		have access attributes. The access attribute of a file object is based
+		on the access string used to create it. Attempting to access a file
+		object in a way that would violate its access attribute causes an <a
+			href="../../8/2/i/invalidaccess.html">invalidaccess</a> error.
+	</p>
+	<p>
+		Certain files&mdash;in particular, named files on disk—are <i>positionable</i>,
+		meaning that the data in the file can be accessed in an arbitrary
+		order rather than only sequentially from the beginning. The <a
+			href="../../8/2/s/setfileposition.html">setfileposition</a> operator
+		adjusts a file object so that it refers to a specified position in the
+		underlying file; subsequent reads or writes access the file at that
+		new position. Specifying a plus sign (+) in the access string opens a
+		positionable file for reading and writing, as shown in Table 3.5. To
+		ensure predictable results, it is necessary to execute <a
+			href="../../8/2/s/setfileposition.html">setfileposition</a> when
+		switching between reading and writing.
+	</p>
+	<p>
+		At the end of reading or writing a file, a program should <i>close</i>
+		the file to break the association between the PostScript file object
+		and the actual file. The file operators close a file automatically if
+		end-of-file is encountered during reading (see below). The <a
+			href="../../8/2/c/closefile.html">closefile</a> operator closes a
+		file explicitly. <a href="../../8/2/r/restore.html">restore</a> closes
+		a file if the file object was created since the corresponding <a
+			href="../../8/2/s/save.html">save</a> operation while in local VM
+		allocation mode. Garbage collection closes a file if the file object
+		is no longer accessible.
+	</p>
+	<p>
+		All operators that access files treat end-of-file and exception
+		conditions the same. During reading, if an end-of-file indication is
+		encountered before the requested item can be read, the file is closed
+		and the operation returns an explicit end-offile result. This also
+		occurs if the file has already been closed when the operator is
+		executed. All other exceptions during reading and any exceptions
+		during writing result in execution of the error <a
+			href="../../8/2/i/ioerror.html">ioerror</a>, <a
+			href="../../8/2/i/invalidfileaccess.html">invalidfileaccess</a>, or <a
+			href="../../8/2/i/invalidaccess.html">invalidaccess</a>.
+	</p>
+</body>
+</html>

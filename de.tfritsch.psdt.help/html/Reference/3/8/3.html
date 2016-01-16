@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Special Files</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>3.8.3 Special Files</h3>
+	<p>The file operator can also return special files that are
+		identified as follows:</p>
+	<ul>
+		<li>%stdin, the standard input file.</li>
+		<li>%stdout, the standard output file.</li>
+		<li>%stderr, the standard error file. This file is for reporting
+			low-level errors. In many configurations, it is the same as the
+			standard output file.</li>
+		<li>%statementedit, the statement editor filter file, described
+			below.</li>
+		<li>%lineedit, the line editor filter file, described below.</li>
+	</ul>
+	<p>For example, the statements</p>
+	<pre>(%stdin) (r) file
+(%stdout) (w) file</pre>
+	<p>
+		push copies of the standard input and output file objects on the
+		operand stack. These are duplicates of existing file objects, not new
+		objects. Each execution of the <a href="../../8/2/f/file.html">file</a>
+		operator for %stdin, %stdout, or %stderr within a given job returns
+		the same file object. A PostScript program should not close these
+		files. In an interpreter that supports multiple execution contexts,
+		the standard input and output files are private to each context; the
+		standard error file is shared among all contexts.
+	</p>
+	<p>
+		Some PostScript interpreters support an interactive executive, invoked
+		by the <a href="../../8/2/e/executive.html">executive</a> operator;
+		this is described in Section <a href="../../2/4/4.html">2.4.4,
+			"Using the Interpreter Interactively."</a> <a
+			href="../../8/2/e/executive.html">executive</a> obtains commands from
+		the user by means of a special file named %statementedit. Applying the
+		<a href="../../8/2/f/file.html">file</a> operator to the file name
+		string %statementedit causes the following to happen:
+	</p>
+	<ul>
+		<li>The <a href="../../8/2/f/file.html">file</a> operator begins
+			reading characters from the standard input file and storing them in a
+			temporary buffer. While doing so, it echoes the characters to the
+			standard output file. It also interprets certain control characters
+			as editing functions for making corrections, as described in Section
+			2.4.4.
+		</li>
+		<li>When a complete statement has been entered, the <a
+			href="../../8/2/f/file.html">file</a> operator returns. A statement
+			consists of one or more lines terminated by a newline that together
+			form one or more complete PostScript tokens, with no opening brackets
+			({, (, &lt;, or &lt;~) left unmatched. A statement is also considered
+			complete if it contains a syntax error.
+		</li>
+		<li>The returned file object represents a temporary file
+			containing the statement that was entered, including the terminating
+			end-of-line character. Reading from this file obtains the characters
+			of the statement in turn; end-of-file is reported when the end of the
+			statement is reached. Normally, this file is used as an operand to
+			the <a href="../../8/2/e/exec.html">exec</a> operator, causing the
+			statement to be executed as a PostScript program.
+		</li>
+	</ul>
+	<p>
+		The %lineedit special file is similar to %statementedit, except that
+		when reading from %lineedit, the <a href="../../8/2/f/file.html">file</a>
+		operator returns after a single line has been entered, whether or not
+		it constitutes a complete statement. For both the special files
+		%statementedit and %lineedit, if the standard input file reaches
+		end-of-file before any characters have been entered, the <a
+			href="../../8/2/f/file.html">file</a> operator issues an <a
+			href="../../8/2/u/undefinedfilename.html">undefinedfilename</a>
+		error.
+	</p>
+	<p>
+		It is important to understand that the file object returned by <a
+			href="../../8/2/f/file.html">file</a> for the %statementedit and
+		%lineedit special files is not the same as the standard input file. It
+		represents a temporary file containing a single buffered statement.
+		When the end of that statement is reached, the file is closed and the
+		file object is no longer of any use. Successive executions of <a
+			href="../../8/2/f/file.html">file</a> for %statementedit and
+		%lineedit return different file objects.
+	</p>
+	<p>The %statementedit and %lineedit special files are not available
+		in PostScript interpreters that do not support an interactive
+		executive. PostScript programs that are page descriptions should never
+		refer to these files.</p>
+</body>
+</html>
