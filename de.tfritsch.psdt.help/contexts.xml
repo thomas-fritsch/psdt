@@ -1182,59 +1182,34 @@
 	<context id="yshow">
 		<topic label="Operator" href="html/Reference/8/2/y/yshow.html" />
 	</context>
-	<context id="/ASCIIHexEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexEncode" />
-	</context>
-	<context id="/ASCIIHexDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexDecode" />
+	<context id="/ASCII85Decode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Decode" />
 	</context>
 	<context id="/ASCII85Encode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Encode" />
 	</context>
-	<context id="/ASCII85Decode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Decode" />
+	<context id="/ASCIIHexDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexDecode" />
 	</context>
-	<context id="/LZWEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWEncode" />
+	<context id="/ASCIIHexEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexEncode" />
 	</context>
-	<context id="/LZWDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWDecode" />
+	<context id="/BuildChar">
+		<topic label="Entry in a Type 3 font dictionary" href="html/Reference/5/7.html#BuildChar" />
 	</context>
-	<context id="/FlateEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateEncode" />
+	<context id="/BuildGlyph">
+		<topic label="Entry in a a Type 3 font dictionary" href="html/Reference/5/7.html#BuildGlyph" />
 	</context>
-	<context id="/FlateDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateDecode" />
-	</context>
-	<context id="/RunLengthEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthEncode" />
-	</context>
-	<context id="/RunLengthDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthDecode" />
-	</context>
-	<context id="/CCITTFaxEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#CCITTFaxEncode" />
+	<context id="/Category">
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#Category" />
 	</context>
 	<context id="/CCITTFaxDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ACCITTFaxDecode" />
 	</context>
-	<context id="/DCTEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTEncode" />
-	</context>
-	<context id="/DCTDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTDecode" />
-	</context>
-	<context id="/ReusableStreamDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
-	</context>
-	<context id="/NullEncode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#NullEncode" />
-	</context>
-	<context id="/SubFileDecode">
-		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
-	</context>
-	<context id="/Category">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
+	<context id="/CCITTFaxEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#CCITTFaxEncode" />
 	</context>
 	<context id="/CIDFont">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#CIDFont" />
@@ -1257,11 +1232,29 @@
 	<context id="/ControlLanguage">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ControlLanguage" />
 	</context>
+	<context id="/DCTDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTDecode" />
+	</context>
+	<context id="/DCTEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTEncode" />
+	</context>
+	<context id="/DefineResource">
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#DefineResource" />
+	</context>
 	<context id="/Emulator">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Emulator" />
 	</context>
 	<context id="/Encoding">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Encoding" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#Encoding" />
+	</context>
+	<context id="/FID">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FID" />
+	</context>
+	<context id="/FindResource">
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#FindResource" />
 	</context>
 	<context id="/Filter">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Filter" />
@@ -1269,17 +1262,33 @@
 	<context id="/FMapType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FMapType" />
 	</context>
+	<context id="/FlateDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateDecode" />
+	</context>
+	<context id="/FlateEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateEncode" />
+	</context>
 	<context id="/Font">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Font" />
+	</context>
+	<context id="/FontBBox">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontBBox" />
+	</context>
+	<context id="/FontInfo">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontInfo" />
+	</context>
+	<context id="/FontMatrix">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontMatrix" />
+	</context>
+	<context id="/FontName">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontName" />
 	</context>
 	<context id="/FontSet">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FontSet" />
 	</context>
-	<context id="/Font">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#Font" />
-	</context>
 	<context id="/FontType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FontType" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontType" />
 	</context>
 	<context id="/Form">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Form" />
@@ -1308,11 +1317,27 @@
 	<context id="/InkParams">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#InkParams" />
 	</context>
+	<context id="/InstanceType">
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#InstanceType" />
+	</context>
 	<context id="/IODevice">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#IODevice" />
 	</context>
+	<context id="/LanguageLevel">
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#LanguageLevel" />
+	</context>
 	<context id="/Localization">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Localization" />
+	</context>
+	<context id="/LZWDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWDecode" />
+	</context>
+	<context id="/LZWEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWEncode" />
+	</context>
+	<context id="/NullEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#NullEncode" />
 	</context>
 	<context id="/OutputDevice">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#OutputDevice" />
@@ -1326,33 +1351,8 @@
 	<context id="/PDL">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#PDL" />
 	</context>
-	<context id="/ShadingType">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#ShadingType" />
-	</context>
-	<context id="/TrapParams">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#TrapParams" />
-	</context>
-	<context id="/TrappingType">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#TrappingType" />
-	</context>
 	<context id="/ProcSet">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ProcSet" />
-	</context>
-	<context id="/Category">
-		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#Category" />
-	</context>
-	<context id="/DefineResource">
-		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#DefineResource" />
-	</context>
-	<context id="/FindResource">
-		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#FindResource" />
-	</context>
-	<context id="/InstanceType">
-		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#InstanceType" />
 	</context>
 	<context id="/ResourceFileName">
 		<topic label="Entry in a category implementation dictionary"
@@ -1366,39 +1366,30 @@
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#ResourceStatus" />
 	</context>
+	<context id="/ReusableStreamDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
+	</context>
+	<context id="/RunLengthDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthDecode" />
+	</context>
+	<context id="/RunLengthEncode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthEncode" />
+	</context>
+	<context id="/ShadingType">
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ShadingType" />
+	</context>
+	<context id="/SubFileDecode">
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
+	</context>
+	<context id="/TrapParams">
+		<topic label="Resource category" href="html/Reference/3/9/2.html#TrapParams" />
+	</context>
+	<context id="/TrappingType">
+		<topic label="Resource category" href="html/Reference/3/9/2.html#TrappingType" />
+	</context>
 	<context id="/UndefineResource">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#UndefineResource" />
-	</context>
-	<context id="/BuildChar">
-		<topic label="Entry in a Type 3 font dictionary" href="html/Reference/5/7.html#BuildChar" />
-	</context>
-	<context id="/BuildGlyph">
-		<topic label="Entry in a a Type 3 font dictionary" href="html/Reference/5/7.html#BuildGlyph" />
-	</context>
-	<context id="/Encoding">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#Encoding" />
-	</context>
-	<context id="/FID">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FID" />
-	</context>
-	<context id="/FontBBox">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontBBox" />
-	</context>
-	<context id="/FontInfo">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontInfo" />
-	</context>
-	<context id="/FontMatrix">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontMatrix" />
-	</context>
-	<context id="/FontName">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontName" />
-	</context>
-	<context id="/FontType">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontType" />
-	</context>
-	<context id="/LanguageLevel">
-		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#LanguageLevel" />
 	</context>
 	<context id="/WMode">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#WMode" />
