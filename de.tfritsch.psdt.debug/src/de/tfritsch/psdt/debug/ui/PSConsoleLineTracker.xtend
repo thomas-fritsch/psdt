@@ -32,8 +32,9 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		if (matcher.matches) {
 			val offset = line.offset + matcher.start(1)
 			val length = matcher.end(1) - matcher.start(1)
-			val url = matcher.group(1).substring(1).documentationURL
-			console.addLink(new Hyperlink(url), offset, length)
+			val url = matcher.group(1).substring(1).documentations.head?.url
+			if (url !== null)
+				console.addLink(new Hyperlink(url), offset, length)
 		}
 	}
 

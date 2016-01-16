@@ -6,6 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.help,
+ org.eclipse.xtend.lib,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.util
 Bundle-Vendor: Thomas Fritsch

@@ -28,13 +28,13 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 			default:
 				null
 		}
-		val helpURL = name?.documentationURL
-		if (helpURL !== null) {
+		val documentations = name?.documentations ?: #[]
+		for (documentation : documentations) {
 			val node = eObject.node
 			val hyperlink = docHyperlinkProvider.get => [
 				hyperlinkRegion = new Region(node.offset, node.length)
-				hyperlinkText = "Open Documentation - " + name
-				url = helpURL
+				hyperlinkText = documentation.label
+				url = documentation.url
 			]
 			acceptor.accept(hyperlink)
 		}

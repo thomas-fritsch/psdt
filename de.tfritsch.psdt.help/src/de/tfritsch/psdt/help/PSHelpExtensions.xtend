@@ -1,6 +1,9 @@
 package de.tfritsch.psdt.help
 
 import java.net.URL
+import java.util.List
+import org.eclipse.help.IHelpResource
+import org.eclipse.xtend.lib.annotations.Data
 
 import static extension java.util.regex.Pattern.*
 import static extension org.eclipse.core.runtime.FileLocator.*
@@ -10,7 +13,7 @@ import static extension org.eclipse.xtext.util.Files.*
 class PSHelpExtensions {
 
 	def static String getDocumentationContent(String name) {
-		val href = name.href
+		val href = name.topics.head?.href
 		val content = href?.helpContent?.readStreamIntoString
 		if (content === null)
 			return null
@@ -36,14 +39,22 @@ class PSHelpExtensions {
 		}
 	}
 
-	def static URL getDocumentationURL(String name) {
-		val href = name.href
+	@Data
+	static class Documentation {
+		String label
+		URL url
+	}
+
+	def static List<Documentation> getDocumentations(String name) {
+		return name.topics.map[new Documentation(label, href.toURL)]
+	}
+
+	def private static URL toURL(String href) {
 		return if(href !== null) new URL("platform:/plugin" + href).toFileURL else null
 	}
 
-	def private static String getHref(String name) {
+	def private static IHelpResource[] getTopics(String name) {
 		val context = ("de.tfritsch.psdt.help." + name).context
-		return context?.relatedTopics?.head?.href
+		return if(context !== null) context.relatedTopics else #[]
 	}
-
 }
