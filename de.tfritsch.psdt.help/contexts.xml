@@ -1,1398 +1,1406 @@
 <contexts>
 	<context id="[">
-		<topic label="documentation" href="html/Reference/8/2/@/bracketleft.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/bracketleft.html" />
 	</context>
 	<context id="]">
-		<topic label="documentation" href="html/Reference/8/2/@/bracketright.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/bracketright.html" />
 	</context>
 	<context id="&lt;&lt;">
-		<topic label="documentation" href="html/Reference/8/2/@/lt-lt.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/lt-lt.html" />
 	</context>
 	<context id="&gt;&gt;">
-		<topic label="documentation" href="html/Reference/8/2/@/gt-gt.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/gt-gt.html" />
 	</context>
 	<context id="=">
-		<topic label="documentation" href="html/Reference/8/2/@/equals.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/equals.html" />
 	</context>
 	<context id="==">
-		<topic label="documentation" href="html/Reference/8/2/@/equals-equals.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/equals-equals.html" />
 	</context>
 	<context id="$error">
-		<topic label="documentation" href="html/Reference/8/2/@/dollar-error.html" />
+		<topic label="Operator" href="html/Reference/8/2/@/dollar-error.html" />
 	</context>
 	<context id="abs">
-		<topic label="documentation" href="html/Reference/8/2/a/abs.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/abs.html" />
 	</context>
 	<context id="add">
-		<topic label="documentation" href="html/Reference/8/2/a/add.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/add.html" />
 	</context>
 	<context id="aload">
-		<topic label="documentation" href="html/Reference/8/2/a/aload.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/aload.html" />
 	</context>
 	<context id="anchorsearch">
-		<topic label="documentation" href="html/Reference/8/2/a/anchorsearch.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/anchorsearch.html" />
 	</context>
 	<context id="and">
-		<topic label="documentation" href="html/Reference/8/2/a/and.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/and.html" />
 	</context>
 	<context id="arc">
-		<topic label="documentation" href="html/Reference/8/2/a/arc.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/arc.html" />
 	</context>
 	<context id="arcn">
-		<topic label="documentation" href="html/Reference/8/2/a/arcn.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/arcn.html" />
 	</context>
 	<context id="arct">
-		<topic label="documentation" href="html/Reference/8/2/a/arct.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/arct.html" />
 	</context>
 	<context id="arcto">
-		<topic label="documentation" href="html/Reference/8/2/a/arcto.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/arcto.html" />
 	</context>
 	<context id="array">
-		<topic label="documentation" href="html/Reference/8/2/a/array.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/array.html" />
 	</context>
 	<context id="ashow">
-		<topic label="documentation" href="html/Reference/8/2/a/ashow.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/ashow.html" />
 	</context>
 	<context id="astore">
-		<topic label="documentation" href="html/Reference/8/2/a/astore.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/astore.html" />
 	</context>
 	<context id="atan">
-		<topic label="documentation" href="html/Reference/8/2/a/atan.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/atan.html" />
 	</context>
 	<context id="awidthshow">
-		<topic label="documentation" href="html/Reference/8/2/a/awidthshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/a/awidthshow.html" />
 	</context>
 	<context id="begin">
-		<topic label="documentation" href="html/Reference/8/2/b/begin.html" />
+		<topic label="Operator" href="html/Reference/8/2/b/begin.html" />
 	</context>
 	<context id="bind">
-		<topic label="documentation" href="html/Reference/8/2/b/bind.html" />
+		<topic label="Operator" href="html/Reference/8/2/b/bind.html" />
 	</context>
 	<context id="bitshift">
-		<topic label="documentation" href="html/Reference/8/2/b/bitshift.html" />
+		<topic label="Operator" href="html/Reference/8/2/b/bitshift.html" />
 	</context>
 	<context id="bytesavailable">
-		<topic label="documentation" href="html/Reference/8/2/b/bytesavailable.html" />
+		<topic label="Operator" href="html/Reference/8/2/b/bytesavailable.html" />
 	</context>
 	<context id="cachestatus">
-		<topic label="documentation" href="html/Reference/8/2/c/cachestatus.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cachestatus.html" />
 	</context>
 	<context id="ceiling">
-		<topic label="documentation" href="html/Reference/8/2/c/ceiling.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/ceiling.html" />
 	</context>
 	<context id="charpath">
-		<topic label="documentation" href="html/Reference/8/2/c/charpath.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/charpath.html" />
 	</context>
 	<context id="clear">
-		<topic label="documentation" href="html/Reference/8/2/c/clear.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/clear.html" />
 	</context>
 	<context id="cleartomark">
-		<topic label="documentation" href="html/Reference/8/2/c/cleartomark.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cleartomark.html" />
 	</context>
 	<context id="cleardictstack">
-		<topic label="documentation" href="html/Reference/8/2/c/cleardictstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cleardictstack.html" />
 	</context>
 	<context id="clip">
-		<topic label="documentation" href="html/Reference/8/2/c/clip.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/clip.html" />
 	</context>
 	<context id="clippath">
-		<topic label="documentation" href="html/Reference/8/2/c/clippath.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/clippath.html" />
 	</context>
 	<context id="closefile">
-		<topic label="documentation" href="html/Reference/8/2/c/closefile.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/closefile.html" />
 	</context>
 	<context id="closepath">
-		<topic label="documentation" href="html/Reference/8/2/c/closepath.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/closepath.html" />
 	</context>
 	<context id="colorimage">
-		<topic label="documentation" href="html/Reference/8/2/c/colorimage.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/colorimage.html" />
 	</context>
 	<context id="concat">
-		<topic label="documentation" href="html/Reference/8/2/c/concat.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/concat.html" />
 	</context>
 	<context id="concatmatrix">
-		<topic label="documentation" href="html/Reference/8/2/c/concatmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/concatmatrix.html" />
 	</context>
 	<context id="condition">
-		<topic label="documentation" href="html/Reference/8/2/c/condition.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/condition.html" />
 	</context>
 	<context id="configurationerror">
-		<topic label="documentation" href="html/Reference/8/2/c/configurationerror.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/configurationerror.html" />
 	</context>
 	<context id="copy">
-		<topic label="documentation" href="html/Reference/8/2/c/copy.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/copy.html" />
 	</context>
 	<context id="copypage">
-		<topic label="documentation" href="html/Reference/8/2/c/copypage.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/copypage.html" />
 	</context>
 	<context id="cos">
-		<topic label="documentation" href="html/Reference/8/2/c/cos.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cos.html" />
 	</context>
 	<context id="count">
-		<topic label="documentation" href="html/Reference/8/2/c/count.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/count.html" />
 	</context>
 	<context id="countdictstack">
-		<topic label="documentation" href="html/Reference/8/2/c/countdictstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/countdictstack.html" />
 	</context>
 	<context id="countexecstack">
-		<topic label="documentation" href="html/Reference/8/2/c/countexecstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/countexecstack.html" />
 	</context>
 	<context id="counttomark">
-		<topic label="documentation" href="html/Reference/8/2/c/counttomark.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/counttomark.html" />
 	</context>
 	<context id="cshow">
-		<topic label="documentation" href="html/Reference/8/2/c/cshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cshow.html" />
 	</context>
 	<context id="currentblackgeneration">
-		<topic label="documentation" href="html/Reference/8/2/c/currentblackgeneration.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentblackgeneration.html" />
 	</context>
 	<context id="currentcacheparams">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcacheparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcacheparams.html" />
 	</context>
 	<context id="currentcmykcolor">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcmykcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcmykcolor.html" />
 	</context>
 	<context id="currentcolor">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcolor.html" />
 	</context>
 	<context id="currentcolorrendering">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcolorrendering.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcolorrendering.html" />
 	</context>
 	<context id="currentcolorscreen">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcolorscreen.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcolorscreen.html" />
 	</context>
 	<context id="currentcolorspace">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcolorspace.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcolorspace.html" />
 	</context>
 	<context id="currentcolortransfer">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcolortransfer.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcolortransfer.html" />
 	</context>
 	<context id="currentcontext">
-		<topic label="documentation" href="html/Reference/8/2/c/currentcontext.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentcontext.html" />
 	</context>
 	<context id="currentdash">
-		<topic label="documentation" href="html/Reference/8/2/c/currentdash.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentdash.html" />
 	</context>
 	<context id="currentdevparams">
-		<topic label="documentation" href="html/Reference/8/2/c/currentdevparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentdevparams.html" />
 	</context>
 	<context id="currentdict">
-		<topic label="documentation" href="html/Reference/8/2/c/currentdict.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentdict.html" />
 	</context>
 	<context id="currentfile">
-		<topic label="documentation" href="html/Reference/8/2/c/currentfile.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentfile.html" />
 	</context>
 	<context id="currentflat">
-		<topic label="documentation" href="html/Reference/8/2/c/currentflat.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentflat.html" />
 	</context>
 	<context id="currentfont">
-		<topic label="documentation" href="html/Reference/8/2/c/currentfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentfont.html" />
 	</context>
 	<context id="currentglobal">
-		<topic label="documentation" href="html/Reference/8/2/c/currentglobal.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentglobal.html" />
 	</context>
 	<context id="currentgray">
-		<topic label="documentation" href="html/Reference/8/2/c/currentgray.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentgray.html" />
 	</context>
 	<context id="currentgstate">
-		<topic label="documentation" href="html/Reference/8/2/c/currentgstate.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentgstate.html" />
 	</context>
 	<context id="currenthalftone">
-		<topic label="documentation" href="html/Reference/8/2/c/currenthalftone.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currenthalftone.html" />
 	</context>
 	<context id="currenthalftonephase">
-		<topic label="documentation" href="html/Reference/8/2/c/currenthalftonephase.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currenthalftonephase.html" />
 	</context>
 	<context id="currenthsbcolor">
-		<topic label="documentation" href="html/Reference/8/2/c/currenthsbcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currenthsbcolor.html" />
 	</context>
 	<context id="currentlinecap">
-		<topic label="documentation" href="html/Reference/8/2/c/currentlinecap.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentlinecap.html" />
 	</context>
 	<context id="currentlinejoin">
-		<topic label="documentation" href="html/Reference/8/2/c/currentlinejoin.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentlinejoin.html" />
 	</context>
 	<context id="currentlinewidth">
-		<topic label="documentation" href="html/Reference/8/2/c/currentlinewidth.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentlinewidth.html" />
 	</context>
 	<context id="currentmatrix">
-		<topic label="documentation" href="html/Reference/8/2/c/currentmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentmatrix.html" />
 	</context>
 	<context id="currentmiterlimit">
-		<topic label="documentation" href="html/Reference/8/2/c/currentmiterlimit.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentmiterlimit.html" />
 	</context>
 	<context id="currentobjectformat">
-		<topic label="documentation" href="html/Reference/8/2/c/currentobjectformat.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentobjectformat.html" />
 	</context>
 	<context id="currentpacking">
-		<topic label="documentation" href="html/Reference/8/2/c/currentpacking.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentpacking.html" />
 	</context>
 	<context id="currentpagedevice">
-		<topic label="documentation" href="html/Reference/8/2/c/currentpagedevice.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentpagedevice.html" />
 	</context>
 	<context id="currentpoint">
-		<topic label="documentation" href="html/Reference/8/2/c/currentpoint.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentpoint.html" />
 	</context>
 	<context id="currentrgbcolor">
-		<topic label="documentation" href="html/Reference/8/2/c/currentrgbcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentrgbcolor.html" />
 	</context>
 	<context id="currentscreen">
-		<topic label="documentation" href="html/Reference/8/2/c/currentscreen.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentscreen.html" />
 	</context>
 	<context id="currentshared">
-		<topic label="documentation" href="html/Reference/8/2/c/currentshared.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentshared.html" />
 	</context>
 	<context id="currentstrokeadjust">
-		<topic label="documentation" href="html/Reference/8/2/c/currentstrokeadjust.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentstrokeadjust.html" />
 	</context>
 	<context id="currentsystemparams">
-		<topic label="documentation" href="html/Reference/8/2/c/currentsystemparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentsystemparams.html" />
 	</context>
 	<context id="currenttransfer">
-		<topic label="documentation" href="html/Reference/8/2/c/currenttransfer.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currenttransfer.html" />
 	</context>
 	<context id="currentundercolorremoval">
-		<topic label="documentation"
+		<topic label="Operator"
 			href="html/Reference/8/2/c/currentundercolorremoval.html" />
 	</context>
 	<context id="currentuserparams">
-		<topic label="documentation" href="html/Reference/8/2/c/currentuserparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/currentuserparams.html" />
 	</context>
 	<context id="curveto">
-		<topic label="documentation" href="html/Reference/8/2/c/curveto.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/curveto.html" />
 	</context>
 	<context id="cvi">
-		<topic label="documentation" href="html/Reference/8/2/c/cvi.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvi.html" />
 	</context>
 	<context id="cvlit">
-		<topic label="documentation" href="html/Reference/8/2/c/cvlit.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvlit.html" />
 	</context>
 	<context id="cvn">
-		<topic label="documentation" href="html/Reference/8/2/c/cvn.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvn.html" />
 	</context>
 	<context id="cvr">
-		<topic label="documentation" href="html/Reference/8/2/c/cvr.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvr.html" />
 	</context>
 	<context id="cvrs">
-		<topic label="documentation" href="html/Reference/8/2/c/cvrs.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvrs.html" />
 	</context>
 	<context id="cvs">
-		<topic label="documentation" href="html/Reference/8/2/c/cvs.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvs.html" />
 	</context>
 	<context id="cvx">
-		<topic label="documentation" href="html/Reference/8/2/c/cvx.html" />
+		<topic label="Operator" href="html/Reference/8/2/c/cvx.html" />
 	</context>
 	<context id="def">
-		<topic label="documentation" href="html/Reference/8/2/d/def.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/def.html" />
 	</context>
 	<context id="defaultmatrix">
-		<topic label="documentation" href="html/Reference/8/2/d/defaultmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/defaultmatrix.html" />
 	</context>
 	<context id="definefont">
-		<topic label="documentation" href="html/Reference/8/2/d/definefont.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/definefont.html" />
 	</context>
 	<context id="defineresource">
-		<topic label="documentation" href="html/Reference/8/2/d/defineresource.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/defineresource.html" />
 	</context>
 	<context id="defineusername">
-		<topic label="documentation" href="html/Reference/8/2/d/defineusername.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/defineusername.html" />
 	</context>
 	<context id="defineuserobject">
-		<topic label="documentation" href="html/Reference/8/2/d/defineuserobject.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/defineuserobject.html" />
 	</context>
 	<context id="deletefile">
-		<topic label="documentation" href="html/Reference/8/2/d/deletefile.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/deletefile.html" />
 	</context>
 	<context id="detach">
-		<topic label="documentation" href="html/Reference/8/2/d/detach.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/detach.html" />
 	</context>
 	<context id="deviceinfo">
-		<topic label="documentation" href="html/Reference/8/2/d/deviceinfo.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/deviceinfo.html" />
 	</context>
 	<context id="dict">
-		<topic label="documentation" href="html/Reference/8/2/d/dict.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dict.html" />
 	</context>
 	<context id="dictfull">
-		<topic label="documentation" href="html/Reference/8/2/d/dictfull.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dictfull.html" />
 	</context>
 	<context id="dictstack">
-		<topic label="documentation" href="html/Reference/8/2/d/dictstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dictstack.html" />
 	</context>
 	<context id="dictstackoverflow">
-		<topic label="documentation" href="html/Reference/8/2/d/dictstackoverflow.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dictstackoverflow.html" />
 	</context>
 	<context id="dictstackunderflow">
-		<topic label="documentation" href="html/Reference/8/2/d/dictstackunderflow.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dictstackunderflow.html" />
 	</context>
 	<context id="div">
-		<topic label="documentation" href="html/Reference/8/2/d/div.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/div.html" />
 	</context>
 	<context id="dtransform">
-		<topic label="documentation" href="html/Reference/8/2/d/dtransform.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dtransform.html" />
 	</context>
 	<context id="dup">
-		<topic label="documentation" href="html/Reference/8/2/d/dup.html" />
+		<topic label="Operator" href="html/Reference/8/2/d/dup.html" />
 	</context>
 	<context id="echo">
-		<topic label="documentation" href="html/Reference/8/2/e/echo.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/echo.html" />
 	</context>
 	<context id="eexec">
-		<topic label="documentation" href="html/Reference/8/2/e/eexec.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/eexec.html" />
 	</context>
 	<context id="end">
-		<topic label="documentation" href="html/Reference/8/2/e/end.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/end.html" />
 	</context>
 	<context id="eoclip">
-		<topic label="documentation" href="html/Reference/8/2/e/eoclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/eoclip.html" />
 	</context>
 	<context id="eofill">
-		<topic label="documentation" href="html/Reference/8/2/e/eofill.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/eofill.html" />
 	</context>
 	<context id="eoviewclip">
-		<topic label="documentation" href="html/Reference/8/2/e/eoviewclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/eoviewclip.html" />
 	</context>
 	<context id="eq">
-		<topic label="documentation" href="html/Reference/8/2/e/eq.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/eq.html" />
 	</context>
 	<context id="erasepage">
-		<topic label="documentation" href="html/Reference/8/2/e/erasepage.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/erasepage.html" />
 	</context>
 	<context id="errordict">
-		<topic label="documentation" href="html/Reference/8/2/e/errordict.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/errordict.html" />
 	</context>
 	<context id="exch">
-		<topic label="documentation" href="html/Reference/8/2/e/exch.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/exch.html" />
 	</context>
 	<context id="exec">
-		<topic label="documentation" href="html/Reference/8/2/e/exec.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/exec.html" />
 	</context>
 	<context id="execform">
-		<topic label="documentation" href="html/Reference/8/2/e/execform.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/execform.html" />
 	</context>
 	<context id="execstack">
-		<topic label="documentation" href="html/Reference/8/2/e/execstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/execstack.html" />
 	</context>
 	<context id="execstackoverflow">
-		<topic label="documentation" href="html/Reference/8/2/e/execstackoverflow.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/execstackoverflow.html" />
 	</context>
 	<context id="execuserobject">
-		<topic label="documentation" href="html/Reference/8/2/e/execuserobject.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/execuserobject.html" />
 	</context>
 	<context id="executeonly">
-		<topic label="documentation" href="html/Reference/8/2/e/executeonly.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/executeonly.html" />
 	</context>
 	<context id="executive">
-		<topic label="documentation" href="html/Reference/8/2/e/executive.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/executive.html" />
 	</context>
 	<context id="exit">
-		<topic label="documentation" href="html/Reference/8/2/e/exit.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/exit.html" />
 	</context>
 	<context id="exitserver">
-		<topic label="documentation" href="html/Reference/8/2/e/exitserver.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/exitserver.html" />
 	</context>
 	<context id="exp">
-		<topic label="documentation" href="html/Reference/8/2/e/exp.html" />
+		<topic label="Operator" href="html/Reference/8/2/e/exp.html" />
 	</context>
 	<context id="false">
-		<topic label="documentation" href="html/Reference/8/2/f/false.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/false.html" />
 	</context>
 	<context id="file">
-		<topic label="documentation" href="html/Reference/8/2/f/file.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/file.html" />
 	</context>
 	<context id="filenameforall">
-		<topic label="documentation" href="html/Reference/8/2/f/filenameforall.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/filenameforall.html" />
 	</context>
 	<context id="fileposition">
-		<topic label="documentation" href="html/Reference/8/2/f/fileposition.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/fileposition.html" />
 	</context>
 	<context id="fill">
-		<topic label="documentation" href="html/Reference/8/2/f/fill.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/fill.html" />
 	</context>
 	<context id="filter">
-		<topic label="documentation" href="html/Reference/8/2/f/filter.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/filter.html" />
 	</context>
 	<context id="findencoding">
-		<topic label="documentation" href="html/Reference/8/2/f/findencoding.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/findencoding.html" />
 	</context>
 	<context id="findfont">
-		<topic label="documentation" href="html/Reference/8/2/f/findfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/findfont.html" />
 	</context>
 	<context id="findresource">
-		<topic label="documentation" href="html/Reference/8/2/f/findresource.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/findresource.html" />
 	</context>
 	<context id="flattenpath">
-		<topic label="documentation" href="html/Reference/8/2/f/flattenpath.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/flattenpath.html" />
 	</context>
 	<context id="floor">
-		<topic label="documentation" href="html/Reference/8/2/f/floor.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/floor.html" />
 	</context>
 	<context id="flush">
-		<topic label="documentation" href="html/Reference/8/2/f/flush.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/flush.html" />
 	</context>
 	<context id="flushfile">
-		<topic label="documentation" href="html/Reference/8/2/f/flushfile.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/flushfile.html" />
 	</context>
 	<context id="FontDirectory">
-		<topic label="documentation" href="html/Reference/8/2/f/FontDirectory.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/FontDirectory.html" />
 	</context>
 	<context id="for">
-		<topic label="documentation" href="html/Reference/8/2/f/for.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/for.html" />
 	</context>
 	<context id="forall">
-		<topic label="documentation" href="html/Reference/8/2/f/forall.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/forall.html" />
 	</context>
 	<context id="fork">
-		<topic label="documentation" href="html/Reference/8/2/f/fork.html" />
+		<topic label="Operator" href="html/Reference/8/2/f/fork.html" />
 	</context>
 	<context id="gcheck">
-		<topic label="documentation" href="html/Reference/8/2/g/gcheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/gcheck.html" />
 	</context>
 	<context id="ge">
-		<topic label="documentation" href="html/Reference/8/2/g/ge.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/ge.html" />
 	</context>
 	<context id="get">
-		<topic label="documentation" href="html/Reference/8/2/g/get.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/get.html" />
 	</context>
 	<context id="getinterval">
-		<topic label="documentation" href="html/Reference/8/2/g/getinterval.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/getinterval.html" />
 	</context>
 	<context id="globaldict">
-		<topic label="documentation" href="html/Reference/8/2/g/globaldict.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/globaldict.html" />
 	</context>
 	<context id="GlobalFontDirectory">
-		<topic label="documentation" href="html/Reference/8/2/g/GlobalFontDirectory.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/GlobalFontDirectory.html" />
 	</context>
 	<context id="glyphshow">
-		<topic label="documentation" href="html/Reference/8/2/g/glyphshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/glyphshow.html" />
 	</context>
 	<context id="grestore">
-		<topic label="documentation" href="html/Reference/8/2/g/grestore.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/grestore.html" />
 	</context>
 	<context id="grestoreall">
-		<topic label="documentation" href="html/Reference/8/2/g/grestoreall.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/grestoreall.html" />
 	</context>
 	<context id="gsave">
-		<topic label="documentation" href="html/Reference/8/2/g/gsave.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/gsave.html" />
 	</context>
 	<context id="gstate">
-		<topic label="documentation" href="html/Reference/8/2/g/gstate.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/gstate.html" />
 	</context>
 	<context id="gt">
-		<topic label="documentation" href="html/Reference/8/2/g/gt.html" />
+		<topic label="Operator" href="html/Reference/8/2/g/gt.html" />
 	</context>
 	<context id="handleerror">
-		<topic label="documentation" href="html/Reference/8/2/h/handleerror.html" />
+		<topic label="Operator" href="html/Reference/8/2/h/handleerror.html" />
 	</context>
 	<context id="identmatrix">
-		<topic label="documentation" href="html/Reference/8/2/i/identmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/identmatrix.html" />
 	</context>
 	<context id="idiv">
-		<topic label="documentation" href="html/Reference/8/2/i/idiv.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/idiv.html" />
 	</context>
 	<context id="idtransform">
-		<topic label="documentation" href="html/Reference/8/2/i/idtransform.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/idtransform.html" />
 	</context>
 	<context id="if">
-		<topic label="documentation" href="html/Reference/8/2/i/if.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/if.html" />
 	</context>
 	<context id="ifelse">
-		<topic label="documentation" href="html/Reference/8/2/i/ifelse.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/ifelse.html" />
 	</context>
 	<context id="image">
-		<topic label="documentation" href="html/Reference/8/2/i/image.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/image.html" />
 	</context>
 	<context id="imagemask">
-		<topic label="documentation" href="html/Reference/8/2/i/imagemask.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/imagemask.html" />
 	</context>
 	<context id="index">
-		<topic label="documentation" href="html/Reference/8/2/i/index.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/index.html" />
 	</context>
 	<context id="ineofill">
-		<topic label="documentation" href="html/Reference/8/2/i/ineofill.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/ineofill.html" />
 	</context>
 	<context id="infill">
-		<topic label="documentation" href="html/Reference/8/2/i/infill.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/infill.html" />
 	</context>
 	<context id="initclip">
-		<topic label="documentation" href="html/Reference/8/2/i/initclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/initclip.html" />
 	</context>
 	<context id="initgraphics">
-		<topic label="documentation" href="html/Reference/8/2/i/initgraphics.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/initgraphics.html" />
 	</context>
 	<context id="initmatrix">
-		<topic label="documentation" href="html/Reference/8/2/i/initmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/initmatrix.html" />
 	</context>
 	<context id="initviewclip">
-		<topic label="documentation" href="html/Reference/8/2/i/initviewclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/initviewclip.html" />
 	</context>
 	<context id="instroke">
-		<topic label="documentation" href="html/Reference/8/2/i/instroke.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/instroke.html" />
 	</context>
 	<context id="internaldict">
-		<topic label="documentation" href="html/Reference/8/2/i/internaldict.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/internaldict.html" />
 	</context>
 	<context id="interrupt">
-		<topic label="documentation" href="html/Reference/8/2/i/interrupt.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/interrupt.html" />
 	</context>
 	<context id="inueofill">
-		<topic label="documentation" href="html/Reference/8/2/i/inueofill.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/inueofill.html" />
 	</context>
 	<context id="inufill">
-		<topic label="documentation" href="html/Reference/8/2/i/inufill.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/inufill.html" />
 	</context>
 	<context id="inustroke">
-		<topic label="documentation" href="html/Reference/8/2/i/inustroke.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/inustroke.html" />
 	</context>
 	<context id="invalidaccess">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidaccess.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidaccess.html" />
 	</context>
 	<context id="invalidcontext">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidcontext.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidcontext.html" />
 	</context>
 	<context id="invalidexit">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidexit.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidexit.html" />
 	</context>
 	<context id="invalidfileaccess">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidfileaccess.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidfileaccess.html" />
 	</context>
 	<context id="invalidfont">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidfont.html" />
 	</context>
 	<context id="invalidid">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidid.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidid.html" />
 	</context>
 	<context id="invalidrestore">
-		<topic label="documentation" href="html/Reference/8/2/i/invalidrestore.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invalidrestore.html" />
 	</context>
 	<context id="invertmatrix">
-		<topic label="documentation" href="html/Reference/8/2/i/invertmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/invertmatrix.html" />
 	</context>
 	<context id="ioerror">
-		<topic label="documentation" href="html/Reference/8/2/i/ioerror.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/ioerror.html" />
 	</context>
 	<context id="ISOLatin1Encoding">
-		<topic label="documentation" href="html/Reference/8/2/i/ISOLatin1Encoding.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/ISOLatin1Encoding.html" />
 	</context>
 	<context id="itransform">
-		<topic label="documentation" href="html/Reference/8/2/i/itransform.html" />
+		<topic label="Operator" href="html/Reference/8/2/i/itransform.html" />
 	</context>
 	<context id="join">
-		<topic label="documentation" href="html/Reference/8/2/j/join.html" />
+		<topic label="Operator" href="html/Reference/8/2/j/join.html" />
 	</context>
 	<context id="kshow">
-		<topic label="documentation" href="html/Reference/8/2/k/kshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/k/kshow.html" />
 	</context>
 	<context id="known">
-		<topic label="documentation" href="html/Reference/8/2/k/known.html" />
+		<topic label="Operator" href="html/Reference/8/2/k/known.html" />
 	</context>
 	<context id="languagelevel">
-		<topic label="documentation" href="html/Reference/8/2/l/languagelevel.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/languagelevel.html" />
 	</context>
 	<context id="le">
-		<topic label="documentation" href="html/Reference/8/2/l/le.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/le.html" />
 	</context>
 	<context id="length">
-		<topic label="documentation" href="html/Reference/8/2/l/length.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/length.html" />
 	</context>
 	<context id="limitcheck">
-		<topic label="documentation" href="html/Reference/8/2/l/limitcheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/limitcheck.html" />
 	</context>
 	<context id="lineto">
-		<topic label="documentation" href="html/Reference/8/2/l/lineto.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/lineto.html" />
 	</context>
 	<context id="ln">
-		<topic label="documentation" href="html/Reference/8/2/l/ln.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/ln.html" />
 	</context>
 	<context id="load">
-		<topic label="documentation" href="html/Reference/8/2/l/load.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/load.html" />
 	</context>
 	<context id="lock">
-		<topic label="documentation" href="html/Reference/8/2/l/lock.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/lock.html" />
 	</context>
 	<context id="log">
-		<topic label="documentation" href="html/Reference/8/2/l/log.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/log.html" />
 	</context>
 	<context id="loop">
-		<topic label="documentation" href="html/Reference/8/2/l/loop.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/loop.html" />
 	</context>
 	<context id="lt">
-		<topic label="documentation" href="html/Reference/8/2/l/lt.html" />
+		<topic label="Operator" href="html/Reference/8/2/l/lt.html" />
 	</context>
 	<context id="makefont">
-		<topic label="documentation" href="html/Reference/8/2/m/makefont.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/makefont.html" />
 	</context>
 	<context id="makepattern">
-		<topic label="documentation" href="html/Reference/8/2/m/makepattern.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/makepattern.html" />
 	</context>
 	<context id="mark">
-		<topic label="documentation" href="html/Reference/8/2/m/mark.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/mark.html" />
 	</context>
 	<context id="matrix">
-		<topic label="documentation" href="html/Reference/8/2/m/matrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/matrix.html" />
 	</context>
 	<context id="maxlength">
-		<topic label="documentation" href="html/Reference/8/2/m/maxlength.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/maxlength.html" />
 	</context>
 	<context id="mod">
-		<topic label="documentation" href="html/Reference/8/2/m/mod.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/mod.html" />
 	</context>
 	<context id="monitor">
-		<topic label="documentation" href="html/Reference/8/2/m/monitor.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/monitor.html" />
 	</context>
 	<context id="moveto">
-		<topic label="documentation" href="html/Reference/8/2/m/moveto.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/moveto.html" />
 	</context>
 	<context id="mul">
-		<topic label="documentation" href="html/Reference/8/2/m/mul.html" />
+		<topic label="Operator" href="html/Reference/8/2/m/mul.html" />
 	</context>
 	<context id="ne">
-		<topic label="documentation" href="html/Reference/8/2/n/ne.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/ne.html" />
 	</context>
 	<context id="neg">
-		<topic label="documentation" href="html/Reference/8/2/n/neg.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/neg.html" />
 	</context>
 	<context id="newpath">
-		<topic label="documentation" href="html/Reference/8/2/n/newpath.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/newpath.html" />
 	</context>
 	<context id="noaccess">
-		<topic label="documentation" href="html/Reference/8/2/n/noaccess.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/noaccess.html" />
 	</context>
 	<context id="nocurrentpoint">
-		<topic label="documentation" href="html/Reference/8/2/n/nocurrentpoint.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/nocurrentpoint.html" />
 	</context>
 	<context id="not">
-		<topic label="documentation" href="html/Reference/8/2/n/not.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/not.html" />
 	</context>
 	<context id="notify">
-		<topic label="documentation" href="html/Reference/8/2/n/notify.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/notify.html" />
 	</context>
 	<context id="null">
-		<topic label="documentation" href="html/Reference/8/2/n/null.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/null.html" />
 	</context>
 	<context id="nulldevice">
-		<topic label="documentation" href="html/Reference/8/2/n/nulldevice.html" />
+		<topic label="Operator" href="html/Reference/8/2/n/nulldevice.html" />
 	</context>
 	<context id="or">
-		<topic label="documentation" href="html/Reference/8/2/o/or.html" />
+		<topic label="Operator" href="html/Reference/8/2/o/or.html" />
 	</context>
 	<context id="packedarray">
-		<topic label="documentation" href="html/Reference/8/2/p/packedarray.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/packedarray.html" />
 	</context>
 	<context id="pathbbox">
-		<topic label="documentation" href="html/Reference/8/2/p/pathbbox.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/pathbbox.html" />
 	</context>
 	<context id="pathforall">
-		<topic label="documentation" href="html/Reference/8/2/p/pathforall.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/pathforall.html" />
 	</context>
 	<context id="pop">
-		<topic label="documentation" href="html/Reference/8/2/p/pop.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/pop.html" />
 	</context>
 	<context id="print">
-		<topic label="documentation" href="html/Reference/8/2/p/print.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/print.html" />
 	</context>
 	<context id="printobject">
-		<topic label="documentation" href="html/Reference/8/2/p/printobject.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/printobject.html" />
 	</context>
 	<context id="product">
-		<topic label="documentation" href="html/Reference/8/2/p/product.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/product.html" />
 	</context>
 	<context id="prompt">
-		<topic label="documentation" href="html/Reference/8/2/p/prompt.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/prompt.html" />
 	</context>
 	<context id="pstack">
-		<topic label="documentation" href="html/Reference/8/2/p/pstack.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/pstack.html" />
 	</context>
 	<context id="put">
-		<topic label="documentation" href="html/Reference/8/2/p/put.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/put.html" />
 	</context>
 	<context id="putinterval">
-		<topic label="documentation" href="html/Reference/8/2/p/putinterval.html" />
+		<topic label="Operator" href="html/Reference/8/2/p/putinterval.html" />
 	</context>
 	<context id="quit">
-		<topic label="documentation" href="html/Reference/8/2/q/quit.html" />
+		<topic label="Operator" href="html/Reference/8/2/q/quit.html" />
 	</context>
 	<context id="rand">
-		<topic label="documentation" href="html/Reference/8/2/r/rand.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rand.html" />
 	</context>
 	<context id="rangecheck">
-		<topic label="documentation" href="html/Reference/8/2/r/rangecheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rangecheck.html" />
 	</context>
 	<context id="rcheck">
-		<topic label="documentation" href="html/Reference/8/2/r/rcheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rcheck.html" />
 	</context>
 	<context id="rcurveto">
-		<topic label="documentation" href="html/Reference/8/2/r/rcurveto.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rcurveto.html" />
 	</context>
 	<context id="read">
-		<topic label="documentation" href="html/Reference/8/2/r/read.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/read.html" />
 	</context>
 	<context id="readhexstring">
-		<topic label="documentation" href="html/Reference/8/2/r/readhexstring.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/readhexstring.html" />
 	</context>
 	<context id="readline">
-		<topic label="documentation" href="html/Reference/8/2/r/readline.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/readline.html" />
 	</context>
 	<context id="readonly">
-		<topic label="documentation" href="html/Reference/8/2/r/readonly.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/readonly.html" />
 	</context>
 	<context id="readstring">
-		<topic label="documentation" href="html/Reference/8/2/r/readstring.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/readstring.html" />
 	</context>
 	<context id="realtime">
-		<topic label="documentation" href="html/Reference/8/2/r/realtime.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/realtime.html" />
 	</context>
 	<context id="rectclip">
-		<topic label="documentation" href="html/Reference/8/2/r/rectclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rectclip.html" />
 	</context>
 	<context id="rectfill">
-		<topic label="documentation" href="html/Reference/8/2/r/rectfill.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rectfill.html" />
 	</context>
 	<context id="rectstroke">
-		<topic label="documentation" href="html/Reference/8/2/r/rectstroke.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rectstroke.html" />
 	</context>
 	<context id="rectviewclip">
-		<topic label="documentation" href="html/Reference/8/2/r/rectviewclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rectviewclip.html" />
 	</context>
 	<context id="renamefile">
-		<topic label="documentation" href="html/Reference/8/2/r/renamefile.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/renamefile.html" />
 	</context>
 	<context id="repeat">
-		<topic label="documentation" href="html/Reference/8/2/r/repeat.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/repeat.html" />
 	</context>
 	<context id="resetfile">
-		<topic label="documentation" href="html/Reference/8/2/r/resetfile.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/resetfile.html" />
 	</context>
 	<context id="resourceforall">
-		<topic label="documentation" href="html/Reference/8/2/r/resourceforall.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/resourceforall.html" />
 	</context>
 	<context id="resourcestatus">
-		<topic label="documentation" href="html/Reference/8/2/r/resourcestatus.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/resourcestatus.html" />
 	</context>
 	<context id="restore">
-		<topic label="documentation" href="html/Reference/8/2/r/restore.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/restore.html" />
 	</context>
 	<context id="reversepath">
-		<topic label="documentation" href="html/Reference/8/2/r/reversepath.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/reversepath.html" />
 	</context>
 	<context id="revision">
-		<topic label="documentation" href="html/Reference/8/2/r/revision.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/revision.html" />
 	</context>
 	<context id="rlineto">
-		<topic label="documentation" href="html/Reference/8/2/r/rlineto.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rlineto.html" />
 	</context>
 	<context id="rmoveto">
-		<topic label="documentation" href="html/Reference/8/2/r/rmoveto.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rmoveto.html" />
 	</context>
 	<context id="roll">
-		<topic label="documentation" href="html/Reference/8/2/r/roll.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/roll.html" />
 	</context>
 	<context id="rootfont">
-		<topic label="documentation" href="html/Reference/8/2/r/rootfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rootfont.html" />
 	</context>
 	<context id="rotate">
-		<topic label="documentation" href="html/Reference/8/2/r/rotate.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rotate.html" />
 	</context>
 	<context id="round">
-		<topic label="documentation" href="html/Reference/8/2/r/round.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/round.html" />
 	</context>
 	<context id="rrand">
-		<topic label="documentation" href="html/Reference/8/2/r/rrand.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/rrand.html" />
 	</context>
 	<context id="run">
-		<topic label="documentation" href="html/Reference/8/2/r/run.html" />
+		<topic label="Operator" href="html/Reference/8/2/r/run.html" />
 	</context>
 	<context id="save">
-		<topic label="documentation" href="html/Reference/8/2/s/save.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/save.html" />
 	</context>
 	<context id="scale">
-		<topic label="documentation" href="html/Reference/8/2/s/scale.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/scale.html" />
 	</context>
 	<context id="scalefont">
-		<topic label="documentation" href="html/Reference/8/2/s/scalefont.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/scalefont.html" />
 	</context>
 	<context id="scheck">
-		<topic label="documentation" href="html/Reference/8/2/s/scheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/scheck.html" />
 	</context>
 	<context id="search">
-		<topic label="documentation" href="html/Reference/8/2/s/search.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/search.html" />
 	</context>
 	<context id="selectfont">
-		<topic label="documentation" href="html/Reference/8/2/s/selectfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/selectfont.html" />
 	</context>
 	<context id="serialnumber">
-		<topic label="documentation" href="html/Reference/8/2/s/serialnumber.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/serialnumber.html" />
 	</context>
 	<context id="setbbox">
-		<topic label="documentation" href="html/Reference/8/2/s/setbbox.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setbbox.html" />
 	</context>
 	<context id="setblackgeneration">
-		<topic label="documentation" href="html/Reference/8/2/s/setblackgeneration.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setblackgeneration.html" />
 	</context>
 	<context id="setcachedevice">
-		<topic label="documentation" href="html/Reference/8/2/s/setcachedevice.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcachedevice.html" />
 	</context>
 	<context id="setcachedevice2">
-		<topic label="documentation" href="html/Reference/8/2/s/setcachedevice2.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcachedevice2.html" />
 	</context>
 	<context id="setcachelimit">
-		<topic label="documentation" href="html/Reference/8/2/s/setcachelimit.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcachelimit.html" />
 	</context>
 	<context id="setcacheparams">
-		<topic label="documentation" href="html/Reference/8/2/s/setcacheparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcacheparams.html" />
 	</context>
 	<context id="setcharwidth">
-		<topic label="documentation" href="html/Reference/8/2/s/setcharwidth.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcharwidth.html" />
 	</context>
 	<context id="setcmykcolor">
-		<topic label="documentation" href="html/Reference/8/2/s/setcmykcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcmykcolor.html" />
 	</context>
 	<context id="setcolor">
-		<topic label="documentation" href="html/Reference/8/2/s/setcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcolor.html" />
 	</context>
 	<context id="setcolorrendering">
-		<topic label="documentation" href="html/Reference/8/2/s/setcolorrendering.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcolorrendering.html" />
 	</context>
 	<context id="setcolorscreen">
-		<topic label="documentation" href="html/Reference/8/2/s/setcolorscreen.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcolorscreen.html" />
 	</context>
 	<context id="setcolorspace">
-		<topic label="documentation" href="html/Reference/8/2/s/setcolorspace.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcolorspace.html" />
 	</context>
 	<context id="setcolortransfer">
-		<topic label="documentation" href="html/Reference/8/2/s/setcolortransfer.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setcolortransfer.html" />
 	</context>
 	<context id="setdash">
-		<topic label="documentation" href="html/Reference/8/2/s/setdash.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setdash.html" />
 	</context>
 	<context id="setdevparams">
-		<topic label="documentation" href="html/Reference/8/2/s/setdevparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setdevparams.html" />
 	</context>
 	<context id="setfileposition">
-		<topic label="documentation" href="html/Reference/8/2/s/setfileposition.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setfileposition.html" />
 	</context>
 	<context id="setflat">
-		<topic label="documentation" href="html/Reference/8/2/s/setflat.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setflat.html" />
 	</context>
 	<context id="setfont">
-		<topic label="documentation" href="html/Reference/8/2/s/setfont.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setfont.html" />
 	</context>
 	<context id="setglobal">
-		<topic label="documentation" href="html/Reference/8/2/s/setglobal.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setglobal.html" />
 	</context>
 	<context id="setgray">
-		<topic label="documentation" href="html/Reference/8/2/s/setgray.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setgray.html" />
 	</context>
 	<context id="setgstate">
-		<topic label="documentation" href="html/Reference/8/2/s/setgstate.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setgstate.html" />
 	</context>
 	<context id="sethalftone">
-		<topic label="documentation" href="html/Reference/8/2/s/sethalftone.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sethalftone.html" />
 	</context>
 	<context id="sethalftonephase">
-		<topic label="documentation" href="html/Reference/8/2/s/sethalftonephase.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sethalftonephase.html" />
 	</context>
 	<context id="sethsbcolor">
-		<topic label="documentation" href="html/Reference/8/2/s/sethsbcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sethsbcolor.html" />
 	</context>
 	<context id="setlinecap">
-		<topic label="documentation" href="html/Reference/8/2/s/setlinecap.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setlinecap.html" />
 	</context>
 	<context id="setlinejoin">
-		<topic label="documentation" href="html/Reference/8/2/s/setlinejoin.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setlinejoin.html" />
 	</context>
 	<context id="setlinewidth">
-		<topic label="documentation" href="html/Reference/8/2/s/setlinewidth.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setlinewidth.html" />
 	</context>
 	<context id="setmatrix">
-		<topic label="documentation" href="html/Reference/8/2/s/setmatrix.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setmatrix.html" />
 	</context>
 	<context id="setmiterlimit">
-		<topic label="documentation" href="html/Reference/8/2/s/setmiterlimit.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setmiterlimit.html" />
 	</context>
 	<context id="setobjectformat">
-		<topic label="documentation" href="html/Reference/8/2/s/setobjectformat.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setobjectformat.html" />
 	</context>
 	<context id="setoverprint">
-		<topic label="documentation" href="html/Reference/8/2/s/setoverprint.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setoverprint.html" />
 	</context>
 	<context id="setpacking">
-		<topic label="documentation" href="html/Reference/8/2/s/setpacking.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setpacking.html" />
 	</context>
 	<context id="setpagedevice">
-		<topic label="documentation" href="html/Reference/8/2/s/setpagedevice.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setpagedevice.html" />
 	</context>
 	<context id="setpattern">
-		<topic label="documentation" href="html/Reference/8/2/s/setpattern.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setpattern.html" />
 	</context>
 	<context id="setrgbcolor">
-		<topic label="documentation" href="html/Reference/8/2/s/setrgbcolor.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setrgbcolor.html" />
 	</context>
 	<context id="setscreen">
-		<topic label="documentation" href="html/Reference/8/2/s/setscreen.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setscreen.html" />
 	</context>
 	<context id="setshared">
-		<topic label="documentation" href="html/Reference/8/2/s/setshared.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setshared.html" />
 	</context>
 	<context id="setstrokeadjust">
-		<topic label="documentation" href="html/Reference/8/2/s/setstrokeadjust.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setstrokeadjust.html" />
 	</context>
 	<context id="setsystemparams">
-		<topic label="documentation" href="html/Reference/8/2/s/setsystemparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setsystemparams.html" />
 	</context>
 	<context id="settransfer">
-		<topic label="documentation" href="html/Reference/8/2/s/settransfer.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/settransfer.html" />
 	</context>
 	<context id="setucacheparams">
-		<topic label="documentation" href="html/Reference/8/2/s/setucacheparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setucacheparams.html" />
 	</context>
 	<context id="setundercolorremoval">
-		<topic label="documentation" href="html/Reference/8/2/s/setundercolorremoval.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setundercolorremoval.html" />
 	</context>
 	<context id="setuserparams">
-		<topic label="documentation" href="html/Reference/8/2/s/setuserparams.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setuserparams.html" />
 	</context>
 	<context id="setvmthreshold">
-		<topic label="documentation" href="html/Reference/8/2/s/setvmthreshold.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/setvmthreshold.html" />
 	</context>
 	<context id="shareddict">
-		<topic label="documentation" href="html/Reference/8/2/s/shareddict.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/shareddict.html" />
 	</context>
 	<context id="SharedFontDirectory">
-		<topic label="documentation" href="html/Reference/8/2/s/SharedFontDirectory.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/SharedFontDirectory.html" />
 	</context>
 	<context id="show">
-		<topic label="documentation" href="html/Reference/8/2/s/show.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/show.html" />
 	</context>
 	<context id="showpage">
-		<topic label="documentation" href="html/Reference/8/2/s/showpage.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/showpage.html" />
 	</context>
 	<context id="sin">
-		<topic label="documentation" href="html/Reference/8/2/s/sin.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sin.html" />
 	</context>
 	<context id="sqrt">
-		<topic label="documentation" href="html/Reference/8/2/s/sqrt.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sqrt.html" />
 	</context>
 	<context id="srand">
-		<topic label="documentation" href="html/Reference/8/2/s/srand.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/srand.html" />
 	</context>
 	<context id="stack">
-		<topic label="documentation" href="html/Reference/8/2/s/stack.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stack.html" />
 	</context>
 	<context id="stackoverflow">
-		<topic label="documentation" href="html/Reference/8/2/s/stackoverflow.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stackoverflow.html" />
 	</context>
 	<context id="stackunderflow">
-		<topic label="documentation" href="html/Reference/8/2/s/stackunderflow.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stackunderflow.html" />
 	</context>
 	<context id="StandardEncoding">
-		<topic label="documentation" href="html/Reference/8/2/s/StandardEncoding.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/StandardEncoding.html" />
 	</context>
 	<context id="start">
-		<topic label="documentation" href="html/Reference/8/2/s/start.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/start.html" />
 	</context>
 	<context id="startjob">
-		<topic label="documentation" href="html/Reference/8/2/s/startjob.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/startjob.html" />
 	</context>
 	<context id="status">
-		<topic label="documentation" href="html/Reference/8/2/s/status.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/status.html" />
 	</context>
 	<context id="statusdict">
-		<topic label="documentation" href="html/Reference/8/2/s/statusdict.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/statusdict.html" />
 	</context>
 	<context id="stop">
-		<topic label="documentation" href="html/Reference/8/2/s/stop.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stop.html" />
 	</context>
 	<context id="stopped">
-		<topic label="documentation" href="html/Reference/8/2/s/stopped.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stopped.html" />
 	</context>
 	<context id="store">
-		<topic label="documentation" href="html/Reference/8/2/s/store.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/store.html" />
 	</context>
 	<context id="string">
-		<topic label="documentation" href="html/Reference/8/2/s/string.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/string.html" />
 	</context>
 	<context id="stringwidth">
-		<topic label="documentation" href="html/Reference/8/2/s/stringwidth.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stringwidth.html" />
 	</context>
 	<context id="stroke">
-		<topic label="documentation" href="html/Reference/8/2/s/stroke.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/stroke.html" />
 	</context>
 	<context id="strokepath">
-		<topic label="documentation" href="html/Reference/8/2/s/strokepath.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/strokepath.html" />
 	</context>
 	<context id="sub">
-		<topic label="documentation" href="html/Reference/8/2/s/sub.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/sub.html" />
 	</context>
 	<context id="syntaxerror">
-		<topic label="documentation" href="html/Reference/8/2/s/syntaxerror.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/syntaxerror.html" />
 	</context>
 	<context id="systemdict">
-		<topic label="documentation" href="html/Reference/8/2/s/systemdict.html" />
+		<topic label="Operator" href="html/Reference/8/2/s/systemdict.html" />
 	</context>
 	<context id="timeout">
-		<topic label="documentation" href="html/Reference/8/2/t/timeout.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/timeout.html" />
 	</context>
 	<context id="token">
-		<topic label="documentation" href="html/Reference/8/2/t/token.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/token.html" />
 	</context>
 	<context id="transform">
-		<topic label="documentation" href="html/Reference/8/2/t/transform.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/transform.html" />
 	</context>
 	<context id="translate">
-		<topic label="documentation" href="html/Reference/8/2/t/translate.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/translate.html" />
 	</context>
 	<context id="true">
-		<topic label="documentation" href="html/Reference/8/2/t/true.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/true.html" />
 	</context>
 	<context id="truncate">
-		<topic label="documentation" href="html/Reference/8/2/t/truncate.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/truncate.html" />
 	</context>
 	<context id="type">
-		<topic label="documentation" href="html/Reference/8/2/t/type.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/type.html" />
 	</context>
 	<context id="typecheck">
-		<topic label="documentation" href="html/Reference/8/2/t/typecheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/typecheck.html" />
 	</context>
 	<context id="token">
-		<topic label="documentation" href="html/Reference/8/2/t/token.html" />
+		<topic label="Operator" href="html/Reference/8/2/t/token.html" />
 	</context>
 	<context id="uappend">
-		<topic label="documentation" href="html/Reference/8/2/u/uappend.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/uappend.html" />
 	</context>
 	<context id="ucache">
-		<topic label="documentation" href="html/Reference/8/2/u/ucache.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ucache.html" />
 	</context>
 	<context id="ucachestatus">
-		<topic label="documentation" href="html/Reference/8/2/u/ucachestatus.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ucachestatus.html" />
 	</context>
 	<context id="ueofill">
-		<topic label="documentation" href="html/Reference/8/2/u/ueofill.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ueofill.html" />
 	</context>
 	<context id="ufill">
-		<topic label="documentation" href="html/Reference/8/2/u/ufill.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ufill.html" />
 	</context>
 	<context id="undef">
-		<topic label="documentation" href="html/Reference/8/2/u/undef.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undef.html" />
 	</context>
 	<context id="undefined">
-		<topic label="documentation" href="html/Reference/8/2/u/undefined.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefined.html" />
 	</context>
 	<context id="undefinedfilename">
-		<topic label="documentation" href="html/Reference/8/2/u/undefinedfilename.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefinedfilename.html" />
 	</context>
 	<context id="undefinedresource">
-		<topic label="documentation" href="html/Reference/8/2/u/undefinedresource.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefinedresource.html" />
 	</context>
 	<context id="undefinedresult">
-		<topic label="documentation" href="html/Reference/8/2/u/undefinedresult.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefinedresult.html" />
 	</context>
 	<context id="undefinefont">
-		<topic label="documentation" href="html/Reference/8/2/u/undefinefont.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefinefont.html" />
 	</context>
 	<context id="undefineresource">
-		<topic label="documentation" href="html/Reference/8/2/u/undefineresource.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefineresource.html" />
 	</context>
 	<context id="undefineuserobject">
-		<topic label="documentation" href="html/Reference/8/2/u/undefineuserobject.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/undefineuserobject.html" />
 	</context>
 	<context id="unmatchedmark">
-		<topic label="documentation" href="html/Reference/8/2/u/unmatchedmark.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/unmatchedmark.html" />
 	</context>
 	<context id="unregistered">
-		<topic label="documentation" href="html/Reference/8/2/u/unregistered.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/unregistered.html" />
 	</context>
 	<context id="upath">
-		<topic label="documentation" href="html/Reference/8/2/u/upath.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/upath.html" />
 	</context>
 	<context id="userdict">
-		<topic label="documentation" href="html/Reference/8/2/u/userdict.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/userdict.html" />
 	</context>
 	<context id="UserObjects">
-		<topic label="documentation" href="html/Reference/8/2/u/UserObjects.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/UserObjects.html" />
 	</context>
 	<context id="usertime">
-		<topic label="documentation" href="html/Reference/8/2/u/usertime.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/usertime.html" />
 	</context>
 	<context id="ustroke">
-		<topic label="documentation" href="html/Reference/8/2/u/ustroke.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ustroke.html" />
 	</context>
 	<context id="ustrokepath">
-		<topic label="documentation" href="html/Reference/8/2/u/ustrokepath.html" />
+		<topic label="Operator" href="html/Reference/8/2/u/ustrokepath.html" />
 	</context>
 	<context id="version">
-		<topic label="documentation" href="html/Reference/8/2/v/version.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/version.html" />
 	</context>
 	<context id="viewclip">
-		<topic label="documentation" href="html/Reference/8/2/v/viewclip.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/viewclip.html" />
 	</context>
 	<context id="viewclippath">
-		<topic label="documentation" href="html/Reference/8/2/v/viewclippath.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/viewclippath.html" />
 	</context>
 	<context id="VMerror">
-		<topic label="documentation" href="html/Reference/8/2/v/VMerror.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/VMerror.html" />
 	</context>
 	<context id="vmreclaim">
-		<topic label="documentation" href="html/Reference/8/2/v/vmreclaim.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/vmreclaim.html" />
 	</context>
 	<context id="vmstatus">
-		<topic label="documentation" href="html/Reference/8/2/v/vmstatus.html" />
+		<topic label="Operator" href="html/Reference/8/2/v/vmstatus.html" />
 	</context>
 	<context id="wait">
-		<topic label="documentation" href="html/Reference/8/2/w/wait.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/wait.html" />
 	</context>
 	<context id="wcheck">
-		<topic label="documentation" href="html/Reference/8/2/w/wcheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/wcheck.html" />
 	</context>
 	<context id="where">
-		<topic label="documentation" href="html/Reference/8/2/w/where.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/where.html" />
 	</context>
 	<context id="widthshow">
-		<topic label="documentation" href="html/Reference/8/2/w/widthshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/widthshow.html" />
 	</context>
 	<context id="write">
-		<topic label="documentation" href="html/Reference/8/2/w/write.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/write.html" />
 	</context>
 	<context id="writehexstring">
-		<topic label="documentation" href="html/Reference/8/2/w/writehexstring.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/writehexstring.html" />
 	</context>
 	<context id="writeobject">
-		<topic label="documentation" href="html/Reference/8/2/w/writeobject.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/writeobject.html" />
 	</context>
 	<context id="writestring">
-		<topic label="documentation" href="html/Reference/8/2/w/writestring.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/writestring.html" />
 	</context>
 	<context id="wtranslation">
-		<topic label="documentation" href="html/Reference/8/2/w/wtranslation.html" />
+		<topic label="Operator" href="html/Reference/8/2/w/wtranslation.html" />
 	</context>
 	<context id="xcheck">
-		<topic label="documentation" href="html/Reference/8/2/x/xcheck.html" />
+		<topic label="Operator" href="html/Reference/8/2/x/xcheck.html" />
 	</context>
 	<context id="xor">
-		<topic label="documentation" href="html/Reference/8/2/x/xor.html" />
+		<topic label="Operator" href="html/Reference/8/2/x/xor.html" />
 	</context>
 	<context id="xshow">
-		<topic label="documentation" href="html/Reference/8/2/x/xshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/x/xshow.html" />
 	</context>
 	<context id="xyshow">
-		<topic label="documentation" href="html/Reference/8/2/x/xyshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/x/xyshow.html" />
 	</context>
 	<context id="yield">
-		<topic label="documentation" href="html/Reference/8/2/y/yield.html" />
+		<topic label="Operator" href="html/Reference/8/2/y/yield.html" />
 	</context>
 	<context id="yshow">
-		<topic label="documentation" href="html/Reference/8/2/y/yshow.html" />
+		<topic label="Operator" href="html/Reference/8/2/y/yshow.html" />
 	</context>
 	<context id="/ASCIIHexEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ASCIIHexEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexEncode" />
 	</context>
 	<context id="/ASCIIHexDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ASCIIHexDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexDecode" />
 	</context>
 	<context id="/ASCII85Encode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ASCII85Encode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Encode" />
 	</context>
 	<context id="/ASCII85Decode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ASCII85Decode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Decode" />
 	</context>
 	<context id="/LZWEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#LZWEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWEncode" />
 	</context>
 	<context id="/LZWDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#LZWDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWDecode" />
 	</context>
 	<context id="/FlateEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#FlateEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateEncode" />
 	</context>
 	<context id="/FlateDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#FlateDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateDecode" />
 	</context>
 	<context id="/RunLengthEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#RunLengthEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthEncode" />
 	</context>
 	<context id="/RunLengthDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#RunLengthDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthDecode" />
 	</context>
 	<context id="/CCITTFaxEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#CCITTFaxEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#CCITTFaxEncode" />
 	</context>
 	<context id="/CCITTFaxDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ACCITTFaxDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ACCITTFaxDecode" />
 	</context>
 	<context id="/DCTEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#DCTEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTEncode" />
 	</context>
 	<context id="/DCTDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#DCTDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTDecode" />
 	</context>
 	<context id="/ReusableStreamDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
 	</context>
 	<context id="/NullEncode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#NullEncode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#NullEncode" />
 	</context>
 	<context id="/SubFileDecode">
-		<topic label="documentation" href="html/Reference/3/8/4.html#SubFileDecode" />
+		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
 	</context>
 	<context id="/Category">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Category" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
 	</context>
 	<context id="/CIDFont">
-		<topic label="documentation" href="html/Reference/3/9/2.html#CIDFont" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#CIDFont" />
 	</context>
 	<context id="/CMap">
-		<topic label="documentation" href="html/Reference/3/9/2.html#CMap" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#CMap" />
 	</context>
 	<context id="/ColorRendering">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ColorRendering" />
+		<topic label="Regular resource category" href="html/Reference/3/9/2.html#ColorRendering" />
 	</context>
 	<context id="/ColorRenderingType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ColorRenderingType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorRenderingType" />
 	</context>
 	<context id="/ColorSpace">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ColorSpace" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorSpace" />
 	</context>
 	<context id="/ColorSpaceFamily">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ColorSpaceFamily" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorSpaceFamily" />
 	</context>
 	<context id="/ControlLanguage">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ControlLanguage" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ControlLanguage" />
 	</context>
 	<context id="/Emulator">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Emulator" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Emulator" />
 	</context>
 	<context id="/Encoding">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Encoding" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Encoding" />
 	</context>
 	<context id="/Filter">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Filter" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Filter" />
 	</context>
 	<context id="/FMapType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#FMapType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FMapType" />
 	</context>
 	<context id="/Font">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Font" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Font" />
 	</context>
 	<context id="/FontSet">
-		<topic label="documentation" href="html/Reference/3/9/2.html#FontSet" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FontSet" />
 	</context>
 	<context id="/Font">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Font" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Font" />
 	</context>
 	<context id="/FontType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#FontType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FontType" />
 	</context>
 	<context id="/Form">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Form" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Form" />
 	</context>
 	<context id="/FormType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#FormType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FormType" />
 	</context>
 	<context id="/FunctionType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#FunctionType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FunctionType" />
 	</context>
 	<context id="/Generic">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Generic" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Generic" />
 	</context>
 	<context id="/Halftone">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Halftone" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Halftone" />
 	</context>
 	<context id="/HalftoneType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#HalftoneType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#HalftoneType" />
 	</context>
 	<context id="/HWOptions">
-		<topic label="documentation" href="html/Reference/3/9/2.html#HWOptions" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#HWOptions" />
 	</context>
 	<context id="/ImageType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ImageType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ImageType" />
 	</context>
 	<context id="/InkParams">
-		<topic label="documentation" href="html/Reference/3/9/2.html#InkParams" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#InkParams" />
 	</context>
 	<context id="/IODevice">
-		<topic label="documentation" href="html/Reference/3/9/2.html#IODevice" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#IODevice" />
 	</context>
 	<context id="/Localization">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Localization" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Localization" />
 	</context>
 	<context id="/OutputDevice">
-		<topic label="documentation" href="html/Reference/3/9/2.html#OutputDevice" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#OutputDevice" />
 	</context>
 	<context id="/Pattern">
-		<topic label="documentation" href="html/Reference/3/9/2.html#Pattern" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Pattern" />
 	</context>
 	<context id="/PatternType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#PatternType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#PatternType" />
 	</context>
 	<context id="/PDL">
-		<topic label="documentation" href="html/Reference/3/9/2.html#PDL" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#PDL" />
 	</context>
 	<context id="/ShadingType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ShadingType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ShadingType" />
 	</context>
 	<context id="/TrapParams">
-		<topic label="documentation" href="html/Reference/3/9/2.html#TrapParams" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#TrapParams" />
 	</context>
 	<context id="/TrappingType">
-		<topic label="documentation" href="html/Reference/3/9/2.html#TrappingType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#TrappingType" />
 	</context>
 	<context id="/ProcSet">
-		<topic label="documentation" href="html/Reference/3/9/2.html#ProcSet" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ProcSet" />
 	</context>
 	<context id="/Category">
-		<topic label="documentation" href="html/Reference/3/9/3.html#Category" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#Category" />
 	</context>
 	<context id="/DefineResource">
-		<topic label="documentation" href="html/Reference/3/9/3.html#DefineResource" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#DefineResource" />
 	</context>
 	<context id="/FindResource">
-		<topic label="documentation" href="html/Reference/3/9/3.html#FindResource" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#FindResource" />
 	</context>
 	<context id="/InstanceType">
-		<topic label="documentation" href="html/Reference/3/9/3.html#InstanceType" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#InstanceType" />
 	</context>
 	<context id="/ResourceFileName">
-		<topic label="documentation" href="html/Reference/3/9/3.html#ResourceFileName" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#ResourceFileName" />
 	</context>
 	<context id="/ResourceForAll">
-		<topic label="documentation" href="html/Reference/3/9/3.html#ResourceForAll" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#ResourceForAll" />
 	</context>
 	<context id="/ResourceStatus">
-		<topic label="documentation" href="html/Reference/3/9/3.html#ResourceStatus" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#ResourceStatus" />
 	</context>
 	<context id="/UndefineResource">
-		<topic label="documentation" href="html/Reference/3/9/3.html#UndefineResource" />
+		<topic label="Entry in a category implementation dictionary"
+			href="html/Reference/3/9/3.html#UndefineResource" />
 	</context>
 	<context id="/BuildChar">
-		<topic label="documentation" href="html/Reference/5/7.html#BuildChar" />
+		<topic label="Entry in a Type 3 font dictionary" href="html/Reference/5/7.html#BuildChar" />
 	</context>
 	<context id="/BuildGlyph">
-		<topic label="documentation" href="html/Reference/5/7.html#BuildGlyph" />
+		<topic label="Entry in a a Type 3 font dictionary" href="html/Reference/5/7.html#BuildGlyph" />
 	</context>
 	<context id="/Encoding">
-		<topic label="documentation" href="html/Reference/5/2/1.html#Encoding" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#Encoding" />
 	</context>
 	<context id="/FID">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FID" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FID" />
 	</context>
 	<context id="/FontBBox">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FontBBox" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontBBox" />
 	</context>
 	<context id="/FontInfo">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FontInfo" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontInfo" />
 	</context>
 	<context id="/FontMatrix">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FontMatrix" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontMatrix" />
 	</context>
 	<context id="/FontName">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FontName" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontName" />
 	</context>
 	<context id="/FontType">
-		<topic label="documentation" href="html/Reference/5/2/1.html#FontType" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontType" />
 	</context>
 	<context id="/LanguageLevel">
-		<topic label="documentation" href="html/Reference/5/2/1.html#LanguageLevel" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#LanguageLevel" />
 	</context>
 	<context id="/WMode">
-		<topic label="documentation" href="html/Reference/5/2/1.html#WMode" />
+		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#WMode" />
 	</context>
 </contexts>
