@@ -168,36 +168,36 @@ image
 			</th>
 			<th>Description</th>
 		</tr>
-		<tr>
-			<th id="ASCIIHexEncode">ASCIIHexEncode</th>
+		<tr id="ASCIIHexEncode">
+			<th>ASCIIHexEncode</th>
 			<td>(none)</td>
 			<td>Encodes binary data in an ASCII hexadecimal representation.
 				Each binary data byte is converted to two hexadecimal digits,
 				resulting in an expansion factor of 1:2 in the size of the encoded
 				data.</td>
 		</tr>
-		<tr>
-			<th id="ASCIIHexDecode">ASCIIHexDecode</th>
+		<tr id="ASCIIHexDecode">
+			<th>ASCIIHexDecode</th>
 			<td>(none)</td>
 			<td>Decodes ASCII hexadecimal-encoded data, producing the
 				original binary data.</td>
 		</tr>
-		<tr>
-			<th id="ASCII85Encode">ASCII85Encode</th>
+		<tr id="ASCII85Encode">
+			<th>ASCII85Encode</th>
 			<td>(none)</td>
 			<td>Encodes binary data in an ASCII base-85 representation. This
 				encoding uses nearly all of the printable ASCII character set. The
 				resulting expansion factor is 4:5, making this encoding much more
 				efficient than hexadecimal.</td>
 		</tr>
-		<tr>
-			<th id="ASCII85Decode">ASCII85Decode</th>
+		<tr id="ASCII85Decode">
+			<th>ASCII85Decode</th>
 			<td>(none)</td>
 			<td>Decodes ASCII base-85 data, producing the original binary
 				data.</td>
 		</tr>
-		<tr>
-			<th id="LZWEncode">LZWEncode</th>
+		<tr id="LZWEncode">
+			<th>LZWEncode</th>
 			<td>(none)</td>
 			<td>Compresses data using the LZW (Lempel-Ziv-Welch) adaptive
 				compression method, optionally after pretransformation by a
@@ -205,13 +205,13 @@ image
 				especially well suited for natural-language and PostScript-language
 				text, but it is also useful for image data.</td>
 		</tr>
-		<tr>
-			<th id="LZWDecode">LZWDecode</th>
+		<tr id="LZWDecode">
+			<th>LZWDecode</th>
 			<td>(none)</td>
 			<td>Decompresses LZW-encoded data, producing the original data.</td>
 		</tr>
-		<tr>
-			<th id="FlateEncode">FlateEncode</th>
+		<tr id="FlateEncode">
+			<th>FlateEncode</th>
 			<td>(none)</td>
 			<td><i>(LanguageLevel 3)</i> Compresses data using the
 				public-domain zlib/deflate compression method, optionally after
@@ -221,41 +221,41 @@ image
 				especially well suited for natural-language and PostScript-language
 				text, but it is also useful for image data.</td>
 		</tr>
-		<tr>
-			<th id="FlateDecode">FlateDecode</th>
+		<tr id="FlateDecode">
+			<th>FlateDecode</th>
 			<td>(none)</td>
 			<td><i>(LanguageLevel 3)</i> Decompresses data encoded in
 				zlib/deflate compressed format, producing the original data.</td>
 		</tr>
-		<tr>
-			<th id="RunLengthEncode">RunLengthEncode</th>
+		<tr id="RunLengthEncode">
+			<th>RunLengthEncode</th>
 			<td>record size</td>
 			<td>Compresses data using a simple byte-oriented run-length
 				encoding algorithm. This encoding is best suited to monochrome image
 				data, or any data that contains frequent long runs of a single byte
 				value.</td>
 		</tr>
-		<tr>
-			<th id="RunLengthDecode">RunLengthDecode</th>
+		<tr id="RunLengthDecode">
+			<th>RunLengthDecode</th>
 			<td>(none)</td>
 			<td>Decompresses data encoded in the run-length encoding format,
 				producing the original data.</td>
 		</tr>
-		<tr>
-			<th id="CCITTFaxEncode">CCITTFaxEncode</th>
+		<tr id="CCITTFaxEncode">
+			<th>CCITTFaxEncode</th>
 			<td>(none)</td>
 			<td>Compresses data using a bit-oriented encoding algorithm (the
 				CCITT facsimile standard). This encoding is specialized to
 				monochrome image data at 1 bit per pixel.</td>
 		</tr>
-		<tr>
-			<th id="CCITTFaxDecode">CCITTFaxDecode</th>
+		<tr id="CCITTFaxDecode">
+			<th>CCITTFaxDecode</th>
 			<td>(none)</td>
 			<td>Decompresses facsimile-encoded data, producing the original
 				data.</td>
 		</tr>
-		<tr>
-			<th id="DCTEncode">DCTEncode</th>
+		<tr id="DCTEncode">
+			<th>DCTEncode</th>
 			<td>dictionary</td>
 			<td>Compresses continuous-tone (grayscale or color) sampled
 				image data using a DCT (discrete cosine transform) technique based
@@ -263,28 +263,28 @@ image
 				is "lossy," meaning that the encoding algorithm can lose some
 				information.</td>
 		</tr>
-		<tr>
-			<th id="DCTDecode">DCTDecode</th>
+		<tr id="DCTDecode">
+			<th>DCTDecode</th>
 			<td>(none)</td>
 			<td>Decompresses DCT-encoded data, producing image sample data
 				that approximate the original data.</td>
 		</tr>
-		<tr>
-			<th id="ReusableStreamDecode">ReusableStreamDecode</th>
+		<tr id="ReusableStreamDecode">
+			<th>ReusableStreamDecode</th>
 			<td>(none)</td>
 			<td><i>(LanguageLevel 3)</i> From any data source, creates an
 				input stream that can be treated as a random-access, repositionable
 				file.</td>
 		</tr>
-		<tr>
-			<th id="NullEncode">NullEncode</th>
+		<tr id="NullEncode">
+			<th>NullEncode</th>
 			<td>(none)</td>
 			<td>Passes all data through, without any modification. This
 				permits an arbitrary data target (procedure or string) to be treated
 				as an output file.</td>
 		</tr>
-		<tr>
-			<th id="SubFileDecode">SubFileDecode</th>
+		<tr id="SubFileDecode">
+			<th>SubFileDecode</th>
 			<td>count, size</td>
 			<td>Passes all data through, without any modification. This
 				permits an arbitrary data source (procedure or string) to be treated

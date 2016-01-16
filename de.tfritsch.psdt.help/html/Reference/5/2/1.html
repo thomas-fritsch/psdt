@@ -24,15 +24,15 @@
 			<th>Type</th>
 			<th>Value</th>
 		</tr>
-		<tr>
-			<th id="FontType">FontType</th>
+		<tr id="FontType">
+			<th>FontType</th>
 			<td>integer</td>
 			<td><i>(Required)</i> The font type; see Table 5.1. Indicates
 				where the glyph descriptions are to be found and how they are
 				represented.</td>
 		</tr>
-		<tr>
-			<th id="FontMatrix">FontMatrix</th>
+		<tr id="FontMatrix">
+			<th>FontMatrix</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array that transforms the <i>glyph
 					coordinate system</i> into the user coordinate system (see Section <a
@@ -45,8 +45,8 @@
 				matrix is concatenated with the existing font matrix to yield a new
 				copy of the font with a different font matrix.</td>
 		</tr>
-		<tr>
-			<th id="FontName">FontName</th>
+		<tr id="FontName">
+			<th>FontName</th>
 			<td>name</td>
 			<td><i>(Optional)</i> The name of the font. This entry is for
 				information only; it is not used by the PostScript interpreter.
@@ -54,15 +54,15 @@
 				href="../../8/2/d/definefont.html">definefont</a>, but it need not
 				be.</td>
 		</tr>
-		<tr>
-			<th id="FontInfo">FontInfo</th>
+		<tr id="FontInfo">
+			<th>FontInfo</th>
 			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing font information
 				that is not accessed by the PostScript interpreter; see Table 5.5 on
 				page 327.</td>
 		</tr>
-		<tr>
-			<th id="LanguageLevel">LanguageLevel</th>
+		<tr id="LanguageLevel">
+			<th>LanguageLevel</th>
 			<td>integer</td>
 			<td><i>(Optional)</i> The minimum LanguageLevel required for
 				correct behavior of the font. For example, any font that uses
@@ -77,8 +77,8 @@
 				interpreter can ignore&mdash;does not require setting <b>LanguageLevel</b>
 				to 2. Default value: 1.</td>
 		</tr>
-		<tr>
-			<th id="WMode">WMode</th>
+		<tr id="WMode">
+			<th>WMode</th>
 			<td>integer</td>
 			<td><i>(Optional; LanguageLevel 2)</i> The writing mode, which
 				determines which of two sets of metrics will be used when glyphs are
@@ -88,8 +88,8 @@
 				lacking composite font extensions ignore this entry. Default value:
 				0.</td>
 		</tr>
-		<tr>
-			<th id="FID">FID</th>
+		<tr id="FID">
+			<th>FID</th>
 			<td>fontID</td>
 			<td><i>(Inserted by <a href="../../8/2/d/definefont.html">definefont</a>)
 			</i> A special object of type fontID that serves internal purposes in the
@@ -109,15 +109,15 @@
 			<th>Type</th>
 			<th>Value</th>
 		</tr>
-		<tr>
-			<th id="Encoding">Encoding</th>
+		<tr id="Encoding">
+			<th>Encoding</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array of character names to which
 				character codes are mapped. See Section <a href="../3.html">5.3,
 					"Character Encoding."</a></td>
 		</tr>
-		<tr>
-			<th id="FontBBox">FontBBox</th>
+		<tr id="FontBBox">
+			<th>FontBBox</th>
 			<td>array</td>
 			<td><i>(Required)</i> An array of four numbers in the glyph
 				coordinate system giving the left, bottom, right, and top
@@ -137,15 +137,15 @@
 					access <b>FontBBox</b> should invoke an explicit <b>get</b> or <b>load</b>
 					operator to avoid unintended execution.</td>
 		</tr>
-		<tr>
-			<th id="UniqueUID">UniqueID</th>
+		<tr id="UniqueUID">
+			<th>UniqueID</th>
 			<td>integer</td>
 			<td><i>(Optional)</i> An integer in the range 0 to 16,777,215 (2<sup>24</sup>
 				- 1) that uniquely identifies this font. See Section <a
 				href="../6.html">5.6, "Unique ID Generation."</a></td>
 		</tr>
-		<tr>
-			<th id="XUID">XUID</th>
+		<tr id="XUID">
+			<th>XUID</th>
 			<td>array</td>
 			<td><i>(Optional; LanguageLevel 2)</i> An array of integers that
 				uniquely identifies this font or any variant of it. See Section <a
@@ -161,8 +161,8 @@
 			<th>Type</th>
 			<th>Value</th>
 		</tr>
-		<tr>
-			<th id="PaintType">PaintType</th>
+		<tr id="PaintType">
+			<th>PaintType</th>
 			<td>integer</td>
 			<td><i>(Required)</i> A code indicating how the glyphs of the
 				font are to be painted:
@@ -176,8 +176,8 @@
 				previously documented <b>PaintType</b> values of 1 and 3 are not
 				supported.</td>
 		</tr>
-		<tr>
-			<th id="StrokeWidth">StrokeWidth</th>
+		<tr id="StrokeWidth">
+			<th>StrokeWidth</th>
 			<td>number</td>
 			<td><i>(Optional)</i> The stroke width (in units of the glyph
 				coordinate system) for stroked-outline fonts (<b>PaintType</b> 2).
@@ -185,8 +185,8 @@
 				should be added (with a nonzero value) when a stroked font is
 				created from an existing filled font. Default value: 0.</td>
 		</tr>
-		<tr>
-			<th id="Metrics">Metrics</th>
+		<tr id="Metrics">
+			<th>Metrics</th>
 			<td>dictionary</td>
 			<td><i>(Optional)</i> A dictionary containing metric information
 				(glyph widths and sidebearings) for writing mode 0. This entry is
@@ -196,22 +196,22 @@
 					"Glyph Metric Information,"</a> and <a href="../9/2.html">5.9.2,
 					"Changing Glyph Metrics."</a></td>
 		</tr>
-		<tr>
-			<th id="Metrics2">Metrics2</th>
+		<tr id="Metrics2">
+			<th>Metrics2</th>
 			<td>dictionary</td>
 			<td><i>(Optional; LanguageLevel 2)</i> Similar to Metrics, but
 				for writing mode 1.</td>
 		</tr>
-		<tr>
-			<th id="CDevProc">CDevProc</th>
+		<tr id="CDevProc">
+			<th>CDevProc</th>
 			<td>procedure</td>
 			<td><i>(Optional; LanguageLevel 2)</i> A procedure that
 				algorithmically derives global changes to the font's metrics.
 				LanguageLevel 1 implementations lacking composite font extensions
 				ignore this entry.</td>
 		</tr>
-		<tr>
-			<th id="CharStrings">CharStrings</th>
+		<tr id="CharStrings">
+			<th>CharStrings</th>
 			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary associating character names
 				(the keys in the dictionary) with glyph descriptions. Each entry's
@@ -224,16 +224,16 @@
 					or Adding Individual Glyphs."</a> This dictionary must have an entry
 				whose key is .notdef.</td>
 		</tr>
-		<tr>
-			<th id="Private">Private</th>
+		<tr id="Private">
+			<th>Private</th>
 			<td>dictionary</td>
 			<td><i>(Required)</i> A dictionary containing other internal
 				information about the font. See <a
 				href="https://partners.adobe.com/public/developer/en/font/T1_SPEC.PDF">Adobe
 					Type 1 Font Format</a> for details.</td>
 		</tr>
-		<tr>
-			<th id="WeightVector">WeightVector</th>
+		<tr id="WeightVector">
+			<th>WeightVector</th>
 			<td>dictionary</td>
 			<td><i>(Required; multiple-master fonts only)</i> An array
 				specifying the contribution of each master design to the current

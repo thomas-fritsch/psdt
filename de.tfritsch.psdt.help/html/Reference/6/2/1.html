@@ -14,8 +14,8 @@
 			<th>Type</th>
 			<th>Value</th>
 		</tr>
-		<tr>
-			<th id="InputAttributes">InputAttributes</th>
+		<tr id="InputAttributes">
+			<th>InputAttributes</th>
 			<td>dictionary or null</td>
 			<td>A dictionary specifying the attributes of all input media
 				currently available for use by this output device. The dictionary
@@ -52,8 +52,8 @@
 				</p>
 			</td>
 		</tr>
-		<tr>
-			<th id="PageSize">PageSize</th>
+		<tr id="PageSize">
+			<th>PageSize</th>
 			<td>array</td>
 			<td>An array of two numbers, [width height], specifying the
 				overall dimensions of the physical medium that were assumed during
@@ -91,29 +91,29 @@
 				</p>
 			</td>
 		</tr>
-		<tr>
-			<th id="MediaColor">MediaColor</th>
+		<tr id="MediaColor">
+			<th>MediaColor</th>
 			<td>string or null</td>
 			<td>A string identifying the color of the medium.</td>
 		</tr>
-		<tr>
-			<th id="MediaWeight">MediaWeight</th>
+		<tr id="MediaWeight">
+			<th>MediaWeight</th>
 			<td>number or null</td>
 			<td>The weight of the medium in grams per square meter. "Basis
 				weight" or "ream weight" in pounds can be converted to grams per
 				square meter by multiplying by 3.76; for example, 10-pound paper is
 				approximately 37.6 grams per square meter.</td>
 		</tr>
-		<tr>
-			<th id="MediaType">MediaType</th>
+		<tr id="MediaType">
+			<th>MediaType</th>
 			<td>string or null</td>
 			<td>An arbitrary string representing special attributes of the
 				medium other than its size, color, and weight. This parameter can be
 				used to identify special media such as envelopes, letterheads, or
 				preprinted forms.</td>
 		</tr>
-		<tr>
-			<th id="MediaClass">MediaClass</th>
+		<tr id="MediaClass">
+			<th>MediaClass</th>
 			<td>string or null</td>
 			<td><i>(LanguageLevel 3)</i> An arbitrary string representing
 				attributes of the medium that may require special action by the
@@ -129,8 +129,8 @@
 					an unsupported value will cause a configuration error.
 				</p></td>
 		</tr>
-		<tr>
-			<th id="InsertSheet">InsertSheet</th>
+		<tr id="InsertSheet">
+			<th>InsertSheet</th>
 			<td>boolean</td>
 			<td><i>(LanguageLevel 3)</i> A flag specifying whether to insert
 				a sheet of some special medium directly into the output document.
@@ -141,8 +141,8 @@
 				actually imaged on the inserted medium. See "Special Media Handling"
 				on page 407.</td>
 		</tr>
-		<tr>
-			<th id="LeadingEdge">LeadingEdge</th>
+		<tr id="LeadingEdge">
+			<th>LeadingEdge</th>
 			<td>integer or null</td>
 			<td><i>(LanguageLevel 3)</i> A code specifying the edge of the
 				input medium that will enter the printing engine or imager first and
@@ -169,8 +169,8 @@
 						Placement"</a>) and is independent of the value of <b>LeadingEdge</b>.
 				</p></td>
 		</tr>
-		<tr>
-			<th id="ManualFeed">ManualFeed</th>
+		<tr id="ManualFeed">
+			<th>ManualFeed</th>
 			<td>boolean</td>
 			<td>A flag indicating whether the input medium is to be fed
 				manually by a human operator (true) or automatically (false). A true
@@ -184,8 +184,8 @@
 				attributes may select among them.
 			</td>
 		</tr>
-		<tr>
-			<th id="TraySwitch">TraySwitch</th>
+		<tr id="TraySwitch">
+			<th>TraySwitch</th>
 			<td>boolean</td>
 			<td><i>(LanguageLevel 3)</i> A flag specifying whether the
 				output device supports automatic switching of media sources. When
@@ -198,8 +198,8 @@
 				the <b>InputAttributes</b> dictionary (see "Matching Requests with
 				Attributes," below).</td>
 		</tr>
-		<tr>
-			<th id="MediaPosition">MediaPosition</th>
+		<tr id="MediaPosition">
+			<th>MediaPosition</th>
 			<td>integer or null</td>
 			<td><i>(LanguageLevel 3)</i> The position number of the media
 				source to be used. This parameter does not override the normal media
@@ -209,8 +209,8 @@
 				media source it specifies is not the best available match for the
 				requested attributes.</td>
 		</tr>
-		<tr>
-			<th id="DeferredMediaSelection">DeferredMediaSelection</th>
+		<tr id="DeferredMediaSelection">
+			<th>DeferredMediaSelection</th>
 			<td>boolean</td>
 			<td><i>(LanguageLevel 3)</i> A flag determining when to perform
 				media selection. If true, media will be selected by an independent

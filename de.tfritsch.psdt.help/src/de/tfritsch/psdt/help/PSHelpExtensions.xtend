@@ -17,7 +17,7 @@ class PSHelpExtensions {
 		val posHash = href.indexOf('#')
 		if (posHash >= 0) {
 			val fragment = href.substring(posHash + 1)
-			val matcher = (".*(<tr>\\s*<th.*/th>\\s*</tr>).*(<tr>.*?<th id=\"" + fragment + "\">.*?</th>.*?</tr>).*").
+			val matcher = (".*(<tr>.*?</tr>).*(<tr id=\"" + fragment + "\">.*?</tr>).*").
 				compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 			if (!matcher.matches)
 				return null
