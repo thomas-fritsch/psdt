@@ -116,6 +116,9 @@
 		</topic>
 	</topic>
 	<topic label="4 Graphics">
+	    <topic label="4.7 Forms">
+	        <topic label="4.7.1 Using Forms" href="html/Reference/4/7/1.html" />
+	    </topic>
 	    <topic label="4.10 Images">
 	        <topic label="4.10.5 Image Dictionaries" href="html/Reference/4/10/5.html">
 	            <topic label="Type 1 Image Dictionaries" href="html/Reference/4/10/5/1.html" />

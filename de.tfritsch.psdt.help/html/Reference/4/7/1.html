@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Using Forms</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.7.1 Using Forms</h3>
+	<p>The use of forms requires two steps:</p>
+	<ol>
+		<li><i>Describe the appearance of the form.</i> Create a form
+			dictionary containing descriptive information about the form. A
+			crucial element of the dictionary is the PaintProc procedure, a
+			PostScript procedure that can be executed to paint the form.</li>
+		<li><i>Invoke the form.</i> Invoke the <a
+			href="../../8/2/e/execform.html">execform</a> operator with the form
+			dictionary as the operand. Before doing so, a program should set
+			appropriate parameters in the graphics state; in particular, it
+			should alter the current transformation matrix to control the
+			position, size, and orientation of the form in user space.</li>
+	</ol>
+	<p>
+		Every form dictionary must contain a <b>FormType</b> entry, which
+		identifies the particular <i>form type</i> that the dictionary
+		describes and determines the format and meaning of its remaining
+		entries. At the time of publication, only one form type, type 1, has
+		been defined. Table 4.4 shows the contents of the form dictionary for
+		this form type. (The dictionary can also contain any additional
+		entries that its <b>PaintProc</b> procedure may require.)
+	</p>
+	<table>
+		<caption>TABLE 4.4 Entries in a type 1 form dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="FormType">
+			<th>FormType</th>
+			<td>integer</td>
+			<td><i>(Required)</i> A code identifying the form type that this
+				dictionary describes. The only valid value defined at the time of
+				publication is 1.</td>
+		</tr>
+		<tr id="XUID">
+			<th>XUID</th>
+			<td>array</td>
+			<td><i>(Optional)</i> An <i>extended unique ID</i> that uniquely
+				identifies the form (see Section <a href="../../5/6/2.html">
+					5.6.2, "Extended Unique ID Numbers"</a>). The presence of an <b>XUID</b>
+				entry in a form dictionary enables the PostScript interpreter to
+				save cached output from the form for later use, even when the form
+				dictionary is loaded into virtual memory multiple times (for
+				instance, by different jobs). To ensure correct behavior, <b>XUID</b>
+				values must be assigned from a central registry. This is
+				particularly appropriate for forms treated as named resources. Forms
+				that are created dynamically by an application program should not
+				contain <b>XUID</b> entries.</td>
+		</tr>
+		<tr id="BBox">
+			<th>BBox</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array of four numbers in the form
+				coordinate system, giving the coordinates of the left, bottom,
+				right, and top edges, respectively, of the form's bounding box.
+				These boundaries are used to clip the form and to determine its size
+				for caching.</td>
+		</tr>
+		<tr id="Matrix">
+			<th>Matrix</th>
+			<td>matrix</td>
+			<td><i>(Required)</i> A transformation matrix that maps the
+				form's coordinate space into user space. This matrix is concatenated
+				with the current transformation matrix before the PaintProc
+				procedure is called.</td>
+		</tr>
+		<tr id="PaintProc">
+			<th>PaintProc</th>
+			<td>procedure</td>
+			<td><i>(Required)</i> A PostScript procedure for painting the
+				form.</td>
+		</tr>
+		<tr id="Implementation">
+			<th>Implementation</th>
+			<td>any</td>
+			<td>An additional entry inserted in the dictionary by the <a
+				href="../../8/2/e/execform.html">execform</a> operator, containing
+				information used by the interpreter to support form caching. The
+				type and value of this entry are implementation-dependent.
+			</td>
+		</tr>
+	</table>
+	<p>
+		The form is defined in its own <i>form coordinate system</i>, defined
+		by concatenating the matrix specified by the form dictionary's <b>Matrix</b>
+		entry with the current transformation matrix each time the <a
+			href="../../8/2/e/execform.html">execform</a> operator is executed.
+		The form dictionary's <b>BBox</b> value is interpreted in the form
+		coordinate system, and the <b>PaintProc</b> procedure is executed
+		within that coordinate system.
+	</p>
+	<p>
+		The <a href="../../8/2/e/execform.html">execform</a> operator first
+		checks whether the form dictionary has previously been used as an
+		operand to <a href="../../8/2/e/execform.html">execform</a>. If not,
+		it verifies that the dictionary contains the required elements and
+		makes the dictionary read-only. It then paints the form, either by
+		invoking the form's <b>PaintProc</b> procedure or by substituting
+		cached output produced by a previous execution of the same form.
+	</p>
+	<p>
+		Whenever <a href="../../8/2/e/execform.html">execform</a> needs to
+		execute the form definition, it does the following:
+	</p>
+	<ol>
+		<li>Invokes <a href="../../8/2/g/gsave.html">gsave</a></li>
+		<li>Concatenates the matrix from the form dictionary's <b>Matrix</b>
+			entry with the CTM
+		</li>
+		<li>Clips according to the <b>BBox</b> entry
+		</li>
+		<li>Invokes <a href="../../8/2/n/newpath.html">newpath</a></li>
+		<li>Pushes the form dictionary on the operand stack</li>
+		<li>Executes the form's <b>PaintProc</b> procedure
+		</li>
+		<li>Invokes <a href="../../8/2/g/gsave.html">grestore</a></li>
+	</ol>
+	<p>
+		The <b>PaintProc</b> procedure is expected to consume its dictionary
+		operand and to use the information at hand to paint the form. It must
+		obey certain guidelines to avoid disrupting the environment in which
+		it is executed:
+	</p>
+	<ul>
+		<li>It should not invoke any of the operators listed in Appendix
+			G as unsuitable for use in encapsulated PostScript files.</li>
+		<li>It should not invoke <a href="../../8/2/s/showpage.html">showpage</a>,
+			<a href="../../8/2/c/copypage.html">copypage</a>, or any device setup
+			operator.
+		</li>
+		<li>Except for removing its dictionary operand, it should leave
+			the stacks unchanged.</li>
+		<li>It should have no side effects beyond painting the form. It
+			should not alter objects in virtual memory or anywhere else. Because
+			of the effects of caching, the <b>PaintProc</b> procedure is called
+			at unpredictable times and in unpredictable environments. It should
+			depend only on information in the form dictionary and should produce
+			the same effect every time it is called.
+		</li>
+	</ul>
+	<p>
+		Form caching is most effective when the graphics state does not change
+		between successive invocations of <a href="../../8/2/e/execform.html">execform</a>
+		for a given form. Changes to the translation components of the CTM
+		usually do not influence caching behavior; other changes may require
+		the interpreter to reexecute the <b>PaintProc</b> procedure.
+	</p>
+</body>
+</html>
