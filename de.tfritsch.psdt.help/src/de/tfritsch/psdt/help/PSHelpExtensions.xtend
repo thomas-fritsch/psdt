@@ -46,11 +46,11 @@ class PSHelpExtensions {
 	}
 
 	def static List<Documentation> getDocumentations(String name) {
-		return name.topics.map[new Documentation(label, href.toURL)]
+		return name.topics.map[new Documentation(label, href?.toURL)]
 	}
 
 	def private static URL toURL(String href) {
-		return if(href !== null) new URL("platform:/plugin" + href).toFileURL else null
+		return new URL("platform:/plugin" + href).toFileURL
 	}
 
 	def private static IHelpResource[] getTopics(String name) {
