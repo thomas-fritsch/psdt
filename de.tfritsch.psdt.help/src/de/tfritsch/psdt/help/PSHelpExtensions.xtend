@@ -50,7 +50,12 @@ class PSHelpExtensions {
 	}
 
 	def private static URL toURL(String href) {
-		return new URL("platform:/plugin" + href).toFileURL
+		val url1 = new URL("platform:/plugin" + href)
+		var url2 = url1.toFileURL
+		if (url1.ref !== null && url2.ref === null)
+			// work-around because FileLocator.toFileURL ignored URL.ref
+			url2 = new URL(url2.toString + "#" + url1.ref)
+		return url2
 	}
 
 	def private static IHelpResource[] getTopics(String name) {
