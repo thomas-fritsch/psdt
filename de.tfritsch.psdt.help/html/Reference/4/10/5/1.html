@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Type 1 Image Dictionaries</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Type 1 Image Dictionaries</h4>
+	<p>
+		Table 4.20 lists the entries in a type 1 image dictionary, some of
+		which are required and some optional. There are many relationships
+		among these entries, and the current color space may limit the choices
+		for some of them. Attempting to use an image dictionary whose entries
+		are inconsistent with each other or with the current color space will
+		cause a <a href="../../../8/2/r/rangecheck.html">rangecheck</a> error;
+		if any of the required entries are missing or of the wrong type, an <a
+			href="../../../8/2/u/undefined.html">undefined</a> or <a
+			href="../../../8/2/t/typecheck.html">typecheck</a> error will result.
+	</p>
+	<table>
+		<caption>TABLE 4.20 Entries in a type 1 image dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="ImageType">
+			<th>ImageType</th>
+			<td>integer</td>
+			<td><i>(Required)</i> A code identifying the image type that
+				this dictionary describes; must be 1 for an opaque image.</td>
+		</tr>
+		<tr id="Width">
+			<th>Width</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The width of the source image, in samples</td>
+		</tr>
+		<tr id="Height">
+			<th>Height</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The height of the source image, in samples</td>
+		</tr>
+		<tr id="ImageMatrix">
+			<th>ImageMatrix</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array of six numbers defining a
+				transformation from user space to image space.</td>
+		</tr>
+		<tr id="MultipleDataSources">
+			<th>MultipleDataSources</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether the image
+				samples are provided through a separate data source for each color
+				component (<i>true</i>) or packed into one data stream, interleaved
+				sample by sample (<i>false</i>). In an image dictionary used with <a
+				href="../../../8/2/i/imagemask.html">imagemask</a>, this entry must
+				be <i>false</i> or absent. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="DataSource">
+			<th>DataSource</th>
+			<td>(various)</td>
+			<td><i>(Required)</i> The source from which image samples are to
+				be taken. If <b>MultipleDataSources</b> is <i>false</i> or absent, <b>DataSource</b>
+				must be a single file, procedure, or string. If <b>MultipleDataSources</b>
+				is <i>true</i>, <b>DataSource</b> must be an array of n such data
+				sources, where <i>n</i> is the number of color components in the
+				current color space.</td>
+		</tr>
+		<tr id="BitsPerComponent">
+			<th>BitsPerComponent</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The number of bits used to represent each
+				color component. Only a single number may be specified; the number
+				of bits is the same for all color components. Allowed values are 1,
+				2, 4, 8, and 12. In an image dictionary used with <a
+				href="../../../8/2/i/imagemask.html">imagemask</a>, the value of
+				this entry must be 1.</td>
+		</tr>
+		<tr id="Decode">
+			<th>Decode</th>
+			<td>array</td>
+			<td><i>(Required)</i> An array of numbers describing how to map
+				image samples into the range of values appropriate for the current
+				color space; see <a href="2.html">"Sample Decoding,"</a> below. The
+				length of the array must be twice the number of color components in
+				the current color space. In an image dictionary used with <a
+				href="../../../8/2/i/imagemask.html">imagemask</a>, the value of
+				this entry must be either [0 1] or [1 0].</td>
+		</tr>
+		<tr id="Interpolate">
+			<th>Interpolate</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether image
+				interpolation is to be performed; see <a href="3.html">"Image
+					Interpolation,"</a> below. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+	<p>
+		The following sections describe the meaning and use of some of these
+		entries in more detail. All of this information applies to image
+		dictionaries used with the image operator, and most of it also applies
+		to those used with the <a href="../../../8/2/i/imagemask.html">imagemask</a>
+		operator (see <a href="../6/1.html">"Stencil Masking"</a> on page
+		302).
+	</p>
+</body>
+</html>

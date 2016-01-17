@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Interpolation</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Image Interpolation</h4>
+	<p>
+		When the resolution of a source image is significantly lower than that
+		of the output device, each source sample covers many device pixels.
+		This can cause images to appear "jaggy" or "blocky." These visual
+		artifacts can be reduced by applying an image interpolation algorithm
+		during rendering. Instead of painting all pixels covered by a source
+		sample with the same color, image interpolation attempts to produce a
+		smooth transition between adjacent sample values. Because it may
+		increase the time required to render the image, image interpolation is
+		disabled by default; setting the <b>Interpolate</b> entry in the image
+		dictionary to true for either <a href="../../../8/2/i/image.html">image</a>
+		or <a href="../../../8/2/i/imagemask.html">imagemask</a> enables it.
+	</p>
+	<p>
+		<i><b>Note:</b> The interpolation algorithm is
+			implementation-dependent and not under PostScript program control.
+			Image interpolation may not always be performed for some classes of
+			image or on some output devices.</i>
+	</p>
+</body>
+</html>

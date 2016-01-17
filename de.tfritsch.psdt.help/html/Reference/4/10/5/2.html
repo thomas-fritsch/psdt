@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sample Decoding</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Sample Decoding</h4>
+	<p>
+		The sample data in an image dictionary's data source is initially
+		decomposed into integers in the range 0 to 2<sup><i>n</i></sup> - 1,
+		where <i>n</i> is the value of the dictionary's <b>BitsPerComponent</b>
+		entry. There is one such integer for each component of a given color
+		sample; the number of components depends on the current color space.
+	</p>
+	<p>
+		The <b>Decode</b> array in the image dictionary specifies a linear
+		mapping of an integer component value to a number that would be
+		appropriate as an operand to the <a
+			href="../../../8/2/s/setcolor.html">setcolor</a> operator in the
+		current color space. For each color component, <b>Decode</b> specifies
+		a minimum and maximum output value for the mapping. The linear mapping
+		is defined by
+	</p>
+	<pre>
+		<i>c</i> = <i>D</i><sub>min</sub> + <i>i</i> &times; (<i>D</i><sub>max</sub> - <i>D</i><sub>min</sub>) / (2<sup><i>n</i></sup> - 1)</pre>
+	<p>where
+	<dl>
+		<dt>
+			<i>n</i>
+		</dt>
+		<dd>
+			is the value of <b>BitsPerComponent</b>
+		</dd>
+		<dt>
+			<i>i</i>
+		</dt>
+		<dd>
+			is the input value, in the range 0 to 2<sup><i>n</i></sup> - 1
+		</dd>
+		<dt>
+			<i>D</i><sub>min</sub> and <i>D</i><sub>max</sub>
+		</dt>
+		<dd>
+			are the parameters in the <b>Decode</b> array
+		</dd>
+		<dt>
+			<i>c</i>
+		</dt>
+		<dd>is the output value, to be interpreted as a color component</dd>
+	</dl>
+	</p>
+	<p>
+		In other words, an input value of 0 will be mapped to <i>D</i><sub>min</sub>,
+		an input value of 2<sup><i>n</i></sup> - 1 will be mapped to <i>D</i><sub>max</sub>,
+		and intermediate input values will be mapped linearly to values
+		between <i>D</i><sub>min</sub> and <i>D</i><sub>max</sub>.
+	</p>
+	<p>
+		The numbers in the <b>Decode</b> array are interpreted in pairs, with
+		successive pairs applying to successive components of the current
+		color space in their standard order. Table 4.21 lists recommended <b>Decode</b>
+		arrays for use with the various color spaces.
+	</p>
+	<table>
+		<caption>TABLE 4.21 Typical Decode arrays</caption>
+		<tr>
+			<th>Color space</th>
+			<th>Decode array</th>
+		</tr>
+		<tr>
+			<th>DeviceGray</th>
+			<td>[0 1]</td>
+		</tr>
+		<tr>
+			<th>DeviceRGB</th>
+			<td>[0 1 0 1 0 1]</td>
+		</tr>
+		<tr>
+			<th>DeviceCMYK</th>
+			<td>[0 1 0 1 0 1 0 1 ]</td>
+		</tr>
+		<tr>
+			<th>CIEBasedABC</th>
+			<td>[0 1 0 1 0 1]</td>
+		</tr>
+		<tr>
+			<th>CIEBasedA</th>
+			<td>[0 1]</td>
+		</tr>
+		<tr>
+			<th>CIEBasedDEF</th>
+			<td>[0 1 0 1 0 1]</td>
+		</tr>
+		<tr>
+			<th>CIEBasedDEFG</th>
+			<td>[0 1 0 1 0 1 0 1 ]</td>
+		</tr>
+		<tr>
+			<th>DeviceN</th>
+			<td>[0 1 0 1 … 0 1 ] (one pair for each color component)</td>
+		</tr>
+		<tr>
+			<th>Separation</th>
+			<td>[0 1]</td>
+		</tr>
+		<tr>
+			<th>Indexed</th>
+			<td>[0 <i>N</i>], where <i>N</i> = 2<sup><i>n</i></sup>- 1
+			</td>
+		</tr>
+		<tr>
+			<th>Pattern</th>
+			<td><a href="../../../8/2/i/image.html">image</a> not permitted</td>
+		</tr>
+	</table>
+	<p>
+		For most color spaces, the <b>Decode</b> arrays listed in the table
+		map into the full range of allowed component values. For all CIE-based
+		color spaces, the suggested arrays map to component values in the
+		range 0.0 to 1.0. This is typical for the class of calibrated gray or
+		RGB color spaces, but the appropriate values actually depend on how
+		the color spaces have been parameterized. For an <b>Indexed</b> color
+		space, the suggested <b>Decode</b> array ensures that component values
+		that index a color table are passed through unchanged.
+	</p>
+	<p>
+		It is possible to specify a mapping that inverts sample color
+		intensities, by specifying a <i>D</i><sub>min</sub> value greater than
+		<i>D</i><sub>max</sub>. For example, if the current color space is <b>DeviceGray</b>
+		and the <b>Decode</b> array is [1 0], an input value of 0 will be
+		mapped to 1.0 (white), while an input value of 2<sup><i>n</i></sup> -
+		1 will be mapped to 0.0 (black).
+	</p>
+	<p>
+		The <i>D</i><sub>min</sub> and <i>D</i><sub>max</sub> parameters for a
+		color component are not required to fall within the range of values
+		allowed for that component. For instance, if an application uses 6-bit
+		numbers as its native image sample format, it can send those samples
+		to the PostScript interpreter in 8-bit form, setting the two unused
+		highorder bits of each sample to 0. The image dictionary should then
+		specify a <b>Decode</b> array of [0.0 4.04762], which maps input
+		values from 0 to 63 into the range 0.0 to 1.0. If an output value
+		falls outside the range allowed for a component, it will automatically
+		be adjusted to the nearest allowed value.
+	</p>
+</body>
+</html>

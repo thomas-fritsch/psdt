@@ -115,6 +115,15 @@
 			<topic label="3.12.2 Immediately Evaluated Names" href="html/Reference/3/12/2.html" />
 		</topic>
 	</topic>
+	<topic label="4 Graphics">
+	    <topic label="4.10 Images">
+	        <topic label="4.10.5 Image Dictionaries" href="html/Reference/4/10/5.html">
+	            <topic label="Type 1 Image Dictionaries" href="html/Reference/4/10/5/1.html" />
+	            <topic label="Sample Decoding" href="html/Reference/4/10/5/2.html" />
+	            <topic label="Image Interpolation" href="html/Reference/4/10/5/3.html" />
+	        </topic>
+	    </topic>
+	</topic>
 	<topic label="5 Fonts" href="html/Reference/5.html">
 		<topic label="5.1 Organization and Use of Fonts" href="html/Reference/5/1.html">
 			<topic label="5.1.1 The Basics of Showing Text" href="html/Reference/5/1/1.html" />

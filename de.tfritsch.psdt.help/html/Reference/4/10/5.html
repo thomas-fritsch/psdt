@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Dictionaries</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.10.5 Image Dictionaries</h3>
+	<p>
+		The <a href="../../8/2/i/image.html">image</a> and <a
+			href="../../8/2/i/imagemask.html">imagemask</a> operators (but not <a
+			href="../../8/2/c/colorimage.html">colorimage</a>) have a one-operand
+		form <i>(LanguageLevel 2)</i> in which all imaging parameters are
+		bundled together in an image dictionary. This arrangement provides
+		more flexibility than the five-operand form of <a
+			href="../../8/2/i/image.html">image</a> or any form of <a
+			href="../../8/2/c/colorimage.html">colorimage</a>. The following
+		features are available only by means of image dictionaries:
+	</p>
+	<ul>
+		<li>Use of arbitrary color spaces, such as <b>CIEBasedABC</b> or
+			<b>Separation</b> spaces
+		</li>
+		<li>User-defined decoding of image sample values
+		<li>Interpolation between samples</li>
+		<li>Explicit masking and color key masking <i>(LanguageLevel
+				3)</i></li>
+	</ul>
+	<p>
+		Every image dictionary contains an entry named <b>ImageType</b>, which
+		indicates the general organization of the dictionary and the type of
+		image it represents. The most straightforward are type 1 dictionaries
+		<i>(LanguageLevel 2)</i>. When used with the <a
+			href="../../8/2/i/image.html">image</a> operator, type 1 defines an
+		opaque rectangular image to be painted in its entirety, completely
+		overlaying any previous marks already existing on the page. Two more
+		image types, 3 and 4 <i>(LanguageLevel 3)</i>, represent masked
+		images. Images of these types may include transparent areas, allowing
+		previously existing marks to show through. Type 3 and 4 image
+		dictionaries are discussed in Section <a href="6.html">4.10.6,
+			"Masked Images."</a>
+	</p>
+	<p>
+		<i><b>Note:</b> Type 1 dictionaries can be used with the <a
+			href="../../8/2/i/imagemask.html">imagemask</a> operator to achieve a
+			form of transparent masking known as stencil masking. They are
+			subject to certain restrictions when used in this way, however, as
+			detailed below.</i>
+	</p>
+</body>
+</html>

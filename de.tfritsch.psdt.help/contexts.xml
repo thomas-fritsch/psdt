@@ -1203,6 +1203,9 @@
 	<context id="/BeginPage">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#BeginPage" />
 	</context>
+	<context id="/BitsPerComponent">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#BitsPerComponent" />
+	</context>
 	<context id="/BuildChar">
 		<topic label="Entry in a font dictionary (Type 3)" href="html/Reference/5/7.html#BuildChar" />
 	</context>
@@ -1253,11 +1256,17 @@
 	<context id="/CutMedia">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#CutMedia" />
 	</context>
+	<context id="/DataSource">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#DataSource" />
+	</context>
 	<context id="/DCTDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTDecode" />
 	</context>
 	<context id="/DCTEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTEncode" />
+	</context>
+	<context id="/Decode">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Decode" />
 	</context>
 	<context id="/DeferredMediaSelection">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#DeferredMediaSelection" />
@@ -1338,17 +1347,24 @@
 	<context id="/HalftoneType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#HalftoneType" />
 	</context>
+	<context id="/Height">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Height" />
+	</context>
 	<context id="/HWOptions">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#HWOptions" />
 	</context>
 	<context id="/HWResolution">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#HWResolution" />
 	</context>
+	<context id="/ImageMatrix">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#ImageMatrix" />
+	</context>
 	<context id="/ImageShift">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImageShift" />
 	</context>
 	<context id="/ImageType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ImageType" />
+		<topic label="Entry in an image dictionary" href="html/Reference/4/10/5/1.html#ImageType" />
 	</context>
 	<context id="/ImagingBBox">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImagingBBox" />
@@ -1368,6 +1384,9 @@
 	</context>
 	<context id="/Install">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#Install" />
+	</context>
+	<context id="/Interpolate">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Interpolate" />
 	</context>
 	<context id="/IODevice">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#IODevice" />
@@ -1422,6 +1441,9 @@
 	</context>
 	<context id="/MirrorPrint">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#MirrorPrint" />
+	</context>
+	<context id="/MultipleDataSources">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#MultipleDataSources" />
 	</context>
 	<context id="/NegativePrint">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#NegativePrint" />
@@ -1560,6 +1582,9 @@
 	</context>
 	<context id="/WeightVector">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#WeightVector" />
+	</context>
+	<context id="/Width">
+		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Width" />
 	</context>
 	<context id="/WMode">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#WMode" />
