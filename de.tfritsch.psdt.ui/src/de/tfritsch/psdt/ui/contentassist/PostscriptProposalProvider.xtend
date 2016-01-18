@@ -6,7 +6,7 @@ package de.tfritsch.psdt.ui.contentassist
 import java.util.List
 import java.util.Scanner
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.RuleCall
+import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 
@@ -27,17 +27,17 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		return names
 	}
 
-	override complete_PSExecutableName(EObject model, RuleCall ruleCall, ContentAssistContext context,
+	override completePSExecutableName_Name(EObject model, Assignment assignment, ContentAssistContext context,
 		ICompletionProposalAcceptor acceptor) {
-		super.complete_PSExecutableName(model, ruleCall, context, acceptor)
+		super.completePSExecutableName_Name(model, assignment, context, acceptor)
 		for (name : EXECUTABLE_NAMES) {
 			acceptor.accept(createCompletionProposal(name, context))
 		}
 	}
 
-	override complete_PSLiteralName(EObject model, RuleCall ruleCall, ContentAssistContext context,
+	override completePSLiteralName_Name(EObject model, Assignment assignment, ContentAssistContext context,
 		ICompletionProposalAcceptor acceptor) {
-		super.complete_PSLiteralName(model, ruleCall, context, acceptor)
+		super.completePSLiteralName_Name(model, assignment, context, acceptor)
 		for (name : LITERAL_NAMES) {
 			acceptor.accept(createCompletionProposal(name, context))
 		}
