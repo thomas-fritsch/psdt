@@ -3,10 +3,44 @@
  */
 package de.tfritsch.psdt.ui.contentassist
 
-import de.tfritsch.psdt.ui.contentassist.AbstractPostscriptProposalProvider
+import java.util.List
+import java.util.Scanner
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.RuleCall
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
  */
 class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
+
+	static val EXECUTABLE_NAMES = readNames("executable-names.txt")
+
+	static val LITERAL_NAMES = readNames("literal-names.txt")
+
+	def static List<String> readNames(String fileName) {
+		val stream = PostscriptProposalProvider.getResourceAsStream(fileName)
+		val scanner = new Scanner(stream)
+		val names = scanner.toList
+		scanner.close
+		return names
+	}
+
+	override complete_PSExecutableName(EObject model, RuleCall ruleCall, ContentAssistContext context,
+		ICompletionProposalAcceptor acceptor) {
+		super.complete_PSExecutableName(model, ruleCall, context, acceptor)
+		for (name : EXECUTABLE_NAMES) {
+			acceptor.accept(createCompletionProposal(name, context))
+		}
+	}
+
+	override complete_PSLiteralName(EObject model, RuleCall ruleCall, ContentAssistContext context,
+		ICompletionProposalAcceptor acceptor) {
+		super.complete_PSLiteralName(model, ruleCall, context, acceptor)
+		for (name : LITERAL_NAMES) {
+			acceptor.accept(createCompletionProposal(name, context))
+		}
+	}
+
 }
