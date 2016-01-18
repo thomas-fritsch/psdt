@@ -38,6 +38,10 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 	override completePSLiteralName_Name(EObject model, Assignment assignment, ContentAssistContext context,
 		ICompletionProposalAcceptor acceptor) {
 		super.completePSLiteralName_Name(model, assignment, context, acceptor)
+		if (context.prefix.empty)
+			// Don't propose literal names (e.g. /FontType), if '/' is not yet entered,
+			// in order not to overload the proposal list.
+			return;
 		for (name : LITERAL_NAMES) {
 			acceptor.accept(createCompletionProposal(name, context))
 		}
