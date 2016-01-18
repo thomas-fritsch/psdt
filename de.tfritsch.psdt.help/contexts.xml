@@ -1216,9 +1216,9 @@
 		<topic label="Entry in a a font dictionary (Type 3)" href="html/Reference/5/7.html#BuildGlyph" />
 	</context>
 	<context id="/Category">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#Category" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
 	</context>
 	<context id="/CCITTFaxDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ACCITTFaxDecode" />
@@ -1285,8 +1285,8 @@
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Emulator" />
 	</context>
 	<context id="/Encoding">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#Encoding" />
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#Encoding" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#Encoding" />
 	</context>
 	<context id="/EndPage">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#EndPage" />
@@ -1336,8 +1336,8 @@
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Form" />
 	</context>
 	<context id="/FormType">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#FormType" />
 		<topic label="Entry in a form dictionary" href="html/Reference/4/7/1.html#FormType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FormType" />
 	</context>
 	<context id="/FunctionType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FunctionType" />
@@ -1367,8 +1367,8 @@
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImageShift" />
 	</context>
 	<context id="/ImageType">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#ImageType" />
 		<topic label="Entry in an image dictionary" href="html/Reference/4/10/5/1.html#ImageType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#ImageType" />
 	</context>
 	<context id="/ImagingBBox">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImagingBBox" />
@@ -1468,8 +1468,8 @@
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputAttributes" />
 	</context>
 	<context id="/OutputDevice">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#OutputDevice" />
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputDevice" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#OutputDevice" />
 	</context>
 	<context id="/OutputFaceUp">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputFaceUp" />
