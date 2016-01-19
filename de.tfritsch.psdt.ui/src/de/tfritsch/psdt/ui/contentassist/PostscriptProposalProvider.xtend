@@ -28,23 +28,19 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 	}
 
 	override completePSExecutableName_Name(EObject model, Assignment assignment, ContentAssistContext context,
-		ICompletionProposalAcceptor acceptor) {
+		extension ICompletionProposalAcceptor acceptor) {
 		super.completePSExecutableName_Name(model, assignment, context, acceptor)
-		for (name : EXECUTABLE_NAMES) {
-			acceptor.accept(createCompletionProposal(name, context))
-		}
+		EXECUTABLE_NAMES.forEach[createCompletionProposal(context).accept]
 	}
 
 	override completePSLiteralName_Name(EObject model, Assignment assignment, ContentAssistContext context,
-		ICompletionProposalAcceptor acceptor) {
+		extension ICompletionProposalAcceptor acceptor) {
 		super.completePSLiteralName_Name(model, assignment, context, acceptor)
 		if (context.prefix.empty)
 			// Don't propose literal names (e.g. /FontType), if '/' is not yet entered,
 			// in order not to overload the proposal list.
 			return;
-		for (name : LITERAL_NAMES) {
-			acceptor.accept(createCompletionProposal(name, context))
-		}
+		LITERAL_NAMES.forEach[createCompletionProposal(context).accept]
 	}
 
 }
