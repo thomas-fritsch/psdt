@@ -1,5 +1,6 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.breakpoints
 
+import de.tfritsch.psdt.debug.core.model.PSDebugElement
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
 import org.eclipse.debug.core.DebugException

@@ -1,6 +1,7 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
+import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileWriter

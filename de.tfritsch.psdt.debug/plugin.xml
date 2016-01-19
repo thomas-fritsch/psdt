@@ -11,7 +11,7 @@
    </extension>
    <extension point="org.eclipse.debug.core.breakpoints">
       <breakpoint
-           class="de.tfritsch.psdt.debug.model.PSLineBreakpoint"
+           class="de.tfritsch.psdt.debug.core.breakpoints.PSLineBreakpoint"
       	   id="de.tfritsch.psdt.debug.model.lineBreakpoint"
       	   markerType="org.eclipse.debug.core.lineBreakpointMarker"
       	   name="Postscript Breakpoint">
@@ -19,7 +19,7 @@
    </extension>
    <extension point="org.eclipse.debug.core.processFactories">
       <processFactory
-            class="de.tfritsch.psdt.debug.model.PSProcessFactory"
+            class="de.tfritsch.psdt.debug.core.process.PSProcessFactory"
             id="de.tfritsch.psdt.debug.processFactory">
       </processFactory>
    </extension>
@@ -27,7 +27,7 @@
       <launchConfigurationType
             id="de.tfritsch.psdt.debug.launchConfigurationType"
             name="PostScript Application"
-            delegate="de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate"
+            delegate="de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate"
             sourceLocatorId="de.tfritsch.psdt.debug.sourceLocator"
             modes="run,debug">
       </launchConfigurationType>
@@ -35,14 +35,14 @@
    <extension point="org.eclipse.debug.core.sourceLocators">
       <sourceLocator
             name="PostScript Source Locator"
-            class="de.tfritsch.psdt.debug.model.PSSourceLocator"
+            class="de.tfritsch.psdt.debug.core.sourcelookup.PSSourceLocator"
             id="de.tfritsch.psdt.debug.sourceLocator">
       </sourceLocator>
    </extension>
    <extension point="org.eclipse.debug.core.watchExpressionDelegates">
       <watchExpressionDelegate
             debugModel="de.tfritsch.psdt.debug"
-            delegateClass="de.tfritsch.psdt.debug.model.PSWatchExpressionDelegate">
+            delegateClass="de.tfritsch.psdt.debug.core.model.PSWatchExpressionDelegate">
       </watchExpressionDelegate>
    </extension>
    <extension point="org.eclipse.debug.ui.debugModelPresentations">
@@ -115,10 +115,10 @@
    </extension>
    <extension point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="de.tfritsch.psdt.debug.model.GhostscriptPreferenceInitializer">
+            class="de.tfritsch.psdt.debug.core.preferences.GhostscriptPreferenceInitializer">
       </initializer>
       <initializer
-            class="de.tfritsch.psdt.debug.model.DebugPreferenceInitializer">
+            class="de.tfritsch.psdt.debug.core.preferences.DebugPreferenceInitializer">
       </initializer>
    </extension>
    <extension point="org.eclipse.ui.editorActions">

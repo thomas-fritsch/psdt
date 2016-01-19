@@ -1,5 +1,6 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.sourcelookup
 
+import de.tfritsch.psdt.debug.core.model.PSStackFrame
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunchConfiguration

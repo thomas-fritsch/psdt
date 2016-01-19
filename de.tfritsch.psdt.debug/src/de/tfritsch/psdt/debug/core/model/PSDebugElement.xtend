@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.model
 
 import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.debug.core.model.DebugElement
@@ -43,7 +43,7 @@ abstract class PSDebugElement extends DebugElement {
 	 * Gets the IPSDebugDebugCommander for this element.
 	 */
 	def protected IPSDebugCommander getPSDebugCommander() {
-		return PSDebugTarget.getPSDebugCommander()
+		return getPSDebugTarget.getPSDebugCommander()
 	}
 
 	def protected void debug(String s) {

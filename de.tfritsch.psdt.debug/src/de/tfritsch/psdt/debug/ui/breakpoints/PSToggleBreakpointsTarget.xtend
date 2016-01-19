@@ -1,7 +1,7 @@
 package de.tfritsch.psdt.debug.ui.breakpoints
 
 import de.tfritsch.psdt.debug.PSPlugin
-import de.tfritsch.psdt.debug.model.PSLineBreakpoint
+import de.tfritsch.psdt.debug.core.breakpoints.PSLineBreakpoint
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugPlugin

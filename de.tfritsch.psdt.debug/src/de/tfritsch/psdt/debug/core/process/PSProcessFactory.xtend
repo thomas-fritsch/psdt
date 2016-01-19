@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.process
 
 import de.tfritsch.psdt.debug.PSPlugin
 import java.util.Map

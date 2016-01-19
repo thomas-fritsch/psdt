@@ -1,6 +1,7 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.model
 
 import de.tfritsch.psdt.debug.PSPlugin
+import de.tfritsch.psdt.debug.core.launch.PSSourceMapping
 import java.util.List
 import org.eclipse.core.resources.IMarkerDelta
 import org.eclipse.core.runtime.CoreException

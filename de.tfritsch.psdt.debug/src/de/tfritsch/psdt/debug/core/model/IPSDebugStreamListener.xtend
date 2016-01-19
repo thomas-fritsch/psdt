@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.model
 
 import java.util.List
 

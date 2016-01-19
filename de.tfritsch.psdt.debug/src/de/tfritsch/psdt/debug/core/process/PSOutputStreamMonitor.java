@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.model;
+package de.tfritsch.psdt.debug.core.process;
 
 import java.io.BufferedReader;
 import java.io.IOException;

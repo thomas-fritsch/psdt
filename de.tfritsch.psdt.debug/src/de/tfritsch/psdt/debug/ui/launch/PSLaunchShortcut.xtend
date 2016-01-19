@@ -1,8 +1,8 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
-import de.tfritsch.psdt.debug.model.PSLaunchConfigurationDelegate
-import de.tfritsch.psdt.debug.model.PSProcessFactory
+import de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate
+import de.tfritsch.psdt.debug.core.process.PSProcessFactory
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugPlugin

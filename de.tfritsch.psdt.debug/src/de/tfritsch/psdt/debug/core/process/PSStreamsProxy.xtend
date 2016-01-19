@@ -1,6 +1,8 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.process
 
 import de.tfritsch.psdt.debug.PSPlugin
+import de.tfritsch.psdt.debug.core.model.IPSDebugCommander
+import de.tfritsch.psdt.debug.core.model.IPSDebugStreamListener
 import java.io.IOException
 import java.io.OutputStreamWriter
 import java.io.UnsupportedEncodingException

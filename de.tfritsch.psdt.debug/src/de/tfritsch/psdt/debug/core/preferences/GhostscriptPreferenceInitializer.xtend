@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.model
+package de.tfritsch.psdt.debug.core.preferences
 
 import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
@@ -9,7 +9,7 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	override initializeDefaultPreferences() {
 		val store = PSPlugin.^default.preferenceStore
-		switch (Platform.OS) {
+		switch (Platform.getOS) {
 			case Platform.OS_LINUX: {
 				store.setDefault(IPSConstants.PREF_INTERPRETER, "/usr/bin/gs") //$NON-NLS-1$
 			}
