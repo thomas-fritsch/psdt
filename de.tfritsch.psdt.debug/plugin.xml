@@ -4,7 +4,7 @@
    <extension point="org.eclipse.core.runtime.adapters">
       <factory
             adaptableType="de.tfritsch.psdt.ui.editor.PostscriptEditor"
-            class="de.tfritsch.psdt.debug.PSAdapterFactory">
+            class="de.tfritsch.psdt.debug.ui.breakpoints.PSAdapterFactory">
          <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
          <adapter type="org.eclipse.debug.ui.actions.IRunToLineTarget"/>
       </factory>
@@ -47,13 +47,13 @@
    </extension>
    <extension point="org.eclipse.debug.ui.debugModelPresentations">
       <debugModelPresentation
-            class="de.tfritsch.psdt.debug.ui.PSDebugModelPresentation"
+            class="de.tfritsch.psdt.debug.ui.presentation.PSDebugModelPresentation"
             id="de.tfritsch.psdt.debug">
       </debugModelPresentation>
    </extension>
    <extension point="org.eclipse.debug.ui.launchConfigurationTabGroups">
       <launchConfigurationTabGroup
-            class="de.tfritsch.psdt.debug.ui.PSTabGroup"
+            class="de.tfritsch.psdt.debug.ui.launch.PSTabGroup"
             id="de.tfritsch.psdt.debug.launchConfigurationTabGroup"
             type="de.tfritsch.psdt.debug.launchConfigurationType">
          <launchMode mode="run"
@@ -72,7 +72,7 @@
    </extension>
    <extension point="org.eclipse.debug.ui.launchShortcuts">
       <shortcut
-            class="de.tfritsch.psdt.debug.ui.PSLaunchShortcut"
+            class="de.tfritsch.psdt.debug.ui.launch.PSLaunchShortcut"
             icon="icons/ps_app.gif"
             id="de.tfritsch.postscript.shortcut"
             label="PostScript Application"
@@ -97,19 +97,19 @@
    <extension point="org.eclipse.debug.ui.consoleLineTrackers">
       <consoleLineTracker 
             id="de.tfritsch.postscript.consoleLineTracker"
-            class="de.tfritsch.psdt.debug.ui.PSConsoleLineTracker"
+            class="de.tfritsch.psdt.debug.ui.console.PSConsoleLineTracker"
             processType="PostScript">
       </consoleLineTracker>
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
       <page name="Ghostscript"
             id="de.tfritsch.psdt.debug.ghostscriptPreferencePage"
-            class="de.tfritsch.psdt.debug.ui.GhostscriptPreferencePage"
+            class="de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage"
             category="de.tfritsch.psdt.Postscript">
       </page>
       <page name="Debug"
             id="de.tfritsch.psdt.debug.debugPreferencePage"
-            class="de.tfritsch.psdt.debug.ui.DebugPreferencePage"
+            class="de.tfritsch.psdt.debug.ui.preferences.DebugPreferencePage"
             category="de.tfritsch.psdt.Postscript">
       </page>
    </extension>

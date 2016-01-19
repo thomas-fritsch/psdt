@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.preferences
 
 import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin

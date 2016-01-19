@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.presentation
 
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import org.eclipse.core.filesystem.IFileStore

@@ -1,7 +1,5 @@
-package de.tfritsch.psdt.debug
+package de.tfritsch.psdt.debug.ui.breakpoints
 
-import de.tfritsch.psdt.debug.ui.PSRunToLineTarget
-import de.tfritsch.psdt.debug.ui.PSToggleBreakpointsTarget
 import org.eclipse.core.runtime.IAdapterFactory
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget

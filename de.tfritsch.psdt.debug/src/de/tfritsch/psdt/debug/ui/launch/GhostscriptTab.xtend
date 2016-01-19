@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.resources.IProject

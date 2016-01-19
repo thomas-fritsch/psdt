@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.console
 
 import java.net.URL
 import org.eclipse.debug.ui.console.IConsole

@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.breakpoints
 
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.model.PSLineBreakpoint

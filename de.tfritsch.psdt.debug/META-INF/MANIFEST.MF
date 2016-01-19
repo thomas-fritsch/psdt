@@ -19,4 +19,3 @@ Require-Bundle: de.tfritsch.psdt.ui,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy
-Export-Package: de.tfritsch.psdt.debug.ui

@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.preferences
 
 import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
@@ -33,7 +33,7 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 
 	override protected void createFieldEditors() {
 		val editor = new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
-			switch (Platform.OS) {
+			switch (Platform.getOS) {
 				case Platform.OS_WIN32: {
 					fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
 					filterPath = new File("C:") //$NON-NLS-1$

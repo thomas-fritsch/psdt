@@ -1,4 +1,4 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.launch
 
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTabGroup
 import org.eclipse.debug.ui.CommonTab

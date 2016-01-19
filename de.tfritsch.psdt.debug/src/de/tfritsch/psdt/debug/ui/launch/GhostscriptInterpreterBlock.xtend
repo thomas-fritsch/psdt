@@ -1,6 +1,7 @@
-package de.tfritsch.psdt.debug.ui
+package de.tfritsch.psdt.debug.ui.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
+import de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
