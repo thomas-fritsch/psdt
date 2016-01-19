@@ -10,7 +10,7 @@ and [documentation](#user-content-documentation).
 ### Editor
 The PostScript editor (implemented using [Xtext](http://www.eclipse.org/Xtext/)) has most
 features as expected from a state-of-the-art editor, like syntax coloring, outline view,
-code folding, auto-edit for brackets, marked syntax errors.
+code folding, content assist, auto-edit for brackets, marked syntax errors.
 
 ![](de.tfritsch.psdt.help/html/getting_started/editing.png)
 
