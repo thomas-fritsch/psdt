@@ -1,7 +1,10 @@
 language: java
+cache:
+  directories:
+    - $HOME/.m2 
 install: true
 script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
-  - mvn install
+  - mvn package
