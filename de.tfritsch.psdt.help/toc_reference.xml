@@ -639,4 +639,9 @@
 			</topic>
 		</topic>
 	</topic>
+	<topic label="E Character Sets and Encoding Vectors">
+		<topic label="E.1 Times Family" href="html/Reference/E/1.html" />
+		<topic label="E.2 Helvetica Family" href="html/Reference/E/2.html" />
+		<topic label="E.3 Courier Family" href="html/Reference/E/3.html" />
+	</topic>
 </toc>

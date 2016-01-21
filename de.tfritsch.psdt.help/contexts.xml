@@ -1256,6 +1256,18 @@
 	<context id="/ControlLanguage">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ControlLanguage" />
 	</context>
+	<context id="/Courier">
+		<topic label="Standard font" href="html/Reference/E/3.html#Courier" />
+	</context>
+	<context id="/Courier-Bold">
+		<topic label="Standard font" href="html/Reference/E/3.html#Courier-Bold" />
+	</context>
+	<context id="/Courier-BoldOblique">
+		<topic label="Standard font" href="html/Reference/E/3.html#Courier-BoldOblique" />
+	</context>
+	<context id="/Courier-Oblique">
+		<topic label="Standard font" href="html/Reference/E/3.html#Courier-Oblique" />
+	</context>
 	<context id="/CutMedia">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#CutMedia" />
 	</context>
@@ -1353,6 +1365,18 @@
 	</context>
 	<context id="/Height">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Height" />
+	</context>
+	<context id="/Helvetica">
+		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica" />
+	</context>
+	<context id="/Helvetica-Bold">
+		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-Bold" />
+	</context>
+	<context id="/Helvetica-BoldOblique">
+		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-BoldOblique" />
+	</context>
+	<context id="/Helvetica-Oblique">
+		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-Oblique" />
 	</context>
 	<context id="/HWOptions">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#HWOptions" />
@@ -1564,6 +1588,18 @@
 	</context>
 	<context id="/SubFileDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
+	</context>
+	<context id="/Times-Roman">
+		<topic label="Standard font" href="html/Reference/E/1.html#Times-Roman" />
+	</context>
+	<context id="/Times-Bold">
+		<topic label="Standard font" href="html/Reference/E/1.html#Times-Bold" />
+	</context>
+	<context id="/Times-BoldItalic">
+		<topic label="Standard font" href="html/Reference/E/1.html#Times-BoldItalic" />
+	</context>
+	<context id="/Times-Italic">
+		<topic label="Standard font" href="html/Reference/E/1.html#Times-Italic" />
 	</context>
 	<context id="/TrapParams">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#TrapParams" />
