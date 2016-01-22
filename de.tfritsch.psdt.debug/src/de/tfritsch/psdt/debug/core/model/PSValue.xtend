@@ -28,7 +28,7 @@ class PSValue extends PSDebugElement implements IValue {
 	}
 
 	override String getReferenceTypeName() {
-		return "" //$NON-NLS-1$
+		return "object" //$NON-NLS-1$
 	}
 
 	override String getValueString() {

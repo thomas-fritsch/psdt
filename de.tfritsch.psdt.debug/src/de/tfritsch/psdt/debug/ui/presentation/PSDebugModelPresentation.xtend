@@ -1,6 +1,7 @@
 package de.tfritsch.psdt.debug.ui.presentation
 
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
+import java.util.Map
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.debug.core.model.IBreakpoint
@@ -23,7 +24,10 @@ import org.eclipse.ui.part.FileEditorInput
  */
 class PSDebugModelPresentation extends LabelProvider implements IDebugModelPresentation {
 
-	override void setAttribute(String attribute, Object value) {
+	Map<String, Object> attributes = newHashMap
+
+	override void setAttribute(String key, Object value) {
+		attributes.put(key, value)
 	}
 
 	override Image getImage(Object element) {
