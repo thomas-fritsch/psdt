@@ -1589,6 +1589,9 @@
 	<context id="/SubFileDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
 	</context>
+	<context id="/Symbol">
+		<topic label="Standard font" href="html/Reference/E/4.html" />
+	</context>
 	<context id="/Times-Roman">
 		<topic label="Standard font" href="html/Reference/E/1.html#Times-Roman" />
 	</context>
