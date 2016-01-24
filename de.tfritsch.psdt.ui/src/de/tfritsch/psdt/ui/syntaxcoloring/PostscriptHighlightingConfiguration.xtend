@@ -12,10 +12,13 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 
 	public static val DSC_COMMENT_ID = "dscComment"
 
+	public static val UNPARSED_DATA = "unparsedData"
+
 	override void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor)
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
 		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment", dscCommentTextStyle)
+		acceptor.acceptDefaultHighlighting(UNPARSED_DATA, "Unparsed Data", unparsedDataTextStyle)
 	}
 
 	def TextStyle literalNameTextStyle() {
@@ -29,6 +32,10 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 		return defaultTextStyle.copy => [
 			color = new RGB(63, 95, 191) // grey blue
 		]
+	}
+
+	def TextStyle unparsedDataTextStyle() {
+		return dscCommentTextStyle
 	}
 
 }

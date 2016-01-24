@@ -9,7 +9,8 @@ PSFile:
 	objects+=PSObject*;
 
 PSObject:
-	PSLiteralName | PSExecutableName | PSInt | PSFloat | PSString | PSProcedure | PSArray | PSDictionary;
+	PSLiteralName | PSExecutableName | PSInt | PSFloat | PSString | PSProcedure | PSArray | PSDictionary |
+	PSUnparsedData;
 
 PSProcedure:
 	{PSProcedure}
@@ -28,6 +29,9 @@ PSLiteralName:
 
 PSExecutableName:
 	name=ID;
+
+PSUnparsedData:
+	data=UNPARSED_DATA;
 
 PSInt:
 	i=INT;
@@ -72,6 +76,15 @@ terminal ID:
 
 terminal fragment DELIM_CHAR:
 	'(' | ')' | '<' | '>' | '[' | ']' | '{' | '}' | '/' | '%' | ' ' | '\t' | '\r' | '\n' | '\f' | '\u0000';
+
+terminal UNPARSED_DATA:
+	DSC_BEGIN_DATA .* DSC_END_DATA;
+
+terminal fragment DSC_BEGIN_DATA:
+	'%%BeginData:' !('\r' | '\n' | '\f')*;
+
+terminal fragment DSC_END_DATA:
+	'%%EndData' !('\r' | '\n' | '\f')*;
 
 terminal DSC_COMMENT:
 	('%!PS' | '%%') !('\r' | '\n' | '\f')*;

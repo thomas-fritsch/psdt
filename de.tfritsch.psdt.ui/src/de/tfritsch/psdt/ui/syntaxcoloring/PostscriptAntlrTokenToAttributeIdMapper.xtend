@@ -18,6 +18,7 @@ class PostscriptAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttribu
 			case "RULE_INT": NUMBER_ID
 			case "RULE_FLOAT": NUMBER_ID
 			case "RULE_DSC_COMMENT": DSC_COMMENT_ID
+			case "RULE_UNPARSED_DATA": UNPARSED_DATA
 			default: super.calculateId(tokenName, tokenType)
 		}
 	}

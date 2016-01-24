@@ -13,6 +13,7 @@ import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
+import de.tfritsch.psdt.postscript.PSUnparsedData
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
@@ -63,6 +64,14 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def text(PSFloat it) {
 		String.valueOf(f)
+	}
+
+	def text(PSUnparsedData it) {
+		"Data"
+	}
+
+	def image(PSUnparsedData it) {
+		"data.png"
 	}
 
 	def image(PSObject it) {
