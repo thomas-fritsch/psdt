@@ -35,7 +35,10 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 	}
 
 	def TextStyle unparsedDataTextStyle() {
-		return dscCommentTextStyle
+		return defaultTextStyle.copy => [
+			color = new RGB(42, 0, 255) // blue
+			backgroundColor = new RGB(220, 220, 220) // light grey
+		]
 	}
 
 }

@@ -16,6 +16,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
+import de.tfritsch.psdt.postscript.PSUnparsedData
 
 @RunWith(XtextRunner)
 @InjectWith(PostscriptInjectorProvider)
@@ -94,4 +95,14 @@ class ParserTest {
 		assertTrue(obj instanceof PSDictionary)
 	}
 
+	@Test
+	def testUnparsedData() {
+		val file = '''
+			%%BeginData:
+			ygbyydy<fgGADGA{YDBYDB[VDAV
+			%%EndData
+		'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSUnparsedData)
+	}
 }
