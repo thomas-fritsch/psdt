@@ -53,7 +53,7 @@ class PSValue extends PSDebugElement implements IValue {
 	}
 
 	def protected int getSize() {
-		return variables?.size
+		return if(variables !== null) variables.size else 0
 	}
 
 	def void addVariable(IVariable variable) {
