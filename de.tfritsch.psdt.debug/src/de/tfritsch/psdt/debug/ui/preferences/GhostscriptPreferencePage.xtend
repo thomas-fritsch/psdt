@@ -9,6 +9,7 @@ import org.eclipse.jface.preference.FileFieldEditor
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.IWorkbenchPreferencePage
+import org.eclipse.jface.preference.BooleanFieldEditor
 
 /**
  * Matches plugin.xml
@@ -32,18 +33,21 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 	}
 
 	override protected void createFieldEditors() {
-		val editor = new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
-			switch (Platform.getOS) {
-				case Platform.OS_WIN32: {
-					fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
-					filterPath = new File("C:") //$NON-NLS-1$
+		addField(
+			new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
+				switch (Platform.getOS) {
+					case Platform.OS_WIN32: {
+						fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
+						filterPath = new File("C:") //$NON-NLS-1$
+					}
+					case Platform.OS_LINUX: {
+						filterPath = new File("/usr/bin") //$NON-NLS-1$
+					}
 				}
-				case Platform.OS_LINUX: {
-					filterPath = new File("/usr/bin") //$NON-NLS-1$
-				}
-			}
-		]
-		addField(editor)
+			])
+		addField(
+			new BooleanFieldEditor(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT,
+				"&Message box on 'press <return> to continue'", fieldEditorParent))
 	}
 
 	override void init(IWorkbench workbench) {

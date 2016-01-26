@@ -1,13 +1,16 @@
 package de.tfritsch.psdt.debug.ui.console
 
+import de.tfritsch.psdt.debug.PSPlugin
 import java.util.regex.Pattern
 import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.debug.ui.console.IConsoleLineTracker
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.jface.text.IRegion
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.MessageBox
 import org.eclipse.ui.PlatformUI
 
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 import static extension java.util.regex.Pattern.*
 
@@ -18,13 +21,14 @@ import static extension java.util.regex.Pattern.*
 class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	IConsole console
+	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 
 	override init(IConsole console) {
 		this.console = console
 	}
 
 	Pattern errorPattern = "Error: (/\\w+) in .+".compile
-	Pattern pressReturnPattern = ">>.+, press <return> to continue<<".compile
+	Pattern pressReturnPattern = ".*press <return> to continue.*".compile
 
 	override lineAppended(IRegion line) {
 		val text = console.document.get(line.offset, line.length)
@@ -37,7 +41,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 				console.addLink(new Hyperlink(url), offset, length)
 		}
 		matcher = pressReturnPattern.matcher(text)
-		if (matcher.matches) {
+		if (matcher.matches && preferenceStore.messageBoxOnPrompt) {
 			Display.^default.syncExec [
 				val shell = PlatformUI.workbench.activeWorkbenchWindow.shell
 				val box = new MessageBox(shell)

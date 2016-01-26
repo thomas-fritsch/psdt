@@ -10,6 +10,10 @@ class PSLaunchExtensions {
 		return preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
 	}
 
+	def static boolean isMessageBoxOnPrompt(IPreferenceStore preferenceStore) {
+		return preferenceStore.getBoolean(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT)
+	}
+
 	def static boolean isShowSystemdict(IPreferenceStore preferenceStore) {
 		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_SYSTEMDICT)
 	}
