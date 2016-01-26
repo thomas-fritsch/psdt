@@ -2,7 +2,9 @@ package de.tfritsch.psdt.debug.core.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
+import de.tfritsch.psdt.ui.internal.PostscriptActivator
 import java.io.File
+import javax.inject.Inject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.IProgressMonitor
@@ -16,7 +18,6 @@ import org.eclipse.osgi.util.NLS
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.core.launch.DebugExtensions.*
 import static extension org.eclipse.debug.core.DebugPlugin.*
 
 /**
@@ -34,6 +35,15 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      * extension[@point="org.eclipse.debug.core.launchConfigurationTypes"]/launchConfigurationType/@id
      */
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
+
+	// TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
+	new() {
+		val injector = PostscriptActivator.instance.getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT)
+		injector.injectMembers(this)
+	}
+
+	@Inject
+	extension DebugExtensions
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if (monitor.canceled) {

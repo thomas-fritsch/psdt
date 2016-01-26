@@ -1,12 +1,11 @@
 package de.tfritsch.psdt.debug.core.launch
 
-import com.google.inject.Injector
 import com.google.inject.Provider
 import de.tfritsch.psdt.debug.PSPlugin
-import de.tfritsch.psdt.ui.internal.PostscriptActivator
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import javax.inject.Inject
 import org.antlr.runtime.ANTLRFileStream
 import org.antlr.runtime.CommonToken
 import org.eclipse.core.runtime.CoreException
@@ -19,11 +18,10 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
 class DebugExtensions {
 
-	// TODO simplify this to: @Inject Provider<Lexer> lexerProvider
-	static Injector injector = PostscriptActivator.instance.getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT)
-	static Provider<Lexer> lexerProvider = injector.getProvider(Lexer)
+	@Inject
+	Provider<Lexer> lexerProvider
 
-	def static PSSourceMapping createSourceMapping(String psFile, IProgressMonitor monitor) throws CoreException {
+	def PSSourceMapping createSourceMapping(String psFile, IProgressMonitor monitor) throws CoreException {
 		val sourceMapping = new PSSourceMapping
 		try {
 			val lexer = lexerProvider.get
@@ -62,7 +60,7 @@ class DebugExtensions {
 		return sourceMapping
 	}
 
-	def static File createInstrumentedFile(PSSourceMapping sourceMapping, IProgressMonitor monitor) throws CoreException {
+	def File createInstrumentedFile(PSSourceMapping sourceMapping, IProgressMonitor monitor) throws CoreException {
 		try {
 			val file = File.createTempFile("psdt", ".ps")
 			val writer = new FileWriter(file)
