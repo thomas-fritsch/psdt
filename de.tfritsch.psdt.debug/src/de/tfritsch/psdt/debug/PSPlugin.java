@@ -14,6 +14,10 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.osgi.framework.BundleContext;
 
+import com.google.inject.Injector;
+
+import de.tfritsch.psdt.ui.internal.PostscriptActivator;
+
 /**
  * The activator class controls the plug-in life cycle
  */
@@ -57,6 +61,11 @@ public class PSPlugin extends AbstractUIPlugin {
             abort(e.getMessage(), e);
         }
         return new Path(url.getFile());
+	}
+
+        // TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
+	public static Injector getInjector() {
+	    return PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT);
 	}
 
 	/**

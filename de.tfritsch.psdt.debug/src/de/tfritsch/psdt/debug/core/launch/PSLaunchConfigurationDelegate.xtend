@@ -2,7 +2,6 @@ package de.tfritsch.psdt.debug.core.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
-import de.tfritsch.psdt.ui.internal.PostscriptActivator
 import java.io.File
 import javax.inject.Inject
 import org.eclipse.core.runtime.CoreException
@@ -36,10 +35,8 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      */
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
-	// TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
 	new() {
-		val injector = PostscriptActivator.instance.getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT)
-		injector.injectMembers(this)
+		PSPlugin.injector.injectMembers(this) // TODO remove this hack
 	}
 
 	@Inject
