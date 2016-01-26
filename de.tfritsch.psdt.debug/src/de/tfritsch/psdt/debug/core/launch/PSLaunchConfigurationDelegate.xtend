@@ -55,12 +55,13 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
 			cmdLineList += PSPlugin.getFile("psdebug.ps").toOSString //$NON-NLS-1$
-			sourceMapping = psFile.createSourceMapping(monitor)
-			if (sourceMapping === null) {
+			sourceMapping = psFile.createSourceMapping
+			if (monitor.canceled) {
 				return
 			}
-			instrumentedFile = sourceMapping.createInstrumentedFile(monitor)
-			if (instrumentedFile === null) {
+			instrumentedFile = sourceMapping.createInstrumentedFile
+			if (monitor.canceled) {
+				instrumentedFile.delete
 				return
 			}
 			cmdLineList += instrumentedFile.absolutePath

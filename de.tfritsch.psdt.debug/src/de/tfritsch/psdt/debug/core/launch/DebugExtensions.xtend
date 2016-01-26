@@ -9,7 +9,6 @@ import javax.inject.Inject
 import org.antlr.runtime.ANTLRFileStream
 import org.antlr.runtime.CommonToken
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.IProgressMonitor
 import org.eclipse.xtext.parser.antlr.Lexer
 
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
@@ -21,16 +20,13 @@ class DebugExtensions {
 	@Inject
 	Provider<Lexer> lexerProvider
 
-	def PSSourceMapping createSourceMapping(String psFile, IProgressMonitor monitor) throws CoreException {
+	def PSSourceMapping createSourceMapping(String psFile) throws CoreException {
 		val sourceMapping = new PSSourceMapping
 		try {
 			val lexer = lexerProvider.get
 			lexer.charStream = new ANTLRFileStream(psFile)
 			var token = lexer.nextToken
 			while (token.type !== EOF) {
-				if (monitor.canceled) {
-					return null
-				}
 				switch (token.type) {
 					case RULE_LITERAL_ID,
 					case RULE_ID,
@@ -60,7 +56,7 @@ class DebugExtensions {
 		return sourceMapping
 	}
 
-	def File createInstrumentedFile(PSSourceMapping sourceMapping, IProgressMonitor monitor) throws CoreException {
+	def File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
 		try {
 			val file = File.createTempFile("psdt", ".ps")
 			val writer = new FileWriter(file)
@@ -70,11 +66,6 @@ class DebugExtensions {
 			writer.write(
 				!store.showSystemdict + " " + !store.showGlobaldict + " " + !store.showUserdict + " @@stathide\n")
 			for (i : 0 ..< sourceMapping.size) {
-				if (monitor.canceled) {
-					writer.close
-					file.delete
-					return null
-				}
 				val string = sourceMapping.getString(i)
 				if (string != "}") // no stepping point just before }
 					writer.write(i + " @@$ ")
