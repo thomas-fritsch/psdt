@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
@@ -14,16 +15,21 @@ import org.eclipse.swt.SWT
 import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Composite
+import org.eclipse.xtext.ui.IImageHelper
 
 class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
 	ILaunchConfigurationTab[] fBlocks
+
+	@Inject
+	IImageHelper fImageHelper
 
 	override String getName() {
 		return "Ghostscript" //$NON-NLS-1$
 	}
 
 	new() {
+		PSPlugin.injector.injectMembers(this) // TODO remove this hack
 		fBlocks = #[
 			new GhostscriptInterpreterBlock,
 			new GhostscriptArgumentsBlock,
@@ -36,7 +42,7 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override Image getImage() {
-		return PSPlugin.getImage("icons/ghostscript.png") //$NON-NLS-1$
+		return fImageHelper.getImage("ghostscript.png") //$NON-NLS-1$
 	}
 
 	override void createControl(Composite parent) {

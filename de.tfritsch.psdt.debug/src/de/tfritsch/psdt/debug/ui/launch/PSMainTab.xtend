@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
 import java.io.File
@@ -23,6 +24,7 @@ import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog
 import org.eclipse.ui.model.BaseWorkbenchContentProvider
 import org.eclipse.ui.model.WorkbenchLabelProvider
+import org.eclipse.xtext.ui.IImageHelper
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -39,12 +41,19 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	Button fVariablesButton
 	Button fBreakOnFirstTokenButton
 
+	@Inject
+	IImageHelper fImageHelper
+
+	new() {
+		PSPlugin.injector.injectMembers(this) // TODO remove this hack
+	}
+
 	override String getName() {
 		return "Main"
 	}
 
 	override Image getImage() {
-		return PSPlugin.getImage("icons/postscript.png") //$NON-NLS-1$
+		return fImageHelper.getImage("postscript.png") //$NON-NLS-1$
 	}
 
 	override void createControl(Composite parent) {

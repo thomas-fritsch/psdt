@@ -9,9 +9,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.eclipse.swt.graphics.Image;
 import org.osgi.framework.BundleContext;
 
 import com.google.inject.Injector;
@@ -66,19 +64,6 @@ public class PSPlugin extends AbstractUIPlugin {
         // TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
 	public static Injector getInjector() {
 	    return PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT);
-	}
-
-	/**
-	 * Return an <code>Image</code> object from within this plug-in.
-	 */
-	public static Image getImage(String path) {
-		ImageRegistry registry = INSTANCE.getImageRegistry();
-		Image image = registry.get(path);
-		if (image == null) {
-			image = imageDescriptorFromPlugin(ID, path).createImage();
-			registry.put(path, image);
-		}
-		return image;
 	}
 
 	/**
