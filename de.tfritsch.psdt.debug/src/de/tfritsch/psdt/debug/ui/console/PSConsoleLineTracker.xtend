@@ -6,6 +6,7 @@ import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.debug.ui.console.IConsoleLineTracker
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.jface.text.IRegion
+import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.MessageBox
 import org.eclipse.ui.PlatformUI
@@ -44,7 +45,8 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		if (matcher.matches && preferenceStore.messageBoxOnPrompt) {
 			Display.^default.syncExec [
 				val shell = PlatformUI.workbench.activeWorkbenchWindow.shell
-				val box = new MessageBox(shell)
+				val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.SYSTEM_MODAL))
+				box.text = console.process.launch.launchConfiguration.name
 				box.message = text
 				box.open
 			]
