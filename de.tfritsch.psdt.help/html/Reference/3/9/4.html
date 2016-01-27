@@ -100,14 +100,15 @@ end</pre>
 	<p>
 		A resource file contains a PostScript program that can be executed to
 		load the resource instance into VM. The last action the program should
-		take is to execute <a href="../../8/2/d/defineresource">defineresource</a>
-		or an equivalent operator, such as <a href="../../8/2/d/definefont">definefont</a>,
-		to associate the resource instance with a category and a name. In
-		other words, each resource file must be self-identifying and
-		self-defining. The resource file must be well behaved: it must leave
-		the stacks in their original state and it must not execute any
-		operators (graphics operators, for instance) that are not directly
-		related to creating the resource instance.
+		take is to execute <a href="../../8/2/d/defineresource.html">defineresource</a>
+		or an equivalent operator, such as <a
+			href="../../8/2/d/definefont.html">definefont</a>, to associate the
+		resource instance with a category and a name. In other words, each
+		resource file must be self-identifying and self-defining. The resource
+		file must be well behaved: it must leave the stacks in their original
+		state and it must not execute any operators (graphics operators, for
+		instance) that are not directly related to creating the resource
+		instance.
 	</p>
 </body>
 </html>
