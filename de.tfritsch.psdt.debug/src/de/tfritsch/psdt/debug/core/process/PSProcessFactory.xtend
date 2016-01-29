@@ -23,8 +23,7 @@ class PSProcessFactory implements IProcessFactory {
      */
 	val public static ID = PSPlugin.ID + ".processFactory" //$NON-NLS-1$
 
-	@SuppressWarnings("rawtypes")
-	override IProcess newProcess(ILaunch launch, Process process, String label, Map attributes) {
+	override IProcess newProcess(ILaunch launch, Process process, String label, Map<String, String> attributes) {
 		return new RuntimeProcess(launch, process, label, attributes) {
 
 			override protected IStreamsProxy createStreamsProxy() {
