@@ -1,7 +1,13 @@
 language: java
+
+env: DISPLAY=:99.0
+
 install: true
-script:
-  - export DISPLAY=:99.0
+
+before_script:
   - sh -e /etc/init.d/xvfb start
   - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
+
+script:
+  - export
   - mvn install
