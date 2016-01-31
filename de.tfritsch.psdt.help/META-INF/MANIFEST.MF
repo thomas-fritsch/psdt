@@ -4,6 +4,7 @@ Bundle-Name: PostScript Help
 Bundle-SymbolicName: de.tfritsch.psdt.help;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Eclipse-BundleShape: dir
 Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.help,
  org.eclipse.xtend.lib,
