@@ -27,8 +27,8 @@ class Hyperlink implements IHyperlink {
 			browserSupport.createBrowser(
 				IWorkbenchBrowserSupport.NAVIGATION_BAR,
 				"doc",
-				null,
-				null
+				null, // name = HTMLtitle
+				null // tooltip = url
 			).openURL(url)
 		} catch (PartInitException e) {
 			e.printStackTrace
