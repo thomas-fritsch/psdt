@@ -15,6 +15,8 @@ import static org.junit.Assert.*
 @InjectWith(PostscriptInjectorProvider)
 class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 
+	static val ISO_LATIN_1 = "ISO-8859-1"
+
 	@Inject
 	def void setConverter(STRINGValueConverter converter) {
 		this.converter = converter
@@ -36,41 +38,97 @@ class STRINGValueConverterTest extends AbstractStringValueConverterTest {
 	@Test
 	def void testSimple() {
 		val value = converter.toValue("(Hello world)", null)
-		assertArrayEquals("Hello world".getBytes("ISO-8859-1"), value)
+		assertArrayEquals("Hello world".getBytes(ISO_LATIN_1), value)
 		val string = converter.toString(value)
 		assertEquals("(Hello world)", string)
 	}
 
 	@Test
-	def void testEscapeChars() {
-		val value = converter.toValue("(\\b\\f\\n\\r\\t\\\\\\(\\))", null)
-		assertArrayEquals("\b\f\n\r\t\\()".getBytes("ISO-8859-1"), value)
+	def void testBackSpace() {
+		val value = converter.toValue("(\\b)", null)
+		assertArrayEquals("\b".getBytes(ISO_LATIN_1), value)
 		val string = converter.toString(value)
-		assertEquals("(\\b\\f\\n\\r\\t\\\\\\(\\))", string)
+		assertEquals("(\\b)", string)
+	}
+
+	@Test
+	def void testFormFeed() {
+		val value = converter.toValue("(\\f)", null)
+		assertArrayEquals("\f".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\f)", string)
+	}
+
+	@Test
+	def void testLineFeed() {
+		val value = converter.toValue("(\\n)", null)
+		assertArrayEquals("\n".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\n)", string)
+	}
+
+	@Test
+	def void testReturn() {
+		val value = converter.toValue("(\\r)", null)
+		assertArrayEquals("\r".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\r)", string)
+	}
+
+	@Test
+	def void testTab() {
+		val value = converter.toValue("(\\t)", null)
+		assertArrayEquals("\t".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\t)", string)
+	}
+
+	@Test
+	def void testBackSlash() {
+		val value = converter.toValue("(\\\\)", null)
+		assertArrayEquals("\\".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\\\)", string)
+	}
+
+	@Test
+	def void testOpenParen() {
+		val value = converter.toValue("(\\()", null)
+		assertArrayEquals("(".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\()", string)
+	}
+
+	@Test
+	def void testCloseParen() {
+		val value = converter.toValue("(\\))", null)
+		assertArrayEquals(")".getBytes(ISO_LATIN_1), value)
+		val string = converter.toString(value)
+		assertEquals("(\\))", string)
 	}
 
 	@Test
 	def void testEscapeInvalid() {
 		val value = converter.toValue("(\\k)", null)
-		assertArrayEquals("k".getBytes("ISO-8859-1"), value)
+		assertArrayEquals("k".getBytes(ISO_LATIN_1), value)
 	}
 
 	@Test
 	def void testEscapeNewline() {
 		val value = converter.toValue("(line1\\\nline2)", null)
-		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
+		assertArrayEquals("line1line2".getBytes(ISO_LATIN_1), value)
 	}
 
 	@Test
 	def void testEscapeReturn() {
 		val value = converter.toValue("(line1\\\rline2)", null)
-		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
+		assertArrayEquals("line1line2".getBytes(ISO_LATIN_1), value)
 	}
 
 	@Test
 	def void testEscapeReturnNewline() {
 		val value = converter.toValue("(line1\\\r\nline2)", null)
-		assertArrayEquals("line1line2".getBytes("ISO-8859-1"), value)
+		assertArrayEquals("line1line2".getBytes(ISO_LATIN_1), value)
 	}
 
 	@Test

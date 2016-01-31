@@ -24,14 +24,38 @@ class ValidatorTest {
 	extension PostscriptPackage = PostscriptPackage.eINSTANCE
 
 	@Test
-	def testMissingCloseBrace() {
+	def testMissingCloseProcedure() {
 		val file = '''{ a b'''.parse
 		file.assertError(PSExecutableName, SYNTAX_DIAGNOSTIC, "expecting '}'")
 	}
 
 	@Test
-	def testExtraneousCloseBrace() {
+	def testExtraneousCloseProcedure() {
 		val file = '''a b }'''.parse
 		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input '}'")
+	}
+
+	@Test
+	def testMissingCloseArray() {
+		val file = '''[ a b'''.parse
+		file.assertError(PSExecutableName, SYNTAX_DIAGNOSTIC, "expecting ']'")
+	}
+
+	@Test
+	def testExtraneousCloseArray() {
+		val file = '''a b ]'''.parse
+		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input ']'")
+	}
+
+	@Test
+	def testMissingCloseDictionary() {
+		val file = '''<< a b'''.parse
+		file.assertError(PSExecutableName, SYNTAX_DIAGNOSTIC, "expecting '>>'")
+	}
+
+	@Test
+	def testExtraneousCloseDictionary() {
+		val file = '''a b >>'''.parse
+		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input '>>'")
 	}
 }
