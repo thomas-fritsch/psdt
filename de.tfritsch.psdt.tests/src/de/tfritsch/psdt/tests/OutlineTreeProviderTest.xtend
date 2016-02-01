@@ -27,13 +27,12 @@ class OutlineTreeProviderTest extends AbstractOutlineWorkbenchTest {
 				/PageSize [595 841}
 			>> setpagedevice
 		'''.assertAllLabels('''
-			test.ps
-			  <<...>>
-			    /PageSize
-			    [...]
-			      595
-			      841
-			  setpagedevice
+			<<...>>
+			  /PageSize
+			  [...]
+			    595
+			    841
+			setpagedevice
 		''')
 	}
 
@@ -48,10 +47,9 @@ class OutlineTreeProviderTest extends AbstractOutlineWorkbenchTest {
 			%%EndData
 			zz
 		'''.assertAllLabels('''
-			test.ps
-			  aa
-			  Data
-			  zz
+			aa
+			Data
+			zz
 		''')
 	}
 

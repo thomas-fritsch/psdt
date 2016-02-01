@@ -7,7 +7,6 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
-import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.postscript.PSFloat
 import de.tfritsch.psdt.postscript.PSInt
 import de.tfritsch.psdt.postscript.PSObject
@@ -32,14 +31,6 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	@Inject
 	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
-	}
-
-	def text(PSFile it) {
-		it.eResource.URI.lastSegment // file name with extension
-	}
-
-	def image(PSFile it) {
-		"postscript.png"
 	}
 
 	def text(PSProcedure it) {

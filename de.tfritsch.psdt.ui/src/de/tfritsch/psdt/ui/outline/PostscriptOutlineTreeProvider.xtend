@@ -3,11 +3,21 @@
 */
 package de.tfritsch.psdt.ui.outline
 
+import de.tfritsch.psdt.postscript.PSFile
+import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider
+import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode
+
 /**
  * Customization of the default outline structure.
  *
  * see http://www.eclipse.org/Xtext/documentation.html#outline
  */
-class PostscriptOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider {
-	
+class PostscriptOutlineTreeProvider extends DefaultOutlineTreeProvider {
+
+	// skip the root model element of type PSFile
+	def protected _createChildren(DocumentRootNode parentNode, PSFile file) {
+		for (object : file.objects) {
+			createNode(parentNode, object);
+		}
+	}
 }
