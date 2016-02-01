@@ -21,6 +21,8 @@ class PostscriptFormatter extends AbstractDeclarativeFormatter {
 	@Inject extension PostscriptGrammarAccess
 
 	override protected void configureFormatting(FormattingConfig c) {
+		c.setAutoLinewrap(72)
+
 		c.setLinewrap(0, 1, 2).before(SL_COMMENTRule)
 		c.setLinewrap.after(SL_COMMENTRule)
 		c.setLinewrap.after(DSC_COMMENTRule)
@@ -35,6 +37,10 @@ class PostscriptFormatter extends AbstractDeclarativeFormatter {
 			c.setIndentation(pair.first, pair.second)
 			c.setLinewrap.around(pair.first)
 			c.setLinewrap.around(pair.second)
+		}
+		for (pair : findKeywordPairs("[", "]")) {
+			c.setNoSpace.after(pair.first)
+			c.setNoSpace.before(pair.second)
 		}
 	}
 }
