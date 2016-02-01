@@ -30,6 +30,6 @@ Export-Package: de.tfritsch.psdt,
  de.tfritsch.psdt.serializer,
  de.tfritsch.psdt.parser.antlr,
  de.tfritsch.psdt.parser.antlr.internal,
- de.tfritsch.psdt.validation
-Bundle-ClassPath: .,
- target/dependency/pdfbox-1.8.7.jar
+ de.tfritsch.psdt.validation,
+ de.tfritsch.psdt.formatting
+Bundle-ClassPath: .,target/dependency/pdfbox-1.8.7.jar
