@@ -81,16 +81,16 @@ terminal UNPARSED_DATA:
 	DSC_BEGIN_DATA .* DSC_END_DATA;
 
 terminal fragment DSC_BEGIN_DATA:
-	'%%BeginData:' !('\r' | '\n' | '\f')*;
+	'%%BeginData:' !('\n' | '\f')* ('\n' | '\f');
 
 terminal fragment DSC_END_DATA:
-	'%%EndData' !('\r' | '\n' | '\f')*;
+	'%%EndData' !('\n' | '\f')* ('\n' | '\f');
 
 terminal DSC_COMMENT:
-	('%!PS' | '%%') !('\r' | '\n' | '\f')*;
+	('%!PS' | '%%') !('\n' | '\f')* ('\n' | '\f');
 
 terminal SL_COMMENT:
-	'%' !('\r' | '\n' | '\f')*;
+	'%' !('\n' | '\f')* ('\n' | '\f')?;
 
 terminal WS:
 	(' ' | '\t' | '\r' | '\n' | '\f' | '\u0000')+;

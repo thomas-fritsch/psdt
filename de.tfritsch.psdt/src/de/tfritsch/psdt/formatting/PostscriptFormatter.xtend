@@ -24,9 +24,8 @@ class PostscriptFormatter extends AbstractDeclarativeFormatter {
 		c.setAutoLinewrap(72)
 
 		c.setLinewrap(0, 1, 2).before(SL_COMMENTRule)
-		c.setLinewrap.after(SL_COMMENTRule)
-		c.setLinewrap.after(DSC_COMMENTRule)
-		c.setLinewrap.after(UNPARSED_DATARule)
+		c.setLinewrap(1, 1, 2).before(DSC_COMMENTRule)
+		c.setLinewrap(1, 1, 2).before(UNPARSED_DATARule)
 
 		for (pair : findKeywordPairs("{", "}")) {
 			c.setIndentation(pair.first, pair.second)
