@@ -29,13 +29,13 @@ class PostscriptFormatter extends AbstractDeclarativeFormatter {
 
 		for (pair : findKeywordPairs("{", "}")) {
 			c.setIndentation(pair.first, pair.second)
-			c.setLinewrap.around(pair.first)
-			c.setLinewrap.around(pair.second)
+			c.setLinewrap.after(pair.first)
+			c.setLinewrap.before(pair.second)
 		}
 		for (pair : findKeywordPairs("<<", ">>")) {
 			c.setIndentation(pair.first, pair.second)
-			c.setLinewrap.around(pair.first)
-			c.setLinewrap.around(pair.second)
+			c.setLinewrap.after(pair.first)
+			c.setLinewrap.before(pair.second)
 		}
 		for (pair : findKeywordPairs("[", "]")) {
 			c.setNoSpace.after(pair.first)
