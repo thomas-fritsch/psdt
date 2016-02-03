@@ -24,7 +24,7 @@ class OutlineTreeProviderTest extends AbstractOutlineWorkbenchTest {
 		'''
 			%!PS
 			<<
-				/PageSize [595 841}
+				/PageSize [595 841]
 			>> setpagedevice
 		'''.assertAllLabels('''
 			<<...>>
