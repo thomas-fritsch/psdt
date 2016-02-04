@@ -8,6 +8,7 @@ import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 
 import de.tfritsch.psdt.conversion.PostscriptTerminalConverters;
 import de.tfritsch.psdt.documentation.PostscriptDocumentationProvider;
+import de.tfritsch.psdt.postscript.PostscriptFactory;
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -23,4 +24,7 @@ public class PostscriptRuntimeModule extends AbstractPostscriptRuntimeModule {
         return PostscriptDocumentationProvider.class;
     }
 
+	public PostscriptFactory bindPostscriptFactory() {
+		return PostscriptFactory.eINSTANCE;
+	}
 }

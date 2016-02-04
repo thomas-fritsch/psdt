@@ -20,7 +20,7 @@ class LabelProviderTest {
 
 	@Inject extension ILabelProvider
 
-	extension PostscriptFactory = PostscriptFactory.eINSTANCE
+	@Inject extension PostscriptFactory
 
 	@Test
 	def void testProcedure() {

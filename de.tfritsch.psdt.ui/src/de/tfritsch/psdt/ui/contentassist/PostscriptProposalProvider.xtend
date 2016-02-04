@@ -3,6 +3,7 @@
  */
 package de.tfritsch.psdt.ui.contentassist
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.postscript.PostscriptFactory
 import java.util.List
 import java.util.Scanner
@@ -28,11 +29,12 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		return names
 	}
 
+	@Inject extension PostscriptFactory
+
 	override completePSExecutableName_Name(EObject model, Assignment assignment, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
 		super.completePSExecutableName_Name(model, assignment, context, acceptor)
-		val dummyObject = PostscriptFactory.eINSTANCE.createPSExecutableName
-		val image = labelProvider.getImage(dummyObject)
+		val image = labelProvider.getImage(createPSExecutableName)
 		EXECUTABLE_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
@@ -43,8 +45,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 			// Don't propose literal names (e.g. /FontType), if '/' is not yet entered,
 			// in order not to overload the proposal list.
 			return;
-		val dummyObject = PostscriptFactory.eINSTANCE.createPSLiteralName
-		val image = labelProvider.getImage(dummyObject)
+		val image = labelProvider.getImage(createPSLiteralName)
 		LITERAL_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 

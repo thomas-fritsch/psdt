@@ -24,7 +24,7 @@ class DocumentationProviderTest {
 
 	@Inject IGrammarAccess grammarAccess
 
-	extension PostscriptFactory = PostscriptFactory.eINSTANCE
+	@Inject extension PostscriptFactory
 
 	@Test
 	def testExecutableName() {
