@@ -12,13 +12,13 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 
 	public static val DSC_COMMENT_ID = "dscComment"
 
-	public static val UNPARSED_DATA = "unparsedData"
+	public static val UNPARSED_DATA_ID = "unparsedData"
 
 	override void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor)
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
 		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment", dscCommentTextStyle)
-		acceptor.acceptDefaultHighlighting(UNPARSED_DATA, "Unparsed Data", unparsedDataTextStyle)
+		acceptor.acceptDefaultHighlighting(de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration.UNPARSED_DATA_ID, "Unparsed Data", unparsedDataTextStyle)
 	}
 
 	def TextStyle literalNameTextStyle() {
