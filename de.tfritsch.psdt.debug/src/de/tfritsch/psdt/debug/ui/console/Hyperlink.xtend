@@ -25,10 +25,10 @@ class Hyperlink implements IHyperlink {
 	override linkActivated() {
 		try {
 			browserSupport.createBrowser(
-				IWorkbenchBrowserSupport.NAVIGATION_BAR,
-				"doc",
+				IWorkbenchBrowserSupport.NAVIGATION_BAR.bitwiseOr(IWorkbenchBrowserSupport.LOCATION_BAR),
+				"doc", // id
 				null, // name = HTMLtitle
-				null // tooltip = url
+				"Documentation" // tooltip
 			).openURL(url)
 		} catch (PartInitException e) {
 			e.printStackTrace

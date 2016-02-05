@@ -55,10 +55,10 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	def protected void browseGhostscriptDoc() {
 		try {
 			browserSupport.createBrowser(
-				IWorkbenchBrowserSupport.NAVIGATION_BAR,
-				"gs",
-				null,
-				null
+				IWorkbenchBrowserSupport.NAVIGATION_BAR.bitwiseOr(IWorkbenchBrowserSupport.LOCATION_BAR),
+				"gs", // id
+				null, // name = HTMLtitle
+				"Documentation" // tooltip
 			).openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
 		} catch (PartInitException e) {
 			PSPlugin.log(e)
