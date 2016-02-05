@@ -1341,8 +1341,8 @@
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FontSet" />
 	</context>
 	<context id="/FontType">
-		<topic label="Resource category" href="html/Reference/3/9/2.html#FontType" />
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontType" />
+		<topic label="Resource category" href="html/Reference/3/9/2.html#FontType" />
 	</context>
 	<context id="/Form">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Form" />
