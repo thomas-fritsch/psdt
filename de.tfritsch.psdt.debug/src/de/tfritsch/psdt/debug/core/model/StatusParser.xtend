@@ -6,14 +6,14 @@ import java.util.List
 
 class StatusParser {
 
-	PSDebugTarget debugTarget
+	IPSDebugElementFactory factory
 
-	new(PSDebugTarget debugTarget) {
-		this.debugTarget = debugTarget
+	new(IPSDebugElementFactory factory) {
+		this.factory = factory
 	}
 
 	def IVariable[] toVariables(Iterable<String> lines) {
-		val root = new PSValue(debugTarget, "") //$NON-NLS-1$
+		val root = factory.createValue("") //$NON-NLS-1$
 		val List<PSValue> treePath = newArrayList(root)
 		lines.map[parseStatusLine].fold(treePath)[it, statusLine|append(statusLine)]
 		return root.variables
@@ -38,8 +38,8 @@ class StatusParser {
 	}
 
 	def protected List<PSValue> append(List<PSValue> it, StatusLine statusLine) {
-		val value = new PSIndexedValue(debugTarget, statusLine.value)
-		val variable = new PSVariable(debugTarget, statusLine.name, value)
+		val value = factory.createIndexedValue(statusLine.value)
+		val variable = factory.createVariable(statusLine.name, value)
 		shrinkToSize(statusLine.depth)
 		last.addVariable(variable)
 		add(value)

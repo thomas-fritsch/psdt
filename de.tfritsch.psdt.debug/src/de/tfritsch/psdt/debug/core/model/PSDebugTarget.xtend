@@ -21,7 +21,7 @@ import org.eclipse.debug.core.model.IVariable
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
-class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStreamListener {
+class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStreamListener, IPSDebugElementFactory {
 
 	private static enum State {
 		CREATED,
@@ -333,7 +333,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
-	override boolean canDisconnect() {
+	override canDisconnect() {
 		return false // not supported
 	}
 
@@ -351,7 +351,20 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		return null
 	}
 
-	override public boolean supportsStorageRetrieval() {
+	override boolean supportsStorageRetrieval() {
 		return false
 	}
+
+	override PSVariable createVariable(String name, PSValue value) {
+		return new PSVariable(this, name, value)
+	}
+
+	override PSIndexedValue createIndexedValue(String valueString) {
+		return new PSIndexedValue(this, valueString)
+	}
+
+	override PSValue createValue(String valueString) {
+		return new PSValue(this, valueString)
+	}
+
 }
