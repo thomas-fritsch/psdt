@@ -38,10 +38,12 @@
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
 					<excludes>
-						<!-- work-around for tests failing with strange errors within Maven, 
-							although succeeding when started from Eclipse IDE -->
+						<!-- Work-around for tests failing in Maven, but succeeding in IDE -->
+						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/AutoEditTest*</exclude>
+						<!-- HelpSystem.getContext("de.tfritsch.psdt.help.anything") is null -->
 						<exclude>**/DocumentationProviderTest*</exclude>
+						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/OutlineTreeProviderTest*</exclude>
 					</excludes>
 					<dependencies>
