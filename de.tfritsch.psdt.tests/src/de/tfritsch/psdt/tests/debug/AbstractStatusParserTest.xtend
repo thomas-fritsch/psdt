@@ -17,8 +17,6 @@ abstract class AbstractStatusParserTest {
 
 	extension StatusParser = new StatusParser(new PSDebugElementFactory)
 
-	extension StatusDumper = new StatusDumper
-
 	def protected void assertStatusParsed(CharSequence input, CharSequence expectedOutput) throws Exception {
 		val lines = new Scanner(input.toString).useDelimiter(LINE_SEP).toList
 		val variables = lines.toVariables
@@ -26,28 +24,25 @@ abstract class AbstractStatusParserTest {
 		assertEquals(expectedOutput.toString, output)
 	}
 
-	static private class StatusDumper {
-
-		def String toString(IVariable[] variables) throws Exception {
-			val appendable = new StringBuilder
-			for (variable : variables) {
-				appendable.append(variable, 1)
-			}
-			return appendable.toString
+	def private String toString(IVariable[] variables) throws Exception {
+		val appendable = new StringBuilder
+		for (variable : variables) {
+			appendable.append(variable, 1)
 		}
+		return appendable.toString
+	}
 
-		def private void append(Appendable it, IVariable variable, int depth) throws Exception {
-			append(variable.toLine(depth))
-			for (subVariable : variable.value.variables) {
-				append(subVariable, depth + 1) // recursion!
-			}
+	def private void append(Appendable it, IVariable variable, int depth) throws Exception {
+		append(variable.toLine(depth))
+		for (subVariable : variable.value.variables) {
+			append(subVariable, depth + 1) // recursion!
 		}
+	}
 
-		def private String toLine(IVariable it, int depth) throws Exception {
-			'''
-				«FOR i : 1 .. depth»+«ENDFOR» «name»: «value.valueString»
-			'''
-		}
+	def private String toLine(IVariable it, int depth) throws Exception {
+		'''
+			«FOR i : 1 .. depth»+«ENDFOR» «name»: «value.valueString»
+		'''
 	}
 
 	static private class PSDebugElementFactory implements IPSDebugElementFactory {
