@@ -37,6 +37,14 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 	}
 
 	@Override
+	protected String getStyleSheet() {
+		String css = super.getStyleSheet();
+		if (css != null)
+			css += "th, td { vertical-align: top; }\n";
+		return css;
+	}
+
+	@Override
 	public IInformationControlCreator getInformationPresenterControlCreator() {
 		if (presenterControlCreator == null)
 			presenterControlCreator = new PostscriptPresenterControlCreator();
