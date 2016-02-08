@@ -45,16 +45,27 @@
 						<exclude>**/DocumentationProviderTest*</exclude>
 						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/OutlineTreeProviderTest*</exclude>
-						<!-- Platform.getPlugin(..) fails because compatibility layer not installed -->
-						<exclude>**/AdapterFactoryTest*</exclude>
 					</excludes>
 					<dependencies>
+						<dependency>
+							<type>eclipse-plugin</type>
+							<artifactId>org.eclipse.core.runtime.compatibility</artifactId>
+							<version>0.0.0</version>
+						</dependency>
 						<dependency>
 							<type>eclipse-plugin</type>
 							<artifactId>org.eclipse.ui.ide.application</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
+					<bundleStartLevel>
+						<bundle>
+							<!-- needed so that Platform.getPlugin(String) will work -->
+							<id>org.eclipse.core.runtime.compatibility</id>
+							<level>4</level>
+							<autoStart>true</autoStart>
+						</bundle>
+					</bundleStartLevel>
 				</configuration>
 			</plugin>
 		</plugins>
