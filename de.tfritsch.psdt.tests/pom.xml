@@ -45,6 +45,8 @@
 						<exclude>**/DocumentationProviderTest*</exclude>
 						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/OutlineTreeProviderTest*</exclude>
+						<!-- Platform.getPlugin(..) fails because compatibility layer not installed -->
+						<exclude>**/AdapterFactoryTest*</exclude>
 					</excludes>
 					<dependencies>
 						<dependency>
