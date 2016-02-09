@@ -8,12 +8,12 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import de.tfritsch.psdt.PostscriptInjectorProvider;
+import de.tfritsch.psdt.PostscriptUiInjectorProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 
 @SuppressWarnings("restriction")
 @RunWith(XtextRunner.class)
-@InjectWith(PostscriptInjectorProvider.class)
+@InjectWith(PostscriptUiInjectorProvider.class)
 public class AutoEditTest extends AbstractAutoEditTest {
 
 	@Override
