@@ -41,8 +41,8 @@
 						<!-- Work-around for tests failing in Maven, but succeeding in IDE -->
 						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/AutoEditTest*</exclude>
-						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
 						<exclude>**/OutlineTreeProviderTest*</exclude>
+						<exclude>**/EditorActionTest*</exclude>
 					</excludes>
 					<dependencies>
 						<dependency>
