@@ -3,6 +3,7 @@ package de.tfritsch.psdt.debug.core.launch
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
+import java.net.URL
 import javax.inject.Inject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
@@ -17,6 +18,7 @@ import org.eclipse.osgi.util.NLS
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension org.eclipse.core.runtime.FileLocator.*
 import static extension org.eclipse.debug.core.DebugPlugin.*
 
 /**
@@ -54,7 +56,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (mode == ILaunchManager.RUN_MODE) {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
-			cmdLineList += PSPlugin.getFile("psdebug.ps").toOSString //$NON-NLS-1$
+			cmdLineList += PSDebug.absolutePath
 			sourceMapping = psFile.createSourceMapping
 			if (monitor.canceled) {
 				return
@@ -121,5 +123,15 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (path == null)
 			return null
 		return new Path(path.performStringSubstitution)
+	}
+
+	def private File getPSDebug() throws CoreException {
+		try {
+			var url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
+			return new File(url.toFileURL.toURI).canonicalFile
+		} catch (Exception e) {
+			PSPlugin.abort(e.message, e)
+			return null
+		}
 	}
 }

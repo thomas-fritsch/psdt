@@ -1,13 +1,7 @@
 package de.tfritsch.psdt.debug;
 
-import java.io.IOException;
-import java.net.URL;
-
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.FileLocator;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
@@ -46,19 +40,6 @@ public class PSPlugin extends AbstractUIPlugin {
 	 */
 	public static PSPlugin getDefault() {
 		return INSTANCE;
-	}
-
-	/**
-	 * Return a file from within this plug-in.
-	 */
-	public static IPath getFile(String path) throws CoreException {
-		URL url = INSTANCE.getBundle().getEntry(path);
-        try {
-            url = FileLocator.toFileURL(url);
-        } catch (IOException e) {
-            abort(e.getMessage(), e);
-        }
-        return new Path(url.getFile());
 	}
 
         // TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
