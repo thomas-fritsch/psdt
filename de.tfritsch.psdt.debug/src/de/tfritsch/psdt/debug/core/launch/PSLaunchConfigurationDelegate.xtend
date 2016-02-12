@@ -128,7 +128,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	def private File getPSDebug() throws CoreException {
 		try {
 			var url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
-			return new File(url.toFileURL.toURI).canonicalFile
+			return new File(url.toFileURL.path).canonicalFile
 		} catch (Exception e) {
 			PSPlugin.abort(e.message, e)
 			return null
