@@ -47,16 +47,14 @@ public class PSPlugin extends AbstractUIPlugin {
 	    return PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT);
 	}
 
-	/**
-	 * Throws an exception with the given message and underlying exception.
-	 *
-	 * @param message error message
-	 * @param e underlying exception, or <code>null</code>
-	 * @throws CoreException always
-	 */
-	public static void abort(String message, Exception e) throws CoreException {
-		IStatus status = new Status(IStatus.ERROR, ID, message, e);
-		throw new CoreException(status);
+	public static CoreException toCoreException(Exception e) {
+		IStatus status = new Status(IStatus.ERROR, ID, e.getMessage(), e);
+		return new CoreException(status);
+	}
+
+	public static CoreException toCoreException(String message) {
+		IStatus status = new Status(IStatus.ERROR, ID, message, null);
+		return new CoreException(status);
 	}
 
 	/**

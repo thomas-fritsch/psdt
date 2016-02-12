@@ -18,6 +18,7 @@ import org.eclipse.osgi.util.NLS
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSPlugin.*
 import static extension org.eclipse.core.runtime.FileLocator.*
 import static extension org.eclipse.debug.core.DebugPlugin.*
 
@@ -68,7 +69,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			}
 			cmdLineList += instrumentedFile.absolutePath
 		} else {
-			PSPlugin.abort(NLS.bind("invalid launch mode \"{0}\"", mode), null)
+			throw NLS.bind("invalid launch mode \"{0}\"", mode).toCoreException
 		}
 		val cmdLine = cmdLineList as String[]
 		val workingDir = cfg.verifyWorkingDirectory
@@ -92,11 +93,11 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	def protected String verifyPSFile(ILaunchConfiguration configuration) throws CoreException {
 		var String psFile = configuration.program
 		if (psFile == null) {
-			PSPlugin.abort("PostScript program not specified.", null)
+			throw "PostScript program not specified.".toCoreException
 		}
 		psFile = psFile.performStringSubstitution
 		if (!(new File(psFile)).exists) {
-			PSPlugin.abort(NLS.bind("PostScript program \"{0}\" not existing.", psFile), null)
+			throw NLS.bind("PostScript program \"{0}\" not existing.", psFile).toCoreException
 		}
 		return psFile
 	}
@@ -104,7 +105,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	def protected String verifyInterpreter() throws CoreException {
 		val exe = PSPlugin.^default.preferenceStore.interpreter
 		if (exe.nullOrEmpty) {
-			PSPlugin.abort("Interpreter not specified", null)
+			throw "Interpreter not specified".toCoreException
 		}
 		return exe
 	}
@@ -130,8 +131,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			var url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
 			return new File(url.toFileURL.path).canonicalFile
 		} catch (Exception e) {
-			PSPlugin.abort(e.message, e)
-			return null
+			throw e.toCoreException
 		}
 	}
 }

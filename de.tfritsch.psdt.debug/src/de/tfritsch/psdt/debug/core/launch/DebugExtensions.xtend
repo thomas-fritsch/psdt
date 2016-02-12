@@ -14,6 +14,7 @@ import org.eclipse.xtext.parser.antlr.Lexer
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSPlugin.*
 
 class DebugExtensions {
 
@@ -51,7 +52,7 @@ class DebugExtensions {
 				token = lexer.nextToken
 			}
 		} catch (IOException e) {
-			PSPlugin.abort(e.toString, e)
+			throw e.toCoreException
 		}
 		return sourceMapping
 	}
@@ -74,8 +75,7 @@ class DebugExtensions {
 			writer.close
 			return file
 		} catch (IOException e) {
-			PSPlugin.abort(e.message, e)
-			return null
+			throw e.toCoreException
 		}
 	}
 
