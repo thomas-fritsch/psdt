@@ -18,13 +18,17 @@ abstract class AbstractStatusParserTest {
 	extension StatusParser = new StatusParser(new PSDebugElementFactory)
 
 	def protected void assertStatusParsed(CharSequence input, CharSequence expectedOutput) throws Exception {
-		val lines = new Scanner(input.toString).useDelimiter(LINE_SEP).toList
-		val variables = lines.toVariables
+		val variables = input.toVariables
 		val output = variables.toString
 		assertEquals(expectedOutput.toString, output)
 	}
 
-	def private String toString(IVariable[] variables) throws Exception {
+	def protected IVariable[] toVariables(CharSequence input) {
+		val lines = new Scanner(input.toString).useDelimiter(LINE_SEP).toList
+		return lines.toVariables		
+	}
+
+	def protected String toString(IVariable[] variables) throws Exception {
 		val appendable = new StringBuilder
 		for (variable : variables) {
 			appendable.append(variable, 1)
@@ -39,7 +43,7 @@ abstract class AbstractStatusParserTest {
 		}
 	}
 
-	def private String toLine(IVariable it, int depth) throws Exception {
+	def protected String toLine(IVariable it, int depth) throws Exception {
 		'''
 			«FOR i : 1 .. depth»+«ENDFOR» «name»: «value.valueString»
 		'''
