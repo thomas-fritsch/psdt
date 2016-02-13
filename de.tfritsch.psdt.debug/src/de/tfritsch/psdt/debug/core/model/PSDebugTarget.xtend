@@ -62,6 +62,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	extension StatusParser = new StatusParser(this)
 
+	extension ChangeMarker = new ChangeMarker
+
 	/**
 	 * 
 	 * @param process
@@ -95,7 +97,10 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	override void statusReceived(List<String> lines) {
-		variables = lines.toVariables
+		val newVariables = lines.toVariables
+		if (variables !== null)
+			newVariables.markChangesRelativeTo(variables)
+		variables = newVariables
 		val detail = if(stepping) DebugEvent.STEP_END else DebugEvent.BREAKPOINT
 		state = State.SUSPENDED
 		fireSuspendEvent(detail)
@@ -109,7 +114,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	override void breakReceived(int depth, int ref, String value) {
 		currentTokenIndex = ref
 		debug("       " + currentTokenIndex) //$NON-NLS-1$
-		variables = null
 		try {
 			switch (state) {
 				case CREATED: {

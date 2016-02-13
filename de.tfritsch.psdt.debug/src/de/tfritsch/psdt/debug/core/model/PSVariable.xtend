@@ -13,6 +13,8 @@ class PSVariable extends PSDebugElement implements IVariable {
 
 	PSValue value
 
+	boolean valueChanged
+
 	/**
 	 * @param target
 	 *            debug target containing this variable
@@ -45,7 +47,11 @@ class PSVariable extends PSDebugElement implements IVariable {
 	}
 
 	override boolean hasValueChanged() {
-		return false
+		return valueChanged
+	}
+
+	def void setValueChanged(boolean valueChanged) {
+		this.valueChanged = valueChanged
 	}
 
 	override void setValue(String expression) throws DebugException {
