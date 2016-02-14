@@ -8,8 +8,7 @@
 	<h3>
 		join <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
-	<pre>context <b>join</b> mark obj<sub>1</sub> ... obj<sub>n</sub>
-	</pre>
+	<pre>context <b>join</b> mark obj<sub>1</sub> ... obj<sub>n</sub></pre>
 	<p>
 		waits for the execution context identified by the integer <i>context</i>
 		to finish executing its top-level procedure (the <i>proc</i> operand
@@ -22,8 +21,7 @@
 		The objects <i>obj<sub>1</sub></i> through <i>obj<sub>n</sub></i> are
 		those left on the operand stack by the context that is terminating.
 		Ordinarily, there should not be a mark among those objects, because
-		its presence might cause confusion in the context that executes the
-		join.
+		its presence might cause confusion in the context that executes the <b>join</b>.
 	</p>
 	<p>
 		If <i>context</i> is not a valid context identifier, perhaps because

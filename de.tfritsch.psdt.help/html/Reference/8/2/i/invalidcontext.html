@@ -12,12 +12,19 @@
 	<p>indicates that an invalid use of the context synchronization
 		facilities has been detected. Possible causes include:</p>
 	<ul>
-		<li>Presenting an invalid context identifier to join or detach.</li>
-		<li>Executing monitor on a lock already held by the current
-			context.</li>
-		<li>Executing wait on a lock not held by the current context.</li>
+		<li>Presenting an invalid context identifier to <a
+			href="../j/join.html">join</a> or <a href="../d/detach.html">detach</a>.
+		</li>
+		<li>Executing <a href="../m/monitor.html">monitor</a> on a lock
+			already held by the current context.
+		</li>
+		<li>Executing <a href="../w/wait.html">wait</a> on a lock not
+			held by the current context.
+		</li>
 		<li>Executing any of several synchronization operators when an
-			unmatched save is pending if the result would be a deadlock.</li>
+			unmatched <a href="../s/save.html">save</a> is pending if the result
+			would be a deadlock.
+		</li>
 	</ul>
 	<p>
 		The PostScript interpreter detects only the simplest types of

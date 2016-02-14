@@ -10,10 +10,11 @@
 	</h3>
 	<pre>lock proc <b>monitor</b> -</pre>
 	<p>
-		acquires <a href="../l/lock.html">lock</a>, first waiting if necessary
-		for it to become free, then executes <i>proc</i>, and finally releases
-		lock again. The release of <i>lock</i> occurs whether <i>proc</i> runs
-		to completion or terminates prematurely for any reason.
+		acquires <i>lock</i>, first waiting if necessary for it to become
+		free, then executes <i>proc</i>, and finally releases <i>lock</i>
+		again. The release of <i>lock</i> occurs whether <i>proc</i> runs to
+		completion or terminates prematurely for any reason. See section <a
+			href="../../../DPS/1.html">7.1, "Multiple Execution Contexts."</a>
 	</p>
 	<p>
 		If <i>lock</i> is already held by the current context, an <a

@@ -11,11 +11,15 @@
 	<pre>condition <b>notify</b> -</pre>
 	<p>
 		resumes execution of all contexts, if any, that are suspended in a
-		wait for condition. Ordinarily, notify should be invoked only within
-		the execution of a monitor that references the same <a
-			href="../l/lock.html">lock</a> used in the <a href="../w/wait.html">wait</a>
-		for condition. This ensures that notifications cannot be lost due to a
-		race between a context executing notify and one executing <a
+		wait for <i>condition</i>. See section <a href="../../../DPS/1.html">7.1,
+			"Multiple Execution Contexts."</a>
+	</p>
+	<p>
+		Ordinarily, <b>notify</b> should be invoked only within the execution
+		of a <a href="../m/monitor.html">monitor</a> that references the same
+		<i>lock</i> used in the <a href="../w/wait.html">wait</a> for <i>condition</i>.
+		This ensures that notifications cannot be lost due to a race between a
+		context executing <b>notify</b> and one executing <a
 			href="../w/wait.html">wait</a>. However, this recommendation is not
 		enforced by the language.
 	</p>

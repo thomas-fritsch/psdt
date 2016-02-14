@@ -9,43 +9,55 @@
 		fork <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>mark obj<sub>1</sub> ... obj<sub>n</sub> proc <b>fork</b> context</pre>
-	<p>creates a new execution context using the same local and global
-		VM as the current context. The new context begins execution concurrent
-		with continued execution of the current context. Which context
-		executes first is unpredictable.</p>
+	<p>
+		creates a new execution context using the same local and global VM as
+		the current context. The new context begins execution concurrent with
+		continued execution of the current context. Which context executes
+		first is unpredictable. See section <a href="../../../DPS/1.html">7.1,
+			"Multiple Execution Contexts."</a>
+	</p>
 	<p>
 		The new context's environment is formed by copying the dictionary and
 		graphics state stacks of the current context. The initial operand
 		stack consists of <i>obj<ub>1</ub></i> through <i>obj<sub>n</sub></i>,
-		pushed in the same order (obj<sub>1</sub> through obj<sub>n</sub> are
-		objects of any type other than <a href="../m/mark.html">mark</a>).
-		fork consumes all operands down to and including the topmost mark. It
-		then pushes an integer that uniquely identifies the new context. The
-		forked context inherits its object format from the current context;
-		other per-context parameters are initialized to default values.
+		pushed in the same order (<i>obj<sub>1</sub></i> through <i>obj<sub>n</sub></i>
+		are objects of any type other than <a href="../m/mark.html">mark</a>).
+		<b>fork</b> consumes all operands down to and including the topmost
+		mark. It then pushes an integer that uniquely identifies the new
+		context. The forked context inherits its object format from the
+		current context; other per-context parameters are initialized to
+		default values.
 	</p>
 	<p>
-		When the new context begins execution, it executes the procedure proc.
-		If proc runs to completion and returns, the context ordinarily will
-		suspend until some other context executes a join on context. However,
-		if the context has been detached, it will terminate immediately (see <a
+		When the new context begins execution, it executes the procedure <i>proc</i>.
+		If <i>proc</i> runs to completion and returns, the context ordinarily
+		will suspend until some other context executes a <a
+			href="../j/join.html">join</a> on <i>context</i>. However, if the
+		context has been detached, it will terminate immediately (see <a
 			href="../j/join.html">join</a> and <a href="../d/detach.html">detach</a>).
 	</p>
-	<p>If proc executes a stop that causes the execution of proc to end
-		prematurely, the context will terminate immediately. proc is
-		effectively called as follows:</p>
+	<p>
+		If <i>proc</i> executes a <a href="../s/stop.html">stop</a> that
+		causes the execution of <i>proc</i> to end prematurely, the context
+		will terminate immediately. <i>proc</i> is effectively called as
+		follows:
+	</p>
 	<pre>
-proc stopped {handleerror quit} if
+<i>proc</i> stopped {handleerror quit} if
 % ...Wait for join or detach...
 quit
 </pre>
-	<p>In other words, if proc stops due to an error, the context
-		invokes the error handler in the usual way to report the error. Then
-		it terminates regardless of whether it has been detached.</p>
 	<p>
-		It is illegal to execute fork if there has been any previous save not
-		yet matched by a restore. Attempting to do so will cause an <a
-			href="../i/invalidcontext.html">invalidcontext</a> error.
+		In other words, if <i>proc</i> stops due to an error, the context
+		invokes the error handler in the usual way to report the error. Then
+		it terminates regardless of whether it has been detached.
+	</p>
+	<p>
+		It is illegal to execute <a href="../f/fork.html">fork</a> if there
+		has been any previous <a href="../s/save.html">save</a> not yet
+		matched by a <a href="../r/restore.html">restore</a>. Attempting to do
+		so will cause an <a href="../i/invalidcontext.html">invalidcontext</a>
+		error.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

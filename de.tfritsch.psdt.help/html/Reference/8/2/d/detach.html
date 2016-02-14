@@ -9,16 +9,20 @@
 		detach <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>context <b>detach</b> -</pre>
-	<p>specifies that the execution context identified by the integer
-		context is to terminate immediately when it finishes executing its
-		top-level procedure, whereas ordinarily it would wait for a join. If
-		the context is already waiting for a join, detach causes it to
-		terminate immediately.</p>
 	<p>
-		detach executes an <a href="../i/invalidcontext.html">invalidcontext</a>
-		error if context is not a valid context identifier or if the context
-		has already been joined or detached. It is permissible for context to
-		identify the current context.
+		specifies that the execution context identified by the integer <i>context</i>
+		is to terminate immediately when it finishes executing its top-level
+		procedure, whereas ordinarily it would wait for a <a
+			href="../j/join.html">join</a>. If the context is already waiting for
+		a <a href="../j/join.html">join</a>, <b>detach</b> causes it to
+		terminate immediately. See section <a href="../../../DPS/1.html">7.1,
+			"Multiple Execution Contexts."</a>
+	</p>
+	<p>
+		<b>detach</b> executes an <a href="../i/invalidcontext.html">invalidcontext</a>
+		error if <i>context</i> is not a valid context identifier or if the
+		context has already been joined or detached. It is permissible for <i>context</i>
+		to identify the current context.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidcontext.html">invalidcontext</a>,

@@ -9,12 +9,15 @@
 		condition <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>- <b>condition</b> condition</pre>
-	<p>creates a new condition object, unequal to any condition object
+	<p>
+		creates a new condition object, unequal to any condition object
 		already in existence, and pushes it on the operand stack. The
-		condition initially has no contexts waiting on it. Since a condition
-		is a composite object, creating one consumes VM. The condition's value
-		is allocated in local or global VM according to the current VM
-		allocation mode.</p>
+		condition initially has no contexts waiting on it (see section <a
+			href="../../../DPS/1.html">7.1, "Multiple Execution Contexts"</a>).
+		Since a condition is a composite object, creating one consumes VM. The
+		condition's value is allocated in local or global VM according to the
+		current VM allocation mode.
+	</p>
 	<p>
 		<b>Errors:</b> <a href="../s/stackoverflow.html">stackoverflow</a>, <a
 			href="../v/VMerror.html">VMerror</a>

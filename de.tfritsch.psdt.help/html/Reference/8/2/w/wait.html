@@ -13,13 +13,15 @@
 		releases <i>lock</i>, waits for <i>condition</i> to be notified by
 		some other execution context, and finally reacquires <i>lock</i>. The
 		<i>lock</i> must originally have been acquired by the current context,
-		which means that <b>wait</b> can be invoked only within the execution
-		of a monitor that references the same <i>lock</i>.
+		which means that <a href="../w/wait.html">wait</a> can be invoked only
+		within the execution of a <a href="../m/monitor.html">monitor</a> that
+		references the same <i>lock</i> (see section <a
+			href="../../../DPS/1.html">7.1, "Multiple Execution Contexts"</a>).
 	</p>
 	<p>
 		If <i>lock</i> is initially held by some other context or is not held
 		by any context, an <a href="../i/invalidcontext.html">invalidcontext</a>
-		error occurs. On the other hand, during the <b>wait</b> for <i>condition</i>,
+		error occurs. On the other hand, during the wait for <i>condition</i>,
 		the <i>lock</i> can be acquired by some other context. After <i>condition</i>
 		is notified, <b>wait</b> will wait an arbitrary length of time to
 		reacquire <i>lock</i>.
@@ -27,7 +29,7 @@
 	<p>
 		If the current context has previously executed a <a
 			href="../s/save.html">save</a> not yet matched by a <a
-			href="../r/rrestore.html">restore</a>, an <a
+			href="../r/restore.html">restore</a>, an <a
 			href="../i/invalidcontext.html">invalidcontext</a> error occurs
 		unless both <i>lock</i> and <i>condition</i> are in global VM. The
 		latter case is permitted under the assumption that the <b>wait</b> is

@@ -9,12 +9,15 @@
 		yield <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>- <b>yield</b> -</pre>
-	<p>suspends the current execution context until all other contexts
-		have had a chance to execute. This should not be used as a
+	<p>
+		suspends the current execution context until all other contexts have
+		had a chance to execute; see section <a href="../../../DPS/1.html">7.1,
+			"Multiple Execution Contexts."</a> This should not be used as a
 		synchronization primitive, because there is no way to predict how much
 		execution the other contexts will be able to accomplish. The purpose
 		of yield is to break up long-running computations that might lock out
-		other contexts.</p>
+		other contexts.
+	</p>
 	<p>
 		<b>Errors:</b> (none)
 	</p>

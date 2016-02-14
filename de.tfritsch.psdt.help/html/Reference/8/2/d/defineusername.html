@@ -9,24 +9,32 @@
 		defineusername <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>index name <b>defineusername</b> -</pre>
-	<p>establishes an association between the non-negative integer
-		index and the name object name in the user name table. Subsequently,
-		the scanner will substitute name when it encounters any binary encoded
-		name token or object that refers to the specified user name index.
-		Because binary encoded names specify their own literal or executable
-		attributes, it does not matter whether name is literal or executable.</p>
-	<p>The user name table is an adjunct to the current context's local
-		VM. The effect of adding an entry to the table is immediately visible
-		to all contexts that share the same local VM. Additions to the table
-		are not affected by save and restore. The association between index
-		and name persists for the remaining lifetime of the local VM.</p>
 	<p>
-		The specified index must previously be unused in the name table or
-		must already be associated with the same name. Changing an existing
-		association is not permitted (an <a href="../i/invalidaccess.html">invalidaccess</a>
-		error will occur). There may be an implementation limit on index
-		values. Assigning index values sequentially starting at zero is
-		strongly recommended.
+		establishes an association between the non-negative integer <i>index</i>
+		and the name object <i>name</i> in the user name table. Subsequently,
+		the scanner will substitute <i>name</i> when it encounters any binary
+		encoded name token or object that refers to the specified user name <i>index</i>.
+		Because binary encoded names specify their own literal or executable
+		attributes, it does not matter whether name is literal or executable.
+		See <a href="../../../DPS/2.html">section 7.2, "Encoded User
+			Names."</a>
+	</p>
+	<p>
+		The user name table is an adjunct to the current context's local VM
+		(see section <a href="../../../DPS/1.html">7.1, "Multiple
+			Execution Contexts"</a>). The effect of adding an entry to the table is
+		immediately visible to all contexts that share the same local VM.
+		Additions to the table are not affected by <a href="../s/save.html">save</a>
+		and <a href="../r/restore.html">restore</a>. The association between
+		index and name persists for the remaining lifetime of the local VM.
+	</p>
+	<p>
+		The specified <i>index</i> must previously be unused in the name table
+		or must already be associated with the same <i>name</i>. Changing an
+		existing association is not permitted (an <a
+			href="../i/invalidaccess.html">invalidaccess</a> error will occur).
+		There may be an implementation limit on <i>index</i> values. Assigning
+		index values sequentially starting at zero is strongly recommended.
 	</p>
 	<p>
 		<b>Errors:</b> <a href="../i/invalidaccess.html">invalidaccess</a>, <a

@@ -9,14 +9,18 @@
 		deviceinfo <img src="../DPS.png" alt="[DPS]" align="middle" />
 	</h3>
 	<pre>- <b>deviceinfo</b> dict</pre>
-	<p>returns a read-only dictionary containing static information
-		about the current device. The composition of this dictionary varies
-		according to the properties of the device. The information in the
-		dictionary may not be meaningful for a page-oriented or other
-		non-display device.</p>
 	<p>
-		The use of deviceinfo after a setcachedevice operation within the
-		scope of a BuildChar procedure is not permitted. An <a
+		returns a read-only dictionary containing static information about the
+		current device. The composition of this dictionary varies according to
+		the properties of the device. Typical entries are given in the table
+		in section <a href="../../../DPS/3.html">7.3, "Graphics and Window
+			Systems."</a> The information in the dictionary may not be meaningful for
+		a page-oriented or other non-display device.
+	</p>
+	<p>
+		The use of <b>deviceinfo</b> after a <a
+			href="../s/setcachedevice.html">setcachedevice</a> operation within
+		the scope of a <b>BuildChar</b> procedure is not permitted. An <a
 			href="../u/undefined.html">undefined</a> error results.
 	</p>
 	<p>
