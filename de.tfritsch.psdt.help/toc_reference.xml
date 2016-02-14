@@ -187,7 +187,8 @@
 			<topic label="Device Setup and Output Operators" href="html/Reference/8/1/21.html" />
 			<topic label="Glyph and Font Operators" href="html/Reference/8/1/22.html" />
 			<topic label="Interpreter Parameter Operators" href="html/Reference/8/1/23.html" />
-			<topic label="Errors" href="html/Reference/8/1/24.html" />
+			<topic label="Display PostScript Operators" href="html/Reference/8/1/24.html" />
+			<topic label="Errors" href="html/Reference/8/1/25.html" />
 		</topic>
 		<topic label="8.2 Operator Details">
 			<topic label="@">

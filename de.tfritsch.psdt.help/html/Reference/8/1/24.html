@@ -1,137 +1,106 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Errors</title>
+<title>Display PostScript Operators</title>
 <link rel="stylesheet" type="text/css" href="../../format.css" />
 </head>
 <body>
-	<h3>Errors</h3>
+	<h3>Display PostScript Operators</h3>
 	<table>
 		<tr>
-			<td><a href="../2/c/configurationerror.html">configurationerror</a></td>
-			<td><a href="../2/s/setpagedevice.html">setpagedevice</a> or <a
-				href="../2/s/setdevparams.html">setdevparams</a> request cannot be
-				satisfied</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/currentcontext.html">currentcontext</a> <i>context</i></td>
+			<td>return current context identifier</td>
 		</tr>
 		<tr>
-			<td><a href="../2/d/dictfull.html">dictfull</a></td>
-			<td>No more room in dictionary</td>
-		</tr>
-		<tr>
-			<td><a href="../2/d/dictstackoverflow.html">dictstackoverflow</a></td>
-			<td>Too many <a href="../2/begin/.html">begin</a> operators
+			<td style="text-align: right"><i>mark obj<sub>1</sub> ...
+					obj<sub>n</sub></i></td>
+			<td><a href="../2/f/fork.html">fork</a> <i>context</i></td>
+			<td>create context executing <i>proc</i> with <i>obj<sub>1</sub>
+					... obj<sub>n</sub></i> as operands
 			</td>
 		</tr>
 		<tr>
-			<td><a href="../2/d/dictstackunderflow.html">dictstackunderflow</a></td>
-			<td>Too many <a href="../2/e/end.html">end</a> operators
-			</td>
+			<td style="text-align: right"><i>context</i></td>
+			<td><a href="../2/j/join.html">join</a> <i>mark obj<sub>1</sub>
+					... obj<sub>n</sub></i></td>
+			<td>await context termination and return its results</td>
 		</tr>
 		<tr>
-			<td><a href="../2/e/execstackoverflow.html">execstackoverflow</a></td>
-			<td>Executive stack nesting too deep</td>
+			<td style="text-align: right"><i>context</i></td>
+			<td><a href="../2/d/detach.html">detach</a> -</td>
+			<td>enable context to terminate immediately when done</td>
 		</tr>
 		<tr>
-			<td><a href="../2/h/handleerror.html">handleerror</a></td>
-			<td>Called to report error information</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/l/lock.html">lock</a> <i>lock</i></td>
+			<td>create lock object</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/interrupt.html">interrupt</a></td>
-			<td>External interrupt request (for example, Control-C)</td>
+			<td style="text-align: right"><i>lock proc</i></td>
+			<td><a href="../2/m/monitor.html">monitor</a> -</td>
+			<td>execute <i>proc</i> while holding <i>lock</i></td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidaccess.html">invalidaccess</a></td>
-			<td>Attempt to violate access attribute</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/c/condition.html">condition</a> <i>condition</i></td>
+			<td>create condition object</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidcontext.html">invalidcontext</a></td>
-			<td>Improper use of context operation</td>
+			<td style="text-align: right"><i>lock condition</i></td>
+			<td><a href="../2/w/wait.html">wait</a> -</td>
+			<td>release <i>lock</i>, wait for <i>condition</i>, reacquire <i>lock</i></td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidexit.html">invalidexit</a></td>
-			<td><a href="../2/e/exit.html">exit</a> not in loop</td>
+			<td style="text-align: right"><i>condition</i></td>
+			<td><a href="../2/n/notify.html">notify</a> -</td>
+			<td>resume contexts waiting for <i>condition</i></td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidfileaccess.html">invalidfileaccess</a></td>
-			<td>Unacceptable access string</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/y/yield.html">yield</a> -</td>
+			<td>suspend current context momentarily</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidfont.html">invalidfont</a></td>
-			<td>Invalid <b>Font</b> resource name or font or CIDFont
-				dictionary
-			</td>
+			<td style="text-align: right"><i>index name</i></td>
+			<td><a href="../2/d/defineusername.html">defineusername</a> -</td>
+			<td>define encoded name index</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/invalidid.html">invalidid</a></td>
-			<td>Invalid identifier for external object</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/v/viewclip.html">viewclip</a> -</td>
+			<td>set view clip from current path</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/.html">invalidrestore</a></td>
-			<td>Improper <a href="../2/r/restore.html">restore</a></td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/e/eoiewclip.html">eoviewclip</a> -</td>
+			<td>set view clip using even-odd rule</td>
 		</tr>
 		<tr>
-			<td><a href="../2/i/ioerror.html">ioerror</a></td>
-			<td>Input/output error</td>
+			<td style="text-align: right"><i>x y width height</i></td>
+			<td><a href="../2/r/rectviewclip.html">rectviewclip</a> -</td>
+			<td>set rectangular view clipping path</td>
 		</tr>
 		<tr>
-			<td><a href="../2/l/limitcheck.html">limitcheck</a></td>
-			<td>Implementation limit exceeded</td>
+			<td style="text-align: right"><i>numarray</i>|<i>numstring</i></td>
+			<td><a href="../2/r/rectviewclip.html">rectviewclip</a> -</td>
+			<td>set rectangular view clipping paths</td>
 		</tr>
 		<tr>
-			<td><a href="../2/n/nocurrentpoint.html">nocurrentpoint</a></td>
-			<td>Current point undefined</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/i/initviewclip.html">initviewclip</a> -</td>
+			<td>reset view clip</td>
 		</tr>
 		<tr>
-			<td><a href="../2/r/rangecheck.html">rangecheck</a></td>
-			<td>Operand out of bounds</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/v/viewclippath.html">viewclippath</a> -</td>
+			<td>set current path from view clip</td>
 		</tr>
 		<tr>
-			<td><a href="../2/s/stackoverflow.html">stackoverflow</a></td>
-			<td>Operand stack overflow</td>
-		</tr>
-		<tr>
-			<td><a href="../2/s/stackunderflow.html">stackunderflow</a></td>
-			<td>Operand stack underflow</td>
-		</tr>
-		<tr>
-			<td><a href="../2/s/syntaxerror.html">syntaxerror</a></td>
-			<td>PostScript language syntax error</td>
-		</tr>
-		<tr>
-			<td><a href="../2/t/timeout.html">timeout</a></td>
-			<td>Time limit exceeded</td>
-		</tr>
-		<tr>
-			<td><a href="../2/t/typecheck.html">typecheck</a></td>
-			<td>Operand of wrong type</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/undefined.html">undefined</a></td>
-			<td>Name not known</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/undefinedfilename.html">undefinedfilename</a></td>
-			<td>File not found</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/undefinedresource.html">undefinedresource</a></td>
-			<td>Resource instance not found</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/undefinedresult.html">undefinedresult</a></td>
-			<td>Overflow, underflow, or meaningless result</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/unmatchedmark.html">unmatchedmark</a></td>
-			<td>Expected mark not on stack</td>
-		</tr>
-		<tr>
-			<td><a href="../2/u/unregistered.html">unregistered</a></td>
-			<td>Internal error</td>
-		</tr>
-		<tr>
-			<td><a href="../2/v/VMerror.html">VMerror</a></td>
-			<td>Virtual memory exhausted</td>
+			<td style="text-align: right">-</td>
+			<td><a href="../2/d/deviceinfo.html">deviceinfo</a> <i>dict</i></td>
+			<td>return dictionary containing information about current
+				device</td>
 		</tr>
 	</table>
 </body>
