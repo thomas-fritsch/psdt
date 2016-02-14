@@ -4,6 +4,7 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.postscript.PostscriptPackage
+import de.tfritsch.psdt.validation.IssueCodes
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -57,5 +58,11 @@ class ValidatorTest {
 	def testExtraneousCloseDictionary() {
 		val file = '''a b >>'''.parse
 		file.assertError(PSFile, SYNTAX_DIAGNOSTIC, "extraneous input '>>'")
+	}
+
+	@Test
+	def testDPS() {
+		val file = '''fork'''.parse
+		file.assertWarning(PSExecutableName, IssueCodes.DPS, "Display PostScript")
 	}
 }
