@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creating Contexts</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>7.1.1 Creating Contexts</h3>
+	<p>
+		Applications normally access the Display PostScript system through the
+		<i>Client Library</i>, which includes procedures for creating,
+		communicating with, and destroying PostScript execution contexts. The
+		Client Library facilities are not part of the PostScript language
+		definition; they are described in the <i>Display PostScript System
+			Reference Manual</i>.
+	</p>
+	<p>When an application creates a context, it chooses whether the
+		context is to share VM with some other existing context. The choices
+		are:</p>
+	<ol>
+		<li>Local and global VM are completely private to the context.</li>
+		<li>Local VM is private to the context, but global VM is shared
+			with some other context.</li>
+		<li>Local and global VM are shared with some other context.</li>
+	</ol>
+	<p>
+		The Client Library procedure that creates a context provides a means
+		to specify how the new context’s VM is to be set up and which other
+		context's VM, if any, it is to share. A PostScript language program
+		can also create a context by executing the <a
+			href="../../8/2/f/fork.html">fork</a> operator, which always uses
+		method 3.
+	</p>
+	<p>
+		Method 1 creates a context that is completely isolated from other
+		contexts. The context has its own private <a
+			href="../../8/2/u/userdict.html">userdict</a>, <a
+			href="../../8/2/g/globaldict.html">globaldict</a>, and other standard
+		dictionaries, all of which have their standard initial contents. A
+		context that is to operate as a "job server," supporting the
+		encapsulated job model described in section <a href="../../3/7/7.html">3.7.7,
+			"Job Execution Environment,"</a> must be created by method 1, because the
+		semantics of job encapsulation conflict with the semantics of shared
+		VM.
+	</p>
+	<p>
+		Method 2 creates a context with its own private local VM but sharing
+		the global VM of one or more other contexts. In other words, objects
+		in local VM, such as <a href="../../8/2/u/userdict.html">userdict</a>,
+		are private to the context; objects in global VM, such as <a
+			href="../../8/2/g/globaldict.html">globaldict</a> and <a
+			href="../../8/2/g/GlobalFontDirectory.html">GlobalFontDirectory</a>,
+		are shared with the other contexts. When one context modifies the
+		value of a global object, the effect is immediately visible to the
+		other contexts.
+	</p>
+	<p>
+		Method 3 creates a context that shares both the local VM and the
+		global VM of one or more other contexts. When one context modifies the
+		value of <i>any</i> object in VM, the effect is immediately visible to
+		the other contexts.
+	</p>
+</body>
+</html>

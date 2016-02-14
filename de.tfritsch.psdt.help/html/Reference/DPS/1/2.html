@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Context Operators</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>7.1.2 Context Operators</h3>
+	<p>
+		For the context operators, a <i>context</i> is an integer that
+		identifies a PostScript execution context. Each context has a unique
+		identifier, whether it was created by calling a Client Library
+		procedure or by executing the <a href="../../8/2/f/fork.html">fork</a>
+		operator. This integer identifies the context during communication
+		between the application and the Display PostScript system, and during
+		execution of the <a href="../../8/2/j/join.html">join</a> and <a
+			href="../../8/2/d/detach.html">detach</a> operators. Identifiers for
+		contexts that have terminated become invalid and are not reused during
+		the lifetime of any currently active session. The <a
+			href="../../8/2/c/currentcontext.html">currentcontext</a> operator
+		returns the identifier for the context that is executing.
+	</p>
+	<p>
+		The <a href="../../8/2/f/fork.html">fork</a> operator creates a new
+		context that shares the local and global VM of the context that
+		executes <a href="../../8/2/f/fork.html">fork</a>. One of the operands
+		to <a href="../../8/2/f/fork.html">fork</a> is a procedure the new
+		context is to execute. The remaining operands are used to initialize
+		the new context's operand stack.
+	</p>
+	<p>
+		The <a href="../../8/2/j/join.html">join</a> operator waits for a
+		context that was previously created by <a href="../../8/2/f/fork.html">fork</a>
+		to return from its top-level procedure. It then copies that context's
+		operand stack to the caller's operand stack and destroys the context.
+		If there is no need for the context to return results when it
+		terminates, it can declare this by means of the <a
+			href="../../8/2/d/detach.html">detach</a> operator.
+	</p>
+	<p>
+		A context can <i>suspend</i> its own execution by any of a variety of
+		means: execute the <a href="../../8/2/w/wait.html">wait</a>, <a
+			href="../../8/2/m/monitor.html">monitor</a>, or <a
+			href="../../8/2/y/yield.html">yield</a> operators (described below)
+		or return from its top-level procedure to await a <a
+			href="../../8/2/j/join.html">join</a>. The context retains the state
+		it had at the moment of suspension and can ordinarily be resumed from
+		the point of suspension.
+	</p>
+	<p>
+		A context can <i>terminate</i> by executing the quit operator or as a
+		result of an explicit termination request from the Client Library.
+		Termination also occurs if an error occurs that is not caught by an
+		explicit use of <a href="../../8/2/s/stopped.html">stopped</a>. When a
+		context terminates, its stacks are destroyed, its standard input and
+		output files are closed, and its context identifier becomes invalid.
+	</p>
+	<p>There is no hierarchical relationship among contexts.
+		Termination of a context has no effect on other contexts that it may
+		have created. An integer that identifies a context has the same
+		meaning in every context;</p>
+	<p>
+		An <a href="../../8/2/i/invalidcontext.html">invalidcontext</a> error
+		occurs if an invalid context identifier is presented to any of the
+		context operators or if certain other improper conditions are
+		detected. See section <a href="4.html">7.1.4, "Programming
+			Restrictions."</a>
+	</p>
+</body>
+</html>

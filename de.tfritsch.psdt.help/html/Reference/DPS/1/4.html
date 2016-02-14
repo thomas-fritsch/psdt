@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Programming Restrictions</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>7.1.4 Programming Restrictions</h3>
+	<p>
+		Each context has its own private pair of standard input and output
+		files. That is, different contexts obtain different file objects as a
+		result of executing <a href="../../8/2/c/currentfile.html">currentfile</a>
+		or applying the file operator to the special device names %stdin and
+		%stdout. A context must not attempt to make its standard input and
+		output files available for use by other contexts. Doing so will cause
+		unpredictable behavior.
+	</p>
+	<p>
+		The behavior of the <a href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> operators varies
+		according to how the executing context was created. In the case of an
+		isolated context, created by method 1 as described in section <a
+			href="1.html">7.1.1, "Creating Contexts,"</a> the outermost <a
+			href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> apply to both global and
+		local VM; nested <a href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> apply only to local VM.
+		This supports the encapsulated job model.
+	</p>
+	<p>
+		In the case of a context that can share VM with other contexts,
+		created by method 2 or 3, save and restore always apply only to local
+		VM, never to global VM. Additionally, when multiple contexts share
+		local VM (method 3), the semantics of <a href="../../8/2/s/save.html">save</a>
+		and restore become restricted. The operation performed by <a
+			href="../../8/2/r/restore.html">restore</a> is logically to restore
+		local VM to its state when <a href="../../8/2/s/save.html">save</a>
+		was executed. If one context does this, another context sharing the
+		same local VM might observe the effect of the <a
+			href="../../8/2/r/restore.html">restore</a> at some totally
+		unpredictable time during its own execution. That is, its recent
+		computations would be undone unexpectedly.
+	</p>
+	<p>
+		If any context executes <a href="../../8/2/s/save.html">save</a>, all
+		other contexts sharing the same local VM are suspended until the
+		original context executes the matching <a
+			href="../../8/2/r/restore.html">restore</a>. This ensures that the <a
+			href="../../8/2/r/restore.html">restore</a> does not disrupt the
+		activities of those other contexts. This restriction applies only to
+		contexts sharing the same local VM. Contexts that have different local
+		VMs proceed unhindered.
+	</p>
+	<p>
+		<i><b>Note:</b> In contexts that can share VM, <a
+			href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> never affect global VM.
+			Therefore, contexts with separate local VMs but shared global VM
+			cannot interfere with each other by executing save and restore.</i>
+	</p>
+	<p>
+		There are some restrictions on the synchronization operators that a
+		context may execute while it has an unmatched <a
+			href="../../8/2/s/save.html">save</a> pending. For example,
+		attempting to acquire a lock that is already held by another context
+		sharing the same local VM is not allowed because it would surely lead
+		to deadlock. If a context terminates when it has an unmatched save
+		pending, an automatic <a href="../../8/2/r/restore.html">restore</a>
+		is executed, allowing other contexts to proceed.
+	</p>
+	<p>
+		As a practical matter, <a href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a> are not of much use when
+		a local VM is shared among multiple contexts. Programs organized this
+		way should avoid using <a href="../../8/2/s/save.html">save</a> and <a
+			href="../../8/2/r/restore.html">restore</a>. On the other hand,
+		programs organized as one local VM per context can use save and <a
+			href="../../8/2/r/restore.html">restore</a> without restriction. The
+		semantics described above are designed to maintain compatibility with
+		existing page descriptions and font programs.
+	</p>
+</body>
+</html>
