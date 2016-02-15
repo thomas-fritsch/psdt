@@ -33,10 +33,11 @@ are integrated into the Eclipse help contents.
 
 ![](de.tfritsch.psdt.help/html/getting_started/documentation.png)
 
-When you move the mouse over an identifier in the PostScript editor,
-a hover with the corresponding documentation section is shown.
+Context-sensitive documentation is available from the PostScript editor,
+either as a tooltip (press F2) or in a separate browser view (press F3).
 
 ![](de.tfritsch.psdt.help/html/getting_started/documentation_hover.png)
+![](de.tfritsch.psdt.help/html/getting_started/documentation_browser.png)
 
 ### Build
 You need Java 6 (or higher) and [Maven 3](http://maven.apache.org/) to
