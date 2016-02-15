@@ -8,19 +8,19 @@ class ChangeMarker {
 
 	def boolean markChangesRelativeTo(IValue it, IValue previous) throws Exception {
 		var changed = false
-		if (valueString != previous.valueString)
+		if (valueString != previous?.valueString)
 			changed = true
-		if (variables.markChangesRelativeTo(previous.variables))
+		if (variables.markChangesRelativeTo(previous?.variables))
 			changed = true
 		return changed
 	}
 
 	def boolean markChangesRelativeTo(List<IVariable> it, List<IVariable> previous) throws Exception{
 		var changed = false
-		if (map[name] != previous.map[name])
+		if (map[name] != previous?.map[name])
 			changed = true
 		for (currentVar : it) {
-			val previousVar = previous.findFirst[name == currentVar.name]
+			val previousVar = previous?.findFirst[name == currentVar.name]
 			if (currentVar.markChangesRelativeTo(previousVar)) {
 				changed = true
 			}
@@ -30,7 +30,7 @@ class ChangeMarker {
 
 	def boolean markChangesRelativeTo(IVariable it, IVariable previous) throws Exception {
 		var changed = false
-		if (previous === null || value.markChangesRelativeTo(previous.value)) {
+		if (value.markChangesRelativeTo(previous?.value)) {
 			(it as PSVariable).valueChanged = true
 			changed = true
 		}

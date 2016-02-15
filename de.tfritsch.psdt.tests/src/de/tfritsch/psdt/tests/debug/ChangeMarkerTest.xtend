@@ -70,6 +70,33 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 	}
 
 	@Test
+	def testAddedWithNested() throws Exception {
+		new TestData [
+			current = '''
+				+ d: --dict--
+				++ a: 1
+				++ b: 2
+				++ c: 3
+				+++ x: 4
+				+++ y: 5
+			'''
+			previous = '''
+				+ d: --dict--
+				++ a: 1
+				++ b: 2
+			'''
+			expected = '''
+				* d: --dict--
+				++ a: 1
+				++ b: 2
+				*+ c: 3
+				*++ x: 4
+				*++ y: 5
+			'''
+		].assertVariablesChanged
+	}
+
+	@Test
 	def testDeleted() throws Exception {
 		new TestData [
 			current = '''
