@@ -72,7 +72,7 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 	}
 
 	override void setDebugStreamListener(IPSDebugStreamListener listener) {
-		fErrorMonitor.listener = listener
+		fErrorMonitor.debugStreamListener = listener
 	}
 
 	override void sendCommand(String command) throws DebugException {
