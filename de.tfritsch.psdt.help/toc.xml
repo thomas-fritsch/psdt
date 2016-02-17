@@ -3,29 +3,36 @@
 
 <toc label="Postscript User Guide">
 	<topic label="Overview" href="html/overview.html" />
-	<topic label="Getting started">
-		<topic label="Preparing Eclipse" href="html/getting_started/preparing.html" />
-		<topic label="Editing PostScript files" href="html/getting_started/editing.html">
-			<topic label="Perspective" href="html/getting_started/editing.html#perspective" />
-			<topic label="Project" href="html/getting_started/editing.html#project" />
-			<topic label="New file" href="html/getting_started/editing.html#new-file" />
-			<topic label="Editor" href="html/getting_started/editing.html#editor" />
-			<topic label="Outline" href="html/getting_started/editing.html#outline" />
+	<topic label="Getting Started" href="html/getting_started.html" />
+	<topic label="Launching">
+		<topic label="Launch Configurations" href="html/launching/launch_configurations.html" />
+		<topic label="Launch Shortcuts" href="html/launching/launch_shortcuts.html" />
+	</topic>
+	<topic label="Perspectives and Views">
+		<topic label="PostScript Perspective"
+			href="html/perspectives_and_views/postscript_perspective.html" />
+		<topic label="Debug Perspective"
+			href="html/perspectives_and_views/debug_perspective.html" />
+		<topic label="Editor View" href="html/perspectives_and_views/editor_view.html">
+			<topic label="Commands"
+				href="html/perspectives_and_views/editor_view.html#commands" />
+			<topic label="Content Assist"
+				href="html/perspectives_and_views/editor_view.html#content_assist" />
+			<topic label="Documentation Hovers"
+				href="html/perspectives_and_views/editor_view.html#documentation_hovers" />
+			<topic label="Documentation Hyperlinks"
+				href="html/perspectives_and_views/editor_view.html#documentation_hyperlinks" />
+			<topic label="Breakpoints"
+				href="html/perspectives_and_views/editor_view.html#breakpoints" />
+			<topic label="Instruction Pointer"
+				href="html/perspectives_and_views/editor_view.html#instruction_pointer" />
 		</topic>
-		<topic label="Launching PostScript files" href="html/getting_started/launching.html">
-			<topic label="Launch configurations"
-				href="html/getting_started/launching.html#launch-configurations" />
-			<topic label="Launch shortcuts"
-				href="html/getting_started/launching.html#launch-shortcuts" />
-		</topic>
-		<topic label="Debugging PostScript files" href="html/getting_started/debugging.html">
-			<topic label="Debug View" href="html/getting_started/debugging.html#debug_view" />
-			<topic label="Editor View" href="html/getting_started/debugging.html#editor_view" />
-			<topic label="Variables View"
-				href="html/getting_started/debugging.html#variables_view" />
-			<topic label="Breakpoints View"
-				href="html/getting_started/debugging.html#breakpoints_view" />
-		</topic>
+		<topic label="Debug View" href="html/perspectives_and_views/debug_view.html" />
+		<topic label="Variables View" href="html/perspectives_and_views/variables_view.html" />
+		<topic label="Breakpoints View" href="html/perspectives_and_views/breakpoints_view.html" />
+	</topic>
+	<topic label="Preferences">
+		<topic label="Ghostscript" href="html/preferences/ghostscript.html" />
 	</topic>
 	<topic label="Reference">
 		<link toc="toc_reference.xml" />

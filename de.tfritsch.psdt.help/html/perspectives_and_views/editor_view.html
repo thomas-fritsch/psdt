@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Editor View</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
+</head>
+<body>
+	<h1>Editor View</h1>
+	<p>
+		The <b>Postscript Editor View</b> is part of the <a
+			href="postscript_perspective.html">PostScript Perspective</a> and of
+		the <a href="debug_perspective.html">Debug perspective</a>. It
+		displays the PostScript file.
+	</p>
+	<img src="editor_view.png" />
+	<p>Notice the syntax highlighting. Different kinds of elements in
+		the PostScript are rendered in unique colors:</p>
+	<ul>
+		<li>Regular comments</li>
+		<li>DSC comments</li>
+		<li>Numbers</li>
+		<li>Strings</li>
+		<li>Literal names</li>
+		<li>Executable names</li>
+	</ul>
+	<p>Notice also the code folding you get for multi-line procedures
+		{...}, arrays [...] and dictionaries &lt;&lt;...&gt;&gt;.</p>
+	<h3>Content assist</h3>
+	<p>Type Ctrl-Space to get content assist for the current curor
+		position.</p>
+	<h2 id="commands">Commands</h2>
+	<table>
+		<caption>Editor Context Menu Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Shortcut</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td>F2</td>
+			<td>Show Tooltip</td>
+			<td>Shows a hover that would appear at the current cursor
+				location.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>F3</td>
+			<td>Open Declaration</td>
+			<td>Shows a hyperlink that would appear at the current cursor
+				location.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Ctrl 7</td>
+			<td>Toggle Comment</td>
+			<td>Comments or uncomments a line by adding or removing "%"
+				characters.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Ctrl Shift F</td>
+			<td>Format</td>
+			<td>Auto formats a file to organize it into an easily readable
+				format.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>Ctrl Space</td>
+			<td>Content Assist</td>
+			<td>...</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/runtoline_co.gif" /></td>
+			<td></td>
+			<td>Run to Line</td>
+			<td>If execution is suspended, resumes and runs until the line
+				of the cursor position is reached.</td>
+		</tr>
+	</table>
+	<p />
+	<table>
+		<caption>Ruler Context Menu Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Shortcut</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.gif" /></td>
+			<td>Double Click</td>
+			<td>Toggle Breakpoint</td>
+			<td>Toggles the breakpoint selected in the ruler.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Enable Breakpoint</td>
+			<td>Enables the breakpoint selected in the ruler.</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td>Disable Breakpoint</td>
+			<td>Disables the breakpoint selected in the ruler.</td>
+		</tr>
+	</table>
+	<h2 id="content_assist">Content assist</h2>
+	<p>Type Ctrl-Space to get content assist for the current curor
+		position.</p>
+	<img src="content_assist.png" />
+	<h2 id="documentation_hovers">Documentation Hovers</h2>
+	<p>There are 2 alternative ways to get a context-sensitive
+		documentation tooltip.</p>
+	<ul>
+		<li>Put the text cursor into a name in the editor, click F2.</li>
+		<li>Hover the mouse over a name in the editor, wait a second.</li>
+	</ul>
+	<img align="middle" src="documentation_hover.png" />
+	<h2 id="documentation_hyperlinks">Documentation Hyperlinks</h2>
+	<p>There are 2 alternative ways to get context-sensitive
+		documentation showing up in a browser view.</p>
+	<ul>
+		<li>Put the text cursor into a name in the editor, click F3.</li>
+		<li>Move the mouse over a name in the editor while holding the
+			Control key. The name will become a clickable hyperlink. Click it</li>
+	</ul>
+	<img src="documentation_browser.png" />
+	<h2 id="breakpoints">Breakpoints</h2>
+	<p>
+		Breakpoints are displayed in the left ruler. Enabled breakpoints are
+		marked by blue circles [ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.gif" />
+		], and disabled breakpoints by white circles [ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/brkpd_obj.gif" />
+		].
+	</p>
+	<h2 id="instruction_pointer">Instruction Pointer</h2>
+	<p>
+		If execution is suspended, the current line is marked by a blue arrow
+		[ <img
+			src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/obj16/inst_ptr_top.gif" />
+		] in the left ruler, and the current token is highlighted.
+	</p>
+</body>
+</html>

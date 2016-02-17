@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Debugging PostScript files</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
+</head>
+<body>
+	<h1>Debug View</h1>
+	<p>
+		The <b>Debug View</b> is part of the <a href="debug_perspective.html">Debug
+			Perspective</a>. It allows you to manage the debugging or running of a
+		program in the workbench. It displays the stack frame for the
+		suspended threads for each target you are debugging. Each thread in
+		your program appears as a node in the tree. It displays the process
+		for each target you are running.
+	</p>
+	<p>If the thread is suspended, its stack frames are shown as child
+		elements.</p>
+	<p>
+		Because PostScript is a single-threaded language, you see only one
+		thread. And because PostScript has an execution-model very different
+		from other languages (like Java or C/C++), their concept of stack
+		frames doesn't really fit here, and hence you see only one stack
+		frame. However, you can inspect the stacks in the <a
+			href="variables_view.html"><b>Variables View</b></a>.
+	</p>
+	<img src="debug_view.png" />
+	<p />
+	<table>
+		<caption>Debug View Commands</caption>
+		<tr>
+			<th>Command</th>
+			<th>Shortcut</th>
+			<th>Name</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/resume_co.gif" /></td>
+			<td>F8</td>
+			<td>Resume</td>
+			<td>Resumes a suspended thread.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepinto_co.gif" />
+			</td>
+			<td>F5</td>
+			<td>Step Into</td>
+			<td>Steps into the highlighted token.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepover_co.gif" />
+			</td>
+			<td>F6</td>
+			<td>Step Over</td>
+			<td>Steps over the highlighted token. Execution will continue at
+				the next token either in the same procedure or (if you are at the
+				end of a procedure) it will continue in the procedure from which the
+				current procedure was called.<br /> The cursor jumps to the
+				procedure and selects this token.
+			</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/stepreturn_co.gif" />
+			</td>
+			<td>F7</td>
+			<td>Step Return</td>
+			<td>Steps out of the current procedure. This option stops
+				execution after exiting the current procedure.</td>
+		</tr>
+		<tr>
+			<td><img
+				src="PLUGINS_ROOT/org.eclipse.debug.ui/icons/full/elcl16/terminate_co.gif" />
+			</td>
+			<td>Ctrl F2</td>
+			<td>Terminate</td>
+			<td>Terminates the selected debug target.</td>
+		</tr>
+	</table>
+</body>
+</html>
