@@ -5,7 +5,7 @@
       version="1.0.0.qualifier"
       provider-name="%providerName">
 
-   <description>
+   <description url="http://thomas-fritsch.github.io/psdt/">
       %description
    </description>
 

@@ -9,6 +9,7 @@
 	<packaging>pom</packaging>
 
 	<name>PostScript Development Tools</name>
+	<url>http://thomas-fritsch.github.io/psdt/</url>
 	<description>PostScript IDE for Eclipse, including editor, debugger and documentation</description>
 
 	<inceptionYear>2015</inceptionYear>
