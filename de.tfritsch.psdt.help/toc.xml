@@ -32,7 +32,10 @@
 		<topic label="Breakpoints View" href="html/perspectives_and_views/breakpoints_view.html" />
 	</topic>
 	<topic label="Preferences">
+		<topic label="Debug" href="html/preferences/debug.html" />
 		<topic label="Ghostscript" href="html/preferences/ghostscript.html" />
+		<topic label="Syntax Coloring" href="html/preferences/syntax_coloring.html" />
+		<topic label="Templates" href="html/preferences/templates.html" />
 	</topic>
 	<topic label="Reference">
 		<link toc="toc_reference.xml" />

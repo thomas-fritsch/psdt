@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Debug</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
+</head>
+<body>
+	<h1>Debug</h1>
+	<p>
+		The following preferences can be changed on the <a
+			class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.window.preferences(preferencePageId=de.tfritsch.psdt.debug.debugPreferencePage)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" />
+			PostScript &gt; Debug
+		</a> preference page.
+	</p>
+	<table>
+		<tr>
+			<th>Option</th>
+			<th>Description</th>
+			<th>Default</th>
+		</tr>
+		<tr>
+			<td>Show <i>systemdict</i></td>
+			<td rowspan="3">Whether to show complete contents of the
+				permanent dictionaries in the debugger. The permanent dictionaries
+				can be very large (<i>systemdict</i> in particular). Because this
+				data is transferred from Ghostscript to Eclipse in textual form, the
+				operation of refreshing this data in the <a
+				href="../perspectives_and_views/variables_view.html">Variables
+					View</a> can be quite time consuming. Thus, the default option is not
+				to show <i>systemdict</i>.
+			</td>
+			<td>Off</td>
+		</tr>
+		<tr>
+			<td>Show <i>globaldict</i></td>
+			<td>On</td>
+		</tr>
+		<tr>
+			<td>Show <i>userdict</i></td>
+			<td>On</td>
+		</tr>
+	</table>
+	<p>Here is what the Debug preference page looks like:</p>
+	<p>
+		<img src="debug.png" alt="Debug Preference Page" border="0">
+	</p>
+</body>
+</html>

@@ -8,23 +8,64 @@
 </head>
 <body>
 	<h1>Ghostscript Preferences</h1>
-	<h2>Interpreter</h2>
 	<p>
-		Select <a class="command-link"
-			href='javascript:executeCommand("org.eclipse.ui.window.preferences(preferencePageId=de.tfritsch.psdt.debug.ghostscriptPreferencePage)")'>
-			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> <b>Window
-				&gt; Preferences... &gt; Postscript &gt; Ghostscript</b>
-		</a> to open the Ghostscript preference page.
+		The following preferences can be changed on the <a
+			class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.window.preferences(preferencePageId=de.tfritsch.psdt.debug.ghostscriptPreferencePage)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" />
+			PostScript &gt; Ghostscript
+		</a> preference page.
 	</p>
-	<p>If the interpreter is not configured yet, configure it now:
-	<dl>
-		<dt>For Windows:</dt>
-		<dd>Navigate to the Ghostscript installation directory. Select
-			the executable (it is called "gswin32c.exe" or "gswin64c.exe").</dd>
-		<dt>For Linux or Unix:</dt>
-		<dd>Select "/usr/bin/gs".</dd>
-	</dl>
-	<img src="preferences_ghostscript.png"
-		alt="Ghostscript preference page" />
+	<table>
+		<tr>
+			<th>Option</th>
+			<th>Description</th>
+			<th>Default</th>
+		</tr>
+		<tr>
+			<td>Interpreter</td>
+			<td>The absolute path of the Ghostscript interpreter executable.
+				This path looks different depending on the operating system.
+				<dl>
+					<dt>on Linux or Unix:</dt>
+					<dd>
+						<i>/usr/bin/gs</i>
+					</dd>
+					<dt>on Windows:</dt>
+					<dd>
+						<i>{GhostscriptInstallationDirectory}\bin\gswin32c.exe</i> or<br />
+						<i>{GhostscriptInstallationDirectory}\bin\gswin64c.exe</i>
+					</dd>
+				</dl>
+			</td>
+			<td><dl>
+					<dt>on Linux:</dt>
+					<dd>
+						<i>/usr/bin/gs</i>
+					</dd>
+					<dt>else:</dt>
+					<dd>(none)</dd>
+				</dl></td>
+		</tr>
+		<tr>
+			<td>Message box on <i>press &lt;return&gt; to continue</i>
+			</td>
+			<td>When a page is finished (by the <i>showpage</i> or <i>copypage</i>
+				operator), Ghostscript prints a prompt line appearing in the Console
+				view. You can choose between two options:
+				<ul>
+					<li>You select the Console view and press <i>Return</i>.
+					</li>
+					<li>A message box pops up and you click the OK button.</li>
+				</ul>
+			</td>
+			<td>Off</td>
+		</tr>
+	</table>
+	<p>Here is what the Ghostscript preference page looks like:</p>
+	<p>
+		<img src="ghostscript.png" alt="Ghostscript Preference Page"
+			border="0">
+	</p>
 </body>
 </html>
