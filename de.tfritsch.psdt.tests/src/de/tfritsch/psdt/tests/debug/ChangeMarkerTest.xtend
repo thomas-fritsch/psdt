@@ -6,7 +6,7 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 
 	@Test
 	def void testUnchanged() throws Exception {
-		new TestData [
+		assertVariablesChanged [
 			current = '''
 				+ d: --dict--
 				++ a: 1
@@ -22,12 +22,12 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 				++ a: 1
 				++ b: 2
 			'''
-		].assertVariablesChanged
+		]
 	}
 
 	@Test
 	def testChanged() throws Exception {
-		new TestData [
+		assertVariablesChanged [
 			current = '''
 				+ d: --dict--
 				++ a: 1
@@ -43,12 +43,12 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 				++ a: 1
 				*+ b: 22
 			'''
-		].assertVariablesChanged
+		]
 	}
 
 	@Test
 	def testAdded() throws Exception {
-		new TestData [
+		assertVariablesChanged [
 			current = '''
 				+ d: --dict--
 				++ a: 1
@@ -66,12 +66,12 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 				++ b: 2
 				*+ c: 3
 			'''
-		].assertVariablesChanged
+		]
 	}
 
 	@Test
 	def testAddedWithNested() throws Exception {
-		new TestData [
+		assertVariablesChanged [
 			current = '''
 				+ d: --dict--
 				++ a: 1
@@ -93,12 +93,12 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 				*++ x: 4
 				*++ y: 5
 			'''
-		].assertVariablesChanged
+		]
 	}
 
 	@Test
 	def testDeleted() throws Exception {
-		new TestData [
+		assertVariablesChanged [
 			current = '''
 				+ d: --dict--
 				++ a: 1
@@ -112,6 +112,6 @@ class ChangeMarkerTest extends AbstractChangeMarkerTest {
 				* d: --dict--
 				++ a: 1
 			'''
-		].assertVariablesChanged
+		]
 	}
 }
