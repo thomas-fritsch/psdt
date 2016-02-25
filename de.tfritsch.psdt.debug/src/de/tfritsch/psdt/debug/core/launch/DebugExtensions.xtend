@@ -1,7 +1,6 @@
 package de.tfritsch.psdt.debug.core.launch
 
 import com.google.inject.Provider
-import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
@@ -13,7 +12,6 @@ import org.eclipse.xtext.parser.antlr.Lexer
 
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSPlugin.*
 
 class DebugExtensions {
@@ -63,9 +61,6 @@ class DebugExtensions {
 			val writer = new FileWriter(file)
 			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")
-			val store = PSPlugin.^default.preferenceStore
-			writer.write(
-				!store.showSystemdict + " " + !store.showGlobaldict + " " + !store.showUserdict + " @@stathide\n")
 			for (i : 0 ..< sourceMapping.size) {
 				val string = sourceMapping.getString(i)
 				if (string != "}") // no stepping point just before }

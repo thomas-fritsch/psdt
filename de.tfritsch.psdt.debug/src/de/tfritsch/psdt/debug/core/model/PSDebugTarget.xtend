@@ -114,6 +114,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	override void breakReceived(int depth, int ref, String value) {
 		currentTokenIndex = ref
 		debug("       " + currentTokenIndex) //$NON-NLS-1$
+		val store = PSPlugin.^default.preferenceStore
+		PSDebugCommander.hideDicts(!store.showSystemdict, !store.showGlobaldict, !store.showUserdict)
 		try {
 			switch (state) {
 				case CREATED: {
