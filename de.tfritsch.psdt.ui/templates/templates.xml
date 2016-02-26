@@ -30,4 +30,13 @@
 		name="setpagedevice"
 >&lt;&lt;&#13;	/PageSize [595 842]&#13;&gt;&gt; setpagedevice
 	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="Template for a try/catch statement" enabled="true" id="stopped"
+		name="stopped"
+>{
+    ${cursor}
+} stopped {
+    handleerror
+} if
+	</template>
 </templates>
