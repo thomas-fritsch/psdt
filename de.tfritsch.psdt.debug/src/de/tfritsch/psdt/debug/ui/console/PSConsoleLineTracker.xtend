@@ -4,6 +4,7 @@ import com.google.inject.Inject
 import com.google.inject.Provider
 import de.tfritsch.psdt.debug.PSPlugin
 import java.util.regex.Pattern
+import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.debug.ui.console.IConsoleLineTracker
 import org.eclipse.jface.preference.IPreferenceStore
@@ -16,6 +17,7 @@ import org.eclipse.ui.IWorkbench
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 import static extension java.util.regex.Pattern.*
+import org.eclipse.debug.ui.DebugUITools
 
 /**
  * Matches plugin.xml
@@ -27,6 +29,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 	@Inject IWorkbench workbench
 	@Inject Provider<Hyperlink> hyperlinkProvider
+	IDebugModelPresentation debugModelPresentation
 
 	new() {
 		PSPlugin.injector.injectMembers(this) // TODO remove this hack
@@ -34,6 +37,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	override init(IConsole console) {
 		this.console = console
+		debugModelPresentation = DebugUITools.newDebugModelPresentation
 	}
 
 	Pattern errorPattern = "Error: (/\\w+) in .+".compile
@@ -57,7 +61,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 			Display.^default.syncExec [
 				val shell = workbench.activeWorkbenchWindow.shell
 				val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.SYSTEM_MODAL))
-				box.text = console.process.launch.launchConfiguration.name
+				box.text = debugModelPresentation.getText(console.process.launch)
 				box.message = text
 				box.open
 			]
@@ -67,5 +71,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	override dispose() {
 		console = null
+		debugModelPresentation.dispose
+		debugModelPresentation = null
 	}
 }
