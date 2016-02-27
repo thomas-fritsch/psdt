@@ -14,26 +14,17 @@ import org.eclipse.xtext.ui.IImageHelper
 
 class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
-	@Inject	GhostscriptInterpreterBlock ghostscriptInterpreterBlock
-	@Inject	GhostscriptArgumentsBlock ghostscriptArgumentsBlock
-	@Inject GhostscriptWorkingDirectoryBlock ghostscriptWorkingDirectoryBlock
 	ILaunchConfigurationTab[] fBlocks
 
 	@Inject IImageHelper fImageHelper
 
-	override String getName() {
-		return "Ghostscript" //$NON-NLS-1$
+	@Inject
+	new(GhostscriptInterpreterBlock block1, GhostscriptArgumentsBlock block2, GhostscriptWorkingDirectoryBlock block3) {
+		fBlocks = #[block1, block2, block3]
 	}
 
-	def private ILaunchConfigurationTab[] getBlocks() {
-		if (fBlocks === null) {
-			fBlocks = #[
-				ghostscriptInterpreterBlock,
-				ghostscriptArgumentsBlock,
-				ghostscriptWorkingDirectoryBlock
-			]
-		}
-		return fBlocks
+	override String getName() {
+		return "Ghostscript" //$NON-NLS-1$
 	}
 
 	override Image getImage() {
@@ -44,7 +35,7 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 		val comp = new Composite(parent, SWT.NONE) => [
 			layout = new GridLayout(1, true)
 		]
-		for (block : blocks) {
+		for (block : fBlocks) {
 			block.createControl(comp)
 		}
 		control = comp
@@ -52,7 +43,7 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
 	override void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
 		super.setLaunchConfigurationDialog(dialog)
-		for (block : blocks) {
+		for (block : fBlocks) {
 			block.setLaunchConfigurationDialog(dialog)
 		}
 	}
@@ -64,19 +55,19 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
-		for (block : blocks) {
+		for (block : fBlocks) {
 			block.initializeFrom(configuration)
 		}
 	}
 
 	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		for (block : blocks) {
+		for (block : fBlocks) {
 			block.performApply(configuration)
 		}
 	}
 
 	override boolean isValid(ILaunchConfiguration launchConfig) {
-		for (block : blocks) {
+		for (block : fBlocks) {
 			if (!block.isValid(launchConfig)) {
 				errorMessage = block.errorMessage
 				return false
