@@ -1,7 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
-import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
 import java.io.File
 import org.eclipse.core.resources.IFile
@@ -43,10 +42,6 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 
 	@Inject
 	IImageHelper fImageHelper
-
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
 
 	override String getName() {
 		return "Main"

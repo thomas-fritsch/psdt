@@ -1,7 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
-import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugPlugin
@@ -29,7 +28,6 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
 		fBlocks = #[
 			new GhostscriptInterpreterBlock,
 			new GhostscriptArgumentsBlock,
