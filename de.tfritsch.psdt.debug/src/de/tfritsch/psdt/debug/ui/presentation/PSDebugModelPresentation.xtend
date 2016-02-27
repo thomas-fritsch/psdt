@@ -1,5 +1,8 @@
 package de.tfritsch.psdt.debug.ui.presentation
 
+import com.google.inject.Inject
+import de.tfritsch.psdt.debug.PSPlugin
+import de.tfritsch.psdt.debug.core.model.PSVariable
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import java.util.Map
 import org.eclipse.core.filesystem.IFileStore
@@ -15,6 +18,7 @@ import org.eclipse.swt.graphics.Image
 import org.eclipse.ui.IEditorInput
 import org.eclipse.ui.ide.FileStoreEditorInput
 import org.eclipse.ui.part.FileEditorInput
+import org.eclipse.xtext.ui.IImageHelper
 
 /**
  * Renders PostScript debug elements.
@@ -26,12 +30,24 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 
 	Map<String, Object> attributes = newHashMap
 
+	@Inject
+	IImageHelper imageHelper
+
+	new() {
+		PSPlugin.injector.injectMembers(this) // TODO remove this hack
+	}
+
 	override void setAttribute(String key, Object value) {
 		attributes.put(key, value)
 	}
 
 	override Image getImage(Object element) {
-		return null // The view will show a default icon
+		return switch (element) {
+			PSVariable:
+				imageHelper.getImage("object.gif")
+			default:
+				null // The view will show a default icon
+		}
 	}
 
 	override String getText(Object element) {
