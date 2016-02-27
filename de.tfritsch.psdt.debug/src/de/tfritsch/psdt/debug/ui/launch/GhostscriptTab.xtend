@@ -18,25 +18,29 @@ import org.eclipse.xtext.ui.IImageHelper
 
 class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
+	@Inject	GhostscriptInterpreterBlock ghostscriptInterpreterBlock
+	@Inject	GhostscriptArgumentsBlock ghostscriptArgumentsBlock
 	ILaunchConfigurationTab[] fBlocks
 
-	@Inject
-	IImageHelper fImageHelper
+	@Inject IImageHelper fImageHelper
 
 	override String getName() {
 		return "Ghostscript" //$NON-NLS-1$
 	}
 
-	new() {
-		fBlocks = #[
-			new GhostscriptInterpreterBlock,
-			new GhostscriptArgumentsBlock,
-			new WorkingDirectoryBlock(DebugPlugin.ATTR_WORKING_DIRECTORY) {
-				override protected IProject getProject(ILaunchConfiguration configuration) throws CoreException {
-					return null
+	def private ILaunchConfigurationTab[] getBlocks() {
+		if (fBlocks === null) {
+			fBlocks = #[
+				ghostscriptInterpreterBlock,
+				ghostscriptArgumentsBlock,
+				new WorkingDirectoryBlock(DebugPlugin.ATTR_WORKING_DIRECTORY) {
+					override protected IProject getProject(ILaunchConfiguration configuration) throws CoreException {
+						return null
+					}
 				}
-			}
-		]
+			]
+		}
+		return fBlocks
 	}
 
 	override Image getImage() {
@@ -47,7 +51,7 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 		val comp = new Composite(parent, SWT.NONE) => [
 			layout = new GridLayout(1, true)
 		]
-		for (block : fBlocks) {
+		for (block : blocks) {
 			block.createControl(comp)
 		}
 		control = comp
@@ -55,7 +59,7 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
 	override void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
 		super.setLaunchConfigurationDialog(dialog)
-		for (block : fBlocks) {
+		for (block : blocks) {
 			block.setLaunchConfigurationDialog(dialog)
 		}
 	}
@@ -67,19 +71,19 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
-		for (block : fBlocks) {
+		for (block : blocks) {
 			block.initializeFrom(configuration)
 		}
 	}
 
 	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		for (block : fBlocks) {
+		for (block : blocks) {
 			block.performApply(configuration)
 		}
 	}
 
 	override boolean isValid(ILaunchConfiguration launchConfig) {
-		for (block : fBlocks) {
+		for (block : blocks) {
 			if (!block.isValid(launchConfig)) {
 				errorMessage = block.errorMessage
 				return false

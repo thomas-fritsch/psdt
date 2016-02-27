@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import java.net.MalformedURLException
 import java.net.URL
@@ -16,7 +17,6 @@ import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Link
 import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.PartInitException
-import org.eclipse.ui.PlatformUI
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -29,7 +29,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
  */
 class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
-	IWorkbenchBrowserSupport browserSupport = PlatformUI.workbench.browserSupport
+	@Inject IWorkbenchBrowserSupport browserSupport
 
 	Text fArgumentsText
 	Link fLink

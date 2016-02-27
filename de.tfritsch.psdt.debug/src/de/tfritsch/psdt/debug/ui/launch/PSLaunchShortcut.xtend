@@ -1,5 +1,6 @@
 package de.tfritsch.psdt.debug.ui.launch
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
@@ -11,9 +12,8 @@ import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.ILaunchShortcut
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.IStructuredSelection
-import org.eclipse.swt.widgets.Shell
 import org.eclipse.ui.IEditorPart
-import org.eclipse.ui.PlatformUI
+import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.dialogs.ElementListSelectionDialog
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
@@ -27,6 +27,11 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
 class PSLaunchShortcut implements ILaunchShortcut {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
+	@Inject IWorkbench workbench
+
+	new() {
+		PSPlugin.injector.injectMembers(this) // TODO remove this hack
+	}
 
 	override void launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {
@@ -82,6 +87,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	}
 
 	def private ILaunchConfiguration chooseConfiguration(ILaunchConfiguration[] configs) {
+		val shell = workbench.activeWorkbenchWindow.shell
 		val dialog = new ElementListSelectionDialog(shell, newDebugModelPresentation) => [
 			elements = configs
 			title = "Select PostScript Application"
@@ -90,9 +96,5 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		]
 		dialog.open
 		return dialog.firstResult as ILaunchConfiguration
-	}
-
-	def private Shell getShell() {
-		return PlatformUI.workbench.activeWorkbenchWindow.shell
 	}
 }

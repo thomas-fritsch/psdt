@@ -7,9 +7,9 @@ import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.text.IInformationControlCreator;
 import org.eclipse.jface.text.IInputChangedListener;
+import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper;
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hover.html.IXtextBrowserInformationControl;
@@ -23,6 +23,9 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 
 	@Inject
 	private IImageDescriptorHelper imageHelper;
+
+        @Inject
+        private IWorkbench workbench;
 
 	private IInformationControlCreator presenterControlCreator;
 
@@ -66,7 +69,7 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 			XtextBrowserInformationControlInput infoInput = (XtextBrowserInformationControlInput) fInfoControl.getInput();
 			fInfoControl.notifyDelayedInputChange(null);
 			fInfoControl.dispose();
-			IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+			IWorkbenchPage activePage = workbench.getActiveWorkbenchWindow().getActivePage();
 			try {
 				PostscriptDocView view = (PostscriptDocView) activePage.showView(PostscriptDocView.ID);
 				view.setInput(infoInput);
