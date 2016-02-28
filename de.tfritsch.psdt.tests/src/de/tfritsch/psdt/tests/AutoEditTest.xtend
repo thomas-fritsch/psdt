@@ -1,11 +1,13 @@
 package de.tfritsch.psdt.tests;
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import org.eclipse.swt.SWT
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractAutoEditTest
+import org.eclipse.xtext.resource.FileExtensionProvider
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -14,8 +16,10 @@ import org.junit.runner.RunWith
 @InjectWith(PostscriptUiInjectorProvider)
 public class AutoEditTest extends AbstractAutoEditTest {
 
+	@Inject FileExtensionProvider fileExtensionProvider
+
 	override protected getFileExtension() {
-		return "ps"
+		return fileExtensionProvider.primaryFileExtension
 	}
 
 	override protected getEditorId() {
