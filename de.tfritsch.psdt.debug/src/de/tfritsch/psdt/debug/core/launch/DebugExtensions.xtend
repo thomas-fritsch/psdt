@@ -13,6 +13,7 @@ import org.eclipse.xtext.parser.antlr.Lexer
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
 
 import static extension de.tfritsch.psdt.debug.PSPlugin.*
+import org.antlr.runtime.Token
 
 class DebugExtensions {
 
@@ -27,20 +28,14 @@ class DebugExtensions {
 			var token = lexer.nextToken
 			while (token.type !== EOF) {
 				switch (token.type) {
-					case RULE_LITERAL_ID,
-					case RULE_ID,
-					case RULE_INT,
-					case RULE_FLOAT,
-					case RULE_STRING,
-					case RULE_ASCII_HEX_STRING,
-					case RULE_ASCII_85_STRING,
-					case T__21, // {
-					case T__22, // }
-					case T__23, // [
-					case T__24, // ]
-					case T__25, // <<
-					case T__26, // >>
-					case RULE_UNPARSED_DATA: {
+					case Token.INVALID_TOKEN_TYPE:
+						throw ("Invalid token in line " + token.line).toCoreException
+					case RULE_WS,
+					case RULE_SL_COMMENT,
+					case RULE_DSC_COMMENT: {
+						// do nothing
+					}
+					default: {
 						if (token instanceof CommonToken)
 							sourceMapping.add(new PSToken(token.text, token.line, token.startIndex, token.stopIndex + 1))
 						else
