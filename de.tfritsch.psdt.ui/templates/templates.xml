@@ -23,6 +23,19 @@
 >${condition:false} {&#13;	${cursor}&#13;} if
 	</template>
 	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="Template for an imagemask statement" enabled="true" id="imagemask"
+		name="imagemask"
+>&lt;&lt;
+    /ImageType 1
+    /Width ${width}
+    /Height ${height}
+    /ImageMatrix  [1 0 0 1 0 0]
+    /DataSource &lt;8181 1818 8181 1818&gt;
+    /BitsPerComponent 1
+    /Decode [1 0]
+&gt;&gt; imagemask
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
 		description="Template for an if else statement" enabled="true" id="ifelse" name="ifelse"
 >${condition:false} {&#13;	${cursor}&#13;} {&#13;} ifelse</template>
 	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
