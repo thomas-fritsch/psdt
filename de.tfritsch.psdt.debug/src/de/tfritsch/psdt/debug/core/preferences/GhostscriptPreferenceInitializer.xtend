@@ -13,6 +13,9 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 			case Platform.OS_LINUX: {
 				store.setDefault(IPSConstants.PREF_INTERPRETER, "/usr/bin/gs") //$NON-NLS-1$
 			}
+			case Platform.OS_MACOSX: {
+				store.setDefault(IPSConstants.PREF_INTERPRETER, "/usr/local/bin/gs") //$NON-NLS-1$				
+			}
 		}
 	}
 
