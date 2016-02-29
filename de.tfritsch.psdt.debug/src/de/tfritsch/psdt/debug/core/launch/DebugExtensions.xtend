@@ -7,13 +7,13 @@ import java.io.IOException
 import javax.inject.Inject
 import org.antlr.runtime.ANTLRFileStream
 import org.antlr.runtime.CommonToken
+import org.antlr.runtime.Token
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.xtext.parser.antlr.Lexer
 
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
 
 import static extension de.tfritsch.psdt.debug.PSPlugin.*
-import org.antlr.runtime.Token
 
 class DebugExtensions {
 
@@ -25,8 +25,7 @@ class DebugExtensions {
 		try {
 			val lexer = lexerProvider.get
 			lexer.charStream = new ANTLRFileStream(psFile)
-			var token = lexer.nextToken
-			while (token.type !== EOF) {
+			for (var token = lexer.nextToken; token.type !== EOF; token = lexer.nextToken) {
 				switch (token.type) {
 					case Token.INVALID_TOKEN_TYPE:
 						throw ("Invalid token in line " + token.line).toCoreException
@@ -42,7 +41,6 @@ class DebugExtensions {
 							sourceMapping.add(new PSToken(token.text, token.line, -1, -1))
 					}
 				}
-				token = lexer.nextToken
 			}
 		} catch (IOException e) {
 			throw e.toCoreException
