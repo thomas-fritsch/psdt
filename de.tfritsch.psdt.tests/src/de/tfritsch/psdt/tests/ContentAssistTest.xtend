@@ -28,6 +28,7 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"String - ASCII85 String",
 			"String - ASCIIHex String",
 			"def - Template for a definition",
+			"imagemask - Template for an imagemask statement",
 			"setpagedevice - Template for a setpagedevice statement",
 			"stopped - Template for a try/catch statement"
 		)
@@ -45,6 +46,7 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"String - ASCII85 String",
 			"String - ASCIIHex String",
 			"def - Template for a definition",
+			"imagemask - Template for an imagemask statement",
 			"setpagedevice - Template for a setpagedevice statement",
 			"stopped - Template for a try/catch statement"
 		)
