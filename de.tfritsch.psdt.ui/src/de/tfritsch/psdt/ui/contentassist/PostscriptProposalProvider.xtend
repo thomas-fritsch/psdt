@@ -8,7 +8,7 @@ import de.tfritsch.psdt.postscript.PostscriptFactory
 import java.util.List
 import java.util.Scanner
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.Assignment
+import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 
@@ -31,16 +31,16 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 
 	@Inject extension PostscriptFactory
 
-	override completePSExecutableName_Name(EObject model, Assignment assignment, ContentAssistContext context,
+	override complete_PSExecutableName(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
-		super.completePSExecutableName_Name(model, assignment, context, acceptor)
+		super.complete_PSExecutableName(model, ruleCall, context, acceptor)
 		val image = createPSExecutableName.image
 		EXECUTABLE_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
-	override completePSLiteralName_Name(EObject model, Assignment assignment, ContentAssistContext context,
+	override complete_PSLiteralName(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
-		super.completePSLiteralName_Name(model, assignment, context, acceptor)
+		super.complete_PSLiteralName(model, ruleCall, context, acceptor)
 		if (context.prefix.empty)
 			// Don't propose literal names (e.g. /FontType), if '/' is not yet entered,
 			// in order not to overload the proposal list.
@@ -49,9 +49,9 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		LITERAL_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
-	override completePSString_Bytes(EObject model, Assignment assignment, ContentAssistContext context,
+	override complete_PSString(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
-		super.completePSString_Bytes(model, assignment, context, acceptor)
+		super.complete_PSString(model, ruleCall, context, acceptor)
 		val image = createPSString.image
 		"(abc)".createCompletionProposal("(abc) - ASCII String", image, context).accept
 		"<616263>".createCompletionProposal("<616263> - ASCIIHex String", image, context).accept
