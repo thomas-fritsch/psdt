@@ -16,6 +16,7 @@ import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
 import de.tfritsch.psdt.postscript.PSUnparsedData
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
+import org.eclipse.xtext.Keyword
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 
 /**
@@ -87,6 +88,10 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def image(PSExecutableName it) {
 		"text.gif"
+	}
+
+	def image(Keyword it) {
+		"keyword.gif"
 	}
 
 }
