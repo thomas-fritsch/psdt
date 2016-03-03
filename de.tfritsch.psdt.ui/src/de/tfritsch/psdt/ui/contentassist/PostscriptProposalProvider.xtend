@@ -8,6 +8,8 @@ import de.tfritsch.psdt.postscript.PostscriptFactory
 import java.util.List
 import java.util.Scanner
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.jface.viewers.StyledString
+import org.eclipse.swt.graphics.Image
 import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
@@ -58,4 +60,10 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		"<~@:E^~>".createCompletionProposal("<~@:E^~> - ASCII85 String", image, context).accept
 	}
 
+	// adjust priority so that best matching proposals appear on top
+	override protected createCompletionProposal(String proposal, StyledString displayString, Image image,
+		int priority, String prefix, ContentAssistContext context) {
+		val adjustedPriority = if(prefix.length > 0) priority * 2 else priority
+		super.createCompletionProposal(proposal, displayString, image, adjustedPriority, prefix, context)
+	}
 }
