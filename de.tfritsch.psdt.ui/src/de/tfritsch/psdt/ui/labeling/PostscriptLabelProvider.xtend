@@ -7,8 +7,10 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
+import de.tfritsch.psdt.postscript.PSExecutableName
 import de.tfritsch.psdt.postscript.PSFloat
 import de.tfritsch.psdt.postscript.PSInt
+import de.tfritsch.psdt.postscript.PSLiteralName
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
@@ -65,6 +67,26 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def image(PSObject it) {
 		"object.gif"
+	}
+
+	def image(PSInt it) {
+		"int.gif"
+	}
+
+	def image(PSFloat it) {
+		"float.gif"
+	}
+
+	def image(PSString it) {
+		"text.gif"
+	}
+
+	def image(PSLiteralName it) {
+		"text.gif"
+	}
+
+	def image(PSExecutableName it) {
+		"text.gif"
 	}
 
 }
