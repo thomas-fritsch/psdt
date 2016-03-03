@@ -34,7 +34,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 	override completePSExecutableName_Name(EObject model, Assignment assignment, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
 		super.completePSExecutableName_Name(model, assignment, context, acceptor)
-		val image = labelProvider.getImage(createPSExecutableName)
+		val image = createPSExecutableName.image
 		EXECUTABLE_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
@@ -45,7 +45,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 			// Don't propose literal names (e.g. /FontType), if '/' is not yet entered,
 			// in order not to overload the proposal list.
 			return;
-		val image = labelProvider.getImage(createPSLiteralName)
+		val image = createPSLiteralName.image
 		LITERAL_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
