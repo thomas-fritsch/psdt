@@ -49,4 +49,13 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		LITERAL_NAMES.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
+	override completePSString_Bytes(EObject model, Assignment assignment, ContentAssistContext context,
+		extension ICompletionProposalAcceptor acceptor) {
+		super.completePSString_Bytes(model, assignment, context, acceptor)
+		val image = createPSString.image
+		"(abc)".createCompletionProposal("(abc) - ASCII String", image, context).accept
+		"<616263>".createCompletionProposal("<616263> - ASCIIHex String", image, context).accept
+		"<~@:E^~>".createCompletionProposal("<~@:E^~> - ASCII85 String", image, context).accept
+	}
+
 }

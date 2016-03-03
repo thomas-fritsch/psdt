@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <templates>
 	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
-		deleted="false" description="ASCII String" enabled="true" id="asciiString" name="String"
->(${HelloWorld})</template>
-	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
-		deleted="false" description="ASCIIHex String" enabled="true" id="asciiHexString" name="String"
->&lt;${DEADBEEF}&gt;</template>
-	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
-		deleted="false" description="ASCII85 String" enabled="true" id="ascii85String" name="String"
->&lt;~${alo7ks4}~&gt;</template>
-	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
 		deleted="false" description="Template for a definition" enabled="true" id="def" name="def"
 >/${key} ${value} def
 	</template>
