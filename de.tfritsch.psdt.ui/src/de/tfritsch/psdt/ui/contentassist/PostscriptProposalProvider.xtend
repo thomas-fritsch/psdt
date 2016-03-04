@@ -5,8 +5,6 @@ package de.tfritsch.psdt.ui.contentassist
 
 import com.google.inject.Inject
 import de.tfritsch.psdt.postscript.PostscriptFactory
-import java.util.List
-import java.util.Scanner
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.viewers.StyledString
 import org.eclipse.swt.graphics.Image
@@ -19,25 +17,14 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
  */
 class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 
-	static val EXECUTABLE_NAMES = readNames("executable-names.txt")
-
-	static val LITERAL_NAMES = readNames("literal-names.txt")
-
-	def static List<String> readNames(String fileName) {
-		val stream = PostscriptProposalProvider.getResourceAsStream(fileName)
-		val scanner = new Scanner(stream)
-		val names = scanner.toList
-		scanner.close
-		return names
-	}
-
+	@Inject extension NameRepository
 	@Inject extension PostscriptFactory
 
 	override complete_PSExecutableName(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
 		super.complete_PSExecutableName(model, ruleCall, context, acceptor)
 		val image = createPSExecutableName.image
-		EXECUTABLE_NAMES.forEach[createCompletionProposal(it, image, context).accept]
+		executableNames.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
 	override complete_PSLiteralName(EObject model, RuleCall ruleCall, ContentAssistContext context,
@@ -48,7 +35,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 			// in order not to overload the proposal list.
 			return;
 		val image = createPSLiteralName.image
-		LITERAL_NAMES.forEach[createCompletionProposal(it, image, context).accept]
+		literalNames.forEach[createCompletionProposal(it, image, context).accept]
 	}
 
 	override complete_PSString(EObject model, RuleCall ruleCall, ContentAssistContext context,
