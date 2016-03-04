@@ -4,7 +4,7 @@ import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.ui.tests.editor.outline.AbstractOutlineWorkbenchTest
+import org.eclipse.xtext.junit4.ui.AbstractOutlineTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class OutlineTreeProviderTest extends AbstractOutlineWorkbenchTest {
+class OutlineTreeProviderTest extends AbstractOutlineTest {
 
 	override protected getEditorId() {
 		return PostscriptEditor.ID
