@@ -75,14 +75,16 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val workingDir = cfg.verifyWorkingDirectory
 		val env = cfg.environment
 		val p = cmdLine.exec(workingDir, env)
-		val process = launch.newProcess(p, cmdLine.renderProcessLabel, #{IProcess.ATTR_PROCESS_TYPE -> "PostScript"}) => [
-			// things for display in "Process Properties"
-			path = cmdLine.get(0)
-			launchTimestamp = launch.launchTimestamp
-			commandLine = cmdLine.renderArguments(null)
-			workingDirectory = workingDir.renderWorkingDirectory
-			environment = env.renderEnvironment
-		]
+		val process = launch.newProcess(p, cmdLine.renderProcessLabel,
+			#{
+				IProcess.ATTR_PROCESS_TYPE -> "PostScript",
+				// things for display in "Process Properties"
+				ATTR_PATH -> cmdLine.get(0),
+				ATTR_LAUNCH_TIMESTAMP -> launch.launchTimestamp,
+				IProcess.ATTR_CMDLINE -> cmdLine.renderArguments(null),
+				ATTR_WORKING_DIRECTORY -> workingDir.renderWorkingDirectory,
+				ATTR_ENVIRONMENT -> env.renderEnvironment
+			})
 		if (mode == ILaunchManager.DEBUG_MODE) {
 			instrumentedFile.deleteOnTerminate(process)
 			val target = new PSDebugTarget(process, sourceMapping)

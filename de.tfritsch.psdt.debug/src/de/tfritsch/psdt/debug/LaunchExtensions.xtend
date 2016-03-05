@@ -10,7 +10,6 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
-import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.ITerminate
 
 class LaunchExtensions {
@@ -23,41 +22,17 @@ class LaunchExtensions {
 		configuration.setAttribute(DebugPlugin.ATTR_PROCESS_FACTORY_ID, processFactoryId)
 	}
 
-	def static void setPath(IProcess process, String path) {
-		process.setAttribute(DebugPlugin.ATTR_PATH, path)
-	}
-
 	def static String getLaunchTimestamp(ILaunch launch) {
 		return launch.getAttribute(DebugPlugin.ATTR_LAUNCH_TIMESTAMP)
-	}
-
-	def static void setLaunchTimestamp(IProcess process, String timestamp) {
-		process.setAttribute(DebugPlugin.ATTR_LAUNCH_TIMESTAMP, timestamp)
-	}
-
-	def static void setCommandLine(IProcess process, String cmdline) {
-		process.setAttribute(IProcess.ATTR_CMDLINE, cmdline)
 	}
 
 	def static String getWorkingDirectory(ILaunchConfiguration configuration) {
 		configuration.getAttribute(DebugPlugin.ATTR_WORKING_DIRECTORY, null as String)
 	}
 
-	def static void setWorkingDirectory(IProcess process, String workingDirectory) {
-		process.setAttribute(DebugPlugin.ATTR_WORKING_DIRECTORY, workingDirectory)
-	}
-
 	def static String[] getEnvironment(ILaunchConfiguration configuration) throws CoreException {
 		val launchManager = DebugPlugin.^default.launchManager
 		return launchManager.getEnvironment(configuration)
-	}
-
-	def static void setEnvironment(IProcess process, String environment) {
-		process.setAttribute(DebugPlugin.ATTR_ENVIRONMENT, environment)
-	}
-
-	def static void setProcessType(IProcess process, String processType) {
-		process.setAttribute(IProcess.ATTR_PROCESS_TYPE, processType)
 	}
 
 	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
