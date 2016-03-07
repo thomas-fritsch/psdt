@@ -28,15 +28,16 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 			default:
 				null
 		}
-		val documentations = name?.documentations ?: #[]
-		for (documentation : documentations) {
-			val node = eObject.node
-			val hyperlink = docHyperlinkProvider.get => [
-				hyperlinkRegion = new Region(node.offset, node.length)
-				hyperlinkText = documentation.label
-				url = documentation.url
-			]
-			acceptor.accept(hyperlink)
+		if (name !== null) {
+			for (documentation : name.documentations) {
+				val node = eObject.node
+				val hyperlink = docHyperlinkProvider.get => [
+					hyperlinkRegion = new Region(node.offset, node.length)
+					hyperlinkText = documentation.label
+					url = documentation.url
+				]
+				acceptor.accept(hyperlink)
+			}
 		}
 	}
 

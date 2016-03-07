@@ -35,9 +35,9 @@ class LaunchExtensions {
 		return launchManager.getEnvironment(configuration)
 	}
 
-	// copied from org.eclipse.jdt.internal.launching.StandardVMRunner
+	// equivalent to org.eclipse.jdt.internal.launching.StandardVMRunner
 	def static String renderProcessLabel(String[] commandLine) {
-		val timeStamp = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM).format(new Date)
+		val timeStamp = DateFormat.dateTimeInstance.format(new Date)
 		return commandLine.get(0) + " (" + timeStamp + ")"
 	}
 
