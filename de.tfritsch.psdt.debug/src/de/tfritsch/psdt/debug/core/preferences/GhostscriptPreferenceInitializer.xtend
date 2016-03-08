@@ -5,6 +5,9 @@ import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer
 import org.eclipse.core.runtime.Platform
 
+/**
+ * @author Thomas Fritsch - initial API and implementation
+ */
 class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 
 	override initializeDefaultPreferences() {

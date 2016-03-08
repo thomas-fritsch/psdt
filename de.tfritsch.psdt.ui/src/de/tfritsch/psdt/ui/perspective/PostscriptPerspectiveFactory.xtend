@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
 package de.tfritsch.psdt.ui.perspective
 
 import de.tfritsch.psdt.ui.views.PostscriptDocView
@@ -9,6 +16,9 @@ import org.eclipse.ui.progress.IProgressConstants
 import org.eclipse.ui.wizards.newresource.BasicNewFileResourceWizard
 import org.eclipse.ui.wizards.newresource.BasicNewFolderResourceWizard
 
+/**
+ * @author Thomas Fritsch - initial API and implementation
+ */
 class PostscriptPerspectiveFactory implements IPerspectiveFactory {
 
 	override createInitialLayout(IPageLayout layout) {

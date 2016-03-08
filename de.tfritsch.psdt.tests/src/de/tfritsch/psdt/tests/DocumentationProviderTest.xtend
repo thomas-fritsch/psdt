@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
 package de.tfritsch.psdt.tests
 
 import com.google.inject.Inject
@@ -15,6 +22,8 @@ import static org.junit.Assert.*
 /**
  * Run this as "JUnit Plugin Test",
  * because our DocumentationProvider needs the started org.eclipse.help plugin.
+ * 
+ * @author Thomas Fritsch - initial API and implementation
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptInjectorProvider)

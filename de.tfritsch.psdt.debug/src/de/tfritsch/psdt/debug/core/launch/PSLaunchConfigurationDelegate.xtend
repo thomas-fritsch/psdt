@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
 package de.tfritsch.psdt.debug.core.launch
 
 import de.tfritsch.psdt.debug.PSPlugin
@@ -27,6 +34,8 @@ import static extension org.eclipse.debug.core.DebugPlugin.*
  * 
  * Matches plugin.xml
  * extension[@point="org.eclipse.debug.core.launchConfigurationTypes"]/launchConfigurationType/@delegate
+ * 
+ * @author Thomas Fritsch - initial API and implementation
  */
 class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 

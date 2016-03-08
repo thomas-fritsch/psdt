@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
 package de.tfritsch.psdt.debug.ui.preferences
 
 import de.tfritsch.psdt.debug.IPSConstants
@@ -11,6 +18,8 @@ import org.eclipse.ui.IWorkbenchPreferencePage
 /**
  * Matches plugin.xml
  * extension[@point="org.eclipse.ui.preferencePages"]/page/@class
+ * 
+ * @author Thomas Fritsch - initial API and implementation
  */
 class DebugPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 

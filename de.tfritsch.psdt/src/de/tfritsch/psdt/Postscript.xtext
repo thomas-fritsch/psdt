@@ -1,6 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
+
+/**
+ * PostScript grammar.
+ * 
+ * There is no point to use  with org.eclipse.xtext.common.Terminals
+ * because we would need to override most of it (ID, STRING, SL_COMMENT, WS)
+ * 
+ * @author Thomas Fritsch - initial API and implementation
+ */
 grammar de.tfritsch.psdt.Postscript hidden(WS, SL_COMMENT, DSC_COMMENT)
-// there is no point to use  with org.eclipse.xtext.common.Terminals
-// because we would need to override most of it (ID, STRING, SL_COMMENT, WS)
 generate postscript "http://www.tfritsch.de/psdt/Postscript"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 

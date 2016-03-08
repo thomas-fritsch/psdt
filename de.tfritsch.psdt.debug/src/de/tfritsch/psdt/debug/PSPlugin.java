@@ -1,3 +1,10 @@
+/*******************************************************************************
+ * Copyright (c) 2016 Thomas Fritsch.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ ******************************************************************************/
 package de.tfritsch.psdt.debug;
 
 import org.eclipse.core.runtime.CoreException;
@@ -12,6 +19,8 @@ import de.tfritsch.psdt.ui.internal.PostscriptActivator;
 
 /**
  * The activator class controls the plug-in life cycle
+ * 
+ * @author Thomas Fritsch - initial API and implementation
  */
 public class PSPlugin extends AbstractUIPlugin {
 
