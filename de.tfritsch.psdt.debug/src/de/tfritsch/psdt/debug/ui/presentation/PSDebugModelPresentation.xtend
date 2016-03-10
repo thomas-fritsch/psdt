@@ -10,7 +10,6 @@ package de.tfritsch.psdt.debug.ui.presentation
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSVariable
-import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import java.util.Map
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
@@ -25,6 +24,7 @@ import org.eclipse.swt.graphics.Image
 import org.eclipse.ui.IEditorInput
 import org.eclipse.ui.ide.FileStoreEditorInput
 import org.eclipse.ui.part.FileEditorInput
+import org.eclipse.xtext.LanguageInfo
 import org.eclipse.xtext.ui.IImageHelper
 
 /**
@@ -41,6 +41,9 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 
 	@Inject
 	IImageHelper imageHelper
+
+	@Inject
+	LanguageInfo languageInfo
 
 	new() {
 		PSPlugin.injector.injectMembers(this) // TODO remove this hack
@@ -94,7 +97,7 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 			IFile,
 			IFileStore,
 			IBreakpoint:
-				PostscriptEditor.ID
+				languageInfo.languageName
 			default:
 				null
 		}

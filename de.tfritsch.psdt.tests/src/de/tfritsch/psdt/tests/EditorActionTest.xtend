@@ -9,7 +9,7 @@ package de.tfritsch.psdt.tests
 
 import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
-import de.tfritsch.psdt.ui.editor.PostscriptEditor
+import org.eclipse.xtext.LanguageInfo
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractAutoEditTest
@@ -29,13 +29,14 @@ class EditorActionTest extends AbstractAutoEditTest {
 	val static TOGGLE_COMMENT = "ToggleComment"
 
 	@Inject FileExtensionProvider fileExtensionProvider
+	@Inject LanguageInfo languageInfo
 
 	override protected getFileExtension() {
 		return fileExtensionProvider.primaryFileExtension
 	}
 
 	override protected getEditorId() {
-		return PostscriptEditor.ID
+		return languageInfo.languageName
 	}
 
 	def protected void toggleComment(XtextEditor editor) {
