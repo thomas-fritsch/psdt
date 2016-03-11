@@ -31,7 +31,9 @@ class DebugPreferencePage extends FieldEditorPreferencePage implements IWorkbenc
 	}
 
 	override protected createFieldEditors() {
-		addField(new BooleanFieldEditor(IPSConstants.PREF_SHOW_SYSTEMDICT, "Show systemdict", fieldEditorParent))
+		addField(
+			new BooleanFieldEditor(IPSConstants.PREF_SHOW_SYSTEMDICT,
+				"Show systemdict (may slow down stepping performance of debugger)", fieldEditorParent))
 		addField(new BooleanFieldEditor(IPSConstants.PREF_SHOW_GLOBALDICT, "Show globaldict", fieldEditorParent))
 		addField(new BooleanFieldEditor(IPSConstants.PREF_SHOW_USERDICT, "Show userdict", fieldEditorParent))
 	}
