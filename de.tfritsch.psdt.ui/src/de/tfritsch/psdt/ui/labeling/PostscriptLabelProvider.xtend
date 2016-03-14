@@ -76,11 +76,11 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def image(PSInt it) {
-		"int.gif"
+		"number.gif"
 	}
 
 	def image(PSFloat it) {
-		"float.gif"
+		"number.gif"
 	}
 
 	def image(PSString it) {
