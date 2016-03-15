@@ -37,10 +37,10 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 
 	@Test
 	def void testEmpty() {
-		val value = converter.toValue("<~~>", null)
-		assertArrayEquals(newByteArrayOfSize(0), value)
+		val byte[] value = #[]
 		val string = converter.toString(value)
 		assertEquals("<~~>", string)
+		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
 	@Test
@@ -53,10 +53,10 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 
 	@Test
 	def void test1Char() {
-		val value = converter.toValue("<~@/~>", null)
-		assertArrayEquals(#[0x61 as byte], value)
+		val byte[] value = #[0x61 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@/~>", string)
+		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
 	@Test
@@ -77,10 +77,10 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 
 	@Test
 	def void test2Char() {
-		val value = converter.toValue("<~@:B~>", null)
-		assertArrayEquals(#[0x61 as byte, 0x62 as byte], value)
+		val byte[] value = #[0x61 as byte, 0x62 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:B~>", string)
+		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
 	@Test
@@ -101,10 +101,10 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 
 	@Test
 	def void test3Char() {
-		val value = converter.toValue("<~@:E^~>", null)
-		assertArrayEquals(#[0x61 as byte, 0x62 as byte, 0x63 as byte], value)
+		val byte[] value = #[0x61 as byte, 0x62 as byte, 0x63 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:E^~>", string)
+		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
 	@Test
@@ -125,10 +125,10 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 
 	@Test
 	def void test4Char() {
-		val value = converter.toValue("<~@:E_W~>", null)
-		assertArrayEquals(#[0x61 as byte, 0x62 as byte, 0x63 as byte, 0x64 as byte], value)
+		val byte[] value = #[0x61 as byte, 0x62 as byte, 0x63 as byte, 0x64 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:E_W~>", string)
+		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
 	@Test
