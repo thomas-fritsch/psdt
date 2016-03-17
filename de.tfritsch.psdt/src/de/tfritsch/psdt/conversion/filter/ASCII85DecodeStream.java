@@ -71,7 +71,7 @@ public class ASCII85DecodeStream extends AbstractDecodeStream {
             outBuf[1] = (byte) (value >> 16);
             outBuf[2] = (byte) (value >> 8);
             outBuf[3] = (byte) value;
-            if (value >> 32 != 0)
+            if (inCount == 5 && (value >> 32) != 0)
                 throw new IOException("5-tupel represents a value > 0xFFFFFFFF");
             break;
         }
