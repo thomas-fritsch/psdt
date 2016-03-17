@@ -8,10 +8,8 @@
 package de.tfritsch.psdt.conversion
 
 import com.google.inject.Inject
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
+import de.tfritsch.psdt.conversion.filter.ASCII85Filter
 import java.io.IOException
-import org.apache.pdfbox.filter.ASCII85Filter
 import org.eclipse.xtext.conversion.IValueConverter
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.nodemodel.INode
@@ -21,8 +19,7 @@ import org.eclipse.xtext.nodemodel.INode
  */
 class ASCII85StringValueConverter implements IValueConverter<byte[]> {
 
-	@Inject
-	ASCII85Filter filter
+	@Inject extension ASCII85Filter
 
 	override byte[] toValue(String string, INode node) throws ValueConverterException {
 		if (!string.startsWith("<~"))
@@ -30,10 +27,7 @@ class ASCII85StringValueConverter implements IValueConverter<byte[]> {
 		if (!string.endsWith("~>"))
 			throw new ValueConverterException("must end with '~>'", node, null)
 		try {
-			val input = new ByteArrayInputStream(string.substring(2).getBytes("ISO-8859-1"))
-			val output = new ByteArrayOutputStream
-			filter.decode(input, output, null, 0)
-			return output.toByteArray
+			return string.substring(2).getBytes("ISO-8859-1").decode
 		} catch (IOException e) {
 			throw new ValueConverterException("decode error", node, e)
 		}
@@ -41,10 +35,7 @@ class ASCII85StringValueConverter implements IValueConverter<byte[]> {
 
 	override String toString(byte[] value) throws ValueConverterException {
 		try {
-			val input = new ByteArrayInputStream(value)
-			val output = new ByteArrayOutputStream
-			filter.encode(input, output, null, 0)
-			return "<~" + output.toString("ISO-8859-1").replace("~\n", "") + "~>"
+			return "<~" + new String(value.encode, "ISO-8859-1") + "~>"
 		} catch (IOException e) {
 			throw new ValueConverterException("encode error", null, e)
 		}
