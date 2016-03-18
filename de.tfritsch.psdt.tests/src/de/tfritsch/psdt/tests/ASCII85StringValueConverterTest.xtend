@@ -30,9 +30,40 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		this.converter = converter
 	}
 
-	@Test(expected=ValueConverterException)
-	def void testBrokenStringLiteral() {
-		converter.toValue("<~", null)
+	@Test
+	def void testMissingClose() {
+		try {
+			converter.toValue("<~aaaaa", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
+	}
+
+	@Test
+	def void testIllegalChar() {
+		try {
+			converter.toValue("<~aaw~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
+	}
+
+	@Test
+	def void testMisplacedZ() {
+		try {
+			converter.toValue("<~aazaa~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
+	}
+
+	@Test
+	def void testMisplacedTilde() {
+		try {
+			converter.toValue("<~aa~aa~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
 	}
 
 	@Test
@@ -41,6 +72,15 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		val string = converter.toString(value)
 		assertEquals("<~~>", string)
 		assertArrayEquals(value, converter.toValue(string, null))
+	}
+
+	@Test
+	def void test1Char() {
+		try {
+			converter.toValue("<~a~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
 	}
 
 	@Test
@@ -137,6 +177,11 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		val string = converter.toString(value)
 		assertEquals("<~s8W-!~>", string)
 		assertArrayEquals(value, converter.toValue(string, null))
+	}
+
+	@Test(expected=ValueConverterException)
+	def void test5Char_overflow() {
+		converter.toValue("<~uuuuu~>", null)
 	}
 
 	@Test
