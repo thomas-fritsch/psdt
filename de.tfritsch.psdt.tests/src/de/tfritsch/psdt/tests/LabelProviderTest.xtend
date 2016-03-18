@@ -68,6 +68,12 @@ class LabelProviderTest {
 	}
 
 	@Test
+	def void testString_invalid() {
+		val obj = createPSString => [bytes = null]
+		assertEquals("()", obj.text)
+	}
+
+	@Test
 	def void testExecutableName() {
 		val obj = createPSExecutableName => [name = "showpage"]
 		assertEquals("showpage", obj.text)

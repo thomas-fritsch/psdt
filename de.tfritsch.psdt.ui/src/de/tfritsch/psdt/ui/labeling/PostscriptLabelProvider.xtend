@@ -52,7 +52,7 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	}
 
 	def text(PSString it) {
-		stringValueConverter.toString(bytes)
+		stringValueConverter.toString(bytes ?: newByteArrayOfSize(0))
 	}
 
 	def text(PSInt it) {
