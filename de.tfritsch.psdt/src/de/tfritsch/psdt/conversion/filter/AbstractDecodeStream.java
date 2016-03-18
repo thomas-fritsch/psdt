@@ -11,8 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * An abstract decoding input stream. We do NOT inherit from FilterInputStream
- * because FilterInputStream.read(byte[],int,int) would do the wrong thing.
+ * An abstract decoding input stream.
  * @author Thomas Fritsch
  */
 public abstract class AbstractDecodeStream extends InputStream {
@@ -47,6 +46,25 @@ public abstract class AbstractDecodeStream extends InputStream {
 
     protected AbstractDecodeStream(InputStream in) {
         this.in = in;
+    }
+
+    /**
+     * We need to override because {@link InputStream#read(byte[],int,int)}
+     * would ignore any IOException after the first read().
+     */
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+        int i;
+        for (i = 0; i < len; i++) {
+            int c = read();
+            if (c == -1) {
+                if (i == 0)
+                    return -1;
+                break;
+            }
+            b[i] = (byte) c;
+        }
+        return i;
     }
 
     /**

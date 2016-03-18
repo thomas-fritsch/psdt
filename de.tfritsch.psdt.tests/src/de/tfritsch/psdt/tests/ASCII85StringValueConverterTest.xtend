@@ -49,6 +49,15 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
+	def void testIllegalChar_2() {
+		try {
+			converter.toValue("<~bbbbbaaw~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
+	}
+
+	@Test
 	def void testMisplacedZ() {
 		try {
 			converter.toValue("<~aazaa~>", null)
@@ -179,9 +188,13 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		assertArrayEquals(value, converter.toValue(string, null))
 	}
 
-	@Test(expected=ValueConverterException)
+	@Test
 	def void test5Char_overflow() {
-		converter.toValue("<~uuuuu~>", null)
+		try {
+			converter.toValue("<~uuuuu~>", null)
+			fail("exception expected")
+		} catch(ValueConverterException e) {
+		}
 	}
 
 	@Test
