@@ -44,7 +44,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test1Char_min() {
+	def void test2Char_min() {
 		val byte[] value = #[0 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~!!~>", string)
@@ -52,7 +52,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test1Char() {
+	def void test2Char() {
 		val byte[] value = #[0x61 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@/~>", string)
@@ -60,7 +60,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test1Char_max() {
+	def void test2Char_max() {
 		val byte[] value = #[0xFF as byte]
 		val string = converter.toString(value)
 		assertEquals("<~rr~>", string)
@@ -68,7 +68,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test2Char_min() {
+	def void test3Char_min() {
 		val byte[] value = #[0 as byte, 0 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~!!!~>", string)
@@ -76,7 +76,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test2Char() {
+	def void test3Char() {
 		val byte[] value = #[0x61 as byte, 0x62 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:B~>", string)
@@ -84,7 +84,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test2Char_max() {
+	def void test3Char_max() {
 		val byte[] value = #[0xFF as byte, 0xFF as byte]
 		val string = converter.toString(value)
 		assertEquals("<~s8N~>", string)
@@ -92,7 +92,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test3Char_min() {
+	def void test4Char_min() {
 		val byte[] value = #[0 as byte, 0 as byte, 0 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~!!!!~>", string)
@@ -100,7 +100,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test3Char() {
+	def void test4Char() {
 		val byte[] value = #[0x61 as byte, 0x62 as byte, 0x63 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:E^~>", string)
@@ -108,7 +108,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test3Char_max() {
+	def void test4Char_max() {
 		val byte[] value = #[0xFF as byte, 0xFF as byte, 0xFF as byte]
 		val string = converter.toString(value)
 		assertEquals("<~s8W*~>", string)
@@ -116,7 +116,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test4Char_min() {
+	def void test5Char_min() {
 		val byte[] value = #[0 as byte, 0 as byte, 0 as byte, 0 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~z~>", string)
@@ -124,7 +124,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test4Char() {
+	def void test5Char() {
 		val byte[] value = #[0x61 as byte, 0x62 as byte, 0x63 as byte, 0x64 as byte]
 		val string = converter.toString(value)
 		assertEquals("<~@:E_W~>", string)
@@ -132,7 +132,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 	}
 
 	@Test
-	def void test4Char_max() {
+	def void test5Char_max() {
 		val byte[] value = #[0xFF as byte, 0xFF as byte, 0xFF as byte, 0xFF as byte]
 		val string = converter.toString(value)
 		assertEquals("<~s8W-!~>", string)
