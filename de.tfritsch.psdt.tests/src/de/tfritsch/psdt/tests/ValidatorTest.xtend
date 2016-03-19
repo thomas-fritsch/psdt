@@ -73,4 +73,16 @@ class ValidatorTest {
 		val file = '''fork'''.parse
 		file.assertWarning(PS_EXECUTABLE_NAME, IssueCodes.DPS, "Display PostScript")
 	}
+
+	@Test
+	def testASCII85Invalid_1() {
+		val file = '''<~12345x78~>'''.parse
+		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
+	}
+
+	@Test
+	def testASCII85Invalid_2() {
+		val file = '''<~123456~>'''.parse
+		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Final tuple '6' too short")
+	}
 }

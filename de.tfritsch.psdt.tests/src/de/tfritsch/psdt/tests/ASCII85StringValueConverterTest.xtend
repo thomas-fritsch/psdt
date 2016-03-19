@@ -35,7 +35,8 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~aaaaa", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertEquals("must end with '~>'", e.message)
 		}
 	}
 
@@ -44,7 +45,12 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~aaw~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals(
+				"Illegal character 'w' (valid are '!'..'u', 'z' and white space)",
+				e.cause.message
+			)
 		}
 	}
 
@@ -53,7 +59,12 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~bbbbbaaw~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals(
+				"Illegal character 'w' (valid are '!'..'u', 'z' and white space)",
+				e.cause.message
+			)
 		}
 	}
 
@@ -62,7 +73,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~aazaa~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals("Misplaced character 'z'", e.cause.message)
 		}
 	}
 
@@ -71,7 +84,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~aa~aa~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals("Misplaced character '~'", e.cause.message)
 		}
 	}
 
@@ -88,7 +103,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~a~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals("Final tuple 'a' too short", e.cause.message)
 		}
 	}
 
@@ -193,7 +210,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 		try {
 			converter.toValue("<~uuuuu~>", null)
 			fail("exception expected")
-		} catch(ValueConverterException e) {
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals("'uuuuu' represents a value > 0xFFFFFFFF", e.cause.message)
 		}
 	}
 

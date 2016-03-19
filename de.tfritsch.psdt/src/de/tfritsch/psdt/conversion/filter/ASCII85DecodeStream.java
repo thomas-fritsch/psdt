@@ -17,12 +17,12 @@ import java.util.Arrays;
 public class ASCII85DecodeStream extends AbstractDecodeStream {
 
     /**
-     * Input chars (range 0 .. 84)
+     * Input chars (range '!' .. 'u')
      */
-    private byte[] inBuf = new byte[5];
+    private char[] inBuf = new char[5];
 
     /**
-     * Number of bytes in inBuf[]
+     * Number of chars in inBuf[]
      */
     private int inCount;
 
@@ -34,37 +34,38 @@ public class ASCII85DecodeStream extends AbstractDecodeStream {
     @Override
     protected void fillBuff() throws IOException {
         outPos = outCount = 0;
-        Arrays.fill(inBuf, (byte) 84);
+        Arrays.fill(inBuf, 'u');
         inCount = 0;
         while (inCount < 5 && !eod) {
             int c = readNonWhiteSpace();
             if (c >= '!' && c <= 'u')
-                inBuf[inCount++] = (byte) (c - '!');
+                inBuf[inCount++] = (char) c;
             else if (c == 'z') {
                 if (inCount != 0)
-                    throw new IOException("'z' in the middle of a 5-tuple");
+                    throw new IOException("Misplaced character 'z'");
                 inCount = 5;
-                Arrays.fill(inBuf, (byte) 0);
+                Arrays.fill(inBuf, '!');
             } else if (c == '~') {
                 c = in.read();
                 if (c != '>')
-                    throw new IOException("Wrong character " + c + " after '~'");
+                    throw new IOException("Misplaced character '~'");
                 eod = true;
             } else if (c == -1)
                 throw new IOException("EOF before '~>'");
             else
-                throw new IOException("Illegal character " + c);
+                throw new IOException("Illegal character '" + (char) c
+                        + "' (valid are '!'..'u', 'z' and white space)");
         }
         long value = 0;
         for (int i = 0; i < 5; i++) {
-            value = value * 85 + inBuf[i];
+            value = value * 85 + (inBuf[i] - '!');
         }
         switch (inCount) {
         case 0:
             outCount = 0;
             break;
         case 1:
-            throw new IOException("Final 5-tuple with only one character");
+            throw new IOException("Final tuple '" + inBuf[0] + "' too short");
         default:
             outCount = inCount - 1;
             outBuf[0] = (byte) (value >> 24);
@@ -72,7 +73,8 @@ public class ASCII85DecodeStream extends AbstractDecodeStream {
             outBuf[2] = (byte) (value >> 8);
             outBuf[3] = (byte) value;
             if (inCount == 5 && (value >> 32) != 0)
-                throw new IOException("5-tupel represents a value > 0xFFFFFFFF");
+                throw new IOException("'" + new String(inBuf)
+                        + "' represents a value > 0xFFFFFFFF");
             break;
         }
     }
