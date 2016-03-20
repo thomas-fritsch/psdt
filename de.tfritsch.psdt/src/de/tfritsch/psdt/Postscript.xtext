@@ -64,10 +64,11 @@ terminal fragment ESCAPED_CHAR:
 	'\\' ('t' | 'n' | 'f' | 'r' | 'b' | '(' | ')' | '\\' | ('0'..'7')+);
 
 terminal ASCII_HEX_STRING returns ecore::EByteArray:
-	'<' ('0'..'9' | 'a'..'f' | 'A'..'F' | WS)* '>';
+	'<' !('<' | '~' | '>')* '>'; // detailed syntax check done by ASCIIHexStringValueConverter
 
 terminal ASCII_85_STRING returns ecore::EByteArray:
 	'<~'->'~>'; // detailed syntax check done by ASCII85StringValueConverter
+
 terminal INT returns ecore::EInt:
 	(('+' | '-')? ('0'..'9')+) | RADIX_INT;
 

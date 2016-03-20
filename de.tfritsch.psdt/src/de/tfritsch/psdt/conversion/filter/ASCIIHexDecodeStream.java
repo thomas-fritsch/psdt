@@ -32,7 +32,8 @@ public class ASCIIHexDecodeStream extends AbstractDecodeStream {
             else {
                 int x = Character.digit((char) c, 16);
                 if (x < 0)
-                    throw new IOException("Illegal character " + c);
+                    throw new IOException("Illegal character '" + (char) c
+                            + "' (valid are '0'..'9', 'A'..'F', 'a'..'f' and white space)");
                 // x is in range 0 .. 15
                 if ((i & 1) == 0) // i even
                     outBuf[outCount++] = (byte) (x * 16);

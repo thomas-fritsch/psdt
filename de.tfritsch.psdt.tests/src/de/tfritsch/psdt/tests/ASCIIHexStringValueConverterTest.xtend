@@ -30,9 +30,28 @@ class ASCIIHexStringValueConverterTest extends AbstractStringValueConverterTest 
 		this.converter = converter
 	}
 
-	@Test(expected=ValueConverterException)
+	@Test
 	def void testBrokenStringLiteral() {
-		converter.toValue("<", null)
+		try {
+			converter.toValue("<aaaa", null)
+			fail("exception expected")
+		} catch (ValueConverterException e) {
+			assertEquals("must end with '>'", e.message)
+		}
+	}
+
+	@Test
+	def void testIllegalChar() {
+		try {
+			converter.toValue("<abcg>", null)
+			fail("exception expected")
+		} catch (ValueConverterException e) {
+			assertNotNull(e.cause)
+			assertEquals(
+				"Illegal character 'g' (valid are '0'..'9', 'A'..'F', 'a'..'f' and white space)",
+				e.cause.message
+			)
+		}
 	}
 
 	@Test

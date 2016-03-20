@@ -75,6 +75,12 @@ class ValidatorTest {
 	}
 
 	@Test
+	def testASCIIHexInvalid() {
+		val file = '''<12345x78>'''.parse
+		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
+	}
+
+	@Test
 	def testASCII85Invalid_1() {
 		val file = '''<~12345x78~>'''.parse
 		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
