@@ -115,4 +115,85 @@ class ParserTest {
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSUnparsedData)
 	}
+
+	@Test
+	def testASCII85StringContainingAngleChars() {
+		val file = '''
+			<~<123>~>>
+		'''.parse
+		assertEquals(1, file.objects.length)
+		val string = file.objects.get(0) as PSString
+		assertEquals(4, string.bytes.length)
+	}
+
+	@Test
+	def testDictionaryContainingASCIIHexString() {
+		val file = '''
+			<<<>>>
+		'''.parse
+		assertEquals(1, file.objects.length)
+		val dict = file.objects.get(0) as PSDictionary
+		val innerObj = dict.objects.get(0)
+		assertTrue(innerObj instanceof PSString)
+	}
+
+	@Test
+	def testASCIIHexStringThenASCII85String() {
+		val file = '''
+			<><~~>
+		'''.parse
+		assertEquals(2, file.objects.length)
+		assertTrue(file.objects.get(0) instanceof PSString)
+		assertTrue(file.objects.get(1) instanceof PSString)
+	}
+
+	@Test
+	def testASCII85StringThenASCIIHexString() {
+		val file = '''
+			<~~><>
+		'''.parse
+		assertEquals(2, file.objects.length)
+		assertTrue(file.objects.get(0) instanceof PSString)
+		assertTrue(file.objects.get(1) instanceof PSString)
+	}
+
+	def testASCII85StringThenASCII85String() {
+		val file = '''
+			<~~><~~>
+		'''.parse
+		assertEquals(2, file.objects.length)
+		assertTrue(file.objects.get(0) instanceof PSString)
+		assertTrue(file.objects.get(1) instanceof PSString)
+	}
+
+	@Test
+	def testASCIIHexStringThenDictionary() {
+		val file = '''
+			<><<>>
+		'''.parse
+		assertEquals(2, file.objects.length)
+		assertTrue(file.objects.get(0) instanceof PSString)
+		assertTrue(file.objects.get(1) instanceof PSDictionary)
+	}
+
+	@Test
+	def testDictionaryThenASCIIHexString() {
+		val file = '''
+			<<>><>
+		'''.parse
+		assertEquals(2, file.objects.length)
+		assertTrue(file.objects.get(0) instanceof PSDictionary)
+		assertTrue(file.objects.get(1) instanceof PSString)
+	}
+
+	@Test
+	def testDictionaryContainingASCII85String() {
+		val file = '''
+			<<<~~>>>
+		'''.parse
+		assertEquals(1, file.objects.length)
+		val dict = file.objects.get(0) as PSDictionary
+		val innerObj = dict.objects.get(0)
+		assertTrue(innerObj instanceof PSString)
+	}
 }
