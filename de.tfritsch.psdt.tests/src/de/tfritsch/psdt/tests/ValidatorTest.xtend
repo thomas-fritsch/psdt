@@ -75,6 +75,12 @@ class ValidatorTest {
 	}
 
 	@Test
+	def testStringWithBalancedParentheses() {
+		val file = '''(This is a (rather long) string)'''.parse
+		file.assertNoErrors
+	}
+
+	@Test
 	def testASCIIHexInvalid() {
 		val file = '''<12345x78>'''.parse
 		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
