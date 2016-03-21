@@ -58,13 +58,10 @@ PSString:
 	bytes=STRING | bytes=ASCII_HEX_STRING | bytes=ASCII_85_STRING;
 
 terminal STRING returns ecore::EByteArray:
-	'(' STRING_PART* ')';
+	'(' STRING_PART* ')'; // detailed syntax check done by STRINGValueConverter
 
 terminal fragment STRING_PART:
-	!('\\' | '(' | ')') | ESCAPED_CHAR | ('(' STRING_PART* ')');
-
-terminal fragment ESCAPED_CHAR:
-	'\\' ('t' | 'n' | 'f' | 'r' | 'b' | '(' | ')' | '\\' | ('0'..'7')+);
+	!('\\' | '(' | ')') | ('\\'.) | ('(' STRING_PART* ')');
 
 terminal ASCII_HEX_STRING returns ecore::EByteArray:
 	'<' !('<' | '~' | '>')* '>'; // detailed syntax check done by ASCIIHexStringValueConverter

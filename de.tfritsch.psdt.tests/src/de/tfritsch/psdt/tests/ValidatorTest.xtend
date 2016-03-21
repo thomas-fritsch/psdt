@@ -80,6 +80,18 @@ class ValidatorTest {
 		file.assertNoErrors
 	}
 
+	def testStringWithEscapedNewline() {
+		val file = '''
+		(line1\
+		line2)'''.parse
+		file.assertNoErrors
+	}
+
+	def testStringWithInvalidEscapeSequence() {
+		val file = '''(This is \a string)'''.parse
+		file.assertNoErrors
+	}
+
 	@Test
 	def testASCIIHexInvalid() {
 		val file = '''<12345x78>'''.parse
