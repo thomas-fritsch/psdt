@@ -80,6 +80,7 @@ class ValidatorTest {
 		file.assertNoErrors
 	}
 
+	@Test
 	def testStringWithEscapedNewline() {
 		val file = '''
 		(line1\
@@ -87,6 +88,7 @@ class ValidatorTest {
 		file.assertNoErrors
 	}
 
+	@Test
 	def testStringWithInvalidEscapeSequence() {
 		val file = '''(This is \a string)'''.parse
 		file.assertNoErrors
