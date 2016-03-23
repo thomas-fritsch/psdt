@@ -46,10 +46,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~aaw~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
 			assertEquals(
 				"Illegal character 'w' (valid are '!'..'u', 'z' and white space)",
-				e.cause.message
+				e.message
 			)
 		}
 	}
@@ -60,10 +59,9 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~bbbbbaaw~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
 			assertEquals(
 				"Illegal character 'w' (valid are '!'..'u', 'z' and white space)",
-				e.cause.message
+				e.message
 			)
 		}
 	}
@@ -74,8 +72,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~aazaa~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
-			assertEquals("Misplaced character 'z'", e.cause.message)
+			assertEquals("Misplaced character 'z'", e.message)
 		}
 	}
 
@@ -85,8 +82,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~aa~aa~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
-			assertEquals("Misplaced character '~'", e.cause.message)
+			assertEquals("Misplaced character '~'", e.message)
 		}
 	}
 
@@ -104,8 +100,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~a~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
-			assertEquals("Final tuple 'a' too short", e.cause.message)
+			assertEquals("Final tuple 'a' too short", e.message)
 		}
 	}
 
@@ -211,8 +206,7 @@ class ASCII85StringValueConverterTest extends AbstractStringValueConverterTest {
 			converter.toValue("<~uuuuu~>", null)
 			fail("exception expected")
 		} catch (ValueConverterException e) {
-			assertNotNull(e.cause)
-			assertEquals("'uuuuu' represents a value > 0xFFFFFFFF", e.cause.message)
+			assertEquals("'uuuuu' represents a value > 0xFFFFFFFF", e.message)
 		}
 	}
 
