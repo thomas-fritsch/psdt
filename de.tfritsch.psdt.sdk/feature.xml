@@ -3,7 +3,8 @@
       id="de.tfritsch.psdt.sdk"
       label="%featureName"
       version="1.0.0.qualifier"
-      provider-name="%providerName">
+      provider-name="%providerName"
+      plugin="de.tfritsch.psdt.ui">
 
    <description url="http://thomas-fritsch.github.io/psdt/">
       %description
