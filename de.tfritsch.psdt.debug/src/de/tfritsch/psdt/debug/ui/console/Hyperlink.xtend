@@ -8,6 +8,7 @@
 package de.tfritsch.psdt.debug.ui.console
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.debug.PSPlugin
 import java.net.URL
 import org.eclipse.ui.PartInitException
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
@@ -39,7 +40,7 @@ class Hyperlink implements IHyperlink {
 				"Documentation" // tooltip
 			).openURL(url)
 		} catch (PartInitException e) {
-			e.printStackTrace
+			PSPlugin.log(e)
 		}
 	}
 

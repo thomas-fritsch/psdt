@@ -9,8 +9,11 @@ package de.tfritsch.psdt.ui.hyperlinking
 
 import com.google.inject.Inject
 import java.net.URL
+import org.eclipse.core.runtime.IStatus
+import org.eclipse.core.runtime.Status
 import org.eclipse.ui.PartInitException
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
+import org.eclipse.ui.plugin.AbstractUIPlugin
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtext.ui.editor.hyperlinking.AbstractHyperlink
 
@@ -21,6 +24,9 @@ class DocHyperlink extends AbstractHyperlink {
 
 	@Inject
 	IWorkbenchBrowserSupport browserSupport
+
+	@Inject
+	AbstractUIPlugin plugin
 
 	@Accessors
 	URL url
@@ -34,7 +40,8 @@ class DocHyperlink extends AbstractHyperlink {
 				"Documentation" // tooltip
 			).openURL(url)
 		} catch (PartInitException e) {
-			e.printStackTrace
+			val status = new Status(IStatus.ERROR, plugin.bundle.symbolicName, "Error", e);
+			plugin.log.log(status)
 		}
 	}
 
