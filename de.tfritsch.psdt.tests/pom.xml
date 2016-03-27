@@ -43,6 +43,8 @@
 						<exclude>**/AutoEditTest*</exclude>
 						<exclude>**/OutlineTreeProviderTest*</exclude>
 						<exclude>**/EditorActionTest*</exclude>
+						<!-- NullPointerException in WorkbenchPage.setPerspective -->
+						<exclude>**/PerspectiveTest*</exclude>
 					</excludes>
 					<dependencies>
 						<dependency>
