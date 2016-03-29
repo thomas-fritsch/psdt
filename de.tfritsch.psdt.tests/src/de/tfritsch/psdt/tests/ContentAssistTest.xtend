@@ -38,6 +38,7 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"<~@:E^~>",
 			"def - Template for a definition",
 			"imagemask - Template for an imagemask statement",
+			"loop - Template for a loop statement",
 			"setpagedevice - Template for a setpagedevice statement",
 			"stopped - Template for a try/catch statement"
 		)
@@ -56,6 +57,7 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"<~@:E^~>",
 			"def - Template for a definition",
 			"imagemask - Template for an imagemask statement",
+			"loop - Template for a loop statement",
 			"setpagedevice - Template for a setpagedevice statement",
 			"stopped - Template for a try/catch statement"
 		)

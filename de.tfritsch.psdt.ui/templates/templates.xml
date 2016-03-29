@@ -30,6 +30,20 @@
 		description="Template for an if else statement" enabled="true" id="ifelse" name="ifelse"
 >${condition:false} {&#13;	${cursor}&#13;} {&#13;} ifelse</template>
 	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="Template for a loop statement" enabled="true" id="loop"
+		name="loop"
+>{
+    ${cursor}
+} loop
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
+		deleted="false" description="Template for a repeat statement" enabled="true" id="repeat"
+		name="repeat"
+>${number} {
+    ${cursor}
+} repeat
+	</template>
+	<template autoinsert="true" context="de.tfritsch.psdt.Postscript.PSObject"
 		deleted="false" description="Template for a setpagedevice statement" enabled="true" id="setpagedevice"
 		name="setpagedevice"
 >&lt;&lt;&#13;	/PageSize [595 842]&#13;&gt;&gt; setpagedevice
