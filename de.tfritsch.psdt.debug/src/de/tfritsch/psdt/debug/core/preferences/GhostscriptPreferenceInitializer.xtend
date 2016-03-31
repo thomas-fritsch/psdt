@@ -37,7 +37,8 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 	def private File findGhostscriptExeOnWindows() {
 		for (gsDir : #[
 			new File(System.getenv("ProgramFiles"), "gs"),
-			new File(System.getenv("ProgramFiles(x86)"), "gs")
+			new File(System.getenv("ProgramFiles(x86)"), "gs"),
+			new File(System.getenv("ProgramW6432"), "gs")
 		]) {
 			if (gsDir.exists) {
 				for (subDir : gsDir.list) {
