@@ -4,7 +4,7 @@
       label="%featureName"
       version="1.0.0.qualifier"
       provider-name="%providerName"
-      plugin="de.tfritsch.psdt.ui">
+      plugin="de.tfritsch.psdt">
 
    <description url="http://thomas-fritsch.github.io/psdt/">
       %description
