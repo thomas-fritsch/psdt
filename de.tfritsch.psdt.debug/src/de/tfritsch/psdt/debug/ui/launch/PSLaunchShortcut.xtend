@@ -72,7 +72,13 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	def private ILaunchConfiguration[] getConfigurations(String program) {
 		val type = PSLaunchConfigurationDelegate.ID.launchConfigurationType
 		try {
-			type.launchConfigurations.filter[c|!c.private && program == c.program.performStringSubstitution]
+			type.launchConfigurations.filter [ c |
+				try {
+					!c.private && program == c.program.performStringSubstitution
+				} catch (CoreException e) {
+					false
+				}
+			]
 		} catch (CoreException e) {
 			PSPlugin.log(e)
 			#[]

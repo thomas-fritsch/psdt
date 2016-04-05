@@ -107,7 +107,10 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 						true
 				}
 			]
-			initialSelection = new Path(fProgramText.text.performStringSubstitution).workspaceFileAtLocation
+			try {
+				initialSelection = new Path(fProgramText.text.performStringSubstitution).workspaceFileAtLocation
+			} catch (CoreException e) {
+			}
 		]
 		dialog.open
 		val file = dialog.firstResult as IFile
@@ -174,8 +177,13 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			errorMessage = "Specify a program"
 			return false
 		}
-		if (!(new File(program.performStringSubstitution)).exists) {
-			errorMessage = "Specified program does not exist"
+		try {
+			if (!(new File(program.performStringSubstitution)).exists) {
+				errorMessage = "Specified program does not exist"
+				return false
+			}
+		} catch (CoreException e) {
+			errorMessage = e.message
 			return false
 		}
 		errorMessage = null
