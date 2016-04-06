@@ -15,8 +15,8 @@
 	<inceptionYear>2015</inceptionYear>
 	<licenses>
 		<license>
-			<name>Eclipse Public License 1.0</name>
-			<url>http://spdx.org/licenses/EPL-1.0.html</url>
+			<name>GNU General Public License 3.0</name>
+			<url>http://www.gnu.org/licenses/gpl-3.0</url>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
