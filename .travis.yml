@@ -6,6 +6,7 @@ install: true
 
 before_script:
   - sh -e /etc/init.d/xvfb start
+  - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 
 script:
   - mvn install
