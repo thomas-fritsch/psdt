@@ -2,7 +2,7 @@ language: java
 
 env: DISPLAY=:99.0
 
-install: true
+install: gs -v
 
 before_script:
   - sh -e /etc/init.d/xvfb start
