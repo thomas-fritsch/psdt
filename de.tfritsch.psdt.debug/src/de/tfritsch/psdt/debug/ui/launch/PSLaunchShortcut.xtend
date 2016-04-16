@@ -26,6 +26,7 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.ILaunchShortcut
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.jface.viewers.ISelection
 import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.ui.IEditorPart
@@ -46,6 +47,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
 	@Inject IWorkbench workbench
+	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 
 	new() {
 		PSPlugin.injector.injectMembers(this) // TODO remove this hack
@@ -101,7 +103,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 			val workingCopy = type.newInstance(null, name) => [
 				program = program_
 				processFactoryId = PSProcessFactory.ID
-				ghostscriptArguments = "-dBATCH" //$NON-NLS-1$
+				ghostscriptArguments = preferenceStore.defaultGhostscriptArguments
 			]
 			return workingCopy.doSave
 		} catch (CoreException e) {

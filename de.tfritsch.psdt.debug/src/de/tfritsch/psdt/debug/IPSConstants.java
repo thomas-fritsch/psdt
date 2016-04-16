@@ -47,6 +47,8 @@ public interface IPSConstants {
      */
     public static final String PREF_INTERPRETER = "interpreter"; //$NON-NLS-1$
 
+    public static final String PREF_DEFAULT_GS_ARGUMENTS = "defaultGsArguments"; //$NON-NLS-1$
+
     public static final String PREF_MESSAGE_BOX_ON_PROMPT = "messageBoxOnPrompt";
     
     public static final String PREF_SHOW_SYSTEMDICT = "show.systemdict"; //$NON-NLS-1$

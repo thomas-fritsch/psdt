@@ -20,12 +20,13 @@ import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import org.eclipse.core.runtime.Platform
+import org.eclipse.jface.preference.BooleanFieldEditor
 import org.eclipse.jface.preference.FieldEditorPreferencePage
 import org.eclipse.jface.preference.FileFieldEditor
 import org.eclipse.jface.preference.IPreferenceStore
+import org.eclipse.jface.preference.StringFieldEditor
 import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.IWorkbenchPreferencePage
-import org.eclipse.jface.preference.BooleanFieldEditor
 
 /**
  * Matches plugin.xml
@@ -63,6 +64,8 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 					}
 				}
 			])
+		addField(
+			new StringFieldEditor(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS, "&Default arguments", fieldEditorParent))
 		addField(
 			new BooleanFieldEditor(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT,
 				"&Message box on 'press <return> to continue'", fieldEditorParent))

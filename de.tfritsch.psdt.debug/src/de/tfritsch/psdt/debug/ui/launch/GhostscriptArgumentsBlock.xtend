@@ -24,6 +24,7 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.osgi.util.NLS
 import org.eclipse.swt.SWT
 import org.eclipse.swt.layout.GridData
@@ -46,6 +47,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
 class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	@Inject IWorkbenchBrowserSupport browserSupport
+	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 
 	Text fArgumentsText
 	Link fLink
@@ -84,7 +86,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		configuration.ghostscriptArguments = "-dBATCH" //$NON-NLS-1$
+		configuration.ghostscriptArguments = preferenceStore.defaultGhostscriptArguments
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {

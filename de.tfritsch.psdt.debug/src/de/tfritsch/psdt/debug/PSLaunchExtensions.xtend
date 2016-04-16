@@ -29,6 +29,10 @@ class PSLaunchExtensions {
 		return preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
 	}
 
+	def static String getDefaultGhostscriptArguments(IPreferenceStore preferenceStore) {
+		return preferenceStore.getString(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS)
+	}
+
 	def static boolean isMessageBoxOnPrompt(IPreferenceStore preferenceStore) {
 		return preferenceStore.getBoolean(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT)
 	}

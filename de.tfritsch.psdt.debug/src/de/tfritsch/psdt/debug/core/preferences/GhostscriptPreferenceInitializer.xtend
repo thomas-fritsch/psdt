@@ -23,6 +23,7 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 		}
 		if (file !== null)
 			store.setDefault(IPSConstants.PREF_INTERPRETER, file.absolutePath)
+		store.setDefault(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS, "-dBATCH")
 	}
 
 	def private File findGhostscriptExeByPath() {

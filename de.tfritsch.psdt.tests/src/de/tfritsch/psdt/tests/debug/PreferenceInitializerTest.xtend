@@ -51,5 +51,7 @@ class PreferenceInitializerTest {
 			default:
 				assertEquals("gs", interpreterFile.name)
 		}
+		val defaultGhostscriptArguments = store.getDefaultString(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS)
+		assertEquals("-dBATCH", defaultGhostscriptArguments)
 	}
 }
