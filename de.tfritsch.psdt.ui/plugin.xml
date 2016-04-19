@@ -363,5 +363,20 @@
               name="PostScript Doc">
         </view>
   </extension>
+  <extension point="org.eclipse.ui.newWizards">
+        <category
+              id="de.tfritsch.psdt.ui.examples"
+              name="PostScript"
+              parentCategory="org.eclipse.ui.Examples">
+        </category>
+        <wizard
+              id="de.tfritsch.psdt.ui.wizards.example"
+              category="org.eclipse.ui.Examples/de.tfritsch.psdt.ui.examples"
+              class="de.tfritsch.psdt.ui.wizards.NewPostscriptFileWizard"
+              icon="icons/postscript.png"
+              name="PostScript Hello-World Example">
+              <description>Create a Hello-World file in PostScript</description>
+        </wizard>
+  </extension>
 
 </plugin>
