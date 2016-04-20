@@ -31,21 +31,19 @@
 	<h2 id="new-file">New file</h2>
 	<p>
 		Select <a class="command-link"
+			href="javascript:executeCommand(&quot;org.eclipse.ui.newWizard(newWizardId=de.tfritsch.psdt.ui.wizards.example)&quot;)">
+			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /><b>File
+				&gt; New &gt; Example... &gt; PostScript &gt; PostScript Hello-World
+				Example</b>
+		</a> to create a new example file.
+	</p>
+	<p>
+		Or select <a class="command-link"
 			href="javascript:executeCommand(&quot;org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)&quot;)">
 			<img src="PLUGINS_ROOT/org.eclipse.help/command_link.png" /> <b>File
 				&gt; New &gt; File</b>
 		</a> to create new file. Make sure the file name has extension ".ps" or
-		".eps".
+		".eps". Then enter some PostScript code.
 	</p>
-	<p>Enter some PostScript code, or just copy and paste this:</p>
-	<pre>%!PS-Adobe-2.0
-% The indispensable Hello World program in PostScript
-&lt;&lt;
-  /PageSize [595 841]
-&gt;&gt; setpagedevice
-/Times-Roman findfont 60 scalefont setfont
-50 600 moveto
-(Hello World) show
-showpage</pre>
 </body>
 </html>
