@@ -45,6 +45,7 @@
 						<exclude>**/EditorActionTest*</exclude>
 						<!-- NullPointerException in WorkbenchPage.setPerspective -->
 						<exclude>**/PerspectiveTest*</exclude>
+						<exclude>**/WizardTest*</exclude>
 					</excludes>
 					<dependencies>
 						<dependency>
