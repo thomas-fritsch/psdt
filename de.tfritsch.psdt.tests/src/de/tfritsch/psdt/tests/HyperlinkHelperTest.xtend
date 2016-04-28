@@ -21,19 +21,20 @@ import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
+import static org.junit.Assert.*
+
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class HyperlinkHelperTest extends AbstractWorkbenchTest {
+class HyperlinkHelperTest {
 
 	@Inject extension ParseHelper<PSFile>
 	@Inject extension IHyperlinkHelper
