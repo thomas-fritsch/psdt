@@ -19,6 +19,8 @@ package de.tfritsch.psdt.tests
 import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
+import org.eclipse.ui.IEditorPart
+import org.eclipse.ui.IWorkbench
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -38,6 +40,11 @@ class HyperlinkHelperTest {
 
 	@Inject extension ParseHelper<PSFile>
 	@Inject extension IHyperlinkHelper
+	@Inject IWorkbench workbench
+	
+	def protected IEditorPart getActiveEditor() {
+		return workbench.activeWorkbenchWindow.activePage.activeEditor
+	}
 
 	@Test
 	def void testUnknown() throws Exception {
@@ -55,6 +62,7 @@ class HyperlinkHelperTest {
 		'''.parse.eResource as XtextResource
 		val hyperlinks = resource.createHyperlinksByOffset(10, true)
 		assertEquals(#["Operator"], hyperlinks.map[hyperlinkText])
+		hyperlinks.get(0).open
 	}
 
 	@Test
@@ -67,5 +75,7 @@ class HyperlinkHelperTest {
 			#["Entry in a font dictionary", "Resource category"],
 			hyperlinks.map[hyperlinkText]
 		)
+		hyperlinks.get(0).open
+		hyperlinks.get(1).open
 	}
 }
