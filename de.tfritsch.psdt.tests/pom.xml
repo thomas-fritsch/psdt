@@ -37,37 +37,15 @@
 				<configuration>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
-					<excludes>
-						<!-- Work-around for tests failing in Maven, but succeeding in IDE -->
-						<!-- Opened Editor with id:de.tfritsch.psdt.Postscript, is not an XtextEditor -->
-						<exclude>**/AutoEditTest*</exclude>
-						<exclude>**/OutlineTreeProviderTest*</exclude>
-						<exclude>**/EditorActionTest*</exclude>
-						<!-- NullPointerException in WorkbenchPage.setPerspective -->
-						<exclude>**/PerspectiveTest*</exclude>
-						<exclude>**/WizardTest*</exclude>
-					</excludes>
 					<dependencies>
 						<dependency>
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.core.runtime.compatibility</artifactId>
+							<type>eclipse-feature</type>
+							<artifactId>org.eclipse.platform</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 						<dependency>
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.ui.ide.application</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<!-- needed so that HelpSystem.getHelpContent(String) will work -->
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.help.base</artifactId>
-							<version>0.0.0</version>
-						</dependency>
-						<dependency>
-							<!-- needed so that internal web browser will be available -->
-							<type>eclipse-plugin</type>
-							<artifactId>org.eclipse.ui.browser</artifactId>
+							<type>eclipse-feature</type>
+							<artifactId>org.eclipse.help</artifactId>
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
