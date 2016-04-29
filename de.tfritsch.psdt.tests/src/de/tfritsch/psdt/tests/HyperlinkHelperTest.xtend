@@ -20,30 +20,31 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
 import org.eclipse.ui.IEditorPart
-import org.eclipse.ui.IWorkbench
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
+import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.junit.Assert.*
-
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class HyperlinkHelperTest {
+class HyperlinkHelperTest extends AbstractWorkbenchTest {
 
 	@Inject extension ParseHelper<PSFile>
 	@Inject extension IHyperlinkHelper
-	@Inject IWorkbench workbench
-	
+
 	def protected IEditorPart getActiveEditor() {
-		return workbench.activeWorkbenchWindow.activePage.activeEditor
+		return activePage.activeEditor
+	}
+
+	def private void assertWebBrowser(String url) {
+		assertTrue(activeEditor.editorInput.toString.contains(url))
 	}
 
 	@Test
@@ -63,6 +64,7 @@ class HyperlinkHelperTest {
 		val hyperlinks = resource.createHyperlinksByOffset(10, true)
 		assertEquals(#["Operator"], hyperlinks.map[hyperlinkText])
 		hyperlinks.get(0).open
+		assertWebBrowser("/html/Reference/8/2/s/show.html")
 	}
 
 	@Test
@@ -76,6 +78,8 @@ class HyperlinkHelperTest {
 			hyperlinks.map[hyperlinkText]
 		)
 		hyperlinks.get(0).open
+		assertWebBrowser("/html/Reference/5/2/1.html#FontType")
 		hyperlinks.get(1).open
+		assertWebBrowser("/html/Reference/3/9/2.html#FontType")
 	}
 }
