@@ -16,20 +16,18 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
+import java.util.List
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.Data
-import java.util.List
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
+@FinalFieldsConstructor
 class StatusParser {
 
-	IPSDebugElementFactory factory
-
-	new(IPSDebugElementFactory factory) {
-		this.factory = factory
-	}
+	final IPSDebugElementFactory factory
 
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = factory.createValue("") //$NON-NLS-1$

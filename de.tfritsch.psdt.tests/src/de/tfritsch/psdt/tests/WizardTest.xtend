@@ -30,6 +30,7 @@ import org.eclipse.jface.wizard.IWizardContainer
 import org.eclipse.jface.wizard.IWizardPage
 import org.eclipse.swt.widgets.Shell
 import org.eclipse.ui.IWorkbenchWizard
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
@@ -94,15 +95,11 @@ class WizardTest extends AbstractWorkbenchTest {
 			''')
 	}
 
+	@FinalFieldsConstructor
 	private static class WizardContainer implements IWizardContainer {
 
-		Shell shell
-		IWizard wizard
-
-		new(Shell shell, IWizard wizard) {
-			this.shell = shell
-			this.wizard = wizard
-		}
+		final Shell shell
+		final IWizard wizard
 
 		override getCurrentPage() {
 			return wizard.startingPage
