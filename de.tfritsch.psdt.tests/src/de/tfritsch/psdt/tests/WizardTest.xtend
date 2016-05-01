@@ -58,10 +58,16 @@ class WizardTest extends AbstractWorkbenchTest {
 	private def IWorkbenchWizard createWizard(String id) throws CoreException  {
 		val wizard = workbench.newWizardRegistry.findWizard(id).createWizard
 		wizard.init(workbench, new StructuredSelection(project))
+		return wizard
+	}
+
+	// Mimic things normally done by WizardDialog
+	private def void openAndFinish(IWorkbenchWizard wizard) {
 		wizard.addPages
 		wizard.container = new WizardContainer(workbenchWindow.shell, wizard)
 		wizard.createPageControls(workbenchWindow.shell)
-		return wizard
+		wizard.performFinish
+		wizard.dispose
 	}
 
 	private def void assertContents(IFile file, String expected) throws CoreException, IOException {
@@ -71,9 +77,7 @@ class WizardTest extends AbstractWorkbenchTest {
 
 	@Test
 	def void testNewFile() throws Exception {
-		val wizard = createWizard("de.tfritsch.psdt.ui.wizards.example")
-		wizard.performFinish
-		wizard.dispose
+		createWizard("de.tfritsch.psdt.ui.wizards.example").openAndFinish
 		val file = project.getFile("hello-world.ps")
 		assertTrue(file.exists)
 		file.assertContents(
