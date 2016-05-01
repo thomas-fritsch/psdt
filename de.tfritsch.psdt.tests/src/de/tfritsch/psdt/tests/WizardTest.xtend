@@ -16,10 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
-import com.google.common.io.CharStreams
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import java.io.IOException
-import java.io.InputStreamReader
 import java.lang.reflect.InvocationTargetException
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -38,9 +36,10 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.eclipse.xtext.junit4.ui.util.JavaProjectSetupUtil.createSimpleProject
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createProject
 
 import static extension org.eclipse.jface.operation.ModalContext.run
+import static extension org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.fileToString
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -53,7 +52,7 @@ class WizardTest extends AbstractWorkbenchTest {
 
 	override setUp() throws Exception {
 		super.setUp
-		project = createSimpleProject("foo")
+		project = createProject("foo")
 	}
 
 	private def IWorkbenchWizard createWizard(String id) throws CoreException  {
@@ -65,10 +64,8 @@ class WizardTest extends AbstractWorkbenchTest {
 		return wizard
 	}
 
-	private def void assertContents(IFile file, String expected) throws IOException  {
-		val reader = new InputStreamReader(file.contents)
-		val actual = CharStreams.toString(reader)
-		reader.close
+	private def void assertContents(IFile file, String expected) throws CoreException, IOException {
+		val actual = file.fileToString
 		assertEquals(expected, actual)
 	}
 
