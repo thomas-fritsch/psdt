@@ -39,7 +39,6 @@ import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createProject
 
-import static extension org.eclipse.jface.operation.ModalContext.run
 import static extension org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.fileToString
 
 /**
@@ -125,7 +124,7 @@ class WizardTest extends AbstractWorkbenchTest {
 		}
 
 		override run(boolean fork, boolean cancelable, IRunnableWithProgress runnable) throws InvocationTargetException, InterruptedException {
-			runnable.run(fork, new NullProgressMonitor, shell.display)
+			runnable.run(new NullProgressMonitor)
 		}
 
 	}
