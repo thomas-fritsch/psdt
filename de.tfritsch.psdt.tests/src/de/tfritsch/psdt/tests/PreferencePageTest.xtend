@@ -16,10 +16,9 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
-import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
-import org.eclipse.jface.preference.IPreferencePageContainer
-import org.eclipse.xtext.LanguageInfo
+import org.eclipse.jface.preference.PreferenceDialog
+import org.eclipse.swt.widgets.Display
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
@@ -33,47 +32,28 @@ import org.junit.runner.RunWith
 @InjectWith(PostscriptUiInjectorProvider)
 class PreferencePageTest extends AbstractWorkbenchTest {
 
-	@Inject LanguageInfo languageInfo
-
-	// Mimic things normally done by PreferenceDialog
-	private def void openPreferencePageAndOk(String path) {
-		val node = workbench.preferenceManager.find(path)
-		node.createPage
-		val page = node.page
-		page.container = new PreferencePageContainer
-		page.createControl(workbenchWindow.shell)
-		page.performOk
-		page.dispose
-	}
-
-	private def String getCategory() {
-		return languageInfo.languageName
+	private def void openPreferencePageAndOk(String pageId) {
+		val dialog = new PreferenceDialog(workbenchWindow.shell, workbench.preferenceManager) {
+			override open() {
+				Display.current.asyncExec [
+					sleep(5000)
+					okPressed
+				]
+				return super.open
+			}
+		}
+		dialog.selectedNode = pageId
+		dialog.create
+		dialog.open
 	}
 
 	@Test
 	def void testDebugPreferencePage() {
-		openPreferencePageAndOk(category + "/de.tfritsch.psdt.debug.debugPreferencePage")
+		openPreferencePageAndOk("de.tfritsch.psdt.debug.debugPreferencePage")
 	}
 
 	@Test
 	def void testGhostscriptPreferencePage() {
-		openPreferencePageAndOk(category + "/de.tfritsch.psdt.debug.ghostscriptPreferencePage")
-	}
-
-	private static class PreferencePageContainer implements IPreferencePageContainer {
-
-		override getPreferenceStore() {
-			return null
-		}
-
-		override updateButtons() {
-		}
-
-		override updateMessage() {
-		}
-
-		override updateTitle() {
-		}
-
+		openPreferencePageAndOk("de.tfritsch.psdt.debug.ghostscriptPreferencePage")
 	}
 }

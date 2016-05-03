@@ -18,19 +18,13 @@ package de.tfritsch.psdt.tests
 
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import java.io.IOException
-import java.lang.reflect.InvocationTargetException
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.NullProgressMonitor
-import org.eclipse.jface.operation.IRunnableWithProgress
 import org.eclipse.jface.viewers.StructuredSelection
-import org.eclipse.jface.wizard.IWizard
-import org.eclipse.jface.wizard.IWizardContainer
-import org.eclipse.jface.wizard.IWizardPage
-import org.eclipse.swt.widgets.Shell
+import org.eclipse.jface.wizard.WizardDialog
+import org.eclipse.swt.widgets.Display
 import org.eclipse.ui.IWorkbenchWizard
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
@@ -61,13 +55,18 @@ class WizardTest extends AbstractWorkbenchTest {
 		return wizard
 	}
 
-	// Mimic things normally done by WizardDialog
 	private def void openAndFinish(IWorkbenchWizard wizard) {
-		wizard.addPages
-		wizard.container = new WizardContainer(workbenchWindow.shell, wizard)
-		wizard.createPageControls(workbenchWindow.shell)
-		wizard.performFinish
-		wizard.dispose
+		val dialog = new WizardDialog(workbenchWindow.shell, wizard) {
+			override open() {
+				Display.current.asyncExec [
+					sleep(5000)
+					finishPressed
+				]
+				return super.open
+			}
+		}
+		dialog.create
+		dialog.open
 	}
 
 	private def void assertContents(IFile file, String expected) throws CoreException, IOException {
@@ -92,40 +91,5 @@ class WizardTest extends AbstractWorkbenchTest {
 				(Hello World) show
 				showpage
 			''')
-	}
-
-	@FinalFieldsConstructor
-	private static class WizardContainer implements IWizardContainer {
-
-		final Shell shell
-		final IWizard wizard
-
-		override getCurrentPage() {
-			return wizard.startingPage
-		}
-
-		override getShell() {
-			return shell
-		}
-
-		override showPage(IWizardPage page) {
-		}
-
-		override updateButtons() {
-		}
-
-		override updateMessage() {
-		}
-
-		override updateTitleBar() {
-		}
-
-		override updateWindowTitle() {
-		}
-
-		override run(boolean fork, boolean cancelable, IRunnableWithProgress runnable) throws InvocationTargetException, InterruptedException {
-			runnable.run(new NullProgressMonitor)
-		}
-
 	}
 }
