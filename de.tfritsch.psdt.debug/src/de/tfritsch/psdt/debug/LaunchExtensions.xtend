@@ -27,6 +27,7 @@ import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.model.ITerminate
+import org.eclipse.debug.ui.IDebugUIConstants
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -39,6 +40,10 @@ class LaunchExtensions {
 
 	def static void setProcessFactoryId(ILaunchConfigurationWorkingCopy configuration, String processFactoryId) {
 		configuration.setAttribute(DebugPlugin.ATTR_PROCESS_FACTORY_ID, processFactoryId)
+	}
+
+	def static void setLaunchInBackground(ILaunchConfigurationWorkingCopy configuration, boolean launchInBackground) {
+		configuration.setAttribute(IDebugUIConstants.ATTR_LAUNCH_IN_BACKGROUND, launchInBackground)
 	}
 
 	def static String getLaunchTimestamp(ILaunch launch) {
