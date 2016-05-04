@@ -18,7 +18,6 @@ package de.tfritsch.psdt.tests
 
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.jface.preference.PreferenceDialog
-import org.eclipse.swt.widgets.Display
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
@@ -35,7 +34,7 @@ class PreferencePageTest extends AbstractWorkbenchTest {
 	private def void openPreferencePageAndOk(String pageId) {
 		val dialog = new PreferenceDialog(workbenchWindow.shell, workbench.preferenceManager) {
 			override open() {
-				Display.current.asyncExec [
+				workbench.display.asyncExec [
 					sleep(5000)
 					okPressed
 				]

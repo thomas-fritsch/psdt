@@ -23,7 +23,6 @@ import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.WizardDialog
-import org.eclipse.swt.widgets.Display
 import org.eclipse.ui.IWorkbenchWizard
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
@@ -58,7 +57,7 @@ class WizardTest extends AbstractWorkbenchTest {
 	private def void openAndFinish(IWorkbenchWizard wizard) {
 		val dialog = new WizardDialog(workbenchWindow.shell, wizard) {
 			override open() {
-				Display.current.asyncExec [
+				workbench.display.asyncExec [
 					sleep(5000)
 					finishPressed
 				]
