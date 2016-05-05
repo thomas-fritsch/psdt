@@ -58,7 +58,7 @@ class WizardTest extends AbstractWorkbenchTest {
 		val dialog = new WizardDialog(workbenchWindow.shell, wizard) {
 			override open() {
 				workbench.display.asyncExec [
-					sleep(5000)
+					waitFor[shell.isVisible]
 					finishPressed
 				]
 				return super.open
@@ -66,6 +66,12 @@ class WizardTest extends AbstractWorkbenchTest {
 		}
 		dialog.create
 		dialog.open
+	}
+
+	private def void waitFor(()=>boolean predicate) throws InterruptedException {
+		do {
+			sleep(1000)
+		} while (!predicate.apply)
 	}
 
 	private def void assertContents(IFile file, String expected) throws CoreException, IOException {

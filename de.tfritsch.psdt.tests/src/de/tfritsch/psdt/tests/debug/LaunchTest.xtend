@@ -25,6 +25,7 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
+import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
@@ -69,27 +70,38 @@ class LaunchTest extends AbstractWorkbenchTest {
 		]
 	}
 
+	private def void waitFor(()=>boolean predicate) throws InterruptedException {
+		do {
+			sleep(1000)
+		} while (!predicate.apply)
+	}
+
 	@Test
-	def testRun() throws CoreException {
+	def testRun() throws Exception {
 		file.createConfiguration.launch(ILaunchManager.RUN_MODE)
+		val launch = launches.get(0)
+		waitFor[launch.terminated]
 	}
 
 	@Test
-	def testDebug() throws CoreException {
+	def testDebug() throws Exception {
 		file.createConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		val launch = launches.get(0)
+		waitFor[launch.terminated]
 	}
 
 	@Test
-	def testDebugWithBreakOnFirstToken() throws CoreException {
+	def testDebugWithBreakOnFirstToken() throws Exception {
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
 		val cfg = file.createConfiguration => [
 			breakOnFirstToken = true
 		]
 		cfg.launch(ILaunchManager.DEBUG_MODE)
-		sleep(5000)
-		val stackFrame = debugContext?.getAdapter(IStackFrame) as IStackFrame
-		assertNotNull(stackFrame)
+		val launch = launches.get(0)
+		waitFor[launch.debugTarget.suspended]
+		waitFor[activePage.activeEditor instanceof XtextEditor]
+		val stackFrame = debugContext.getAdapter(IStackFrame) as IStackFrame
 		stackFrame.resume
-		sleep(5000)
+		waitFor[launch.terminated]
 	}
 }

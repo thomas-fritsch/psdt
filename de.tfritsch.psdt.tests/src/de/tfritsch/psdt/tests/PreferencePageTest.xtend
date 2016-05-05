@@ -35,7 +35,7 @@ class PreferencePageTest extends AbstractWorkbenchTest {
 		val dialog = new PreferenceDialog(workbenchWindow.shell, workbench.preferenceManager) {
 			override open() {
 				workbench.display.asyncExec [
-					sleep(5000)
+					waitFor[shell.isVisible]
 					okPressed
 				]
 				return super.open
@@ -44,6 +44,12 @@ class PreferencePageTest extends AbstractWorkbenchTest {
 		dialog.selectedNode = pageId
 		dialog.create
 		dialog.open
+	}
+
+	private def void waitFor(()=>boolean predicate) throws InterruptedException {
+		do {
+			sleep(1000)
+		} while (!predicate.apply)
 	}
 
 	@Test
