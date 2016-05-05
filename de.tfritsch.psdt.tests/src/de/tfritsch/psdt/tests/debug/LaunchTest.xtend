@@ -19,9 +19,11 @@ package de.tfritsch.psdt.tests.debug
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.DebugPlugin
-import org.eclipse.debug.core.ILaunchConfiguration
+import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.junit.Test
 
@@ -43,6 +45,7 @@ class LaunchTest extends AbstractWorkbenchTest {
 
 	override setUp() throws Exception {
 		super.setUp
+		Platform.getPlugin("de.tfritsch.psdt.debug") // make sure our plugin is activated
 		project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
@@ -51,15 +54,19 @@ class LaunchTest extends AbstractWorkbenchTest {
 			''')
 	}
 
-	def private ILaunchConfiguration createConfiguration(IFile file) throws CoreException {
+	private def void showDebugPerspective() {
+		val descriptor = workbench.perspectiveRegistry.findPerspectiveWithLabel("Debug")
+		workbench.showPerspective(descriptor.id, workbenchWindow)
+	}
+
+	def private ILaunchConfigurationWorkingCopy createConfiguration(IFile file) throws CoreException {
 		val type = "de.tfritsch.psdt.debug.launchConfigurationType".launchConfigurationType
-		val workingCopy = type.newInstance(project, "hello") => [
+		return type.newInstance(project, "hello") => [
 			launchInBackground = false
 			processFactoryId = "de.tfritsch.psdt.debug.processFactory"
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"
 		]
-		return workingCopy
 	}
 
 	@Test
@@ -70,5 +77,19 @@ class LaunchTest extends AbstractWorkbenchTest {
 	@Test
 	def testDebug() throws CoreException {
 		file.createConfiguration.launch(ILaunchManager.DEBUG_MODE)
+	}
+
+	@Test
+	def testDebugWithBreakOnFirstToken() throws CoreException {
+		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
+		val cfg = file.createConfiguration => [
+			breakOnFirstToken = true
+		]
+		cfg.launch(ILaunchManager.DEBUG_MODE)
+		sleep(5000)
+		val stackFrame = debugContext?.getAdapter(IStackFrame) as IStackFrame
+		assertNotNull(stackFrame)
+		stackFrame.resume
+		sleep(5000)
 	}
 }
