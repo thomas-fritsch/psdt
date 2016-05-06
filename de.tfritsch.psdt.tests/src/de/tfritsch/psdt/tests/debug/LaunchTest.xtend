@@ -25,6 +25,7 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
+import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
@@ -56,8 +57,7 @@ class LaunchTest extends AbstractWorkbenchTestExtension {
 	}
 
 	private def void showDebugPerspective() {
-		val descriptor = workbench.perspectiveRegistry.findPerspectiveWithLabel("Debug")
-		workbench.showPerspective(descriptor.id, workbenchWindow)
+		workbench.showPerspective(IDebugUIConstants.ID_DEBUG_PERSPECTIVE, workbenchWindow)
 	}
 
 	def private ILaunchConfigurationWorkingCopy createConfiguration(IFile file) throws CoreException {

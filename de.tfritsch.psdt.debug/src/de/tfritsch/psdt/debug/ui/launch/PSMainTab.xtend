@@ -39,6 +39,7 @@ import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog
 import org.eclipse.ui.model.BaseWorkbenchContentProvider
 import org.eclipse.ui.model.WorkbenchLabelProvider
+import org.eclipse.xtext.resource.FileExtensionProvider
 import org.eclipse.xtext.ui.IImageHelper
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
@@ -58,8 +59,8 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	Button fVariablesButton
 	Button fBreakOnFirstTokenButton
 
-	@Inject
-	IImageHelper fImageHelper
+	@Inject	IImageHelper fImageHelper
+	@Inject FileExtensionProvider fileExtensionProvider
 
 	override String getName() {
 		return "Main"
@@ -111,7 +112,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			addFilter[ viewer, parentElement, element |
 				return switch (element) {
 					IFile:
-						#["ps", "eps"].contains(element.fileExtension)
+						fileExtensionProvider.isValid(element.fileExtension)
 					default: // IFolder, IProject
 						true
 				}

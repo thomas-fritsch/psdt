@@ -21,6 +21,7 @@ import de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.swt.SWT
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
@@ -39,6 +40,7 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 
 	Text fInterpreterText
 	Button fInterpreterButton
+	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 
 	override void createControl(Composite parent) {
 		val group = new Group(parent, SWT.NONE) => [
@@ -54,8 +56,8 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 		fInterpreterButton = createPushButton(group, "Preference...", null) => [
 			addListener(SWT.Selection) [
 				val id = GhostscriptPreferencePage.ID
-				fInterpreterButton.shell.createPreferenceDialogOn(id, #[id], null).open
-				fInterpreterText.text = interpreter
+				shell.createPreferenceDialogOn(id, #[id], null).open
+				fInterpreterText.text = preferenceStore.interpreter
 				updateLaunchConfigurationDialog
 			]
 		]
@@ -65,11 +67,11 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
-		fInterpreterText.text = interpreter
+		fInterpreterText.text = preferenceStore.interpreter
 	}
 
 	override boolean isValid(ILaunchConfiguration configuration) {
-		if (interpreter.nullOrEmpty) {
+		if (preferenceStore.interpreter.nullOrEmpty) {
 			errorMessage = "Interpreter not specified"
 			return false
 		}
@@ -81,10 +83,6 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 
 	override String getName() {
 		return "Ghostscript interpreter" //$NON-NLS-1$
-	}
-
-	def private String getInterpreter() {
-		return PSPlugin.^default.preferenceStore.interpreter
 	}
 
 }
