@@ -26,7 +26,6 @@ import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.IWorkbenchWizard
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -39,7 +38,7 @@ import static extension org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.fil
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class WizardTest extends AbstractWorkbenchTest {
+class WizardTest extends AbstractWorkbenchTestExtension {
 
 	IProject project
 
@@ -66,12 +65,6 @@ class WizardTest extends AbstractWorkbenchTest {
 		}
 		dialog.create
 		dialog.open
-	}
-
-	private def void waitFor(()=>boolean predicate) throws InterruptedException {
-		do {
-			sleep(1000)
-		} while (!predicate.apply)
 	}
 
 	private def void assertContents(IFile file, String expected) throws CoreException, IOException {

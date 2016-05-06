@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
+import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
@@ -24,7 +25,6 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
@@ -37,7 +37,7 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class LaunchTest extends AbstractWorkbenchTest {
+class LaunchTest extends AbstractWorkbenchTestExtension {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
 
@@ -68,12 +68,6 @@ class LaunchTest extends AbstractWorkbenchTest {
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"
 		]
-	}
-
-	private def void waitFor(()=>boolean predicate) throws InterruptedException {
-		do {
-			sleep(1000)
-		} while (!predicate.apply)
 	}
 
 	@Test

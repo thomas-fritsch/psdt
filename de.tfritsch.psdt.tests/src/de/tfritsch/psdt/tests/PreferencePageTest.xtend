@@ -20,7 +20,6 @@ import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.jface.preference.PreferenceDialog
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -29,7 +28,7 @@ import org.junit.runner.RunWith
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class PreferencePageTest extends AbstractWorkbenchTest {
+class PreferencePageTest extends AbstractWorkbenchTestExtension {
 
 	private def void openPreferencePageAndOk(String pageId) {
 		val dialog = new PreferenceDialog(workbenchWindow.shell, workbench.preferenceManager) {
@@ -44,12 +43,6 @@ class PreferencePageTest extends AbstractWorkbenchTest {
 		dialog.selectedNode = pageId
 		dialog.create
 		dialog.open
-	}
-
-	private def void waitFor(()=>boolean predicate) throws InterruptedException {
-		do {
-			sleep(1000)
-		} while (!predicate.apply)
 	}
 
 	@Test
