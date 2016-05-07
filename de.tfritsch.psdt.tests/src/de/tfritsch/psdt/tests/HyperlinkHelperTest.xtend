@@ -19,10 +19,8 @@ package de.tfritsch.psdt.tests
 import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
-import org.eclipse.ui.IEditorPart
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper
@@ -34,14 +32,10 @@ import org.junit.runner.RunWith
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class HyperlinkHelperTest extends AbstractWorkbenchTest {
+class HyperlinkHelperTest extends AbstractWorkbenchTestExtension {
 
 	@Inject extension ParseHelper<PSFile>
 	@Inject extension IHyperlinkHelper
-
-	def protected IEditorPart getActiveEditor() {
-		return activePage.activeEditor
-	}
 
 	def private void assertWebBrowser(String url) {
 		// FIXME: NPE because activeEditor == null (when running in tycho-surefire)

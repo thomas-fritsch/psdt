@@ -25,7 +25,6 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
@@ -54,10 +53,6 @@ class LaunchTest extends AbstractWorkbenchTestExtension {
 				%!PS
 				(Hello world\n) print
 			''')
-	}
-
-	private def void showDebugPerspective() {
-		workbench.showPerspective(IDebugUIConstants.ID_DEBUG_PERSPECTIVE, workbenchWindow)
 	}
 
 	def private ILaunchConfigurationWorkingCopy createConfiguration(IFile file) throws CoreException {
@@ -93,7 +88,7 @@ class LaunchTest extends AbstractWorkbenchTestExtension {
 		cfg.launch(ILaunchManager.DEBUG_MODE)
 		val launch = launches.get(0)
 		waitFor[launch.debugTarget.suspended]
-		waitFor[activePage.activeEditor instanceof XtextEditor]
+		waitFor[activeEditor instanceof XtextEditor]
 		val stackFrame = debugContext.getAdapter(IStackFrame) as IStackFrame
 		stackFrame.resume
 		waitFor[launch.terminated]

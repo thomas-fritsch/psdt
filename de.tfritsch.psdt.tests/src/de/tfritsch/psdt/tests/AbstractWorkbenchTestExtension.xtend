@@ -16,6 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
+import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.ui.IEditorPart
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 
 /**
@@ -30,6 +32,18 @@ abstract class AbstractWorkbenchTestExtension extends AbstractWorkbenchTest {
 				return
 		}
 		fail("timeout")
+	}
+
+	def protected IEditorPart getActiveEditor() {
+		return activePage.activeEditor
+	}
+
+	protected def void showPerspective(String id) {
+		workbench.showPerspective(id, workbenchWindow)
+	}
+
+	protected def void showDebugPerspective() {
+		showPerspective(IDebugUIConstants.ID_DEBUG_PERSPECTIVE)
 	}
 
 }

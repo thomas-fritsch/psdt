@@ -21,7 +21,6 @@ import org.eclipse.ui.IPageLayout
 import org.eclipse.ui.console.IConsoleConstants
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -30,12 +29,12 @@ import org.junit.runner.RunWith
  */
 @RunWith(XtextRunner)
 @InjectWith(PostscriptUiInjectorProvider)
-class PerspectiveTest extends AbstractWorkbenchTest {
+class PerspectiveTest extends AbstractWorkbenchTestExtension {
 	
 	@Test
 	def void testPostscriptPerspective() throws Exception {
-		val descriptor = workbench.perspectiveRegistry.findPerspectiveWithLabel("PostScript")
-		workbench.showPerspective(descriptor.id, workbenchWindow)
+		showPerspective("de.tfritsch.psdt.ui.perspective")
+		assertEquals("PostScript", activePage.perspective.label)
 		assertNotNull(activePage.findViewReference(IPageLayout.ID_PROJECT_EXPLORER))
 		assertNotNull(activePage.findViewReference(IPageLayout.ID_PROBLEM_VIEW))
 		assertNotNull(activePage.findViewReference(IConsoleConstants.ID_CONSOLE_VIEW))
