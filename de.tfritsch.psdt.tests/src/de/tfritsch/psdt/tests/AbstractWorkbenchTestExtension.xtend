@@ -24,9 +24,12 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 abstract class AbstractWorkbenchTestExtension extends AbstractWorkbenchTest {
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {
-		do {
+		for (n : 1 .. 10) {
 			sleep(1000)
-		} while (!predicate.apply)
+			if (predicate.apply)
+				return
+		}
+		fail("timeout")
 	}
 
 }
