@@ -17,7 +17,7 @@
 		</li>
 		<li>Pushes the current font dictionary and the character name on
 			the operand stack.</li>
-		<li>Executes the font’s <b>BuildGlyph</b> procedure. <b>BuildGlyph</b>
+		<li>Executes the font's <b>BuildGlyph</b> procedure. <b>BuildGlyph</b>
 			must remove these two objects from the operand stack and use this
 			information to construct the requested glyph. This typically involves
 			determining the glyph description needed, supplying glyph metric
@@ -61,7 +61,7 @@
 		transformation from glyph space to device space, and not on the
 		relative contributions of the font matrix and the CTM prior to <b>BuildGlyph</b>.
 		In particular, <b>BuildGlyph</b> should not attempt to vary its
-		results depending on the font dictionary’s <b>FontMatrix</b> entry.
+		results depending on the font dictionary's <b>FontMatrix</b> entry.
 	</p>
 	<p>
 		Aside from the CTM, the graphics state is inherited from the

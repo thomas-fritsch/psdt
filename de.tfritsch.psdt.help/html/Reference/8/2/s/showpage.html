@@ -16,14 +16,14 @@
 		procedure, as discussed below.)
 	</p>
 	<p>
-		If the current device is a page device that was installed by <b>setpagedevice</b>
-		<i>(LanguageLevel 2)</i>, the precise behavior of <b>showpage</b> is
-		determined by the values of parameters in the page device dictionary
-		(see Sections <a href="../../../6/1/1.html">6.1.1, "Page Device
-			Dictionary,"</a> and <a href="../../../6/2.html">6.2, "Page Device
-			Parameters"</a>). Parameters affecting the behavior of <b>showpage</b>
-		include <b>NumCopies</b>, <b>Collate</b>, <b>Duplex</b>, and perhaps
-		others as well.
+		If the current device is a page device that was installed by <a
+			href="setpagedevice.html">setpagedevice</a> <i>(LanguageLevel 2)</i>,
+		the precise behavior of <b>showpage</b> is determined by the values of
+		parameters in the page device dictionary (see Sections <a
+			href="../../../6/1/1.html">6.1.1, "Page Device Dictionary,"</a> and <a
+			href="../../../6/2.html">6.2, "Page Device Parameters"</a>).
+		Parameters affecting the behavior of <b>showpage</b> include <b>NumCopies</b>,
+		<b>Collate</b>, <b>Duplex</b>, and perhaps others as well.
 	</p>
 	<p>Whether or not the current device is a page device, the precise
 		manner in which the current page is transmitted is device-dependent.
@@ -40,7 +40,7 @@
 				Initialization and Page Setup,"</a> for more information.
 		</li>
 		<li>If the boolean result returned by the <b>EndPage</b>
-			procedure is <i>true</i>, transmits the page’s contents to the
+			procedure is <i>true</i>, transmits the page's contents to the
 			current output device and performs the equivalent of an <a
 			href="../e/erasepage.html">erasepage</a> operation, clearing the
 			contents of raster memory in preparation for the next page. If the <b>EndPage</b>
