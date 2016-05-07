@@ -38,8 +38,8 @@ class HyperlinkHelperTest extends AbstractWorkbenchTestExtension {
 	@Inject extension IHyperlinkHelper
 
 	def private void assertWebBrowser(String url) {
-		// FIXME: NPE because activeEditor == null (when running in tycho-surefire)
-		// assertTrue(activeEditor.editorInput.toString.contains(url))
+		waitFor[activeEditor !== null]
+		assertTrue(activeEditor.editorInput.toString.contains(url))
 	}
 
 	@Test
