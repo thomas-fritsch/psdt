@@ -16,13 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
-import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IProject
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.DebugPlugin
-import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.xtext.ui.editor.XtextEditor
@@ -30,24 +25,21 @@ import org.junit.Test
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension org.eclipse.debug.ui.DebugUITools.*
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class LaunchTest extends AbstractWorkbenchTestExtension {
+class LaunchTest extends AbstractDebugTest {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
 
-	IProject project
 	IFile file
 
 	override setUp() throws Exception {
 		super.setUp
-		Platform.getPlugin("de.tfritsch.psdt.debug") // make sure our plugin is activated
-		project = createProject("test")
+		val project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
 				%!PS
@@ -55,26 +47,16 @@ class LaunchTest extends AbstractWorkbenchTestExtension {
 			''')
 	}
 
-	def private ILaunchConfigurationWorkingCopy createConfiguration(IFile file) throws CoreException {
-		val type = "de.tfritsch.psdt.debug.launchConfigurationType".launchConfigurationType
-		return type.newInstance(project, "hello") => [
-			launchInBackground = false
-			processFactoryId = "de.tfritsch.psdt.debug.processFactory"
-			program = file.location.toOSString
-			ghostscriptArguments = "-dBATCH"
-		]
-	}
-
 	@Test
 	def testRun() throws Exception {
-		file.createConfiguration.launch(ILaunchManager.RUN_MODE)
+		file.createLaunchConfiguration.launch(ILaunchManager.RUN_MODE)
 		val launch = launches.get(0)
 		waitFor[launch.terminated]
 	}
 
 	@Test
 	def testDebug() throws Exception {
-		file.createConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
 		val launch = launches.get(0)
 		waitFor[launch.terminated]
 	}
@@ -82,7 +64,7 @@ class LaunchTest extends AbstractWorkbenchTestExtension {
 	@Test
 	def testDebugWithBreakOnFirstToken() throws Exception {
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
-		val cfg = file.createConfiguration => [
+		val cfg = file.createLaunchConfiguration => [
 			breakOnFirstToken = true
 		]
 		cfg.launch(ILaunchManager.DEBUG_MODE)

@@ -16,46 +16,25 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
-import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.debug.core.DebugPlugin
-import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
-import org.eclipse.debug.core.ILaunchManager
-import org.eclipse.debug.ui.DebugUITools
 import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.debug.ui.ILaunchConfigurationDialog
 import org.junit.Test
 
+import static org.eclipse.debug.ui.DebugUITools.*
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
-
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import org.eclipse.debug.ui.ILaunchConfigurationDialog
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class LaunchConfigurationTabGroupTest extends AbstractWorkbenchTestExtension {
+class LaunchConfigurationTabGroupTest extends AbstractDebugTest {
 
-	extension ILaunchManager = DebugPlugin.^default.launchManager
-
-	IProject project
 	IFile file
 
-	def private ILaunchConfigurationWorkingCopy createConfiguration(IFile file) throws CoreException {
-		val type = "de.tfritsch.psdt.debug.launchConfigurationType".launchConfigurationType
-		return type.newInstance(project, "hello") => [
-			launchInBackground = false
-			processFactoryId = "de.tfritsch.psdt.debug.processFactory"
-			program = file.location.toOSString
-			ghostscriptArguments = "-dBATCH"
-		]
-	}
-
-	override setUp() {
+	override setUp() throws Exception {
 		super.setUp
-		project = createProject("test")
+		val project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
 				%!PS
@@ -63,22 +42,22 @@ class LaunchConfigurationTabGroupTest extends AbstractWorkbenchTestExtension {
 			''')
 	}
 
-	private def openConfigurationDialogAndClose(IFile file, String groupId) {
+	private def openConfigurationDialogAndClose(IFile file, String groupId) throws CoreException {
 		workbench.display.asyncExec [
 			waitFor[workbench.display.activeShell.data instanceof ILaunchConfigurationDialog]
 			workbench.display.activeShell.close
 		]
-		val config = file.createConfiguration
-		DebugUITools.openLaunchConfigurationPropertiesDialog(workbenchWindow.shell, config, groupId)
+		val config = file.createLaunchConfiguration
+		openLaunchConfigurationPropertiesDialog(workbenchWindow.shell, config, groupId)
 	}
 
 	@Test
-	def void testRunConfigurationDialog() {
+	def void testRunConfigurationDialog() throws Exception  {
 		file.openConfigurationDialogAndClose(IDebugUIConstants.ID_RUN_LAUNCH_GROUP)
 	}
 
 	@Test
-	def void testDebugConfigurationDialog() {
+	def void testDebugConfigurationDialog() throws Exception {
 		file.openConfigurationDialogAndClose(IDebugUIConstants.ID_DEBUG_LAUNCH_GROUP)
 	}
 }
