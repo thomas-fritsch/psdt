@@ -85,7 +85,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		try {
 			type.launchConfigurations.filter [ c |
 				try {
-					!c.private && program == c.program.performStringSubstitution
+					!c.private && program == c.program?.performStringSubstitution
 				} catch (CoreException e) {
 					false
 				}
