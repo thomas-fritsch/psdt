@@ -49,14 +49,6 @@
 							<version>0.0.0</version>
 						</dependency>
 					</dependencies>
-					<bundleStartLevel>
-						<bundle>
-							<!-- needed so that Platform.getPlugin(String) will work -->
-							<id>org.eclipse.core.runtime.compatibility</id>
-							<level>4</level>
-							<autoStart>true</autoStart>
-						</bundle>
-					</bundleStartLevel>
 				</configuration>
 			</plugin>
 		</plugins>

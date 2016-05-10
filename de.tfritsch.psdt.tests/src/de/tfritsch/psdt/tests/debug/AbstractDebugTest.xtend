@@ -19,15 +19,14 @@ package de.tfritsch.psdt.tests.debug
 import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.ui.IDebugUIConstants
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import org.eclipse.debug.ui.IDebugUIConstants
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -35,11 +34,6 @@ import org.eclipse.debug.ui.IDebugUIConstants
 abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
 	extension ILaunchManager = DebugPlugin.^default.launchManager
-
-	override setUp() throws Exception {
-		super.setUp
-		Platform.getPlugin("de.tfritsch.psdt.debug") // make sure our plugin is activated
-	}
 
 	override tearDown() throws Exception {
 		terminateAllLaunches

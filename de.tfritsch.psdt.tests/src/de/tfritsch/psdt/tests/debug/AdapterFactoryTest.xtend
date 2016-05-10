@@ -21,13 +21,11 @@ import com.google.inject.Provider
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import de.tfritsch.psdt.debug.ui.breakpoints.PSRunToLineTarget
 import de.tfritsch.psdt.debug.ui.breakpoints.PSToggleBreakpointsTarget
-import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.ui.editor.XtextEditor
-import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -41,11 +39,6 @@ import static org.junit.Assert.*
 class AdapterFactoryTest {
 
 	@Inject Provider<XtextEditor> editorProvider
-
-	@Before
-	def void setUp() throws Exception {
-		Platform.getPlugin("de.tfritsch.psdt.debug") // make sure our plugin is activated
-	}
 
 	@Test
 	def void testToggleBreakpointsTarget() {
