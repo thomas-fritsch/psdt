@@ -33,7 +33,7 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
  */
 abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
-	extension ILaunchManager = DebugPlugin.^default.launchManager
+	protected extension ILaunchManager = DebugPlugin.^default.launchManager
 
 	override tearDown() throws Exception {
 		terminateAllLaunches

@@ -16,13 +16,21 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
+import com.google.inject.Inject
 import org.eclipse.ui.IEditorPart
-import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
+import org.eclipse.xtext.LanguageInfo
+import org.eclipse.xtext.junit4.ui.AbstractEditorTest
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-abstract class AbstractWorkbenchTestExtension extends AbstractWorkbenchTest {
+ class AbstractWorkbenchTestExtension extends AbstractEditorTest {
+
+	@Inject	LanguageInfo languageInfo
+
+	protected override getEditorId() {
+		return languageInfo.languageName
+	}
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {
 		for (n : 1 .. 10) {
