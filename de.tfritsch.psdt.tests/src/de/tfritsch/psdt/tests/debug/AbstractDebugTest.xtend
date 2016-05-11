@@ -59,7 +59,6 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 	protected def ILaunchConfigurationWorkingCopy createLaunchConfiguration(IFile file) throws CoreException {
 		val type = "de.tfritsch.psdt.debug.launchConfigurationType".launchConfigurationType
 		return type.newInstance(file.project, "Test") => [
-			launchInBackground = false
 			processFactoryId = "de.tfritsch.psdt.debug.processFactory"
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"

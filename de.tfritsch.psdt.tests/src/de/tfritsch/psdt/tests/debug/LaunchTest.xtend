@@ -17,7 +17,6 @@
 package de.tfritsch.psdt.tests.debug
 
 import org.eclipse.core.resources.IFile
-import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.xtext.ui.editor.XtextEditor
@@ -32,8 +31,6 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
  * @author Thomas Fritsch - initial API and implementation
  */
 class LaunchTest extends AbstractDebugTest {
-
-	extension ILaunchManager = DebugPlugin.^default.launchManager
 
 	IFile file
 
@@ -50,6 +47,7 @@ class LaunchTest extends AbstractDebugTest {
 	@Test
 	def testRun() throws Exception {
 		file.createLaunchConfiguration.launch(ILaunchManager.RUN_MODE)
+		waitFor[launches.length > 0]
 		val launch = launches.get(0)
 		waitFor[launch.terminated]
 	}
@@ -57,6 +55,7 @@ class LaunchTest extends AbstractDebugTest {
 	@Test
 	def testDebug() throws Exception {
 		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		waitFor[launches.length > 0]
 		val launch = launches.get(0)
 		waitFor[launch.terminated]
 	}
@@ -68,6 +67,7 @@ class LaunchTest extends AbstractDebugTest {
 			breakOnFirstToken = true
 		]
 		cfg.launch(ILaunchManager.DEBUG_MODE)
+		waitFor[launches.length > 0]
 		val launch = launches.get(0)
 		waitFor[launch.debugTarget.suspended]
 		waitFor[activeEditor instanceof XtextEditor]
