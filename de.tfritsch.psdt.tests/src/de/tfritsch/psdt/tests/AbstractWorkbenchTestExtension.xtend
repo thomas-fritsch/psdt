@@ -33,7 +33,7 @@ import org.eclipse.xtext.junit4.ui.AbstractEditorTest
 	}
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {
-		for (n : 1 .. 10) {
+		for (n : 1 .. 20) {
 			sleep(1000)
 			if (predicate.apply)
 				return
