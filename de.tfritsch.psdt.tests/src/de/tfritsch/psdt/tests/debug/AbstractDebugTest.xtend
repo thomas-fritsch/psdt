@@ -37,6 +37,7 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
 	override tearDown() throws Exception {
 		terminateAllLaunches
+		deleteAllLaunchConfigurations
 		super.tearDown
 	}
 
@@ -45,9 +46,17 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 			if (!launch.terminated) {
 				try {
 					launch.terminate
-
 				} catch (DebugException e) {
 				}
+			}
+		}
+	}
+
+	protected def void deleteAllLaunchConfigurations() {
+		for (launchConfiguration : launchConfigurations) {
+			try {
+				launchConfiguration.delete
+			} catch (CoreException e) {
 			}
 		}
 	}
