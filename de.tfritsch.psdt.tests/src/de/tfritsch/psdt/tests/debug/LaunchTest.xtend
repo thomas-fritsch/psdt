@@ -18,13 +18,10 @@ package de.tfritsch.psdt.tests.debug
 
 import org.eclipse.core.resources.IFile
 import org.eclipse.debug.core.ILaunchManager
-import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension org.eclipse.debug.ui.DebugUITools.*
 
 /**
@@ -54,20 +51,5 @@ class LaunchTest extends AbstractDebugTest {
 	def testDebug() throws Exception {
 		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
 		waitFor[launches.length > 0]
-	}
-
-	@Test
-	def testDebugWithBreakOnFirstToken() throws Exception {
-		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
-		val cfg = file.createLaunchConfiguration => [
-			breakOnFirstToken = true
-		]
-		cfg.launch(ILaunchManager.DEBUG_MODE)
-		waitFor[launches.length > 0]
-		val launch = launches.get(0)
-		waitFor[launch.debugTarget.suspended]
-		waitFor[activeEditor instanceof XtextEditor]
-		val stackFrame = debugContext.getAdapter(IStackFrame) as IStackFrame
-		stackFrame.resume
 	}
 }
