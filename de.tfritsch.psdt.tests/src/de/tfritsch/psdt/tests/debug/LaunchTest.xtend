@@ -48,16 +48,12 @@ class LaunchTest extends AbstractDebugTest {
 	def testRun() throws Exception {
 		file.createLaunchConfiguration.launch(ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
-		val launch = launches.get(0)
-		waitFor[launch.terminated]
 	}
 
 	@Test
 	def testDebug() throws Exception {
 		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
 		waitFor[launches.length > 0]
-		val launch = launches.get(0)
-		waitFor[launch.terminated]
 	}
 
 	@Test
@@ -73,6 +69,5 @@ class LaunchTest extends AbstractDebugTest {
 		waitFor[activeEditor instanceof XtextEditor]
 		val stackFrame = debugContext.getAdapter(IStackFrame) as IStackFrame
 		stackFrame.resume
-		waitFor[launch.terminated]
 	}
 }

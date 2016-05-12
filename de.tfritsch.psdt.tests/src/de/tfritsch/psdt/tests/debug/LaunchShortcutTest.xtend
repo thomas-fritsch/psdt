@@ -68,8 +68,6 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		val selection = new StructuredSelection(file)
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
-		val launch = launches.get(0)
-		waitFor[launch.terminated]
 	}
 
 	@Test
@@ -77,8 +75,6 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		val editor = openEditor(file)
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
-		val launch = launches.get(0)
-		waitFor[launch.terminated]
 	}
 
 }
