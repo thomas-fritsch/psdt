@@ -98,12 +98,8 @@
                <with variable="selection">
                   <count value="1"/>
                   <iterate>
-                     <or>
-                        <test property="org.eclipse.debug.ui.matchesPattern"
-                              value="*.ps"/>
-                        <test property="org.eclipse.debug.ui.matchesPattern"
-                              value="*.eps"/>
-                     </or>
+                     <test property="org.eclipse.debug.ui.matchesPattern"
+                           value="*.ps|*.eps"/>
                   </iterate>
                </with>
             </enablement>
