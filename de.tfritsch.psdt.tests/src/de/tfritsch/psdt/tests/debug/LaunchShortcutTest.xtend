@@ -18,14 +18,12 @@ package de.tfritsch.psdt.tests.debug
 
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.internal.ui.DebugUIPlugin
 import org.eclipse.debug.ui.ILaunchShortcut
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
-import org.junit.BeforeClass
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -38,23 +36,13 @@ import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 @InjectWith(PostscriptUiInjectorProvider)
 class LaunchShortcutTest extends AbstractDebugTest {
 
-	static ILaunchShortcut launchShortcut
-
+	ILaunchShortcut launchShortcut
 	IFile file
-
-	@BeforeClass
-	def static void setUpClass() throws Exception {
-		launchShortcut = createLaunchShortcut
-	}
-
-	private static def ILaunchShortcut createLaunchShortcut() throws CoreException {
-		return Platform.extensionRegistry.getExtensionPoint("org.eclipse.debug.ui", "launchShortcuts").
-			configurationElements.findFirst[getAttribute("label") == "PostScript Application"].
-			createExecutableExtension("class") as ILaunchShortcut
-	}
 
 	override setUp() throws Exception {
 		super.setUp
+		launchShortcut = DebugUIPlugin.^default.launchConfigurationManager.launchShortcuts.findFirst[
+			label == "PostScript Application"]
 		val project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
