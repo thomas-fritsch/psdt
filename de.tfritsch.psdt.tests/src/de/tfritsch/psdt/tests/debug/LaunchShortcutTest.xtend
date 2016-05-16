@@ -18,9 +18,11 @@ package de.tfritsch.psdt.tests.debug
 
 import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.internal.ui.DebugUIPlugin
-import org.eclipse.debug.ui.ILaunchShortcut
+import org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension
+import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
@@ -36,7 +38,7 @@ import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 @InjectWith(PostscriptUiInjectorProvider)
 class LaunchShortcutTest extends AbstractDebugTest {
 
-	ILaunchShortcut launchShortcut
+	LaunchShortcutExtension launchShortcut
 	IFile file
 
 	override setUp() throws Exception {
@@ -51,9 +53,23 @@ class LaunchShortcutTest extends AbstractDebugTest {
 			''')
 	}
 
+	private def void assertEnabledFor(LaunchShortcutExtension it, Object object) throws CoreException {
+		val list = switch (object) {
+			IStructuredSelection:
+				object.toList
+			default:
+				newArrayList(object)
+		}
+		val context = DebugUIPlugin.createEvaluationContext(list)
+		context.addVariable("selection", list)
+		val enabled = evalEnablementExpression(context, contextualLaunchEnablementExpression)
+		assertTrue(enabled)
+	}
+
 	@Test
 	def void testRunFile() throws Exception {
 		val selection = new StructuredSelection(file)
+		launchShortcut.assertEnabledFor(selection)
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
 	}
@@ -61,6 +77,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	@Test
 	def void testRunEditor() throws Exception {
 		val editor = openEditor(file)
+		launchShortcut.assertEnabledFor(editor.editorInput)
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
 	}
