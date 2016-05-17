@@ -16,20 +16,19 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
-import com.google.inject.Inject
+import org.eclipse.core.resources.IFile
 import org.eclipse.ui.IEditorPart
-import org.eclipse.xtext.LanguageInfo
-import org.eclipse.xtext.junit4.ui.AbstractEditorTest
+import org.eclipse.ui.PartInitException
+import org.eclipse.ui.ide.IDE
+import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
- class AbstractWorkbenchTestExtension extends AbstractEditorTest {
+ class AbstractWorkbenchTestExtension extends AbstractWorkbenchTest {
 
-	@Inject	LanguageInfo languageInfo
-
-	protected override getEditorId() {
-		return languageInfo.languageName
+	protected def IEditorPart openEditor(IFile file) throws PartInitException {
+		return IDE.openEditor(activePage, file)
 	}
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {
