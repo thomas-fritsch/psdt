@@ -16,19 +16,13 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
-import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.ui.IPageLayout
 import org.eclipse.ui.console.IConsoleConstants
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
-import org.junit.runner.RunWith
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-@RunWith(XtextRunner)
-@InjectWith(PostscriptUiInjectorProvider)
 class PerspectiveTest extends AbstractWorkbenchTestExtension {
 	
 	@Test

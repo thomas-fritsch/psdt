@@ -16,7 +16,6 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
-import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import java.io.IOException
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
@@ -24,10 +23,7 @@ import org.eclipse.core.runtime.CoreException
 import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.jface.wizard.WizardDialog
 import org.eclipse.ui.IWorkbenchWizard
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createProject
 
@@ -36,8 +32,6 @@ import static extension org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.fil
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-@RunWith(XtextRunner)
-@InjectWith(PostscriptUiInjectorProvider)
 class WizardTest extends AbstractWorkbenchTestExtension {
 
 	IProject project

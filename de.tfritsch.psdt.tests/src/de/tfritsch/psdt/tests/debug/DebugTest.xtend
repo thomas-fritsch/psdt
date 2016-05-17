@@ -16,16 +16,12 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
-import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.core.resources.IFile
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
@@ -35,8 +31,6 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-@RunWith(XtextRunner)
-@InjectWith(PostscriptUiInjectorProvider)
 class DebugTest extends AbstractDebugTest {
 
 	IFile file

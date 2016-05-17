@@ -16,7 +16,6 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
-import de.tfritsch.psdt.PostscriptUiInjectorProvider
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchManager
@@ -24,18 +23,13 @@ import org.eclipse.debug.internal.ui.DebugUIPlugin
 import org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension
 import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.jface.viewers.StructuredSelection
-import org.eclipse.xtext.junit4.InjectWith
-import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
-import org.junit.runner.RunWith
 
 import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-@RunWith(XtextRunner)
-@InjectWith(PostscriptUiInjectorProvider)
 class LaunchShortcutTest extends AbstractDebugTest {
 
 	LaunchShortcutExtension launchShortcut
