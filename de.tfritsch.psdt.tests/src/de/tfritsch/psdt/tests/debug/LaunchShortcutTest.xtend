@@ -40,6 +40,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 
 	LaunchShortcutExtension launchShortcut
 	IFile file
+	IFile otherFile
 
 	override setUp() throws Exception {
 		super.setUp
@@ -51,9 +52,13 @@ class LaunchShortcutTest extends AbstractDebugTest {
 				%!PS
 				(Hello world\n) print
 			''')
+		otherFile = createFile(project.name + "/hello.txt",
+			'''
+				Hello world
+			''')
 	}
 
-	private def void assertEnabledFor(LaunchShortcutExtension it, Object object) throws CoreException {
+	private def boolean isEnabledFor(LaunchShortcutExtension it, Object object) throws CoreException {
 		val list = switch (object) {
 			IStructuredSelection:
 				object.toList
@@ -63,13 +68,13 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		val context = DebugUIPlugin.createEvaluationContext(list)
 		context.addVariable("selection", list)
 		val enabled = evalEnablementExpression(context, contextualLaunchEnablementExpression)
-		assertTrue(enabled)
+		return enabled
 	}
 
 	@Test
 	def void testRunFile() throws Exception {
 		val selection = new StructuredSelection(file)
-		launchShortcut.assertEnabledFor(selection)
+		assertTrue(launchShortcut.isEnabledFor(selection))
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
 	}
@@ -77,9 +82,21 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	@Test
 	def void testRunEditor() throws Exception {
 		val editor = openEditor(file)
-		launchShortcut.assertEnabledFor(editor.editorInput)
+		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
+	}
+
+	@Test
+	def void testOtherFile() throws Exception {
+		val selection = new StructuredSelection(otherFile)
+		assertFalse(launchShortcut.isEnabledFor(selection))
+	}
+
+	@Test
+	def void testOtherEditor() throws Exception {
+		val editor = openEditor(otherFile)
+		assertFalse(launchShortcut.isEnabledFor(editor.editorInput))
 	}
 
 }
