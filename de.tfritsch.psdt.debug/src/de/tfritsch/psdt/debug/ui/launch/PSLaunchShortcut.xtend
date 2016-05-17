@@ -20,6 +20,8 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
+import org.eclipse.core.filesystem.EFS
+import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugPlugin
@@ -32,6 +34,7 @@ import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.ui.IEditorPart
 import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.dialogs.ElementListSelectionDialog
+import org.eclipse.ui.ide.FileStoreEditorInput
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -63,11 +66,29 @@ class PSLaunchShortcut implements ILaunchShortcut {
 
 	override void launch(IEditorPart editor, String mode) {
 		val file = editor.editorInput.getAdapter(IFile) as IFile
-		file?.launch(mode)
+		if (file !== null) {
+			file.launch(mode)
+			return
+		}
+		val editorInput = editor.editorInput
+		if (editorInput instanceof FileStoreEditorInput) {
+			val fileStore = EFS.getStore(editorInput.URI)
+			fileStore.launch(mode)
+			return
+		}
 	}
 
 	def private void launch(IFile file, String mode) {
 		val program = file.location.toOSString
+		program.launch(mode)
+	}
+
+	def private void launch(IFileStore fileStore, String mode) {
+		val program = fileStore.toLocalFile(EFS.NONE, null).absolutePath
+		program.launch(mode)
+	}
+
+	def private void launch(String program, String mode) {
 		val configurations = program.configurations
 		val configuration = switch (configurations.length) {
 			case 0:

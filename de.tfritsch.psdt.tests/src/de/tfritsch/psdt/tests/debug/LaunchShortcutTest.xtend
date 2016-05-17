@@ -16,6 +16,9 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
+import java.io.File
+import org.eclipse.core.filesystem.EFS
+import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchManager
@@ -35,6 +38,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	LaunchShortcutExtension launchShortcut
 	IFile file
 	IFile otherFile
+	IFileStore fileStore
 
 	override setUp() throws Exception {
 		super.setUp
@@ -50,6 +54,12 @@ class LaunchShortcutTest extends AbstractDebugTest {
 			'''
 				Hello world
 			''')
+		fileStore = EFS.getStore(File.createTempFile("test-", ".ps").toURI)
+	}
+
+	override tearDown() throws Exception {
+		fileStore.delete(EFS.NONE, null)
+		super.tearDown
 	}
 
 	private def boolean isEnabledFor(LaunchShortcutExtension it, Object object) throws CoreException {
@@ -70,6 +80,14 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		val selection = new StructuredSelection(file)
 		assertTrue(launchShortcut.isEnabledFor(selection))
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
+		waitFor[launches.length > 0]
+	}
+
+	@Test
+	def void testRunFileStore() throws Exception {
+		val editor = openEditor(fileStore)
+		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
+		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
 	}
 

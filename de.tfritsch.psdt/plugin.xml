@@ -12,5 +12,12 @@
   </extension>
 
 
+  <extension point="org.eclipse.core.contenttype.contentTypes"> 
+    <content-type
+       base-type="org.eclipse.core.runtime.text"
+       file-extensions="ps,eps"
+       id="de.tfritsch.psdt.postscript"
+       name="PostScript File"/>
+  </extension> 
 
 </plugin>

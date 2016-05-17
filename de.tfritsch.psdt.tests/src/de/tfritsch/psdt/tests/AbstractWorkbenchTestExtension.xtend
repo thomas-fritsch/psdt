@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests
 
+import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.ui.IEditorPart
 import org.eclipse.ui.PartInitException
@@ -29,6 +30,10 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 
 	protected def IEditorPart openEditor(IFile file) throws PartInitException {
 		return IDE.openEditor(activePage, file)
+	}
+
+	protected def IEditorPart openEditor(IFileStore fileStore) throws PartInitException {
+		return IDE.openEditorOnFileStore(activePage, fileStore)
 	}
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {

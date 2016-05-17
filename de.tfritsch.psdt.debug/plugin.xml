@@ -24,6 +24,11 @@
          <adapter type="org.eclipse.debug.ui.actions.IToggleBreakpointsTarget"/>
          <adapter type="org.eclipse.debug.ui.actions.IRunToLineTarget"/>
       </factory>
+      <factory
+            adaptableType="org.eclipse.ui.ide.FileStoreEditorInput"
+            class="">
+         <adapter type="org.eclipse.debug.ui.actions.ILaunchable"/>
+      </factory>
    </extension>
    <extension point="org.eclipse.debug.core.breakpoints">
       <breakpoint
@@ -98,8 +103,8 @@
                <with variable="selection">
                   <count value="1"/>
                   <iterate>
-                     <test property="org.eclipse.debug.ui.matchesPattern"
-                           value="*.ps|*.eps"/>
+                     <test property="org.eclipse.debug.ui.matchesContentType"
+                           value="de.tfritsch.psdt.postscript"/>
                   </iterate>
                </with>
             </enablement>
