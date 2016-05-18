@@ -76,7 +76,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	}
 
 	@Test
-	def void testRunFile() throws Exception {
+	def void testRunFileSelection() throws Exception {
 		val selection = new StructuredSelection(file)
 		assertTrue(launchShortcut.isEnabledFor(selection))
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
@@ -84,7 +84,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	}
 
 	@Test
-	def void testRunFileStore() throws Exception {
+	def void testRunFileStoreEditor() throws Exception {
 		val editor = openEditor(fileStore)
 		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
@@ -92,7 +92,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	}
 
 	@Test
-	def void testRunEditor() throws Exception {
+	def void testRunFileEditor() throws Exception {
 		val editor = openEditor(file)
 		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
@@ -100,13 +100,13 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	}
 
 	@Test
-	def void testOtherFile() throws Exception {
+	def void testOtherFileSelection() throws Exception {
 		val selection = new StructuredSelection(otherFile)
 		assertFalse(launchShortcut.isEnabledFor(selection))
 	}
 
 	@Test
-	def void testOtherEditor() throws Exception {
+	def void testOtherFileEditor() throws Exception {
 		val editor = openEditor(otherFile)
 		assertFalse(launchShortcut.isEnabledFor(editor.editorInput))
 	}
