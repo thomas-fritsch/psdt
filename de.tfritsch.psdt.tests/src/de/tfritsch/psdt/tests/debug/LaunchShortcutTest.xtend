@@ -21,9 +21,11 @@ import org.eclipse.core.filesystem.EFS
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.internal.ui.DebugUIPlugin
 import org.eclipse.debug.internal.ui.launchConfigurations.LaunchShortcutExtension
+import org.eclipse.debug.ui.actions.ILaunchable
 import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.jface.viewers.StructuredSelection
 import org.junit.Test
@@ -62,6 +64,12 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		super.tearDown
 	}
 
+	// mimic what the launch framework does
+	private def boolean isLaunchable(Object object) {
+		return Platform.adapterManager.hasAdapter(object, ILaunchable.name)
+	}
+
+	// mimic what the launch framework does
 	private def boolean isEnabledFor(LaunchShortcutExtension it, Object object) throws CoreException {
 		val list = switch (object) {
 			IStructuredSelection:
@@ -78,6 +86,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	@Test
 	def void testRunFileSelection() throws Exception {
 		val selection = new StructuredSelection(file)
+		assertTrue(file.launchable)
 		assertTrue(launchShortcut.isEnabledFor(selection))
 		launchShortcut.launch(selection, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
@@ -86,6 +95,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	@Test
 	def void testRunFileStoreEditor() throws Exception {
 		val editor = openEditor(fileStore)
+		assertTrue(editor.editorInput.launchable)
 		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
@@ -94,6 +104,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	@Test
 	def void testRunFileEditor() throws Exception {
 		val editor = openEditor(file)
+		assertTrue(editor.editorInput.launchable)
 		assertTrue(launchShortcut.isEnabledFor(editor.editorInput))
 		launchShortcut.launch(editor, ILaunchManager.RUN_MODE)
 		waitFor[launches.length > 0]
