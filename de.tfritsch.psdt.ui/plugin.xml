@@ -350,19 +350,6 @@
            name="PostScript">
      </perspective>
   </extension>
-  <extension point="org.eclipse.ui.views">
-        <category
-              id="de.tfritsch.psdt.ui"
-              name="PostScript">
-        </category>
-        <view
-              category="de.tfritsch.psdt.ui"
-              class="de.tfritsch.psdt.ui.views.PostscriptDocView"
-              icon="icons/doc.gif"
-              id="de.tfritsch.psdt.ui.docView"
-              name="PostScript Doc">
-        </view>
-  </extension>
   <extension point="org.eclipse.ui.newWizards">
         <category
               id="de.tfritsch.psdt.ui.examples"

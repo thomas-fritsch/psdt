@@ -16,7 +16,6 @@
  ******************************************************************************/
 package de.tfritsch.psdt.ui.perspective
 
-import de.tfritsch.psdt.ui.views.PostscriptDocView
 import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.ui.IPageLayout
 import org.eclipse.ui.IPerspectiveFactory
@@ -38,7 +37,6 @@ class PostscriptPerspectiveFactory implements IPerspectiveFactory {
 		layout.createFolder("bottom", IPageLayout.BOTTOM, 0.75F, editorArea) => [
 			addView(IPageLayout.ID_PROBLEM_VIEW)
 			addView(IConsoleConstants.ID_CONSOLE_VIEW)
-			addPlaceholder(PostscriptDocView.ID)
 			addPlaceholder(IPageLayout.ID_PROP_SHEET)
 		]
 		layout.createFolder("right", IPageLayout.RIGHT, 0.75F, editorArea) => [
