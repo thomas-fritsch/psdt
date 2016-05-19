@@ -2,6 +2,10 @@ language: java
 
 env: DISPLAY=:99.0
 
+cache:
+  directories:
+  - $HOME/.m2
+
 install: gs -v
 
 before_script:
@@ -9,4 +13,4 @@ before_script:
   - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 
 script:
-  - mvn install
+  - mvn verify
