@@ -41,9 +41,9 @@ class DebugTest extends AbstractDebugTest {
 		file = createFile(project.name + "/hello.ps",
 			'''
 				%!PS-Adobe-2.0
-				/Times-Roman findfont 60 scalefont setfont
-				50 600 moveto
-				(Hello World) show
+				/A {(Hello world) print} def
+				A
+				A
 				showpage
 			''')
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
@@ -94,12 +94,19 @@ class DebugTest extends AbstractDebugTest {
 		assertTrue(currentStackFrame.canStepInto)
 		assertTrue(currentStackFrame.canStepOver)
 		assertTrue(currentStackFrame.canStepReturn)
-		assertCurrentToken(2, "/Times-Roman")
+		for (i : 1..3) {
+			currentStackFrame.stepInto
+			waitFor[currentStackFrame != null]
+		}
+		assertCurrentToken(3, "A")
 		currentStackFrame.stepInto
 		waitFor[currentStackFrame != null]
-		assertCurrentToken(2, "findfont")
-		currentStackFrame.stepInto
+		assertCurrentToken(2, "(Hello world)")
+		currentStackFrame.stepReturn
 		waitFor[currentStackFrame != null]
-		assertCurrentToken(2, "60")
+		assertCurrentToken(4, "A")
+		currentStackFrame.stepOver
+		waitFor[currentStackFrame != null]
+		assertCurrentToken(5, "showpage")
 	}
 }
