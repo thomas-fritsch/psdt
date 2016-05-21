@@ -166,6 +166,7 @@ class ParserTest {
 		assertTrue(file.objects.get(1) instanceof PSString)
 	}
 
+	@Test
 	def testASCII85StringThenASCII85String() {
 		val file = '''
 			<~~><~~>
