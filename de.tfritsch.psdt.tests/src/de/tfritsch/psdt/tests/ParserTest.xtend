@@ -20,11 +20,15 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
-import de.tfritsch.psdt.postscript.PSInt
+import de.tfritsch.psdt.postscript.PSExecutableName
 import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.postscript.PSFloat
+import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
+import de.tfritsch.psdt.postscript.PSInt
+import de.tfritsch.psdt.postscript.PSLiteralName
 import de.tfritsch.psdt.postscript.PSProcedure
 import de.tfritsch.psdt.postscript.PSString
+import de.tfritsch.psdt.postscript.PSUnparsedData
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -32,7 +36,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
-import de.tfritsch.psdt.postscript.PSUnparsedData
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -76,6 +79,27 @@ class ParserTest {
 		val file = '''<>'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSString)
+	}
+
+	@Test
+	def testExecutableName() {
+		val file = '''name'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSExecutableName)
+	}
+
+	@Test
+	def testLiteralNameName() {
+		val file = '''/name'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSLiteralName)
+	}
+
+	@Test
+	def testImmediatelyEvaluatedName() {
+		val file = '''//name'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSImmediatelyEvaluatedName)
 	}
 
 	@Test

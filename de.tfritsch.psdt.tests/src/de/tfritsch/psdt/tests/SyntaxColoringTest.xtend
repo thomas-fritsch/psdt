@@ -70,6 +70,18 @@ class SyntaxColoringTest {
 	}
 
 	@Test
+	def void testImmediatelyEvaluatedName() {
+		'''
+			//add
+		'''.firstToken.textAttribute => [
+			assertEquals(new RGB(255, 0, 255), foreground.RGB)
+			assertNull(background)
+			assertEquals(SWT.BOLD, style)
+			assertNull(font)
+		]
+	}
+
+	@Test
 	def void testDSCComment() {
 		'''
 			%%Pages: 50

@@ -33,8 +33,8 @@ PSFile:
 	objects+=PSObject*;
 
 PSObject:
-	PSLiteralName | PSExecutableName | PSInt | PSFloat | PSString | PSProcedure | PSArray | PSDictionary |
-	PSUnparsedData;
+	PSLiteralName | PSImmediatelyEvaluatedName | PSExecutableName | PSInt | PSFloat | PSString | PSProcedure | PSArray |
+	PSDictionary | PSUnparsedData;
 
 PSProcedure:
 	{PSProcedure}
@@ -50,6 +50,9 @@ PSDictionary:
 
 PSLiteralName:
 	name=LITERAL_ID;
+
+PSImmediatelyEvaluatedName:
+	name=IMMEDIATELY_EVALUATED_ID;
 
 PSExecutableName:
 	name=ID;
@@ -94,6 +97,9 @@ terminal fragment EXP:
 
 terminal LITERAL_ID:
 	'/' ID;
+
+terminal IMMEDIATELY_EVALUATED_ID:
+	'//' ID;
 
 terminal ID:
 	(!('0'..'9' | DELIM_CHAR)) (!DELIM_CHAR)*;

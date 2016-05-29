@@ -31,6 +31,7 @@ class PostscriptAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttribu
 		return switch (tokenName) {
 			case "RULE_ID": DEFAULT_ID
 			case "RULE_LITERAL_ID": LITERAL_NAME_ID
+			case "RULE_IMMEDIATELY_EVALUATED_ID": IMMEDIATELY_EVALUATED_NAME_ID
 			case "RULE_STRING": STRING_ID
 			case "RULE_ASCII_HEX_STRING": STRING_ID
 			case "RULE_ASCII_85_STRING": STRING_ID

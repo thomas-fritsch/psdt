@@ -29,6 +29,8 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 
 	public static val LITERAL_NAME_ID = "literalName"
 
+	public static val IMMEDIATELY_EVALUATED_NAME_ID = "immediatelyEvaluatedName"
+
 	public static val DSC_COMMENT_ID = "dscComment"
 
 	public static val UNPARSED_DATA_ID = "unparsedData"
@@ -36,13 +38,21 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 	override void configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor)
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
+		acceptor.acceptDefaultHighlighting(IMMEDIATELY_EVALUATED_NAME_ID, "Immediately Evaluated Name", immediatelyEvaluatedNameTextStyle)
 		acceptor.acceptDefaultHighlighting(DSC_COMMENT_ID, "DSC Comment", dscCommentTextStyle)
-		acceptor.acceptDefaultHighlighting(de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration.UNPARSED_DATA_ID, "Unparsed Data", unparsedDataTextStyle)
+		acceptor.acceptDefaultHighlighting(UNPARSED_DATA_ID, "Unparsed Data", unparsedDataTextStyle)
 	}
 
 	def TextStyle literalNameTextStyle() {
 		return defaultTextStyle.copy => [
 			color = new RGB(128, 0, 255) // violet
+			style = SWT.BOLD
+		]
+	}
+
+	def TextStyle immediatelyEvaluatedNameTextStyle() {
+		return defaultTextStyle.copy => [
+			color = new RGB(255, 0, 255) // magenta
 			style = SWT.BOLD
 		]
 	}
