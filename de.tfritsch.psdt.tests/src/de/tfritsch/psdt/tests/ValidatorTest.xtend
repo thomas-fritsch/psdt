@@ -42,55 +42,55 @@ class ValidatorTest {
 	@Inject extension ValidationTestHelper
 
 	@Test
-	def testMissingCloseProcedure() {
+	def testMissingCloseProcedure() throws Exception {
 		val file = '''{ a b'''.parse
 		file.assertError(PS_EXECUTABLE_NAME, SYNTAX_DIAGNOSTIC, "expecting '}'")
 	}
 
 	@Test
-	def testExtraneousCloseProcedure() {
+	def testExtraneousCloseProcedure() throws Exception {
 		val file = '''a b }'''.parse
 		file.assertError(PS_FILE, SYNTAX_DIAGNOSTIC, "extraneous input '}'")
 	}
 
 	@Test
-	def testMissingCloseArray() {
+	def testMissingCloseArray() throws Exception {
 		val file = '''[ a b'''.parse
 		file.assertError(PS_EXECUTABLE_NAME, SYNTAX_DIAGNOSTIC, "expecting ']'")
 	}
 
 	@Test
-	def testExtraneousCloseArray() {
+	def testExtraneousCloseArray() throws Exception {
 		val file = '''a b ]'''.parse
 		file.assertError(PS_FILE, SYNTAX_DIAGNOSTIC, "extraneous input ']'")
 	}
 
 	@Test
-	def testMissingCloseDictionary() {
+	def testMissingCloseDictionary() throws Exception {
 		val file = '''<< a b'''.parse
 		file.assertError(PS_EXECUTABLE_NAME, SYNTAX_DIAGNOSTIC, "expecting '>>'")
 	}
 
 	@Test
-	def testExtraneousCloseDictionary() {
+	def testExtraneousCloseDictionary() throws Exception {
 		val file = '''a b >>'''.parse
 		file.assertError(PS_FILE, SYNTAX_DIAGNOSTIC, "extraneous input '>>'")
 	}
 
 	@Test
-	def testDPS() {
+	def testDPS() throws Exception {
 		val file = '''fork'''.parse
 		file.assertWarning(PS_EXECUTABLE_NAME, IssueCodes.DPS, "Display PostScript")
 	}
 
 	@Test
-	def testStringWithBalancedParentheses() {
+	def testStringWithBalancedParentheses() throws Exception {
 		val file = '''(This is a (rather long) string)'''.parse
 		file.assertNoErrors
 	}
 
 	@Test
-	def testStringWithEscapedNewline() {
+	def testStringWithEscapedNewline() throws Exception {
 		val file = '''
 		(line1\
 		line2)'''.parse
@@ -98,25 +98,25 @@ class ValidatorTest {
 	}
 
 	@Test
-	def testStringWithInvalidEscapeSequence() {
+	def testStringWithInvalidEscapeSequence() throws Exception {
 		val file = '''(This is \a string)'''.parse
 		file.assertNoErrors
 	}
 
 	@Test
-	def testASCIIHexInvalid() {
+	def testASCIIHexInvalid() throws Exception {
 		val file = '''<12345x78>'''.parse
 		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
 	}
 
 	@Test
-	def testASCII85Invalid_1() {
+	def testASCII85Invalid_1() throws Exception {
 		val file = '''<~12345x78~>'''.parse
 		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Illegal character 'x'")
 	}
 
 	@Test
-	def testASCII85Invalid_2() {
+	def testASCII85Invalid_2() throws Exception {
 		val file = '''<~123456~>'''.parse
 		file.assertError(PS_STRING, SYNTAX_DIAGNOSTIC, "Final tuple '6' too short")
 	}

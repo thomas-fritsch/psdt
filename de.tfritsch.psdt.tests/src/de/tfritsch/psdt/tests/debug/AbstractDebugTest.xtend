@@ -24,6 +24,7 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.ui.WorkbenchException
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -61,7 +62,7 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 		}
 	}
 
-	protected def void showDebugPerspective() {
+	protected def void showDebugPerspective() throws WorkbenchException {
 		showPerspective(IDebugUIConstants.ID_DEBUG_PERSPECTIVE)
 	}
 

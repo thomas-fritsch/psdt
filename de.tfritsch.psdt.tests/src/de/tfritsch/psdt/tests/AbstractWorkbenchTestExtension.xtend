@@ -20,6 +20,7 @@ import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.ui.IEditorPart
 import org.eclipse.ui.PartInitException
+import org.eclipse.ui.WorkbenchException
 import org.eclipse.ui.ide.IDE
 import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 
@@ -49,7 +50,7 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 		return activePage.activeEditor
 	}
 
-	protected def void showPerspective(String id) {
+	protected def void showPerspective(String id) throws WorkbenchException {
 		workbench.showPerspective(id, workbenchWindow)
 	}
 

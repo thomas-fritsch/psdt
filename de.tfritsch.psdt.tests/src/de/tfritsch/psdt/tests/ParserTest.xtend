@@ -47,63 +47,63 @@ class ParserTest {
 	@Inject extension ParseHelper<PSFile>
 
 	@Test
-	def testEmptyFile() {
+	def testEmptyFile() throws Exception {
 		val file = ''''''.parse
 		assertNotNull(file)
 		assertEquals(0, file.objects.size)
 	}
 
 	@Test
-	def testInt() {
+	def testInt() throws Exception {
 		val file = '''42'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSInt)
 	}
 
 	@Test
-	def testFloat() {
+	def testFloat() throws Exception {
 		val file = '''42.0'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSFloat)
 	}
 
 	@Test
-	def testString() {
+	def testString() throws Exception {
 		val file = '''()'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSString)
 	}
 
 	@Test
-	def testAsciiHexString() {
+	def testAsciiHexString() throws Exception {
 		val file = '''<>'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSString)
 	}
 
 	@Test
-	def testExecutableName() {
+	def testExecutableName() throws Exception {
 		val file = '''name'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSExecutableName)
 	}
 
 	@Test
-	def testLiteralNameName() {
+	def testLiteralNameName() throws Exception {
 		val file = '''/name'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSLiteralName)
 	}
 
 	@Test
-	def testImmediatelyEvaluatedName() {
+	def testImmediatelyEvaluatedName() throws Exception {
 		val file = '''//name'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSImmediatelyEvaluatedName)
 	}
 
 	@Test
-	def testAscii85String() {
+	def testAscii85String() throws Exception {
 		val file = '''
 			<~~>
 		'''.parse
@@ -112,7 +112,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testProcedure() {
+	def testProcedure() throws Exception {
 		val file = '''
 			{}
 		'''.parse
@@ -121,7 +121,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testArray() {
+	def testArray() throws Exception {
 		val file = '''
 			[]
 		'''.parse
@@ -130,7 +130,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testDictionary() {
+	def testDictionary() throws Exception {
 		val file = '''
 			<< >>
 		'''.parse
@@ -139,7 +139,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testUnparsedData() {
+	def testUnparsedData() throws Exception {
 		val file = '''
 			%%BeginData:
 			ygbyydy<fgGADGA{YDBYDB[VDAV
@@ -150,7 +150,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testASCII85StringContainingAngleChars() {
+	def testASCII85StringContainingAngleChars() throws Exception {
 		val file = '''
 			<~<123>~>>
 		'''.parse
@@ -160,7 +160,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testDictionaryContainingASCIIHexString() {
+	def testDictionaryContainingASCIIHexString() throws Exception {
 		val file = '''
 			<<<>>>
 		'''.parse
@@ -171,7 +171,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testASCIIHexStringThenASCII85String() {
+	def testASCIIHexStringThenASCII85String() throws Exception {
 		val file = '''
 			<><~~>
 		'''.parse
@@ -181,7 +181,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testASCII85StringThenASCIIHexString() {
+	def testASCII85StringThenASCIIHexString() throws Exception {
 		val file = '''
 			<~~><>
 		'''.parse
@@ -191,7 +191,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testASCII85StringThenASCII85String() {
+	def testASCII85StringThenASCII85String() throws Exception {
 		val file = '''
 			<~~><~~>
 		'''.parse
@@ -201,7 +201,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testASCIIHexStringThenDictionary() {
+	def testASCIIHexStringThenDictionary() throws Exception {
 		val file = '''
 			<><<>>
 		'''.parse
@@ -211,7 +211,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testDictionaryThenASCIIHexString() {
+	def testDictionaryThenASCIIHexString() throws Exception {
 		val file = '''
 			<<>><>
 		'''.parse
@@ -221,7 +221,7 @@ class ParserTest {
 	}
 
 	@Test
-	def testDictionaryContainingASCII85String() {
+	def testDictionaryContainingASCII85String() throws Exception {
 		val file = '''
 			<<<~~>>>
 		'''.parse

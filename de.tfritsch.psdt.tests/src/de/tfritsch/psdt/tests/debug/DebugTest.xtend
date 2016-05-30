@@ -17,9 +17,11 @@
 package de.tfritsch.psdt.tests.debug
 
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
+import org.eclipse.jface.text.BadLocationException
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
@@ -49,7 +51,7 @@ class DebugTest extends AbstractDebugTest {
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
 	}
 
-	protected override createLaunchConfiguration(IFile file) {
+	protected override createLaunchConfiguration(IFile file) throws CoreException {
 		super.createLaunchConfiguration(file) => [
 			breakOnFirstToken = true
 		]
@@ -63,7 +65,7 @@ class DebugTest extends AbstractDebugTest {
 		return getCurrent(IStackFrame)
 	}
 
-	private def void assertCurrentToken(int expectedLineNumber, String expectedToken) throws DebugException {
+	private def void assertCurrentToken(int expectedLineNumber, String expectedToken) throws DebugException, BadLocationException {
 		val stackFrame = currentStackFrame
 		assertEquals(expectedLineNumber, stackFrame.lineNumber)
 		val offset = stackFrame.charStart

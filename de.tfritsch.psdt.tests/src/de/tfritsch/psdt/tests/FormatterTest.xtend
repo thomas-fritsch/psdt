@@ -40,13 +40,13 @@ class FormatterTest {
 	@Inject extension ParseHelper<PSFile>
 	@Inject extension INodeModelFormatter
 
-	def protected assertFormatted(CharSequence input, CharSequence expectedOutput) {
+	def protected assertFormatted(CharSequence input, CharSequence expectedOutput) throws Exception {
 		val output = input.parse.node.format(0, input.length).formattedText
 		assertEquals(expectedOutput.toString, output)
 	}
 
 	@Test
-	def void testMaxLineLength() {
+	def void testMaxLineLength() throws Exception {
 		'''
 			123456789 123456789 123456789 123456789 123456789 123456789 123456789 1 3 56789
 		'''.assertFormatted(
@@ -56,7 +56,7 @@ class FormatterTest {
 	}
 
 	@Test
-	def void testProcedure() {
+	def void testProcedure() throws Exception {
 		'''
 			aa { A B } zz
 		'''.assertFormatted(
@@ -67,7 +67,7 @@ class FormatterTest {
 	}
 
 	@Test
-	def void testDictionary() {
+	def void testDictionary() throws Exception {
 		'''aa << A B >> zz'''.assertFormatted(
 			'''
 			aa <<
@@ -76,7 +76,7 @@ class FormatterTest {
 	}
 
 	@Test
-	def void testArray() {
+	def void testArray() throws Exception {
 		'''aa [ A B ] zz'''.assertFormatted('''aa [A B] zz''')
 	}
 }

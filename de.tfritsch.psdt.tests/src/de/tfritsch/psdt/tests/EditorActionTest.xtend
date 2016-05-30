@@ -54,7 +54,7 @@ class EditorActionTest extends AbstractAutoEditTest {
 	}
 
 	@Test
-	def void testToggleComment() {
+	def void testToggleComment() throws Exception {
 		val editor = openEditor(
 			'''
 				aa bb
