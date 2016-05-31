@@ -16,28 +16,30 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.launch
 
-import org.eclipse.xtend.lib.annotations.Data
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-@Data
+@FinalFieldsConstructor
+@Accessors
 class PSToken {
 
-	String string
+	final String string
 
 	/**
 	 * The line number of this token in the associated source file.
 	 */
-	int lineNumber
+	final int lineNumber
 
 	/**
 	 * The index of the first character in the associated source file.
 	 */
-	int charStart
+	final int charStart
 
 	/**
 	 * The index of the last character in the associated source file.
 	 */
-	int charEnd
+	final int charEnd
 }

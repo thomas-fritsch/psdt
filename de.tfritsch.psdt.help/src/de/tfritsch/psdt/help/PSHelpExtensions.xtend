@@ -19,7 +19,8 @@ package de.tfritsch.psdt.help
 import java.net.URL
 import java.util.List
 import org.eclipse.help.IHelpResource
-import org.eclipse.xtend.lib.annotations.Data
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 import static extension java.util.regex.Pattern.*
 import static extension org.eclipse.core.runtime.FileLocator.*
@@ -58,10 +59,11 @@ class PSHelpExtensions {
 		}
 	}
 
-	@Data
+	@FinalFieldsConstructor
+	@Accessors
 	static class Documentation {
-		String label
-		URL url
+		final String label
+		final URL url
 	}
 
 	def static List<Documentation> getDocumentations(String name) {

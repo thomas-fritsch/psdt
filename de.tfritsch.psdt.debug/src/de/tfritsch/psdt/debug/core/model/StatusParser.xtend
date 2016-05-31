@@ -18,7 +18,6 @@ package de.tfritsch.psdt.debug.core.model
 
 import java.util.List
 import org.eclipse.debug.core.model.IVariable
-import org.eclipse.xtend.lib.annotations.Data
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
@@ -47,11 +46,11 @@ class StatusParser {
 		return new StatusLine(depth, name, value)
 	}
 
-	@Data
+	@FinalFieldsConstructor
 	protected static class StatusLine {
-		int depth
-		String name
-		String value
+		final int depth
+		final String name
+		final String value
 	}
 
 	def protected List<PSValue> append(List<PSValue> it, StatusLine statusLine) {
