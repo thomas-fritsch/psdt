@@ -17,6 +17,7 @@
 package de.tfritsch.psdt.ui.labeling
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.conversion.LiteralIdValueConverter
 import de.tfritsch.psdt.conversion.STRINGValueConverter
 import de.tfritsch.psdt.postscript.PSArray
 import de.tfritsch.psdt.postscript.PSDictionary
@@ -44,6 +45,9 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 	STRINGValueConverter stringValueConverter
 
 	@Inject
+	LiteralIdValueConverter literalIdValueConverter
+
+	@Inject
 	new(AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
@@ -62,6 +66,10 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 
 	def text(PSString it) {
 		stringValueConverter.toString(bytes ?: newByteArrayOfSize(0))
+	}
+
+	def text(PSLiteralName it) {
+		literalIdValueConverter.toString(name)
 	}
 
 	def text(PSInt it) {

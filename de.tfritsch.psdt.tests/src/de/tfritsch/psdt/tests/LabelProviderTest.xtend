@@ -90,7 +90,7 @@ class LabelProviderTest {
 
 	@Test
 	def void testLiteralName() {
-		val obj = createPSLiteralName => [name = "/showpage"]
+		val obj = createPSLiteralName => [name = "showpage"]
 		assertEquals("/showpage", obj.text)
 	}
 

@@ -62,11 +62,12 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 		intValueConverter
 	}
 
-// @Inject
-// AbstractIDValueConverter idValueConverter;
-//
-// @ValueConverter(rule = "ID")
-// def IValueConverter<String> getIdValueConverter() {
-//     idValueConverter
-// }
+	@Inject
+	LiteralIdValueConverter literalIdValueConverter
+
+	@ValueConverter(rule="LITERAL_ID")
+	def IValueConverter<String> getLiteralIdValueConverter() {
+		literalIdValueConverter
+	}
+
 }

@@ -1198,466 +1198,466 @@
 	<context id="yshow">
 		<topic label="Operator" href="html/Reference/8/2/y/yshow.html" />
 	</context>
-	<context id="/AdvanceDistance">
+	<context id="AdvanceDistance">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#AdvanceDistance" />
 	</context>
-	<context id="/AdvanceMedia">
+	<context id="AdvanceMedia">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#AdvanceMedia" />
 	</context>
-	<context id="/ASCII85Decode">
+	<context id="ASCII85Decode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Decode" />
 	</context>
-	<context id="/ASCII85Encode">
+	<context id="ASCII85Encode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCII85Encode" />
 	</context>
-	<context id="/ASCIIHexDecode">
+	<context id="ASCIIHexDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexDecode" />
 	</context>
-	<context id="/ASCIIHexEncode">
+	<context id="ASCIIHexEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ASCIIHexEncode" />
 	</context>
-	<context id="/BBox">
+	<context id="BBox">
 		<topic label="Entry in a form dictionary (Type 1)" href="html/Reference/4/7/1.html#BBox" />
 	</context>
-	<context id="/BeginPage">
+	<context id="BeginPage">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#BeginPage" />
 	</context>
-	<context id="/BitsPerComponent">
+	<context id="BitsPerComponent">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#BitsPerComponent" />
 	</context>
-	<context id="/BuildChar">
+	<context id="BuildChar">
 		<topic label="Entry in a font dictionary (Type 3)" href="html/Reference/5/7.html#BuildChar" />
 	</context>
-	<context id="/BuildGlyph">
+	<context id="BuildGlyph">
 		<topic label="Entry in a a font dictionary (Type 3)" href="html/Reference/5/7.html#BuildGlyph" />
 	</context>
-	<context id="/Category">
+	<context id="Category">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#Category" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
 	</context>
-	<context id="/CCITTFaxDecode">
+	<context id="CCITTFaxDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ACCITTFaxDecode" />
 	</context>
-	<context id="/CCITTFaxEncode">
+	<context id="CCITTFaxEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#CCITTFaxEncode" />
 	</context>
-	<context id="/CDevProc">
+	<context id="CDevProc">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#CDevProcs" />
 	</context>
-	<context id="/CharStrings">
+	<context id="CharStrings">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#CharStrings" />
 	</context>
-	<context id="/CIDFont">
+	<context id="CIDFont">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#CIDFont" />
 	</context>
-	<context id="/CMap">
+	<context id="CMap">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#CMap" />
 	</context>
-	<context id="/Collate">
+	<context id="Collate">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#Collate" />
 	</context>
-	<context id="/ColorRendering">
+	<context id="ColorRendering">
 		<topic label="Regular resource category" href="html/Reference/3/9/2.html#ColorRendering" />
 	</context>
-	<context id="/ColorRenderingType">
+	<context id="ColorRenderingType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorRenderingType" />
 	</context>
-	<context id="/ColorSpace">
+	<context id="ColorSpace">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorSpace" />
 	</context>
-	<context id="/ColorSpaceFamily">
+	<context id="ColorSpaceFamily">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ColorSpaceFamily" />
 	</context>
-	<context id="/ControlLanguage">
+	<context id="ControlLanguage">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ControlLanguage" />
 	</context>
-	<context id="/Courier">
+	<context id="Courier">
 		<topic label="Standard font" href="html/Reference/E/3.html#Courier" />
 	</context>
-	<context id="/Courier-Bold">
+	<context id="Courier-Bold">
 		<topic label="Standard font" href="html/Reference/E/3.html#Courier-Bold" />
 	</context>
-	<context id="/Courier-BoldOblique">
+	<context id="Courier-BoldOblique">
 		<topic label="Standard font" href="html/Reference/E/3.html#Courier-BoldOblique" />
 	</context>
-	<context id="/Courier-Oblique">
+	<context id="Courier-Oblique">
 		<topic label="Standard font" href="html/Reference/E/3.html#Courier-Oblique" />
 	</context>
-	<context id="/CutMedia">
+	<context id="CutMedia">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#CutMedia" />
 	</context>
-	<context id="/DataSource">
+	<context id="DataSource">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#DataSource" />
 	</context>
-	<context id="/DCTDecode">
+	<context id="DCTDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTDecode" />
 	</context>
-	<context id="/DCTEncode">
+	<context id="DCTEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#DCTEncode" />
 	</context>
-	<context id="/Decode">
+	<context id="Decode">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Decode" />
 	</context>
-	<context id="/DeferredMediaSelection">
+	<context id="DeferredMediaSelection">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#DeferredMediaSelection" />
 	</context>
-	<context id="/DefineResource">
+	<context id="DefineResource">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#DefineResource" />
 	</context>
-	<context id="/Duplex">
+	<context id="Duplex">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#Duplex" />
 	</context>
-	<context id="/Emulator">
+	<context id="Emulator">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Emulator" />
 	</context>
-	<context id="/Encoding">
+	<context id="Encoding">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#Encoding" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Encoding" />
 	</context>
-	<context id="/EndPage">
+	<context id="EndPage">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#EndPage" />
 	</context>
-	<context id="/FID">
+	<context id="FID">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FID" />
 	</context>
-	<context id="/FindResource">
+	<context id="FindResource">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#FindResource" />
 	</context>
-	<context id="/Filter">
+	<context id="Filter">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Filter" />
 	</context>
-	<context id="/FMapType">
+	<context id="FMapType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FMapType" />
 	</context>
-	<context id="/FlateDecode">
+	<context id="FlateDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateDecode" />
 	</context>
-	<context id="/FlateEncode">
+	<context id="FlateEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#FlateEncode" />
 	</context>
-	<context id="/Font">
+	<context id="Font">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Font" />
 	</context>
-	<context id="/FontBBox">
+	<context id="FontBBox">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontBBox" />
 	</context>
-	<context id="/FontInfo">
+	<context id="FontInfo">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontInfo" />
 	</context>
-	<context id="/FontMatrix">
+	<context id="FontMatrix">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontMatrix" />
 	</context>
-	<context id="/FontName">
+	<context id="FontName">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontName" />
 	</context>
-	<context id="/FontSet">
+	<context id="FontSet">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FontSet" />
 	</context>
-	<context id="/FontType">
+	<context id="FontType">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#FontType" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FontType" />
 	</context>
-	<context id="/Form">
+	<context id="Form">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Form" />
 	</context>
-	<context id="/FormType">
+	<context id="FormType">
 		<topic label="Entry in a form dictionary" href="html/Reference/4/7/1.html#FormType" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FormType" />
 	</context>
-	<context id="/FunctionType">
+	<context id="FunctionType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#FunctionType" />
 	</context>
-	<context id="/Generic">
+	<context id="Generic">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Generic" />
 	</context>
-	<context id="/Halftone">
+	<context id="Halftone">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Halftone" />
 	</context>
-	<context id="/HalftoneType">
+	<context id="HalftoneType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#HalftoneType" />
 	</context>
-	<context id="/Height">
+	<context id="Height">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Height" />
 	</context>
-	<context id="/Helvetica">
+	<context id="Helvetica">
 		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica" />
 	</context>
-	<context id="/Helvetica-Bold">
+	<context id="Helvetica-Bold">
 		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-Bold" />
 	</context>
-	<context id="/Helvetica-BoldOblique">
+	<context id="Helvetica-BoldOblique">
 		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-BoldOblique" />
 	</context>
-	<context id="/Helvetica-Oblique">
+	<context id="Helvetica-Oblique">
 		<topic label="Standard font" href="html/Reference/E/2.html#Helvetica-Oblique" />
 	</context>
-	<context id="/HWOptions">
+	<context id="HWOptions">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#HWOptions" />
 	</context>
-	<context id="/HWResolution">
+	<context id="HWResolution">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#HWResolution" />
 	</context>
-	<context id="/ImageMatrix">
+	<context id="ImageMatrix">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#ImageMatrix" />
 	</context>
-	<context id="/ImageShift">
+	<context id="ImageShift">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImageShift" />
 	</context>
-	<context id="/ImageType">
+	<context id="ImageType">
 		<topic label="Entry in an image dictionary" href="html/Reference/4/10/5/1.html#ImageType" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ImageType" />
 	</context>
-	<context id="/ImagingBBox">
+	<context id="ImagingBBox">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#ImagingBBox" />
 	</context>
-	<context id="/Implementation">
+	<context id="Implementation">
 		<topic label="Entry in a form dictionary (Type 1)" href="html/Reference/4/7/1.html#Implementation" />
 	</context>
-	<context id="/InkParams">
+	<context id="InkParams">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#InkParams" />
 	</context>
-	<context id="/InputAttributes">
+	<context id="InputAttributes">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#InputAttributes" />
 	</context>
-	<context id="/InstanceType">
+	<context id="InstanceType">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#InstanceType" />
 	</context>
-	<context id="/InsertSheet">
+	<context id="InsertSheet">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#InsertSheet" />
 	</context>
-	<context id="/Install">
+	<context id="Install">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/6.html#Install" />
 	</context>
-	<context id="/Interpolate">
+	<context id="Interpolate">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Interpolate" />
 	</context>
-	<context id="/IODevice">
+	<context id="IODevice">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#IODevice" />
 	</context>
-	<context id="/Jog">
+	<context id="Jog">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#Jog" />
 	</context>
-	<context id="/LanguageLevel">
+	<context id="LanguageLevel">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#LanguageLevel" />
 	</context>
-	<context id="/LeadingEdge">
+	<context id="LeadingEdge">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#LeadingEdge" />
 	</context>
-	<context id="/Localization">
+	<context id="Localization">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Localization" />
 	</context>
-	<context id="/LZWDecode">
+	<context id="LZWDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWDecode" />
 	</context>
-	<context id="/LZWEncode">
+	<context id="LZWEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#LZWEncode" />
 	</context>
-	<context id="/Matrix">
+	<context id="Matrix">
 		<topic label="Entry in a form dictionary (Type 1)" href="html/Reference/4/7/1.html#Matrix" />
 	</context>
-	<context id="/MediaClass">
+	<context id="MediaClass">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#MediaClass" />
 	</context>
-	<context id="/MediaColor">
+	<context id="MediaColor">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#MediaColor" />
 	</context>
-	<context id="/MediaPosition">
+	<context id="MediaPosition">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#MediaPosition" />
 	</context>
-	<context id="/MediaType">
+	<context id="MediaType">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#MediaType" />
 	</context>
-	<context id="/MediaWeight">
+	<context id="MediaWeight">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#MediaWeight" />
 	</context>
-	<context id="/ManualFeed">
+	<context id="ManualFeed">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#ManualFeed" />
 	</context>
-	<context id="/Margins">
+	<context id="Margins">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#Margins" />
 	</context>
-	<context id="/MaxSeparations">
+	<context id="MaxSeparations">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#MaxSeparations" />
 	</context>
-	<context id="/Metrics">
+	<context id="Metrics">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#Metrics" />
 	</context>
-	<context id="/Metrics2">
+	<context id="Metrics2">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#Metrics2" />
 	</context>
-	<context id="/MirrorPrint">
+	<context id="MirrorPrint">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#MirrorPrint" />
 	</context>
-	<context id="/MultipleDataSources">
+	<context id="MultipleDataSources">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#MultipleDataSources" />
 	</context>
-	<context id="/NegativePrint">
+	<context id="NegativePrint">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#NegativePrint" />
 	</context>
-	<context id="/NullEncode">
+	<context id="NullEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#NullEncode" />
 	</context>
-	<context id="/NumCopies">
+	<context id="NumCopies">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#NumCopies" />
 	</context>
-	<context id="/OutputAttributes">
+	<context id="OutputAttributes">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputAttributes" />
 	</context>
-	<context id="/OutputDevice">
+	<context id="OutputDevice">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputDevice" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#OutputDevice" />
 	</context>
-	<context id="/OutputFaceUp">
+	<context id="OutputFaceUp">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputFaceUp" />
 	</context>
-	<context id="/OutputType">
+	<context id="OutputType">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#OutputType" />
 	</context>
-	<context id="/Orientation">
+	<context id="Orientation">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#Orientation" />
 	</context>
-	<context id="/PageDeviceName">
+	<context id="PageDeviceName">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#PageDeviceName" />
 	</context>
-	<context id="/PageOffset">
+	<context id="PageOffset">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#PageOffset" />
 	</context>
-	<context id="/PageSize">
+	<context id="PageSize">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#PageSize" />
 		<topic label="Entry in Policies dictionary" href="html/Reference/6/2/7.html#PageSize" />
 	</context>
-	<context id="/PaintProc">
+	<context id="PaintProc">
 		<topic label="Entry in a form dictionary (Type 1)" href="html/Reference/4/7/1.html#PaintProc" />
 	</context>
-	<context id="/PaintType">
+	<context id="PaintType">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#PaintType" />
 	</context>
-	<context id="/Pattern">
+	<context id="Pattern">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Pattern" />
 	</context>
-	<context id="/PatternType">
+	<context id="PatternType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#PatternType" />
 	</context>
-	<context id="/PDL">
+	<context id="PDL">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#PDL" />
 	</context>
-	<context id="/Policies">
+	<context id="Policies">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/7.html#Policies" />
 	</context>
-	<context id="/PolicyNotFound">
+	<context id="PolicyNotFound">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/7.html#PolicyNotFound" />
 	</context>
-	<context id="/PolicyReport">
+	<context id="PolicyReport">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/7.html#PolicyReport" />
 	</context>
-	<context id="/Private">
+	<context id="Private">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#Private" />
 	</context>
-	<context id="/ProcessColorModel">
+	<context id="ProcessColorModel">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#ProcessColorModel" />
 	</context>
-	<context id="/ProcSet">
+	<context id="ProcSet">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ProcSet" />
 	</context>
-	<context id="/ResourceFileName">
+	<context id="ResourceFileName">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#ResourceFileName" />
 	</context>
-	<context id="/ResourceForAll">
+	<context id="ResourceForAll">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#ResourceForAll" />
 	</context>
-	<context id="/ResourceStatus">
+	<context id="ResourceStatus">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#ResourceStatus" />
 	</context>
-	<context id="/ReusableStreamDecode">
+	<context id="ReusableStreamDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
 	</context>
-	<context id="/RollFedMedia">
+	<context id="RollFedMedia">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/2.html#RollFedMedia" />
 	</context>
-	<context id="/RunLengthDecode">
+	<context id="RunLengthDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthDecode" />
 	</context>
-	<context id="/RunLengthEncode">
+	<context id="RunLengthEncode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#RunLengthEncode" />
 	</context>
-	<context id="/SeparationColorNames">
+	<context id="SeparationColorNames">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#SeparationColorNames" />
 	</context>
-	<context id="/SeparationOrder">
+	<context id="SeparationOrder">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#SeparationOrder" />
 	</context>
-	<context id="/Separations">
+	<context id="Separations">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#Separations" />
 	</context>
-	<context id="/ShadingType">
+	<context id="ShadingType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#ShadingType" />
 	</context>
-	<context id="/StrokeWidth">
+	<context id="StrokeWidth">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#StrokeWidth" />
 	</context>
-	<context id="/SubFileDecode">
+	<context id="SubFileDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#SubFileDecode" />
 	</context>
-	<context id="/Symbol">
+	<context id="Symbol">
 		<topic label="Standard font" href="html/Reference/E/4.html" />
 	</context>
-	<context id="/Times-Roman">
+	<context id="Times-Roman">
 		<topic label="Standard font" href="html/Reference/E/1.html#Times-Roman" />
 	</context>
-	<context id="/Times-Bold">
+	<context id="Times-Bold">
 		<topic label="Standard font" href="html/Reference/E/1.html#Times-Bold" />
 	</context>
-	<context id="/Times-BoldItalic">
+	<context id="Times-BoldItalic">
 		<topic label="Standard font" href="html/Reference/E/1.html#Times-BoldItalic" />
 	</context>
-	<context id="/Times-Italic">
+	<context id="Times-Italic">
 		<topic label="Standard font" href="html/Reference/E/1.html#Times-Italic" />
 	</context>
-	<context id="/TrapParams">
+	<context id="TrapParams">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#TrapParams" />
 	</context>
-	<context id="/Trapping">
+	<context id="Trapping">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#Trapping" />
 	</context>
-	<context id="/TrappingDetails">
+	<context id="TrappingDetails">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#TrappingDetails" />
 	</context>
-	<context id="/TrappingType">
+	<context id="TrappingType">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#TrappingType" />
 	</context>
-	<context id="/TraySwitch">
+	<context id="TraySwitch">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#TraySwitch" />
 	</context>
-	<context id="/Tumble">
+	<context id="Tumble">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#Tumble" />
 	</context>
-	<context id="/UndefineResource">
+	<context id="UndefineResource">
 		<topic label="Entry in a category implementation dictionary"
 			href="html/Reference/3/9/3.html#UndefineResource" />
 	</context>
-	<context id="/UniqueID">
+	<context id="UniqueID">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#UniqueID" />
 	</context>
-	<context id="/UseCIEColor">
+	<context id="UseCIEColor">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/5.html#UseCIEColor" />
 	</context>
-	<context id="/WeightVector">
+	<context id="WeightVector">
 		<topic label="Entry in a font dictionary (Type 1)" href="html/Reference/5/2/1.html#WeightVector" />
 	</context>
-	<context id="/Width">
+	<context id="Width">
 		<topic label="Entry in an image dictionary (Type 1)" href="html/Reference/4/10/5/1.html#Width" />
 	</context>
-	<context id="/WMode">
+	<context id="WMode">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#WMode" />
 	</context>
-	<context id="/XUID">
+	<context id="XUID">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#XUID" />
 		<topic label="Entry in a form dictionary (Type 1)" href="html/Reference/4/7/1.html#XUID" />
 	</context>

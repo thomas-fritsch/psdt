@@ -58,13 +58,13 @@ class DocumentationProviderTest {
 
 	@Test
 	def testLiteralName() {
-		val obj = createPSLiteralName => [name = "/BuildGlyph"]
+		val obj = createPSLiteralName => [name = "BuildGlyph"]
 		assertNotNull(obj.documentation)
 	}
 
 	@Test
 	def testLiteralName_notFound() {
-		val obj = createPSLiteralName => [name = "/Wrdlbrmpfd"]
+		val obj = createPSLiteralName => [name = "Wrdlbrmpfd"]
 		assertNull(obj.documentation)
 	}
 
