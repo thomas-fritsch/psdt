@@ -69,6 +69,12 @@ class DocumentationProviderTest {
 	}
 
 	@Test
+	def testImmediatelyEvaluatedNameName() {
+		val obj = createPSImmediatelyEvaluatedName => [name = "show"]
+		assertNotNull(obj.documentation)
+	}
+
+	@Test
 	def testKeyword() {
 		val obj = grammarAccess.findKeywords("[").head
 		assertNull(obj.documentation)

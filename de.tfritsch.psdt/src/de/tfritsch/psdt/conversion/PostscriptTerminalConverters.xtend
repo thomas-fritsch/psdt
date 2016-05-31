@@ -70,4 +70,12 @@ class PostscriptTerminalConverters extends AbstractDeclarativeValueConverterServ
 		literalIdValueConverter
 	}
 
+	@Inject
+	ImmediatelyEvaluatedIdValueConverter immediatelyEvaluatedIdValueConverter
+
+	@ValueConverter(rule="IMMEDIATELY_EVALUATED_ID")
+	def IValueConverter<String> getImmediatelyEvaluatedIdValueConverter() {
+		immediatelyEvaluatedIdValueConverter
+	}
+
 }

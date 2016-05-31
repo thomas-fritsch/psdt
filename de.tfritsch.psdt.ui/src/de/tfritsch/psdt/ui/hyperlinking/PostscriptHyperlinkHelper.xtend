@@ -27,6 +27,7 @@ import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor
 
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -42,6 +43,8 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 			PSExecutableName:
 				eObject.name
 			PSLiteralName:
+				eObject.name
+			PSImmediatelyEvaluatedName:
 				eObject.name
 			default:
 				null

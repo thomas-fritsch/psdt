@@ -14,35 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.tfritsch.psdt.documentation
+package de.tfritsch.psdt.conversion
 
-import de.tfritsch.psdt.postscript.PSExecutableName
-import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
-import de.tfritsch.psdt.postscript.PSLiteralName
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
-
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
+import org.eclipse.xtext.conversion.IValueConverter
+import org.eclipse.xtext.conversion.ValueConverterException
+import org.eclipse.xtext.nodemodel.INode
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
+class ImmediatelyEvaluatedIdValueConverter implements IValueConverter<String> {
 
-	def dispatch String getDocumentation(EObject o) {
-		return null
+	override toValue(String string, INode node) throws ValueConverterException {
+		if (!string.startsWith("//"))
+			throw new ValueConverterException("must begin with '//'", node, null)
+		return string.substring(2)
 	}
 
-	def dispatch String getDocumentation(PSExecutableName o) {
-		return o.name.documentationContent
-	}
-
-	def dispatch String getDocumentation(PSLiteralName o) {
-		return o.name.documentationContent
-	}
-
-	def dispatch String getDocumentation(PSImmediatelyEvaluatedName o) {
-		return o.name.documentationContent
+	override toString(String value) throws ValueConverterException {
+		return "//" + value
 	}
 
 }

@@ -95,6 +95,12 @@ class LabelProviderTest {
 	}
 
 	@Test
+	def void testImmediatelyEvaluatedName() {
+		val obj = createPSImmediatelyEvaluatedName => [name = "showpage"]
+		assertEquals("//showpage", obj.text)
+	}
+
+	@Test
 	def void testUnparsedData() {
 		val obj = createPSUnparsedData
 		assertEquals("Data", obj.text)

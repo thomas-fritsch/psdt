@@ -53,7 +53,7 @@ class HyperlinkHelperTest extends AbstractWorkbenchTestExtension {
 	}
 
 	@Test
-	def void testShow() throws Exception {
+	def void testExecutableName() throws Exception {
 		val resource = '''
 			(Hello) show
 		'''.parse.eResource as XtextResource
@@ -64,7 +64,7 @@ class HyperlinkHelperTest extends AbstractWorkbenchTestExtension {
 	}
 
 	@Test
-	def void testFontType() throws Exception {
+	def void testLiteralName() throws Exception {
 		val resource = '''
 			/FontType 3
 		'''.parse.eResource as XtextResource
@@ -77,5 +77,16 @@ class HyperlinkHelperTest extends AbstractWorkbenchTestExtension {
 		assertWebBrowser("/html/Reference/5/2/1.html#FontType")
 		hyperlinks.get(1).open
 		assertWebBrowser("/html/Reference/3/9/2.html#FontType")
+	}
+
+	@Test
+	def void testImmediatelyEvaluatedName() throws Exception {
+		val resource = '''
+			//show
+		'''.parse.eResource as XtextResource
+		val hyperlinks = resource.createHyperlinksByOffset(0, true)
+		assertEquals(#["Operator"], hyperlinks.map[hyperlinkText])
+		hyperlinks.get(0).open
+		assertWebBrowser("/html/Reference/8/2/s/show.html")
 	}
 }
