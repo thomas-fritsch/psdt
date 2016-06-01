@@ -117,6 +117,10 @@ class PostscriptLabelProvider extends DefaultEObjectLabelProvider {
 		"text.gif"
 	}
 
+	def image(PSImmediatelyEvaluatedName it) {
+		"text.gif"
+	}
+
 	def image(PSExecutableName it) {
 		"text.gif"
 	}
