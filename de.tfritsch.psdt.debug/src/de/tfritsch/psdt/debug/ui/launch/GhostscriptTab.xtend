@@ -17,6 +17,7 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
+import java.util.List
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -33,13 +34,13 @@ import org.eclipse.xtext.ui.IImageHelper
  */
 class GhostscriptTab extends AbstractLaunchConfigurationTab {
 
-	ILaunchConfigurationTab[] fBlocks
+	List<ILaunchConfigurationTab> fBlocks
 
 	@Inject IImageHelper fImageHelper
 
 	@Inject
 	new(GhostscriptInterpreterBlock block1, GhostscriptArgumentsBlock block2, GhostscriptWorkingDirectoryBlock block3) {
-		fBlocks = #[block1, block2, block3]
+		fBlocks = newArrayList(block1, block2, block3)
 	}
 
 	override String getName() {
@@ -51,48 +52,32 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override void createControl(Composite parent) {
-		val comp = new Composite(parent, SWT.NONE) => [
-			layout = new GridLayout(1, true)
-		]
-		for (block : fBlocks) {
-			block.createControl(comp)
-		}
+		val comp = new Composite(parent, SWT.NONE)
+		comp.layout = new GridLayout(1, true)
+		fBlocks.forEach[createControl(comp)]
 		control = comp
 	}
 
 	override void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
 		super.setLaunchConfigurationDialog(dialog)
-		for (block : fBlocks) {
-			block.setLaunchConfigurationDialog(dialog)
-		}
+		fBlocks.forEach[setLaunchConfigurationDialog(dialog)]
 	}
 
 	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
-		for (block : fBlocks) {
-			block.setDefaults(configuration)
-		}
+		fBlocks.forEach[setDefaults(configuration)]
 	}
 
 	override void initializeFrom(ILaunchConfiguration configuration) {
-		for (block : fBlocks) {
-			block.initializeFrom(configuration)
-		}
+		fBlocks.forEach[initializeFrom(configuration)]
 	}
 
 	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
-		for (block : fBlocks) {
-			block.performApply(configuration)
-		}
+		fBlocks.forEach[performApply(configuration)]
 	}
 
 	override boolean isValid(ILaunchConfiguration launchConfig) {
-		for (block : fBlocks) {
-			if (!block.isValid(launchConfig)) {
-				errorMessage = block.errorMessage
-				return false
-			}
-		}
-		errorMessage = null
-		return true
+		val block = fBlocks.findFirst[!isValid(launchConfig)]
+		errorMessage = block?.errorMessage
+		return block !== null
 	}
 }
