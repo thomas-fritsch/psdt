@@ -24,7 +24,11 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
+import org.eclipse.jface.text.BadLocationException
+import org.eclipse.jface.text.TextSelection
 import org.eclipse.ui.WorkbenchException
+import org.eclipse.xtext.ui.editor.XtextEditor
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -73,6 +77,13 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"
 		]
+	}
+
+	protected def void toogleBreakpoint(XtextEditor editor, int line) throws BadLocationException, CoreException {
+		val document = editor.document
+		val selection = new TextSelection(document, document.getLineOffset(line - 1), 0)
+		val toggleBreakpointsTarget = editor.getAdapter(IToggleBreakpointsTarget) as IToggleBreakpointsTarget
+		toggleBreakpointsTarget.toggleLineBreakpoints(editor, selection)
 	}
 
 }

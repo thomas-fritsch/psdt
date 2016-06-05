@@ -111,4 +111,19 @@ class DebugTest extends AbstractDebugTest {
 		waitFor[currentStackFrame != null]
 		assertCurrentToken(5, "showpage")
 	}
+
+	@Test
+	def void testBreakpoint() throws Exception {
+		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		waitFor[launches.length > 0]
+		waitFor[currentStackFrame != null]
+		waitFor[activeEditor instanceof XtextEditor]
+		assertTrue(currentStackFrame.suspended)
+		(activeEditor as XtextEditor).toogleBreakpoint(5)
+		waitFor[true]
+		currentStackFrame.resume
+		waitFor[currentStackFrame != null]
+		assertTrue(currentStackFrame.suspended)
+		assertCurrentToken(5, "showpage")
+	}
 }
