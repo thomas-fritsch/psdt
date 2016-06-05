@@ -126,4 +126,18 @@ class DebugTest extends AbstractDebugTest {
 		assertTrue(currentStackFrame.suspended)
 		assertCurrentToken(5, "showpage")
 	}
+
+	@Test
+	def void testRunToLine() throws Exception {
+		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		waitFor[launches.length > 0]
+		waitFor[currentStackFrame != null]
+		waitFor[activeEditor instanceof XtextEditor]
+		assertTrue(currentStackFrame.suspended)
+		(activeEditor as XtextEditor).runToLine(5, currentStackFrame)
+		waitFor[true]
+		waitFor[currentStackFrame != null]
+		assertTrue(currentStackFrame.suspended)
+		assertCurrentToken(5, "showpage")
+	}
 }

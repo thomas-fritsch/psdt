@@ -23,7 +23,9 @@ import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.core.model.ISuspendResume
 import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 import org.eclipse.jface.text.BadLocationException
 import org.eclipse.jface.text.TextSelection
@@ -86,4 +88,10 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 		toggleBreakpointsTarget.toggleLineBreakpoints(editor, selection)
 	}
 
+	protected def void runToLine(XtextEditor editor, int line, ISuspendResume target) throws BadLocationException, CoreException {
+		val document = editor.document
+		val selection = new TextSelection(document, document.getLineOffset(line - 1), 0)
+		val runToLineTarget = editor.getAdapter(IRunToLineTarget) as IRunToLineTarget
+		runToLineTarget.runToLine(editor, selection, target)
+	}
 }
