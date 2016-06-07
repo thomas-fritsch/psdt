@@ -20,7 +20,6 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.ILaunchManager
-import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.jface.text.BadLocationException
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
@@ -55,14 +54,6 @@ class DebugTest extends AbstractDebugTest {
 		super.createLaunchConfiguration(file) => [
 			breakOnFirstToken = true
 		]
-	}
-
-	private def <T> T getCurrent(Class<T> adapterType) {
-		return debugContext?.getAdapter(adapterType) as T
-	}
-
-	private def IStackFrame getCurrentStackFrame() {
-		return getCurrent(IStackFrame)
 	}
 
 	private def void assertCurrentToken(int expectedLineNumber, String expectedToken) throws DebugException, BadLocationException {

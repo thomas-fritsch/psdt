@@ -23,6 +23,7 @@ import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.ISuspendResume
 import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.debug.ui.actions.IRunToLineTarget
@@ -31,6 +32,8 @@ import org.eclipse.jface.text.BadLocationException
 import org.eclipse.jface.text.TextSelection
 import org.eclipse.ui.WorkbenchException
 import org.eclipse.xtext.ui.editor.XtextEditor
+
+import static org.eclipse.debug.ui.DebugUITools.*
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -79,6 +82,14 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"
 		]
+	}
+
+	private def <T> T getCurrent(Class<T> adapterType) {
+		return debugContext?.getAdapter(adapterType) as T
+	}
+
+	protected def IStackFrame getCurrentStackFrame() {
+		return getCurrent(IStackFrame)
 	}
 
 	protected def void toogleBreakpoint(XtextEditor editor, int line) throws BadLocationException, CoreException {
