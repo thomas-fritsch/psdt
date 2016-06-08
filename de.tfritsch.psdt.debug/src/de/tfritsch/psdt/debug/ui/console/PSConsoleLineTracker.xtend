@@ -78,7 +78,7 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 		if (matcher.matches && preferenceStore.messageBoxOnPrompt) {
 			Display.^default.syncExec [
 				val shell = workbench.activeWorkbenchWindow.shell
-				val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.SYSTEM_MODAL))
+				val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.PRIMARY_MODAL))
 				box.text = debugModelPresentation.getText(console.process.launch)
 				box.message = text
 				box.open
