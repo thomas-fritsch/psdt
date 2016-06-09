@@ -16,11 +16,12 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.ui.breakpoints
 
+import com.google.inject.Inject
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.breakpoints.PSLineBreakpoint
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.debug.core.DebugPlugin
+import org.eclipse.debug.core.IBreakpointManager
 import org.eclipse.debug.core.model.ILineBreakpoint
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 import org.eclipse.jface.text.ITextSelection
@@ -33,7 +34,7 @@ import org.eclipse.ui.texteditor.ITextEditor
  */
 class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 
-	val breakpointManager = DebugPlugin.^default.breakpointManager
+	@Inject IBreakpointManager breakpointManager
 
 	override void toggleLineBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor

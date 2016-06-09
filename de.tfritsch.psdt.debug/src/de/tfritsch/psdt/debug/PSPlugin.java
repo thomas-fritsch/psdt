@@ -60,9 +60,13 @@ public class PSPlugin extends AbstractUIPlugin {
 		return INSTANCE;
 	}
 
-        // TODO use an ExecutableExtensionFactory in plugin.xml instead of this hack
-	public static Injector getInjector() {
-	    return PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT);
+	private Injector injector;
+	
+	public synchronized Injector getInjector() {
+		if (injector == null) {
+			injector = PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT).createChildInjector(new PSModule());
+		}
+		return injector;
 	}
 
 	public static CoreException toCoreException(Exception e) {

@@ -9,6 +9,6 @@ class PSExecutableExtensionFactory extends AbstractGuiceAwareExecutableExtension
 	}
 
 	override protected getInjector() {
-		return PSPlugin.injector
+		return PSPlugin.^default.injector
 	}
 }
