@@ -52,10 +52,6 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	@Inject IWorkbench workbench
 	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
 
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
-
 	override void launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {
 			val element = selection.firstElement

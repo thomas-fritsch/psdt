@@ -56,10 +56,6 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      */
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
-
 	@Inject
 	extension DebugExtensions
 

@@ -20,6 +20,7 @@ import com.google.inject.Inject
 import com.google.inject.Provider
 import de.tfritsch.psdt.debug.PSPlugin
 import java.util.regex.Pattern
+import org.eclipse.debug.ui.DebugUITools
 import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.debug.ui.console.IConsoleLineTracker
@@ -33,7 +34,6 @@ import org.eclipse.ui.IWorkbench
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 import static extension java.util.regex.Pattern.*
-import org.eclipse.debug.ui.DebugUITools
 
 /**
  * Matches plugin.xml
@@ -48,10 +48,6 @@ class PSConsoleLineTracker implements IConsoleLineTracker {
 	@Inject IWorkbench workbench
 	@Inject Provider<Hyperlink> hyperlinkProvider
 	IDebugModelPresentation debugModelPresentation
-
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
 
 	override init(IConsole console) {
 		this.console = console

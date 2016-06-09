@@ -17,7 +17,6 @@
 package de.tfritsch.psdt.debug.ui.presentation
 
 import com.google.inject.Inject
-import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSVariable
 import java.util.Map
 import org.eclipse.core.filesystem.IFileStore
@@ -53,10 +52,6 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 
 	@Inject
 	LanguageInfo languageInfo
-
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
 
 	override void setAttribute(String key, Object value) {
 		attributes.put(key, value)

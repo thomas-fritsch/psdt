@@ -17,7 +17,6 @@
 package de.tfritsch.psdt.debug.ui.breakpoints
 
 import com.google.inject.Inject
-import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.runtime.IAdapterFactory
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
@@ -31,10 +30,6 @@ class PSAdapterFactory implements IAdapterFactory {
 	@Inject PSToggleBreakpointsTarget fToggleBreakpointsTarget
 
 	@Inject PSRunToLineTarget fRunToLineTarget
-
-	new() {
-		PSPlugin.injector.injectMembers(this) // TODO remove this hack
-	}
 
 	@SuppressWarnings("rawtypes")
 	override Object getAdapter(Object adaptableObject, Class adapterType) {
