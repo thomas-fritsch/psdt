@@ -64,7 +64,7 @@ public class PSPlugin extends AbstractUIPlugin {
 	
 	public synchronized Injector getInjector() {
 		if (injector == null) {
-			injector = PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT).createChildInjector(new PSModule());
+			injector = PostscriptActivator.getInstance().getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT).createChildInjector(new PSModule(this));
 		}
 		return injector;
 	}

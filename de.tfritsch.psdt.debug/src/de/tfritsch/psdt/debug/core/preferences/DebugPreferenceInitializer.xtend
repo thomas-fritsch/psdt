@@ -16,20 +16,23 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.preferences
 
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.IPSConstants
-import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer
+import org.eclipse.jface.preference.IPreferenceStore
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 class DebugPreferenceInitializer extends AbstractPreferenceInitializer {
-	
+
+	@Inject @Named("debug") IPreferenceStore store
+
 	override initializeDefaultPreferences() {
-		val store = PSPlugin.^default.preferenceStore
 		store.setDefault(IPSConstants.PREF_SHOW_SYSTEMDICT, false)
 		store.setDefault(IPSConstants.PREF_SHOW_GLOBALDICT, true)
 		store.setDefault(IPSConstants.PREF_SHOW_USERDICT, true)
 	}
-	
+
 }

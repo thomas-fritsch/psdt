@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.launch
 
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
@@ -30,6 +31,7 @@ import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate
+import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.osgi.util.NLS
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
@@ -56,8 +58,8 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      */
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
-	@Inject
-	extension DebugExtensions
+	@Inject extension DebugExtensions
+	@Inject @Named("debug") IPreferenceStore preferenceStore
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if (monitor.canceled) {
@@ -119,7 +121,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	}
 
 	def protected String verifyInterpreter() throws CoreException {
-		val exe = PSPlugin.^default.preferenceStore.interpreter
+		val exe = preferenceStore.interpreter
 		if (exe.nullOrEmpty) {
 			throw "Interpreter not specified".toCoreException
 		}

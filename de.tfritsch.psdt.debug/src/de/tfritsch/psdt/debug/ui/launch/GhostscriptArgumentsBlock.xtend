@@ -17,6 +17,7 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.PSPlugin
 import java.net.MalformedURLException
 import java.net.URL
@@ -47,7 +48,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
 class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
 	@Inject IWorkbenchBrowserSupport browserSupport
-	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
+	@Inject @Named("debug") IPreferenceStore preferenceStore
 
 	Text fArgumentsText
 	Link fLink

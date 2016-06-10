@@ -121,21 +121,21 @@
    <extension point="org.eclipse.ui.preferencePages">
       <page name="Ghostscript"
             id="de.tfritsch.psdt.debug.ghostscriptPreferencePage"
-            class="de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage"
             category="de.tfritsch.psdt.Postscript">
       </page>
       <page name="Debug"
             id="de.tfritsch.psdt.debug.debugPreferencePage"
-            class="de.tfritsch.psdt.debug.ui.preferences.DebugPreferencePage"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.preferences.DebugPreferencePage"
             category="de.tfritsch.psdt.Postscript">
       </page>
    </extension>
    <extension point="org.eclipse.core.runtime.preferences">
       <initializer
-            class="de.tfritsch.psdt.debug.core.preferences.GhostscriptPreferenceInitializer">
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.preferences.GhostscriptPreferenceInitializer">
       </initializer>
       <initializer
-            class="de.tfritsch.psdt.debug.core.preferences.DebugPreferenceInitializer">
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.preferences.DebugPreferenceInitializer">
       </initializer>
    </extension>
    <extension point="org.eclipse.ui.editorActions">

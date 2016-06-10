@@ -16,8 +16,9 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.ui.preferences
 
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.IPSConstants
-import de.tfritsch.psdt.debug.PSPlugin
 import org.eclipse.jface.preference.BooleanFieldEditor
 import org.eclipse.jface.preference.FieldEditorPreferencePage
 import org.eclipse.jface.preference.IPreferenceStore
@@ -39,6 +40,11 @@ class DebugPreferencePage extends FieldEditorPreferencePage implements IWorkbenc
 		super(GRID)
 	}
 
+	@Inject
+	override setPreferenceStore(@Named("debug") IPreferenceStore store) {
+		super.setPreferenceStore(store)
+	}
+
 	override protected createFieldEditors() {
 		addField(
 			new BooleanFieldEditor(IPSConstants.PREF_SHOW_SYSTEMDICT,
@@ -48,10 +54,6 @@ class DebugPreferencePage extends FieldEditorPreferencePage implements IWorkbenc
 	}
 
 	override init(IWorkbench workbench) {
-	}
-
-	override protected IPreferenceStore doGetPreferenceStore() {
-		return PSPlugin.^default.preferenceStore
 	}
 
 }

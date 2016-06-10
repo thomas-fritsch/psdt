@@ -1,18 +1,21 @@
 package de.tfritsch.psdt.debug.core.preferences
 
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.IPSConstants
-import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer
+import org.eclipse.jface.preference.IPreferenceStore
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 
+	@Inject @Named("debug") IPreferenceStore store
+
 	override initializeDefaultPreferences() {
-		val store = PSPlugin.^default.preferenceStore
 		val file = switch (Platform.getOS) {
 			case Platform.OS_WIN32: {
 				findGhostscriptExeOnWindows

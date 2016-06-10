@@ -16,6 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.ui.preferences
 
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
@@ -51,6 +53,11 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 		super(GRID)
 	}
 
+	@Inject
+	override setPreferenceStore(@Named("debug") IPreferenceStore store) {
+		super.setPreferenceStore(store)
+	}
+
 	override protected void createFieldEditors() {
 		addField(
 			new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
@@ -72,10 +79,6 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 	}
 
 	override void init(IWorkbench workbench) {
-	}
-
-	override protected IPreferenceStore doGetPreferenceStore() {
-		return PSPlugin.^default.preferenceStore
 	}
 
 }

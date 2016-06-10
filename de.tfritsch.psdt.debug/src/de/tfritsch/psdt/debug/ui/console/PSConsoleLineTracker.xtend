@@ -18,7 +18,7 @@ package de.tfritsch.psdt.debug.ui.console
 
 import com.google.inject.Inject
 import com.google.inject.Provider
-import de.tfritsch.psdt.debug.PSPlugin
+import com.google.inject.name.Named
 import java.util.regex.Pattern
 import org.eclipse.debug.ui.DebugUITools
 import org.eclipse.debug.ui.IDebugModelPresentation
@@ -44,7 +44,7 @@ import static extension java.util.regex.Pattern.*
 class PSConsoleLineTracker implements IConsoleLineTracker {
 
 	IConsole console
-	IPreferenceStore preferenceStore = PSPlugin.^default.preferenceStore
+	@Inject @Named("debug") IPreferenceStore preferenceStore
 	@Inject IWorkbench workbench
 	@Inject Provider<Hyperlink> hyperlinkProvider
 	IDebugModelPresentation debugModelPresentation
