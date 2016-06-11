@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.core.launch
 
 import com.google.inject.Provider
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
@@ -60,7 +60,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
 	@Inject extension DebugExtensions
-	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject Provider<PSDebugTarget> debugTargetProvider
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {

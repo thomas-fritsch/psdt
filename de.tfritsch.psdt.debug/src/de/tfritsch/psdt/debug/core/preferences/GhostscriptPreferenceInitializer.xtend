@@ -1,7 +1,7 @@
 package de.tfritsch.psdt.debug.core.preferences
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
 import java.io.File
 import org.eclipse.core.runtime.Platform
@@ -13,7 +13,7 @@ import org.eclipse.jface.preference.IPreferenceStore
  */
 class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 
-	@Inject @Named("debug") IPreferenceStore store
+	@Inject @Debug IPreferenceStore store
 
 	override initializeDefaultPreferences() {
 		val file = switch (Platform.getOS) {

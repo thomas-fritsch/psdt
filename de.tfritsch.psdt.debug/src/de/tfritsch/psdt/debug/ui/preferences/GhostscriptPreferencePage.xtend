@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.ui.preferences
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
@@ -54,7 +54,7 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 	}
 
 	@Inject
-	override setPreferenceStore(@Named("debug") IPreferenceStore store) {
+	override setPreferenceStore(@Debug IPreferenceStore store) {
 		super.setPreferenceStore(store)
 	}
 

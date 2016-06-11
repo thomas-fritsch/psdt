@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
@@ -50,7 +50,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 
 	@Inject extension ILaunchManager
 	@Inject IWorkbench workbench
-	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject @Debug IPreferenceStore preferenceStore
 
 	override void launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {

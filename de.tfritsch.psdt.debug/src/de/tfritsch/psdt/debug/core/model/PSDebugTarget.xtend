@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.core.model
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSSourceMapping
 import java.util.List
@@ -56,7 +56,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		STEPPING_RETURN
 	}
 
-	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IBreakpointManager breakpointManager
 
 	/**

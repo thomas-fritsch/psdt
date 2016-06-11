@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.ui.preferences
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
 import org.eclipse.jface.preference.BooleanFieldEditor
 import org.eclipse.jface.preference.FieldEditorPreferencePage
@@ -41,7 +41,7 @@ class DebugPreferencePage extends FieldEditorPreferencePage implements IWorkbenc
 	}
 
 	@Inject
-	override setPreferenceStore(@Named("debug") IPreferenceStore store) {
+	override setPreferenceStore(@Debug IPreferenceStore store) {
 		super.setPreferenceStore(store)
 	}
 

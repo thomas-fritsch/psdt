@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.ui.preferences.GhostscriptPreferencePage
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
@@ -41,7 +41,7 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 
 	Text fInterpreterText
 	Button fInterpreterButton
-	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject @Debug IPreferenceStore preferenceStore
 
 	override void createControl(Composite parent) {
 		val group = new Group(parent, SWT.NONE) => [

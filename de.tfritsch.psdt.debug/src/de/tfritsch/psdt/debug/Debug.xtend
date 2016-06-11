@@ -16,27 +16,18 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug
 
-import com.google.inject.AbstractModule
-import org.eclipse.debug.core.DebugPlugin
-import org.eclipse.debug.core.IBreakpointManager
-import org.eclipse.debug.core.ILaunchManager
-import org.eclipse.jface.preference.IPreferenceStore
-import org.eclipse.ui.plugin.AbstractUIPlugin
+import com.google.inject.BindingAnnotation
+import java.lang.annotation.ElementType
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
+import java.lang.annotation.Target
 
 /**
+ * Binding annotation. Can be used together with @Inject.
  * @author Thomas Fritsch - initial API and implementation
  */
-class PSModule extends AbstractModule {
-
-	AbstractUIPlugin plugin
-
-	new(AbstractUIPlugin plugin) {
-		this.plugin = plugin
-	}
-
-	override protected configure() {
-		bind(IBreakpointManager).toInstance(DebugPlugin.^default.breakpointManager)
-		bind(ILaunchManager).toInstance(DebugPlugin.^default.launchManager)
-		bind(IPreferenceStore).annotatedWith(Debug).toInstance(plugin.preferenceStore)
-	}
+@Retention(RetentionPolicy.RUNTIME)
+@Target(#[ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD])
+@BindingAnnotation
+annotation Debug {
 }

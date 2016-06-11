@@ -17,7 +17,7 @@
 package de.tfritsch.psdt.debug.core.preferences
 
 import com.google.inject.Inject
-import com.google.inject.name.Named
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer
 import org.eclipse.jface.preference.IPreferenceStore
@@ -27,7 +27,7 @@ import org.eclipse.jface.preference.IPreferenceStore
  */
 class DebugPreferenceInitializer extends AbstractPreferenceInitializer {
 
-	@Inject @Named("debug") IPreferenceStore store
+	@Inject @Debug IPreferenceStore store
 
 	override initializeDefaultPreferences() {
 		store.setDefault(IPSConstants.PREF_SHOW_SYSTEMDICT, false)
