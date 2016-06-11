@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.launch
 
+import com.google.inject.Provider
 import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
@@ -60,6 +61,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 
 	@Inject extension DebugExtensions
 	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject Provider<PSDebugTarget> debugTargetProvider
 
 	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if (monitor.canceled) {
@@ -103,7 +105,8 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			})
 		if (mode == ILaunchManager.DEBUG_MODE) {
 			instrumentedFile.deleteOnTerminate(process)
-			val target = new PSDebugTarget(process, sourceMapping)
+			val target = debugTargetProvider.get
+			target.init(process, sourceMapping)
 			launch.addDebugTarget(target)
 		}
 	}

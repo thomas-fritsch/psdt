@@ -16,6 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
+import com.google.inject.Inject
+import com.google.inject.name.Named
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSSourceMapping
 import java.util.List
@@ -25,6 +27,7 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
+import org.eclipse.debug.core.IBreakpointManager
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IDebugTarget
@@ -33,6 +36,7 @@ import org.eclipse.debug.core.model.IMemoryBlock
 import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.IThread
 import org.eclipse.debug.core.model.IVariable
+import org.eclipse.jface.preference.IPreferenceStore
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -51,6 +55,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		STEPPING_OVER,
 		STEPPING_RETURN
 	}
+
+	@Inject @Named("debug") IPreferenceStore preferenceStore
+	@Inject IBreakpointManager breakpointManager
 
 	/**
 	 * The ghostscript process
@@ -83,19 +90,22 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	extension ChangeMarker = new ChangeMarker
 
+	new() {
+		super(null)
+	}
+
 	/**
-	 * 
+	 * Initialize (needed before {@link ILaunch#addDebugTarget})
 	 * @param process
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	new(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
-		super(null)
+	def void init(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
 		this.process = process
 		sourceName = launch.launchConfiguration.program.performStringSubstitution
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
 		this.sourceMapping = sourceMapping
-		DebugPlugin.^default.breakpointManager.addBreakpointListener(this)
+		breakpointManager.addBreakpointListener(this)
 		DebugPlugin.^default.addDebugEventListener [ events |
 			for (event : events) {
 				if (event.source === process && event.kind === DebugEvent.TERMINATE) {
@@ -109,7 +119,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	def private void installDeferredBreakpoints() {
-		val breakpoints = DebugPlugin.^default.breakpointManager.getBreakpoints(modelIdentifier)
+		val breakpoints = breakpointManager.getBreakpoints(modelIdentifier)
 		for (breakpoint : breakpoints) {
 			breakpointAdded(breakpoint)
 		}
@@ -133,8 +143,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	override void breakReceived(int depth, int ref, String value) {
 		currentTokenIndex = ref
 		debug("       " + currentTokenIndex) //$NON-NLS-1$
-		val store = PSPlugin.^default.preferenceStore
-		PSDebugCommander.hideDicts(!store.showSystemdict, !store.showGlobaldict, !store.showUserdict)
+		PSDebugCommander.hideDicts(!preferenceStore.showSystemdict, !preferenceStore.showGlobaldict,
+			!preferenceStore.showUserdict)
 		try {
 			switch (state) {
 				case CREATED: {
@@ -172,12 +182,12 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	 */
 	def private void onTerminated() {
 		state = State.TERMINATED
-		DebugPlugin.^default.breakpointManager.removeBreakpointListener(this)
+		breakpointManager.removeBreakpointListener(this)
 		fireTerminateEvent
 	}
 
 	def IBreakpoint[] getBreakpoints() {
-		return DebugPlugin.^default.breakpointManager.breakpoints.filter[supportsBreakpoint]
+		breakpointManager.breakpoints.filter[supportsBreakpoint]
 	}
 
 	def int getLineNumber() {
