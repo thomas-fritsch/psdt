@@ -17,9 +17,13 @@
 package de.tfritsch.psdt.debug
 
 import com.google.inject.AbstractModule
+import de.tfritsch.psdt.debug.ui.breakpoints.PSRunToLineTarget
+import de.tfritsch.psdt.debug.ui.breakpoints.PSToggleBreakpointsTarget
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.IBreakpointManager
 import org.eclipse.debug.core.ILaunchManager
+import org.eclipse.debug.ui.actions.IRunToLineTarget
+import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.ui.plugin.AbstractUIPlugin
 
@@ -38,5 +42,7 @@ class PSModule extends AbstractModule {
 		bind(IBreakpointManager).toInstance(DebugPlugin.^default.breakpointManager)
 		bind(ILaunchManager).toInstance(DebugPlugin.^default.launchManager)
 		bind(IPreferenceStore).annotatedWith(Debug).toInstance(plugin.preferenceStore)
+		bind(IToggleBreakpointsTarget).to(PSToggleBreakpointsTarget)
+		bind(IRunToLineTarget).to(PSRunToLineTarget)
 	}
 }

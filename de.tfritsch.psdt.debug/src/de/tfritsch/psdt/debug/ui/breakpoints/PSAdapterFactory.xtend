@@ -27,9 +27,9 @@ import org.eclipse.ui.texteditor.ITextEditor
  */
 class PSAdapterFactory implements IAdapterFactory {
 
-	@Inject PSToggleBreakpointsTarget fToggleBreakpointsTarget
+	@Inject IToggleBreakpointsTarget fToggleBreakpointsTarget
 
-	@Inject PSRunToLineTarget fRunToLineTarget
+	@Inject IRunToLineTarget fRunToLineTarget
 
 	@SuppressWarnings("rawtypes")
 	override Object getAdapter(Object adaptableObject, Class adapterType) {
