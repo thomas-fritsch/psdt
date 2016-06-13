@@ -14,24 +14,39 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.tfritsch.psdt.tests
+package de.tfritsch.psdt.tests.debug
 
-import org.eclipse.ui.IPageLayout
-import org.eclipse.ui.console.IConsoleConstants
+import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
+import org.eclipse.jface.preference.PreferenceDialog
 import org.junit.Test
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class PerspectiveTest extends AbstractWorkbenchTestExtension {
-	
+class PreferencePageTest extends AbstractWorkbenchTestExtension {
+
+	private def void openPreferencePageAndOk(String pageId) {
+		val dialog = new PreferenceDialog(workbenchWindow.shell, workbench.preferenceManager) {
+			override open() {
+				workbench.display.asyncExec [
+					waitFor[shell.isVisible]
+					okPressed
+				]
+				return super.open
+			}
+		}
+		dialog.selectedNode = pageId
+		dialog.create
+		dialog.open
+	}
+
 	@Test
-	def void testPostscriptPerspective() throws Exception {
-		showPerspective("de.tfritsch.psdt.ui.perspective")
-		assertEquals("PostScript", activePage.perspective.label)
-		assertNotNull(activePage.findViewReference(IPageLayout.ID_PROJECT_EXPLORER))
-		assertNotNull(activePage.findViewReference(IPageLayout.ID_PROBLEM_VIEW))
-		assertNotNull(activePage.findViewReference(IConsoleConstants.ID_CONSOLE_VIEW))
-		assertNotNull(activePage.findViewReference(IPageLayout.ID_OUTLINE))
+	def void testDebugPreferencePage() {
+		openPreferencePageAndOk("de.tfritsch.psdt.debug.debugPreferencePage")
+	}
+
+	@Test
+	def void testGhostscriptPreferencePage() {
+		openPreferencePageAndOk("de.tfritsch.psdt.debug.ghostscriptPreferencePage")
 	}
 }
