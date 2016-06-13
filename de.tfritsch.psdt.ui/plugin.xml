@@ -13,6 +13,7 @@
             icon="icons/postscript.png"
             id="de.tfritsch.psdt.Postscript"
             name="Postscript Editor">
+            <contentTypeBinding contentTypeId="de.tfritsch.psdt.postscript" />
         </editor>
     </extension>
     <extension
