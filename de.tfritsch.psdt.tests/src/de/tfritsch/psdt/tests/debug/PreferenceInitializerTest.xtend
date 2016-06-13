@@ -16,20 +16,28 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
+import com.google.inject.Inject
+import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
-import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import org.eclipse.core.runtime.Platform
+import org.eclipse.jface.preference.IPreferenceStore
+import org.eclipse.xtext.junit4.InjectWith
+import org.eclipse.xtext.junit4.XtextRunner
 import org.junit.Test
+import org.junit.runner.RunWith
 
 import static org.junit.Assert.*
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
+@RunWith(XtextRunner)
+@InjectWith(PostscriptDebugInjectorProvider)
 class PreferenceInitializerTest {
 
-	val store = PSPlugin.^default.preferenceStore
+	@Inject @Debug
+	IPreferenceStore store
 
 	@Test
 	def void testDebugDefaults() {
