@@ -25,12 +25,10 @@ import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
-import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
-import de.tfritsch.psdt.ui.editor.PostscriptDocumentProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 import de.tfritsch.psdt.ui.hover.PostscriptHoverProvider;
 import de.tfritsch.psdt.ui.hyperlinking.PostscriptHyperlinkHelper;
@@ -72,10 +70,6 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public Class<? extends IEObjectHoverProvider> bindIEObjectHoverProvider() {
 		return PostscriptHoverProvider.class;
-	}
-
-	public Class<? extends XtextDocumentProvider> bindXtextDocumentProvider() {
-		return PostscriptDocumentProvider.class;
 	}
 
 	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
