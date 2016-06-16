@@ -32,14 +32,14 @@ import org.junit.runner.RunWith
 @InjectWith(PostscriptUiInjectorProvider)
 class ContentAssistTest extends AbstractContentAssistTest {
 
-	@Test
-	def void testLiteralName() throws Exception {
-		newBuilder.append("/Time").assertText(
-		    "/timeout",
-			"/Times-Roman",
-			"/Times-Bold",
-			"/Times-Italic",
-			"/Times-BoldItalic",
+    @Test
+    def void testLiteralName() throws Exception {
+        newBuilder.append("/sh").assertText(
+			"/ShadingType",
+			"/shareddict",
+			"/SharedFontDirectory",
+			"/show",
+			"/showpage",
 			"{",
 			"[",
 			"<<",
@@ -51,31 +51,15 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"loop - Template for a loop statement",
 			"setpagedevice - Template for a setpagedevice statement",
 			"stopped - Template for a try/catch statement"
-		)
-	}
-
-    @Test
-    def void testLiteralName_2() throws Exception {
-        newBuilder.append("/sho").assertText(
-            "/show",
-            "/showpage",
-            "{",
-            "[",
-            "<<",
-            "(abc)",
-            "<616263>",
-            "<~@:E^~>",
-            "def - Template for a definition",
-            "imagemask - Template for an imagemask statement",
-            "loop - Template for a loop statement",
-            "setpagedevice - Template for a setpagedevice statement",
-            "stopped - Template for a try/catch statement"
         )
     }
 
 	@Test
 	def void testExecutableName() throws Exception {
-		newBuilder.append("sho").assertText(
+		newBuilder.append("sh").assertText(
+			"ShadingType",
+			"shareddict",
+			"SharedFontDirectory",
 			"show",
 			"showpage",
 			"{",
@@ -91,28 +75,6 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"stopped - Template for a try/catch statement"
 		)
 	}
-
-    @Test
-    def void testExecutableName_2() throws Exception {
-        newBuilder.append("Time").assertText(
-            "timeout",
-            "Times-Roman",
-            "Times-Bold",
-            "Times-Italic",
-            "Times-BoldItalic",
-            "{",
-            "[",
-            "<<",
-            "(abc)",
-            "<616263>",
-            "<~@:E^~>",
-            "def - Template for a definition",
-            "imagemask - Template for an imagemask statement",
-            "loop - Template for a loop statement",
-            "setpagedevice - Template for a setpagedevice statement",
-            "stopped - Template for a try/catch statement"
-        )
-    }
 
     @Test
 	def void testImmediatelyEvaluatedName() throws Exception {
