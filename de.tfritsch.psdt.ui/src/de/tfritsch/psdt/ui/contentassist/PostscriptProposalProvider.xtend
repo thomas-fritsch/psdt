@@ -39,7 +39,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		extension ICompletionProposalAcceptor acceptor) {
 		super.complete_PSExecutableName(model, ruleCall, context, acceptor)
 		val image = createPSExecutableName.image
-		executableNames.forEach[createCompletionProposal(it, image, context).accept]
+		executableNames.forEach[createCompletionProposal(it + " - Executable Name", image, context).accept]
 	}
 
 	override complete_PSLiteralName(EObject model, RuleCall ruleCall, ContentAssistContext context,
@@ -50,7 +50,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 			// in order not to overload the proposal list.
 			return;
 		val image = createPSLiteralName.image
-		literalNames.map["/" + it].forEach[createCompletionProposal(it, image, context).accept]
+		literalNames.map["/" + it].forEach[createCompletionProposal(it + " - Literal Name", image, context).accept]
 	}
 
 	override complete_PSString(EObject model, RuleCall ruleCall, ContentAssistContext context,
