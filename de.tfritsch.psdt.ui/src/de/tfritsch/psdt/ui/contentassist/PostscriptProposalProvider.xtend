@@ -53,6 +53,17 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 		allNames.map["/" + it].forEach[createCompletionProposal(it + " - Literal Name", image, context).accept]
 	}
 
+	override complete_PSImmediatelyEvaluatedName(EObject model, RuleCall ruleCall, ContentAssistContext context,
+		extension ICompletionProposalAcceptor acceptor) {
+		super.complete_PSImmediatelyEvaluatedName(model, ruleCall, context, acceptor)
+		if (context.prefix.length < 2)
+			// Don't propose literal names (e.g. //add), if '//' is not yet entered,
+			// in order not to overload the proposal list.
+			return;
+		val image = createPSImmediatelyEvaluatedName.image
+		allNames.map["//" + it].forEach[createCompletionProposal(it + " - Immediately Evaluated Name", image, context).accept]
+	}
+
 	override complete_PSString(EObject model, RuleCall ruleCall, ContentAssistContext context,
 		extension ICompletionProposalAcceptor acceptor) {
 		super.complete_PSString(model, ruleCall, context, acceptor)

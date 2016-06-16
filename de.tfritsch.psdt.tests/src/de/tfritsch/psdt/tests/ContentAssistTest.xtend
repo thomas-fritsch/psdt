@@ -114,4 +114,26 @@ class ContentAssistTest extends AbstractContentAssistTest {
         )
     }
 
+    @Test
+	def void testImmediatelyEvaluatedName() throws Exception {
+		newBuilder.append("//sh").assertText(
+			"//ShadingType",
+			"//shareddict",
+			"//SharedFontDirectory",
+			"//show",
+			"//showpage",
+			"{",
+			"[",
+			"<<",
+			"(abc)",
+			"<616263>",
+			"<~@:E^~>",
+			"def - Template for a definition",
+			"imagemask - Template for an imagemask statement",
+			"loop - Template for a loop statement",
+			"setpagedevice - Template for a setpagedevice statement",
+			"stopped - Template for a try/catch statement"
+        )
+    }
+
 }
