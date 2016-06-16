@@ -26,8 +26,7 @@ import java.util.Scanner
 @Singleton
 class NameRepository {
 
-	List<String> executableNames = "executable-names.txt".readNames
-	List<String> literalNames = "literal-names.txt".readNames
+	List<String> allNames = "all-names.txt".readNames
 
 	def private readNames(String fileName) {
 		val stream = ^class.getResourceAsStream(fileName)
@@ -37,11 +36,7 @@ class NameRepository {
 		names
 	}
 
-	def getExecutableNames() {
-		executableNames
-	}
-
-	def getLiteralNames() {
-		literalNames
+	def getAllNames() {
+		allNames
 	}
 }

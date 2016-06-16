@@ -35,6 +35,7 @@ class ContentAssistTest extends AbstractContentAssistTest {
 	@Test
 	def void testLiteralName() throws Exception {
 		newBuilder.append("/Time").assertText(
+		    "/timeout",
 			"/Times-Roman",
 			"/Times-Bold",
 			"/Times-Italic",
@@ -52,6 +53,25 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"stopped - Template for a try/catch statement"
 		)
 	}
+
+    @Test
+    def void testLiteralName_2() throws Exception {
+        newBuilder.append("/sho").assertText(
+            "/show",
+            "/showpage",
+            "{",
+            "[",
+            "<<",
+            "(abc)",
+            "<616263>",
+            "<~@:E^~>",
+            "def - Template for a definition",
+            "imagemask - Template for an imagemask statement",
+            "loop - Template for a loop statement",
+            "setpagedevice - Template for a setpagedevice statement",
+            "stopped - Template for a try/catch statement"
+        )
+    }
 
 	@Test
 	def void testExecutableName() throws Exception {
@@ -71,5 +91,27 @@ class ContentAssistTest extends AbstractContentAssistTest {
 			"stopped - Template for a try/catch statement"
 		)
 	}
+
+    @Test
+    def void testExecutableName_2() throws Exception {
+        newBuilder.append("Time").assertText(
+            "timeout",
+            "Times-Roman",
+            "Times-Bold",
+            "Times-Italic",
+            "Times-BoldItalic",
+            "{",
+            "[",
+            "<<",
+            "(abc)",
+            "<616263>",
+            "<~@:E^~>",
+            "def - Template for a definition",
+            "imagemask - Template for an imagemask statement",
+            "loop - Template for a loop statement",
+            "setpagedevice - Template for a setpagedevice statement",
+            "stopped - Template for a try/catch statement"
+        )
+    }
 
 }
