@@ -50,7 +50,7 @@ class PostscriptProposalProvider extends AbstractPostscriptProposalProvider {
 			// in order not to overload the proposal list.
 			return;
 		val image = createPSLiteralName.image
-		literalNames.forEach[createCompletionProposal(it, image, context).accept]
+		literalNames.map["/" + it].forEach[createCompletionProposal(it, image, context).accept]
 	}
 
 	override complete_PSString(EObject model, RuleCall ruleCall, ContentAssistContext context,
