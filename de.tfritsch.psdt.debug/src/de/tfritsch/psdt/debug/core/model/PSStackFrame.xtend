@@ -45,6 +45,16 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 		this.thread = thread
 	}
 
+	@SuppressWarnings("rawtypes")
+	override getAdapter(Class adapterType) {
+		switch (adapterType) {
+			case IThread:
+				thread
+			default:
+				super.getAdapter(adapterType)
+		}
+	}
+
 	def String getSourceName() {
 		return PSDebugTarget.sourceName
 	}

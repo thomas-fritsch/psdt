@@ -111,6 +111,7 @@ class DebugTest extends AbstractDebugTest {
 		waitFor[activeEditor instanceof XtextEditor]
 		assertTrue(currentStackFrame.suspended)
 		(activeEditor as XtextEditor).toogleBreakpoint(5)
+		assertEquals(1, currentThread.breakpoints.length)
 		waitFor[true]
 		currentStackFrame.resume
 		waitFor[currentStackFrame != null]
@@ -129,6 +130,7 @@ class DebugTest extends AbstractDebugTest {
 		waitFor[true]
 		waitFor[currentStackFrame != null]
 		assertTrue(currentStackFrame.suspended)
+		assertEquals(0, currentThread.breakpoints.length)
 		assertCurrentToken(5, "showpage")
 	}
 }

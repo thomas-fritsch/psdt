@@ -25,6 +25,7 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.ISuspendResume
+import org.eclipse.debug.core.model.IThread
 import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
@@ -90,6 +91,10 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
 	protected def IStackFrame getCurrentStackFrame() {
 		return getCurrent(IStackFrame)
+	}
+
+	protected def IThread getCurrentThread() {
+		return getCurrent(IThread)
 	}
 
 	protected def void toogleBreakpoint(XtextEditor editor, int line) throws BadLocationException, CoreException {
