@@ -58,6 +58,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IBreakpointManager breakpointManager
+    @Inject DebugPlugin debugPlugin
 
 	/**
 	 * The ghostscript process
@@ -106,11 +107,11 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
 		this.sourceMapping = sourceMapping
 		breakpointManager.addBreakpointListener(this)
-		DebugPlugin.^default.addDebugEventListener [ events |
+		debugPlugin.addDebugEventListener [ events |
 			for (event : events) {
 				if (event.source === process && event.kind === DebugEvent.TERMINATE) {
 					onTerminated
-					DebugPlugin.^default.removeDebugEventListener(self)
+					debugPlugin.removeDebugEventListener(self)
 				}
 			}
 		]

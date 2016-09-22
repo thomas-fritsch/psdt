@@ -39,6 +39,7 @@ class PSModule extends AbstractModule {
 	}
 
 	override protected configure() {
+	    bind(DebugPlugin).toInstance(DebugPlugin.^default)
 		bind(IBreakpointManager).toInstance(DebugPlugin.^default.breakpointManager)
 		bind(ILaunchManager).toInstance(DebugPlugin.^default.launchManager)
 		bind(IPreferenceStore).annotatedWith(Debug).toInstance(plugin.preferenceStore)
