@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Path
+import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
@@ -61,6 +62,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 
 	@Inject	IImageHelper fImageHelper
 	@Inject FileExtensionProvider fileExtensionProvider
+	@Inject extension IStringVariableManager
 
 	override String getName() {
 		return "Main"

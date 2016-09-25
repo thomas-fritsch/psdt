@@ -24,6 +24,7 @@ import java.util.List
 import org.eclipse.core.resources.IMarkerDelta
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.Path
+import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
@@ -38,7 +39,6 @@ import org.eclipse.debug.core.model.IThread
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.jface.preference.IPreferenceStore
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
 /**
@@ -58,7 +58,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IBreakpointManager breakpointManager
-    @Inject DebugPlugin debugPlugin
+	@Inject DebugPlugin debugPlugin
+	@Inject extension IStringVariableManager
 
 	/**
 	 * The ghostscript process

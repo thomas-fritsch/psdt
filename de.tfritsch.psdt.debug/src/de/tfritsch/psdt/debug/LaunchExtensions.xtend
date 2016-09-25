@@ -20,7 +20,6 @@ import java.io.File
 import java.text.DateFormat
 import java.util.Date
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunch
@@ -73,11 +72,6 @@ class LaunchExtensions {
 		else {
 			System.getenv.entrySet.map[key + "=" + value].sort.join("\n")
 		}
-	}
-
-	def static String performStringSubstitution(String expression) throws CoreException {
-		val stringVariableManager = VariablesPlugin.^default.stringVariableManager
-		return stringVariableManager.performStringSubstitution(expression)
 	}
 
 	def static void deleteOnTerminate(File file, ITerminate terminate) {

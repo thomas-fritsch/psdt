@@ -25,6 +25,7 @@ import org.eclipse.core.filesystem.EFS
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.ILaunchShortcut
@@ -49,6 +50,7 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
 class PSLaunchShortcut implements ILaunchShortcut {
 
 	@Inject extension ILaunchManager
+	@Inject extension IStringVariableManager
 	@Inject IWorkbench workbench
 	@Inject @Debug IPreferenceStore preferenceStore
 
