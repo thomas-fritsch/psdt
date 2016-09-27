@@ -21,6 +21,7 @@ import java.util.List
 import org.eclipse.help.IHelpResource
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtend.lib.annotations.ToString
 
 import static extension java.util.regex.Pattern.*
 import static extension org.eclipse.core.runtime.FileLocator.*
@@ -61,6 +62,7 @@ class PSHelpExtensions {
 
 	@FinalFieldsConstructor
 	@Accessors
+    @ToString
 	static class Documentation {
 		final String label
 		final URL url

@@ -24,11 +24,13 @@ import org.eclipse.ui.PartInitException
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 import org.eclipse.ui.plugin.AbstractUIPlugin
 import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.ToString
 import org.eclipse.xtext.ui.editor.hyperlinking.AbstractHyperlink
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
+@ToString
 class DocHyperlink extends AbstractHyperlink {
 
 	@Inject

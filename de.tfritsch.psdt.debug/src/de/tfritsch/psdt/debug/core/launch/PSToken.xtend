@@ -18,12 +18,14 @@ package de.tfritsch.psdt.debug.core.launch
 
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtend.lib.annotations.ToString
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 @FinalFieldsConstructor
 @Accessors
+@ToString(singleLine = true)
 class PSToken {
 
 	final String string

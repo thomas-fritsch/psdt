@@ -19,6 +19,7 @@ package de.tfritsch.psdt.debug.core.model
 import java.util.List
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtend.lib.annotations.ToString
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -47,6 +48,7 @@ class StatusParser {
 	}
 
 	@FinalFieldsConstructor
+	@ToString
 	protected static class StatusLine {
 		final int depth
 		final String name
