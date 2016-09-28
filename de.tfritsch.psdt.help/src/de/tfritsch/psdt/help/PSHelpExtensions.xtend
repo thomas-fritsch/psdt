@@ -62,7 +62,7 @@ class PSHelpExtensions {
 
 	@FinalFieldsConstructor
 	@Accessors
-    @ToString
+	@ToString
 	static class Documentation {
 		final String label
 		final URL url
@@ -77,12 +77,11 @@ class PSHelpExtensions {
 		var url2 = url1.toFileURL
 		if (url1.ref !== null && url2.ref === null)
 			// work-around because FileLocator.toFileURL ignored URL.ref
-			url2 = new URL(url2.toString + "#" + url1.ref)
+			url2 = new URL(url2 + "#" + url1.ref)
 		return url2
 	}
 
 	def private static IHelpResource[] getTopics(String name) {
-		val context = ("de.tfritsch.psdt.help." + name).context
-		return if(context !== null) context.relatedTopics else #[]
+		("de.tfritsch.psdt.help." + name).context?.relatedTopics?:newArrayOfSize(0)
 	}
 }

@@ -59,7 +59,7 @@ class PSValue extends PSDebugElement implements IValue {
 	}
 
 	override IVariable[] getVariables() {
-		return if(variables !== null) variables else #[]
+		return variables?:emptySet
 	}
 
 	override boolean hasVariables() {
@@ -71,7 +71,7 @@ class PSValue extends PSDebugElement implements IValue {
 	}
 
 	def protected int getSize() {
-		return if(variables !== null) variables.size else 0
+		return (variables?:emptySet).size
 	}
 
 	def void addVariable(IVariable variable) {

@@ -209,7 +209,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	def IVariable[] getVariables() throws DebugException {
-		return if(variables !== null) variables else #[]
+		return variables?:newArrayOfSize(0)
 	}
 
 	def boolean isStepping() {
