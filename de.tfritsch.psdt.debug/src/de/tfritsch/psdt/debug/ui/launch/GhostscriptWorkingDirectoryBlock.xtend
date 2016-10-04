@@ -31,7 +31,7 @@ class GhostscriptWorkingDirectoryBlock extends WorkingDirectoryBlock {
 	}
 
 	override protected getProject(ILaunchConfiguration configuration) throws CoreException {
-		return null
+		null
 	}
 
 }

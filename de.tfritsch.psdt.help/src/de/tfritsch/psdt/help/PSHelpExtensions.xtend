@@ -45,7 +45,7 @@ class PSHelpExtensions {
 				compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 			if (!matcher.matches)
 				return null
-			return '''
+			'''
 				<table border="1">
 				«matcher.group(1)»
 				«matcher.group(2)»
@@ -56,7 +56,7 @@ class PSHelpExtensions {
 			val matcher = (".*<body>(.*)</body>.*").compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
 			if (!matcher.matches)
 				return null
-			return matcher.group(1)
+			matcher.group(1)
 		}
 	}
 
@@ -64,12 +64,12 @@ class PSHelpExtensions {
 	@Accessors
 	@ToString
 	static class Documentation {
-		final String label
-		final URL url
+		val String label
+		val URL url
 	}
 
 	def static List<Documentation> getDocumentations(String name) {
-		return name.topics.map[new Documentation(label, href?.toURL)]
+		name.topics.map[new Documentation(label, href?.toURL)]
 	}
 
 	def private static URL toURL(String href) {
@@ -78,7 +78,7 @@ class PSHelpExtensions {
 		if (url1.ref !== null && url2.ref === null)
 			// work-around because FileLocator.toFileURL ignored URL.ref
 			url2 = new URL(url2 + "#" + url1.ref)
-		return url2
+		url2
 	}
 
 	def private static IHelpResource[] getTopics(String name) {

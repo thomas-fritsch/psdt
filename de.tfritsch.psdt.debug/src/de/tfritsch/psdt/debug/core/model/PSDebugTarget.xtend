@@ -33,9 +33,7 @@ import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IDebugTarget
 import org.eclipse.debug.core.model.ILineBreakpoint
-import org.eclipse.debug.core.model.IMemoryBlock
 import org.eclipse.debug.core.model.IProcess
-import org.eclipse.debug.core.model.IThread
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.jface.preference.IPreferenceStore
 
@@ -127,7 +125,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
-	override void statusReceived(List<String> lines) {
+	override statusReceived(List<String> lines) {
 		val newVariables = lines.toVariables
 		if (variables !== null)
 			newVariables.markChangesRelativeTo(variables)
@@ -138,11 +136,11 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		thread.fireSuspendEvent(detail)
 	}
 
-	override void resumeReceived() {
+	override resumeReceived() {
 		// do nothing
 	}
 
-	override void breakReceived(int depth, int ref, String value) {
+	override breakReceived(int depth, int ref, String value) {
 		currentTokenIndex = ref
 		debug("       " + currentTokenIndex) //$NON-NLS-1$
 		PSDebugCommander.hideDicts(!preferenceStore.showSystemdict, !preferenceStore.showGlobaldict,
@@ -171,12 +169,12 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
-	override void breakReceived(int depth) {
+	override breakReceived(int depth) {
 		// do nothing
 	}
 
-	override protected IPSDebugCommander getPSDebugCommander() {
-		return debugCommander
+	override protected getPSDebugCommander() {
+		debugCommander
 	}
 
 	/**
@@ -193,23 +191,23 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	def int getLineNumber() {
-		return sourceMapping.getLineNumber(currentTokenIndex)
+		sourceMapping.getLineNumber(currentTokenIndex)
 	}
 
 	def int getCharStart() {
-		return sourceMapping.getCharStart(currentTokenIndex)
+		sourceMapping.getCharStart(currentTokenIndex)
 	}
 
 	def int getCharEnd() {
-		return sourceMapping.getCharEnd(currentTokenIndex)
+		sourceMapping.getCharEnd(currentTokenIndex)
 	}
 
 	def String getSourceName() {
-		return sourceName
+		sourceName
 	}
 
 	def IVariable[] getVariables() throws DebugException {
-		return variables?:newArrayOfSize(0)
+		variables?:newArrayOfSize(0)
 	}
 
 	def boolean isStepping() {
@@ -217,9 +215,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 			case STEPPING_INTO,
 			case STEPPING_OVER,
 			case STEPPING_RETURN:
-				return true
+				true
 			default:
-				return false
+				false
 		}
 	}
 
@@ -250,61 +248,61 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		PSDebugCommander.resume
 	}
 
-	override IDebugTarget getDebugTarget() {
-		return this
+	override getDebugTarget() {
+		this
 	}
 
-	override ILaunch getLaunch() {
-		return process.launch
+	override getLaunch() {
+		process.launch
 	}
 
-	override String getName() {
-		return sourceName
+	override getName() {
+		sourceName
 	}
 
-	override IProcess getProcess() {
-		return process
+	override getProcess() {
+		process
 	}
 
-	override IThread[] getThreads() throws DebugException {
-		return #[thread]
+	override getThreads() throws DebugException {
+		#[thread]
 	}
 
-	override boolean hasThreads() throws DebugException {
-		return !terminated
+	override hasThreads() throws DebugException {
+		!terminated
 	}
 
-	override boolean supportsBreakpoint(IBreakpoint breakpoint) {
-		return breakpoint.modelIdentifier == modelIdentifier &&
+	override supportsBreakpoint(IBreakpoint breakpoint) {
+		breakpoint.modelIdentifier == modelIdentifier &&
 			breakpoint.marker.resource.location == new Path(sourceName)
 	}
 
-	override boolean canTerminate() {
-		return process.canTerminate
+	override canTerminate() {
+		process.canTerminate
 	}
 
-	override boolean isTerminated() {
-		return process.terminated
+	override isTerminated() {
+		process.terminated
 	}
 
-	override void terminate() throws DebugException {
+	override terminate() throws DebugException {
 		debug("GUI -> terminate") //$NON-NLS-1$
 		process.terminate
 	}
 
-	override boolean canResume() {
-		return !terminated && suspended
+	override canResume() {
+		!terminated && suspended
 	}
 
-	override boolean canSuspend() {
-		return false // not supported
+	override canSuspend() {
+		false // not supported
 	}
 
-	override boolean isSuspended() {
-		return state == State.SUSPENDED
+	override isSuspended() {
+		state == State.SUSPENDED
 	}
 
-	override void resume() throws DebugException {
+	override resume() throws DebugException {
 		debug("GUI -> resume") //$NON-NLS-1$
 		state = State.RESUMED
 		currentTokenIndex = -1
@@ -314,14 +312,14 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		PSDebugCommander.resume
 	}
 
-	override void suspend() throws DebugException {
+	override suspend() throws DebugException {
 		debug("GUI -> suspend") //$NON-NLS-1$
 
 		// TODO PSDebugTarget.suspend
 		notSupported("suspend", null) //$NON-NLS-1$
 	}
 
-	override void breakpointAdded(IBreakpoint breakpoint) {
+	override breakpointAdded(IBreakpoint breakpoint) {
 		debug("GUI -> breakpointAdded " + breakpoint) //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -340,7 +338,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
-	override void breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
+	override breakpointChanged(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointChanged " + breakpoint) //$NON-NLS-1$
 		try {
 			if (breakpoint.enabled)
@@ -352,7 +350,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
-	override void breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
+	override breakpointRemoved(IBreakpoint breakpoint, IMarkerDelta delta) {
 		debug("GUI -> breakpointRemoved " + breakpoint) //$NON-NLS-1$
 		if (supportsBreakpoint(breakpoint)) {
 			try {
@@ -371,37 +369,37 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	}
 
 	override canDisconnect() {
-		return false // not supported
+		false // not supported
 	}
 
-	override void disconnect() throws DebugException {
+	override disconnect() throws DebugException {
 		debug("GUI -> disconnect") //$NON-NLS-1$
 		notSupported("disconnect", null) //$NON-NLS-1$
 	}
 
-	override boolean isDisconnected() {
-		return false
+	override isDisconnected() {
+		false
 	}
 
-	override IMemoryBlock getMemoryBlock(long startAddress, long length) throws DebugException {
+	override getMemoryBlock(long startAddress, long length) throws DebugException {
 		notSupported("getMemoryBlock", null) //$NON-NLS-1$
-		return null
+		null
 	}
 
-	override boolean supportsStorageRetrieval() {
-		return false
+	override supportsStorageRetrieval() {
+		false
 	}
 
-	override PSVariable createVariable(String name, PSValue value) {
-		return new PSVariable(this, name, value)
+	override createVariable(String name, PSValue value) {
+		new PSVariable(this, name, value)
 	}
 
-	override PSIndexedValue createIndexedValue(String valueString) {
-		return new PSIndexedValue(this, valueString)
+	override createIndexedValue(String valueString) {
+		new PSIndexedValue(this, valueString)
 	}
 
-	override PSValue createValue(String valueString) {
-		return new PSValue(this, valueString)
+	override createValue(String valueString) {
+		new PSValue(this, valueString)
 	}
 
 }

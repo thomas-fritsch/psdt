@@ -43,7 +43,7 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 	Button fInterpreterButton
 	@Inject @Debug IPreferenceStore preferenceStore
 
-	override void createControl(Composite parent) {
+	override createControl(Composite parent) {
 		val group = new Group(parent, SWT.NONE) => [
 			layout = new GridLayout(2, false)
 			layoutData = new GridData(GridData.FILL_HORIZONTAL)
@@ -64,26 +64,26 @@ class GhostscriptInterpreterBlock extends AbstractLaunchConfigurationTab {
 		]
 	}
 
-	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	override setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
-	override void initializeFrom(ILaunchConfiguration configuration) {
+	override initializeFrom(ILaunchConfiguration configuration) {
 		fInterpreterText.text = preferenceStore.interpreter
 	}
 
-	override boolean isValid(ILaunchConfiguration configuration) {
+	override isValid(ILaunchConfiguration configuration) {
 		if (preferenceStore.interpreter.nullOrEmpty) {
 			errorMessage = "Interpreter not specified"
 			return false
 		}
-		return true
+		true
 	}
 
-	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
+	override performApply(ILaunchConfigurationWorkingCopy configuration) {
 	}
 
-	override String getName() {
-		return "Ghostscript interpreter" //$NON-NLS-1$
+	override getName() {
+		"Ghostscript interpreter" //$NON-NLS-1$
 	}
 
 }

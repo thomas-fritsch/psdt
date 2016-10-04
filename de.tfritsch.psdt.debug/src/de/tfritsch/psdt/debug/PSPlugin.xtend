@@ -37,12 +37,12 @@ class PSPlugin extends AbstractUIPlugin {
 	// The shared instance
 	private static PSPlugin INSTANCE
 
-	override void start(BundleContext context) throws Exception {
+	override start(BundleContext context) throws Exception {
 		super.start(context)
 		INSTANCE = this
 	}
 
-	override void stop(BundleContext context) throws Exception {
+	override stop(BundleContext context) throws Exception {
 		INSTANCE = null
 		super.stop(context)
 	}
@@ -53,7 +53,7 @@ class PSPlugin extends AbstractUIPlugin {
 	 * @return the shared instance
 	 */
 	def static PSPlugin getDefault() {
-		return INSTANCE
+		INSTANCE
 	}
 
 	Injector injector
@@ -63,17 +63,17 @@ class PSPlugin extends AbstractUIPlugin {
 			injector = PostscriptActivator.instance.getInjector(PostscriptActivator.DE_TFRITSCH_PSDT_POSTSCRIPT).
 				createChildInjector(new PSModule(this))
 		}
-		return injector
+		injector
 	}
 
 	def static CoreException toCoreException(Exception e) {
 		val status = new Status(IStatus.ERROR, ID, e.getMessage(), e)
-		return new CoreException(status)
+		new CoreException(status)
 	}
 
 	def static CoreException toCoreException(String message) {
 		val status = new Status(IStatus.ERROR, ID, message, null)
-		return new CoreException(status)
+		new CoreException(status)
 	}
 
 	/**

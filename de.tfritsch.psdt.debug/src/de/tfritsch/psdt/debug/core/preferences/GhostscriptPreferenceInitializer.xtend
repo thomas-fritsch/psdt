@@ -35,7 +35,7 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 			if (file.exists)
 				return file
 		}
-		return null
+		null
 	}
 
 	def private File findGhostscriptExeOnWindows() {
@@ -55,6 +55,6 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 				}
 			}
 		}
-		return null
+		null
 	}
 }

@@ -24,11 +24,11 @@ import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategyProvider
  */
 class PostscriptAutoEditStrategyProvider extends DefaultAutoEditStrategyProvider {
 
-	override protected void configureMultilineComments(IEditStrategyAcceptor acceptor) {
+	override protected configureMultilineComments(IEditStrategyAcceptor acceptor) {
 		// do nothing
 	}
 
-	override protected void configureStringLiteral(IEditStrategyAcceptor acceptor) {
+	override protected configureStringLiteral(IEditStrategyAcceptor acceptor) {
 		acceptor.accept(partitionInsert.newInstance("(", ")"), IDocument.DEFAULT_CONTENT_TYPE)
 		acceptor.accept(partitionInsert.newInstance("<", ">"), IDocument.DEFAULT_CONTENT_TYPE)
 

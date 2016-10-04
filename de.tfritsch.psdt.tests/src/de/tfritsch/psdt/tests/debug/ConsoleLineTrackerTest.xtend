@@ -52,7 +52,7 @@ class ConsoleLineTrackerTest extends AbstractDebugTest {
 	}
 
 	private def Position[] getHyperlinkPositions(IDocument document) {
-		return document.getPositions(ConsoleHyperlinkPosition.HYPER_LINK_CATEGORY)
+		document.getPositions(ConsoleHyperlinkPosition.HYPER_LINK_CATEGORY)
 	}
 
 	@Test

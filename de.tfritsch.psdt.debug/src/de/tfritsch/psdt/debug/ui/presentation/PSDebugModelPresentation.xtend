@@ -28,7 +28,6 @@ import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.debug.ui.IValueDetailListener
 import org.eclipse.jface.viewers.LabelProvider
-import org.eclipse.swt.graphics.Image
 import org.eclipse.ui.IEditorInput
 import org.eclipse.ui.ide.FileStoreEditorInput
 import org.eclipse.ui.part.FileEditorInput
@@ -53,12 +52,12 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 	@Inject
 	LanguageInfo languageInfo
 
-	override void setAttribute(String key, Object value) {
+	override setAttribute(String key, Object value) {
 		attributes.put(key, value)
 	}
 
-	override Image getImage(Object element) {
-		return switch (element) {
+	override getImage(Object element) {
+		switch (element) {
 			PSVariable:
 				imageHelper.getImage("object.gif")
 			default:
@@ -66,8 +65,8 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 		}
 	}
 
-	override String getText(Object element) {
-		return switch (element) {
+	override getText(Object element) {
+		switch (element) {
 			IThread: '''
 				Thread [«element.name»] («IF element.suspended»Suspended«ELSEIF element.stepping»Stepping«ELSE»Running«ENDIF»)
 			'''
@@ -79,12 +78,12 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 		}
 	}
 
-	override void computeDetail(IValue value, IValueDetailListener listener) {
+	override computeDetail(IValue value, IValueDetailListener listener) {
 		listener.detailComputed(value, null) // The view will show value.getValueString()
 	}
 
-	override IEditorInput getEditorInput(Object element) {
-		return switch (element) {
+	override getEditorInput(Object element) {
+		switch (element) {
 			IFile:
 				new FileEditorInput(element)
 			IFileStore:
@@ -96,8 +95,8 @@ class PSDebugModelPresentation extends LabelProvider implements IDebugModelPrese
 		}
 	}
 
-	override String getEditorId(IEditorInput input, Object element) {
-		return switch (element) {
+	override getEditorId(IEditorInput input, Object element) {
+		switch (element) {
 			IFile,
 			IFileStore,
 			IBreakpoint:

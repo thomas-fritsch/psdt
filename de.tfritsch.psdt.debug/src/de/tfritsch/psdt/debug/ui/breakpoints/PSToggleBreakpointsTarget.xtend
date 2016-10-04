@@ -36,7 +36,7 @@ class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 
 	@Inject IBreakpointManager breakpointManager
 
-	override void toggleLineBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
+	override toggleLineBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
 		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
 		val lineNumber = (selection as ITextSelection).startLine
@@ -57,23 +57,23 @@ class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 		breakpointManager.addBreakpoint(breakpoint)
 	}
 
-	override boolean canToggleLineBreakpoints(IWorkbenchPart part, ISelection selection) {
+	override canToggleLineBreakpoints(IWorkbenchPart part, ISelection selection) {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
 		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
-		return (resource != null)
+		resource != null
 	}
 
-	override void toggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
+	override toggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 	}
 
-	override boolean canToggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) {
-		return false
+	override canToggleMethodBreakpoints(IWorkbenchPart part, ISelection selection) {
+		false
 	}
 
-	override void toggleWatchpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
+	override toggleWatchpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
 	}
 
-	override boolean canToggleWatchpoints(IWorkbenchPart part, ISelection selection) {
-		return false
+	override canToggleWatchpoints(IWorkbenchPart part, ISelection selection) {
+		false
 	}
 }

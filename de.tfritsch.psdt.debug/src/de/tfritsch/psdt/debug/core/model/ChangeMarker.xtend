@@ -31,7 +31,7 @@ class ChangeMarker {
 			changed = true
 		if (variables.markChangesRelativeTo(previous?.variables))
 			changed = true
-		return changed
+		changed
 	}
 
 	def boolean markChangesRelativeTo(List<IVariable> it, List<IVariable> previous) throws Exception{
@@ -44,7 +44,7 @@ class ChangeMarker {
 				changed = true
 			}
 		}
-		return changed
+		changed
 	}
 
 	def boolean markChangesRelativeTo(IVariable it, IVariable previous) throws Exception {
@@ -53,6 +53,6 @@ class ChangeMarker {
 			(it as PSVariable).valueChanged = true
 			changed = true
 		}
-		return changed
+		changed
 	}
 }

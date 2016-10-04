@@ -20,8 +20,6 @@ import de.tfritsch.psdt.debug.PSPlugin
 import java.util.Map
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.IProcessFactory
-import org.eclipse.debug.core.model.IProcess
-import org.eclipse.debug.core.model.IStreamsProxy
 import org.eclipse.debug.core.model.RuntimeProcess
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
@@ -41,11 +39,11 @@ class PSProcessFactory implements IProcessFactory {
      */
 	val public static ID = PSPlugin.ID + ".processFactory" //$NON-NLS-1$
 
-	override IProcess newProcess(ILaunch launch, Process process, String label, Map<String, String> attributes) {
-		return new RuntimeProcess(launch, process, label, attributes) {
+	override newProcess(ILaunch launch, Process process, String label, Map<String, String> attributes) {
+		new RuntimeProcess(launch, process, label, attributes) {
 
-			override protected IStreamsProxy createStreamsProxy() {
-				return new PSStreamsProxy(systemProcess, launch.consoleEncoding)
+			override protected createStreamsProxy() {
+				new PSStreamsProxy(systemProcess, launch.consoleEncoding)
 			}
 		}
 	}

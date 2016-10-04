@@ -45,8 +45,8 @@ class PSLineBreakpoint extends LineBreakpoint {
 		]
 	}
 
-	override String getModelIdentifier() {
-		return PSDebugElement.MODEL_ID
+	override getModelIdentifier() {
+		PSDebugElement.MODEL_ID
 	}
 
 }

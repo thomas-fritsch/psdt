@@ -26,31 +26,31 @@ import org.eclipse.jface.preference.IPreferenceStore
 class PSLaunchExtensions {
 
 	def static String getInterpreter(IPreferenceStore preferenceStore) {
-		return preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
+		preferenceStore.getString(IPSConstants.PREF_INTERPRETER)
 	}
 
 	def static String getDefaultGhostscriptArguments(IPreferenceStore preferenceStore) {
-		return preferenceStore.getString(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS)
+		preferenceStore.getString(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS)
 	}
 
 	def static boolean isMessageBoxOnPrompt(IPreferenceStore preferenceStore) {
-		return preferenceStore.getBoolean(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT)
+		preferenceStore.getBoolean(IPSConstants.PREF_MESSAGE_BOX_ON_PROMPT)
 	}
 
 	def static boolean isShowSystemdict(IPreferenceStore preferenceStore) {
-		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_SYSTEMDICT)
+		preferenceStore.getBoolean(IPSConstants.PREF_SHOW_SYSTEMDICT)
 	}
 
 	def static boolean isShowGlobaldict(IPreferenceStore preferenceStore) {
-		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_GLOBALDICT)
+		preferenceStore.getBoolean(IPSConstants.PREF_SHOW_GLOBALDICT)
 	}
 
 	def static boolean isShowUserdict(IPreferenceStore preferenceStore) {
-		return preferenceStore.getBoolean(IPSConstants.PREF_SHOW_USERDICT)
+		preferenceStore.getBoolean(IPSConstants.PREF_SHOW_USERDICT)
 	}
 
 	def static String getProgram(ILaunchConfiguration configuration) {
-		return configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)
+		configuration.getAttribute(IPSConstants.ATTR_PROGRAM, null as String)
 	}
 
 	def static void setProgram(ILaunchConfigurationWorkingCopy configuration, String program) {
@@ -62,11 +62,11 @@ class PSLaunchExtensions {
 	}
 
 	def static String getGhostscriptArguments(ILaunchConfiguration configuration) {
-		return configuration.getAttribute(IPSConstants.ATTR_GS_ARGUMENTS, null as String)
+		configuration.getAttribute(IPSConstants.ATTR_GS_ARGUMENTS, null as String)
 	}
 
 	def static boolean isBreakOnFirstToken(ILaunchConfiguration configuration) {
-		return configuration.getAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false)
+		configuration.getAttribute(IPSConstants.ATTR_BREAK_ON_FIRST_TOKEN, false)
 	}
 
 	def static void setBreakOnFirstToken(ILaunchConfigurationWorkingCopy configuration, boolean breakOnFirstToken) {

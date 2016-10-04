@@ -50,6 +50,6 @@ class PSSourceMapping {
 	}
 
 	def private isValid(int tokenIndex) {
-		return tokenIndex >= 0 && tokenIndex < tokens.size
+		tokenIndex >= 0 && tokenIndex < tokens.size
 	}
 }

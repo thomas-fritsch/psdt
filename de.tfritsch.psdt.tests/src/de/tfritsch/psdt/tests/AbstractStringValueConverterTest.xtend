@@ -34,7 +34,7 @@ abstract class AbstractStringValueConverterTest {
 	def protected randomValue() {
 		val bytes = newByteArrayOfSize(random.nextInt(10))
 		random.nextBytes(bytes)
-		return bytes
+		bytes
 	}
 
 	@Test

@@ -16,10 +16,8 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
-import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.model.IDebugElement
 import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.core.model.IWatchExpressionDelegate
 import org.eclipse.debug.core.model.IWatchExpressionListener
 import org.eclipse.debug.core.model.IWatchExpressionResult
@@ -35,29 +33,29 @@ import org.eclipse.debug.core.model.IWatchExpressionResult
  */
 class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 
-	override void evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
+	override evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
 		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame
 
 		// TODO evaluate expression
 		val result = new IWatchExpressionResult {
-			override IValue getValue() {
-				return null
+			override getValue() {
+				null
 			}
 
-			override boolean hasErrors() {
-				return true
+			override hasErrors() {
+				true
 			}
 
-			override String[] getErrorMessages() {
-				return #["(Watch expressions not supported)"]
+			override getErrorMessages() {
+				#["(Watch expressions not supported)"]
 			}
 
-			override String getExpressionText() {
-				return ""
+			override getExpressionText() {
+				""
 			}
 
-			override DebugException getException() {
-				return null
+			override getException() {
+				null
 			}
 		}
 		listener.watchEvaluationFinished(result)

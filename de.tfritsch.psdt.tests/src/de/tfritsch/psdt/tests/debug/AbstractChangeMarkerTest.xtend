@@ -45,14 +45,14 @@ abstract class AbstractChangeMarkerTest extends AbstractStatusParserTest {
 	}
 
 	override protected toLine(IVariable it, int depth) throws Exception {
-		return if (hasValueChanged)
+		if (hasValueChanged)
 			super.toLine(it, depth).replaceFirstChar('*')
 		else
 			super.toLine(it, depth)
 	}
 
 	def private String replaceFirstChar(String s, char c) {
-		return c + s.substring(1)
+		c + s.substring(1)
 	}
 
 }

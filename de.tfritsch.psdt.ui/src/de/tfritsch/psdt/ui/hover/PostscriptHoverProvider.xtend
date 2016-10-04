@@ -38,14 +38,14 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 		return ""
 	}
 
-	override protected String getStyleSheet() {
+	override protected getStyleSheet() {
 		var css = super.getStyleSheet
 		if (css !== null)
 			css += "th, td { vertical-align: top; }\n"
 		return css
 	}
 
-	override IInformationControlCreator getInformationPresenterControlCreator() {
+	override getInformationPresenterControlCreator() {
 		if (presenterControlCreator === null) {
 			presenterControlCreator = new PresenterControlCreator() {
 				override protected configureControl(IXtextBrowserInformationControl control, ToolBarManager tbm,

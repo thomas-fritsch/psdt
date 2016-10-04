@@ -35,7 +35,7 @@ class PostscriptFormatter extends AbstractDeclarativeFormatter {
 
 	@Inject extension PostscriptGrammarAccess
 
-	override protected void configureFormatting(FormattingConfig c) {
+	override protected configureFormatting(FormattingConfig c) {
 		c.setAutoLinewrap(72)
 
 		c.setLinewrap(0, 1, 2).before(SL_COMMENTRule)

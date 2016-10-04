@@ -30,11 +30,11 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
  class AbstractWorkbenchTestExtension extends AbstractWorkbenchTest {
 
 	protected def IEditorPart openEditor(IFile file) throws PartInitException {
-		return IDE.openEditor(activePage, file)
+		IDE.openEditor(activePage, file)
 	}
 
 	protected def IEditorPart openEditor(IFileStore fileStore) throws PartInitException {
-		return IDE.openEditorOnFileStore(activePage, fileStore)
+		IDE.openEditorOnFileStore(activePage, fileStore)
 	}
 
 	protected def void waitFor(()=>boolean predicate) throws InterruptedException {
@@ -47,7 +47,7 @@ import org.eclipse.xtext.junit4.ui.AbstractWorkbenchTest
 	}
 
 	protected def IEditorPart getActiveEditor() {
-		return activePage.activeEditor
+		activePage.activeEditor
 	}
 
 	protected def void showPerspective(String id) throws WorkbenchException {

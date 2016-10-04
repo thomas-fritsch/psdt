@@ -24,11 +24,11 @@ class HoverProviderTest extends AbstractAutoEditTest {
     @Inject IEObjectHoverProvider hoverProvider
 
     override protected getFileExtension() {
-        return fileExtensionProvider.primaryFileExtension
+        fileExtensionProvider.primaryFileExtension
     }
 
     override protected getEditorId() {
-        return languageInfo.languageName
+        languageInfo.languageName
     }
 
     def private assertHover(XtextEditor editor, int offset, String expectedText) {

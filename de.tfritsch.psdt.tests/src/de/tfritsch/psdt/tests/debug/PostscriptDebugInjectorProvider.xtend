@@ -25,6 +25,6 @@ import org.eclipse.xtext.junit4.IInjectorProvider
 class PostscriptDebugInjectorProvider implements IInjectorProvider {
 
 	override getInjector() {
-		return PSPlugin.^default.injector
+		PSPlugin.^default.injector
 	}    
 }

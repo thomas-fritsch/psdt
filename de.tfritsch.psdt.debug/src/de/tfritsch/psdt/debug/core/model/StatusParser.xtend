@@ -27,13 +27,13 @@ import org.eclipse.xtend.lib.annotations.ToString
 @FinalFieldsConstructor
 class StatusParser {
 
-	final IPSDebugElementFactory factory
+	val IPSDebugElementFactory factory
 
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = factory.createValue("") //$NON-NLS-1$
 		val List<PSValue> treePath = newArrayList(root)
 		lines.map[parseStatusLine].fold(treePath)[it, statusLine|append(statusLine)]
-		return root.variables
+		root.variables
 	}
 
 	def protected StatusLine parseStatusLine(String it) {
@@ -44,15 +44,15 @@ class StatusParser {
 		val pColon = indexOf(':')
 		val name = substring(depth + 1, pColon)
 		val value = substring(pColon + 2)
-		return new StatusLine(depth, name, value)
+		new StatusLine(depth, name, value)
 	}
 
 	@FinalFieldsConstructor
 	@ToString
 	protected static class StatusLine {
-		final int depth
-		final String name
-		final String value
+		val int depth
+		val String name
+		val String value
 	}
 
 	def protected List<PSValue> append(List<PSValue> it, StatusLine statusLine) {
@@ -61,7 +61,7 @@ class StatusParser {
 		shrinkToSize(statusLine.depth)
 		last.addVariable(variable)
 		add(value)
-		return it
+		it
 	}
 
 	def protected void shrinkToSize(List<?> it, int newSize) {

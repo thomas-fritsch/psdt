@@ -64,7 +64,7 @@ class DebugExtensions {
 		} catch (IOException e) {
 			throw e.toCoreException
 		}
-		return sourceMapping
+		sourceMapping
 	}
 
 	def File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
@@ -80,7 +80,7 @@ class DebugExtensions {
 				writer.write(string + "\n")
 			}
 			writer.close
-			return file
+			file
 		} catch (IOException e) {
 			throw e.toCoreException
 		}

@@ -27,23 +27,23 @@ import static extension java.lang.Integer.*
  */
 class INTValueConverter implements IValueConverter<Integer> {
 
-	override Integer toValue(String string, INode node) throws ValueConverterException {
+	override toValue(String string, INode node) throws ValueConverterException {
 		try {
 			if (string.contains("#")) {
 				val hashPos = string.indexOf('#')
 				val radix = string.substring(0, hashPos).parseInt
-				return string.substring(hashPos + 1).parseInt(radix)
+				string.substring(hashPos + 1).parseInt(radix)
 			} else if (string.startsWith("+"))
-				return string.substring(1).parseInt(10)
+				string.substring(1).parseInt(10)
 			else
-				return string.parseInt(10)
+				string.parseInt(10)
 		} catch (NumberFormatException e) {
 			throw new ValueConverterException("parse error", node, e)
 		}
 	}
 
-	override String toString(Integer value) throws ValueConverterException {
-		return value.toString
+	override toString(Integer value) throws ValueConverterException {
+		value.toString
 	}
 
 }

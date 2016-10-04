@@ -40,7 +40,7 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 		notifyAll
 	}
 
-	override void appendLine(String line) {
+	override appendLine(String line) {
 		if (line.startsWith("@@")) //$NON-NLS-1$
 			processDebugLine(line)
 		else

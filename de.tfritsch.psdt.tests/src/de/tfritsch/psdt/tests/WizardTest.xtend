@@ -44,7 +44,7 @@ class WizardTest extends AbstractWorkbenchTestExtension {
 	private def IWorkbenchWizard createWizard(String id) throws CoreException  {
 		val wizard = workbench.newWizardRegistry.findWizard(id).createWizard
 		wizard.init(workbench, new StructuredSelection(project))
-		return wizard
+		wizard
 	}
 
 	private def void openAndFinish(IWorkbenchWizard wizard) {
@@ -54,7 +54,7 @@ class WizardTest extends AbstractWorkbenchTestExtension {
 					waitFor[shell.isVisible]
 					finishPressed
 				]
-				return super.open
+				super.open
 			}
 		}
 		dialog.create

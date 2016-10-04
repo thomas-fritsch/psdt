@@ -46,22 +46,22 @@ abstract class PSDebugElement extends DebugElement {
 		super(target)
 	}
 
-	override String getModelIdentifier() {
-		return MODEL_ID
+	override getModelIdentifier() {
+		MODEL_ID
 	}
 
 	/**
 	 * Gets the PSDebugTarget containing this element.
 	 */
 	def protected PSDebugTarget getPSDebugTarget() {
-		return debugTarget as PSDebugTarget
+		debugTarget as PSDebugTarget
 	}
 
 	/**
 	 * Gets the IPSDebugDebugCommander for this element.
 	 */
 	def protected IPSDebugCommander getPSDebugCommander() {
-		return getPSDebugTarget.getPSDebugCommander()
+		getPSDebugTarget.getPSDebugCommander()
 	}
 
 	def protected void debug(String s) {

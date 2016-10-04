@@ -30,19 +30,19 @@ import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
 class PostscriptDocumentationProvider implements IEObjectDocumentationProvider {
 
 	def dispatch String getDocumentation(EObject o) {
-		return null
+		null
 	}
 
 	def dispatch String getDocumentation(PSExecutableName o) {
-		return o.name.documentationContent
+		o.name.documentationContent
 	}
 
 	def dispatch String getDocumentation(PSLiteralName o) {
-		return o.name.documentationContent
+		o.name.documentationContent
 	}
 
 	def dispatch String getDocumentation(PSImmediatelyEvaluatedName o) {
-		return o.name.documentationContent
+		o.name.documentationContent
 	}
 
 }

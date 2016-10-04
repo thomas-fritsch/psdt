@@ -47,50 +47,50 @@ class PSVariable extends PSDebugElement implements IVariable {
 		this.value = value
 	}
 
-	override IValue getValue() {
-		return value
+	override getValue() {
+		value
 	}
 
-	override String getName() {
-		return name
+	override getName() {
+		name
 	}
 
 	// convenience for Java debugging
-	override String toString() {
-		return name + "=" + value
+	override toString() {
+		name + "=" + value
 	}
 
-	override String getReferenceTypeName() throws DebugException {
-		return value.referenceTypeName
+	override getReferenceTypeName() throws DebugException {
+		value.referenceTypeName
 	}
 
-	override boolean hasValueChanged() {
-		return valueChanged
+	override hasValueChanged() {
+		valueChanged
 	}
 
 	def void setValueChanged(boolean valueChanged) {
 		this.valueChanged = valueChanged
 	}
 
-	override void setValue(String expression) throws DebugException {
+	override setValue(String expression) throws DebugException {
 		notSupported("setValue", null) //$NON-NLS-1$
 	}
 
-	override void setValue(IValue value) throws DebugException {
+	override setValue(IValue value) throws DebugException {
 		notSupported("setValue", null) //$NON-NLS-1$
 	}
 
-	override boolean supportsValueModification() {
-		return false
+	override supportsValueModification() {
+		false
 	}
 
-	override boolean verifyValue(String expression) throws DebugException {
+	override verifyValue(String expression) throws DebugException {
 		notSupported("verifyValue", null) //$NON-NLS-1$
-		return false
+		false
 	}
 
-	override boolean verifyValue(IValue value) throws DebugException {
+	override verifyValue(IValue value) throws DebugException {
 		notSupported("verifyValue", null) //$NON-NLS-1$
-		return false
+		false
 	}
 }

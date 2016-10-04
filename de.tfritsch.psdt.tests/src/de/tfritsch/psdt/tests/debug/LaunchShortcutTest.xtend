@@ -66,7 +66,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 
 	// mimic what the launch framework does
 	private def boolean isLaunchable(Object object) {
-		return Platform.adapterManager.hasAdapter(object, ILaunchable.name)
+		Platform.adapterManager.hasAdapter(object, ILaunchable.name)
 	}
 
 	// mimic what the launch framework does
@@ -80,7 +80,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		val context = DebugUIPlugin.createEvaluationContext(list)
 		context.addVariable("selection", list)
 		val enabled = evalEnablementExpression(context, contextualLaunchEnablementExpression)
-		return enabled
+		enabled
 	}
 
 	@Test

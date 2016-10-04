@@ -27,8 +27,8 @@ import static de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfigura
 @Singleton
 class PostscriptAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttributeIdMapper {
 
-	override protected String calculateId(String tokenName, int tokenType) {
-		return switch (tokenName) {
+	override protected calculateId(String tokenName, int tokenType) {
+		switch (tokenName) {
 			case "RULE_ID": DEFAULT_ID
 			case "RULE_LITERAL_ID": LITERAL_NAME_ID
 			case "RULE_IMMEDIATELY_EVALUATED_ID": IMMEDIATELY_EVALUATED_NAME_ID

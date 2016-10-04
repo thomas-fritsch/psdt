@@ -17,7 +17,6 @@
 package de.tfritsch.psdt.debug.core.model
 
 import org.eclipse.debug.core.DebugException
-import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.IThread
 
@@ -44,8 +43,8 @@ class PSThread extends PSDebugElement implements IThread {
 	}
 
 	@SuppressWarnings("rawtypes")
-	override Object getAdapter(Class adapter) {
-		return switch (adapter) {
+	override getAdapter(Class adapter) {
+		switch (adapter) {
 			case IStackFrame:
 				topStackFrame
 			default:
@@ -53,88 +52,88 @@ class PSThread extends PSDebugElement implements IThread {
 		}
 	}
 
-	override IBreakpoint[] getBreakpoints() {
-		return PSDebugTarget.breakpoints
+	override getBreakpoints() {
+		PSDebugTarget.breakpoints
 	}
 
-	override String getName() {
-		return "main" //$NON-NLS-1$
+	override getName() {
+		"main" //$NON-NLS-1$
 	}
 
-	override int getPriority() {
-		return 0
+	override getPriority() {
+		0
 	}
 
-	override IStackFrame[] getStackFrames() {
-		return if(suspended) #[stackFrame] else #[]
+	override getStackFrames() {
+		if(suspended) #[stackFrame] else #[]
 	}
 
-	override IStackFrame getTopStackFrame() {
+	override getTopStackFrame() {
 		val frames = stackFrames
-		return if(frames.length > 0) frames.get(0) else null
+		if(frames.length > 0) frames.get(0) else null
 	}
 
-	override boolean hasStackFrames() throws DebugException {
-		return suspended
+	override hasStackFrames() throws DebugException {
+		suspended
 	}
 
-	override boolean canStepInto() {
-		return suspended && !stepping
+	override canStepInto() {
+		suspended && !stepping
 	}
 
-	override boolean canStepOver() {
-		return suspended && !stepping
+	override canStepOver() {
+		suspended && !stepping
 	}
 
-	override boolean canStepReturn() {
-		return suspended && !stepping
+	override canStepReturn() {
+		suspended && !stepping
 	}
 
-	override boolean isStepping() {
-		return PSDebugTarget.stepping
+	override isStepping() {
+		PSDebugTarget.stepping
 	}
 
-	override void stepInto() throws DebugException {
+	override stepInto() throws DebugException {
 		PSDebugTarget.stepInto
 	}
 
-	override void stepOver() throws DebugException {
+	override stepOver() throws DebugException {
 		PSDebugTarget.stepOver
 	}
 
-	override void stepReturn() throws DebugException {
+	override stepReturn() throws DebugException {
 		PSDebugTarget.stepReturn
 	}
 
-	override boolean canResume() {
-		return debugTarget.canResume
+	override canResume() {
+		debugTarget.canResume
 	}
 
-	override boolean canSuspend() {
-		return debugTarget.canSuspend
+	override canSuspend() {
+		debugTarget.canSuspend
 	}
 
-	override boolean isSuspended() {
-		return debugTarget.suspended
+	override isSuspended() {
+		debugTarget.suspended
 	}
 
-	override void resume() throws DebugException {
+	override resume() throws DebugException {
 		debugTarget.resume
 	}
 
-	override void suspend() throws DebugException {
+	override suspend() throws DebugException {
 		debugTarget.suspend
 	}
 
-	override boolean canTerminate() {
-		return debugTarget.canTerminate
+	override canTerminate() {
+		debugTarget.canTerminate
 	}
 
-	override boolean isTerminated() {
-		return debugTarget.terminated
+	override isTerminated() {
+		debugTarget.terminated
 	}
 
-	override void terminate() throws DebugException {
+	override terminate() throws DebugException {
 		debugTarget.terminate
 	}
 }

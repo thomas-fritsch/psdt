@@ -29,7 +29,6 @@ import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.debug.ui.StringVariableSelectionDialog
 import org.eclipse.swt.SWT
-import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.layout.GridData
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Button
@@ -64,15 +63,15 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	@Inject FileExtensionProvider fileExtensionProvider
 	@Inject extension IStringVariableManager
 
-	override String getName() {
-		return "Main"
+	override getName() {
+		"Main"
 	}
 
-	override Image getImage() {
-		return fImageHelper.getImage("postscript.png") //$NON-NLS-1$
+	override getImage() {
+		fImageHelper.getImage("postscript.png") //$NON-NLS-1$
 	}
 
-	override void createControl(Composite parent) {
+	override createControl(Composite parent) {
 		val comp = new Composite(parent, SWT.NONE) => [
 			layout = new GridLayout(1, true)
 		]
@@ -112,7 +111,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			message = "Choose a PostScript file"
 			allowMultiple = false
 			addFilter[ viewer, parentElement, element |
-				return switch (element) {
+				switch (element) {
 					IFile:
 						fileExtensionProvider.isValid(element.fileExtension)
 					default: // IFolder, IProject
@@ -153,12 +152,12 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			fProgramText.insert(variableText)
 	}
 
-	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	override setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.processFactoryId = PSProcessFactory.ID
 		configuration.breakOnFirstToken = false
 	}
 
-	override void initializeFrom(ILaunchConfiguration configuration) {
+	override initializeFrom(ILaunchConfiguration configuration) {
 		try {
 			val program = configuration.program
 			if (program != null) {
@@ -174,7 +173,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 		}
 	}
 
-	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
+	override performApply(ILaunchConfigurationWorkingCopy configuration) {
 		var program = fProgramText.text
 		if (program.empty) {
 			program = null
@@ -183,7 +182,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 		configuration.breakOnFirstToken = fBreakOnFirstTokenButton.selection
 	}
 
-	override boolean isValid(ILaunchConfiguration launchConfig) {
+	override isValid(ILaunchConfiguration launchConfig) {
 		val program = fProgramText.text
 		if (program.empty) {
 			errorMessage = "Specify a program"
@@ -199,6 +198,6 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			return false
 		}
 		errorMessage = null
-		return true
+		true
 	}
 }

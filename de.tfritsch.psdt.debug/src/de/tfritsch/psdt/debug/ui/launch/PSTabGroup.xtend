@@ -38,7 +38,7 @@ class PSTabGroup extends AbstractLaunchConfigurationTabGroup {
 	@Inject
 	GhostscriptTab ghostscriptTab
 
-	override void createTabs(ILaunchConfigurationDialog dialog, String mode) {
+	override createTabs(ILaunchConfigurationDialog dialog, String mode) {
 		tabs = #[
 			mainTab,
 			ghostscriptTab,

@@ -24,7 +24,6 @@ import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.debug.ui.ILaunchConfigurationDialog
 import org.eclipse.debug.ui.ILaunchConfigurationTab
 import org.eclipse.swt.SWT
-import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.xtext.ui.IImageHelper
@@ -43,41 +42,41 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 		fBlocks = newArrayList(block1, block2, block3)
 	}
 
-	override String getName() {
-		return "Ghostscript" //$NON-NLS-1$
+	override getName() {
+		"Ghostscript" //$NON-NLS-1$
 	}
 
-	override Image getImage() {
-		return fImageHelper.getImage("ghostscript.png") //$NON-NLS-1$
+	override getImage() {
+		fImageHelper.getImage("ghostscript.png") //$NON-NLS-1$
 	}
 
-	override void createControl(Composite parent) {
+	override createControl(Composite parent) {
 		val comp = new Composite(parent, SWT.NONE)
 		comp.layout = new GridLayout(1, true)
 		fBlocks.forEach[createControl(comp)]
 		control = comp
 	}
 
-	override void setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
+	override setLaunchConfigurationDialog(ILaunchConfigurationDialog dialog) {
 		super.setLaunchConfigurationDialog(dialog)
 		fBlocks.forEach[setLaunchConfigurationDialog(dialog)]
 	}
 
-	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	override setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		fBlocks.forEach[setDefaults(configuration)]
 	}
 
-	override void initializeFrom(ILaunchConfiguration configuration) {
+	override initializeFrom(ILaunchConfiguration configuration) {
 		fBlocks.forEach[initializeFrom(configuration)]
 	}
 
-	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
+	override performApply(ILaunchConfigurationWorkingCopy configuration) {
 		fBlocks.forEach[performApply(configuration)]
 	}
 
-	override boolean isValid(ILaunchConfiguration launchConfig) {
+	override isValid(ILaunchConfiguration launchConfig) {
 		val block = fBlocks.findFirst[!isValid(launchConfig)]
 		errorMessage = block?.errorMessage
-		return block === null
+		block === null
 	}
 }

@@ -28,11 +28,11 @@ class LiteralIdValueConverter implements IValueConverter<String> {
 	override toValue(String string, INode node) throws ValueConverterException {
 		if (!string.startsWith("/"))
 			throw new ValueConverterException("must begin with '/'", node, null)
-		return string.substring(1)
+		string.substring(1)
 	}
 
 	override toString(String value) throws ValueConverterException {
-		return "/" + value
+		"/" + value
 	}
 
 }

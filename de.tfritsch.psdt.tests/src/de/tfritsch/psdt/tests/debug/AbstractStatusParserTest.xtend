@@ -44,7 +44,7 @@ abstract class AbstractStatusParserTest {
 
 	def protected IVariable[] toVariables(CharSequence input) {
 		val lines = new Scanner(input.toString).useDelimiter(LINE_SEP).toList
-		return lines.toVariables		
+		lines.toVariables		
 	}
 
 	def protected String toString(IVariable[] variables) throws Exception {
@@ -52,7 +52,7 @@ abstract class AbstractStatusParserTest {
 		for (variable : variables) {
 			appendable.append(variable, 1)
 		}
-		return appendable.toString
+		appendable.toString
 	}
 
 	def private void append(Appendable it, IVariable variable, int depth) throws Exception {
@@ -73,15 +73,15 @@ abstract class AbstractStatusParserTest {
 		PSDebugTarget debugTarget
 
 		override createVariable(String name, PSValue value) {
-			return new PSVariable(debugTarget, name, value)
+			new PSVariable(debugTarget, name, value)
 		}
 
 		override createIndexedValue(String valueString) {
-			return new PSIndexedValue(debugTarget, valueString)
+			new PSIndexedValue(debugTarget, valueString)
 		}
 
 		override createValue(String valueString) {
-			return new PSValue(debugTarget, valueString)
+			new PSValue(debugTarget, valueString)
 		}
 	}
 

@@ -28,20 +28,20 @@ import org.eclipse.xtend.lib.annotations.ToString
 @ToString(singleLine = true)
 class PSToken {
 
-	final String string
+	val String string
 
 	/**
 	 * The line number of this token in the associated source file.
 	 */
-	final int lineNumber
+	val int lineNumber
 
 	/**
 	 * The index of the first character in the associated source file.
 	 */
-	final int charStart
+	val int charStart
 
 	/**
 	 * The index of the last character in the associated source file.
 	 */
-	final int charEnd
+	val int charEnd
 }

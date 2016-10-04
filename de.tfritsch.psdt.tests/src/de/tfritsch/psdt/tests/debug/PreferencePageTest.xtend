@@ -32,7 +32,7 @@ class PreferencePageTest extends AbstractWorkbenchTestExtension {
 					waitFor[shell.isVisible]
 					okPressed
 				]
-				return super.open
+				super.open
 			}
 		}
 		dialog.selectedNode = pageId

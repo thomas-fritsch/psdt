@@ -24,10 +24,10 @@ import org.eclipse.xtext.ui.guice.AbstractGuiceAwareExecutableExtensionFactory
 class PSExecutableExtensionFactory extends AbstractGuiceAwareExecutableExtensionFactory {
 
 	override protected getBundle() {
-		return PSPlugin.^default.bundle
+		PSPlugin.^default.bundle
 	}
 
 	override protected getInjector() {
-		return PSPlugin.^default.injector
+		PSPlugin.^default.injector
 	}
 }

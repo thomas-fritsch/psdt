@@ -53,7 +53,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	Text fArgumentsText
 	Link fLink
 
-	override void createControl(Composite parent) {
+	override createControl(Composite parent) {
 		val group = new Group(parent, SWT.NONE) => [
 			layout = new GridLayout
 			layoutData = new GridData(GridData.FILL_BOTH)
@@ -86,11 +86,11 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		}
 	}
 
-	override void setDefaults(ILaunchConfigurationWorkingCopy configuration) {
+	override setDefaults(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.ghostscriptArguments = preferenceStore.defaultGhostscriptArguments
 	}
 
-	override void initializeFrom(ILaunchConfiguration configuration) {
+	override initializeFrom(ILaunchConfiguration configuration) {
 		try {
 			fArgumentsText.text = configuration.ghostscriptArguments ?: ""
 		} catch (CoreException e) {
@@ -98,22 +98,22 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 		}
 	}
 
-	override boolean isValid(ILaunchConfiguration configuration) {
+	override isValid(ILaunchConfiguration configuration) {
 		for (s : fArgumentsText.text.parseArguments) {
 			if (!s.startsWith("-") || s == "-") { //$NON-NLS-1$ //$NON-NLS-2$
 				errorMessage = NLS.bind("{0} is not a valid option", s)
 				return false
 			}
 		}
-		return true
+		true
 	}
 
-	override void performApply(ILaunchConfigurationWorkingCopy configuration) {
+	override performApply(ILaunchConfigurationWorkingCopy configuration) {
 		configuration.ghostscriptArguments = fArgumentsText.text
 	}
 
-	override String getName() {
-		return "Ghostscript interpreter:"
+	override getName() {
+		"Ghostscript interpreter:"
 	}
 
 }

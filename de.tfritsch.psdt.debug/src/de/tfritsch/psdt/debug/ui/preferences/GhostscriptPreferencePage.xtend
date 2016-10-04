@@ -58,7 +58,7 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 		super.setPreferenceStore(store)
 	}
 
-	override protected void createFieldEditors() {
+	override protected createFieldEditors() {
 		addField(
 			new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
 				switch (Platform.getOS) {
@@ -78,7 +78,7 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 				"&Message box on 'press <return> to continue'", fieldEditorParent))
 	}
 
-	override void init(IWorkbench workbench) {
+	override init(IWorkbench workbench) {
 	}
 
 }

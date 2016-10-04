@@ -35,7 +35,7 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 
 	public static val UNPARSED_DATA_ID = "unparsedData"
 
-	override void configure(IHighlightingConfigurationAcceptor acceptor) {
+	override configure(IHighlightingConfigurationAcceptor acceptor) {
 		super.configure(acceptor)
 		acceptor.acceptDefaultHighlighting(LITERAL_NAME_ID, "Literal Name", literalNameTextStyle)
 		acceptor.acceptDefaultHighlighting(IMMEDIATELY_EVALUATED_NAME_ID, "Immediately Evaluated Name", immediatelyEvaluatedNameTextStyle)

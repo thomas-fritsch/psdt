@@ -78,7 +78,7 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
 	protected def ILaunchConfigurationWorkingCopy createLaunchConfiguration(IFile file) throws CoreException {
 		val type = "de.tfritsch.psdt.debug.launchConfigurationType".launchConfigurationType
-		return type.newInstance(file.project, "Test") => [
+		type.newInstance(file.project, "Test") => [
 			processFactoryId = "de.tfritsch.psdt.debug.processFactory"
 			program = file.location.toOSString
 			ghostscriptArguments = "-dBATCH"
@@ -86,15 +86,15 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 	}
 
 	private def <T> T getCurrent(Class<T> adapterType) {
-		return debugContext?.getAdapter(adapterType) as T
+		debugContext?.getAdapter(adapterType) as T
 	}
 
 	protected def IStackFrame getCurrentStackFrame() {
-		return getCurrent(IStackFrame)
+		getCurrent(IStackFrame)
 	}
 
 	protected def IThread getCurrentThread() {
-		return getCurrent(IThread)
+		getCurrent(IThread)
 	}
 
 	protected def void toogleBreakpoint(XtextEditor editor, int line) throws BadLocationException, CoreException {

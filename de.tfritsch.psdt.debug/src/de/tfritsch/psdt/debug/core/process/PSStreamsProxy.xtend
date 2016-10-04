@@ -26,7 +26,6 @@ import java.io.Writer
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Status
 import org.eclipse.debug.core.DebugException
-import org.eclipse.debug.core.model.IStreamMonitor
 import org.eclipse.debug.core.model.IStreamsProxy2
 
 /**
@@ -65,36 +64,36 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 			return new OutputStreamWriter(process.outputStream)
 		} else {
 			try {
-				return new OutputStreamWriter(process.outputStream, encoding)
+				new OutputStreamWriter(process.outputStream, encoding)
 			} catch (UnsupportedEncodingException e) {
 				PSPlugin.log(e)
-				return new OutputStreamWriter(process.outputStream)
+				new OutputStreamWriter(process.outputStream)
 			}
 		}
 	}
 
-	override IStreamMonitor getErrorStreamMonitor() {
-		return fErrorMonitor
+	override getErrorStreamMonitor() {
+		fErrorMonitor
 	}
 
-	override IStreamMonitor getOutputStreamMonitor() {
-		return fOutputMonitor
+	override getOutputStreamMonitor() {
+		fOutputMonitor
 	}
 
-	override void write(String input) throws IOException {
+	override write(String input) throws IOException {
 		fInputWriter.write(input)
 		fInputWriter.flush
 	}
 
-	override void closeInputStream() throws IOException {
+	override closeInputStream() throws IOException {
 		fInputWriter.close
 	}
 
-	override void setDebugStreamListener(IPSDebugStreamListener listener) {
+	override setDebugStreamListener(IPSDebugStreamListener listener) {
 		fErrorMonitor.debugStreamListener = listener
 	}
 
-	override void sendCommand(String command) throws DebugException {
+	override sendCommand(String command) throws DebugException {
 		try {
 			write(command + "\n") //$NON-NLS-1$
 		} catch (IOException e) {
@@ -104,27 +103,27 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		}
 	}
 
-	override void setSingleStep(boolean singleStep) throws DebugException {
+	override setSingleStep(boolean singleStep) throws DebugException {
 		sendCommand('''«singleStep» @@singlestep''')
 	}
 
-	override void resume() throws DebugException {
+	override resume() throws DebugException {
 		sendCommand("@@resume")
 	}
 
-	override void addBreakpoint(int ref) throws DebugException {
+	override addBreakpoint(int ref) throws DebugException {
 		sendCommand('''@@breakpoints «ref» null put''')
 	}
 
-	override void removeBreakpoint(int ref) throws DebugException {
+	override removeBreakpoint(int ref) throws DebugException {
 		sendCommand('''@@breakpoints «ref» undef''')
 	}
 
-	override void hideDicts(boolean hideSystemDict, boolean hideGlobalDict, boolean hideUserDict) throws DebugException {
+	override hideDicts(boolean hideSystemDict, boolean hideGlobalDict, boolean hideUserDict) throws DebugException {
 		sendCommand('''«hideSystemDict» «hideGlobalDict» «hideUserDict» @@stathide''')
 	}
 
-	override void requestStatus() throws DebugException {
+	override requestStatus() throws DebugException {
 		sendCommand("@@status")
 	}
 

@@ -39,11 +39,11 @@ public class AutoEditTest extends AbstractAutoEditTest {
 	@Inject	LanguageInfo languageInfo
 
 	override protected getFileExtension() {
-		return fileExtensionProvider.primaryFileExtension
+		fileExtensionProvider.primaryFileExtension
 	}
 
 	override protected getEditorId() {
-		return languageInfo.languageName
+		languageInfo.languageName
 	}
 
 	@Test

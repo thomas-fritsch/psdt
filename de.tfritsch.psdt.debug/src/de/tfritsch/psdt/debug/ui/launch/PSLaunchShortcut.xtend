@@ -54,7 +54,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	@Inject IWorkbench workbench
 	@Inject @Debug IPreferenceStore preferenceStore
 
-	override void launch(ISelection selection, String mode) {
+	override launch(ISelection selection, String mode) {
 		if (selection instanceof IStructuredSelection) {
 			val element = selection.firstElement
 			if (element instanceof IFile)
@@ -62,7 +62,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		}
 	}
 
-	override void launch(IEditorPart editor, String mode) {
+	override launch(IEditorPart editor, String mode) {
 		val file = editor.editorInput.getAdapter(IFile) as IFile
 		if (file !== null) {
 			file.launch(mode)
@@ -124,10 +124,10 @@ class PSLaunchShortcut implements ILaunchShortcut {
 				processFactoryId = PSProcessFactory.ID
 				ghostscriptArguments = preferenceStore.defaultGhostscriptArguments
 			]
-			return workingCopy.doSave
+			workingCopy.doSave
 		} catch (CoreException e) {
 			PSPlugin.log(e)
-			return null
+			null
 		}
 	}
 
@@ -140,6 +140,6 @@ class PSLaunchShortcut implements ILaunchShortcut {
 			multipleSelection = false
 		]
 		dialog.open
-		return dialog.firstResult as ILaunchConfiguration
+		dialog.firstResult as ILaunchConfiguration
 	}
 }

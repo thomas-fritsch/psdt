@@ -65,7 +65,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject Provider<PSDebugTarget> debugTargetProvider
 
-	override void launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
+	override launch(ILaunchConfiguration cfg, String mode, ILaunch launch, IProgressMonitor monitor) throws CoreException {
 		if (monitor.canceled) {
 			return
 		}
@@ -122,7 +122,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (!(new File(psFile)).exists) {
 			throw NLS.bind("PostScript program \"{0}\" not existing.", psFile).toCoreException
 		}
-		return psFile
+		psFile
 	}
 
 	def protected String verifyInterpreter() throws CoreException {
@@ -130,7 +130,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (exe.nullOrEmpty) {
 			throw "Interpreter not specified".toCoreException
 		}
-		return exe
+		exe
 	}
 
 	// copied from org.eclipse.jdt.launching.AbstractJavaLaunchConfigurationDelegate
@@ -138,7 +138,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val path = configuration.workingDirectoryPath
 		if (path == null)
 			return null
-		return new File(path.toOSString)
+		new File(path.toOSString)
 	}
 
 	// copied from org.eclipse.jdt.launching.AbstractJavaLaunchConfigurationDelegate
@@ -146,13 +146,13 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		val path = config.workingDirectory
 		if (path == null)
 			return null
-		return new Path(path.performStringSubstitution)
+		new Path(path.performStringSubstitution)
 	}
 
 	def private File getPSDebug() throws CoreException {
 		try {
 			var url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
-			return new File(url.toFileURL.path).canonicalFile
+			new File(url.toFileURL.path).canonicalFile
 		} catch (Exception e) {
 			throw e.toCoreException
 		}

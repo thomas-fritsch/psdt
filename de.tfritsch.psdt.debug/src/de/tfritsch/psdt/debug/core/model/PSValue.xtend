@@ -45,33 +45,33 @@ class PSValue extends PSDebugElement implements IValue {
 		this.valueString = valueString
 	}
 
-	override String getReferenceTypeName() {
-		return "object" //$NON-NLS-1$
+	override getReferenceTypeName() {
+		"object" //$NON-NLS-1$
 	}
 
-	override String getValueString() {
-		return valueString
+	override getValueString() {
+		valueString
 	}
 
 	// convenience for Java debugging
-	override String toString() {
-		return valueString
+	override toString() {
+		valueString
 	}
 
-	override IVariable[] getVariables() {
-		return variables?:emptySet
+	override getVariables() {
+		variables?:emptySet
 	}
 
-	override boolean hasVariables() {
-		return size > 0
+	override hasVariables() {
+		size > 0
 	}
 
-	override boolean isAllocated() {
-		return true
+	override isAllocated() {
+		true
 	}
 
 	def protected int getSize() {
-		return (variables?:emptySet).size
+		(variables?:emptySet).size
 	}
 
 	def void addVariable(IVariable variable) {

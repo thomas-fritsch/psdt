@@ -55,66 +55,66 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 		}
 	}
 
-	def String getSourceName() {
-		return PSDebugTarget.sourceName
+	def getSourceName() {
+		PSDebugTarget.sourceName
 	}
 
-	override int getCharStart() {
-		return PSDebugTarget.charStart
+	override getCharStart() {
+		PSDebugTarget.charStart
 	}
 
-	override int getCharEnd() {
-		return PSDebugTarget.charEnd
+	override getCharEnd() {
+		PSDebugTarget.charEnd
 	}
 
-	override int getLineNumber() {
-		return PSDebugTarget.lineNumber
+	override getLineNumber() {
+		PSDebugTarget.lineNumber
 	}
 
-	override String getName() {
+	override getName() {
 		val s = sourceName
-		return s.substring(s.lastIndexOf(File.separatorChar) + 1)
+		s.substring(s.lastIndexOf(File.separatorChar) + 1)
 	}
 
-	override IRegisterGroup[] getRegisterGroups() throws DebugException {
-		return #[]
+	override getRegisterGroups() throws DebugException {
+		#[]
 	}
 
-	override IThread getThread() {
-		return thread
+	override getThread() {
+		thread
 	}
 
-	override IVariable[] getVariables() throws DebugException {
+	override getVariables() throws DebugException {
 		debug("GUI -> getVariables") //$NON-NLS-1$
-		return if(suspended) PSDebugTarget.variables else #[]
+		if(suspended) PSDebugTarget.variables else #[]
 	}
 
-	override boolean hasRegisterGroups() throws DebugException {
-		return false
+	override hasRegisterGroups() throws DebugException {
+		false
 	}
 
-	override boolean hasVariables() throws DebugException {
+	override hasVariables() throws DebugException {
 		debug("GUI -> PSStackFrame.hasVariables") //$NON-NLS-1$
-		return suspended
+		suspended
 	}
 
-	override boolean canStepInto() {
-		return thread.canStepInto
+	override canStepInto() {
+		thread.canStepInto
 	}
 
-	override boolean canStepOver() {
-		return thread.canStepOver
+	override canStepOver() {
+		thread.canStepOver
 	}
 
-	override boolean canStepReturn() {
-		return thread.canStepReturn
+	override canStepReturn() {
+		thread.canStepReturn
 	}
 
-	override boolean isStepping() {
-		return thread.stepping
+	override isStepping() {
+		thread.stepping
 	}
 
-	override void stepInto() throws DebugException {
+	override stepInto() throws DebugException {
 		thread.stepInto
 	}
 
@@ -122,39 +122,39 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 		thread.stepOver
 	}
 
-	override void stepReturn() throws DebugException {
+	override stepReturn() throws DebugException {
 		thread.stepReturn
 	}
 
-	override boolean canResume() {
-		return thread.canResume
+	override canResume() {
+		thread.canResume
 	}
 
-	override boolean canSuspend() {
-		return thread.canSuspend
+	override canSuspend() {
+		thread.canSuspend
 	}
 
-	override boolean isSuspended() {
-		return thread.suspended
+	override isSuspended() {
+		thread.suspended
 	}
 
-	override void resume() throws DebugException {
+	override resume() throws DebugException {
 		thread.resume
 	}
 
-	override void suspend() throws DebugException {
+	override suspend() throws DebugException {
 		thread.suspend
 	}
 
-	override boolean canTerminate() {
-		return thread.canTerminate
+	override canTerminate() {
+		thread.canTerminate
 	}
 
-	override boolean isTerminated() {
-		return thread.terminated
+	override isTerminated() {
+		thread.terminated
 	}
 
-	override void terminate() throws DebugException {
+	override terminate() throws DebugException {
 		thread.terminate
 	}
 }

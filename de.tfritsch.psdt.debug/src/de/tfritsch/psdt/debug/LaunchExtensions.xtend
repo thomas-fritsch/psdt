@@ -33,7 +33,7 @@ import org.eclipse.debug.core.model.ITerminate
 class LaunchExtensions {
 
 	def static String getConsoleEncoding(ILaunch launch) {
-		return launch.getAttribute(DebugPlugin.ATTR_CONSOLE_ENCODING)
+		launch.getAttribute(DebugPlugin.ATTR_CONSOLE_ENCODING)
 	}
 
 	def static void setProcessFactoryId(ILaunchConfigurationWorkingCopy configuration, String processFactoryId) {
@@ -41,7 +41,7 @@ class LaunchExtensions {
 	}
 
 	def static String getLaunchTimestamp(ILaunch launch) {
-		return launch.getAttribute(DebugPlugin.ATTR_LAUNCH_TIMESTAMP)
+		launch.getAttribute(DebugPlugin.ATTR_LAUNCH_TIMESTAMP)
 	}
 
 	def static String getWorkingDirectory(ILaunchConfiguration configuration) {
@@ -50,24 +50,24 @@ class LaunchExtensions {
 
 	def static String[] getEnvironment(ILaunchConfiguration configuration) throws CoreException {
 		val launchManager = DebugPlugin.^default.launchManager
-		return launchManager.getEnvironment(configuration)
+		launchManager.getEnvironment(configuration)
 	}
 
 	// equivalent to org.eclipse.jdt.internal.launching.StandardVMRunner
 	def static String renderProcessLabel(String[] commandLine) {
 		val timeStamp = DateFormat.dateTimeInstance.format(new Date)
-		return commandLine.get(0) + " (" + timeStamp + ")"
+		commandLine.get(0) + " (" + timeStamp + ")"
 	}
 
 	def static String renderWorkingDirectory(File workingDir) {
-		return if (workingDir !== null)
+		if (workingDir !== null)
 			workingDir.absolutePath
 		else
 			System.getProperty("user.dir")
 	}
 
 	def static String renderEnvironment(String[] env) {
-		return if (env !== null)
+		if (env !== null)
 			env.join("\n") //$NON-NLS-1$
 		else {
 			System.getenv.entrySet.map[key + "=" + value].sort.join("\n")

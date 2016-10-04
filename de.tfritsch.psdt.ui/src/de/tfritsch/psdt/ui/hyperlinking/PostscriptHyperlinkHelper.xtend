@@ -37,7 +37,7 @@ class PostscriptHyperlinkHelper extends HyperlinkHelper {
 	@Inject
 	Provider<DocHyperlink> docHyperlinkProvider;
 
-	override void createHyperlinksByOffset(XtextResource resource, int offset, extension IHyperlinkAcceptor acceptor) {
+	override createHyperlinksByOffset(XtextResource resource, int offset, extension IHyperlinkAcceptor acceptor) {
 		val eObject = EObjectAtOffsetHelper.resolveContainedElementAt(resource, offset)
 		val name = switch (eObject) {
 			PSExecutableName:

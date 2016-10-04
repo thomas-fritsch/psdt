@@ -35,7 +35,7 @@ import org.eclipse.ui.texteditor.ITextEditor
  */
 class PSRunToLineTarget implements IRunToLineTarget {
 
-	override void runToLine(IWorkbenchPart part, ISelection selection, ISuspendResume target) throws CoreException {
+	override runToLine(IWorkbenchPart part, ISelection selection, ISuspendResume target) throws CoreException {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
 		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
 		val lineNumber = (selection as ITextSelection).startLine
@@ -48,10 +48,10 @@ class PSRunToLineTarget implements IRunToLineTarget {
 		}
 	}
 
-	override boolean canRunToLine(IWorkbenchPart part, ISelection selection, ISuspendResume target) {
+	override canRunToLine(IWorkbenchPart part, ISelection selection, ISuspendResume target) {
 		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
 		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
-		return (resource != null)
+		resource != null
 	}
 
 }
