@@ -16,7 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
-import java.util.List
+import javax.swing.tree.TreePath
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtend.lib.annotations.ToString
@@ -30,8 +30,8 @@ class StatusParser {
 	val IPSDebugElementFactory factory
 
 	def IVariable[] toVariables(Iterable<String> lines) {
-		val root = factory.createValue("") //$NON-NLS-1$
-		val List<PSValue> treePath = newArrayList(root)
+		val root = factory.createValue("<root>") //$NON-NLS-1$
+		val treePath = new TreePath(root)
 		lines.map[parseStatusLine].fold(treePath)[it, statusLine|append(statusLine)]
 		root.variables
 	}
@@ -55,17 +55,18 @@ class StatusParser {
 		val String value
 	}
 
-	def protected List<PSValue> append(List<PSValue> it, StatusLine statusLine) {
+	def protected TreePath append(TreePath it, StatusLine statusLine) {
 		val value = factory.createIndexedValue(statusLine.value)
 		val variable = factory.createVariable(statusLine.name, value)
-		shrinkToSize(statusLine.depth)
-		last.addVariable(variable)
-		add(value)
-		it
+		val treePath = partialPathOfSize(statusLine.depth)
+		(treePath.lastPathComponent as PSValue).addVariable(variable)
+		treePath.pathByAddingChild(value)
 	}
 
-	def protected void shrinkToSize(List<?> it, int newSize) {
-		while (size > newSize)
-			remove(size - 1)
+	def protected TreePath partialPathOfSize(TreePath it, int newSize) {
+		var treePath = it
+		while (treePath.pathCount > newSize)
+			treePath = treePath.parentPath
+		treePath
 	}
 }
