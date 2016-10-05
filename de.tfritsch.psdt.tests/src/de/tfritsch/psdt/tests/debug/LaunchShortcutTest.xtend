@@ -21,6 +21,7 @@ import org.eclipse.core.filesystem.EFS
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IAdapterManager
 import org.eclipse.core.runtime.Platform
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.internal.ui.DebugUIPlugin
@@ -41,6 +42,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 	IFile file
 	IFile otherFile
 	IFileStore fileStore
+	extension IAdapterManager = Platform.adapterManager
 
 	override setUp() throws Exception {
 		super.setUp
@@ -66,7 +68,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 
 	// mimic what the launch framework does
 	private def boolean isLaunchable(Object object) {
-		Platform.adapterManager.hasAdapter(object, ILaunchable.name)
+		object.hasAdapter(ILaunchable.name)
 	}
 
 	// mimic what the launch framework does
@@ -79,8 +81,7 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		}
 		val context = DebugUIPlugin.createEvaluationContext(list)
 		context.addVariable("selection", list)
-		val enabled = evalEnablementExpression(context, contextualLaunchEnablementExpression)
-		enabled
+		evalEnablementExpression(context, contextualLaunchEnablementExpression)
 	}
 
 	@Test

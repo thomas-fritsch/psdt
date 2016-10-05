@@ -61,7 +61,7 @@ abstract class PSDebugElement extends DebugElement {
 	 * Gets the IPSDebugDebugCommander for this element.
 	 */
 	def protected IPSDebugCommander getPSDebugCommander() {
-		getPSDebugTarget.getPSDebugCommander()
+		PSDebugTarget.PSDebugCommander
 	}
 
 	def protected void debug(String s) {

@@ -53,7 +53,7 @@ class PreferenceInitializerTest {
 		val interpreterFile = new File(interpreter)
 		assertTrue(interpreterFile.absolute)
 		assertTrue(interpreterFile.exists)
-		switch (Platform.getOS) {
+		switch (Platform.OS) {
 			case Platform.OS_WIN32:
 				assertTrue(#["gswin64c.exe", "gswin32c.exe"].contains(interpreterFile.name.toLowerCase))
 			default:

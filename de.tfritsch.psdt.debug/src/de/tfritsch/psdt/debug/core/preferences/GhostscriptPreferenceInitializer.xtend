@@ -16,13 +16,11 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 	@Inject @Debug IPreferenceStore store
 
 	override initializeDefaultPreferences() {
-		val file = switch (Platform.getOS) {
-			case Platform.OS_WIN32: {
+		val file = switch (Platform.OS) {
+			case Platform.OS_WIN32:
 				findGhostscriptExeOnWindows
-			}
-			default: {
+			default:
 				findGhostscriptExeByPath
-			}
 		}
 		if (file !== null)
 			store.setDefault(IPSConstants.PREF_INTERPRETER, file.absolutePath)
@@ -30,31 +28,23 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 	}
 
 	def private File findGhostscriptExeByPath() {
-		for (dir : System.getenv("PATH").split(File.pathSeparator)) {
-			val file = new File(dir, "gs")
-			if (file.exists)
-				return file
-		}
-		null
+		System.getenv("PATH").split(File.pathSeparator) //
+		.map[new File(it, "gs")] //
+		.filter[exists] //
+		.head
 	}
 
 	def private File findGhostscriptExeOnWindows() {
-		for (gsDir : #[
-			new File(System.getenv("ProgramFiles"), "gs"),
-			new File(System.getenv("ProgramFiles(x86)"), "gs"),
-			new File(System.getenv("ProgramW6432"), "gs")
-		]) {
-			if (gsDir.exists) {
-				for (subDir : gsDir.list) {
-					var file = new File(gsDir, subDir + "/bin/gswin64c.exe".replace("/", File.separator))
-					if (file.exists)
-						return file
-					file = new File(gsDir, subDir + "/bin/gswin32c.exe".replace("/", File.separator))
-					if (file.exists)
-						return file
-				}
+		#["ProgramFiles", "ProgramFiles(x86)", "ProgramW6432"] //
+		.map[new File(System.getenv(it), "gs")] //
+		.filter[exists] //
+		.fold(newArrayList) [ files, gsDir |
+			for (subDir : gsDir.listFiles) {
+				files += #["bin/gswin64c.exe", "bin/gswin32c.exe"] //
+				.map[new File(subDir, it.replace("/", File.separator))] //
+				.filter[exists]
 			}
-		}
-		null
+			files
+		].head
 	}
 }
