@@ -39,11 +39,11 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 		.map[new File(System.getenv(it), "gs")] //
 		.filter[exists] //
 		.fold(newArrayList) [ files, gsDir |
-			for (subDir : gsDir.listFiles) {
-				files += #["bin/gswin64c.exe", "bin/gswin32c.exe"] //
-				.map[new File(subDir, it.replace("/", File.separator))] //
-				.filter[exists]
-			}
+			gsDir.listFiles.forEach [
+				val exes = new File(it, "bin") //
+				.listFiles[name == "gswin64c.exe" || name == "gswin32c.exe"]
+				files.addAll(exes)
+			]
 			files
 		].head
 	}
