@@ -61,7 +61,7 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 
 	def protected Writer creatInputWriter(Process process, String encoding) {
 		if (encoding == null) {
-			return new OutputStreamWriter(process.outputStream)
+			new OutputStreamWriter(process.outputStream)
 		} else {
 			try {
 				new OutputStreamWriter(process.outputStream, encoding)

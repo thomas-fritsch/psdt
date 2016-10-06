@@ -44,27 +44,27 @@ class PostscriptHighlightingConfiguration extends DefaultHighlightingConfigurati
 	}
 
 	def TextStyle literalNameTextStyle() {
-		return defaultTextStyle.copy => [
+		defaultTextStyle.copy => [
 			color = new RGB(128, 0, 255) // violet
 			style = SWT.BOLD
 		]
 	}
 
 	def TextStyle immediatelyEvaluatedNameTextStyle() {
-		return defaultTextStyle.copy => [
+		defaultTextStyle.copy => [
 			color = new RGB(255, 0, 255) // magenta
 			style = SWT.BOLD
 		]
 	}
 
 	def TextStyle dscCommentTextStyle() {
-		return defaultTextStyle.copy => [
+		defaultTextStyle.copy => [
 			color = new RGB(63, 95, 191) // grey blue
 		]
 	}
 
 	def TextStyle unparsedDataTextStyle() {
-		return defaultTextStyle.copy => [
+		defaultTextStyle.copy => [
 			color = new RGB(42, 0, 255) // blue
 			backgroundColor = new RGB(220, 220, 220) // light grey
 		]

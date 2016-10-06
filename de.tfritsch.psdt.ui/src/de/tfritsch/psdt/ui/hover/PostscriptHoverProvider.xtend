@@ -31,18 +31,18 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 	IInformationControlCreator presenterControlCreator
 
 	override protected hasHover(EObject o) {
-		return super.hasHover(o) && getDocumentation(o) !== null
+		super.hasHover(o) && getDocumentation(o) !== null
 	}
 
 	override protected getFirstLine(EObject o) {
-		return ""
+		""
 	}
 
 	override protected getStyleSheet() {
 		var css = super.getStyleSheet
 		if (css !== null)
 			css += "th, td { vertical-align: top; }\n"
-		return css
+		css
 	}
 
 	override getInformationPresenterControlCreator() {
@@ -63,7 +63,7 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 				}
 			}
 		}
-		return presenterControlCreator
+		presenterControlCreator
 	}
 
 }

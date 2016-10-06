@@ -36,11 +36,14 @@ import static extension org.eclipse.core.filebuffers.FileBuffers.*
  */
 class PSSourceLocator implements IPersistableSourceLocator {
 	override getSourceElement(IStackFrame stackFrame) {
-		if (stackFrame instanceof PSStackFrame) {
-			val path = new Path(stackFrame.sourceName)
-			return path.workspaceFileAtLocation ?: path.fileStoreAtLocation
-		}
-		null
+		switch (stackFrame) {
+			PSStackFrame: {
+				val path = new Path(stackFrame.sourceName)
+				path.workspaceFileAtLocation ?: path.fileStoreAtLocation
+			}
+			default:
+				null
+        }
 	}
 
 	override getMemento() throws CoreException {
