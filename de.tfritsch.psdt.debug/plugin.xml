@@ -32,7 +32,7 @@
    </extension>
    <extension point="org.eclipse.debug.core.breakpoints">
       <breakpoint
-           class="de.tfritsch.psdt.debug.core.breakpoints.PSLineBreakpoint"
+           class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.breakpoints.PSLineBreakpoint"
       	   id="de.tfritsch.psdt.debug.model.lineBreakpoint"
       	   markerType="org.eclipse.debug.core.lineBreakpointMarker"
       	   name="Postscript Breakpoint">
@@ -40,7 +40,7 @@
    </extension>
    <extension point="org.eclipse.debug.core.processFactories">
       <processFactory
-            class="de.tfritsch.psdt.debug.core.process.PSProcessFactory"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.process.PSProcessFactory"
             id="de.tfritsch.psdt.debug.processFactory">
       </processFactory>
    </extension>
@@ -56,14 +56,14 @@
    <extension point="org.eclipse.debug.core.sourceLocators">
       <sourceLocator
             name="PostScript Source Locator"
-            class="de.tfritsch.psdt.debug.core.sourcelookup.PSSourceLocator"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.sourcelookup.PSSourceLocator"
             id="de.tfritsch.psdt.debug.sourceLocator">
       </sourceLocator>
    </extension>
    <extension point="org.eclipse.debug.core.watchExpressionDelegates">
       <watchExpressionDelegate
             debugModel="de.tfritsch.psdt.debug"
-            delegateClass="de.tfritsch.psdt.debug.core.model.PSWatchExpressionDelegate">
+            delegateClass="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.core.model.PSWatchExpressionDelegate">
       </watchExpressionDelegate>
    </extension>
    <extension point="org.eclipse.debug.ui.debugModelPresentations">
