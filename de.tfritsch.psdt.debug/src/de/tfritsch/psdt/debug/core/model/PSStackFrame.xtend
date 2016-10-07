@@ -18,10 +18,9 @@ package de.tfritsch.psdt.debug.core.model
 
 import java.io.File
 import org.eclipse.debug.core.DebugException
-import org.eclipse.debug.core.model.IRegisterGroup
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.IThread
-import org.eclipse.debug.core.model.IVariable
+import org.eclipse.debug.core.model.IValue
 
 /**
  * PostScript VM stack frame. Since there is only one single
@@ -156,5 +155,11 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 
 	override terminate() throws DebugException {
 		thread.terminate
+	}
+
+	def IValue evaluateExpression(String expression) throws DebugException {
+		// TODO evaluate expression
+		notSupported("(Expressions not supported)", null)
+		null
 	}
 }

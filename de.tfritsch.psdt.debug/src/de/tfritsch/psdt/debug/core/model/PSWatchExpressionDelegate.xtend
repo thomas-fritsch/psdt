@@ -16,11 +16,17 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
+import com.google.inject.Inject
+import org.eclipse.debug.core.DebugException
+import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.model.IDebugElement
 import org.eclipse.debug.core.model.IStackFrame
+import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.core.model.IWatchExpressionDelegate
 import org.eclipse.debug.core.model.IWatchExpressionListener
 import org.eclipse.debug.core.model.IWatchExpressionResult
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
  * A delegate for evaluating Postscript watch expressions.
@@ -33,32 +39,40 @@ import org.eclipse.debug.core.model.IWatchExpressionResult
  */
 class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 
+	@Inject DebugPlugin debugPlugin
+
 	override evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
 		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame
-
-		// TODO evaluate expression
-		val result = new IWatchExpressionResult {
-			override getValue() {
-				null
+		switch (stackFrame) {
+			PSStackFrame: {
+				debugPlugin.asyncExec[
+					val result = try {
+						val value = stackFrame.evaluateExpression(expression)
+						new WatchExpressionResult(expression, value, null)
+					} catch(DebugException e) {
+						new WatchExpressionResult(expression, null, e)
+					}
+					listener.watchEvaluationFinished(result)
+				]
 			}
-
-			override hasErrors() {
-				true
-			}
-
-			override getErrorMessages() {
-				#["(Watch expressions not supported)"]
-			}
-
-			override getExpressionText() {
-				""
-			}
-
-			override getException() {
-				null
-			}
+			default:
+				listener.watchEvaluationFinished(null)
 		}
-		listener.watchEvaluationFinished(result)
 	}
 
+	@FinalFieldsConstructor
+	@Accessors
+	private static class WatchExpressionResult implements IWatchExpressionResult {
+		val String expressionText
+		val IValue value
+		val DebugException exception
+
+		override hasErrors() {
+			exception !== null
+		}     
+
+		override getErrorMessages() {
+			if (exception !== null) #[exception.message] else #[]
+		}
+    }
 }
