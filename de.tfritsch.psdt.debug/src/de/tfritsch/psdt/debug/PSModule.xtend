@@ -20,14 +20,15 @@ import com.google.inject.AbstractModule
 import de.tfritsch.psdt.debug.ui.breakpoints.PSRunToLineTarget
 import de.tfritsch.psdt.debug.ui.breakpoints.PSToggleBreakpointsTarget
 import org.eclipse.core.variables.IStringVariableManager
+import org.eclipse.core.variables.VariablesPlugin
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.IBreakpointManager
+import org.eclipse.debug.core.IExpressionManager
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.actions.IRunToLineTarget
 import org.eclipse.debug.ui.actions.IToggleBreakpointsTarget
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.ui.plugin.AbstractUIPlugin
-import org.eclipse.core.variables.VariablesPlugin
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -43,6 +44,7 @@ class PSModule extends AbstractModule {
 	override protected configure() {
 		bind(DebugPlugin).toInstance(DebugPlugin.^default)
 		bind(IBreakpointManager).toInstance(DebugPlugin.^default.breakpointManager)
+		bind(IExpressionManager).toInstance(DebugPlugin.^default.expressionManager)
 		bind(ILaunchManager).toInstance(DebugPlugin.^default.launchManager)
 		bind(IStringVariableManager).toInstance(VariablesPlugin.^default.stringVariableManager)
 		bind(IPreferenceStore).annotatedWith(Debug).toInstance(plugin.preferenceStore)

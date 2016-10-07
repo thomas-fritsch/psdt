@@ -127,4 +127,7 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 		sendCommand("@@status")
 	}
 
+	override setWatches(Iterable<String> watches) throws DebugException {
+		sendCommand(watches.join("[", " ", "] @@watches", ["/" + it]))
+	}
 }

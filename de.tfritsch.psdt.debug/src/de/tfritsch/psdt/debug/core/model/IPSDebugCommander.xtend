@@ -37,5 +37,7 @@ interface IPSDebugCommander {
 
 	def void requestStatus() throws DebugException
 
+	def void setWatches(Iterable<String> watches) throws DebugException
+
 	def void sendCommand(String string) throws DebugException
 }

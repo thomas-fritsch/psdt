@@ -29,12 +29,15 @@ import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.IBreakpointManager
+import org.eclipse.debug.core.IExpressionManager
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IDebugTarget
 import org.eclipse.debug.core.model.ILineBreakpoint
 import org.eclipse.debug.core.model.IProcess
+import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.core.model.IVariable
+import org.eclipse.debug.core.model.IWatchExpression
 import org.eclipse.jface.preference.IPreferenceStore
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -56,6 +59,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IBreakpointManager breakpointManager
+	@Inject IExpressionManager expressionManager
 	@Inject DebugPlugin debugPlugin
 	@Inject extension IStringVariableManager
 
@@ -125,6 +129,12 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		}
 	}
 
+	def private void installWatches() {
+		val watches = expressionManager.expressions //
+		.filter(IWatchExpression).map[expressionText]
+		debugCommander.watches = watches
+	}
+
 	override statusReceived(List<String> lines) {
 		val newVariables = lines.toVariables
 		if (variables !== null)
@@ -149,6 +159,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 			switch (state) {
 				case CREATED: {
 					installDeferredBreakpoints
+					installWatches
 					if (breakOnFirstToken)
 						PSDebugCommander.requestStatus
 					else
@@ -402,4 +413,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		new PSValue(this, valueString)
 	}
 
+	def IValue getWatchByName(String s) throws DebugException {
+		val watches = variables.findFirst[name == "watches"].value
+		watches.variables.findFirst[name == s]?.value
+	}
 }

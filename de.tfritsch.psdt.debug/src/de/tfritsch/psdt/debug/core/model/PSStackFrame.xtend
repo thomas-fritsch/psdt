@@ -158,8 +158,6 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	}
 
 	def IValue evaluateExpression(String expression) throws DebugException {
-		// TODO evaluate expression
-		notSupported("(Expressions not supported)", null)
-		null
+		PSDebugTarget.getWatchByName(expression)
 	}
 }
