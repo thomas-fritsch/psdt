@@ -29,10 +29,12 @@ import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.IBreakpointManager
+import org.eclipse.debug.core.IExpressionsListener
 import org.eclipse.debug.core.IExpressionManager
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IDebugTarget
+import org.eclipse.debug.core.model.IExpression
 import org.eclipse.debug.core.model.ILineBreakpoint
 import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.IValue
@@ -45,7 +47,7 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStreamListener, IPSDebugElementFactory {
+class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressionsListener, IPSDebugStreamListener, IPSDebugElementFactory {
 
 	private static enum State {
 		CREATED,
@@ -110,6 +112,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
 		this.sourceMapping = sourceMapping
 		breakpointManager.addBreakpointListener(this)
+		expressionManager.addExpressionListener(this)
 		debugPlugin.addDebugEventListener [ events |
 			for (event : events) {
 				if (event.source === process && event.kind === DebugEvent.TERMINATE) {
@@ -194,6 +197,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 	def private void onTerminated() {
 		state = State.TERMINATED
 		breakpointManager.removeBreakpointListener(this)
+		expressionManager.removeExpressionListener(this)
 		fireTerminateEvent
 	}
 
@@ -417,4 +421,20 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IPSDebugStre
 		val watches = variables.findFirst[name == "watches"].value
 		watches.variables.findFirst[name == s]?.value
 	}
+
+	override expressionsAdded(IExpression[] expressions) {
+		installWatches
+		debugCommander.requestStatus
+	}
+
+	override expressionsChanged(IExpression[] expressions) {
+		installWatches
+		debugCommander.requestStatus
+	}
+
+	override expressionsRemoved(IExpression[] expressions) {
+		installWatches
+		debugCommander.requestStatus
+	}
+
 }
