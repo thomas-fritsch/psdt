@@ -45,6 +45,7 @@
 		<topic label="Debug View" href="html/perspectives_and_views/debug_view.html" />
 		<topic label="Variables View" href="html/perspectives_and_views/variables_view.html" />
 		<topic label="Breakpoints View" href="html/perspectives_and_views/breakpoints_view.html" />
+		<topic label="Expressions View" href="html/perspectives_and_views/expressions_view.html" />
 	</topic>
 	<topic label="Preferences">
 		<topic label="Debug" href="html/preferences/debug.html" />
