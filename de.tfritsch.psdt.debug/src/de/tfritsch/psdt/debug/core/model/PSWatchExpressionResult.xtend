@@ -16,29 +16,27 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
-import org.eclipse.debug.core.model.IDebugElement
-import org.eclipse.debug.core.model.IStackFrame
-import org.eclipse.debug.core.model.IWatchExpressionDelegate
-import org.eclipse.debug.core.model.IWatchExpressionListener
+import org.eclipse.debug.core.DebugException
+import org.eclipse.debug.core.model.IValue
+import org.eclipse.debug.core.model.IWatchExpressionResult
+import org.eclipse.xtend.lib.annotations.Accessors
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 
 /**
- * A delegate for evaluating Postscript watch expressions.
- * 
- * Matches plugin.xml
- * extension[@point="org.eclipse.debug.core.watchExpressionDelegates"
- * ]/watchExpressionDelegate/@delgateClass
- * 
  * @author Thomas Fritsch - initial API and implementation
  */
-class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
+@FinalFieldsConstructor
+@Accessors
+class PSWatchExpressionResult implements IWatchExpressionResult {
+	val String expressionText
+	val IValue value
+	val DebugException exception
 
-	override evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
-		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame
-		switch (stackFrame) {
-			PSStackFrame:
-				stackFrame.evaluateExpression(expression, listener)
-			default:
-				listener.watchEvaluationFinished(null)
-		}
+	override hasErrors() {
+		exception !== null
+	}
+
+	override getErrorMessages() {
+		if(exception !== null) #[exception.message] else #[]
 	}
 }

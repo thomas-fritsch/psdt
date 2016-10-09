@@ -29,17 +29,17 @@ import org.eclipse.debug.core.DebugEvent
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.IBreakpointManager
-import org.eclipse.debug.core.IExpressionsListener
 import org.eclipse.debug.core.IExpressionManager
+import org.eclipse.debug.core.IExpressionsListener
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.model.IBreakpoint
 import org.eclipse.debug.core.model.IDebugTarget
 import org.eclipse.debug.core.model.IExpression
 import org.eclipse.debug.core.model.ILineBreakpoint
 import org.eclipse.debug.core.model.IProcess
-import org.eclipse.debug.core.model.IValue
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.debug.core.model.IWatchExpression
+import org.eclipse.debug.core.model.IWatchExpressionListener
 import org.eclipse.jface.preference.IPreferenceStore
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -417,9 +417,13 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 		new PSValue(this, valueString)
 	}
 
-	def IValue getWatchByName(String s) throws DebugException {
-		val watches = variables.findFirst[name == "watches"].value
-		watches.variables.findFirst[name == s]?.value
+	def void evaluateExpression(String expression, IWatchExpressionListener listener) {
+		debugPlugin.asyncExec[
+			val watches = variables.findFirst[name == "watches"].value
+			val value = watches.variables.findFirst[name == expression]?.value
+			val result = new PSWatchExpressionResult(expression, value, null)
+			listener.watchEvaluationFinished(result)
+		]
 	}
 
 	override expressionsAdded(IExpression[] expressions) {

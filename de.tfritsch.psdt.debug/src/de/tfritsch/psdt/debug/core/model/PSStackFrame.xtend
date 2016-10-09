@@ -20,7 +20,7 @@ import java.io.File
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.IThread
-import org.eclipse.debug.core.model.IValue
+import org.eclipse.debug.core.model.IWatchExpressionListener
 
 /**
  * PostScript VM stack frame. Since there is only one single
@@ -157,7 +157,7 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 		thread.terminate
 	}
 
-	def IValue evaluateExpression(String expression) throws DebugException {
-		PSDebugTarget.getWatchByName(expression)
+	def void evaluateExpression(String expression, IWatchExpressionListener listener) {
+		PSDebugTarget.evaluateExpression(expression, listener)
 	}
 }
