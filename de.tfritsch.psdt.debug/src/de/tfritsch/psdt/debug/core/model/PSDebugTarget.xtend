@@ -419,9 +419,13 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 
 	def void evaluateExpression(String expression, IWatchExpressionListener listener) {
 		debugPlugin.asyncExec[
-			val watches = variables.findFirst[name == "watches"].value
-			val value = watches.variables.findFirst[name == expression]?.value
-			val result = new PSWatchExpressionResult(expression, value, null)
+			val result = try {
+				val watches = variables.findFirst[name == "watches"].value
+				val value = watches.variables.findFirst[name == expression]?.value
+				new PSWatchExpressionResult(expression, value, null)
+			} catch(DebugException e) {
+				new PSWatchExpressionResult(expression, null, e)
+			}
 			listener.watchEvaluationFinished(result)
 		]
 	}
