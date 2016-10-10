@@ -22,6 +22,7 @@ import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
 import java.net.URL
+import java.util.List
 import javax.inject.Inject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IPath
@@ -70,7 +71,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			return
 		}
 		val psFile = cfg.verifyPSFile
-		var PSSourceMapping sourceMapping = null
+		var List<PSToken> sourceMapping = null
 		var File instrumentedFile = null
 		val cmdLineList = <String>newArrayList(verifyInterpreter)
 		cmdLineList += cfg.ghostscriptArguments.parseArguments

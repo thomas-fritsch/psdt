@@ -20,6 +20,7 @@ import com.google.inject.Provider
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import java.util.List
 import javax.inject.Inject
 import org.antlr.runtime.ANTLRFileStream
 import org.antlr.runtime.CommonToken
@@ -39,8 +40,8 @@ class DebugExtensions {
 	@Inject
 	Provider<Lexer> lexerProvider
 
-	def PSSourceMapping createSourceMapping(String psFile) throws CoreException {
-		val sourceMapping = new PSSourceMapping
+	def List<PSToken> createSourceMapping(String psFile) throws CoreException {
+		val sourceMapping = <PSToken>newArrayList
 		try {
 			val lexer = lexerProvider.get
 			lexer.charStream = new ANTLRFileStream(psFile)
@@ -55,30 +56,29 @@ class DebugExtensions {
 					}
 					default: {
 						if (token instanceof CommonToken)
-							sourceMapping.add(new PSToken(token.text, token.line, token.startIndex, token.stopIndex + 1))
+							sourceMapping += new PSToken(token.text, token.line, token.startIndex, token.stopIndex + 1)
 						else
-							sourceMapping.add(new PSToken(token.text, token.line, -1, -1))
+							sourceMapping += new PSToken(token.text, token.line, -1, -1)
 					}
 				}
 			}
 		} catch (IOException e) {
 			throw e.toCoreException
 		}
-		sourceMapping
+		sourceMapping.unmodifiableView
 	}
 
-	def File createInstrumentedFile(PSSourceMapping sourceMapping) throws CoreException {
+	def File createInstrumentedFile(List<PSToken> sourceMapping) throws CoreException {
 		try {
 			val file = File.createTempFile("psdt", ".ps")
 			val writer = new FileWriter(file)
 			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")
-			for (i : 0 ..< sourceMapping.size) {
-				val string = sourceMapping.getString(i)
-				if (string != "}") // no stepping point just before }
+			sourceMapping.forEach[token, i|
+				if (token.string != "}") // no stepping point just before }
 					writer.write(i + " @@$ ")
-				writer.write(string + "\n")
-			}
+				writer.write(token.string + "\n")
+			]
 			writer.close
 			file
 		} catch (IOException e) {

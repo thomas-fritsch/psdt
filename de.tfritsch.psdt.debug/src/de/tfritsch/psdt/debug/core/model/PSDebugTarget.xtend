@@ -19,7 +19,7 @@ package de.tfritsch.psdt.debug.core.model
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
-import de.tfritsch.psdt.debug.core.launch.PSSourceMapping
+import de.tfritsch.psdt.debug.core.launch.PSToken
 import java.util.List
 import org.eclipse.core.resources.IMarkerDelta
 import org.eclipse.core.runtime.CoreException
@@ -59,6 +59,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 		STEPPING_RETURN
 	}
 
+	static val NO_TOKEN = new PSToken(null, -1, -1, -1)
+
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IBreakpointManager breakpointManager
 	@Inject IExpressionManager expressionManager
@@ -86,9 +88,9 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	 */
 	IVariable[] variables
 
-	int currentTokenIndex
+	PSToken currentToken
 
-	PSSourceMapping sourceMapping
+	List<PSToken> sourceMapping
 
 	IPSDebugCommander debugCommander
 
@@ -106,7 +108,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	 *            the system process associated with this target
 	 * @throws CoreException 
 	 */
-	def void init(IProcess process, PSSourceMapping sourceMapping) throws CoreException {
+	def void init(IProcess process, List<PSToken> sourceMapping) throws CoreException {
 		this.process = process
 		sourceName = launch.launchConfiguration.program.performStringSubstitution
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
@@ -154,8 +156,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	}
 
 	override breakReceived(int depth, int ref, String value) {
-		currentTokenIndex = ref
-		debug("       " + currentTokenIndex) //$NON-NLS-1$
+		debug("       " + ref) //$NON-NLS-1$
+		currentToken = sourceMapping.get(ref)
 		PSDebugCommander.hideDicts(!preferenceStore.showSystemdict, !preferenceStore.showGlobaldict,
 			!preferenceStore.showUserdict)
 		try {
@@ -206,15 +208,15 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	}
 
 	def int getLineNumber() {
-		sourceMapping.getLineNumber(currentTokenIndex)
+		(currentToken ?: NO_TOKEN).lineNumber
 	}
 
 	def int getCharStart() {
-		sourceMapping.getCharStart(currentTokenIndex)
+		(currentToken ?: NO_TOKEN).charStart
 	}
 
 	def int getCharEnd() {
-		sourceMapping.getCharEnd(currentTokenIndex)
+		(currentToken ?: NO_TOKEN).charEnd
 	}
 
 	def String getSourceName() {
@@ -255,7 +257,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	}
 
 	def private void step(int detail) throws DebugException {
-		currentTokenIndex = -1
+		currentToken = null
 		fireResumeEvent(detail)
 		thread.fireResumeEvent(detail)
 		PSDebugCommander.sendCommand("globaldict /@@e countexecstack put") //$NON-NLS-1$
@@ -320,7 +322,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	override resume() throws DebugException {
 		debug("GUI -> resume") //$NON-NLS-1$
 		state = State.RESUMED
-		currentTokenIndex = -1
+		currentToken = null
 		fireResumeEvent(DebugEvent.CLIENT_REQUEST)
 		thread.fireResumeEvent(DebugEvent.CLIENT_REQUEST)
 		PSDebugCommander.singleStep = false
@@ -342,7 +344,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 				val enabled = breakpoint.enabled
 				var found = false
 				for (var i = 0; i < sourceMapping.size && !found; i++) {
-					if (enabled && sourceMapping.getLineNumber(i) == lineNumber) {
+					val token = sourceMapping.get(i)
+					if (enabled && token.lineNumber == lineNumber) {
 						debugCommander.addBreakpoint(i)
 						found = true // 1 breakpoint per line is enough
 					}
@@ -371,7 +374,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 			try {
 				val lineNumber = (breakpoint as ILineBreakpoint).lineNumber
 				for (i : 0 ..< sourceMapping.size) {
-					if (sourceMapping.getLineNumber(i) == lineNumber) {
+					if (sourceMapping.get(i).lineNumber == lineNumber) {
 						debugCommander.removeBreakpoint(i)
 						if (delta == null)
 							breakpoint.delete
