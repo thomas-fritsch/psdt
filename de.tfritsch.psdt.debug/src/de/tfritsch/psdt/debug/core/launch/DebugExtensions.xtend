@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.launch
 
+import com.google.common.collect.AbstractIterator
 import com.google.inject.Provider
 import java.io.File
 import java.io.FileWriter
@@ -41,31 +42,26 @@ class DebugExtensions {
 	Provider<Lexer> lexerProvider
 
 	def List<PSToken> createSourceMapping(String psFile) throws CoreException {
-		val sourceMapping = <PSToken>newArrayList
 		try {
 			val lexer = lexerProvider.get
 			lexer.charStream = new ANTLRFileStream(psFile)
-			for (var token = lexer.nextToken; token.type !== EOF; token = lexer.nextToken) {
-				switch (token.type) {
-					case Token.INVALID_TOKEN_TYPE:
-						throw ("Invalid token in line " + token.line).toCoreException
-					case RULE_WS,
-					case RULE_SL_COMMENT,
-					case RULE_DSC_COMMENT: {
-						// do nothing
-					}
-					default: {
-						if (token instanceof CommonToken)
-							sourceMapping += new PSToken(token.text, token.line, token.startIndex, token.stopIndex + 1)
-						else
-							sourceMapping += new PSToken(token.text, token.line, -1, -1)
-					}
-				}
-			}
+			val AbstractIterator<Token> tokenIterator = [
+				val t = lexer.nextToken
+				if (t.type == EOF) self.endOfData else t
+			]
+			tokenIterator.filter[
+				if (type == Token.INVALID_TOKEN_TYPE)
+					throw ("Invalid token in line " + line).toCoreException
+				type != RULE_WS && type != RULE_SL_COMMENT && type != RULE_DSC_COMMENT
+			].map[
+				if (it instanceof CommonToken)
+					new PSToken(text, line, startIndex, stopIndex + 1)
+				else
+					new PSToken(text, line, -1, -1)
+			].toList.unmodifiableView
 		} catch (IOException e) {
 			throw e.toCoreException
 		}
-		sourceMapping.unmodifiableView
 	}
 
 	def File createInstrumentedFile(List<PSToken> sourceMapping) throws CoreException {
