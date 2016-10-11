@@ -21,6 +21,7 @@ import com.google.inject.Provider
 import java.io.File
 import java.io.FileWriter
 import java.io.IOException
+import java.util.Iterator
 import java.util.List
 import javax.inject.Inject
 import org.antlr.runtime.ANTLRFileStream
@@ -43,17 +44,12 @@ class DebugExtensions {
 
 	def List<PSToken> createSourceMapping(String psFile) throws CoreException {
 		try {
-			val lexer = lexerProvider.get
-			lexer.charStream = new ANTLRFileStream(psFile)
-			val AbstractIterator<Token> tokenIterator = [
-				val t = lexer.nextToken
-				if (t.type == EOF) self.endOfData else t
-			]
-			tokenIterator.filter[
+			(lexerProvider.get => [charStream = new ANTLRFileStream(psFile)]) //
+			.iterator.filter [
 				if (type == Token.INVALID_TOKEN_TYPE)
 					throw ("Invalid token in line " + line).toCoreException
 				type != RULE_WS && type != RULE_SL_COMMENT && type != RULE_DSC_COMMENT
-			].map[
+			].map [
 				if (it instanceof CommonToken)
 					new PSToken(text, line, startIndex, stopIndex + 1)
 				else
@@ -63,6 +59,14 @@ class DebugExtensions {
 			throw e.toCoreException
 		}
 	}
+
+	private def Iterator<Token> iterator(Lexer lexer) {
+		val AbstractIterator<Token> iterator = [
+			val t = lexer.nextToken
+			if (t.type == EOF) self.endOfData else t
+		]
+		iterator
+    }
 
 	def File createInstrumentedFile(List<PSToken> sourceMapping) throws CoreException {
 		try {
