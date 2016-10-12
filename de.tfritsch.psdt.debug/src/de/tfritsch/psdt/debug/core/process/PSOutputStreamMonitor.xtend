@@ -16,12 +16,14 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.process
 
+import com.google.common.collect.AbstractIterator
 import de.tfritsch.psdt.debug.PSPlugin
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.io.UnsupportedEncodingException
+import java.util.Iterator
 import org.eclipse.core.runtime.ISafeRunnable
 import org.eclipse.core.runtime.ListenerList
 import org.eclipse.core.runtime.SafeRunner
@@ -89,11 +91,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	 */
 	private def void read() {
 		try {
-			var String line = readLine
-			while (line !== null) {
-				appendLine(line)
-				line = readLine
-			}
+			iterator.forEach[appendLine]
 		} catch (IOException e) {
 			PSPlugin.log(e)
 		}
@@ -105,13 +103,13 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	}
 
 	/**
-	 * Read next line from the stream.
+	 * Get an iterator for reading lines from the stream.
 	 * 
-	 * @return one line of text (without trailing line terminator), or null in
-	 *         case of EOF
+	 * @return an iterator giving lines of text (without trailing line terminator)
 	 */
-	protected final def String readLine() throws IOException {
-		reader.readLine
+	protected final def Iterator<String> iterator() {
+		val AbstractIterator<String> iterator = [reader.readLine ?: self.endOfData]
+		iterator
 	}
 
 	/**

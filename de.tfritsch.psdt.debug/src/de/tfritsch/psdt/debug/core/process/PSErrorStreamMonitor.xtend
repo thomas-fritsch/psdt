@@ -16,7 +16,6 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.process
 
-import com.google.common.collect.AbstractIterator
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.IPSDebugStreamListener
 import java.io.IOException
@@ -76,7 +75,6 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 			}
 			case "@@status": { //$NON-NLS-1$
 				try {
-					val AbstractIterator<String> iterator = [readLine ?: self.endOfData]
 					val lines = iterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
 					listener.statusReceived(lines)
 				} catch (IOException e) {
