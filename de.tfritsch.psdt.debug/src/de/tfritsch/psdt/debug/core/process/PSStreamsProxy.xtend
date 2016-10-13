@@ -29,6 +29,9 @@ import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.model.IStreamsProxy2
 
 /**
+ * A streams proxy between the streams of a Ghostscript process and interested clients.
+ * 
+ * @see PSProcessFactory#newProcess
  * @author Thomas Fritsch - initial API and implementation
  */
 class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
@@ -36,27 +39,27 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 	/**
 	 * The monitor for the output stream (connected to standard out of the process)
 	 */
-	PSOutputStreamMonitor fOutputMonitor
+	PSOutputStreamMonitor outputMonitor
 
 	/**
 	 * The monitor for the error stream (connected to standard error of the process)
 	 */
-	PSErrorStreamMonitor fErrorMonitor
+	PSErrorStreamMonitor errorMonitor
 
 	/**
 	 * The writer for the input stream (connected to standard in of the process)
 	 */
-	Writer fInputWriter
+	Writer inputWriter
 
 	new(Process process, String encoding) {
 		if (process == null) {
 			return
 		}
-		fOutputMonitor = new PSOutputStreamMonitor(process.inputStream, encoding)
-		fErrorMonitor = new PSErrorStreamMonitor(process.errorStream, encoding)
-		fInputWriter = creatInputWriter(process, encoding)
-		fOutputMonitor.startMonitoring
-		fErrorMonitor.startMonitoring
+		outputMonitor = new PSOutputStreamMonitor(process.inputStream, encoding)
+		errorMonitor = new PSErrorStreamMonitor(process.errorStream, encoding)
+		inputWriter = creatInputWriter(process, encoding)
+		outputMonitor.startMonitoring
+		errorMonitor.startMonitoring
 	}
 
 	def protected Writer creatInputWriter(Process process, String encoding) {
@@ -73,24 +76,24 @@ class PSStreamsProxy implements IStreamsProxy2, IPSDebugCommander {
 	}
 
 	override getErrorStreamMonitor() {
-		fErrorMonitor
+		errorMonitor
 	}
 
 	override getOutputStreamMonitor() {
-		fOutputMonitor
+		outputMonitor
 	}
 
 	override write(String input) throws IOException {
-		fInputWriter.write(input)
-		fInputWriter.flush
+		inputWriter.write(input)
+		inputWriter.flush
 	}
 
 	override closeInputStream() throws IOException {
-		fInputWriter.close
+		inputWriter.close
 	}
 
 	override setDebugStreamListener(IPSDebugStreamListener listener) {
-		fErrorMonitor.debugStreamListener = listener
+		errorMonitor.debugStreamListener = listener
 	}
 
 	override sendCommand(String command) throws DebugException {

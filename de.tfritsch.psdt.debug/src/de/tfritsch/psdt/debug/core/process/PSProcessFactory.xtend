@@ -39,6 +39,13 @@ class PSProcessFactory implements IProcessFactory {
      */
 	val public static ID = PSPlugin.ID + ".processFactory" //$NON-NLS-1$
 
+    /**
+     * Creates and returns a new process representing the given
+     * <code>java.lang.Process</code> equipped with a specialized streams proxy
+     * for the I/O streams of the Ghostscript process.
+     *
+     * @see PSStreamsProxy
+     */
 	override newProcess(ILaunch launch, Process process, String label, Map<String, String> attributes) {
 		new RuntimeProcess(launch, process, label, attributes) {
 

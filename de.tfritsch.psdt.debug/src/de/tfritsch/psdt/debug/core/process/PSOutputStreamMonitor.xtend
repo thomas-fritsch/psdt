@@ -32,12 +32,11 @@ import org.eclipse.debug.core.model.IFlushableStreamMonitor
 import org.eclipse.xtend.lib.annotations.Accessors
 
 /**
- * Monitors the output stream of a system process and notifies listeners of
+ * Monitors the output stream of a Ghostscript process and notifies listeners of
  * additions to the stream.
  * 
- * The output stream monitor reads system out (or err) via an input stream.
- * 
  * @see "org.eclipse.debug.internal.core.OutputStreamMonitor"
+ * @see PSStreamsProxy
  * @author Thomas Fritsch - initial API and implementation
  */
 class PSOutputStreamMonitor implements IFlushableStreamMonitor {
@@ -91,7 +90,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	 */
 	private def void read() {
 		try {
-			iterator.forEach[appendLine]
+			lineIterator.forEach[fireStreamAppended]
 		} catch (IOException e) {
 			PSPlugin.log(e)
 		}
@@ -107,16 +106,19 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	 * 
 	 * @return an iterator giving lines of text (without trailing line terminator)
 	 */
-	protected final def Iterator<String> iterator() {
+	protected final def Iterator<String> lineIterator() {
 		val AbstractIterator<String> iterator = [reader.readLine ?: self.endOfData]
 		iterator
 	}
 
 	/**
+	 * Notifies the listeners that a line of text has been appended to the stream.
+     * Subclasses may override.
+	 *
 	 * @param line
 	 *            one line of text (without trailing line terminator)
 	 */
-	protected def void appendLine(String line) {
+	protected def void fireStreamAppended(String line) {
 		val text = line + '\n'
 		if (buffered)
 			contents.append(text)

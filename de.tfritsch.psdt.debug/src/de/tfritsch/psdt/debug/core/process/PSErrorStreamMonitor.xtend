@@ -24,6 +24,10 @@ import java.io.InputStream
 import static extension java.lang.Integer.parseInt
 
 /**
+ * Monitors the error stream of a Ghostscript process and notifies listeners of
+ * additions to the stream.
+ * 
+ * @see PSStreamsProxy
  * @author Thomas Fritsch - initial API and implementation
  */
 class PSErrorStreamMonitor extends PSOutputStreamMonitor {
@@ -39,11 +43,19 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 		notifyAll
 	}
 
-	override appendLine(String line) {
+	/**
+	 * Notifies the listeners that a line of text has been appended to the stream.
+	 * Lines beginning with "@@" are intercepted and processed by method
+	 * {@link #processDebugLine}.
+	 *
+	 * @param line
+	 *            one line of text (without trailing line terminator)
+	 */
+	override fireStreamAppended(String line) {
 		if (line.startsWith("@@")) //$NON-NLS-1$
 			processDebugLine(line)
 		else
-			super.appendLine(line)
+			super.fireStreamAppended(line)
 	}
 
 	def synchronized protected void waitWhileNoDebugStreamListener() {
@@ -56,6 +68,10 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 		}
 	}
 
+	/**
+	 * Process a debug line (a line beginning with "@@", and also the lines between
+	 * "@@status +" and "@@status +") by forwarding to the {@link IPSDebugStreamListener}.  
+	 */
 	def protected void processDebugLine(String line) {
 		waitWhileNoDebugStreamListener
 		val tokens = line.split(" ")
@@ -75,7 +91,7 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 			}
 			case "@@status": { //$NON-NLS-1$
 				try {
-					val lines = iterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
+					val lines = lineIterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
 					listener.statusReceived(lines)
 				} catch (IOException e) {
 					PSPlugin.log(e)
