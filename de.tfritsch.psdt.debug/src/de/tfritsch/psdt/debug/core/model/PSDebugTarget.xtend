@@ -128,10 +128,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	}
 
 	def private void installDeferredBreakpoints() {
-		val breakpoints = breakpointManager.getBreakpoints(modelIdentifier)
-		for (breakpoint : breakpoints) {
-			breakpointAdded(breakpoint)
-		}
+		breakpoints.forEach[breakpointAdded]
 	}
 
 	def private void installWatches() {
@@ -342,12 +339,11 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 			try {
 				val lineNumber = (breakpoint as ILineBreakpoint).lineNumber
 				val enabled = breakpoint.enabled
-				for (var i = 0; i < sourceMapping.size; i++) {
-					val token = sourceMapping.get(i)
+				sourceMapping.forEach [ token, i |
 					if (enabled && token.lineNumber == lineNumber) {
 						debugCommander.addBreakpoint(i)
 					}
-				}
+				]
 			} catch (CoreException e) {
 				PSPlugin.log(e)
 			}
@@ -371,13 +367,13 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 		if (supportsBreakpoint(breakpoint)) {
 			try {
 				val lineNumber = (breakpoint as ILineBreakpoint).lineNumber
-				for (i : 0 ..< sourceMapping.size) {
-					if (sourceMapping.get(i).lineNumber == lineNumber) {
+				sourceMapping.forEach [ token, i |
+					if (token.lineNumber == lineNumber) {
 						debugCommander.removeBreakpoint(i)
 						if (delta == null)
 							breakpoint.delete
 					}
-				}
+				]
 			} catch (CoreException e) {
 				PSPlugin.log(e)
 			}
