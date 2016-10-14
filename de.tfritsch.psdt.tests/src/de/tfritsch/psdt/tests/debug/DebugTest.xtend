@@ -44,7 +44,7 @@ class DebugTest extends AbstractDebugTest {
 				%!PS-Adobe-2.0
 				/A {(Hello world) print} def
 				A
-				A
+				A 1 pop
 				showpage
 			''')
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
@@ -100,7 +100,7 @@ class DebugTest extends AbstractDebugTest {
 		assertCurrentToken(4, "A")
 		currentStackFrame.stepOver
 		waitFor[currentStackFrame != null]
-		assertCurrentToken(5, "showpage")
+		assertCurrentToken(4, "1")
 	}
 
 	@Test
@@ -117,6 +117,30 @@ class DebugTest extends AbstractDebugTest {
 		waitFor[currentStackFrame != null]
 		assertTrue(currentStackFrame.suspended)
 		assertCurrentToken(5, "showpage")
+	}
+
+	@Test
+	def void testBreakpointMultiple() throws Exception {
+		file.createLaunchConfiguration.launch(ILaunchManager.DEBUG_MODE)
+		waitFor[launches.length > 0]
+		waitFor[currentStackFrame != null]
+		waitFor[activeEditor instanceof XtextEditor]
+		assertTrue(currentStackFrame.suspended)
+		(activeEditor as XtextEditor).toogleBreakpoint(4) // line 4 has 3 tokens
+		assertEquals(1, currentThread.breakpoints.length)
+		waitFor[true]
+		currentStackFrame.resume
+		waitFor[currentStackFrame != null]
+		assertTrue(currentStackFrame.suspended)
+		assertCurrentToken(4, "A")
+		currentStackFrame.resume
+		waitFor[currentStackFrame != null]
+		assertTrue(currentStackFrame.suspended)
+		assertCurrentToken(4, "1")
+		currentStackFrame.resume
+		waitFor[currentStackFrame != null]
+		assertTrue(currentStackFrame.suspended)
+		assertCurrentToken(4, "pop")
 	}
 
 	@Test

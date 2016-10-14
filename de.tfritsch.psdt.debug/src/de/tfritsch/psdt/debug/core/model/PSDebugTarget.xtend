@@ -342,12 +342,10 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 			try {
 				val lineNumber = (breakpoint as ILineBreakpoint).lineNumber
 				val enabled = breakpoint.enabled
-				var found = false
-				for (var i = 0; i < sourceMapping.size && !found; i++) {
+				for (var i = 0; i < sourceMapping.size; i++) {
 					val token = sourceMapping.get(i)
 					if (enabled && token.lineNumber == lineNumber) {
 						debugCommander.addBreakpoint(i)
-						found = true // 1 breakpoint per line is enough
 					}
 				}
 			} catch (CoreException e) {
