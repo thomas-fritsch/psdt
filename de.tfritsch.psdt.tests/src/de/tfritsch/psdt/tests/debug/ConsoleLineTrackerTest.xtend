@@ -17,7 +17,6 @@
 package de.tfritsch.psdt.tests.debug
 
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.console.IConsole
@@ -37,11 +36,8 @@ import static extension org.eclipse.debug.ui.DebugUITools.*
  */
 class ConsoleLineTrackerTest extends AbstractDebugTest {
 
-	IProject project
-
 	override setUp() throws Exception {
 		super.setUp
-		project = createProject("test")
 		showDebugPerspective // avoid dialog "Want to switch to Debug perspective?"
 	}
 

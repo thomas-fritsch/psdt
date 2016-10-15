@@ -48,7 +48,6 @@ class LaunchShortcutTest extends AbstractDebugTest {
 		super.setUp
 		launchShortcut = DebugUIPlugin.^default.launchConfigurationManager.launchShortcuts.findFirst[
 			label == "PostScript Application"]
-		val project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
 				%!PS

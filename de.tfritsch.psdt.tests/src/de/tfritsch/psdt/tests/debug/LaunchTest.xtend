@@ -33,7 +33,6 @@ class LaunchTest extends AbstractDebugTest {
 
 	override setUp() throws Exception {
 		super.setUp
-		val project = createProject("test")
 		file = createFile(project.name + "/hello.ps",
 			'''
 				%!PS

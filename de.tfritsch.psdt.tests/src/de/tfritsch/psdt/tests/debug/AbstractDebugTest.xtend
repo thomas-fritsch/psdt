@@ -18,6 +18,7 @@ package de.tfritsch.psdt.tests.debug
 
 import de.tfritsch.psdt.tests.AbstractWorkbenchTestExtension
 import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.IProject
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.DebugPlugin
@@ -35,6 +36,7 @@ import org.eclipse.ui.WorkbenchException
 import org.eclipse.xtext.ui.editor.XtextEditor
 
 import static org.eclipse.debug.ui.DebugUITools.*
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
@@ -45,6 +47,12 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 
 	protected extension ILaunchManager = DebugPlugin.^default.launchManager
+
+	protected IProject project
+
+	override setUp() throws Exception {
+		project = createProject("test")
+	}
 
 	override tearDown() throws Exception {
 		terminateAllLaunches
