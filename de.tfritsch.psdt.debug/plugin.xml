@@ -111,12 +111,27 @@
          </contextualLaunch>
       </shortcut>
    </extension>
-   <extension point="org.eclipse.debug.ui.consoleLineTrackers">
-      <consoleLineTracker 
-            id="de.tfritsch.postscript.consoleLineTracker"
-            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.console.PSConsoleLineTracker"
-            processType="PostScript">
-      </consoleLineTracker>
+   <extension point="org.eclipse.ui.console.consolePatternMatchListeners">
+      <consolePatternMatchListener
+            id="de.tfritsch.psdt.debug.consolePatternMatchListener1"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.console.ErrorListenerDelegate"
+            regex="Error: /\w+ in .+">
+         <enablement>
+            <test
+               property="org.eclipse.ui.console.consoleTypeTest"
+               value="org.eclipse.debug.ui.ProcessConsoleType"/>
+         </enablement>
+      </consolePatternMatchListener>
+      <consolePatternMatchListener
+            id="de.tfritsch.psdt.debug.consolePatternMatchListener2"
+            class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.console.PressReturnListenerDelegate"
+            regex=".*press &lt;return&gt; to continue.*">
+         <enablement>
+            <test
+               property="org.eclipse.ui.console.consoleTypeTest"
+               value="org.eclipse.debug.ui.ProcessConsoleType"/>
+         </enablement>
+      </consolePatternMatchListener>
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
       <page name="Ghostscript"
