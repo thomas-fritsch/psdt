@@ -39,6 +39,7 @@ import org.eclipse.ui.ide.FileStoreEditorInput
 
 import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension org.eclipse.core.filesystem.EFS.getStore
 import static extension org.eclipse.debug.ui.DebugUITools.*
 
 /**
@@ -70,20 +71,17 @@ class PSLaunchShortcut implements ILaunchShortcut {
 		}
 		val editorInput = editor.editorInput
 		if (editorInput instanceof FileStoreEditorInput) {
-			val fileStore = EFS.getStore(editorInput.URI)
-			fileStore.launch(mode)
+			editorInput.URI.store.launch(mode)
 			return
 		}
 	}
 
 	def private void launch(IFile file, String mode) {
-		val program = file.location.toOSString
-		program.launch(mode)
+		file.location.toOSString.launch(mode)
 	}
 
 	def private void launch(IFileStore fileStore, String mode) {
-		val program = fileStore.toLocalFile(EFS.NONE, null).absolutePath
-		program.launch(mode)
+		fileStore.toLocalFile(EFS.NONE, null).absolutePath.launch(mode)
 	}
 
 	def private void launch(String program, String mode) {

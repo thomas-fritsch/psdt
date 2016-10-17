@@ -31,8 +31,8 @@ class StatusParser {
 
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = factory.createValue("<root>") //$NON-NLS-1$
-		val treePath = new TreePath(root)
-		lines.map[parseStatusLine].fold(treePath)[it, statusLine|append(statusLine)]
+		lines.map[parseStatusLine] //
+		.fold(new TreePath(root))[treePath, statusLine|treePath + statusLine]
 		root.variables
 	}
 
@@ -55,7 +55,7 @@ class StatusParser {
 		val String value
 	}
 
-	def protected TreePath append(TreePath it, StatusLine statusLine) {
+	def protected TreePath +(TreePath it, StatusLine statusLine) {
 		val value = factory.createIndexedValue(statusLine.value)
 		val variable = factory.createVariable(statusLine.name, value)
 		val treePath = partialPathOfSize(statusLine.depth)
