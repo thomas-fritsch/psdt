@@ -16,6 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
+import java.util.regex.Pattern
 import javax.swing.tree.TreePath
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
@@ -36,14 +37,15 @@ class StatusParser {
 		root.variables
 	}
 
+	val Pattern statusLinePattern = Pattern.compile("(\\+*) (.*): (.*)")
+
 	def protected StatusLine parseStatusLine(String it) {
-		var depth = 0
-		val char plus = '+'
-		while (charAt(depth) == plus)
-			depth++
-		val pColon = indexOf(':')
-		val name = substring(depth + 1, pColon)
-		val value = substring(pColon + 2)
+		val matcher = statusLinePattern.matcher(it)
+		if (!matcher.matches)
+			throw new IllegalArgumentException(it)
+		var depth = matcher.group(1).length
+		val name = matcher.group(2)
+		val value = matcher.group(3)
 		new StatusLine(depth, name, value)
 	}
 
