@@ -18,10 +18,12 @@ package de.tfritsch.psdt.debug.ui.console
 
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.Debug
+import java.io.IOException
 import org.eclipse.debug.ui.DebugUITools
 import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.jface.preference.IPreferenceStore
+import org.eclipse.jface.text.BadLocationException
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.MessageBox
@@ -31,7 +33,6 @@ import org.eclipse.ui.console.PatternMatchEvent
 import org.eclipse.ui.console.TextConsole
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import org.eclipse.jface.text.BadLocationException
 
 /**
  * Matches plugin.xml
@@ -64,6 +65,7 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 				]
 				console.process.streamsProxy.write("\n")
 			} catch (BadLocationException e) {
+			} catch (IOException e) {
 			}
 		}
 	}
