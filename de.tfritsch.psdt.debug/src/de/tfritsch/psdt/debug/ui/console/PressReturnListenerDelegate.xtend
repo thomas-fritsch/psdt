@@ -53,7 +53,7 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 	}
 
 	override matchFound(PatternMatchEvent event) {
-		if (preferenceStore.messageBoxOnPrompt) {
+		if (preferenceStore.messageBoxOnPrompt && !console.process.terminated) {
 			try {
 				val matchedText = console.document.get(event.offset, event.length)
 				Display.^default.syncExec [
