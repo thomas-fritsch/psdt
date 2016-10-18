@@ -16,11 +16,13 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
+import com.google.common.collect.PeekingIterator
 import java.util.regex.Pattern
-import javax.swing.tree.TreePath
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.eclipse.xtend.lib.annotations.ToString
+
+import static extension com.google.common.collect.Iterators.peekingIterator
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -33,7 +35,7 @@ class StatusParser {
 	def IVariable[] toVariables(Iterable<String> lines) {
 		val root = factory.createValue("<root>") //$NON-NLS-1$
 		lines.map[parseStatusLine] //
-		.fold(new TreePath(root))[treePath, statusLine|treePath + statusLine]
+		.iterator.peekingIterator.addVariablesTo(root, 0)
 		root.variables
 	}
 
@@ -57,18 +59,15 @@ class StatusParser {
 		val String value
 	}
 
-	def protected TreePath +(TreePath it, StatusLine statusLine) {
-		val value = factory.createIndexedValue(statusLine.value)
-		val variable = factory.createVariable(statusLine.name, value)
-		val treePath = partialPathOfSize(statusLine.depth)
-		(treePath.lastPathComponent as PSValue).addVariable(variable)
-		treePath.pathByAddingChild(value)
-	}
-
-	def protected TreePath partialPathOfSize(TreePath it, int newSize) {
-		var treePath = it
-		while (treePath.pathCount > newSize)
-			treePath = treePath.parentPath
-		treePath
+	def protected void addVariablesTo(PeekingIterator<StatusLine> it, PSValue parentValue,  int parentDepth) {
+		while (hasNext && peek.depth > parentDepth) {
+			val statusLine = next
+			if (statusLine.depth != parentDepth + 1)
+				throw new IllegalStateException(statusLine.toString)
+			val value = factory.createIndexedValue(statusLine.value)
+			val variable = factory.createVariable(statusLine.name, value)
+			parentValue.addVariable(variable)
+			addVariablesTo(value, statusLine.depth) // recursion!
+		}
 	}
 }
