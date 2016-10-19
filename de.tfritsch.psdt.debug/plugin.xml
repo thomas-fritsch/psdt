@@ -117,9 +117,12 @@
             class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.console.ErrorListenerDelegate"
             regex="Error: /\w+ in .+">
          <enablement>
-            <test
-               property="org.eclipse.ui.console.consoleTypeTest"
-               value="org.eclipse.debug.ui.ProcessConsoleType"/>
+            <and>
+               <test property="org.eclipse.ui.console.consoleTypeTest"
+                     value="org.eclipse.debug.ui.ProcessConsoleType"/>
+               <test property="org.eclipse.debug.ui.processTypeTest"
+                     value="PostScript"/>
+            </and>
          </enablement>
       </consolePatternMatchListener>
       <consolePatternMatchListener
@@ -127,9 +130,12 @@
             class="de.tfritsch.psdt.debug.PSExecutableExtensionFactory:de.tfritsch.psdt.debug.ui.console.PressReturnListenerDelegate"
             regex=".*press &lt;return&gt; to continue.*">
          <enablement>
-            <test
-               property="org.eclipse.ui.console.consoleTypeTest"
-               value="org.eclipse.debug.ui.ProcessConsoleType"/>
+            <and>
+               <test property="org.eclipse.ui.console.consoleTypeTest"
+                     value="org.eclipse.debug.ui.ProcessConsoleType"/>
+               <test property="org.eclipse.debug.ui.processTypeTest"
+                     value="PostScript"/>
+            </and>
          </enablement>
       </consolePatternMatchListener>
    </extension>
