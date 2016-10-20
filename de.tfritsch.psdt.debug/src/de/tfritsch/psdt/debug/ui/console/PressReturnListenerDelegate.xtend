@@ -21,7 +21,6 @@ import de.tfritsch.psdt.debug.Debug
 import java.io.IOException
 import org.eclipse.debug.ui.DebugUITools
 import org.eclipse.debug.ui.IDebugModelPresentation
-import org.eclipse.debug.ui.console.IConsole
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.jface.text.BadLocationException
 import org.eclipse.swt.SWT
@@ -32,6 +31,7 @@ import org.eclipse.ui.console.IPatternMatchListenerDelegate
 import org.eclipse.ui.console.PatternMatchEvent
 import org.eclipse.ui.console.TextConsole
 
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
 
 /**
@@ -42,28 +42,29 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
  */
 class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 
-	IConsole console
+	TextConsole console
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IWorkbench workbench
 	IDebugModelPresentation debugModelPresentation
 
 	override connect(TextConsole console) {
-		this.console = console as IConsole
+		this.console = console
 		debugModelPresentation = DebugUITools.newDebugModelPresentation
 	}
 
 	override matchFound(PatternMatchEvent event) {
-		if (preferenceStore.messageBoxOnPrompt && !console.process.terminated) {
+		val process = console.consoleProcess
+		if (preferenceStore.messageBoxOnPrompt && !process.terminated) {
 			try {
 				val matchedText = console.document.get(event.offset, event.length)
 				Display.^default.syncExec [
 					val shell = workbench.activeWorkbenchWindow.shell
 					val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.PRIMARY_MODAL))
-					box.text = debugModelPresentation.getText(console.process.launch)
+					box.text = debugModelPresentation.getText(process.launch)
 					box.message = matchedText
 					box.open
 				]
-				console.process.streamsProxy.write("\n")
+				process.streamsProxy.write("\n")
 			} catch (BadLocationException e) {
 			} catch (IOException e) {
 			}

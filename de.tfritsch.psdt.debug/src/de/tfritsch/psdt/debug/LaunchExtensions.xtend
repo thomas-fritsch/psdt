@@ -25,7 +25,10 @@ import org.eclipse.debug.core.DebugPlugin
 import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
+import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.ITerminate
+import org.eclipse.debug.ui.IDebugUIConstants
+import org.eclipse.ui.console.TextConsole
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -46,6 +49,10 @@ class LaunchExtensions {
 
 	def static String getWorkingDirectory(ILaunchConfiguration configuration) {
 		configuration.getAttribute(DebugPlugin.ATTR_WORKING_DIRECTORY, null as String)
+	}
+
+	def static IProcess getConsoleProcess(TextConsole console) {
+		console.getAttribute(IDebugUIConstants.ATTR_CONSOLE_PROCESS) as IProcess
 	}
 
 	def static String[] getEnvironment(ILaunchConfiguration configuration) throws CoreException {
