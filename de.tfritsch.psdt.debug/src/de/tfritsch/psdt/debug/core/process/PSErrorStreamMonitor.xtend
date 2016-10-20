@@ -16,9 +16,7 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.process
 
-import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.IPSDebugStreamListener
-import java.io.IOException
 import java.io.InputStream
 
 import static extension java.lang.Integer.parseInt
@@ -53,7 +51,7 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 	 */
 	override fireStreamAppended(String line) {
 		if (line.startsWith("@@")) //$NON-NLS-1$
-			processDebugLine(line)
+			safeRun[processDebugLine(line)]
 		else
 			super.fireStreamAppended(line)
 	}
@@ -90,12 +88,8 @@ class PSErrorStreamMonitor extends PSOutputStreamMonitor {
 				listener.resumeReceived
 			}
 			case "@@status": { //$NON-NLS-1$
-				try {
-					val lines = lineIterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
-					listener.statusReceived(lines)
-				} catch (IOException e) {
-					PSPlugin.log(e)
-				}
+				val lines = lineIterator.takeWhile[it != "@@status -"].toList //$NON-NLS-1$
+				listener.statusReceived(lines)
 			}
 		}
 	}

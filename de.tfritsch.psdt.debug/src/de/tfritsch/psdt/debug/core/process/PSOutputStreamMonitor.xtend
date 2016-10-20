@@ -123,11 +123,12 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 		if (buffered)
 			contents.append(text)
 		for (l : listeners.listeners) {
-			val SafeRunnable runnable = [
-				(l as IStreamListener).streamAppended(text, this)
-			]
-			SafeRunner.run(runnable)
+			safeRun[(l as IStreamListener).streamAppended(text, this)]
 		}
+	}
+
+	protected def void safeRun(SafeRunnable runnable) {
+		SafeRunner.run(runnable)
 	}
 
 	static abstract class SafeRunnable implements ISafeRunnable {
