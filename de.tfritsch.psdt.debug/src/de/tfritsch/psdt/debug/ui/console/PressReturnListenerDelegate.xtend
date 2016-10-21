@@ -59,9 +59,10 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 				val matchedText = console.document.get(event.offset, event.length)
 				Display.^default.syncExec [
 					val shell = workbench.activeWorkbenchWindow.shell
-					val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.PRIMARY_MODAL))
-					box.text = labelProvider.getText(process.launch)
-					box.message = matchedText
+					val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.PRIMARY_MODAL)) => [
+						text = labelProvider.getText(process.launch) // title
+						message = matchedText
+					]
 					box.open
 				]
 				process.streamsProxy.write("\n")
