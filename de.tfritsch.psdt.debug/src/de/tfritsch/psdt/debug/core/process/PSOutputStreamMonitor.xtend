@@ -42,7 +42,7 @@ import org.eclipse.xtend.lib.annotations.Accessors
 class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 
 	@Accessors boolean buffered = true
-	StringBuffer contents
+	StringBuilder contents = new StringBuilder
 	Thread thread
 	ListenerList listeners = new ListenerList
 	BufferedReader reader
@@ -67,7 +67,6 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 				new BufferedReader(new InputStreamReader(stream))
 			}
 		}
-		contents = new StringBuffer
 	}
 
 	protected def void startMonitoring() {
@@ -137,7 +136,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 		}
 	}
 
-	override synchronized addListener(IStreamListener listener) {
+	override addListener(IStreamListener listener) {
 		listeners.add(listener)
 	}
 
