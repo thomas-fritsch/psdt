@@ -20,9 +20,9 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.debug.Debug
 import java.io.IOException
 import org.eclipse.debug.ui.DebugUITools
-import org.eclipse.debug.ui.IDebugModelPresentation
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.jface.text.BadLocationException
+import org.eclipse.jface.viewers.ILabelProvider
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Display
 import org.eclipse.swt.widgets.MessageBox
@@ -45,11 +45,11 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 	TextConsole console
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject IWorkbench workbench
-	IDebugModelPresentation debugModelPresentation
+	ILabelProvider labelProvider
 
 	override connect(TextConsole console) {
 		this.console = console
-		debugModelPresentation = DebugUITools.newDebugModelPresentation
+		labelProvider = DebugUITools.newDebugModelPresentation
 	}
 
 	override matchFound(PatternMatchEvent event) {
@@ -60,7 +60,7 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 				Display.^default.syncExec [
 					val shell = workbench.activeWorkbenchWindow.shell
 					val box = new MessageBox(shell, SWT.OK.bitwiseOr(SWT.ICON_INFORMATION).bitwiseOr(SWT.PRIMARY_MODAL))
-					box.text = debugModelPresentation.getText(process.launch)
+					box.text = labelProvider.getText(process.launch)
 					box.message = matchedText
 					box.open
 				]
@@ -73,8 +73,8 @@ class PressReturnListenerDelegate implements IPatternMatchListenerDelegate {
 
 	override disconnect() {
 		console = null
-		debugModelPresentation.dispose
-		debugModelPresentation = null
+		labelProvider.dispose
+		labelProvider = null
 	}
 
 }
