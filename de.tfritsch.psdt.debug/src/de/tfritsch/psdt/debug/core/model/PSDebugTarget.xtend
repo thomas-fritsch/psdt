@@ -42,7 +42,11 @@ import org.eclipse.debug.core.model.IWatchExpression
 import org.eclipse.debug.core.model.IWatchExpressionListener
 import org.eclipse.jface.preference.IPreferenceStore
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getProgram
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isBreakOnFirstToken
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isShowGlobaldict
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isShowSystemdict
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isShowUserdict
 
 /**
  * @author Thomas Fritsch - initial API and implementation

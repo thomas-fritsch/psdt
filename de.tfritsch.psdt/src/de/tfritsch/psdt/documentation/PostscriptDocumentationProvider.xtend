@@ -22,7 +22,7 @@ import de.tfritsch.psdt.postscript.PSLiteralName
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentationContent
 
 /**
  * @author Thomas Fritsch - initial API and implementation

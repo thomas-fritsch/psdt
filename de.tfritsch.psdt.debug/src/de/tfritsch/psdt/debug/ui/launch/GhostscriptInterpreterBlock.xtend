@@ -31,8 +31,8 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Text
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import static extension org.eclipse.ui.dialogs.PreferencesUtil.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getInterpreter
+import static extension org.eclipse.ui.dialogs.PreferencesUtil.createPreferenceDialogOn
 
 /**
  * @author Thomas Fritsch - initial API and implementation

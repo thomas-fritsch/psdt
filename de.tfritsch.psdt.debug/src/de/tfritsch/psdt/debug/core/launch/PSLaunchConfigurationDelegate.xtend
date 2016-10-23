@@ -37,11 +37,27 @@ import org.eclipse.debug.core.model.LaunchConfigurationDelegate
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.osgi.util.NLS
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSPlugin.*
-import static extension org.eclipse.core.runtime.FileLocator.*
-import static extension org.eclipse.debug.core.DebugPlugin.*
+import static org.eclipse.debug.core.DebugPlugin.ATTR_ENVIRONMENT
+import static org.eclipse.debug.core.DebugPlugin.ATTR_LAUNCH_TIMESTAMP
+import static org.eclipse.debug.core.DebugPlugin.ATTR_PATH
+import static org.eclipse.debug.core.DebugPlugin.ATTR_WORKING_DIRECTORY
+
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.deleteOnTerminate
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.getEnvironment
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.getLaunchTimestamp
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.getWorkingDirectory
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.renderEnvironment
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.renderProcessLabel
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.renderWorkingDirectory
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getInterpreter
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getProgram
+import static extension de.tfritsch.psdt.debug.PSPlugin.toCoreException
+import static extension org.eclipse.core.runtime.FileLocator.toFileURL
+import static extension org.eclipse.debug.core.DebugPlugin.exec
+import static extension org.eclipse.debug.core.DebugPlugin.newProcess
+import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
+import static extension org.eclipse.debug.core.DebugPlugin.renderArguments
 
 /**
  * Launches PostScript program on Ghostscript interpreter

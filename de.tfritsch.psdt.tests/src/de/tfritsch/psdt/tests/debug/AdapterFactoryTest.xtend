@@ -29,7 +29,8 @@ import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.junit.Assert.*
+import static org.junit.Assert.assertNotNull
+import static org.junit.Assert.assertTrue
 
 /**
  * @author Thomas Fritsch - initial API and implementation

@@ -37,7 +37,9 @@ import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.PartInitException
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getDefaultGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setGhostscriptArguments
 import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
 
 /**

@@ -23,7 +23,8 @@ import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.model.IPersistableSourceLocator
 import org.eclipse.debug.core.model.IStackFrame
 
-import static extension org.eclipse.core.filebuffers.FileBuffers.*
+import static extension org.eclipse.core.filebuffers.FileBuffers.getFileStoreAtLocation
+import static extension org.eclipse.core.filebuffers.FileBuffers.getWorkspaceFileAtLocation
 
 /**
  * The PostScript source locator knows how to translate a PostScript stack

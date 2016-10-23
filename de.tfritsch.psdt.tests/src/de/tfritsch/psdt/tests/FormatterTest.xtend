@@ -26,9 +26,9 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
-import static org.junit.Assert.*
+import static org.junit.Assert.assertEquals
 
-import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 /**
  * @author Thomas Fritsch - initial API and implementation

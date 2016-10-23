@@ -19,15 +19,15 @@ package de.tfritsch.psdt.ui.hyperlinking
 import com.google.inject.Inject
 import com.google.inject.Provider
 import de.tfritsch.psdt.postscript.PSExecutableName
+import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
 import de.tfritsch.psdt.postscript.PSLiteralName
 import org.eclipse.jface.text.Region
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkAcceptor
 
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
-import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.*
-import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
+import static extension org.eclipse.xtext.nodemodel.util.NodeModelUtils.getNode
 
 /**
  * @author Thomas Fritsch - initial API and implementation

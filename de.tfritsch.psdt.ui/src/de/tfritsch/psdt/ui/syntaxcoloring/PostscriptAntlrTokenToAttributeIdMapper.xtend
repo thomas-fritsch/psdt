@@ -18,8 +18,7 @@ package de.tfritsch.psdt.ui.syntaxcoloring
 
 import com.google.inject.Singleton
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper
-
-import static de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration.*
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultHighlightingConfiguration
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -29,17 +28,25 @@ class PostscriptAntlrTokenToAttributeIdMapper extends DefaultAntlrTokenToAttribu
 
 	override protected calculateId(String tokenName, int tokenType) {
 		switch (tokenName) {
-			case "RULE_ID": DEFAULT_ID
-			case "RULE_LITERAL_ID": LITERAL_NAME_ID
-			case "RULE_IMMEDIATELY_EVALUATED_ID": IMMEDIATELY_EVALUATED_NAME_ID
-			case "RULE_STRING": STRING_ID
-			case "RULE_ASCII_HEX_STRING": STRING_ID
-			case "RULE_ASCII_85_STRING": STRING_ID
-			case "RULE_INT": NUMBER_ID
-			case "RULE_FLOAT": NUMBER_ID
-			case "RULE_DSC_COMMENT": DSC_COMMENT_ID
-			case "RULE_UNPARSED_DATA": UNPARSED_DATA_ID
-			default: super.calculateId(tokenName, tokenType)
+			case "RULE_ID":
+				DefaultHighlightingConfiguration.DEFAULT_ID
+			case "RULE_LITERAL_ID":
+				PostscriptHighlightingConfiguration.LITERAL_NAME_ID
+			case "RULE_IMMEDIATELY_EVALUATED_ID":
+				PostscriptHighlightingConfiguration.IMMEDIATELY_EVALUATED_NAME_ID
+			case "RULE_STRING",
+			case "RULE_ASCII_HEX_STRING",
+			case "RULE_ASCII_85_STRING":
+				DefaultHighlightingConfiguration.STRING_ID
+			case "RULE_INT",
+			case "RULE_FLOAT":
+				DefaultHighlightingConfiguration.NUMBER_ID
+			case "RULE_DSC_COMMENT":
+				PostscriptHighlightingConfiguration.DSC_COMMENT_ID
+			case "RULE_UNPARSED_DATA":
+				PostscriptHighlightingConfiguration.UNPARSED_DATA_ID
+			default:
+				super.calculateId(tokenName, tokenType)
 		}
 	}
 }

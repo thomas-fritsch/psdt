@@ -30,9 +30,12 @@ import org.antlr.runtime.Token
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.xtext.parser.antlr.Lexer
 
-import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.*
+import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.EOF
+import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.RULE_DSC_COMMENT
+import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.RULE_SL_COMMENT
+import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.RULE_WS
 
-import static extension de.tfritsch.psdt.debug.PSPlugin.*
+import static extension de.tfritsch.psdt.debug.PSPlugin.toCoreException
 
 /**
  * @author Thomas Fritsch - initial API and implementation

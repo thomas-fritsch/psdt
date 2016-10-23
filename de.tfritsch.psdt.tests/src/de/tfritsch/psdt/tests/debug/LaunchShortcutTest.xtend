@@ -31,7 +31,7 @@ import org.eclipse.jface.viewers.IStructuredSelection
 import org.eclipse.jface.viewers.StructuredSelection
 import org.junit.Test
 
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile
 
 /**
  * @author Thomas Fritsch - initial API and implementation

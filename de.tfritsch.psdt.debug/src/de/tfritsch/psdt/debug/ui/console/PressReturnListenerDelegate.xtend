@@ -31,8 +31,8 @@ import org.eclipse.ui.console.IPatternMatchListenerDelegate
 import org.eclipse.ui.console.PatternMatchEvent
 import org.eclipse.ui.console.TextConsole
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.getConsoleProcess
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isMessageBoxOnPrompt
 
 /**
  * Matches plugin.xml

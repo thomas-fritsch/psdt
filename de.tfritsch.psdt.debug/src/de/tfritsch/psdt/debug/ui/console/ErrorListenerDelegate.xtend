@@ -23,7 +23,7 @@ import org.eclipse.ui.console.IPatternMatchListenerDelegate
 import org.eclipse.ui.console.PatternMatchEvent
 import org.eclipse.ui.console.TextConsole
 
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.*
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
 
 /**
  * Matches plugin.xml

@@ -35,11 +35,12 @@ import org.eclipse.jface.text.TextSelection
 import org.eclipse.ui.WorkbenchException
 import org.eclipse.xtext.ui.editor.XtextEditor
 
-import static org.eclipse.debug.ui.DebugUITools.*
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.debug.ui.DebugUITools.getDebugContext
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createProject
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.setProcessFactoryId
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setProgram
 
 /**
  * @author Thomas Fritsch - initial API and implementation

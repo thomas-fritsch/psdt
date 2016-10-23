@@ -42,9 +42,12 @@ import org.eclipse.ui.model.WorkbenchLabelProvider
 import org.eclipse.xtext.resource.FileExtensionProvider
 import org.eclipse.xtext.ui.IImageHelper
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import static extension org.eclipse.core.filebuffers.FileBuffers.*
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.setProcessFactoryId
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getProgram
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.isBreakOnFirstToken
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setBreakOnFirstToken
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setProgram
+import static extension org.eclipse.core.filebuffers.FileBuffers.getWorkspaceFileAtLocation
 
 /**
  * Tab to specify the PostScript program to run/debug.

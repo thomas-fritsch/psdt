@@ -27,8 +27,10 @@ import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
 
+import static de.tfritsch.psdt.postscript.PostscriptPackage.Literals.PS_EXECUTABLE_NAME
+import static de.tfritsch.psdt.postscript.PostscriptPackage.Literals.PS_FILE
+import static de.tfritsch.psdt.postscript.PostscriptPackage.Literals.PS_STRING
 import static org.eclipse.xtext.diagnostics.Diagnostic.SYNTAX_DIAGNOSTIC
-import static de.tfritsch.psdt.postscript.PostscriptPackage.Literals.*
 
 /**
  * @author Thomas Fritsch - initial API and implementation

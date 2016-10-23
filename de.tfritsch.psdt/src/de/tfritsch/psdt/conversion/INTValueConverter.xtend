@@ -20,7 +20,7 @@ import org.eclipse.xtext.conversion.IValueConverter
 import org.eclipse.xtext.conversion.ValueConverterException
 import org.eclipse.xtext.nodemodel.INode
 
-import static extension java.lang.Integer.*
+import static extension java.lang.Integer.parseInt
 
 /**
  * @author Thomas Fritsch - initial API and implementation

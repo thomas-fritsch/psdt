@@ -22,8 +22,8 @@ import org.eclipse.debug.ui.IDebugUIConstants
 import org.eclipse.debug.ui.ILaunchConfigurationDialog
 import org.junit.Test
 
-import static org.eclipse.debug.ui.DebugUITools.*
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.debug.ui.DebugUITools.openLaunchConfigurationPropertiesDialog
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile
 
 /**
  * @author Thomas Fritsch - initial API and implementation

@@ -24,10 +24,10 @@ import org.eclipse.jface.text.BadLocationException
 import org.eclipse.xtext.ui.editor.XtextEditor
 import org.junit.Test
 
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile
 
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
-import static extension org.eclipse.debug.ui.DebugUITools.*
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setBreakOnFirstToken
+import static extension org.eclipse.debug.ui.DebugUITools.launch
 
 /**
  * @author Thomas Fritsch - initial API and implementation

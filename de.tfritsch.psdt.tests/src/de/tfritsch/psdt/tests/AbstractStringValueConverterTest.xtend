@@ -20,7 +20,7 @@ import java.util.Random
 import org.eclipse.xtext.conversion.IValueConverter
 import org.junit.Test
 
-import static org.junit.Assert.*
+import static org.junit.Assert.assertArrayEquals
 
 /**
  * @author Thomas Fritsch - initial API and implementation

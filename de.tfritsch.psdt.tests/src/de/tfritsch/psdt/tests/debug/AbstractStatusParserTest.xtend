@@ -25,7 +25,7 @@ import de.tfritsch.psdt.debug.core.model.StatusParser
 import java.util.Scanner
 import org.eclipse.debug.core.model.IVariable
 
-import static org.junit.Assert.*
+import static org.junit.Assert.assertEquals
 
 /**
  * @author Thomas Fritsch - initial API and implementation

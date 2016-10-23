@@ -16,10 +16,11 @@
  ******************************************************************************/
 package de.tfritsch.psdt.tests.debug
 
+import de.tfritsch.psdt.debug.core.model.ChangeMarker
 import org.eclipse.debug.core.model.IVariable
 import org.eclipse.xtend.lib.annotations.Accessors
-import de.tfritsch.psdt.debug.core.model.ChangeMarker
-import static org.junit.Assert.*
+
+import static org.junit.Assert.assertEquals
 
 /**
  * @author Thomas Fritsch - initial API and implementation

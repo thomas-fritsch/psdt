@@ -37,10 +37,16 @@ import org.eclipse.ui.IWorkbench
 import org.eclipse.ui.dialogs.ElementListSelectionDialog
 import org.eclipse.ui.ide.FileStoreEditorInput
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
-import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.*
+import static org.eclipse.debug.ui.DebugUITools.newDebugModelPresentation
+
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.setProcessFactoryId
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getDefaultGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getProgram
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setGhostscriptArguments
+import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.setProgram
 import static extension org.eclipse.core.filesystem.EFS.getStore
-import static extension org.eclipse.debug.ui.DebugUITools.*
+import static extension org.eclipse.debug.ui.DebugUITools.isPrivate
+import static extension org.eclipse.debug.ui.DebugUITools.launch
 
 /**
  * Matches plugin.xml

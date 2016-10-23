@@ -22,7 +22,7 @@ import org.eclipse.debug.core.ILaunch
 import org.eclipse.debug.core.IProcessFactory
 import org.eclipse.debug.core.model.RuntimeProcess
 
-import static extension de.tfritsch.psdt.debug.LaunchExtensions.*
+import static extension de.tfritsch.psdt.debug.LaunchExtensions.getConsoleEncoding
 
 /**
  * Matches plugin.xml

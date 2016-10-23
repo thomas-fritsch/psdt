@@ -20,9 +20,9 @@ import org.eclipse.core.resources.IFile
 import org.eclipse.debug.core.ILaunchManager
 import org.junit.Test
 
-import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.*
+import static org.eclipse.xtext.junit4.ui.util.IResourcesSetupUtil.createFile
 
-import static extension org.eclipse.debug.ui.DebugUITools.*
+import static extension org.eclipse.debug.ui.DebugUITools.launch
 
 /**
  * @author Thomas Fritsch - initial API and implementation
