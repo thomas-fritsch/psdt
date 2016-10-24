@@ -17,6 +17,7 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.help.PSHelpContexts
 import java.util.List
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
@@ -26,6 +27,7 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab
 import org.eclipse.swt.SWT
 import org.eclipse.swt.layout.GridLayout
 import org.eclipse.swt.widgets.Composite
+import org.eclipse.ui.help.IWorkbenchHelpSystem
 import org.eclipse.xtext.ui.IImageHelper
 
 /**
@@ -36,10 +38,12 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	List<ILaunchConfigurationTab> fBlocks
 
 	@Inject IImageHelper fImageHelper
+    @Inject extension IWorkbenchHelpSystem
 
 	@Inject
 	new(GhostscriptInterpreterBlock block1, GhostscriptArgumentsBlock block2, GhostscriptWorkingDirectoryBlock block3) {
 		fBlocks = newArrayList(block1, block2, block3)
+		helpContextId = PSHelpContexts.LAUNCH_CONFIGURATION_DIALOG_GHOSTSCRIPT_TAB
 	}
 
 	override getName() {
@@ -51,8 +55,10 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override createControl(Composite parent) {
-		val comp = new Composite(parent, SWT.NONE)
-		comp.layout = new GridLayout(1, true)
+		val comp = new Composite(parent, SWT.NONE) => [
+			layout = new GridLayout(1, true)
+			help = helpContextId
+		]
 		fBlocks.forEach[createControl(comp)]
 		control = comp
 	}

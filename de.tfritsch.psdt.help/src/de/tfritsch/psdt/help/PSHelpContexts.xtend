@@ -14,20 +14,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  ******************************************************************************/
-package de.tfritsch.psdt.ui.editor
-
-import de.tfritsch.psdt.help.PSHelpContexts
-import org.eclipse.xtext.ui.editor.XtextEditor
+package de.tfritsch.psdt.help
 
 /**
- * Work-around for https://bugs.eclipse.org/bugs/show_bug.cgi?id=422633
- * 
  * @author Thomas Fritsch - initial API and implementation
  */
-class PostscriptEditor extends XtextEditor {
+interface PSHelpContexts {
 
-	protected override initializeEditor() {
-		super.initializeEditor
-		helpContextId = PSHelpContexts.EDITOR
-	}
+	String PLUGIN_ID = "de.tfritsch.psdt.help"
+
+	String EDITOR = PLUGIN_ID + ".editor"
+	String LAUNCH_CONFIGURATION_DIALOG_MAIN_TAB = PLUGIN_ID + ".launch_configuration_dialog_main_tab"
+	String LAUNCH_CONFIGURATION_DIALOG_GHOSTSCRIPT_TAB = PLUGIN_ID + ".launch_configuration_dialog_ghostscript_tab"
 }

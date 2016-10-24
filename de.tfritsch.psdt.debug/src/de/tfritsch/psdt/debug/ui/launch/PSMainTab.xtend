@@ -18,6 +18,7 @@ package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
+import de.tfritsch.psdt.help.PSHelpContexts
 import java.io.File
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
@@ -37,6 +38,7 @@ import org.eclipse.swt.widgets.FileDialog
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Text
 import org.eclipse.ui.dialogs.ElementTreeSelectionDialog
+import org.eclipse.ui.help.IWorkbenchHelpSystem
 import org.eclipse.ui.model.BaseWorkbenchContentProvider
 import org.eclipse.ui.model.WorkbenchLabelProvider
 import org.eclipse.xtext.resource.FileExtensionProvider
@@ -65,6 +67,11 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	@Inject	IImageHelper fImageHelper
 	@Inject FileExtensionProvider fileExtensionProvider
 	@Inject extension IStringVariableManager
+	@Inject extension IWorkbenchHelpSystem
+    
+	new() {
+		helpContextId = PSHelpContexts.LAUNCH_CONFIGURATION_DIALOG_MAIN_TAB
+	}
 
 	override getName() {
 		"Main"
@@ -77,6 +84,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	override createControl(Composite parent) {
 		val comp = new Composite(parent, SWT.NONE) => [
 			layout = new GridLayout(1, true)
+			help = helpContextId
 		]
 		control = comp
 

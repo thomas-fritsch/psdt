@@ -15,4 +15,13 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <contexts>
+	<context id="editor">
+		<topic label="PostScript Editor" href="html/perspectives_and_views/editor_view.html" />
+	</context>
+	<context id="launch_configuration_dialog_main_tab">
+		<topic label="PostScript Launch Configuration" href="html/launching/launch_configurations.html" />
+	</context>
+	<context id="launch_configuration_dialog_ghostscript_tab">
+		<topic label="PostScript Launch Configuration" href="html/launching/launch_configurations.html" />
+	</context>
 </contexts>

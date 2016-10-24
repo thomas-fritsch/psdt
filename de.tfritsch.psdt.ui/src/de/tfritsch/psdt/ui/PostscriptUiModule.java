@@ -20,6 +20,7 @@ import org.eclipse.jface.text.source.DefaultCharacterPairMatcher;
 import org.eclipse.jface.text.source.ICharacterPairMatcher;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
+import org.eclipse.ui.help.IWorkbenchHelpSystem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
@@ -78,5 +79,9 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public IWorkbenchBrowserSupport bindIWorkbenchBrowserSupport() {
 		return PlatformUI.getWorkbench().getBrowserSupport();
+	}
+
+	public IWorkbenchHelpSystem bindIWorkbenchHelpSystem() {
+		return PlatformUI.getWorkbench().getHelpSystem();
 	}
 }
