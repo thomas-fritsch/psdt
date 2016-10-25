@@ -1,6 +1,7 @@
 # PostScript Development Tools
 
 [![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)](https://travis-ci.org/thomas-fritsch/psdt)
+[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 
 ### Introduction
 Introductory information is available on [the project's GitHub Pages](http://thomas-fritsch.github.io/psdt/)
