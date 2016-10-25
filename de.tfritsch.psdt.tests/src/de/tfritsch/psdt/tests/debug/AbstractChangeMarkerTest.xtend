@@ -37,12 +37,12 @@ abstract class AbstractChangeMarkerTest extends AbstractStatusParserTest {
 	extension ChangeMarker = new ChangeMarker
 
 	def protected void assertVariablesChanged((TestData)=>void initializer) throws Exception {
-		val it = new TestData
-		initializer.apply(it)
-		val currentVariables = current.toVariables
-		val previousVariables = previous.toVariables
-		currentVariables.markChangesRelativeTo(previousVariables)
-		assertEquals(expected.toString, currentVariables.toString)
+		new TestData => initializer => [
+			val currentVariables = current.toVariables
+			val previousVariables = previous.toVariables
+			currentVariables.markChangesRelativeTo(previousVariables)
+			assertEquals(expected.toString, currentVariables.toString)
+		]
 	}
 
 	override protected toLine(IVariable it, int depth) throws Exception {
