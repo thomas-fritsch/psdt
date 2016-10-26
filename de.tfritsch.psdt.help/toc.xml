@@ -47,6 +47,9 @@
 		<topic label="Breakpoints View" href="html/perspectives_and_views/breakpoints_view.html" />
 		<topic label="Expressions View" href="html/perspectives_and_views/expressions_view.html" />
 	</topic>
+	<topic label="Tips and tricks">
+		<topic label="Raw Data" href="html/tips/raw_data.html" />
+	</topic>
 	<topic label="Preferences">
 		<topic label="Debug" href="html/preferences/debug.html" />
 		<topic label="Ghostscript" href="html/preferences/ghostscript.html" />

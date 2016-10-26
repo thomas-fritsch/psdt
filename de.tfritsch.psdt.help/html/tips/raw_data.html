@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Raw Data</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+<script type="text/javascript"
+	src="PLUGINS_ROOT/org.eclipse.help/livehelp.js"></script>
+</head>
+<body>
+	<h1>Raw Data</h1>
+	<p>Did you ever came across a problem like this?</p>
+	<img src="raw_data_wrong.png" />
+	<p>Obviously the parser tried to parse the raw data and failed with
+		lots of syntax errors.</p>
+	<p>
+		You can solve this issue by surrounding the raw data with
+		<code>%%BeginData:</code>
+		and
+		<code>%%EndData</code>
+		comments. For more information see also Adobe's <a
+			href="https://partners.adobe.com/public/developer/en/ps/5001.DSC_Spec.pdf#45">specification
+			of DSC comments</a> (on page 45).
+	</p>
+	<img src="raw_data_correct.png" />
+	<p>Now the parser doesn't parse the raw data, and everything is
+		fine.</p>
+</body>
+</html>
