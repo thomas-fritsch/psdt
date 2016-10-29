@@ -1,16 +1,15 @@
 language: java
-
-env: DISPLAY=:99.0
-
+env:
+  matrix:
+  - DISPLAY=:99.0
+  global:
+    secure: J4GBW1tqIaOjpcv/57RtaQLVH6didxI3Y/iCluOjxJf1WL6AUcITpQZoMy8WZ2vRp+Q3U6l7iAu0jXD/HEjRwCJXziid+cTT0l5Icr20GJP2iRrNN+MqD++Ga0ojn9PWSH0HNxcJPcTX+ErAj2caEDhNEensok6LOkRRiqfCsZ+Eex0OB5PFogcJHa2by2T8+kM+na87kKmLxz0KSncFurSKJEK30oZHYSaTmLzwk4cRT5vHt/KCRSotDpps6pedwLDw5FcwczsmjDbqHZjCDvQKzuzu4kMKWbZQzlC7Do6t0j62ERQFVJSUEmEHPtPcVRICQS4orLyL0UBd3Zu+86Uq3k9Of1mAR1N0ylKV85Z98Z1fs3am/V3+HTMOcNqrHXMb9cQgaOH1gKEaoSbMvtFxQFY6lUDAybQO9CmSOdZ14d7JG3bVUkcW5Tj+uLXwMeCR9V6C3W384zfjBYeFqRaLhdc57w1OmC2TSy7vOGJcKHr36P7Y8tt+IF65z/537jXPOTkWIDmSdhsCFkrTKf/aQqjohtpButunayfbtgkvS5jK8Imom5+4ARPtqxHbuZ1YMU6wXPX/NpYJZWqHvbVdWPNaJx8V82lq7DeEnNglRNC3DTQSO9/pJqXytbz/JazZ6qloJUza4SRm2FLiJaZHuYXUldKBbDXOlxSBwzk=
 cache:
   directories:
-  - $HOME/.m2
-
+  - "$HOME/.m2"
 install: gs -v
-
 before_script:
-  - sh -e /etc/init.d/xvfb start
-  - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
-
+- sh -e /etc/init.d/xvfb start
+- echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 script:
-  - mvn verify
+- mvn verify
