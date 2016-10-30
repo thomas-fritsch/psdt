@@ -59,5 +59,5 @@ The generated update site will be in directory `de.tfritsch.psdt.updatesite/targ
 
 ## Release History
 
-* 1.0.0 (not yet released)
+* 1.0.0
   - First public release
