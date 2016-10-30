@@ -25,7 +25,24 @@ Make sure you have the following prerequisites installed:
 * [Ghostscript](http://ghostscript.com/download/gsdnld.html) (any version).  
   Choose the flavor for your OS and follow the download/install instructions.
   
-Install PSDT into Eclipse from the update site (not yet available).
+#### Installation from Update Site
+
+In Eclipse, do the following:
+* Go to menu _Help_ -> _Install New Software..._
+* At _Work with:_ enter the URL <http://thomas-fritsch.github.io/psdt/repository/>
+* The install view will present the available things, select the _PostScript
+  Language_ category
+* Proceed to install the software in the usual manner accepting all defaults
+* Eclipse will prompt for a restart, accept this, then the PostScript Development
+  Tools are usable
+
+#### Installation of Alternate Versions
+
+The above installation mechanism will install the latest official version of
+PSDT. It is possible to install older or newer beta versions of the software
+by using <http://dl.bintray.com/thomas-fritsch/eclipse/psdt/x.y.z> as the
+update site URL, where x.y.z is the desired version. You can see the available
+versions at <http://dl.bintray.com/thomas-fritsch/eclipse/psdt/>.
 
 ## Development setup
 
