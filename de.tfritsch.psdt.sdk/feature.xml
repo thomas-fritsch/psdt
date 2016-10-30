@@ -18,6 +18,10 @@
       %license
    </license>
 
+   <url>
+      <update label="PSDT" url="https://thomas-fritsch.github.io/psdt/repository"/>
+   </url>
+
    <requires>
       <import feature="org.eclipse.xtext.ui" version="2.7" match="greaterOrEqual"/>
       <import feature="org.eclipse.xtext.xbase.lib" version="2.7" match="greaterOrEqual"/>
