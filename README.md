@@ -29,7 +29,9 @@ Make sure you have the following prerequisites installed:
 
 In Eclipse, do the following:
 * Go to menu _Help_ -> _Install New Software..._
-* At _Work with:_ enter the URL <http://thomas-fritsch.github.io/psdt/repository/>
+* In the resulting dialog click the _Add..._ button to present a further dialog
+* Here enter `PSDT` as the _Name_ and <http://thomas-fritsch.github.io/psdt/repository/> 
+  as the _Location_ and press OK
 * The install view will present the available things, select the _PostScript
   Language_ category
 * Proceed to install the software in the usual manner accepting all defaults
