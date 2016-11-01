@@ -72,7 +72,7 @@ The easiest way is to download and install the [Eclipse IDE for Java and DSL Dev
 Alternatively you can take an existing Eclipse instance and add the following components:
 * [Xtext](http://marketplace.eclipse.org/content/xtext)
 * [Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
-* [EGgit](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
+* [EGit](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
 * [m2e](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
 
 ## Release History
