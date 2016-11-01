@@ -20,7 +20,8 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
 
 ## Installation
 
-Make sure you have the following prerequisites installed:
+#### Prerequisites
+
 * [Java](https://www.java.com/) (version 6 or higher).
 * [Eclipse](http://www.eclipse.org) (version 4.4 or higher).
 * [Ghostscript](http://ghostscript.com/download/gsdnld.html) (any version).  
@@ -49,16 +50,30 @@ versions at <http://dl.bintray.com/thomas-fritsch/eclipse/psdt/>.
 
 ## Development setup
 
-Make sure you have the following prerequisites installed:
+#### Prerequisites
+
 * [JDK](http://www.oracle.com/technetwork/java/javase/downloads/) (version 7 or higher).
 * [Maven](http://maven.apache.org/) (version 3).  
   Follow the instructions given in "Download, Install, Run Maven".
+
+#### Build
 
 A complete build (including unit tests) is done by:
 
     mvn clean verify
 
 The generated update site will be in directory `de.tfritsch.psdt.updatesite/target/repository`.
+
+#### IDE
+
+The easiest way is to download and install the [Eclipse IDE for Java and DSL Developers]
+(http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
+
+Alternatively you can take an existing Eclipse instance and add the following components:
+* [Xtext](http://marketplace.eclipse.org/content/xtext)
+* [Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
+* [EGgit](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
+* [m2e](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
 
 ## Release History
 
