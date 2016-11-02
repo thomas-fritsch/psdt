@@ -71,9 +71,17 @@ The easiest way is to download and install the [Eclipse IDE for Java and DSL Dev
 
 Alternatively you can take an existing Eclipse instance and add the following components:
 * [Xtext](http://marketplace.eclipse.org/content/xtext)
-* [Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
-* [EGit](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
-* [m2e](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Xtext")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1073)
+* [Eclipse Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtend")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=148396)
+* [EGit - Git Integration for Eclipse](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install EGit - Git Integration for Eclipse")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336)
+* [Maven Integration for Eclipse (Luna)](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Maven Integration for Eclipse (Luna)")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1774116)
 
 ## Release History
 
