@@ -81,8 +81,12 @@ class GhostscriptTab extends AbstractLaunchConfigurationTab {
 	}
 
 	override isValid(ILaunchConfiguration launchConfig) {
-		val block = fBlocks.findFirst[!isValid(launchConfig)]
-		errorMessage = block?.errorMessage
-		block === null
+	    this.errorMessage = null
+		fBlocks.forall [
+			val valid = isValid(launchConfig)
+			if (!valid)
+				this.errorMessage = errorMessage
+			valid
+		]
 	}
 }
