@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Path
 import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
+import org.eclipse.debug.core.ILaunchManager
 import org.eclipse.debug.ui.AbstractLaunchConfigurationTab
 import org.eclipse.debug.ui.StringVariableSelectionDialog
 import org.eclipse.swt.SWT
@@ -111,6 +112,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 			addListener(SWT.Selection)[browseVariables]
 		]
 		fBreakOnFirstTokenButton = createCheckButton(comp, "Break on first token") => [
+			enabled = (launchConfigurationDialog.mode == ILaunchManager.DEBUG_MODE)
 			addListener(SWT.Selection)[updateLaunchConfigurationDialog]
 		]
 	}
