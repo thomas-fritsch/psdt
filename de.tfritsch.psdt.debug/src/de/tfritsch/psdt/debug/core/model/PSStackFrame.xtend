@@ -59,15 +59,15 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	}
 
 	override getCharStart() {
-		PSDebugTarget.charStart
+		PSDebugTarget.currentToken.charStart
 	}
 
 	override getCharEnd() {
-		PSDebugTarget.charEnd
+		PSDebugTarget.currentToken.charEnd
 	}
 
 	override getLineNumber() {
-		PSDebugTarget.lineNumber
+		PSDebugTarget.currentToken.lineNumber
 	}
 
 	override getName() {

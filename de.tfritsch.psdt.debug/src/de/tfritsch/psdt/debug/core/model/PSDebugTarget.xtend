@@ -208,16 +208,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 		breakpointManager.breakpoints.filter[supportsBreakpoint]
 	}
 
-	def int getLineNumber() {
-		(currentToken ?: NO_TOKEN).lineNumber
-	}
-
-	def int getCharStart() {
-		(currentToken ?: NO_TOKEN).charStart
-	}
-
-	def int getCharEnd() {
-		(currentToken ?: NO_TOKEN).charEnd
+	def PSToken getCurrentToken() {
+		(currentToken ?: NO_TOKEN)
 	}
 
 	def String getSourceName() {
