@@ -18,7 +18,6 @@ package de.tfritsch.psdt.debug.core.sourcelookup
 
 import de.tfritsch.psdt.debug.core.model.PSStackFrame
 import org.eclipse.core.runtime.CoreException
-import org.eclipse.core.runtime.Path
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.model.IPersistableSourceLocator
 import org.eclipse.debug.core.model.IStackFrame
@@ -39,7 +38,7 @@ class PSSourceLocator implements IPersistableSourceLocator {
 	override getSourceElement(IStackFrame stackFrame) {
 		switch (stackFrame) {
 			PSStackFrame: {
-				val path = new Path(stackFrame.sourceName)
+				val path = stackFrame.sourcePath
 				path.workspaceFileAtLocation ?: path.fileStoreAtLocation
 			}
 			default:

@@ -16,7 +16,6 @@
  ******************************************************************************/
 package de.tfritsch.psdt.debug.core.model
 
-import java.io.File
 import org.eclipse.debug.core.DebugException
 import org.eclipse.debug.core.model.IStackFrame
 import org.eclipse.debug.core.model.IThread
@@ -54,8 +53,8 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 		}
 	}
 
-	def getSourceName() {
-		PSDebugTarget.sourceName
+	def getSourcePath() {
+		PSDebugTarget.sourcePath
 	}
 
 	override getCharStart() {
@@ -71,8 +70,7 @@ class PSStackFrame extends PSDebugElement implements IStackFrame {
 	}
 
 	override getName() {
-		val s = sourceName
-		s.substring(s.lastIndexOf(File.separatorChar) + 1)
+		sourcePath.lastSegment
 	}
 
 	override getRegisterGroups() throws DebugException {

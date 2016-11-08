@@ -23,6 +23,7 @@ import de.tfritsch.psdt.debug.core.launch.PSToken
 import java.util.List
 import org.eclipse.core.resources.IMarkerDelta
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IPath
 import org.eclipse.core.runtime.Path
 import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.DebugEvent
@@ -76,7 +77,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	 */
 	IProcess process
 
-	String sourceName
+	IPath sourcePath
 
 	State state = State.CREATED
 
@@ -114,7 +115,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	 */
 	def void init(IProcess process, List<PSToken> sourceMapping) throws CoreException {
 		this.process = process
-		sourceName = launch.launchConfiguration.program.performStringSubstitution
+		sourcePath = new Path(launch.launchConfiguration.program.performStringSubstitution)
 		breakOnFirstToken = launch.launchConfiguration.breakOnFirstToken
 		this.sourceMapping = sourceMapping
 		breakpointManager.addBreakpointListener(this)
@@ -212,8 +213,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 		(currentToken ?: NO_TOKEN)
 	}
 
-	def String getSourceName() {
-		sourceName
+	def IPath getSourcePath() {
+		sourcePath
 	}
 
 	def IVariable[] getVariables() throws DebugException {
@@ -267,7 +268,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	}
 
 	override getName() {
-		sourceName
+		sourcePath.lastSegment
 	}
 
 	override getProcess() {
@@ -284,7 +285,7 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 
 	override supportsBreakpoint(IBreakpoint breakpoint) {
 		breakpoint.modelIdentifier == modelIdentifier &&
-			breakpoint.marker.resource.location == new Path(sourceName)
+			breakpoint.marker.resource.location == sourcePath
 	}
 
 	override canTerminate() {
