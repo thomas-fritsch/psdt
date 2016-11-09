@@ -11,6 +11,8 @@
 
 <link rel="stylesheet" type="text/css" media="screen"
 	href="stylesheets/stylesheet.css">
+<link rel="stylesheet" href="stylesheets/ideal-image-slider.css">
+<link rel="stylesheet" href="stylesheets/default.css">
 
 <title>PSDT</title>
 </head>
@@ -53,6 +55,22 @@
 					href="#debugger">debugger</a> and <a href="#documentation">documentation</a>.
 			</p>
 
+			<div id="slider">
+				<img src="images/editing.png" />
+				<img src="" data-src="images/debugging.png" />
+				<img src="" data-src="images/documentation.png" />
+				<img src=""
+					data-src="https://raw.githubusercontent.com/thomas-fritsch/psdt/master/de.tfritsch.psdt.help/html/perspectives_and_views/documentation_hover.png" />
+				<img src=""
+					data-src="https://raw.githubusercontent.com/thomas-fritsch/psdt/master/de.tfritsch.psdt.help/html/perspectives_and_views/documentation_browser.png" />
+
+			</div>
+			<script src="javascripts/ideal-image-slider.js"></script>
+			<script>
+				var slider = new IdealImageSlider.Slider('#slider');
+				slider.start();
+			</script>
+
 			<h3>
 				<a id="editor" class="anchor" href="#editor" aria-hidden="true"><span
 					aria-hidden="true" class="octicon octicon-link"></span></a>Editor
@@ -65,7 +83,6 @@
 				outline view, code folding, content assist, auto-edit for brackets,
 				marked syntax errors.
 			</p>
-			<img src="images/editing.png" />
 
 			<h3>
 				<a id="debugger" class="anchor" href="#debugger" aria-hidden="true"><span
@@ -83,7 +100,6 @@
 					debugger</a> lets you step through your PostScript application, set
 				breakpoints, inspect the stacks, and watch the rendered page image.
 			</p>
-			<img src="images/debugging.png" />
 
 			<h3>
 				<a id="documentation" class="anchor" href="#documentation"
@@ -97,14 +113,9 @@
 					Language Reference Manual</a> are integrated into the Eclipse help
 				contents.
 			</p>
-			<img src="images/documentation.png" />
 			<p>Context-sensitive documentation is available from the
 				PostScript editor, either as a tooltip (press F2) or in a separate
 				browser view (press F3).</p>
-			<img
-				src="https://raw.githubusercontent.com/thomas-fritsch/psdt/master/de.tfritsch.psdt.help/html/perspectives_and_views/documentation_hover.png" />
-			<img
-				src="https://raw.githubusercontent.com/thomas-fritsch/psdt/master/de.tfritsch.psdt.help/html/perspectives_and_views/documentation_browser.png" />
 
 			<h3>Installation</h3>
 			<p>
@@ -148,7 +159,8 @@
 				PSDT maintained by <a href="https://github.com/thomas-fritsch">thomas-fritsch</a>
 			</p>
 			<p>
-				Published with <a href="https://pages.github.com">GitHub Pages</a>
+				Published with <a href="https://pages.github.com">GitHub Pages</a>.
+				Slide show created with <a href="http://idealimageslider.com">Ideal Image Slider</a>
 			</p>
 		</footer>
 	</div>
