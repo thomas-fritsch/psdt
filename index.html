@@ -67,7 +67,10 @@
 			</div>
 			<script src="javascripts/ideal-image-slider.js"></script>
 			<script>
-				var slider = new IdealImageSlider.Slider('#slider');
+				var slider = new IdealImageSlider.Slider({
+					selector: '#slider',
+					height: 400
+				});
 				slider.start();
 			</script>
 
