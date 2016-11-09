@@ -69,8 +69,7 @@ class PSThread extends PSDebugElement implements IThread {
 	}
 
 	override getTopStackFrame() {
-		val frames = stackFrames
-		if(frames.length > 0) frames.get(0) else null
+		if(suspended) stackFrame else null
 	}
 
 	override hasStackFrames() throws DebugException {
