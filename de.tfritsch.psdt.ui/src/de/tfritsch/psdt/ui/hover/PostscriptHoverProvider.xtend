@@ -56,12 +56,9 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 					super.configureControl(control, tbm, font)
 
 					// remove item "Open Declaration" (doesn't make sense for Postscript)
-					for (item : tbm.items) {
-						if (item instanceof ActionContributionItem) {
-							if (item.action instanceof OpenDeclarationAction)
-								tbm.remove(item)
-						}
-					}
+					tbm.items.filter(ActionContributionItem) //
+					.filter[action instanceof OpenDeclarationAction] //
+					.forEach[tbm.remove(it)]
 					tbm.update(true)
 				}
 			}
