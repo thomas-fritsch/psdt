@@ -38,12 +38,15 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 		""
 	}
 
-	override protected getStyleSheet() {
-		var css = super.getStyleSheet
-		if (css !== null)
-			css += "th, td { vertical-align: top; }\n"
-		css
-	}
+	override protected getStyleSheet() '''
+		«super.styleSheet ?: ""»
+		th, td {
+			vertical-align: top;
+		}
+		table {
+			border-collapse: collapse;
+		}
+	'''
 
 	override getInformationPresenterControlCreator() {
 		if (presenterControlCreator === null) {
