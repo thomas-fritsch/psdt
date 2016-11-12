@@ -19,8 +19,7 @@ package de.tfritsch.psdt.debug.ui.launch
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
-import java.net.MalformedURLException
-import java.net.URL
+import de.tfritsch.psdt.ui.browser.BrowserOpener
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
@@ -34,8 +33,6 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.swt.widgets.Group
 import org.eclipse.swt.widgets.Link
 import org.eclipse.swt.widgets.Text
-import org.eclipse.ui.PartInitException
-import org.eclipse.ui.browser.IWorkbenchBrowserSupport
 
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getDefaultGhostscriptArguments
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getGhostscriptArguments
@@ -49,7 +46,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
  */
 class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 
-	@Inject IWorkbenchBrowserSupport browserSupport
+	@Inject BrowserOpener browserOpener
 	@Inject @Debug IPreferenceStore preferenceStore
 
 	Text fArgumentsText
@@ -74,18 +71,7 @@ class GhostscriptArgumentsBlock extends AbstractLaunchConfigurationTab {
 	}
 
 	def protected void browseGhostscriptDoc() {
-		try {
-			browserSupport.createBrowser(
-				IWorkbenchBrowserSupport.NAVIGATION_BAR.bitwiseOr(IWorkbenchBrowserSupport.LOCATION_BAR),
-				"gs", // id
-				null, // name = HTMLtitle
-				"Documentation" // tooltip
-			).openURL(new URL("http://www.ghostscript.com/doc/current/Use.htm#Invoking")) //$NON-NLS-1$ $NON-NLS-2$
-		} catch (PartInitException e) {
-			PSPlugin.log(e)
-		} catch (MalformedURLException e) {
-			PSPlugin.log(e)
-		}
+		browserOpener.openDocumentation("http://www.ghostscript.com/doc/current/Use.htm#Invoking") //$NON-NLS-1$
 	}
 
 	override setDefaults(ILaunchConfigurationWorkingCopy configuration) {

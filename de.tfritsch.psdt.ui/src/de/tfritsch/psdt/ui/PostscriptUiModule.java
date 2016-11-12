@@ -30,6 +30,7 @@ import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeI
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
+import de.tfritsch.psdt.ui.browser.BrowserOpener;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
 import de.tfritsch.psdt.ui.hover.PostscriptHoverProvider;
 import de.tfritsch.psdt.ui.hyperlinking.PostscriptHyperlinkHelper;
@@ -75,6 +76,10 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public Class<? extends IHyperlinkHelper> bindIHyperlinkHelper() {
 		return PostscriptHyperlinkHelper.class;
+	}
+
+	public Class<? extends BrowserOpener> bindBrowserOpener() {
+		return BrowserOpener.class;
 	}
 
 	public IWorkbenchBrowserSupport bindIWorkbenchBrowserSupport() {

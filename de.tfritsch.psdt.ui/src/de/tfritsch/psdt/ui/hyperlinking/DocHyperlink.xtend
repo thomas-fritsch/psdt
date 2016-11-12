@@ -17,12 +17,8 @@
 package de.tfritsch.psdt.ui.hyperlinking
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.ui.browser.BrowserOpener
 import java.net.URL
-import org.eclipse.core.runtime.IStatus
-import org.eclipse.core.runtime.Status
-import org.eclipse.ui.PartInitException
-import org.eclipse.ui.browser.IWorkbenchBrowserSupport
-import org.eclipse.ui.plugin.AbstractUIPlugin
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.xtend.lib.annotations.ToString
 import org.eclipse.xtext.ui.editor.hyperlinking.AbstractHyperlink
@@ -33,27 +29,13 @@ import org.eclipse.xtext.ui.editor.hyperlinking.AbstractHyperlink
 @ToString
 class DocHyperlink extends AbstractHyperlink {
 
-	@Inject
-	IWorkbenchBrowserSupport browserSupport
-
-	@Inject
-	AbstractUIPlugin plugin
+	@Inject BrowserOpener browserOpener
 
 	@Accessors
 	URL url
 
 	override open() {
-		try {
-			browserSupport.createBrowser(
-				IWorkbenchBrowserSupport.NAVIGATION_BAR.bitwiseOr(IWorkbenchBrowserSupport.LOCATION_BAR),
-				"doc", // id
-				null, // name = HTMLtitle
-				"Documentation" // tooltip
-			).openURL(url)
-		} catch (PartInitException e) {
-			val status = new Status(IStatus.ERROR, plugin.bundle.symbolicName, "Error", e);
-			plugin.log.log(status)
-		}
+		browserOpener.openDocumentation(url)
 	}
 
 }
