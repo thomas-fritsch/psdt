@@ -16,17 +16,32 @@
  ******************************************************************************/
 package de.tfritsch.psdt.ui.hover
 
+import com.google.inject.Inject
+import de.tfritsch.psdt.postscript.PSExecutableName
+import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
+import de.tfritsch.psdt.postscript.PSLiteralName
+import de.tfritsch.psdt.ui.browser.BrowserOpener
 import org.eclipse.emf.ecore.EObject
+import org.eclipse.jface.action.Action
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.ToolBarManager
 import org.eclipse.jface.text.IInformationControlCreator
+import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider
+import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider.OpenDeclarationAction
+import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider.PresenterControlCreator
 import org.eclipse.xtext.ui.editor.hover.html.IXtextBrowserInformationControl
+import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput
+
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
 public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
+
+	@Inject IImageDescriptorHelper imageHelper
+	@Inject BrowserOpener browserOpener
 
 	IInformationControlCreator presenterControlCreator
 
@@ -59,6 +74,19 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 					tbm.items.filter(ActionContributionItem) //
 					.filter[action instanceof OpenDeclarationAction] //
 					.forEach[tbm.remove(it)]
+
+					val openInBrowserAction = new Action("Open Doc in a Browser",
+						imageHelper.getImageDescriptor("browser.png")) {
+						override run() {
+							val input = control.input
+							if (input instanceof XtextBrowserInformationControlInput) {
+								control.dispose
+								val url = input.element.createURL
+								browserOpener.openDocumentation(url)
+							}
+						}
+					}
+					tbm.add(openInBrowserAction)
 					tbm.update(true)
 				}
 			}
@@ -66,4 +94,15 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 		presenterControlCreator
 	}
 
+	def protected createURL(EObject object) {
+		val name = switch (object) {
+			PSExecutableName:
+				object.name
+			PSLiteralName:
+				object.name
+			PSImmediatelyEvaluatedName:
+				object.name
+		}
+		name.documentations.head.url
+	}
 }
