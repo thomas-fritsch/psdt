@@ -29,24 +29,13 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
   
 #### Installation from Update Site
 
-In Eclipse, do the following:
-* Go to menu _Help_ -> _Install New Software..._
-* In the resulting dialog click the _Add..._ button to present a further dialog
-* Here enter `PSDT` as the _Name_ and <http://thomas-fritsch.github.io/psdt/repository/> 
-  as the _Location_ and press OK
-* The install view will present the available things, select the _PostScript
-  Language_ category
-* Proceed to install the software in the usual manner accepting all defaults
-* Eclipse will prompt for a restart, accept this, then the PostScript Development
-  Tools are usable
-
-#### Installation of Alternate Versions
-
-The above installation mechanism will install the latest official version of
-PSDT. It is possible to install older or newer beta versions of the software
-by using <http://dl.bintray.com/thomas-fritsch/eclipse/psdt/x.y.z> as the
-update site URL, where x.y.z is the desired version. You can see the available
-versions at <http://dl.bintray.com/thomas-fritsch/eclipse/psdt/>.
+* In Eclipse open menu _Help_ -> _Install New Software..._
+* Use the _Add..._ button to add a new repository with  
+  _Name:_ `PSDT`  
+  _Location:_ `http://thomas-fritsch.github.io/psdt/repository/` 
+* Wait for the software list to be displayed, select _PostScript Language_
+  ![Install](install.png)]
+* Proceed to install the software in the usual manner
 
 ## Development setup
 
