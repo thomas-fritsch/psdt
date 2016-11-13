@@ -31,6 +31,8 @@
 		<topic label="Editor View" href="html/perspectives_and_views/editor_view.html">
 			<topic label="Commands"
 				href="html/perspectives_and_views/editor_view.html#commands" />
+			<topic label="Validation"
+				href="html/perspectives_and_views/editor_view.html#validation" />
 			<topic label="Content Assist"
 				href="html/perspectives_and_views/editor_view.html#content_assist" />
 			<topic label="Documentation Hovers"

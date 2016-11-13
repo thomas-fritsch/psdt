@@ -110,6 +110,29 @@
 			<td>Disables the breakpoint selected in the ruler.</td>
 		</tr>
 	</table>
+	<h2 id="validation">Validation</h2>
+	<p>The PostScript language has a very liberal syntax. So almost any
+		gibberish still gives syntactical valid PostScript tokens. Therefore
+		the editor validates only for the following things.</p>
+	<ul>
+		<li>Unpaired brackets in <a href="../Reference/3/2/2.html#5">arrays</a>
+			<code>[ ... ]</code>, <a href="../Reference/3/2/2.html#6">procedures</a>
+			<code>{ ... }</code> and <a href="../Reference/3/2/2.html#7">dictionaries</a>
+			<code>&lt;&lt; ... &gt;&gt;</code> are flagged as errors.
+		</li>
+		<li>Malformed <a href="../Reference/3/2/2.html#3.1">literal
+				text strings</a> <code>(...)</code>, <a
+			href="../Reference/3/2/2.html#3.2">hexadecimal strings</a> <code>&lt;...&gt;</code>
+			and <a href="../Reference/3/2/2.html#3.3">ASCII base-85 strings</a> <code>&lt;~...~&gt;</code>
+			are flagged as errors.
+		</li>
+		<li>Use of the operators introduced by <a
+			href="../Reference/DPS/1.html">Display PostScript</a> are marked as
+			warnings, because they likely spoil the portability of your
+			application.
+		</li>
+	</ul>
+	<img src="validation.png" />
 	<h2 id="content_assist">Content assist</h2>
 	<p>Type Ctrl-Space to get content assist for the current curor
 		position.</p>
