@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)](https://travis-ci.org/thomas-fritsch/psdt)
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg) ](https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
+[![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
 
 This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) Integrated Development Environment for the Eclipse platform.
 
@@ -26,7 +28,15 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
 * [Eclipse](http://www.eclipse.org) (version 4.4 or higher).
 * [Ghostscript](http://ghostscript.com/download/gsdnld.html) (any version).  
   Choose the flavor for your OS and follow the download/install instructions.
-  
+
+#### Installation from Marketplace
+
+* Drag this [![Install](http://marketplace.eclipse.org/misc/installbutton.png
+  "Drag to your running Eclipse workspace to install PSDT")]
+  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
+  button to your running Eclipse instance
+* Follow the instructions in the usual manner
+
 #### Installation from Update Site
 
 * In Eclipse open menu _Help_ -> _Install New Software..._
@@ -35,7 +45,7 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
   _Location:_ `http://thomas-fritsch.github.io/psdt/repository/` 
 * Wait for the software list to be displayed, select _PostScript Language_
   ![Install](install.png)]
-* Proceed to install the software in the usual manner
+* Follow the instructions in the usual manner
 
 ## Development setup
 
