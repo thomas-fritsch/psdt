@@ -21,11 +21,13 @@ import de.tfritsch.psdt.postscript.PSExecutableName
 import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
 import de.tfritsch.psdt.postscript.PSLiteralName
 import de.tfritsch.psdt.ui.browser.BrowserOpener
+import java.net.URL
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.action.Action
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.ToolBarManager
 import org.eclipse.jface.text.IInformationControlCreator
+import org.eclipse.jface.text.IRegion
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider.OpenDeclarationAction
@@ -34,6 +36,8 @@ import org.eclipse.xtext.ui.editor.hover.html.IXtextBrowserInformationControl
 import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput
 
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
+import static extension org.eclipse.jface.internal.text.html.HTMLPrinter.addPageEpilog
+import static extension org.eclipse.jface.internal.text.html.HTMLPrinter.insertPageProlog
 
 /**
  * @author Thomas Fritsch - initial API and implementation
@@ -104,5 +108,22 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 				object.name
 		}
 		name.documentations.head.url
+	}
+
+	override protected getHoverInfo(EObject element, IRegion hoverRegion, XtextBrowserInformationControlInput previous) {
+		var html = element.hoverInfoAsHtml
+		if (html !== null) {
+			val buffer = new StringBuffer(html)
+			buffer.insertPageProlog(0, styleSheet)
+			buffer.insertBase(element.createURL) // needed for relative HTML links to work
+			buffer.addPageEpilog
+			html = buffer.toString
+			new XtextBrowserInformationControlInput(previous, element, html, labelProvider)
+		} else
+			null
+	}
+
+	def private void insertBase(StringBuffer it, URL base) {
+		insert(indexOf("</head>"), '''<base href="«base»">''')
 	}
 }
