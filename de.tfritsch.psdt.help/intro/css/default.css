@@ -1,0 +1,7 @@
+
+a#psdt-overview img {
+	background-image : url(../images/book-icon.png);
+}
+a#psdt-overview:hover img {
+	background-image : url(../images/book-icon.png);
+}

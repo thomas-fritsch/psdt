@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<?eclipse version="3.4"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!--
   Copyright (C) 2016  Thomas Fritsch.
  
@@ -16,22 +15,15 @@
   You should have received a copy of the GNU General Public License
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<plugin>
-
-   <extension  point="org.eclipse.help.toc">
-      <toc file="toc.xml" primary="true"/>
-      <toc file="toc_reference.xml"/>
-   </extension>
-
-  <extension point="org.eclipse.help.contexts">
-    <contexts file="contexts.xml"/>
-    <contexts file="contexts_reference.xml"/>
-  </extension>
-
-   <extension point="org.eclipse.ui.intro.configExtension">
-      <configExtension
-         content="intro/overview.xml"
-         configId="org.eclipse.ui.intro.universalConfig">
-      </configExtension>
-   </extension>
-</plugin>
+<introContent>
+  	<extensionContent id="de.tfritsch.psdt.help" name="PSDT"
+  		style="css/default.css" path="overview/@">
+		<group id="content-group" style-id="content-group">
+       		<link label="PostScript Development" 
+       		      url="http://org.eclipse.ui.intro/showHelpTopic?id=/de.tfritsch.psdt.help/html/getting_started.html"  
+       		      id="psdt-overview" style-id="content-link">
+          		<text>Get familiar with the PostScript Development Tools (PSDT)</text>
+          	</link>
+       	</group>
+  	</extensionContent>
+</introContent>
