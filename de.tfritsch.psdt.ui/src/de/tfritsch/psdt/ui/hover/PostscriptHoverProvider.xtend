@@ -22,18 +22,21 @@ import de.tfritsch.psdt.postscript.PSImmediatelyEvaluatedName
 import de.tfritsch.psdt.postscript.PSLiteralName
 import de.tfritsch.psdt.ui.browser.BrowserOpener
 import java.net.URL
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.jface.action.Action
 import org.eclipse.jface.action.ActionContributionItem
 import org.eclipse.jface.action.ToolBarManager
 import org.eclipse.jface.text.IInformationControlCreator
 import org.eclipse.jface.text.IRegion
+import org.eclipse.swt.widgets.Display
 import org.eclipse.xtext.ui.IImageHelper.IImageDescriptorHelper
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider.OpenDeclarationAction
 import org.eclipse.xtext.ui.editor.hover.html.DefaultEObjectHoverProvider.PresenterControlCreator
 import org.eclipse.xtext.ui.editor.hover.html.IXtextBrowserInformationControl
 import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput
+import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks
 
 import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
 import static extension org.eclipse.jface.internal.text.html.HTMLPrinter.addPageEpilog
@@ -125,5 +128,29 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 
 	def private void insertBase(StringBuffer it, URL base) {
 		insert(indexOf("</head>"), '''<base href="«base»">''')
+	}
+
+	override protected addLinkListener(IXtextBrowserInformationControl control) {
+		control.addLocationListener(
+			elementLinks.createLocationListener(
+				new XtextElementLinks.ILinkHandler {
+					override handleXtextdocViewLink(URI linkTarget) {
+					}
+
+					override handleInlineXtextdocLink(URI linkTarget) {
+					}
+
+					override handleDeclarationLink(URI linkTarget) {
+					}
+
+					override handleExternalLink(URL url, Display display) {
+						control.dispose
+						browserOpener.openDocumentation(url)
+						true
+					}
+
+					override handleTextSet() {
+					}
+				}))
 	}
 }
