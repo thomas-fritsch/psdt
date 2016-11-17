@@ -33,15 +33,13 @@ class BrowserOpener {
 	@Inject IWorkbenchBrowserSupport browserSupport
 	@Inject AbstractUIPlugin plugin
 
-	int style = IWorkbenchBrowserSupport.NAVIGATION_BAR.bitwiseOr(IWorkbenchBrowserSupport.LOCATION_BAR)
-
 	def void openDocumentation(URL url) {
 		try {
 			browserSupport.createBrowser(
-				style,
-				"doc", // browserId
+				IWorkbenchBrowserSupport.NAVIGATION_BAR, // style
+				plugin.bundle.symbolicName + ".doc", // browserId
 				null, // name = HTMLtitle
-				"Documentation" // tooltip
+				null // tooltip = URL
 			).openURL(url)
 		} catch (PartInitException e) {
 			val status = new Status(IStatus.ERROR, plugin.bundle.symbolicName, "Error", e);
