@@ -8,6 +8,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: de.tfritsch.psdt,
  de.tfritsch.psdt.ui,
  de.tfritsch.psdt.debug,
+ de.tfritsch.psdt.help,
  org.eclipse.core.expressions,
  org.eclipse.core.filesystem,
  org.eclipse.core.resources,
