@@ -20,6 +20,7 @@ import com.google.inject.Inject
 import de.tfritsch.psdt.PostscriptInjectorProvider
 import de.tfritsch.psdt.postscript.PSFile
 import de.tfritsch.psdt.validation.IssueCodes
+import org.eclipse.xtext.diagnostics.Severity
 import org.eclipse.xtext.junit4.InjectWith
 import org.eclipse.xtext.junit4.XtextRunner
 import org.eclipse.xtext.junit4.util.ParseHelper
@@ -88,7 +89,7 @@ class ValidatorTest {
 	@Test
 	def testCurrentfile() throws Exception {
 		val file = '''currentfile'''.parse
-		file.assertWarning(PS_EXECUTABLE_NAME, IssueCodes.CURRENTFILE, "%%BeginData", "%%EndData")
+		file.assertIssue(PS_EXECUTABLE_NAME, IssueCodes.CURRENTFILE, Severity.INFO, "%%BeginData", "%%EndData")
 	}
 
 	@Test

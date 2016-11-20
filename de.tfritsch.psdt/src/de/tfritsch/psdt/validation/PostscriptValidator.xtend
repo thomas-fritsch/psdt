@@ -47,7 +47,7 @@ class PostscriptValidator extends AbstractPostscriptValidator {
 	@Check
 	def checkCurrentfile(PSExecutableName it) {
 		if (name == "currentfile") {
-			warning(
+			info(
 				"Reading data via 'currentfile' may give parsing problems" +
 					" if not properly used with %%BeginData: and %%EndData",
 				PostscriptPackage.Literals.PS_EXECUTABLE_NAME__NAME,
