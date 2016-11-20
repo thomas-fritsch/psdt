@@ -86,6 +86,12 @@ class ValidatorTest {
 	}
 
 	@Test
+	def testCurrentfile() throws Exception {
+		val file = '''currentfile'''.parse
+		file.assertWarning(PS_EXECUTABLE_NAME, IssueCodes.CURRENTFILE, "%%BeginData", "%%EndData")
+	}
+
+	@Test
 	def testStringWithBalancedParentheses() throws Exception {
 		val file = '''(This is a (rather long) string)'''.parse
 		file.assertNoErrors
