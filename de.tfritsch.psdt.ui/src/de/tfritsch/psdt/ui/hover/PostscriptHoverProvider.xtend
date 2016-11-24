@@ -61,7 +61,7 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 	}
 
 	override protected getStyleSheet() '''
-		«super.styleSheet ?: ""»
+		«super.styleSheet»
 		th, td {
 			vertical-align: top;
 		}
