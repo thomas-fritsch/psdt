@@ -23,7 +23,7 @@ import org.eclipse.ui.console.IPatternMatchListenerDelegate
 import org.eclipse.ui.console.PatternMatchEvent
 import org.eclipse.ui.console.TextConsole
 
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentationURL
 
 /**
  * Matches plugin.xml
@@ -44,7 +44,7 @@ class ErrorListenerDelegate implements IPatternMatchListenerDelegate {
 		try {
 			val matchedText = console.document.get(event.offset, event.length)
 			val errorName = matchedText.split(" ").get(1)
-			val url = errorName.substring(1).documentations.head?.url
+			val url = errorName.substring(1).documentationURL
 			if (url !== null) {
 				val hyperlink = hyperlinkProvider.get
 				hyperlink.url = url

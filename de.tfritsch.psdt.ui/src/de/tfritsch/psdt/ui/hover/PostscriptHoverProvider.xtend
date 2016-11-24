@@ -38,7 +38,7 @@ import org.eclipse.xtext.ui.editor.hover.html.IXtextBrowserInformationControl
 import org.eclipse.xtext.ui.editor.hover.html.XtextBrowserInformationControlInput
 import org.eclipse.xtext.ui.editor.hover.html.XtextElementLinks
 
-import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentations
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentationURL
 import static extension org.eclipse.jface.internal.text.html.HTMLPrinter.addPageEpilog
 import static extension org.eclipse.jface.internal.text.html.HTMLPrinter.insertPageProlog
 
@@ -110,7 +110,7 @@ public class PostscriptHoverProvider extends DefaultEObjectHoverProvider {
 			PSImmediatelyEvaluatedName:
 				object.name
 		}
-		name.documentations.head.url
+		name.documentationURL
 	}
 
 	override protected getHoverInfo(EObject element, IRegion hoverRegion, XtextBrowserInformationControlInput previous) {

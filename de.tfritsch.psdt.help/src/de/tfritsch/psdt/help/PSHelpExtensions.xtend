@@ -68,6 +68,10 @@ class PSHelpExtensions {
 		val URL url
 	}
 
+	def static URL getDocumentationURL(String name) {
+		name.topics.head?.href?.toURL
+	}
+
 	def static List<Documentation> getDocumentations(String name) {
 		name.topics.map[new Documentation(label, href?.toURL)]
 	}
