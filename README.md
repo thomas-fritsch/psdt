@@ -84,5 +84,5 @@ Alternatively you can take an existing Eclipse instance and add the following co
 
 ## Release History
 
-* 1.0.0
-  - First public release
+* [1.0.1](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.1) - 24 Nov 2016
+* [1.0.0](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.0) - 30 Oct 2016
