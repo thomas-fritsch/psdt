@@ -29,38 +29,37 @@ import org.eclipse.ui.wizards.newresource.BasicNewFolderResourceWizard
  */
 class PostscriptPerspectiveFactory implements IPerspectiveFactory {
 
-	override createInitialLayout(IPageLayout layout) {
-		val editorArea = layout.editorArea
-		layout.createFolder("left", IPageLayout.LEFT, 0.25F, editorArea) => [
+	override createInitialLayout(IPageLayout it) {
+		createFolder("left", IPageLayout.LEFT, 0.25F, editorArea) => [
 			addView(IPageLayout.ID_PROJECT_EXPLORER)
 		]
-		layout.createFolder("bottom", IPageLayout.BOTTOM, 0.75F, editorArea) => [
+		createFolder("bottom", IPageLayout.BOTTOM, 0.75F, editorArea) => [
 			addView(IPageLayout.ID_PROBLEM_VIEW)
 			addView(IConsoleConstants.ID_CONSOLE_VIEW)
 			addPlaceholder(IPageLayout.ID_PROP_SHEET)
 		]
-		layout.createFolder("right", IPageLayout.RIGHT, 0.75F, editorArea) => [
+		createFolder("right", IPageLayout.RIGHT, 0.75F, editorArea) => [
 			addView(IPageLayout.ID_OUTLINE)
 		]
 
 		// Menu/ToolBar contributions
-		layout.addActionSet(IDebugUIConstants.LAUNCH_ACTION_SET);
-		layout.addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
+		addActionSet(IDebugUIConstants.LAUNCH_ACTION_SET);
+		addActionSet(IPageLayout.ID_NAVIGATE_ACTION_SET);
 
 		// 'File' > 'New' contributions
-		layout.addNewWizardShortcut(BasicNewFileResourceWizard.WIZARD_ID)
-		layout.addNewWizardShortcut(BasicNewFolderResourceWizard.WIZARD_ID);
+		addNewWizardShortcut(BasicNewFileResourceWizard.WIZARD_ID)
+		addNewWizardShortcut(BasicNewFolderResourceWizard.WIZARD_ID);
 
 		// 'Window' > 'Show View' contributions
-		layout.addShowViewShortcut(IPageLayout.ID_OUTLINE);
-		layout.addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
-		layout.addShowViewShortcut(IPageLayout.ID_TASK_LIST);
-		layout.addShowViewShortcut(IProgressConstants.PROGRESS_VIEW_ID);
-		layout.addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
-		layout.addShowViewShortcut("org.eclipse.pde.runtime.LogView");
+		addShowViewShortcut(IPageLayout.ID_OUTLINE);
+		addShowViewShortcut(IPageLayout.ID_PROBLEM_VIEW);
+		addShowViewShortcut(IPageLayout.ID_TASK_LIST);
+		addShowViewShortcut(IProgressConstants.PROGRESS_VIEW_ID);
+		addShowViewShortcut(IPageLayout.ID_PROJECT_EXPLORER);
+		addShowViewShortcut("org.eclipse.pde.runtime.LogView");
 
 		// 'Window' > 'Open Perspective' contributions
-		layout.addPerspectiveShortcut(IDebugUIConstants.ID_DEBUG_PERSPECTIVE)
+		addPerspectiveShortcut(IDebugUIConstants.ID_DEBUG_PERSPECTIVE)
 	}
 
 }
