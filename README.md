@@ -31,7 +31,7 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
 	* Run to Line
 	* Watch Points
 * Documentation
-	* [PLRM](https://www.adobe.com/products/postscript/pdfs/PLRM.pd)
+	* [PLRM](https://www.adobe.com/products/postscript/pdfs/PLRM.pdf)
 	  sections in Help Contents (all Level 1, 2 operators)
 
 ## Installation
