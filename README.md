@@ -12,13 +12,27 @@ This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) I
 
 ## Features
 
-* Syntax Highlighting 
-* Syntax Validation 
-* Content Assist
-* Documentation Hovers
-* Run/Debug with Ghostscript
-* Breakpoints
-* Watch Points
+* Editor
+	* Syntax Highlighting
+	* Syntax Validation
+	* Content Assist
+	* Templates for well-known idioms (for, ifelse, image, repeat, stopped, ...)
+	* Documentation Hovers
+	* Documentation Hyperlinks
+	* Toggle Comments
+	* Outline/Structure View
+	* Folding
+	* Formatting
+* Run/Debug
+	* Launch with Ghostscript
+	* Step in/over/out
+	* Show Interpreter Stacks, Graphics State
+	* Toggle/Enable/Disable Breakpoints
+	* Run to Line
+	* Watch Points
+* Documentation
+	* [PLRM](https://www.adobe.com/products/postscript/pdfs/PLRM.pd)
+	  sections in Help Contents (all Level 1, 2 operators)
 
 ## Installation
 
