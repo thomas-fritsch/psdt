@@ -13,3 +13,4 @@ before_script:
 - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 script:
 - mvn verify
+after_success: sh deployToBintray.sh thomas-fritsch eclipse psdt $TRAVIS_TAG
