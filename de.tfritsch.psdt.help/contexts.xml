@@ -24,4 +24,7 @@
 	<context id="launch_configuration_dialog_ghostscript_tab">
 		<topic label="PostScript Launch Configuration" href="html/launching/launch_configurations.html" />
 	</context>
+    <context id="%%BeginData">
+        <topic label="Raw Data" href="html/tips/raw_data.html" />
+    </context>
 </contexts>

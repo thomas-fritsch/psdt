@@ -3,11 +3,15 @@
 */
 package de.tfritsch.psdt.ui.quickfix
 
+import com.google.inject.Inject
+import de.tfritsch.psdt.ui.browser.BrowserOpener
 import de.tfritsch.psdt.validation.IssueCodes
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
+
+import static extension de.tfritsch.psdt.help.PSHelpExtensions.getDocumentationURL
 
 /**
  * Custom quickfixes.
@@ -16,10 +20,15 @@ import org.eclipse.xtext.validation.Issue
  */
 class PostscriptQuickfixProvider extends DefaultQuickfixProvider {
 
+    @Inject BrowserOpener browserOpener
+
 	@Fix(IssueCodes.CURRENTFILE)
 	def useBeginEndData(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Use %%BeginData and %%EndData', null, 'data.png') [
-			// TODO: open help page "html/tips/raw_data.html"
+			// A smart fix automatically inserting %%BeginData: and %%EndData
+			// at the right places is not possible. So we just open the help page
+			// so that the user will know how to insert them manually.
+			browserOpener.openDocumentation("%%BeginData".documentationURL)
 		]
 	}
 }
