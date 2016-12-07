@@ -1,8 +1,11 @@
 # PostScript Development Tools
 
-[![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)](https://travis-ci.org/thomas-fritsch/psdt)
-[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
-[![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg) ](https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
+[![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)]
+  (https://travis-ci.org/thomas-fritsch/psdt)
+[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)]
+  (http://www.gnu.org/licenses/gpl-3.0)
+[![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg)]
+  (https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
 [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")]
   (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
 
@@ -83,8 +86,8 @@ The easiest way is to download and install the [Eclipse IDE for Java and DSL Dev
 (http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
 
 Alternatively you can take an existing Eclipse instance and add the following components:
-* [Xtext](http://marketplace.eclipse.org/content/xtext)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Xtext")]
+* [Eclipse Xtext](http://marketplace.eclipse.org/content/eclipse-xtext)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtext")]
   (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1073)
 * [Eclipse Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
   [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtend")]
