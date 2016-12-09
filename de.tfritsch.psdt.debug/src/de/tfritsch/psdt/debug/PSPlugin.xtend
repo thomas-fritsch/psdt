@@ -85,4 +85,12 @@ class PSPlugin extends AbstractUIPlugin {
 		val status = new Status(IStatus.ERROR, ID, "Error", t)
 		INSTANCE.log.log(status)
 	}
+
+	/**
+	 * Logs a warning message with this plug-in's log.
+	 */
+	def static void logWarning(String message) {
+		val status = new Status(IStatus.WARNING, ID, message)
+		INSTANCE.log.log(status)
+	}
 }

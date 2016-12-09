@@ -3,6 +3,7 @@ package de.tfritsch.psdt.debug.core.preferences
 import com.google.inject.Inject
 import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.IPSConstants
+import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import org.eclipse.core.runtime.Platform
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer
@@ -24,6 +25,8 @@ class GhostscriptPreferenceInitializer extends AbstractPreferenceInitializer {
 		}
 		if (file !== null)
 			store.setDefault(IPSConstants.PREF_INTERPRETER, file.absolutePath)
+		else
+			PSPlugin.logWarning("No Ghostscript interpreter found")
 		store.setDefault(IPSConstants.PREF_DEFAULT_GS_ARGUMENTS, "-dBATCH")
 	}
 
