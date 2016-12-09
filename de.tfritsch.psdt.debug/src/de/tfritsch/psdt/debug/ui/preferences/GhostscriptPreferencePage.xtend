@@ -60,7 +60,7 @@ class GhostscriptPreferencePage extends FieldEditorPreferencePage implements IWo
 
 	override protected createFieldEditors() {
 		addField(
-			new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, fieldEditorParent) => [
+			new FileFieldEditor(IPSConstants.PREF_INTERPRETER, "&Interpreter:", true, FileFieldEditor.VALIDATE_ON_KEY_STROKE, fieldEditorParent) => [
 				switch (Platform.OS) {
 					case Platform.OS_WIN32: {
 						fileExtensions = #["*.exe", "*.*"] //$NON-NLS-1$ //$NON-NLS-2$
