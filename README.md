@@ -9,7 +9,9 @@
 [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")]
   (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
 
-This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) Integrated Development Environment for the Eclipse platform.
+This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) Integrated Development Environment for
+[Eclipse](http://www.eclipse.org/). It cooperates with the [Ghostscript](https://ghostscript.com) interpreter in a
+platform-independent way.
 
 [![Screenshot](http://thomas-fritsch.github.io/psdt/images/debugging.png)](http://thomas-fritsch.github.io/psdt/)
 
@@ -101,5 +103,6 @@ Alternatively you can take an existing Eclipse instance and add the following co
 
 ## Release History
 
+* [1.0.2](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.1) - 13 Dec 2016
 * [1.0.1](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.1) - 24 Nov 2016
 * [1.0.0](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.0) - 30 Oct 2016
