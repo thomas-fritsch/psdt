@@ -22,12 +22,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.browser.IWorkbenchBrowserSupport;
 import org.eclipse.ui.help.IWorkbenchHelpSystem;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
+import org.eclipse.xtext.ui.editor.validation.ValidatingEditorCallback;
 
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
 import de.tfritsch.psdt.ui.browser.BrowserOpener;
@@ -88,5 +90,13 @@ public class PostscriptUiModule extends AbstractPostscriptUiModule {
 
 	public IWorkbenchHelpSystem bindIWorkbenchHelpSystem() {
 		return PlatformUI.getWorkbench().getHelpSystem();
+	}
+
+	/**
+	 * @see <a href="https://www.eclipse.org/forums/index.php/t/292133/#msg_849499">
+	 *      Re: syntax validation not active when opening document</a>
+	 */
+	public Class<? extends IXtextEditorCallback> bindIXtextEditorCallback() {
+		return ValidatingEditorCallback.class;
 	}
 }
