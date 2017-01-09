@@ -131,6 +131,11 @@
 		</topic>
 	</topic>
 	<topic label="4 Graphics">
+	    <topic label="4.3 Coordinate Systems and Transformations" href="html/Reference/4/3.html">
+	        <topic label="4.3.1 User Space and Device Space" href="html/Reference/4/3/1.html" />
+	        <topic label="4.3.2 Transformations" href="html/Reference/4/3/2.html" />
+	        <topic label="4.3.3 Matrix Representation and Manipulation" href="html/Reference/4/3/3.html" />
+	    </topic>
 	    <topic label="4.7 Forms">
 	        <topic label="4.7.1 Using Forms" href="html/Reference/4/7/1.html" />
 	    </topic>

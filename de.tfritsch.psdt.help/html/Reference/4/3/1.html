@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Space and Device Space</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.3.1 User Space and Device Space</h3>
+	<p>
+		Coordinates specified in a PostScript program refer to locations
+		within a coordinate system that always bears the same relationship to
+		the current page, regardless of the output device on which printing or
+		displaying will be done. This coordinate system is called <i>user
+			space</i>.
+	</p>
+	<p>
+		Output devices vary greatly in the built-in coordinate systems they
+		use to address pixels within their imageable areas. A particular
+		device's coordinate system is a <i>device space</i>. A device space <i>origin</i>
+		can be anywhere on the output page. This is because the paper moves
+		through different printers and imagesetters in different directions.
+		On displays, the origin can vary depending on the window system.
+		Different devices have different resolutions. Some devices even have
+		resolutions that are different in the horizontal and vertical
+		directions.
+	</p>
+	<p>The operands of the path operators are coordinates expressed in
+		user space. The PostScript interpreter automatically transforms user
+		space coordinates into device space. For the most part, this
+		transformation is hidden from the PostScript program. A program must
+		consider device space only rarely, for certain special effects. This
+		independence of user space from device space is essential to the
+		device-independent nature of PostScript page descriptions.</p>
+	<p>A coordinate system can be defined with respect to the current
+		page by stating:</p>
+	<ul>
+		<li>The location of the origin</li>
+		<li>The orientation of the <i>x</i> and <i>y</i> axes
+		</li>
+		<li>The lengths of the units along each axis</li>
+	</ul>
+	<p>
+		Initially, the user space origin is located at the lower-left corner
+		of the output page or display window, with the positive <i>x</i> axis
+		extending horizontally to the right and the positive <i>y</i> axis
+		extending vertically upward, as in standard mathematical practice. The
+		length of a unit along both the <i>x</i> and <i>y</i> axes is 1/72
+		inch. This coordinate system is the default user space. In default
+		user space, all points within the current page have positive <i>x</i>
+		and <i>y</i> coordinate values.
+	</p>
+	<p>
+		<i><b>Note:</b> The default unit size (1/72 inch) is approximately
+			the same as a "point," a unit widely used in the printing industry.
+			It is not exactly the same as a point, however; there is no universal
+			definition of a point.</i>
+	</p>
+	<p>
+		The default user space origin coincides with the lower-left corner of
+		the <i>physical</i> page. Portions of the physical page may not be
+		imageable on certain output devices. For example, many laser printers
+		cannot place marks at the extreme edges of their physical page areas.
+		It may not be possible to place marks at or near the default user
+		space origin. The physical correspondence of page corner to default
+		origin ensures that marks within the imageable portion of the output
+		page will be consistently positioned with respect to the edges of the
+		page.
+	</p>
+	<p>
+		Coordinates in user space may be specified as either integers or real
+		numbers. Therefore, <i>the unit size in default user space does
+			not constrain locations to any arbitrary grid</i>. The resolution of
+		coordinates in user space is not related in any way to the resolution
+		of pixels in device space.
+	</p>
+	<p>
+		The default user space provides a consistent, dependable starting
+		place for PostScript programs regardless of the output device used. If
+		necessary, the PostScript program may then modify user space to be
+		more suitable to its needs by applying <i>coordinate
+			transformation operators</i>, such as <a
+			href="../../8/2/t/translate.html">translate</a>, <a
+			href="../../8/2/r/rotate.html">rotate</a>, and <a
+			href="../../8/2/s/scale.html">scale</a>.
+	</p>
+	<p>What may appear to be absolute coordinates in a PostScript
+		program are not absolute with respect to the current page, because
+		they are expressed in a coordinate system that may slide around and
+		shrink or expand. Coordinate system transformation not only enhances
+		device independence but is a useful tool in its own right. For
+		example, a page description originally composed to occupy an entire
+		page can be incorporated without change as an element of another page
+		description by shrinking the coordinate system in which it is drawn.</p>
+	<p>
+		Conceptually, user space is an infinite plane. Only a small portion of
+		this plane corresponds to the imageable area of the output device: a
+		rectangular area above and to the right of the origin in default user
+		space. The actual size and position of the area is device- and
+		media-dependent. An application can request a particular page size or
+		other media properties by using the LanguageLevel 2 operator <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a>, described in
+		Section <a href="../../6/1/1.html">6.1.1, "Page Device
+			Dictionary."</a>
+	</p>
+</body>
+</html>

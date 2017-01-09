@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Matrix Representation and Manipulation</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.3.3 Matrix Representation and Manipulation</h3>
+	<p>This section presents a brief introduction to the representation
+		and manipulation of matrices. Some knowledge of this topic will make
+		the descriptions of the coordinate system and matrix operators in
+		Chapter 8 easier to understand. It is not essential to understand the
+		details of matrix arithmetic on first reading, but only to obtain a
+		clear geometrical model of the effects of the various transformations.</p>
+	<p>A two-dimensional transformation is described mathematically by
+		a 3-by-3 matrix:</p>
+	<pre>
+| <i>a  b</i>  0 |
+| <i>c  d</i>  0 |
+| <i>t<sub>x</sub> t<sub>y</sub></i>  1 |</pre>
+	<p>In the PostScript language, this matrix is represented as a
+		six-element array object</p>
+	<pre>[<i>a b c d t<sub>x</sub> t<sub>y</sub></i>]</pre>
+	<p>omitting the matrix elements in the third column, which always
+		have constant values.</p>
+	<p>
+		This matrix transforms a coordinate pair (<i>x</i>, <i>y</i>) into
+		another coordinate pair (<i>x'</i>, <i>y'</i>) according to the linear
+		equations
+	</p>
+	<pre>
+<i>x'</i> = <i>ax</i> + <i>cy</i> + <i>t<sub>x</sub></i>
+<i>y'</i> = <i>bx</i> + <i>dy</i> + <i>t<sub>y</sub></i>	</pre>
+	<p>
+		The common transformations are easily described in this matrix
+		notation. Translation by a specified displacement (<i>t<sub>x</sub></i>,
+		<i>t<sub>y</sub></i>) is described by the matrix
+	</p>
+	<pre>
+| 1  0  0 |
+| 0  1  0 |
+| <i>t<sub>x</sub> t<sub>y</sub></i>  1 |</pre>
+	<p>
+		Scaling by the factor <i>s<sub>x</sub></i> in the horizontal dimension
+		and <i>s<sub>y</sub></i> in the vertical dimension is accomplished by
+		the matrix
+	</p>
+	<pre>
+| <i>s<sub>x</sub></i>  0  0 |
+| 0  <i>s<sub>y</sub></i>  0 |
+| 0  0   1 |</pre>
+	<p>
+		Rotation counterclockwise about the origin by an angle <i>&theta;</i>
+		is described by the matrix
+	</p>
+	<pre>
+|  cos<i>&theta;</i>  sin<i>&theta;</i>  0 |
+| -sin<i>&theta;</i>  cos<i>&theta;</i>  0 |
+|    0     0   1 |</pre>
+	<p>Figure 4.2 illustrates the effects of these common
+		transformations</p>
+	<figure>
+		<img src="figure-4.2.png" />
+		<figcaption>
+			<b>FIGURE 4.2</b> Effects of coordinate transformations
+		</figcaption>
+	</figure>
+	<p>A PostScript program can describe any desired transformation as
+		a sequence of these operations performed in some order. An important
+		property of the matrix notation is that a program can concatenate a
+		sequence of operations to form a single matrix that embodies all of
+		them in combination. That is, transforming any pair of coordinates by
+		the single concatenated matrix produces the same result as
+		transforming them by all of the original matrices in sequence. Any
+		linear transformation from user space to device space can be described
+		by a single transformation matrix, the CTM.</p>
+	<p>
+		<i><b>Note:</b> Concatenation is performed by matrix
+			multiplication. The order in which transformations are concatenated
+			is significant (technically, matrix operations are associative, but
+			not commutative). The requirement that matrices conform during
+			multiplication is what leads to the use of 3-by-3 matrices.
+			Otherwise, 2-by-3 matrices would suffice to describe transformations.</i>
+	</p>
+	<p>
+		The operators <a href="../../8/2/t/translate.html">translate</a>, <a
+			href="../../8/2/s/scale.html>scale</a>,
+		and <a href="../../8/2/r/rotate.html">rotate</a>
+		each concatenate the CTM with a matrix describing the desired
+		transformation, producing a new matrix that combines the original and
+		additional transformations. This matrix is then established as the new
+		CTM:
+	</p>
+	<pre>
+<i>newCTM = transformation</i> &times; <i>originalCTM</i></pre>
+	<p>
+		It is sometimes necessary to perform the <i>inverse</i> of a
+		transformation&mdash;that is, to find the user space coordinates that
+		correspond to a specific pair of device space coordinates. PostScript
+		programs explicitly do this only occasionally, but it occurs commonly
+		in the PostScript interpreter itself.
+	</p>
+	<p>
+		Not all transformations are invertible in the way just described. For
+		example, if a matrix contains <i>a</i>, <i>b</i>, <i>c</i>, and <i>d</i>
+		elements that are all 0, all user coordinates map to the same device
+		coordinates and there is no unique inverse transformation. Such
+		noninvertible transformations are not very useful and generally arise
+		from unintentional operations, such as scaling by 0. A noninvertible
+		CTM can sometimes cause an <a href="../../8/2/u/undefinedresult.html">undefinedresult</a>
+		error to occur during the execution of graphics and font operators.
+	</p>
+</body>
+</html>
