@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DeviceRGB Color Space</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>DeviceRGB Color Space</h4>
+	<p>
+		Colors in the <b>DeviceRGB</b> color space can be specified according
+		to either of two color models: <i>red-green-blue</i> (RGB) and <i>hue-saturation-brightness</i>
+		(HSB). Each of these models can specify any reproducible color with
+		three numeric parameters, but the numbers have different meanings in
+		the two models. Example 4.6 shows different ways to select the <b>DeviceRGB</b>
+		color space and a specific color within that space.
+	</p>
+	<p>
+		<b>Example 4.6</b>
+	</p>
+	<pre>[/DeviceRGB] setcolorspace <i>red green blue</i> setcolor
+/DeviceRGB setcolorspace <i>red green blue</i> setcolor
+<i>red green blue</i> setrgbcolor
+hue saturation brightness sethsbcolor</pre>
+	<p>In the RGB model, a color is described as a combination of the
+		three additive primary colors (red, green, and blue) in particular
+		concentrations. The intensity of each primary color is specified by a
+		number in the range 0.0 to 1.0, where 0.0 denotes no contribution at
+		all and 1.0 denotes maximum intensity of that color.</p>
+	<p>If all three primary colors have equal intensity, the perceived
+		result theoretically is a pure gray on the scale from black to white.
+		If the intensities are not all equal, the result is some color other
+		than a pure gray.</p>
+	<p>
+		In the HSB model, a color is described by a combination of three
+		parameters called <i>hue</i>, <i>saturation</i>, and <i>brightness</i>:
+	</p>
+	<ul>
+		<li><i>Hue</i> corresponds to the property that is intuitively
+			meant by the term "color," such as yellow or blue-green.</li>
+		<li><i>Saturation</i> indicates how pure the color is. A
+			saturation of 0.0 means that none of the color's hue is visible; the
+			result is a shade of gray. A saturation of 1.0 denotes a pure color,
+			consisting entirely of the specified hue. Intermediate values
+			represent a mixture between pure hue and pure gray.</li>
+		<li><i>Brightness</i> determines how light the color determined
+			by the hue and saturation will be. A brightness of 0.0 is always
+			black. A brightness of 1.0 denotes the lightest color that the given
+			combination of hue and saturation can allow. (For example, pure red
+			can never be as light as the brightest white, because it is missing
+			two components.)</li>
+	</ul>
+	<p>HSB colors are often illustrated as arranged around a color
+		wheel. The hue parameter determines the angular position of a color on
+		this wheel, with 0.0 corresponding to pure red, 1/3 (0.333) to pure
+		green, 2/3 (0.666) to pure blue, and 1.0 to red again. The saturation
+		parameter denotes the color's radial position between the center of
+		the wheel (saturation = 0.0) and the edge (saturation = 1.0). The
+		brightness parameter controls the brightness of the colors displayed
+		on the wheel itself.</p>
+	<p>
+		<i><b>Note:</b> HSB is not a color space in its own right. It is
+			simply an alternative convention for specifying color values in the <b>DeviceRGB</b>
+			color space.</i>
+	</p>
+	<p>
+		As shown in Example 4.6, the <a
+			href="../../../8/2/s/setcolorspace.html">setcolorspace</a> and <a
+			href="../../../8/2/s/setcolor.html">setcolor</a> operators select the
+		color space and color value separately; <a
+			href="../../../8/2/s/setrgbcolor.html">setrgbcolor</a> and <a
+			href="../../../8/2/s/sethsbcolor.html">sethsbcolor</a> set them in
+		combination. When the specified color space is <b>DeviceRGB</b>, <a
+			href="../../../8/2/s/setcolorspace.html">setcolorspace</a> sets the
+		red, green, and blue components of the current color to 0.0.
+	</p>
+	<p>
+		When <b>DeviceRGB</b> is the current color space, both <a
+			href="../../../8/2/c/currentcolor.html">currentcolor</a> and <a
+			href="../../../8/2/c/currentrgbcolor.html">currentrgbcolor</a> return
+		the current color value in the form of its red, green, and blue
+		components, regardless of how it was originally specified. <a
+			href="../../../8/2/c/currenthsbcolor.html">currenthsbcolor</a>
+		returns the current color value as a hue, saturation, and brightness,
+		converting among color models as necessary. When one of the other
+		device color spaces (<b>DeviceCMYK</b> or <b>DeviceGray</b>) is
+		current, <a href="../../../8/2/c/currentcolor.html">currentcolor</a>
+		returns the current color value expressed in that space; <a
+			href="../../../8/2/c/currentrgbcolor.html">currentrgbcolor</a> and <a
+			href="../../../8/2/c/currenthsbcolor.html">currenthsbcolor</a>
+		convert it to <b>DeviceRGB</b>. (The conversions are described in
+		Section <a href="../../../7/2.html">7.2, "Conversions among Device
+			Color Spaces."</a>) These operators cannot convert from CIE-based or
+		special color spaces.
+	</p>
+	<p>
+		<i><b>Note:</b> Of the operators just described, only <a
+			href="../../../8/2/s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="../../../8/2/s/sethsbcolor.html">sethsbcolor</a>, <a
+			href="../../../8/2/c/currentrgbcolor.html">currentrgbcolor</a>, and <a
+			href="../../../8/2/c/currenthsbcolor.html">currenthsbcolor</a> are
+			supported in LanguageLevel 1.</i>
+	</p>
+</body>
+</html>

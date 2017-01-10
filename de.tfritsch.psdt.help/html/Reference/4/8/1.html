@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Types of Color Space</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.8.1 Types of Color Space</h3>
+	<p>
+		As described in Section <a href="../../4/5.html">4.5, "Painting,"</a>
+		marks placed on the page by operators such as <a
+			href="../../8/2/f/fill.html">fill</a> and <a
+			href="../../8/2/s/stroke.html">stroke</a> have a color that is
+		determined by the current color parameter of the graphics state. A
+		color value consists of one or more color components, which are
+		usually numbers. For example, a gray level can be specified by a
+		single number ranging from 0.0 (black) to 1.0 (white). Full color
+		values can be specified in any of several ways; a common method uses
+		three numbers to specify red, green, and blue components.
+	</p>
+	<p>
+		In LanguageLevels 2 and 3, color values are interpreted according to
+		the current color space, another parameter of the graphics state. A
+		PostScript program first selects a color space by invoking the <a
+			href="../../8/2/s/setcolorspace.html">setcolorspace</a> operator. It
+		then selects color values within that color space with the <a
+			href="../../8/2/s/setcolor.html">setcolor</a> operator. There are
+		also convenience operators&mdash;<a href="../../8/2/s/setgray.html">setgray</a>,
+		<a href="../../8/2/s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="../../8/2/s/sethsbcolor.html">sethsbcolor</a>, <a
+			href="../../8/2/s/setcmykcolor.html">setcmykcolor</a>, and <a
+			href="../../8/2/s/setpattern.html">setpattern</a>&mdash;that select
+		both a color space and a color value in a single step.
+	</p>
+	<p>
+		In LanguageLevel 1, this distinction between color spaces and color
+		values is not explicit, and the set of color spaces is limited. Colors
+		can be specified only by <a href="../../8/2/s/setgray.html">setgray</a>,
+		<a href="../../8/2/s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="../../8/2/s/sethsbcolor.html">sethsbcolor</a>, and (in some
+		implementations) <a href="../../8/2/s/setcmykcolor.html">setcmykcolor</a>.
+		However, in those color spaces that are supported, the color values
+		produce consistent results from one LanguageLevel to another.
+	</p>
+	<p>
+		The <a href="../../8/2/i/image.html">image</a> and <a
+			href="../../8/2/c/colorimage.html">colorimage</a> operators,
+		introduced in Section <a href="../../4/10.html">4.10, "Images,"</a>
+		enable sampled images to be painted on the current page. Each
+		individual sample in an image is a color value consisting of one or
+		more components to be interpreted in some color space. Since the color
+		values come from the image itself, the current color in the graphics
+		state is not used.
+	</p>
+	<p>
+		Whether color values originate from the graphics state or from a
+		sampled image, all later stages of color processing treat them the
+		same way. The following sections describe the semantics of color
+		values that are specified as operands to the <a
+			href="../../8/2/s/setcolor.html">setcolor</a> operator, but the same
+		semantics also apply to color values originating as image samples.
+	</p>
+	<p>Color spaces can be classified into color space families. Spaces
+		within a family share the same general characteristics; they are
+		distinguished by parameter values supplied at the time the space is
+		specified. The families, in turn, fall into three categories:</p>
+	<ul>
+		<li><i>Device color spaces</i> directly specify colors or shades
+			of gray that the output device is to produce. They provide a variety
+			of color specification methods, including gray level, RGB
+			(red-green-blue), HSB (hue-saturation-brightness), and CMYK
+			(cyan-magenta-yellow-black), corresponding to the color space
+			families <b>DeviceGray</b>, <b>DeviceRGB</b>, and <b>DeviceCMYK</b>.
+			(HSB is merely an alternate convention for specifying RGB colors.)
+			Since each of these families consists of just a single color space
+			with no parameters, they are sometimes loosely referred to as the <b>DeviceGray</b>,
+			<b>DeviceRGB</b>, and <b>DeviceCMYK</b> color spaces.</li>
+		<li><i>CIE-based color spaces</i> are based on an international
+			standard for color specification created by the Commission
+			Internationale de l'&Eacute;clairage (International Commission on
+			Illumination). These spaces allow colors to be specified in a way
+			that is independent of the characteristics of any particular output
+			device. Color space families in this category include <b>CIEBasedABC</b>,
+			<b>CIEBasedA</b>, <b>CIEBasedDEF</b>, and <b>CIEBasedDEFG</b>.
+			Individual color spaces within these families are specified by means
+			of dictionaries containing the parameter values needed to define the
+			space.</li>
+		<li><i>Special color spaces</i> add features or properties to an
+			underlying color space. They include facilities for patterns, color
+			mapping, separations, and highfidelity and multitone color. The
+			corresponding color space families are <b>Pattern</b>, <b>Indexed</b>,
+			<b>Separation</b>, and <b>DeviceN</b>. Individual color spaces within
+			these families are specified by means of additional parameters.</li>
+	</ul>
+	<p>
+		Whatever type of color space a PostScript program uses to specify a
+		color, the process of rendering that color on a particular output
+		device is under separate control. Color rendering is discussed in
+		Chapter <a href="../../7.html">7</a>.
+	</p>
+	<p>The following operators control the selection of color spaces
+		and color values:</p>
+	<ul>
+		<li><p>
+				<a href="../../8/2/s/setcolorspace.html">setcolorspace</a> sets the
+				color space parameter in the graphics state; <a
+					href="../../8/2/c/currentcolorspace.html">currentcolorspace</a>
+				returns the current color space parameter.
+			</p>
+			<p>
+				The operand to <a href="../../8/2/s/setcolorspace.html">setcolorspace</a>
+				is an array object containing as its first element a name object
+				identifying the desired color space. The remaining array elements,
+				if any, are parameters that further characterize the color space;
+				their number and types vary according to the particular color space
+				selected. For color spaces that do not require parameters, the
+				operand to <a href="../../8/2/s/setcolorspace.html">setcolorspace</a>
+				can simply be the color space name itself instead of an array; <a
+					href="../../8/2/c/currentcolorspace.html">currentcolorspace</a>
+				always returns an array.
+			</p>
+			<p>The following color space families are standard in
+				LanguageLevel 2:</p>
+			<table>
+				<tr>
+					<td width="30%"><b>DeviceGray</b><br /> <b>DeviceRGB</b><b>DeviceXMYK</b></td>
+					<td width="30%"><b>CIEBasedABC</b><br /> <b>CIEBasedA</b></td>
+					<td width="30%"><b>Pattern</b><br /> <b>Indexed</b><br /> <b>Separation</b></td>
+				</tr>
+			</table>
+			<p>LanguageLevel 3 supports the following additional families:</p>
+			<table>
+				<tr>
+					<td width="30%"></td>
+					<td width="30%"><b>CIEBasedDEF</b><br /> <b>CIEBasedDEFG</b></td>
+					<td width="30%"><b>DeviceN</b></td>
+				</tr>
+			</table></li>
+		<li><a href="../../8/2/s/setcolor.html">setcolor</a> sets the
+			current color parameter in the graphics state; <a
+			href="../../8/2/c/currentcolor.html">currentcolor</a> returns the
+			current color parameter. Depending on the color space, <a
+			href="../../8/2/s/setcolor.html">setcolor</a> requires one or more
+			operands, each specifying one component of the color value.</li>
+		<li><a href="../../8/2/s/setgray.html">setgray</a>, <a
+			href="../../8/2/s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="../../8/2/s/sethsbcolor.html">sethsbcolor</a>, <a
+			href="../../8/2/s/setcmykcolor.html">setcmykcolor</a>, and <a
+			href="../../8/2/s/setpattern.html">setpattern</a> set the color space
+			implicitly and the current color value as specified by the operands.
+			<a href="../../8/2/c/currentgray.html">currentgray</a>, <a
+			href="../../8/2/c/currentrgbcolor.html">currentrgbcolor</a>, <a
+			href="../../8/2/c/currenthsbcolor.html">currenthsbcolor</a>, and <a
+			href="../../8/2/c/currentcmykcolor.html">currentcmykcolor</a> return
+			the current color according to an implicit color space; in certain
+			limited cases, the latter operators also perform conversions if the
+			current color space differs from the implicit one.</li>
+	</ul>
+	<p>
+		<i><b>Note:</b> Color specification operators such as <a
+			href="../../8/2/s/setcolorspace.html">setcolorspace</a>, <a
+			href="../../8/2/s/setcolor.html">setcolor</a>, and <a
+			href="../../8/2/s/setpattern.html">setpattern</a> sometimes install
+			composite objects, such as arrays or dictionaries, as parameters in
+			the graphics state. To ensure predictable behavior, a PostScript
+			program should thereafter treat all such objects as if they were
+			read-only.</i>
+	</p>
+	<p>In certain circumstances, it is illegal to invoke operators that
+		specify colors or other color-related parameters in the graphics
+		state. This restriction occurs when defining graphical figures whose
+		colors are to be specified separately each time they are used.
+		Specifically, the restriction applies:</p>
+	<ul>
+		<li>After execution of <a href="../../8/2/s/setcachedevice.html">setcachedevice</a>
+			or <a href="../../8/2/s/setcachedevice2.html">setcachedevice2</a> in
+			a <b>BuildGlyph</b>, <b>BuildChar</b>, or <b>CharStrings</b>
+			procedure of a font dictionary (see Sections <a href="../../5/7.html">5.7,
+				"Type 3 Fonts"; "Type 1 CIDFonts"</a> on page 376; and <a
+			href="../../5/9/3.html">5.9.3, "Replacing or Adding Individual
+				Glyphs"</a>)
+		</li>
+		<li>In the <b>PaintProc</b> procedure of an uncolored tiling
+			pattern (see Section <a href="../../4/9.html">4.9, "Patterns"</a>)
+		</li>
+	</ul>
+	<p>
+		In these circumstances, invoking any of the following operators will
+		cause an <a href="../../8/2/u/undefined.html">undefined</a> error:
+	</p>
+	<table>
+		<tr>
+			<td width="30%"><a href="../../8/2/c/colorimage.html">colorimage</a><br />
+				<a href="../../8/2/i/image.html">image</a><br /> <a
+				href="../../8/2/s/setblackgeneration.html">setblackgeneration</a><br />
+				<a href="../../8/2/s/setcmykcolor.html">setcmykcolor</a><br /> <a
+				href="../../8/2/s/setcolor.html">setcolor</a><br /> <a
+				href="../../8/2/s/setcolorrendering.html">setcolorrendering</a></td>
+			<td width="30%"><a href="../../8/2/s/setcolorscreen.html">setcolorscreen</a><br />
+				<a href="../../8/2/s/setcolorspace.html">setcolorspace</a><br /> <a
+				href="../../8/2/s/setcolortransfer.html">setcolortransfer</a><br />
+				<a href="../../8/2/s/setgray.html">setgray</a><br /> <a
+				href="../../8/2/s/sethalftone.html">sethalftone</a><br /> <a
+				href="../../8/2/s/sethsbcolor.html">sethsbcolor</a></td>
+			<td width="30%"><a href="../../8/2/s/setpattern.html">setpattern</a><br />
+				<a href="../../8/2/s/setrgbcolor.html">setrgbcolor</a><br /> <a
+				href="../../8/2/s/setscreen.html">setscreen</a><br /> <a
+				href="../../8/2/s/settransfer.html">settransfer</a><br /> <a
+				href="../../8/2/s/setundercolorremoval.html">setundercolorremoval</a><br />
+				<a href="../../8/2/s/shfill.html">shfill</a></td>
+		</tr>
+	</table>
+	<p>
+		Note that the <a href="../../8/2/i/imagemask.html">imagemask</a>
+		operator is not restricted. This is because it does not specify
+		colors, but rather designates places where the current color is to be
+		painted.
+	</p>
+</body>
+</html>

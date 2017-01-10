@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DeviceGray Color Space</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>DeviceGray Color Space</h4>
+	<p>
+		Black, white, and intermediate shades of gray are special cases of
+		full color. A grayscale value is represented by a single number in the
+		range 0.0 to 1.0, where 0.0 corresponds to black, 1.0 to white, and
+		intermediate values to different gray levels. Example 4.8 shows
+		different ways to select the <b>DeviceGray</b> color space and a
+		specific gray level within that space.
+	</p>
+	<p>
+		<b>Example 4.8</b>
+	</p>
+	<pre>[/DeviceGray] setcolorspace <i>gray</i> setcolor
+/DeviceGray setcolorspace gray setcolor
+<i>gray</i> setgray</pre>
+	<p>
+		The <a href="../../../8/2/s/setcolorspace.html">setcolorspace</a> and
+		<a href="../../../8/2/s/setcolor.html">setcolor</a> operators select
+		the color space and color value separately; <a
+			href="../../../8/2/s/setgray.html">setgray</a> sets them in
+		combination. When the specified color space is <b>DeviceGray</b>, <a
+			href="../../../8/2/s/setcolorspace.html">setcolorspace</a> sets the
+		current color to 0.0.
+	</p>
+	<p>
+		When <b>DeviceGray</b> is the current color space, both <a>currentcolor</a>
+		and <a href="../../../8/2/c/currentgray.html">currentgray</a> return
+		the current color value in the form of a single gray component. When
+		one of the other device color spaces (<b>DeviceRGB</b> or <b>DeviceCMYK</b>)
+		is current, <a href="../../../8/2/c/currentcolor.html">currentcolor</a>
+		returns the current color value expressed in that space; <a
+			href="../../../8/2/c/currentgray.html">currentgray</a> converts it to
+		<b>DeviceGray</b>. (The conversions are described in Section <a
+			href="../../../7/2.html">7.2, "Conversions among Device Color
+			Spaces."</a>) This operator cannot convert from <b>CIEbased</b> or
+		special color spaces.
+	</p>
+	<p>
+		<i><b>Note:</b> The <a href="../../../8/2/s/setgray.html">setgray</a>
+			and <a href="../../../8/2/c/currentgray.html">currentgray</a>
+			operators are supported by all PostScript implementations.</i>
+	</p>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Color Spaces</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.8 Color Spaces</h3>
+	<p>The PostScript language includes powerful facilities for
+		specifying the colors of graphical objects to be marked on the current
+		page. The color facilities are divided into two parts:</p>
+	<ul>
+		<li><i>Color specification.</i> A PostScript program can specify
+			abstract colors in a device-independent way. Colors can be described
+			in any of a variety of color systems, or color spaces. Some color
+			spaces are related to device color representation (grayscale, RGB,
+			CMYK), others to human visual perception (CIE-based). Certain special
+			features are also modeled as color spaces: patterns, color mapping,
+			separations, and high-fidelity and multitone color.</li>
+		<li><i>Color rendering.</i> The PostScript interpreter reproduces
+			colors on the raster output device by a multiple-step process that
+			includes color conversion, gamma correction, halftoning, and scan
+			conversion. Certain aspects of this process are under PostScript
+			language control. However, unlike the facilities for color
+			specification, the color rendering facilities are device-dependent
+			and ordinarily should not be accessed from a page description.</li>
+	</ul>
+	<p>
+		This section describes the color specification facilities of the
+		PostScript language. It covers everything that most PostScript
+		programs need in order to specify colors. Chapter <a href="../7.html">7</a>
+		describes the facilities for controlling color rendering; a program
+		should use those facilities only to configure or calibrate an output
+		device or to achieve special device-dependent effects.
+	</p>
+	<p>Figures 4.5 and 4.6 on pages 212 and 213 illustrate the
+		organization of the Post- Script language features for dealing with
+		color, showing the division between (device-independent) color
+		specification and (device-dependent) color rendering.</p>
+	<figure>
+		<img src="figure-4.5.png" />
+		<figcaption>
+			<b>FIGURE 4.5</b> Color specification
+		</figcaption>
+	</figure>
+	<figure>
+		<img src="figure-4.6.png" />
+		<figcaption>
+			<b>FIGURE 4.6</b> Color rendering
+		</figcaption>
+	</figure>
+</body>
+</html>

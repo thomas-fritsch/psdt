@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DeviceCMYK Color Space</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>DeviceCMYK Color Space</h4>
+	<p>
+		The <b>DeviceCMYK</b> color space allows colors to be specified
+		according to the subtractive CMYK model typical of printers and other
+		paper-based output devices. Each color component in a <b>DeviceCMYK</b>
+		color value specifies the amount of light that the corresponding ink
+		or other colorant absorbs. In theory, each of the three standard
+		process colors used in printing (cyan, magenta, and yellow) absorbs
+		one of the additive primary colors (red, green, and blue,
+		respectively). Black, a fourth standard process color, absorbs all
+		additive primaries in equal amounts. Each of the four components in a
+		CMYK color specification is a number between 0.0 and 1.0, where 0.0
+		represents no ink (that is, absorbs no light) and 1.0 represents the
+		maximum quantity of ink (absorbs all the light it can). Note that the
+		sense of these numbers is opposite to that of RGB color components.
+	</p>
+	<p>Example 4.7 shows different ways to select the DeviceCMYK color
+		space and a specific color within that space.</p>
+	<p>
+		<b>Example 4.7</b>
+	</p>
+	<pre>[/DeviceCMYK] setcolorspace <i>cyan magenta yellow black</i> setcolor
+/DeviceCMYK setcolorspace <i>cyan magenta yellow black</i> setcolor
+<i>cyan magenta yellow black</i> setcmykcolor</pre>
+	<p>
+		The <a href="../../../8/2/s/setcolorspace.html">setcolorspace</a> and
+		<a>setcolor</a> operators select the color space and color value
+		separately; <a href="../../../8/2/s/setcmykcolor.html">setcmykcolor</a>
+		sets them in combination. When the specified color space is <b>DeviceCMYK</b>,
+		<a href="../../../8/2/s/setcolorspace.html">setcolorspace</a> sets the
+		cyan, magenta, and yellow components of the current color to 0.0 and
+		the black component to 1.0.
+	</p>
+	<p>
+		When <b>DeviceCMYK</b> is the current color space, both <a
+			href="../../../8/2/c/currentcolor.html">currentcolor</a> and <a
+			href="../../../8/2/c/currentcmykcolor.html">currentcmykcolor</a>
+		return the current color value in the form of its cyan, magenta,
+		yellow, and black components. When one of the other device color
+		spaces (<b>DeviceRGB</b> or <b>DeviceGray</b>) is current, <a
+			href="../../../8/2/c/currentcolor.html">currentcolor</a> returns the
+		current color value expressed in that space; <a
+			href="../../../8/2/c/currentcmykcolor.html">currentcmykcolor</a>
+		converts it to <b>DeviceCMYK</b>. (The conversions are described in
+		Section <a href="../../../7/2.html">7.2, "Conversions among Device
+			Color Spaces."</a>) This operator cannot convert from CIE-based or
+		special color spaces.
+	</p>
+	<p>
+		<i><b>Note:</b> The <a href="../../../8/2/s/setcmykcolor.html">setcmykcolor</a>
+			and <a href="../../../8/2/c/currentcmykcolor.html">currentcmykcolor</a>
+			operators are supported by some, but not all, LanguageLevel 1
+			implementations.</i>
+	</p>
+</body>
+</html>

@@ -139,7 +139,15 @@
 	    <topic label="4.7 Forms">
 	        <topic label="4.7.1 Using Forms" href="html/Reference/4/7/1.html" />
 	    </topic>
-	    <topic label="4.10 Images">
+	    <topic label="4.8 Color Spaces"  href="html/Reference/4/8.html">
+	        <topic label="4.8.1 Types of Color Space" href="html/Reference/4/8/1.html" />
+	        <topic label="4.8.2 Device Color Spaces" href="html/Reference/4/8/2.html">
+	            <topic label="DeviceRGB Color Space" href="html/Reference/4/8/2/1.html" />
+	            <topic label="DeviceCMYK Color Space" href="html/Reference/4/8/2/2.html" />
+	            <topic label="DeviceGray Color Space" href="html/Reference/4/8/2/3.html" />
+	        </topic>
+	    </topic>
+	    <topic label="4.10 Images" >
 	        <topic label="4.10.5 Image Dictionaries" href="html/Reference/4/10/5.html">
 	            <topic label="Type 1 Image Dictionaries" href="html/Reference/4/10/5/1.html" />
 	            <topic label="Sample Decoding" href="html/Reference/4/10/5/2.html" />
