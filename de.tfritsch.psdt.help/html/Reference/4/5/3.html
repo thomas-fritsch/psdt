@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insideness Testing</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.5.3 Insideness Testing</h3>
+	<p>It is sometimes useful for a program to test whether a point
+		lies inside a path, or whether a path intersects another path, without
+		actually painting anything. The LanguageLevel 2 insideness-testing
+		operators can be used for this purpose. They are useful mainly for
+		interactive applications, where they can assist in hit detection;
+		however, they have other uses as well.</p>
+	<p>
+		There are several insideness-testing operators that vary according to
+		how the paths to be tested are specified. All of the operators return
+		a single boolean result. What it means for a point to be inside a path
+		is that painting the path (by <a href="../../8/2/f/fill.html">fill</a>
+		or <a href="../../8/2/s/stroke.html">stroke</a>) would cause the
+		device pixel lying under that point to be marked. The insideness tests
+		disregard the current clipping path.
+	</p>
+	<ul>
+		<li><a href="../../8/2/i/infill.html">infill</a> tests the
+			current path in the graphics state. There are two forms of this
+			operator. One returns true if painting the current path with the fill
+			operator would result in marking the device pixel corresponding to a
+			specific point in user space. The second tests whether any pixels
+			within a specified aperture would be marked. The aperture is
+			specified by a user path supplied as an operand (see Section <a
+			href="../6.html">4.6, "User Paths"</a>).</li>
+		<li><a href="../../8/2/i/instroke.html">instroke</a> is similar
+			to <a href="../../8/2/i/infill.html">infill</a>, but it tests pixels
+			that would be marked by applying the stroke operator to the current
+			path, using the current settings of the stroke-related parameters in
+			the graphics state (line width, dash pattern, and so forth).</li>
+		<li><a href="../../8/2/i/inufill.html">inufill</a> and <a
+			href="../../8/2/i/inustroke.html">inustroke</a> are similar to <a
+			href="../../8/2/i/infill.html">infill</a> and <a
+			href="../../8/2/i/instroke.html">instroke</a>, but they test a user
+			path supplied as a separate operand, rather than the current path in
+			the graphics state.</li>
+		<li><a href="../../8/2/i/ineofill.html">ineofill</a> and <a
+			href="../../8/2/i/inueofill.html">inueofill</a> are similar to <a
+			href="../../8/2/i/infill.html">infill</a> and <a
+			href="../../8/2/i/inufill.html">inufill</a>, but they use the
+			even-odd rule instead of the nonzero winding number rule for
+			insideness testing; see Section <a href="2.html">4.5.2,
+				"Filling,"</a> for more information.</li>
+	</ul>
+</body>
+</html>

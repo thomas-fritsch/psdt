@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Filling</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.5.2 Filling</h3>
+	<p>
+		The <a href="../../8/2/f/fill.html">fill</a> operator uses the current
+		color or pattern to paint the entire region enclosed by the current
+		path. If the path consists of several disconnected subpaths, fill
+		paints the insides of all subpaths, considered together. Any subpaths
+		that are open are implicitly closed before being filled.
+	</p>
+	<p>For a simple path, it is intuitively clear what region lies
+		inside. However, for a more complex path&mdash;for example, a path
+		that intersects itself or has one subpath that encloses
+		another&mdash;the interpretation of "inside" is not always obvious.
+		The path machinery uses one of two rules for determining which points
+		lie inside a path: the nonzero winding number rule and the even-odd
+		rule, both discussed in detail below.</p>
+	<p>
+		The nonzero winding number rule is more versatile than the even-odd
+		rule and is the standard rule the <a href="../../8/2/f/fill.html">fill</a>
+		operator uses. Similarly, the <a href="../../8/2/c/clip.html">clip</a>
+		operator uses this rule to determine the inside of the current
+		clipping path. The even-odd rule is occasionally useful for special
+		effects or for compatibility with other graphics systems. The <a
+			href="../../8/2/e/eofill.html">eofill</a> and <a
+			href="../../8/2/e/eoclip.html">eoclip</a> operators invoke this rule.
+	</p>
+	<h4 id="1">Nonzero Winding Number Rule</h4>
+	<p>
+		The <i>nonzero winding number</i> rule determines whether a given
+		point is inside a path by conceptually drawing a ray from that point
+		to infinity in any direction and then examining the places where a
+		segment of the path crosses the ray. Starting with a count of 0, the
+		rule adds 1 each time a path segment crosses the ray from left to
+		right and subtracts 1 each time a segment crosses from right to left.
+		After counting all the crossings, if the result is 0 then the point is
+		outside the path; otherwise it is inside.
+	</p>
+	<p>
+		<i><b>Note:</b> The method just described does not specify what to
+			do if a path segment coincides with or is tangent to the chosen ray.
+			Since the direction of the ray is arbitrary, the rule simply chooses
+			a ray that does not encounter such problem intersections.</i>
+	</p>
+	<p>
+		For simple convex paths, the nonzero winding number rule defines the
+		inside and outside as one would intuitively expect. The more
+		interesting cases are those involving complex or self-intersecting
+		paths like the ones in Figure 4.3. For a path consisting of a
+		five-pointed star, drawn with five connected straight line segments
+		intersecting each other, the rule considers the inside to be the
+		entire area enclosed by the star, including the pentagon in the
+		center. For a path composed of two concentric circles, the areas
+		enclosed by both circles are considered to be inside, <i>provided
+			that both are drawn in the same direction</i>. If the circles are drawn
+		in opposite directions, only the "doughnut" shape between them is
+		inside, according to the rule; the "doughnut hole" is outside.
+	</p>
+	<figure>
+		<img src="figure-4.3.png" />
+		<figcaption>
+			<b>FIGURE 4.3</b> Nonzero winding number rule
+		</figcaption>
+	</figure>
+	<h4 id="2">Even-Odd Rule</h4>
+	<p>
+		An alternative to the nonzero winding number rule is the <i>even-odd
+			rule</i>. This rule determines the "insideness" of a point by drawing a
+		ray from that point in any direction and simply counting the number of
+		path segments that cross the ray, regardless of direction. If this
+		number is odd, the point is inside; if even, the point is outside.
+		This yields the same results as the nonzero winding number rule for
+		paths with simple shapes, but produces different results for more
+		complex shapes.
+	</p>
+	<p>Figure 4.4 shows the effects of applying the even-odd rule to
+		complex paths. For the five-pointed star, the rule considers the
+		triangular points to be inside the path, but not the pentagon in the
+		center. For the two concentric circles, only the "doughnut" shape
+		between the two circles is considered inside, regardless of the
+		directions in which the circles are drawn.</p>
+	<figure>
+		<img src="figure-4.4.png" />
+		<figcaption>
+			<b>FIGURE 4.4</b> Even-odd rule
+		</figcaption>
+	</figure>
+</body>
+</html>

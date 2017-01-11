@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stroking</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.5.1 Stroking</h3>
+	<p>
+		The <a href="../../8/2/s/stroke.html">stroke</a> operator draws a line
+		along the current path. For each straight or curved segment in the
+		path, the stroked line is centered on the segment with sides parallel
+		to the segment. Each of the path's subpaths is treated separately
+	</p>
+	<p>
+		The results of the <a href="../../8/2/s/stroke.html">stroke</a>
+		operator depend on the current settings of various parameters in the
+		graphics state. See Section <a href="../2.html">4.2, "Graphics
+			State,"</a> for further information on these parameters, and Chapter 8
+		for detailed descriptions of the operators that set them.
+	</p>
+	<ul>
+		<li>The width of the stroked line is determined by the line width
+			parameter (see <a href="../../8/2/s/setlinewidth.html">setlinewidth</a>).
+		</li>
+		<li>The color or pattern of the line is determined by the color
+			parameter (see <a href="../../8/2/s/setgray.html">setgray</a>, <a
+			href="../../8/2/s/setrgbcolor.html">setrgbcolor</a>, <a
+			href="../../8/2/s/sethsbcolor.html">sethsbcolor</a>, <a
+			href="../../8/2/s/setcmykcolor.html">setcmykcolor</a>, <a
+			href="../../8/2/s/setcolor.html">setcolor</a>, and <a
+			href="../../8/2/s/setpattern.html">setpattern</a>; the last three are
+			LanguageLevel 2 operators).
+		</li>
+		<li>The line can be drawn either solid or with a
+			program-specified dash pattern, depending on the dash pattern
+			parameter (see <a href="../../8/2/s/setdash.html">setdash</a>).
+		</li>
+		<li>If the subpath is open, the unconnected ends are treated
+			according to the line cap parameter, which may be butt, rounded, or
+			square (see <a href="../../8/2/s/setlinecap.html">setlinecap</a>).
+		</li>
+		<li>Wherever two consecutive segments are connected, the joint
+			between them is treated according to the line join parameter, which
+			may be mitered, rounded, or beveled (see <a
+			href="../../8/2/s/setlinejoin.html">setlinejoin</a>). Mitered joins
+			are also subject to the miter limit parameter (see <a
+			href="../../8/2/s/setmiterlimit.html">setmiterlimit</a>).
+			<p>
+				<i><b>Note:</b> Points at which unconnected segments happen to
+					meet or intersect receive no special treatment. In particular,
+					"closing" a subpath with an explicit lineto rather than with <a
+					href="../../8/2/c/closepath.html">closepath</a> may result in a
+					messy corner, because line caps will be applied instead of a line
+					join.</i>
+			</p>
+		</li>
+		<li>The stroke adjustment parameter (LanguageLevel 2) requests
+			that coordinates and line widths be adjusted automatically to produce
+			strokes of uniform thickness despite rasterization effects (see <a
+			href="../../8/2/s/setstrokeadjust.html">setstrokeadjust</a> and
+			Section <a href="../../7/5/2.html">7.5.2, "Automatic Stroke
+				Adjustment"</a>).
+		</li>
+	</ul>
+</body>
+</html>
