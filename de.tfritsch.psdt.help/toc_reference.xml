@@ -136,6 +136,10 @@
 	        <topic label="4.3.2 Transformations" href="html/Reference/4/3/2.html" />
 	        <topic label="4.3.3 Matrix Representation and Manipulation" href="html/Reference/4/3/3.html" />
 	    </topic>
+	    <topic label="4.4 Path Construction" href="html/Reference/4/4.html">
+	        <topic label="4.4.1 Current Path" href="html/Reference/4/4/1.html" />
+	        <topic label="4.4.2 Clipping Path" href="html/Reference/4/4/2.html" />
+	    </topic>
 	    <topic label="4.5 Painting" href="html/Reference/4/5.html">
 	        <topic label="4.5.1 Stroking" href="html/Reference/4/5/1.html" />
 	        <topic label="4.5.2 Filling" href="html/Reference/4/5/2.html">

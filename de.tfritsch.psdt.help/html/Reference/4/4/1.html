@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Current Path</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.4.1 Current Path</h3>
+	<p>
+		The <i>current path</i> is part of the graphics state. The path
+		construction operators <i>modify</i> the current path, usually by
+		appending to it, and the painting operators implicitly <i>refer</i> to
+		the current path. The <a href="../../8/2/g/gsave.html">gsave</a> and <a
+			href="../../8/2/g/grestore.html">grestore</a> operators respectively
+		save and restore the current path, as they do all components of the
+		graphics state.
+	</p>
+	<p>
+		A program begins a new path by invoking the <a
+			href="../../8/2/n/newpath.html">newpath</a> operator. This
+		initializes the current path to be empty. (Some of the painting
+		operators also reinitialize the current path at the end of their
+		execution.) The program then builds up the definition of the path by
+		applying one or more of the operators that add segments to the current
+		path. These operators may be invoked in any sequence, but the first
+		one invoked must be <a href="../../8/2/m/moveto.html">moveto</a>.
+	</p>
+	<p>
+		The trailing endpoint of the segment most recently added is referred
+		to as the current point. If the current path is empty, the current
+		point is undefined. Most operators that add a segment to the current
+		path start at the current point. If the current point is undefined,
+		they generate the error <a href="../../8/2/n/nocurrentpoint.html">nocurrentpoint</a>.
+	</p>
+	<p>Following is a list of the most common path construction
+		operators. There are other, less common ones as well; see Chapter 8
+		for complete details.</p>
+	<ul>
+		<li><a href="../../8/2/m/moveto.html">moveto</a> establishes a
+			new current point without adding a segment to the current path,
+			thereby beginning a new subpath.</li>
+		<li><a href="../../8/2/l/lineto.html">lineto</a> adds a straight
+			line segment to the current path, connecting the previous current
+			point to the new one.</li>
+		<li><a href="../../8/2/a/arc.html">arc</a>, <a
+			href="../../8/2/a/arcn.html">arcn</a>, <a
+			href="../../8/2/a/arct.html">arct</a>, and <a
+			href="../../8/2/a/arcto.html">arcto</a> add an arc of a circle to the
+			current path.</li>
+		<li><a href="../../8/2/c/curveto.html">curveto</a> adds a section
+			of a cubic B&eacute;zier curve to the current path.</li>
+		<li><a href="../../8/2/r/rmoveto.html">rmoveto</a>, <a
+			href="../../8/2/r/rlineto.html">rlineto</a>, and <a
+			href="../../8/2/r/rcurveto.html">rcurveto</a> perform the <a
+			href="../../8/2/m/moveto.html">moveto</a>, <a
+			href="../../8/2/l/lineto.html">lineto</a>, and <a
+			href="../../8/2/c/curveto.html">curveto</a> operations, but specify
+			new points via displacements in user space relative to the current
+			point, rather than by absolute coordinates.</li>
+		<li><a href="../../8/2/c/closepath.html">closepath</a> adds a
+			straight line segment connecting the current point to the starting
+			point of the current subpath (usually the point most recently
+			specified by <a href="../../8/2/m/moveto.html">moveto</a>), thereby
+			closing the current subpath.</li>
+	</ul>
+	<p>
+		<i><b>Note:</b> Remember that the path construction operators do
+			not place any marks on the page; only the painting operators do that.
+			The usual procedure for painting a graphical element on the page is
+			to define that element as a path and then invoke one of the painting
+			operators. This is repeated for each element on the page.</i>
+	</p>
+	<p>All of the points used to describe the path are specified in
+		user space. All coordinates are transformed by the CTM into device
+		space at the time the program adds the point to the current path.
+		Changing the CTM does not affect the coordinates of existing points in
+		device space.</p>
+	<p>A path that is to be used more than once in a page description
+		can be defined by a PostScript procedure that invokes the operators
+		for constructing the path. Each instance of the path can then be
+		constructed and painted on the page by a threestep sequence:</p>
+	<ol>
+		<li>Modify the CTM, if necessary, by invoking coordinate
+			transformation operators to locate, orient, and scale the path to the
+			desired place on the page.</li>
+		<li>Call the procedure to construct the path.</li>
+		<li>Invoke a painting operator to mark the path on the page in
+			the desired manner.</li>
+	</ol>
+	<p>
+		In the common situation that the path description is constant, the
+		LanguageLevel 2 user path operators (described in Section <a
+			href="../6.html">4.6, "User Paths"</a>) can be used to combine steps
+		2 and 3. The entire sequence can be encapsulated by surrounding it
+		with the operators <a href="../../8/2/g/gsave.html">gsave</a> and <a
+			href="../../8/2/g/grestore.html">grestore</a>. See Example 4.1 on
+		page 185 for a simple illustration of this technique.
+	</p>
+</body>
+</html>

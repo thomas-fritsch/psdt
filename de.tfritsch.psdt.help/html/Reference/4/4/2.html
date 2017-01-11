@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Clipping Path</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.4.2 Clipping Path</h3>
+	<p>
+		The graphics state also contains a <i>clipping path</i> that limits
+		the regions of the page affected by the painting operators. The closed
+		subpaths of this path define the area that can be painted. Marks
+		falling inside this area will be applied to the page; those falling
+		outside it will not. (Precisely what is considered to be "inside" a
+		path is discussed in Section <a href="../5/2.html">4.5.2,
+			"Filling."</a>) The clipping path affects current painting operations
+		only; it has no effect on paths being constructed with the path
+		construction operators listed in Section <a href="1.html">4.4.1</a>.
+		When such a path is eventually painted, the results will be limited
+		only by the clipping path current at that time, and not by the one in
+		effect when the path was constructed.
+	</p>
+	<p>
+		In LanguageLevel 3, the graphics state can also contain a subsidiary
+		stack of saved clipping paths, which are pushed and popped by the <a
+			href="../../8/2/c/clipsave.html">clipsave</a> and <a
+			href="../../8/2/c/.html">cliprestore</a> operators. This enables a
+		program to save and restore just the clipping path without affecting
+		the rest of the graphics state. Because the clipping path stack is an
+		element of the graphics state, wholesale replacement of the graphics
+		state by <a href="../../8/2/g/grestore.html">grestore</a> or <a
+			href="../../8/2/s/setgstate.html">setgstate</a> will replace the
+		entire clipping path stack.
+	</p>
+	<p>The following operators manage the clipping path:</p>
+	<ul>
+		<li><a href="../../8/2/c/clip.html">clip</a> computes a new
+			clipping path from the intersection of the current path with the
+			existing clipping path.</li>
+		<li><a href="../../8/2/c/clippath.html">clippath</a> replaces the
+			current path with a copy of the current clipping path.</li>
+		<li><a href="../../8/2/c/clipsave.html">clipsave</a> <i>(LanguageLevel
+				3)</i> pushes a copy of the current clipping path onto the clipping path
+			stack.</li>
+		<li><a href="../../8/2/c/cliprestore.html">cliprestore</a> <i>(LanguageLevel
+				3)</i> pops the topmost element off the clipping path stack and makes it
+			the current clipping path.</li>
+	</ul>
+</body>
+</html>

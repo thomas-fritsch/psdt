@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Path Construction</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.4 Path Construction</h3>
+	<p>
+		In the PostScript language, <i>paths</i> define shapes, trajectories,
+		and regions of all sorts. Programs use paths to draw lines, define the
+		shapes of filled areas, and specify boundaries for clipping other
+		graphics.
+	</p>
+	<p>A path is composed of straight and curved line segments, which
+		may connect to one another or may be disconnected. A pair of segments
+		are said to connect only if they are defined consecutively, with the
+		second segment starting where the first one ends. Thus the order in
+		which the segments of a path are defined is significant.
+		Nonconsecutive segments that meet or intersect fortuitously are not
+		considered to connect.</p>
+	<p>
+		A path is made up of one or more disconnected <i>subpaths</i>, each
+		comprising a sequence of connected segments. The topology of the path
+		is unrestricted: it may be concave or convex, may contain multiple
+		subpaths representing disjoint areas, and may intersect itself in
+		arbitrary ways. There is an operator, <a
+			href="../8/2/c/closepath.html">closepath</a>, that explicitly
+		connects the end of a subpath back to its starting point; such a
+		subpath is said to be <i>closed</i>. A subpath that has not been
+		explicitly closed is <i>open</i>.
+	</p>
+	<p>
+		Paths are represented by data structures internal to the PostScript
+		interpreter. Although a path is not directly accessible as an object,
+		its construction and use are under program control. A path is
+		constructed by sequential application of one or more <i>path
+			construction operators</i>. PostScript programs can read out the path or,
+		more commonly, use it to control the application of one of the
+		painting operators described in Section <a href="5.html">4.5,
+			"Painting."</a>
+	</p>
+	<p>
+		<i><b>Note:</b> Because the entire set of points defining a path
+			must exist as data simultaneously, there is a limit to the number of
+			segments it may have. Because several paths may also exist
+			simultaneously (the current path and the clipping path, both
+			discussed below, as well as any paths saved by the <a
+			href="../8/2/s/save.html">save</a>, <a href="../8/2/g/gsave.html">gsave</a>,
+			<a href="../8/2/c/clipsave.html">clipsave</a>, <a
+			href="../8/2/g/gstate.html">gstate</a>, and <a
+			href="../8/2/c/currentgstate.html">currentgstate</a> operators), this
+			limit applies to the total amount of storage occupied by all paths.
+			If a path exhausts the available storage, a <a
+			href="../8/2/l/limitcheck.html">limitcheck</a> error occurs.
+			LanguageLevel 1 has a fixed limit for path storage that is
+			implementation-dependent; see Appendix <a>B</a> for more information.
+			In LanguageLevels 2 and 3, there is no such fixed limit; path storage
+			competes with other uses of memory.</i>
+	</p>
+	<p>
+		<i>As a practical matter, the limits on path storage are large
+			enough not to impose an unreasonable restriction. It is important,
+			however, that each distinct element of a page be constructed as a
+			separate path, painted, and then discarded before constructing the
+			next element. Attempting to describe an entire page as a single path
+			is likely to exceed the path storage limit.</i>
+	</p>
+</body>
+</html>
