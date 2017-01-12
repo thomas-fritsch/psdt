@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Forms</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.7 Forms</h3>
+	<p>
+		A <i>form</i> is a self-contained description of any arbitrary
+		graphics, text, or sampled images that are to be painted multiple
+		times, either on several pages or at several locations on the same
+		page. The appearance of a form is described by a PostScript procedure
+		that invokes graphics operators. Language support for forms is a
+		LanguageLevel 2 feature.
+	</p>
+	<p>What distinguishes a form from an ordinary procedure is that it
+		is self-contained and behaves according to certain rules. By defining
+		a form, a program declares that each execution of the form will
+		produce the same output, which depends only on the graphics state at
+		the time the form is executed. The form's definition does not refer to
+		variable information in virtual memory, and its execution has no side
+		effects in VM.</p>
+	<p>These rules permit the PostScript interpreter to save the
+		graphical output of the form in a cache. Later, when the same form is
+		used again, the interpreter substitutes the saved output instead of
+		reexecuting the form's definition. This can significantly improve
+		performance when the form is used many times.</p>
+	<p>There are various uses for forms:</p>
+	<ul>
+		<li>As its name suggests, a form can serve as the template for an
+			entire page. For example, a program that prints filled-in tax forms
+			can first paint the fixed template as a form, then paint the variable
+			information on top of it.</li>
+		<li>A form can also be any graphical element that is to be used
+			repeatedly. For example, in output from computer-aided design
+			systems, it is common for certain standard components to appear many
+			times. A company's logo can be treated as a form.</li>
+	</ul>
+</body>
+</html>
