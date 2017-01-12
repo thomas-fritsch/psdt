@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Imaging Model</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.1 Imaging Model</h3>
+	<p>The Adobe imaging model is a simple and unified view of
+		two-dimensional graphics borrowed from the graphic arts. A PostScript
+		program builds an image by placing "paint" on a "page" in selected
+		areas.</p>
+	<ul>
+		<li>The painted figures may be in the form of letter shapes,
+			general filled shapes, lines, or digitally sampled representations of
+			photographs.</li>
+		<li>The paint may be in color or in black, white, or any shade of
+			gray.</li>
+		<li>The paint may take the form of a repeating pattern <i>(LanguageLevel
+				2)</i> or a smooth transition between colors <i>(LanguageLevel 3)</i>.
+		</li>
+		<li>Any of these elements may be clipped to appear within other
+			shapes as they are placed onto the page.</li>
+		<li>Once a page has been built up to the desired form, it may be
+			transmitted to an output device.</li>
+	</ul>
+	<p>
+		The PostScript interpreter maintains an implicit <i>current page</i>
+		that accumulates the marks made by the <i>painting operators</i>. When
+		a program begins, the current page is completely blank. As each
+		painting operator executes, it places marks on the current page. Each
+		new mark completely obscures any marks it may overlay (subject to the
+		effects of the overprint parameter in the graphics state; see Section
+		<a href="8/5.html">4.8.5</a>). This method is known as a <i>painting
+			model</i>: no matter what color a mark has&mdash;white, black, gray, or
+		color&mdash;it is put onto the current page as if it were applied with
+		opaque paint. Once the page has been completely composed, invoking the
+		<a href="../8/2/s/showpage.html">showpage</a> operator renders the
+		accumulated marks on the output media and then clears the current page
+		to white again.
+	</p>
+	<p>The principal painting operators (among many others) are as
+		follows:</p>
+	<ul>
+		<li><a href="../8/2/f/fill.html">fill</a> paints an area.</li>
+		<li><a href="../8/2/s/stroke.html">stroke</a> paints lines.</li>
+		<li><a href="../8/2/i/image.html">image</a> paints a sampled
+			image.</li>
+		<li><a href="../8/2/s/show.html">show</a> paints glyphs
+			representing character shapes.</li>
+	</ul>
+	<p>
+		The painting operators require various parameters, some explicit and
+		others implicit. Chief among the implicit parameters is the <i>current
+			path</i> used by <a href="../8/2/f/fill.html">fill</a>, <a
+			href="../8/2/s/stroke.html">stroke</a>, and <a
+			href="../8/2/s/show.html">show</a>. A path consists of a sequence of
+		connected and disconnected points, lines, and curves that together
+		describe shapes and their positions. It is built up through the
+		sequential application of the <i>path construction operators</i>, each
+		of which modifies the current path in some way, usually by appending
+		one new element.
+	</p>
+	<p>
+		Path construction operators include <a href="../8/2/n/newpath.html">newpath</a>,
+		<a href="../8/2/m/moveto.html">moveto</a>, <a
+			href="../8/2/l/lineto.html">lineto</a>, <a
+			href="../8/2/c/curveto.html">curveto</a>, <a>arc</a>, and <a
+			href="../8/2/c/closepath.html">closepath</a>. None of the path
+		construction operators places marks on the current page; the painting
+		operators do that. Path construction operators create the shapes that
+		the painting operators paint. Some operators, such as <a
+			href="../8/2/u/ufill.html">ufill</a> and <a
+			href="../8/2/u/ustroke.html">ustroke</a>, combine path construction
+		and painting in a single operation for efficiency.
+	</p>
+	<p>Implicit parameters to the painting operators include the
+		current color, current line width, current font (typeface and size),
+		and many others. There are operators that examine and set each
+		implicit parameter in the graphics state. The values used for implicit
+		parameters are those in effect at the time an operator is invoked.</p>
+	<p>PostScript programs contain many instances of the following
+		typical sequence of steps:</p>
+	<ol>
+		<li>Build a path using path construction operators.</li>
+		<li>Set any implicit parameters if their values need to change.</li>
+		<li>Perform a painting operation.</li>
+	</ol>
+	<p>
+		There is one additional implicit element in the Adobe imaging model
+		that modifies this description: the <i>current clipping path</i>
+		outlines the area of the current page on which paint may be placed.
+		Initially, this path outlines the entire imageable area of the current
+		page. By using the <a href="../8/2/c/clip.html">clip</a> operator, a
+		PostScript program can shrink the path to any shape desired. Although
+		painting operators may attempt to place marks anywhere on the current
+		page, only those marks falling within the current clipping path will
+		affect the page; those falling outside it will not.
+	</p>
+</body>
+</html>
