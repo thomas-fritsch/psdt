@@ -131,6 +131,7 @@
 		</topic>
 	</topic>
 	<topic label="4 Graphics">
+	    <topic label="4.2 Graphics State" href="html/Reference/4/2.html" />
 	    <topic label="4.3 Coordinate Systems and Transformations" href="html/Reference/4/3.html">
 	        <topic label="4.3.1 User Space and Device Space" href="html/Reference/4/3/1.html" />
 	        <topic label="4.3.2 Transformations" href="html/Reference/4/3/2.html" />

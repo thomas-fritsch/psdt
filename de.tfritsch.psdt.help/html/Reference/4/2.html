@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Graphics State</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.2 Graphics State</h3>
+	<p>
+		The PostScript interpreter maintains an internal data structure called
+		the <i>graphics state</i> that holds current graphics control
+		parameters. These parameters define the global framework within which
+		the graphics operators execute. For example, the <a
+			href="../8/2/s/stroke.html">stroke</a> operator implicitly uses the <i>current
+			line width</i> parameter from the graphics state, and the <a
+			href="../8/2/f/fill.html">fill</a> operator implicitly uses the <i>current
+			color</i> parameter.
+	</p>
+	<p>
+		Most graphics state parameters are ordinary PostScript objects that
+		can be read and altered by the appropriate graphics state operators.
+		For example, the operator <a href="../8/2/s/setlinewidth.html">setlinewidth</a>
+		changes the current line width parameter, and <a
+			href="../8/2/c/currentlinewidth.html">currentlinewidth</a> reads that
+		parameter from the graphics state. In general, the operators that set
+		graphics state parameters simply store them unchanged for later use by
+		other graphics operators. However, certain parameters have special
+		properties or behavior:
+	</p>
+	<ul>
+		<li>Most parameters must be of the correct type or have values
+			that fall into a certain range.</li>
+		<li>Parameters that are numeric values, such as color, line
+			width, and miter limit, are forced into legal range, if necessary,
+			and stored as real numbers. If they are later read out, they are
+			always real, regardless of how they were originally specified.
+			However, they are not adjusted to reflect capabilities of the raster
+			output device, such as resolution or number of distinguishable
+			colors. Graphics rendering operators perform such adjustments, but
+			the adjusted values are not stored back into the graphics state.</li>
+		<li>Certain parameters are composite objects, such as arrays or
+			dictionaries. Graphics operators consult the values of these objects
+			at unpredictable times and may cache them for later use, so altering
+			them can have unpredictable results. A PostScript program should
+			treat the values of graphics state parameters (including those in
+			saved graphics states) as if they were read-only.</li>
+		<li>The current path, clipping path, and device parameters are
+			internal objects that are not directly accessible to a PostScript
+			program.</li>
+	</ul>
+	<p>Table 4.1 lists those graphics state parameters that are
+		device-independent and are appropriate to specify in page
+		descriptions. The parameters listed in Table 4.2 control details of
+		the rendering (scan conversion) process and are device-dependent. A
+		page description that is intended to be device-independent should not
+		alter these parameters.</p>
+	<table>
+		<caption>TABLE 4.1 Device-independent parameters of the
+			graphics state</caption>
+		<tr>
+			<th>PARAMETER</th>
+			<th>TYPE</th>
+			<th>VALUE</th>
+		</tr>
+		<tr>
+			<td>CTM</td>
+			<td>array</td>
+			<td>The current transformation matrix, which maps positions from
+				user coordinates to device coordinates. This matrix is modified by
+				each application of the coordinate system operators. Initial value:
+				a matrix that transforms default user coordinates to device
+				coordinates.</td>
+		</tr>
+		<tr>
+			<td>position</td>
+			<td>two numbers</td>
+			<td>The coordinates of the <i>current point</i> in user space,
+				the last element of the current path. Initial value: undefined.
+			</td>
+		</tr>
+		<tr>
+			<td>path</td>
+			<td>(internal)</td>
+			<td>The current path as built up by the path construction
+				operators. Used as an implicit argument by operators such as <a
+				href="../8/2/f/fill.html">fill</a>, <a href="../8/2/s/stroke.html">stroke</a>,
+				and <a href="../8/2/c/clip.html">clip</a>. Initial value: empty.
+			</td>
+		</tr>
+		<tr>
+			<td>clipping path</td>
+			<td>(internal)</td>
+			<td>A path defining the current boundary against which all
+				output is to be cropped. Initial value: the boundary of the entire
+				imageable portion of the output page.</td>
+		</tr>
+		<tr>
+			<td>clipping path stack</td>
+			<td>(internal)</td>
+			<td><i>(LanguageLevel 3)</i> A stack holding clipping paths that
+				have been saved with the <a href="../8/2/c/clipsave.html">clipsave</a>
+				operator and not yet restored with <a
+				href="../8/2/c/cliprestore.html">cliprestore</a>.</td>
+		</tr>
+		<tr>
+			<td>color space</td>
+			<td>array</td>
+			<td><i>(LanguageLevel 2)</i> The color space in which color
+				values are to be interpreted. Initial value: <b>DeviceGray</b>.</td>
+		</tr>
+		<tr>
+			<td>color</td>
+			<td>(various)</td>
+			<td>The color to use during painting operations. The type and
+				interpretation of this parameter depends on the current color space.
+				For most color spaces, a color value consists of one to four
+				numbers. Initial value: black.</td>
+		</tr>
+		<tr>
+			<td>font</td>
+			<td>dictionary</td>
+			<td>The set of graphic shapes (glyphs) that represent characters
+				in the current typeface. Initial value: an invalid font dictionary.</td>
+		</tr>
+		<tr>
+			<td>line width</td>
+			<td>number</td>
+			<td>The thickness (in user coordinate units) of lines to be
+				drawn by the stroke operator. Initial value: 1.0.</td>
+		</tr>
+		<tr>
+			<td>line cap</td>
+			<td>integer</td>
+			<td>A code that specifies the shape of the endpoints of any open
+				path that is stroked. Initial value: 0 for a square butt end.</td>
+		</tr>
+		<tr>
+			<td>line join</td>
+			<td>integer</td>
+			<td>A code that specifies the shape of joints between connected
+				segments of a stroked line. Initial value: 0 for mitered joins.</td>
+		</tr>
+		<tr>
+			<td>miter limit</td>
+			<td>number</rd>
+			<td>The maximum length of mitered line joins for the <a
+				href="../8/2/s/stroke.html">stroke</a> operator. This limits the
+				length of "spikes" produced when line segments join at sharp angles.
+				Initial value: 10.0 for a miter cutoff below 11 degrees.
+			</td>
+		</tr>
+		<tr>
+			<td>dash pattern</td>
+			<td>array and number</td>
+			<td>A description of the dash pattern to be used when lines are
+				painted by the <a href="../8/2/s/stroke.html">stroke</a> operator.
+				Initial value: a normal solid line.
+			</td>
+		</tr>
+		<tr>
+			<td>stroke adjustment</td>
+			<td>boolean</td>
+			<td><i>(LanguageLevel 2)</i> A flag that specifies whether to
+				compensate for resolution effects that may be noticeable when line
+				thickness is a small number of device pixels. Initial value: <i>false</i>.</td>
+		</tr>
+	</table>
+	<table>
+		<caption>TABLE 4.2 Device-dependent parameters of the
+			graphics state</caption>
+		<tr>
+			<th>PARAMETER</th>
+			<th>TYPE</th>
+			<th>VALUE</th>
+		<tr>
+			<td>color rendering</td>
+			<td>dictionary</td>
+			<td><i>(LanguageLevel 2)</i> A collection of parameters that
+				determine how to transform CIE-based color specifications to device
+				color values. Initial value: installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>overprint</td>
+			<td>boolean</td>
+			<td><i>(LanguageLevel 2)</i> A flag that specifies (on output
+				devices that support the overprint control feature) whether painting
+				in one set of colorants cause the corresponding areas of other
+				colorants to be erased (<i>false</i>) or left unchanged (<i>true</i>).
+				Initial value: false.</td>
+		</tr>
+		<tr>
+			<td>black generation</td>
+			<td>procedure</td>
+			<td><i>(LanguageLevel 2)</i> A procedure that calculates the
+				amount of black to use when converting RGB colors to CMYK. Initial
+				value: installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>undercolor removal</td>
+			<td>procedure</td>
+			<td><i>(LanguageLevel 2)</i> A procedure that calculates the
+				reduction in the amount of cyan, magenta, and yellow components to
+				compensate for the amount of black added by black generation.
+				Initial value: installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>transfer</td>
+			<td>procedure</td>
+			<td>A transfer function that adjusts device gray or color
+				component values to correct for nonlinear response in a particular
+				device. Support for four transfer functions is a LanguageLevel 2
+				feature. Initial value: installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>halftone</td>
+			<td>(various)</td>
+			<td>A halftone screen for gray and color rendering, specified
+				either as frequency, angle, and spot function or as a halftone
+				dictionary. Halftone dictionaries, as well as support for four
+				halftone screens, are Language- Level 2 features. Initial value:
+				installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>flatness</td>
+			<td>number</td>
+			<td>The precision with which curves are to be rendered on the
+				output device. This number gives the maximum error tolerance,
+				measured in output device pixels. Smaller numbers give smoother
+				curves at the expense of more computation and memory use. Initial
+				value: 1.0.</td>
+		</tr>
+		<tr>
+			<td>smoothness</td>
+			<td>number</td>
+			<td><i>(LanguageLevel 3)</i> The precision with which color
+				gradients are to be rendered on the output device. This number gives
+				the maximum error tolerance between a shading approximated by
+				piecewise linear interpolation and the true value of a (possibly
+				nonlinear) shading function, expressed as a fraction of the range of
+				each color component. Smaller numbers give smoother color
+				transitions at the expense of more computation and memory use.
+				Initial value: installation-dependent.</td>
+		</tr>
+		<tr>
+			<td>device</td>
+			<td>(internal)</td>
+			<td>An internal data structure representing the current output
+				device. Initial value: installation-dependent.</td>
+		</tr>
+	</table>
+	<p>Although it contains many objects, the graphics state is not
+		itself a PostScript object and cannot be accessed directly from within
+		a PostScript program. However, there are two mechanisms for saving and
+		later restoring the entire graphics state. One is the graphics state
+		stack, managed by the following operators:</p>
+	<ul>
+		<li><a href="../8/2/g/gsave.html">gsave</a> pushes a copy of the
+			entire graphics state onto the stack.</li>
+		<li><a href="../8/2/g/grestore.html">grestore</a> restores the
+			entire graphics state to its former value by popping it from the
+			stack.</li>
+	</ul>
+	<p>
+		The graphics state stack, with its LIFO (last in, first out)
+		organization, serves the needs of PostScript programs that are page
+		descriptions. A well-structured document typically contains many
+		graphical elements that are essentially independent of each other and
+		sometimes nested to multiple levels. The <a href="../8/2/g/gsave.html">gsave</a>
+		and <a href="../8/2/g/grestore.html">grestore</a> operators can be
+		used to encapsulate these elements so that they can make local changes
+		to the graphics state without disturbing the graphics state of the
+		surrounding environment.
+	</p>
+	<p>
+		In some interactive applications, however, a program must switch its
+		attention among multiple, more-or-less independent imaging contexts in
+		an unpredictable order. The second mechanism, available in
+		LanguageLevels 2 and 3, uses <i>gstate objects</i> in virtual memory
+		that contain saved copies of the graphics state. The following
+		LanguageLevel 2 operators manipulate gstate objects:
+	</p>
+	<ul>
+		<li><a href="../8/2/g/gstate.html">gstate</a> creates a new
+			gstate object.</li>
+		<li><a href="../8/2/c/currentgstate.html">currentgstate</a>
+			copies the entire current graphics state into a gstate object.</li>
+		<li><a href="../8/2/s/setgstate.html">setgstate</a> replaces the
+			entire current graphics state by the value of a gstate object.</li>
+	</ul>
+	<p>Interactive programs can use these operators to create a
+		separate gstate object for each imaging context and switch among them
+		dynamically as needed.</p>
+	<p>
+		<i><b>Note:</b> Saving a graphics state, with either <a
+			href="../8/2/g/gsave.html">gsave</a> or <a
+			href="../8/2/c/currentgstate.html">currentgstate</a>, captures every
+			parameter, including such things as the current path and current
+			clipping path. For example, if a nonempty current path exists at the
+			time that <a href="../8/2/g/gsave.html">gsave</a>, <a
+			href="../8/2/g/gstate.html">gstate</a>, or <a
+			href="../8/2/c/currentgstate.html">currentgstate</a> is executed,
+			that path will be reinstated by the corresponding <a
+			href="../8/2/g/grestore.html">grestore</a> or <a
+			href="../8/2/s/setgstate.html">setgstate</a>. Unless this effect is
+			specifically desired, it is best to minimize storage demands by
+			saving a graphics state only when the current path is empty and the
+			current clipping path is in its default state.</i>
+	</p>
+</body>
+</html>
