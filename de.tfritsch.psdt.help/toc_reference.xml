@@ -145,8 +145,8 @@
 	    <topic label="4.5 Painting" href="html/Reference/4/5.html">
 	        <topic label="4.5.1 Stroking" href="html/Reference/4/5/1.html" />
 	        <topic label="4.5.2 Filling" href="html/Reference/4/5/2.html">
-	            <topic label="Nonzero Winding Number Rule" href="html/Reference/4/5/2.html#1" />
-	            <topic label="Even-Odd Rule" href="html/Reference/4/5/2.html#2" />
+	            <topic label="Nonzero Winding Number Rule" href="html/Reference/4/5/2/1.html" />
+	            <topic label="Even-Odd Rule" href="html/Reference/4/5/2/2.html" />
 	        </topic>
 	        <topic label="4.5.3 Insideness Testing" href="html/Reference/4/5/3.html" />
 	    </topic>

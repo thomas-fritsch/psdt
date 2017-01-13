@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Nonzero Winding Number Rule</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Nonzero Winding Number Rule</h4>
+	<p>
+		The <i>nonzero winding number</i> rule determines whether a given
+		point is inside a path by conceptually drawing a ray from that point
+		to infinity in any direction and then examining the places where a
+		segment of the path crosses the ray. Starting with a count of 0, the
+		rule adds 1 each time a path segment crosses the ray from left to
+		right and subtracts 1 each time a segment crosses from right to left.
+		After counting all the crossings, if the result is 0 then the point is
+		outside the path; otherwise it is inside.
+	</p>
+	<p>
+		<i><b>Note:</b> The method just described does not specify what to
+			do if a path segment coincides with or is tangent to the chosen ray.
+			Since the direction of the ray is arbitrary, the rule simply chooses
+			a ray that does not encounter such problem intersections.</i>
+	</p>
+	<p>
+		For simple convex paths, the nonzero winding number rule defines the
+		inside and outside as one would intuitively expect. The more
+		interesting cases are those involving complex or self-intersecting
+		paths like the ones in Figure 4.3. For a path consisting of a
+		five-pointed star, drawn with five connected straight line segments
+		intersecting each other, the rule considers the inside to be the
+		entire area enclosed by the star, including the pentagon in the
+		center. For a path composed of two concentric circles, the areas
+		enclosed by both circles are considered to be inside, <i>provided
+			that both are drawn in the same direction</i>. If the circles are drawn
+		in opposite directions, only the "doughnut" shape between them is
+		inside, according to the rule; the "doughnut hole" is outside.
+	</p>
+	<figure>
+		<img src="figure-4.3.png" />
+		<figcaption>
+			<b>FIGURE 4.3</b> Nonzero winding number rule
+		</figcaption>
+	</figure>
+</body>
+</html>
