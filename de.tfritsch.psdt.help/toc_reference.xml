@@ -94,22 +94,22 @@
 		<topic label="3.9 Named Resources" href="html/Reference/3/9.html">
 			<topic label="3.9.1 Resource Operators" href="html/Reference/3/9/1.html" />
 			<topic label="3.9.2 Resource Categories" href="html/Reference/3/9/2.html">
-				<topic label="Font" href="html/Reference/3/9/2.html#1" />
-				<topic label="CIDFont" href="html/Reference/3/9/2.html#2" />
-				<topic label="CMap" href="html/Reference/3/9/2.html#3" />
-				<topic label="FontSet" href="html/Reference/3/9/2.html#4" />
-				<topic label="Encoding" href="html/Reference/3/9/2.html#5" />
-				<topic label="Form" href="html/Reference/3/9/2.html#6" />
-				<topic label="Pattern" href="html/Reference/3/9/2.html#7" />
-				<topic label="ProcSet" href="html/Reference/3/9/2.html#8" />
-				<topic label="ColorSpace" href="html/Reference/3/9/2.html#9" />
-				<topic label="Halftone" href="html/Reference/3/9/2.html#10" />
-				<topic label="ColorRendering" href="html/Reference/3/9/2.html#11" />
-				<topic label="IdiomSet" href="html/Reference/3/9/2.html#12" />
-				<topic label="InkParams and TrapParams" href="html/Reference/3/9/2.html#13" />
-				<topic label="OutputDevice" href="html/Reference/3/9/2.html#14" />
+				<topic label="Font" href="html/Reference/3/9/2/1.html" />
+				<topic label="CIDFont" href="html/Reference/3/9/2/2.html" />
+				<topic label="CMap" href="html/Reference/3/9/2/3.html" />
+				<topic label="FontSet" href="html/Reference/3/9/2/4.html" />
+				<topic label="Encoding" href="html/Reference/3/9/2/5.html" />
+				<topic label="Form" href="html/Reference/3/9/2/6.html" />
+				<topic label="Pattern" href="html/Reference/3/9/2/7.html" />
+				<topic label="ProcSet" href="html/Reference/3/9/2/8.html" />
+				<topic label="ColorSpace" href="html/Reference/3/9/2/9.html" />
+				<topic label="Halftone" href="html/Reference/3/9/2/10.html" />
+				<topic label="ColorRendering" href="html/Reference/3/9/2/11.html" />
+				<topic label="IdiomSet" href="html/Reference/3/9/2/12.html" />
+				<topic label="InkParams and TrapParams" href="html/Reference/3/9/2/13.html" />
+				<topic label="OutputDevice" href="html/Reference/3/9/2/14.html" />
 				<topic label="ControlLanguage, PDL, Localization, and HWOptions"
-					href="html/Reference/3/9/2.html#15" />
+					href="html/Reference/3/9/2/15.html" />
 				<topic label="Implicit Resources" href="html/Reference/3/9/2.html#16" />
 			</topic>
 			<topic label="3.9.3 Creating Resource Categories" href="html/Reference/3/9/3.html">

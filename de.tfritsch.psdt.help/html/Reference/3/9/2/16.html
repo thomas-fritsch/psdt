@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Implicit Resources</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Implicit Resources</h4>
+	<p>
+		For all implicit resources, the <a
+			href="../../../8/2/f/findresource.html">findresource</a> operator
+		returns the instance's key if the instance is defined. The <a
+			href="../../../8/2/r/resourcestatus.html">resourcestatus</a> and <a
+			href="../../../8/2/r/resourceforall.html">resourceforall</a>
+		operators have their normal behavior, although the <i>status</i> and <i>size</i>
+		values returned by <a href="../../../8/2/r/resourcestatus.html">resourcestatus</a>
+		are meaningless. The <a href="../../../8/2/d/defineresource.html">defineresource</a>
+		and <a href="../../../8/2/u/undefineresource.html">undefineresource</a>
+		operators are ordinarily not allowed, but the ability to define new
+		instances of implicit resources may exist in some implementations. The
+		mechanisms are implementation-dependent.
+	</p>
+	<p>
+		The instances of the <b>Filter</b> category are filter names, such as
+		<b>ASCII85Decode</b> and <b>RunLengthEncode</b>, which are used as an
+		operand of the <a href="../../../8/2/f/filter.html">filter</a>
+		operator to determine its behavior. Filters are described in Section <a
+			href="../../../3/8/4.html">3.8.4, "Filters."</a>
+	</p>
+	<p>
+		The instances of the <b>ColorSpaceFamily</b> category are color space
+		family names, which appear as the first element of a color space array
+		object. Some color spaces, such as <b>DeviceRGB</b>, are completely
+		determined by their family name; others, such as <b>CIEBasedABC</b>,
+		require additional parameters to describe them. Color spaces are
+		described in Section <a href="../../../4/8.html">4.8, "Color
+			Spaces."</a>
+	</p>
+	<p>
+		The instances of the <b>Emulator</b> category are names of emulators
+		for languages other than PostScript that may be built into a
+		particular implementation. Those emulators are not a standard part of
+		the PostScript language, but one or more of them may be present in
+		some products. This category has been superseded by the <b>PDL</b>
+		resource category in LanguageLevel 3.
+	</p>
+	<p>
+		The instances of the <b>IODevice</b> category are names of device
+		parameter sets. Some parameter sets are associated with input/output
+		devices, from which the category name <b>IODevice</b> originates.
+		However, there are also some parameter sets that do not correspond to
+		physical devices. The keys for all instances of this category are
+		expressed as strings of the form %device%. See Section <a
+			href="../../../C/4.html">C.4, "Device Parameters."</a>
+	</p>
+	<p>
+		The instances of the <b>ColorRenderingType</b>, <b>FMapType</b>, <b>FontType</b>,
+		<b>FormType</b>, <b>HalftoneType</b>, <b>ImageType</b>, <b>PatternType</b>,
+		<b>FunctionType</b>, <b>ShadingType</b>, and <b>TrappingType</b>
+		categories are integers that are the acceptable values for the
+		correspondingly named entries in various classes of special
+		dictionaries. For example, in LanguageLevel 3 the <b>FMapType</b>
+		category includes the integers 1 through 9 as keys; if an interpreter
+		supports additional FMapType values, the <b>FMapType</b> category will
+		also include those values as instances.
+	</p>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Encoding</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Encoding</h4>
+	<p>
+		Instances of the <b>Encoding</b> resource category are array objects,
+		suitable for use as the <b>Encoding</b> entry of font dictionaries
+		(see Section <a href="../../../5/3.html">5.3, "Character Encoding"</a>).
+		An encoding array usually contains 256 names, permitting it to be
+		indexed by any 8-bit character code. An encoding array for use with
+		composite fonts (described in Section <a href="../../../5/10.html">5.10,
+			"Composite Fonts"</a>) contains integers instead of names, and can be of
+		any length.
+	</p>
+	<p>
+		There are two standard encodings that are permanently defined in VM
+		and available by name in <a href="../../../8/2/s/systemdict.html">systemdict</a>:
+	</p>
+	<ul>
+		<li><a href="../../../8/2/s/StandardEncoding.html">StandardEncoding</a>,
+			whose value is the same as the array returned by /StandardEncoding
+			/Encoding findresource</li>
+		<li><a href="../../../8/2/i/ISOLatin1Encoding.html">ISOLatin1Encoding</a>,
+			whose value is the same as the array returned by /ISOLatin1Encoding
+			/Encoding findresource</li>
+	</ul>
+	<p>
+		If any other encodings exist, they are available only through <a
+			href="../../../8/2/f/findresource.html">findresource</a>. The
+		convenience operator <a href="../../../8/2/f/findencoding.html">findencoding</a>
+		is equivalent to /Encoding findresource.
+	</p>
+</body>
+</html>
