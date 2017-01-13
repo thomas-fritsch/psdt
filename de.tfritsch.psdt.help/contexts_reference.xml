@@ -1233,7 +1233,7 @@
 	</context>
 	<context id="Category">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#Category" />
+			href="html/Reference/3/9/3/1.html#Category" />
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Category" />
 	</context>
 	<context id="CCITTFaxDecode">
@@ -1304,7 +1304,7 @@
 	</context>
 	<context id="DefineResource">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#DefineResource" />
+			href="html/Reference/3/9/3/1.html#DefineResource" />
 	</context>
 	<context id="Duplex">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/3.html#Duplex" />
@@ -1324,7 +1324,7 @@
 	</context>
 	<context id="FindResource">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#FindResource" />
+			href="html/Reference/3/9/3/1.html#FindResource" />
 	</context>
 	<context id="Filter">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#Filter" />
@@ -1424,7 +1424,7 @@
 	</context>
 	<context id="InstanceType">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#InstanceType" />
+			href="html/Reference/3/9/3/1.html#InstanceType" />
 	</context>
 	<context id="InsertSheet">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/1.html#InsertSheet" />
@@ -1565,15 +1565,15 @@
 	</context>
 	<context id="ResourceFileName">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#ResourceFileName" />
+			href="html/Reference/3/9/3/1.html#ResourceFileName" />
 	</context>
 	<context id="ResourceForAll">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#ResourceForAll" />
+			href="html/Reference/3/9/3/1.html#ResourceForAll" />
 	</context>
 	<context id="ResourceStatus">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#ResourceStatus" />
+			href="html/Reference/3/9/3/1.html#ResourceStatus" />
 	</context>
 	<context id="ReusableStreamDecode">
 		<topic label="Standard filter" href="html/Reference/3/8/4.html#ReusableStreamDecode" />
@@ -1640,7 +1640,7 @@
 	</context>
 	<context id="UndefineResource">
 		<topic label="Entry in a category implementation dictionary"
-			href="html/Reference/3/9/3.html#UndefineResource" />
+			href="html/Reference/3/9/3/1.html#UndefineResource" />
 	</context>
 	<context id="UniqueID">
 		<topic label="Entry in a font dictionary" href="html/Reference/5/2/1.html#UniqueID" />
