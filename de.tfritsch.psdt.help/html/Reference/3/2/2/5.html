@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arrays</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Arrays</h3>
+	<p>The characters [ and ] are self-delimiting tokens that specify
+		the construction of an array. For example, the program fragment</p>
+	<pre>[ 123 /abc (xyz) ]</pre>
+	<p>results in the construction of an array object containing the
+		integer object 123, the literal name object abc, and the string object
+		xyz. Each token within the brackets is executed in turn.</p>
+	<p>The [ and ] characters are special syntax for names that, when
+		executed, invoke PostScript operators that collect objects and
+		construct an array containing them. Thus the example</p>
+	<pre>[ 123 /abc (xyz) ]</pre>
+	<p>contains these five tokens:</p>
+	<ul>
+		<li>The name object [</li>
+		<li>The integer object 123</li>
+		<li>The literal name object abc</li>
+		<li>The string object xyz</li>
+		<li>The name object ]</li>
+	</ul>
+	<p>When the example is executed, a sixth object (the array) results
+		from executing the [ and ] name objects.</p>
+</body>
+</html>

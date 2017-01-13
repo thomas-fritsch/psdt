@@ -22,17 +22,17 @@
 		<topic label="3.2 Syntax" href="html/Reference/3/2.html">
 			<topic label="3.2.1 Scanner" href="html/Reference/3/2/1.html" />
 			<topic label="3.2.2 ASCII Encoding" href="html/Reference/3/2/2.html">
-				<topic label="Comments" href="html/Reference/3/2/2.html#1" />
-				<topic label="Numbers" href="html/Reference/3/2/2.html#2" />
-				<topic label="Strings" href="html/Reference/3/2/2.html#3">
-					<topic label="Literal Text Strings" href="html/Reference/3/2/2.html#3.1" />
-					<topic label="Hexadecimal Strings" href="html/Reference/3/2/2.html#3.2" />
-					<topic label="ASCII Base-85 Strings" href="html/Reference/3/2/2.html#3.3" />
+				<topic label="Comments" href="html/Reference/3/2/2/1.html" />
+				<topic label="Numbers" href="html/Reference/3/2/2/2.html" />
+				<topic label="Strings" href="html/Reference/3/2/2/3.html">
+					<topic label="Literal Text Strings" href="html/Reference/3/2/2/3.html#1" />
+					<topic label="Hexadecimal Strings" href="html/Reference/3/2/2/3.html#2" />
+					<topic label="ASCII Base-85 Strings" href="html/Reference/3/2/2/3.html#3" />
 				</topic>
-				<topic label="Names" href="html/Reference/3/2/2.html#4" />
-				<topic label="Arrays" href="html/Reference/3/2/2.html#5" />
-				<topic label="Procedures" href="html/Reference/3/2/2.html#6" />
-				<topic label="Dictionaries" href="html/Reference/3/2/2.html#7" />
+				<topic label="Names" href="html/Reference/3/2/2/4.html" />
+				<topic label="Arrays" href="html/Reference/3/2/2/5.html" />
+				<topic label="Procedures" href="html/Reference/3/2/2/6.html" />
+				<topic label="Dictionaries" href="html/Reference/3/2/2/7.html" />
 			</topic>
 		</topic>
 		<topic label="3.3 Data Types and Objects" href="html/Reference/3/3.html">

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Comments</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Comments</h3>
+	<p>
+		Any occurrence of the character % outside a string introduces a <em>comment</em>.
+		The comment consists of all characters between the % and the next
+		newline or form feed, including regular, delimiter, space, and tab
+		characters.
+	</p>
+	<p>The scanner ignores comments, treating each one as if it were a
+		single whitespace character. That is, a comment separates the token
+		preceding it from the one following. Thus the ASCII-encoded program
+		fragment</p>
+	<pre>
+abc% comment {/%) blah blah blah
+123</pre>
+	<p>is treated by the scanner as just two tokens: abc and 123.</p>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Procedures</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Procedures</h3>
+	<p>
+		The special characters { and } delimit an <em>executable array</em>,
+		otherwise known as a <em>procedure</em>. The syntax is superficially
+		similar to that for the array construction operators [ and ]; however,
+		the semantics are entirely different and arise as a result of <em>scanning</em>
+		the procedure rather than <em>executing</em> it.
+	</p>
+	<p>Scanning the program fragment</p>
+	<pre>{add 2 div}</pre>
+	<p>
+		produces a single procedure object that contains the name object <b>add</b>,
+		the integer object 2, and the name object <b>div</b>. When the scanner
+		encounters the initial {, it continues scanning and creating objects,
+		but the interpreter does not execute them. When the scanner encounters
+		the matching }, it puts all the objects created since the initial {
+		into a new executable array (procedure) object.
+	</p>
+	<p>
+		The interpreter does not execute a procedure immediately, but treats
+		it as data; it pushes the procedure on the operand stack. Only when
+		the procedure is explicitly invoked (by means yet to be described)
+		will it be executed. Execution of the procedure&mdash; and of all
+		objects within the procedure, including any embedded procedures&mdash;
+		has been <em>deferred</em>. The matter of immediate versus deferred
+		execution is discussed in Section <a href="../../5.html">3.5,
+			"Execution."</a>
+	</p>
+	<p>
+		The procedure object created by { and } is either an array or a packed
+		array, according to the current setting of a mode switch. The
+		distinction between these array types is discussed in Section <a
+			href="../../3.html">3.3, "Data Types and Objects."</a>
+	</p>
+</body>
+</html>

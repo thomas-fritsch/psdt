@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strings</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Strings</h3>
+	<p>There are three conventions for quoting a literal string object:</p>
+	<ul>
+		<li>As literal text, enclosed in ( and )</li>
+		<li>As hexadecimal data, enclosed in &lt; and &gt;</li>
+		<li>As ASCII base-85 data, enclosed in &lt;~ and ~&gt; <em>(LanguageLevel
+				2)</em></li>
+	</ul>
+	<h4 id="1">Literal Text Strings</h4>
+	<p>A literal text string consists of an arbitrary number of
+		characters enclosed in ( and ). Any characters may appear in the
+		string other than (, ), and \, which must be treated specially.
+		Balanced pairs of parentheses in the string require no special
+		treatment.</p>
+	<p>The following lines show several valid strings:</p>
+	<pre>
+(This is a string)
+(Strings may contain newlines
+and such.)
+(Strings may contain special characters *!&amp;}^% and
+balanced parentheses ( ) (and so on).)
+(The following is an empty string.)
+()
+(It has 0 (zero) length.)</pre>
+	<p>Within a text string, the \ (backslash) character is treated as
+		an "escape" for various purposes, such as including newline
+		characters, unbalanced parentheses, and the \ character itself in the
+		string. The character immediately following the \ determines its
+		precise interpretation.</p>
+	<table>
+		<tr>
+			<td>\n</td>
+			<td>line feed (LF)</td>
+		</tr>
+		<tr>
+			<td>\r</td>
+			<td>carriage return (CR)</td>
+		</tr>
+		<tr>
+			<td>\t</td>
+			<td>horizontal tab</td>
+		</tr>
+		<tr>
+			<td>\b</td>
+			<td>backspace</td>
+		</tr>
+		<tr>
+			<td>\f</td>
+			<td>form feed</td>
+		</tr>
+		<tr>
+			<td>\\</td>
+			<td>backslash</td>
+		</tr>
+		<tr>
+			<td>\(</td>
+			<td>left parenthesis</td>
+		</tr>
+		<tr>
+			<td>\)</td>
+			<td>right parenthesis</td>
+		</tr>
+		<tr>
+			<td>\<em>ddd</em></td>
+			<td>character code <em>ddd</em> (octal)
+			</td>
+		</tr>
+	</table>
+	<p>If the character following the \ is not in the preceding list,
+		the scanner ignores the \. If the \ is followed immediately by a
+		newline (CR, LF, or CR-LF pair), the scanner ignores both the initial
+		\ and the newline; this breaks a string into multiple lines without
+		including the newline character as part of the string, as in the
+		following example:</p>
+	<pre>
+(These \
+two strings \
+are the same.)
+(These two strings are the same.)</pre>
+	<p>But if a newline appears without a preceding \, the result is
+		equivalent to \n. For example:</p>
+	<pre>
+(This string has a newline at the end of it.
+)
+(So does this one.\n)</pre>
+	<p>
+		For more information about end-of-line conventions, see Section <a
+			href="../../8.html">3.8, "File Input and Output."</a>
+	</p>
+	<p>
+		The <em>\ddd</em> form may be used to include any 8-bit character
+		constant in a string. One, two, or three octal digits may be
+		specified, with high-order overflow ignored. This notation is
+		preferred for specifying a character outside the recommended ASCII
+		character set for the PostScript language, since the notation itself
+		stays within the standard set and thereby avoids possible difficulties
+		in transmitting or storing the text of the program. It is recommended
+		that three octal digits always be used, with leading zeros as needed,
+		to prevent ambiguity. The string (\0053), for example, contains two
+		characters&mdash;an ASCII 5 (Control-E) followed by the digit
+		3&mdash;whereas the strings (\53) and (\053) contain one character,
+		the ASCII character whose code is octal 53 (plus sign).
+	</p>
+	<h4 id="2">Hexadecimal Strings</h4>
+	<p>
+		A hexadecimal string consists of a sequence of hexadecimal digits (0-9
+		and either A-F or a-f) enclosed within &lt; and &gt;. Each pair of
+		hexadecimal digits defines one character of the string. White-space
+		characters are ignored. If a hexadecimal string contains characters
+		outside the allowed character set, a <b>syntaxerror</b> occurs.
+		Hexadecimal strings are useful for including arbitrary binary data as
+		literal text.
+	</p>
+	<p>If the final digit of a given hexadecimal string is
+		missing&mdash;in other words, if there is an odd number of
+		digits&mdash;the final digit is assumed to be 0. For example,
+		&lt;901fa3&gt; is a 3-character string containing the characters whose
+		hexadecimal codes are 90, 1f, and a3, but &lt;901fa&gt; is a
+		3-character string containing the characters whose hexadecimal codes
+		are 90, 1f, and a0.</p>
+	<h4 id="3">ASCII Base-85 Strings</h4>
+	<p>
+		An ASCII base-85 string <em>(LanguageLevel 2)</em> consists of a
+		sequence of printable ASCII characters enclosed in &lt;~ and ~&gt;.
+		This notation represents arbitrary binary data using an encoding
+		technique that produces a 4:5 expansion as opposed to the 1:2
+		expansion for hexadecimal. The ASCII base-85 encoding algorithm is
+		described under <a href="../../13/3.html#4">"ASCII85Encode Filter" on
+			page 131</a>. If an ASCII base-85 string is malformed, a <a
+			href="../../../8/2/s/syntaxerror.html">syntaxerror</a> occurs.
+	</p>
+</body>
+</html>

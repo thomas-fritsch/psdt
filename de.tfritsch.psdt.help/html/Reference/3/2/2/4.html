@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Names</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Names</h3>
+	<p>
+		Any token that consists entirely of regular characters and cannot be
+		interpreted as a number is treated as a <em>name</em> object (more
+		precisely, an <em>executable</em> name). All characters except
+		delimiters and white-space characters can appear in names, including
+		characters ordinarily considered to be punctuation.
+	</p>
+	<p>The following are examples of valid names:</p>
+	<pre>abc Offset $$ 23A 13-456 a.b $MyDict @pattern</pre>
+	<p>Use care when choosing names that begin with digits. For
+		example, while 23A is a valid name, 23E1 is a real number, and 23#1 is
+		a radix number token that represents an integer.</p>
+	<p>
+		A / (slash&mdash;<em>not</em> backslash) introduces a literal name.
+		The slash is not part of the name itself, but is a prefix indicating
+		that the following sequence of zero or more regular characters
+		constitutes a literal name object. There can be no white-space
+		characters between the / and the name. The characters // (two slashes)
+		introduce an <em>immediately evaluated name</em>. The important
+		properties and uses of names and the distinction between executable
+		and literal names are described in Section <a href="../../3.html">3.3,
+			"Data Types and Objects"</a>; immediately evaluated names are discussed
+		in Section <a href="../../12/2.html">3.12.2, "Immediately
+			Evaluated Names."</a>
+	</p>
+	<p>
+		<em><b>Note:</b> The token / (a slash followed by no regular
+			characters) is a valid literal name.</em>
+	</p>
+</body>
+</html>

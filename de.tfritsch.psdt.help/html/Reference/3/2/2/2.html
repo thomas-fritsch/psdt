@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Numbers</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h3>Numbers</h3>
+	<p>Numbers in the PostScript language include:</p>
+	<ul>
+		<li>Signed integers, such as <pre>123 -98 43445 0 +17</pre></li>
+		<li>Real numbers, such as<pre>-.002 34.5 -3.62 123.6e10 1.0E-5 1E6 -1. 0.0</pre></li>
+		<li>Radix numbers, such as<pre>8#1777 16#FFFE 2#1000</pre></li>
+	</ul>
+	<p>
+		An integer consists of an optional sign followed by one or more
+		decimal digits. The number is interpreted as a signed decimal integer
+		and is converted to an integer object. If it exceeds the
+		implementation limit for integers, it is converted to a real object.
+		(See <a href="../../../B.html">Appendix B</a> for implementation
+		limits.)
+	</p>
+	<p>
+		A real number consists of an optional sign and one or more decimal
+		digits, with an embedded period (decimal point), a trailing exponent,
+		or both. The exponent, if present, consists of the letter E or e
+		followed by an optional sign and one or more decimal digits. The
+		number is interpreted as a real number and is converted to a real
+		(floating-point) object. If it exceeds the implementation limit for
+		real numbers, a <a href="../../../8/2/l/limitcheck.html">limitcheck</a>
+		error occurs.
+	</p>
+	<p>
+		A radix number takes the form base#number, where base is a decimal
+		integer in the range 2 through 36. number is interpreted in this base;
+		it must consist of digits ranging from 0 to base - 1. Digits greater
+		than 9 are represented by the letters A through Z (or a through z).
+		The number is treated as an unsigned integer and is converted to an
+		integer object having the same twos-complement binary representation.
+		This notation is intended for specifying integers in a nondecimal
+		radix, such as binary, octal, or hexadecimal. If the number exceeds
+		the implementation limit for integers, a <a
+			href="../../../8/2/l/limitcheck.html">limitcheck</a> error occurs.
+	</p>
+</body>
+</html>
