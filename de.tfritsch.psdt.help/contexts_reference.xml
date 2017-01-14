@@ -133,7 +133,7 @@
 		<topic label="Operator" href="html/Reference/8/2/c/condition.html" />
 	</context>
 	<context id="configurationerror">
-		<topic label="Operator" href="html/Reference/8/2/c/configurationerror.html" />
+		<topic label="Error" href="html/Reference/8/2/c/configurationerror.html" />
 	</context>
 	<context id="copy">
 		<topic label="Operator" href="html/Reference/8/2/c/copy.html" />
@@ -329,16 +329,16 @@
 		<topic label="Operator" href="html/Reference/8/2/d/dict.html" />
 	</context>
 	<context id="dictfull">
-		<topic label="Operator" href="html/Reference/8/2/d/dictfull.html" />
+		<topic label="Error" href="html/Reference/8/2/d/dictfull.html" />
 	</context>
 	<context id="dictstack">
 		<topic label="Operator" href="html/Reference/8/2/d/dictstack.html" />
 	</context>
 	<context id="dictstackoverflow">
-		<topic label="Operator" href="html/Reference/8/2/d/dictstackoverflow.html" />
+		<topic label="Error" href="html/Reference/8/2/d/dictstackoverflow.html" />
 	</context>
 	<context id="dictstackunderflow">
-		<topic label="Operator" href="html/Reference/8/2/d/dictstackunderflow.html" />
+		<topic label="Error" href="html/Reference/8/2/d/dictstackunderflow.html" />
 	</context>
 	<context id="div">
 		<topic label="Operator" href="html/Reference/8/2/d/div.html" />
@@ -389,7 +389,7 @@
 		<topic label="Operator" href="html/Reference/8/2/e/execstack.html" />
 	</context>
 	<context id="execstackoverflow">
-		<topic label="Operator" href="html/Reference/8/2/e/execstackoverflow.html" />
+		<topic label="Error" href="html/Reference/8/2/e/execstackoverflow.html" />
 	</context>
 	<context id="execuserobject">
 		<topic label="Operator" href="html/Reference/8/2/e/execuserobject.html" />
@@ -497,7 +497,7 @@
 		<topic label="Operator" href="html/Reference/8/2/g/gt.html" />
 	</context>
 	<context id="handleerror">
-		<topic label="Operator" href="html/Reference/8/2/h/handleerror.html" />
+		<topic label="Error" href="html/Reference/8/2/h/handleerror.html" />
 	</context>
 	<context id="identmatrix">
 		<topic label="Operator" href="html/Reference/8/2/i/identmatrix.html" />
@@ -548,7 +548,7 @@
 		<topic label="Operator" href="html/Reference/8/2/i/internaldict.html" />
 	</context>
 	<context id="interrupt">
-		<topic label="Operator" href="html/Reference/8/2/i/interrupt.html" />
+		<topic label="Error" href="html/Reference/8/2/i/interrupt.html" />
 	</context>
 	<context id="inueofill">
 		<topic label="Operator" href="html/Reference/8/2/i/inueofill.html" />
@@ -560,31 +560,31 @@
 		<topic label="Operator" href="html/Reference/8/2/i/inustroke.html" />
 	</context>
 	<context id="invalidaccess">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidaccess.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidaccess.html" />
 	</context>
 	<context id="invalidcontext">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidcontext.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidcontext.html" />
 	</context>
 	<context id="invalidexit">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidexit.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidexit.html" />
 	</context>
 	<context id="invalidfileaccess">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidfileaccess.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidfileaccess.html" />
 	</context>
 	<context id="invalidfont">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidfont.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidfont.html" />
 	</context>
 	<context id="invalidid">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidid.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidid.html" />
 	</context>
 	<context id="invalidrestore">
-		<topic label="Operator" href="html/Reference/8/2/i/invalidrestore.html" />
+		<topic label="Error" href="html/Reference/8/2/i/invalidrestore.html" />
 	</context>
 	<context id="invertmatrix">
 		<topic label="Operator" href="html/Reference/8/2/i/invertmatrix.html" />
 	</context>
 	<context id="ioerror">
-		<topic label="Operator" href="html/Reference/8/2/i/ioerror.html" />
+		<topic label="Error" href="html/Reference/8/2/i/ioerror.html" />
 	</context>
 	<context id="ISOLatin1Encoding">
 		<topic label="Operator" href="html/Reference/8/2/i/ISOLatin1Encoding.html" />
@@ -611,7 +611,7 @@
 		<topic label="Operator" href="html/Reference/8/2/l/length.html" />
 	</context>
 	<context id="limitcheck">
-		<topic label="Operator" href="html/Reference/8/2/l/limitcheck.html" />
+		<topic label="Error" href="html/Reference/8/2/l/limitcheck.html" />
 	</context>
 	<context id="lineto">
 		<topic label="Operator" href="html/Reference/8/2/l/lineto.html" />
@@ -674,7 +674,7 @@
 		<topic label="Operator" href="html/Reference/8/2/n/noaccess.html" />
 	</context>
 	<context id="nocurrentpoint">
-		<topic label="Operator" href="html/Reference/8/2/n/nocurrentpoint.html" />
+		<topic label="Error" href="html/Reference/8/2/n/nocurrentpoint.html" />
 	</context>
 	<context id="not">
 		<topic label="Operator" href="html/Reference/8/2/n/not.html" />
@@ -731,7 +731,7 @@
 		<topic label="Operator" href="html/Reference/8/2/r/rand.html" />
 	</context>
 	<context id="rangecheck">
-		<topic label="Operator" href="html/Reference/8/2/r/rangecheck.html" />
+		<topic label="Error" href="html/Reference/8/2/r/rangecheck.html" />
 	</context>
 	<context id="rcheck">
 		<topic label="Operator" href="html/Reference/8/2/r/rcheck.html" />
@@ -995,10 +995,10 @@
 		<topic label="Operator" href="html/Reference/8/2/s/stack.html" />
 	</context>
 	<context id="stackoverflow">
-		<topic label="Operator" href="html/Reference/8/2/s/stackoverflow.html" />
+		<topic label="Error" href="html/Reference/8/2/s/stackoverflow.html" />
 	</context>
 	<context id="stackunderflow">
-		<topic label="Operator" href="html/Reference/8/2/s/stackunderflow.html" />
+		<topic label="Error" href="html/Reference/8/2/s/stackunderflow.html" />
 	</context>
 	<context id="StandardEncoding">
 		<topic label="Operator" href="html/Reference/8/2/s/StandardEncoding.html" />
@@ -1040,13 +1040,13 @@
 		<topic label="Operator" href="html/Reference/8/2/s/sub.html" />
 	</context>
 	<context id="syntaxerror">
-		<topic label="Operator" href="html/Reference/8/2/s/syntaxerror.html" />
+		<topic label="Error" href="html/Reference/8/2/s/syntaxerror.html" />
 	</context>
 	<context id="systemdict">
 		<topic label="Operator" href="html/Reference/8/2/s/systemdict.html" />
 	</context>
 	<context id="timeout">
-		<topic label="Operator" href="html/Reference/8/2/t/timeout.html" />
+		<topic label="Error" href="html/Reference/8/2/t/timeout.html" />
 	</context>
 	<context id="token">
 		<topic label="Operator" href="html/Reference/8/2/t/token.html" />
@@ -1067,7 +1067,7 @@
 		<topic label="Operator" href="html/Reference/8/2/t/type.html" />
 	</context>
 	<context id="typecheck">
-		<topic label="Operator" href="html/Reference/8/2/t/typecheck.html" />
+		<topic label="Error" href="html/Reference/8/2/t/typecheck.html" />
 	</context>
 	<context id="token">
 		<topic label="Operator" href="html/Reference/8/2/t/token.html" />
@@ -1091,16 +1091,16 @@
 		<topic label="Operator" href="html/Reference/8/2/u/undef.html" />
 	</context>
 	<context id="undefined">
-		<topic label="Operator" href="html/Reference/8/2/u/undefined.html" />
+		<topic label="Error" href="html/Reference/8/2/u/undefined.html" />
 	</context>
 	<context id="undefinedfilename">
-		<topic label="Operator" href="html/Reference/8/2/u/undefinedfilename.html" />
+		<topic label="Error" href="html/Reference/8/2/u/undefinedfilename.html" />
 	</context>
 	<context id="undefinedresource">
-		<topic label="Operator" href="html/Reference/8/2/u/undefinedresource.html" />
+		<topic label="Error" href="html/Reference/8/2/u/undefinedresource.html" />
 	</context>
 	<context id="undefinedresult">
-		<topic label="Operator" href="html/Reference/8/2/u/undefinedresult.html" />
+		<topic label="Error" href="html/Reference/8/2/u/undefinedresult.html" />
 	</context>
 	<context id="undefinefont">
 		<topic label="Operator" href="html/Reference/8/2/u/undefinefont.html" />
@@ -1112,10 +1112,10 @@
 		<topic label="Operator" href="html/Reference/8/2/u/undefineuserobject.html" />
 	</context>
 	<context id="unmatchedmark">
-		<topic label="Operator" href="html/Reference/8/2/u/unmatchedmark.html" />
+		<topic label="Error" href="html/Reference/8/2/u/unmatchedmark.html" />
 	</context>
 	<context id="unregistered">
-		<topic label="Operator" href="html/Reference/8/2/u/unregistered.html" />
+		<topic label="Error" href="html/Reference/8/2/u/unregistered.html" />
 	</context>
 	<context id="upath">
 		<topic label="Operator" href="html/Reference/8/2/u/upath.html" />
@@ -1145,7 +1145,7 @@
 		<topic label="Operator" href="html/Reference/8/2/v/viewclippath.html" />
 	</context>
 	<context id="VMerror">
-		<topic label="Operator" href="html/Reference/8/2/v/VMerror.html" />
+		<topic label="Error" href="html/Reference/8/2/v/VMerror.html" />
 	</context>
 	<context id="vmreclaim">
 		<topic label="Operator" href="html/Reference/8/2/v/vmreclaim.html" />
