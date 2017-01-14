@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Stencil Masking</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Stencil Masking</h4>
+	<p>
+		The <a href="../../../8/2/i/imagemask.html">imagemask</a> operator
+		operates on a monochrome image, in which each sample is specified by a
+		single bit. However, instead of painting the image in opaque black and
+		white, <a href="../../../8/2/i/imagemask.html">imagemask</a> treats it
+		as a stencil mask that is partly opaque and partly transparent. Sample
+		values in the image do not represent black and white pixels; rather,
+		they designate places on the page that should either be marked with
+		the current color or masked out (not marked at all). Areas that are
+		masked out retain their former contents. The effect is like applying
+		paint in the current color through a cut-out stencil: a sample value
+		of 1 in the image permits the paint to reach the page and a 0 masks it
+		out, or vice versa.
+	</p>
+	<p>
+		A program invokes <a href="../../../8/2/i/imagemask.html">imagemask</a>
+		in much the same way as <a href="../../../8/2/i/image.html">image</a>;
+		most of the parameters have equivalent meanings. As with <a
+			href="../../../8/2/i/image.html">image</a>, there is a five-operand
+		form available in all LanguageLevels and a one-operand image
+		dictionary form that is a LanguageLevel 2 feature. <a
+			href="../../../8/2/i/imagemask.html">imagemask</a> differs from <a
+			href="../../../8/2/i/image.html">image</a> in the following
+		significant ways:
+	</p>
+	<ul>
+		<li>The number of components per sample is always 1, regardless
+			of the current color space, because sample values represent masking
+			properties rather than colors.</li>
+		<li>The number of bits per component is always 1. In its
+			five-operand form, <a href="../../../8/2/i/imagemask.html">imagemask</a>
+			has no <i>bits/sample</i> operand; in the one-operand (image
+			dictionary) form, the dictionary's <b>BitsPerComponent</b> value must
+			be 1.
+		</li>
+		<li>The five-operand form of <a
+			href="../../../8/2/i/imagemask.html">imagemask</a> includes a <i>polarity</i>
+			operand that determines how the source samples are to be interpreted.
+			If <i>polarity</i> is <i>true</i>, a sample value of 1 designates a
+			painted sample and 0 designates a masked (unpainted) sample; if <i>false</i>,
+			these meanings are reversed. The one-operand form of <a
+			href="../../../8/2/i/imagemask.html">imagemask</a> uses the <b>Decode</b>
+			entry in the image dictionary for the same purpose: <b>Decode</b>
+			arrays of [1 0] and [0 1] correspond to <i>polarity</i> values of <i>true</i>
+			and <i>false</i>, respectively.
+		</li>
+	</ul>
+	<p>
+		One of the most important uses of stencil masking is for painting
+		character glyphs represented as bitmaps. Using such a glyph as a
+		stencil mask transfers only its "black" bits to the page, while
+		leaving the "white" bits (which are really just background) unchanged.
+		For reasons discussed in Section <a href="../../../5/5.html">5.5,
+			"Font Cache,"</a> <a href="../../../8/2/i/imagemask.html">imagemask</a>
+		rather than <a href="../../../8/2/i/image.html">image</a> should
+		almost always be used to paint glyph bitmaps.
+	</p>
+	<p>
+		<i><b>Note:</b> If image interpolation is requested during stencil
+			masking, the effect is to smooth the edges of the mask, not to
+			interpolate the painted color values (see <a href="../5/3.html">"Image
+				Interpolation" on page 301</a>). This can minimize the “jaggy”
+			appearance of a low-resolution stencil mask.</i>
+	</p>
+</body>
+</html>

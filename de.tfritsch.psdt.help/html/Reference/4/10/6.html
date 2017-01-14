@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Masked Images</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.10.6 Masked Images</h3>
+	<p>
+		In LanguageLevel 1 or 2, images painted with the <a
+			href="../../8/2/i/image.html">image</a> or <a
+			href="../../8/2/c/colorimage.html">colorimage</a> operator mark all
+		affected areas of the page as if with opaque paint (see Section <a
+			href="../1.html">4.1, "Imaging Model"</a>). All portions of the
+		image, whether black, white, gray, or color, completely obscure any
+		marks that may previously have existed in the same place on the page.
+	</p>
+	<p>In the graphic arts industry and page layout applications,
+		however, it is common to crop or "mask out" the background of an image
+		and then place the masked image on a different background, allowing
+		the existing background to show through the masked areas. A number of
+		PostScript features are available for achieving such masking effects:</p>
+	<ul>
+		<li>The <a href="../../8/2/i/imagemask.html">imagemask</a>
+			operator, available in all LanguageLevels, uses a monochrome
+			(black-and-white) image as a <i>stencil mask</i> for painting in the
+			current color.
+		</li>
+		<li>Type 3 image dictionaries <i>(LanguageLevel 3)</i> include an
+			explicit mask specifying which areas of the image to paint and which
+			to mask out.
+		</li>
+		<li>Type 4 image dictionaries <i>(LanguageLevel 3)</i> specify a
+			color or range of colors to be masked out wherever they occur within
+			the image; this technique is known as <i>color key masking</i>.
+		</li>
+	</ul>
+	<p>
+		<i><b>Note:</b> Although type 3 and 4 image dictionaries are a
+			LanguageLevel 3 feature, their effects are commonly simulated in
+			lower LanguageLevels by defining a clipping path enclosing only those
+			of an image's samples that are to be painted. However, implementation
+			limits can cause <a href="../../8/2/l/limitcheck.html">limitcheck</a>
+			errors if the clipping path is very complex (or if there is more than
+			one clipping path). An alternative way to achieve the effect of a
+			type 3 image dictionary in LanguageLevel 2 is to define the image
+			being clipped as a pattern, make it the current color, and then paint
+			it with the <a href="../../8/2/i/imagemask.html">imagemask</a>
+			operator. In any case, the LanguageLevel 3 features allow masked
+			images to be placed on the page without regard to the complexity of
+			the clipping path.</i>
+	</p>
+</body>
+</html>

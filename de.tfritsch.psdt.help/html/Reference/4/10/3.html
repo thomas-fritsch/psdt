@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Source Coordinate System</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.10.3 Source Coordinate System</h3>
+	<p>
+		The image operators impose a coordinate system on the source image.
+		They consider the source image to be a rectangle <i>h</i> units high
+		and <i>w</i> units wide. Each sample occupies one square unit. The
+		origin (0, 0) is in the lower-left corner, with coordinates ranging
+		from 0 to <i>w</i> horizontally and 0 to <i>h</i> vertically.
+	</p>
+	<p>
+		The image operators assume that the sample data they receive from
+		their data source is ordered by row, with the horizontal coordinate
+		varying most rapidly. The lower-left corner of the first sample is at
+		coordinates (0, 0), the second at (1, 0), and so on through the last
+		sample of the first row, whose lower-left corner is at (<i>w</i> - 1,
+		0) and whose lower-right corner is at (<i>w</i>, 0). The next samples
+		after that are at coordinates (0, 1), (1, 1), and so on, until the
+		final sample of the image, whose lower-left corner is at (<i>w</i> -
+		1, <i>h</i> - 1) and whose upper-right corner is at (<i>w</i>, <i>h</i>).
+		Figure 4.23 illustrates the organization of the source coordinate
+		system. The numbers inside the squares indicate the order of the
+		samples, counting from 0.
+	</p>
+	<figure>
+		<img src="figure-4.23.png" />
+		<figcaption>
+			<b>FIGURE 4.23</b> Source image coordinate system
+		</figcaption>
+	</figure>
+	<p>The source coordinate system and scanning order imposed by the
+		image operators do not preclude using different conventions in the
+		actual source image. Coordinate transformation can be used to map
+		other conventions into the PostScript convention.</p>
+	<p>
+		The correspondence between this source image coordinate system (or <i>image
+			space</i>) and user space is specified by a special matrix. This is a
+		general linear transformation that defines a mapping from user space
+		to image space; that is, it transforms user space coordinates to the
+		corresponding coordinates in image space. It can include translation,
+		rotation, reflection, and shearing (see Section <a href="../3.html">4.3,
+			"Coordinate Systems and Transformations"</a>). The matrix is provided in
+		one of two ways:
+	</p>
+	<ul>
+		<li>In the five-operand forms of <a href="../../8/2/i/image.html">image</a>
+			and <a href="../../8/2/i/imagemask.html">imagemask</a> and in all
+			forms of <a href="../../8/2/c/colorimage.html">colorimage</a>, there
+			is a separate matrix operand.
+		</li>
+		<li>In image dictionaries, there is a required <b>ImageMatrix</b>
+			entry.
+		</li>
+	</ul>
+	<p>Although it is possible to map directly from current user space
+		to image space by defining the image matrix appropriately, it is
+		easier to think about the transformation by dividing it into two
+		stages (see Figure 4.24):</p>
+	<ol>
+		<li>The image matrix maps the unit square of user space, bounded
+			by user coordinates (0, 0) and (1, 1), to the boundary of the source
+			image in image space.</li>
+		<li>The current transformation matrix (CTM) maps the unit square
+			of user space to the rectangle or parallelogram on the page that is
+			to receive the image.</li>
+	</ol>
+	<p>This is just a convention, but it is a useful one that is
+		recommended. Under this convention, the image matrix is used solely to
+		describe the image itself, independently of how it is to be
+		positioned, oriented, and scaled on a particular page. It defines an
+		idealized image space consisting of a unit square that conforms to
+		PostScript conventions for coordinate system and scanning order. A
+		program can then map this idealized image space into current user
+		space by altering the CTM in straightforward ways.</p>
+	<figure>
+		<img src="figure-4.24.png" />
+		<figcaption>
+			<b>FIGURE 4.24</b> Mapping the source image
+		</figcaption>
+	</figure>
+	<p>An image that happens to use the PostScript conventions
+		(scanning from left to right and bottom to top) can be described by
+		the image matrix</p>
+	<pre>[<i>w</i> 0 0 <i>h</i> 0 0]</pre>
+	<p>
+		(where <i>w</i> and <i>h</i> are the width and height of the image,
+		respectively). An image that is scanned from left to right and top to
+		bottom (a commonly used order) is described by the image matrix
+	</p>
+	<pre>[<i>w</i> 0 0 -<i>h</i> 0 <i>h</i>]</pre>
+	<p>Images scanned in other common orders can be described in
+		similar ways.</p>
+	<p>
+		An image that has been mapped into the unit square in this way can
+		then be placed on the output page in the desired position,
+		orientation, and size by invoking PostScript operators that transform
+		user space: <a href="../../8/2/t/translate.html">translate</a>, <a
+			href="../../8/2/r/rotate.html">rotate</a>, and <a
+			href="../../8/2/s/scale.html">scale</a>. For example, to map such an
+		image into a rectangle whose lower-left corner is at coordinates (100,
+		200), that is rotated 45 degrees counterclockwise, and that is 150
+		units wide and 80 high, a program can execute
+	</p>
+	<pre>100 200 translate
+45 rotate
+150 80 scale</pre>
+	<p>
+		before invoking the <a href="../../8/2/i/image.html">image</a>, <a
+			href="../../8/2/c/colorimage.html">colorimage</a>, or <a
+			href="../../8/2/i/imagemask.html">imagemask</a> operator. This works
+		for any image that has been mapped into the unit square by an
+		appropriate image matrix. Of course, if the aspect ratio (width to
+		height) of the source image in this example were different from
+		150:80, the result would be distorted.
+	</p>
+</body>
+</html>
