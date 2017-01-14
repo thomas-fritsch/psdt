@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Font Cache</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h2>5.5 Font Cache</h2>
+	<p>
+		The PostScript interpreter includes an internal data structure called
+		the <i>font cache</i> whose purpose is to make the process of painting
+		glyphs very efficient. For the most part, font cache operation is
+		automatic. However, fonts whose glyph descriptions are PostScript
+		procedures, such as Type 3 fonts, must adhere to certain conventions
+		to take advantage of the font cache. Also, there are several operators
+		that control the behavior of the font cache, including ones that
+		directly update the font cache on behalf of a Type 4 CIDFont.
+	</p>
+	<p>Rendering a glyph from an outline or other high-level
+		description is a relatively costly operation, because it involves
+		performing scan conversion of arbitrary shapes. This presents special
+		problems for printing text, because it is common for several thousand
+		glyphs to appear on a single page. However, a page description that
+		includes large amounts of text normally has many repetitions of the
+		same glyph in a given font, size, and orientation. The number of
+		distinct glyphs thus is very much smaller than the total number of
+		glyphs.</p>
+	<p>The font cache operates by saving the results of glyph scan
+		conversions (including metric information and device pixel arrays) in
+		temporary storage and using those saved results when the same glyph is
+		requested again. The font cache is usually large enough to accommodate
+		all of the distinct glyphs in a page description. Painting a glyph
+		that is already in the font cache is typically hundreds of times
+		faster than scan-converting it from the glyph description in the font.</p>
+	<p>
+		The font cache does not retain color information; it remembers only
+		which pixels were painted and which pixels were left unchanged within
+		the glyph's bounding box. For this reason, there are a few
+		restrictions on the set of graphical operators that may be executed as
+		part of glyph descriptions that are to be cached. In particular, the <a
+			href="../../8/2/i/image.html">image</a> operator is not permitted.
+		However, <a href="../../8/2/i/imagemask.html">imagemask</a> may be
+		used to define a glyph according to a bitmap representation; see
+		Secti1on <a href="../../4/10.html">4.10, "Images."</a> Execution of
+		operators that specify colors or other color-related parameters in the
+		graphics state is also not permitted; see Section <a
+			href="../../4/8.html">4.8, "Color Spaces."</a>
+	</p>
+	<p>
+		The principal manifestation of the font cache visible to the
+		PostScript program is that showing a glyph does not necessarily result
+		in the execution of the glyph's description. This means that glyph
+		descriptions that are PostScript procedures must interact with the
+		font cache machinery to ensure that the results of their execution are
+		properly saved; this interaction is accomplished by means of the <a
+			href="../../8/2/s/setcachedevice.html">setcachedevice</a> or <a
+			href="../../8/2/s/setcachedevice2.html">setcachedevice2</a> operator,
+		as described in Section <a href="7.html">5.7, "Type 3 Fonts."</a>
+	</p>
+	<p>Each glyph saved in the font cache is identified by the
+		combination of:</p>
+	<ul>
+		<li>The original base font or CIDFont dictionary from which the
+			glyph description was obtained.</li>
+		<li>The <i>character selector</i>, which is a character name in a
+			base font or a CID (character identifier) in a CIDFont; see Section <a
+			href="11.html">5.11, "CID-Keyed Fonts."</a>
+		</li>
+		<li>The current transformation matrix (CTM) at the time the glyph
+			is shown.</li>
+	</ul>
+	<p>To ensure predictable behavior despite font caching, a given
+		combination of font and character selector must always produce the
+		same appearance when rendered. Means exist to provide reliable
+		identification of a font definition; see the next section. Note that a
+		character code is not part of the glyph identification in the font
+		cache, since a given glyph may be selected in more than one way.</p>
+</body>
+</html>

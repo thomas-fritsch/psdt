@@ -188,6 +188,7 @@
 		</topic>
 		<topic label="5.3 Character Encoding" href="html/Reference/5/3.html" />
 		<topic label="5.4 Glyph Metric Information" href="html/Reference/5/4.html" />
+		<topic label="5.5 Font Cache" href="html/Reference/5/5.html" />
 		<topic label="5.7 Type 3 Fonts" href="html/Reference/5/7.html">
 			<topic label="5.7.1 BuildGlyph" href="html/Reference/5/7/1.html" />
 			<topic label="5.7.2 BuildChar" href="html/Reference/5/7/2.html" />
