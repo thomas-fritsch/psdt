@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Images</title>
+<link rel="stylesheet" type="text/css" href="../format.css" />
+</head>
+<body>
+	<h3>4.10 Images</h3>
+	<p>
+		The PostScript language's painting operators include general
+		facilities for dealing with sampled images. A <i>sampled image</i> (or
+		just "image" for short) is a rectangular array of <i>sample values</i>,
+		each representing a color. The image may approximate the appearance of
+		some natural scene obtained through an input scanner or a video
+		camera, or it may be generated synthetically.
+	</p>
+	<figure>
+		<img src="figure-4.21.png" />
+		<figcaption>
+			<b>FIGURE 4.21</b> Typical sampled image
+		</figcaption>
+	</figure>
+	<p>
+		An image is defined by a sequence of samples obtained by scanning the
+		image array in row or column order. Each sample in the array consists
+		of as many color components as are needed for the color space in which
+		they are specified&mdash;for example, one component for <b>DeviceGray</b>,
+		three for <b>DeviceRGB</b>, four for DeviceCMYK, or whatever number is
+		required by a particular <b>DeviceN</b> space. Each component consists
+		of a 1-, 2-, 4-, 8-, or 12-bit integer, permitting the representation
+		of 2, 4, 16, 256, or 4096 different values for each component.
+	</p>
+	<p>Depending on LanguageLevel, PostScript implementations differ in
+		the facilities they offer for images:</p>
+	<ul>
+		<li>Most LanguageLevel 1 implementations support only grayscale
+			images&mdash;that is, ones whose image samples consist of a single
+			gray component. These can be painted by means of the five-operand
+			form of the <a href="../8/2/i/image.html">image</a> operator. Image
+			samples must consist of 1, 2, 4, or 8 bits per component; 12-bit
+			components are not supported. The image's source data must be
+			provided by a procedure and not directly by a file or string.
+		</li>
+		<li>A few LanguageLevel 1 implementations have been extended to
+			support color images containing three or four components per sample,
+			interpreted as RGB or CMYK. These can be painted by means of the <a
+			href="../8/2/c/colorimage.html">colorimage</a> operator.
+			LanguageLevel 1 products containing this feature are primarily color
+			printers, and also support the <a href="../8/2/s/setcmykcolor.html">setcmykcolor</a>
+			operator and 4-color rendering features.
+		</li>
+		<li>LanguageLevel 2 includes all features of LanguageLevel 1.
+			Additionally, it supports a one-operand form of the <a
+			href="../8/2/i/image.html">image</a> operator in which the operand is
+			an <i>image dictionary</i>, providing a more general means for
+			specifying the image's characteristics. Other LanguageLevel 2
+			features include 12-bit component values, direct use of files or
+			strings as data sources, interpretation of sample values in arbitrary
+			color spaces (such as CIE-based), and additional decoding and
+			rendering options.
+		</li>
+		<li>All implementations support the <a
+			href="../8/2/i/imagemask.html">imagemask</a> operator, which paints
+			the current color through a stencil mask specified as a bitmap (see <a
+			href="10/6/1.html">"Stencil Masking" on page 302</a>). However,
+			specification of the operands using an image dictionary is a
+			LanguageLevel 2 feature.
+		</li>
+		<li>LanguageLevel 3 supports two additional forms of masking,
+			using explicit masks and color key masks. These features are
+			described in the sections <a href="10/6/2.html">"Explicit
+				Masking" on page 303</a> and <a href="10/6/3.html">"Color Key
+				Masking" on page 307</a>.
+		</li>
+	</ul>
+	<p>There are often several ways to paint a given image, depending
+		on the level of language features to be used. Fortunately, most
+		properties of images do not depend on how painting is invoked or how
+		operands are represented. The sections that follow frequently refer to
+		specific features, such as colorimage or image dictionaries; see the
+		summary above to determine which features are available in a
+		particular PostScript implementation.</p>
+</body>
+</html>

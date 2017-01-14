@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Image Parameters</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.10.1 Image Parameters</h3>
+	<p>The properties of an image&mdash;resolution, orientation,
+		scanning order, and so forth&mdash;are entirely independent of the
+		characteristics of the raster output device on which the image is to
+		be rendered. The PostScript interpreter usually renders images by a
+		sampling and halftoning technique that attempts to approximate the
+		color values of the source as accurately as possible. The actual
+		accuracy achieved depends on the resolution and other properties of
+		the output device.</p>
+	<p>To paint an image, a PostScript program must specify four
+		interrelated items:</p>
+	<ul>
+		<li>The format of the source image: number of columns (width),
+			number of rows (height), number of color components per sample, and
+			number of bits per color component</li>
+		<li>A data source capable of providing the image's sample data,
+			which consists of <i>height</i> &times; <i>width</i> &times; <i>components</i>
+			&times; <i>bits/component</i> bits of information
+		</li>
+		<li>The correspondence between coordinates in user space and
+			coordinates in the source image space, defining the region of user
+			space that will receive the image</li>
+		<li>The mapping from component values in the source image to
+			component values in the current color space</li>
+	</ul>
+	<p>The PostScript program entirely controls these four aspects of
+		image specification.</p>
+</body>
+</html>

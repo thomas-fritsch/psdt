@@ -161,7 +161,10 @@
 	            <topic label="DeviceGray Color Space" href="html/Reference/4/8/2/3.html" />
 	        </topic>
 	    </topic>
-	    <topic label="4.10 Images" >
+	    <topic label="4.10 Images" href="html/Reference/4/10.html">
+	        <topic label="4.10.1 Image Parameters" href="html/Reference/4/10/1.html" />
+	        <topic label="4.10.2 Sample Representation" href="html/Reference/4/10/2.html" />
+	        <topic label="4.10.4 Images and Color Spaces" href="html/Reference/4/10/4.html" />
 	        <topic label="4.10.5 Image Dictionaries" href="html/Reference/4/10/5.html">
 	            <topic label="Type 1 Image Dictionaries" href="html/Reference/4/10/5/1.html" />
 	            <topic label="Sample Decoding" href="html/Reference/4/10/5/2.html" />

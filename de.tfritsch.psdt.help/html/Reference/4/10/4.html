@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Images and Color Spaces</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h3>4.10.4 Images and Color Spaces</h3>
+	<p>
+		The color samples in an image are interpreted according to some color
+		space (see Section <a href="../8.html">4.8, "Color Spaces"</a>). The
+		color space to be used depends on how imaging is invoked:
+	</p>
+	<ul>
+		<li>The five-operand form of the <a href="../../8/2/i/image.html">image</a>
+			operator ignores the current color space and always interprets color
+			samples according to the DeviceGray color space. It does not alter
+			the current color space parameter in the graphics state.
+		</li>
+		<li>The <a href="../../8/2/c/colorimage.html">colorimage</a>
+			operator always interprets color samples according to the <b>DeviceGray</b>,
+			<b>DeviceRGB</b>, or <b>DeviceCMYK</b> color space, depending on
+			whether its <i>ncomp</i> operand is 1, 3, or 4. It neither reads nor
+			alters the current color space parameter in the graphics state.
+		</li>
+		<li>The one-operand (dictionary) form of the <a
+			href="../../8/2/i/image.html">image</a> operator interprets color
+			samples according to the current color space. The number of
+			components per sample and the interpretation of the component values
+			depend on the color space. This form of <a
+			href="../../8/2/i/image.html">image</a> can be used with any color
+			space except <b>Pattern</b>.
+		</li>
+		<li>The <a href="../../8/2/i/imagemask.html">imagemask</a>
+			operator always interprets its source data as a stencil mask for
+			applying the current color in the current color space (see <a
+			href="6/1.html">"Stencil Masking" on page 302</a>). This works for
+			any color space.
+		</li>
+	</ul>
+</body>
+</html>
