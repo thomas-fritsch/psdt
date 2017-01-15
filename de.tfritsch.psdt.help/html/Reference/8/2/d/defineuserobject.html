@@ -21,8 +21,10 @@
 userdict /UserObjects get
 3 1 roll put
 </pre>
-	<p>In other words, it simply stores any into the array at the
-		position specified by index.</p>
+	<p>
+		In other words, it simply stores <i>any</i> into the array at the
+		position specified by <i>index</i>.
+	</p>
 	<p>
 		If <b>defineuserobject</b> creates or extends the <a
 			href="../u/UserObjects.html">UserObjects</a> array, it allocates the
@@ -35,9 +37,12 @@ userdict /UserObjects get
 			href="../u/userdict.html">userdict</a>, if any, is immediately
 		visible to all contexts that share the same local VM. It can be undone
 		by a subsequent <a href="../r/restore.html">restore</a> according to
-		the usual VM rules. index values must be within the range permitted
-		for arrays; a large index value may cause allocation of an array that
-		would exhaust VM resources. Assigning index values sequentially
+		the usual VM rules.
+	</p>
+	<p>
+		<i>index</i> values must be within the range permitted for arrays; a
+		large <i>index</i> value may cause allocation of an array that would
+		exhaust VM resources. Assigning <i>index</i> values sequentially
 		starting at zero is strongly recommended.
 	</p>
 	<p>

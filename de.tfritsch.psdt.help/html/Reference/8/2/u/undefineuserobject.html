@@ -11,8 +11,8 @@
 	</h3>
 	<pre>index <b>undefineuserobject</b> -</pre>
 	<p>
-		breaks the association between the nonnegative integer index and an
-		object established by some previous execution of <a
+		breaks the association between the nonnegative integer <i>index</i>
+		and an object established by some previous execution of <a
 			href="../d/defineuserobject.html">defineuserobject</a>. It does so
 		simply by replacing the specified <a href="UserObjects.html">UserObjects</a>
 		array element with the null object. This operator is equivalent to the
@@ -24,8 +24,8 @@ exch null put
 </pre>
 	<p>
 		<b>undefineuserobject</b> does not take any other actions, such as
-		shrinking the UserObjects array. If index is not a valid index for the
-		existing <a href="UserObjects.html">UserObjects</a> array, a <a
+		shrinking the UserObjects array. If <i>index</i> is not a valid index
+		for the existing <a href="UserObjects.html">UserObjects</a> array, a <a
 			href="../r/rangecheck.html">rangecheck</a> error occurs. See Section
 		<a>3.7.6, "User Objects."</a>
 	</p>

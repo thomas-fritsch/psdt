@@ -5,7 +5,22 @@
 <link rel="stylesheet" type="text/css" href="../../../format.css" />
 </head>
 <body>
-	<h3>exitserver</h3>
-	<pre>- <b>exitserver</b> -</pre>
+	<h3>exitserver (serverdict)</h3>
+	<pre>password <b>exitserver</b> -</pre>
+	<p>initiates an unencapsulated job, similarly to the operation</p>
+	<pre>true <i>password</i> startjob</pre>
+	<p>
+		in LanguageLevel 2 or 3, except that an invalidaccess error occurs if
+		password is incorrect. See Section <a href="../../3/7/7.html">3.7.7,
+			"Job Execution Environment."</a>
+	</p>
+	<p>
+		<b>Errors:</b> <a href="../i/invalidexit.html">invalidexit</a>, <a
+			href="../s/stackunderflow.html">stackunderflow</a>, <a
+			href="../t/typecheck.html">typecheck</a>
+	</p>
+	<p>
+		<b>See Also:</b> <a href="../s/startjob.html">startjob</a>
+	</p>
 </body>
 </html>

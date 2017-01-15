@@ -19,16 +19,16 @@
 	</p>
 	<p>
 		These procedures adjust the values of device color components (see
-		Section <a>7.3, "Transfer Functions"</a>). A device's output will be
-		affected only by those transfer functions corresponding to color
-		components that the device supports. For example, <i>redproc</i>, <i>greenproc</i>,
-		and <i>blueproc</i> will have no effect on a black-and-white device,
-		while <i>grayproc</i> will have no effect on an RGB device. On a
-		device whose <b>ProcessColorModel</b> is <b>DeviceN</b>, none of the
-		transfer functions set by <b>setcolortransfer</b> have any effect; in
-		this case, all components' transfer functions must be specified via <b>TransferFunction</b>
-		entries in a halftone dictionary supplied to <a
-			href="sethalftone.html">sethalftone</a>.
+		Section <a href="../../../7/3-html">7.3, "Transfer Functions"</a>). A
+		device's output will be affected only by those transfer functions
+		corresponding to color components that the device supports. For
+		example, <i>redproc</i>, <i>greenproc</i>, and <i>blueproc</i> will
+		have no effect on a black-and-white device, while <i>grayproc</i> will
+		have no effect on an RGB device. On a device whose <b>ProcessColorModel</b>
+		is <b>DeviceN</b>, none of the transfer functions set by <b>setcolortransfer</b>
+		have any effect; in this case, all components' transfer functions must
+		be specified via <b>TransferFunction</b> entries in a halftone
+		dictionary supplied to <a href="sethalftone.html">sethalftone</a>.
 	</p>
 	<p>
 		Because the effect of the transfer function parameter is

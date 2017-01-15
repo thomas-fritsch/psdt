@@ -9,16 +9,16 @@
 	<pre>any <b>type</b> name</pre>
 	<p>returns a name object that identifies the type of the object
 		any. The possible names that type can return are as follows:</p>
-	<pre>
-arraytype                      nametype 
-booleantype                    nulltype 
-dicttype                       operatortype 
-filetype                       packedarraytype <i>(LanguageLevel 2)</i> 
-fonttype                       realtype
-gstatetype <i>(LanguageLevel 2)</i>   savetype 
-integertype                    stringtype 
-marktype
-</pre>
+	<table>
+		<tr>
+			<td>arraytype<br />booleantype<br />dicttype<br />filetype<br />fonttype<br />
+				gstatetype <i>(LanguageLevel 2)</i><br />integertype<br />marktype
+			</td>
+			<td>nametype<br />nulltype<br />operatortype<br />packedarraytype
+				<i>(LanguageLevel 2)</i><br />realtype<br />savetype<br />stringtype
+				<br /> <br /></td>
+		</tr>
+	</table>
 	<p>
 		The name fonttype identifies an object of type <i>fontID</i>. It has
 		nothing to do with a font dictionary, which is identified by dicttype
