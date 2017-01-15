@@ -15,6 +15,7 @@
 %  59 Temple Place, Suite 330, Boston, MA, 02111-1307.
 
 % $Id: psdebug.ps,v 1.1 2003/07/17 09:19:49 nhathaway Exp $
+%      2017/01/15 thomas.fritsch@oce.com  added current path to @@status dump
 
 % PostScript debugger - designed for use with the IdePS development environment
 % (or it can be used stand-alone, details follow).
@@ -468,9 +469,14 @@ globaldict begin
     [{}{}{}{} pathforall] length 0 gt {
       /currentpoint <</x currentpoint /y exch>>
       /pathbbox [pathbbox]
+      /path [{/moveto cvx 3 array astore cvx}
+             {/lineto cvx 3 array astore cvx}
+             {/curveto cvx 7 array astore cvx}
+             {/closepath cvx 1 array astore cvx} pathforall]
     } {
       /currentpoint null
       /pathbbox null
+      /path null
     } ifelse
     /currentpagedevice currentpagedevice
     /currentfont currentfont begin <</FontType FontType /FontName FontName
