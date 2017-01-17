@@ -21,7 +21,11 @@ import de.tfritsch.psdt.help.PSHelpExtensions
 import de.tfritsch.psdt.postscript.PSObject
 import de.tfritsch.psdt.ui.editor.PostscriptEditor
 import java.io.DataInputStream
+import java.util.List
+import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import org.junit.Test
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
 import static org.junit.Assert.assertEquals
 
@@ -29,28 +33,28 @@ import static org.junit.Assert.assertEquals
  * Check that all plugins are Java-6 compatible.
  * @author Thomas Fritsch - initial API and implementation
  */
+@RunWith(Parameterized)
+@FinalFieldsConstructor
 class ClassFileVersionTest {
 
-	val JAVA_6_VERSION = "50.0"
+    static val JAVA_6_VERSION = "50.0"
 
-	@Test
-	def void testHelpPlugin() throws Exception {
-		assertEquals(JAVA_6_VERSION, PSHelpExtensions.classFileVersion)
+	@Parameterized.Parameters(name="{0}")
+	def static List<Object[]> getData() {
+		#[
+			#["help plugin", PSHelpExtensions],
+			#["core plugin", PSObject],
+			#["UI plugin", PostscriptEditor],
+			#["debug plugin", PSVariable]
+		]
 	}
 
-	@Test
-	def void testRuntimePlugin() throws Exception {
-		assertEquals(JAVA_6_VERSION, PSObject.classFileVersion)
-	}
+	val String name
+	val Class<?> clazz
 
 	@Test
-	def void testUIPlugin() throws Exception {
-		assertEquals(JAVA_6_VERSION, PostscriptEditor.classFileVersion)
-	}
-
-	@Test
-	def void testDebugPlugin() throws Exception {
-		assertEquals(JAVA_6_VERSION, PSVariable.classFileVersion)
+	def void testClassFileVersion() {
+		assertEquals(name, JAVA_6_VERSION, clazz.classFileVersion)
 	}
 
 	def private String getClassFileVersion(Class<?> clazz) {
