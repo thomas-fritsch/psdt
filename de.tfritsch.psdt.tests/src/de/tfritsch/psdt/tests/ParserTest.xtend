@@ -91,8 +91,22 @@ class ParserTest {
 	}
 
 	@Test
-	def testLiteralNameName() throws Exception {
+	def testLiteralName() throws Exception {
 		val file = '''/name'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSLiteralName)
+	}
+
+	@Test
+	def testLiteralNameBeginningWithDigit() throws Exception {
+		val file = '''/10'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSLiteralName)
+	}
+
+	@Test
+	def testLiteralNameEmpty() throws Exception {
+		val file = '''/'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSLiteralName)
 	}
@@ -100,6 +114,20 @@ class ParserTest {
 	@Test
 	def testImmediatelyEvaluatedName() throws Exception {
 		val file = '''//name'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSImmediatelyEvaluatedName)
+	}
+
+	@Test
+	def testImmediatelyEvaluatedNameBeginningWithDigit() throws Exception {
+		val file = '''//10'''.parse
+		val obj = file.objects.get(0)
+		assertTrue(obj instanceof PSImmediatelyEvaluatedName)
+	}
+
+	@Test
+	def testImmediatelyEvaluatedNameEmpty() throws Exception {
+		val file = '''//'''.parse
 		val obj = file.objects.get(0)
 		assertTrue(obj instanceof PSImmediatelyEvaluatedName)
 	}

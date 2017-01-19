@@ -96,10 +96,10 @@ terminal fragment EXP:
 	('E' | 'e') ('+' | '-')? ('0'..'9')+;
 
 terminal LITERAL_ID:
-	'/' ID;
+	'/' (!DELIM_CHAR)*;
 
 terminal IMMEDIATELY_EVALUATED_ID:
-	'//' ID;
+	'//' (!DELIM_CHAR)*;
 
 terminal ID:
 	(!('0'..'9' | DELIM_CHAR)) (!DELIM_CHAR)*;
