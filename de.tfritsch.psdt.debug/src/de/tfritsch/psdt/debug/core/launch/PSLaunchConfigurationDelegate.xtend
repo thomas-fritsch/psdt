@@ -36,6 +36,7 @@ import org.eclipse.debug.core.model.IProcess
 import org.eclipse.debug.core.model.LaunchConfigurationDelegate
 import org.eclipse.jface.preference.IPreferenceStore
 import org.eclipse.osgi.util.NLS
+import org.eclipse.xtext.parser.IEncodingProvider
 
 import static org.eclipse.debug.core.DebugPlugin.ATTR_ENVIRONMENT
 import static org.eclipse.debug.core.DebugPlugin.ATTR_LAUNCH_TIMESTAMP
@@ -58,6 +59,7 @@ import static extension org.eclipse.debug.core.DebugPlugin.exec
 import static extension org.eclipse.debug.core.DebugPlugin.newProcess
 import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
 import static extension org.eclipse.debug.core.DebugPlugin.renderArguments
+import static extension org.eclipse.emf.common.util.URI.createFileURI
 
 /**
  * Launches PostScript program on Ghostscript interpreter
@@ -78,6 +80,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
 	@Inject extension DebugExtensions
+	@Inject extension IEncodingProvider
 	@Inject extension IStringVariableManager
 	@Inject @Debug IPreferenceStore preferenceStore
 	@Inject Provider<PSDebugTarget> debugTargetProvider
@@ -95,11 +98,12 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
 			cmdLineList += PSDebug.absolutePath
-			sourceMapping = psFile.createSourceMapping
+			val encoding = psFile.createFileURI.encoding
+			sourceMapping = psFile.createSourceMapping(encoding)
 			if (monitor.canceled) {
 				return
 			}
-			instrumentedFile = sourceMapping.createInstrumentedFile
+			instrumentedFile = sourceMapping.createInstrumentedFile(encoding)
 			if (monitor.canceled) {
 				instrumentedFile.delete
 				return

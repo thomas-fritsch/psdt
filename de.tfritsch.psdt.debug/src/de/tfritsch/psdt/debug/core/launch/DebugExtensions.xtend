@@ -19,8 +19,9 @@ package de.tfritsch.psdt.debug.core.launch
 import com.google.common.collect.AbstractIterator
 import com.google.inject.Provider
 import java.io.File
-import java.io.FileWriter
+import java.io.FileOutputStream
 import java.io.IOException
+import java.io.OutputStreamWriter
 import java.util.Iterator
 import java.util.List
 import javax.inject.Inject
@@ -45,9 +46,9 @@ class DebugExtensions {
 	@Inject
 	Provider<Lexer> lexerProvider
 
-	def List<PSToken> createSourceMapping(String psFile) throws CoreException {
+	def List<PSToken> createSourceMapping(String psFile, String encoding) throws CoreException {
 		try {
-			(lexerProvider.get => [charStream = new ANTLRFileStream(psFile)]) //
+			(lexerProvider.get => [charStream = new ANTLRFileStream(psFile, encoding)]) //
 			.iterator.filter [
 				if (type == Token.INVALID_TOKEN_TYPE)
 					throw ("Invalid token in line " + line).toCoreException
@@ -71,10 +72,10 @@ class DebugExtensions {
 		iterator
     }
 
-	def File createInstrumentedFile(List<PSToken> sourceMapping) throws CoreException {
+	def File createInstrumentedFile(List<PSToken> sourceMapping, String encoding) throws CoreException {
 		try {
 			val file = File.createTempFile("psdt", ".ps")
-			val writer = new FileWriter(file)
+			val writer = new OutputStreamWriter(new FileOutputStream(file), encoding)
 			writer.write("%!PS\n")
 			writer.write("@@breakpoints 0 null put\n")
 			sourceMapping.forEach[token, i|
