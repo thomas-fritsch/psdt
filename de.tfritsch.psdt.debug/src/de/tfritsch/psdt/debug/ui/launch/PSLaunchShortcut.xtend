@@ -21,6 +21,7 @@ import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.launch.PSLaunchConfigurationDelegate
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
+import java.io.File
 import org.eclipse.core.filesystem.EFS
 import org.eclipse.core.filesystem.IFileStore
 import org.eclipse.core.resources.IFile
@@ -91,6 +92,8 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	}
 
 	def private void launch(String program, String mode) {
+		if (!workbench.saveAllEditors(true))
+			return
 		val configurations = program.configurations
 		val configuration = switch (configurations.length) {
 			case 0:
@@ -121,7 +124,12 @@ class PSLaunchShortcut implements ILaunchShortcut {
 
 	def private ILaunchConfiguration createConfiguration(String program_) {
 		val type = PSLaunchConfigurationDelegate.ID.launchConfigurationType
-		val name = type.name.generateLaunchConfigurationName
+		var name = program_
+		if (name.contains(File.separator))
+			name = name.substring(name.lastIndexOf(File.separator) + 1)
+		if (name.contains("."))
+			name = name.substring(0, name.lastIndexOf("."))
+		name = name.toFirstUpper.generateLaunchConfigurationName
 		try {
 			val workingCopy = type.newInstance(null, name) => [
 				program = program_
