@@ -50,9 +50,16 @@ class DebugExtensions {
 		try {
 			(lexerProvider.get => [charStream = new ANTLRFileStream(psFile, encoding)]) //
 			.iterator.filter [
-				if (type == Token.INVALID_TOKEN_TYPE)
-					throw ("Invalid token in line " + line).toCoreException
-				type != RULE_WS && type != RULE_SL_COMMENT && type != RULE_DSC_COMMENT
+				switch (type) {
+					case Token.INVALID_TOKEN_TYPE:
+						throw ("Invalid token in line " + line).toCoreException
+					case RULE_WS,
+					case RULE_SL_COMMENT,
+					case RULE_DSC_COMMENT:
+						false
+					default:
+						true
+				}
 			].map [
 				if (it instanceof CommonToken)
 					new PSToken(text, line, startIndex, stopIndex + 1)
