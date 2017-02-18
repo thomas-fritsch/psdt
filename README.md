@@ -80,10 +80,10 @@ The generated update site will be in directory `de.tfritsch.psdt.updatesite/targ
 
 #### IDE
 
-The easiest way is to download and install the [Eclipse IDE for Java and DSL Developers]
-(http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
+The easiest way is to download and install the [Eclipse IDE for Java and DSL Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
 
 Alternatively you can take an existing Eclipse instance and add the following components:
+
 * [Eclipse Xtext](http://marketplace.eclipse.org/content/eclipse-xtext)
   [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtext")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1073)
 * [Eclipse Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
