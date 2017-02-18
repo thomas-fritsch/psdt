@@ -47,8 +47,7 @@ platform-independent way.
 #### Installation from Marketplace
 
 * Drag this [![Install](http://marketplace.eclipse.org/misc/installbutton.png
-  "Drag to your running Eclipse workspace to install PSDT")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
+  "Drag to your running Eclipse workspace to install PSDT")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
   button to your running Eclipse instance
 * Follow the instructions in the usual manner
 
