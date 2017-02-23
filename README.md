@@ -58,7 +58,7 @@ platform-independent way.
   _Name:_ `PSDT`  
   _Location:_ `http://thomas-fritsch.github.io/psdt/repository/` 
 * Wait for the software list to be displayed, select _PostScript Language_
-  ![Install](install.png)]
+  ![Install](install.png)
 * Follow the instructions in the usual manner
 
 ## Development setup
