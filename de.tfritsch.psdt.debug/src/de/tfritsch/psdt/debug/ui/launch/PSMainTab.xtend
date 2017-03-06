@@ -17,13 +17,16 @@
 package de.tfritsch.psdt.debug.ui.launch
 
 import com.google.inject.Inject
+import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.process.PSProcessFactory
 import de.tfritsch.psdt.help.PSHelpContexts
 import java.io.File
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
 import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Path
+import org.eclipse.core.runtime.Status
 import org.eclipse.core.variables.IStringVariableManager
 import org.eclipse.debug.core.ILaunchConfiguration
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy
@@ -130,6 +133,12 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 					default: // IFolder, IProject
 						true
 				}
+			]
+			validator = [ selection |
+				if (selection.length == 1 && selection.get(0) instanceof IFile)
+					new Status(IStatus.OK, PSPlugin.ID, "")
+				else
+					new Status(IStatus.ERROR, PSPlugin.ID, "is not a file")
 			]
 			try {
 				initialSelection = new Path(fProgramText.text.performStringSubstitution).workspaceFileAtLocation
