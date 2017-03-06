@@ -1,13 +1,9 @@
 # PostScript Development Tools
 
-[![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)]
-  (https://travis-ci.org/thomas-fritsch/psdt)
-[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)]
-  (http://www.gnu.org/licenses/gpl-3.0)
-[![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg)]
-  (https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
-[![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
+[![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)](https://travis-ci.org/thomas-fritsch/psdt)
+[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
+[![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg)](https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
+[![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
 
 This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) Integrated Development Environment for
 [Eclipse](http://www.eclipse.org/). It cooperates with the [Ghostscript](https://ghostscript.com) interpreter in a
@@ -51,8 +47,7 @@ platform-independent way.
 #### Installation from Marketplace
 
 * Drag this [![Install](http://marketplace.eclipse.org/misc/installbutton.png
-  "Drag to your running Eclipse workspace to install PSDT")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
+  "Drag to your running Eclipse workspace to install PSDT")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
   button to your running Eclipse instance
 * Follow the instructions in the usual manner
 
@@ -63,7 +58,7 @@ platform-independent way.
   _Name:_ `PSDT`  
   _Location:_ `http://thomas-fritsch.github.io/psdt/repository/` 
 * Wait for the software list to be displayed, select _PostScript Language_
-  ![Install](install.png)]
+  ![Install](install.png)
 * Follow the instructions in the usual manner
 
 ## Development setup
@@ -84,22 +79,18 @@ The generated update site will be in directory `de.tfritsch.psdt.updatesite/targ
 
 #### IDE
 
-The easiest way is to download and install the [Eclipse IDE for Java and DSL Developers]
-(http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
+The easiest way is to download and install the [Eclipse IDE for Java and DSL Developers](http://www.eclipse.org/downloads/packages/eclipse-ide-java-and-dsl-developers/neon1a).
 
 Alternatively you can take an existing Eclipse instance and add the following components:
+
 * [Eclipse Xtext](http://marketplace.eclipse.org/content/eclipse-xtext)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtext")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1073)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtext")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1073)
 * [Eclipse Xtend](http://marketplace.eclipse.org/content/eclipse-xtend)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtend")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=148396)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtend")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=148396)
 * [EGit - Git Integration for Eclipse](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install EGit - Git Integration for Eclipse")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install EGit - Git Integration for Eclipse")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336)
 * [Maven Integration for Eclipse (Luna)](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Maven Integration for Eclipse (Luna)")]
-  (http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1774116)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Maven Integration for Eclipse (Luna)")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1774116)
 
 ## Release History
 
