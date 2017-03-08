@@ -18,10 +18,12 @@ package de.tfritsch.psdt.debug.core.launch
 
 import com.google.common.collect.AbstractIterator
 import com.google.inject.Provider
+import de.tfritsch.psdt.debug.PSPlugin
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.OutputStreamWriter
+import java.net.URL
 import java.util.Iterator
 import java.util.List
 import javax.inject.Inject
@@ -37,14 +39,24 @@ import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.RUL
 import static de.tfritsch.psdt.parser.antlr.internal.InternalPostscriptLexer.RULE_WS
 
 import static extension de.tfritsch.psdt.debug.PSPlugin.toCoreException
+import static extension org.eclipse.core.runtime.FileLocator.toFileURL
 
 /**
  * @author Thomas Fritsch - initial API and implementation
  */
-class DebugExtensions {
+class DebugInstrumenter {
 
 	@Inject
 	Provider<Lexer> lexerProvider
+
+	def File getPSDebugFile() throws CoreException {
+		try {
+			val url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
+			new File(url.toFileURL.path).canonicalFile
+		} catch (Exception e) {
+			throw e.toCoreException
+		}
+	}
 
 	def List<PSToken> createSourceMapping(String psFile, String encoding) throws CoreException {
 		try {

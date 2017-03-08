@@ -21,7 +21,6 @@ import de.tfritsch.psdt.debug.Debug
 import de.tfritsch.psdt.debug.PSPlugin
 import de.tfritsch.psdt.debug.core.model.PSDebugTarget
 import java.io.File
-import java.net.URL
 import java.util.List
 import javax.inject.Inject
 import org.eclipse.core.runtime.CoreException
@@ -54,7 +53,6 @@ import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getGhostscript
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getInterpreter
 import static extension de.tfritsch.psdt.debug.PSLaunchExtensions.getProgram
 import static extension de.tfritsch.psdt.debug.PSPlugin.toCoreException
-import static extension org.eclipse.core.runtime.FileLocator.toFileURL
 import static extension org.eclipse.debug.core.DebugPlugin.exec
 import static extension org.eclipse.debug.core.DebugPlugin.newProcess
 import static extension org.eclipse.debug.core.DebugPlugin.parseArguments
@@ -79,7 +77,7 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
      */
 	public static val ID = PSPlugin.ID + ".launchConfigurationType" //$NON-NLS-1$
 
-	@Inject extension DebugExtensions
+	@Inject DebugInstrumenter debugInstrumenter
 	@Inject extension IEncodingProvider
 	@Inject extension IStringVariableManager
 	@Inject @Debug IPreferenceStore preferenceStore
@@ -97,13 +95,13 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (mode == ILaunchManager.RUN_MODE) {
 			cmdLineList += psFile
 		} else if (mode == ILaunchManager.DEBUG_MODE) {
-			cmdLineList += PSDebug.absolutePath
+			cmdLineList += debugInstrumenter.PSDebugFile.absolutePath
 			val encoding = psFile.createFileURI.encoding
-			sourceMapping = psFile.createSourceMapping(encoding)
+			sourceMapping = debugInstrumenter.createSourceMapping(psFile, encoding)
 			if (monitor.canceled) {
 				return
 			}
-			instrumentedFile = sourceMapping.createInstrumentedFile(encoding)
+			instrumentedFile = debugInstrumenter.createInstrumentedFile(sourceMapping, encoding)
 			if (monitor.canceled) {
 				instrumentedFile.delete
 				return
@@ -168,14 +166,5 @@ class PSLaunchConfigurationDelegate extends LaunchConfigurationDelegate {
 		if (path == null)
 			return null
 		new Path(path.performStringSubstitution)
-	}
-
-	def private File getPSDebug() throws CoreException {
-		try {
-			var url = new URL("platform:/plugin/" + PSPlugin.ID + "/psdebug.ps")
-			new File(url.toFileURL.path).canonicalFile
-		} catch (Exception e) {
-			throw e.toCoreException
-		}
 	}
 }
