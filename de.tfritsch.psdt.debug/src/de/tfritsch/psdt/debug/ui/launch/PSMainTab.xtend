@@ -22,7 +22,7 @@ import de.tfritsch.psdt.debug.core.process.PSProcessFactory
 import de.tfritsch.psdt.help.PSHelpContexts
 import java.io.File
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.resources.IWorkspace
 import org.eclipse.core.runtime.CoreException
 import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.Path
@@ -69,6 +69,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 	Button fBreakOnFirstTokenButton
 
 	@Inject	IImageHelper fImageHelper
+	@Inject IWorkspace workspace
 	@Inject FileExtensionProvider fileExtensionProvider
 	@Inject extension IStringVariableManager
 	@Inject extension IWorkbenchHelpSystem
@@ -122,7 +123,7 @@ class PSMainTab extends AbstractLaunchConfigurationTab {
 
 	def protected void browseWorkspace() {
 		val dialog = new ElementTreeSelectionDialog(shell, new WorkbenchLabelProvider, new BaseWorkbenchContentProvider) => [
-			input = ResourcesPlugin.workspace.root
+			input = workspace.root
 			title = "File selection"
 			message = "Choose a PostScript file"
 			allowMultiple = false
