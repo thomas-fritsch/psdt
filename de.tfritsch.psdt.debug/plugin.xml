@@ -180,16 +180,18 @@
                label="Enable/Disable Breakpoint"
                menubarPath="debug">
          </action>
-         <action
-               class="org.eclipse.debug.ui.actions.RulerToggleBreakpointActionDelegate"
-               icon="platform:/plugin/org.eclipse.debug.ui/icons/full/obj16/brkp_obj.gif"
-               id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.toggleBreakpointAction"
-               label="Toggle Breakpoint"
-               menubarPath="debug">
-         </action>
       </viewerContribution>
    </extension>
    <extension point="org.eclipse.ui.menus">
+      <menuContribution
+           locationURI="popup:de.tfritsch.psdt.Postscript.RulerContext?before=debug">
+         <command
+               commandId="org.eclipse.debug.ui.commands.ToggleBreakpoint"
+               id="de.tfritsch.psdt.Postscript.ide.rulerContextMenu.toggleBreakpointAction"
+               label="Toggle Breakpoint"
+               style="push">
+         </command>     
+      </menuContribution>
       <menuContribution
            locationURI="popup:de.tfritsch.psdt.Postscript.EditorContext?before=additions">
          <command
