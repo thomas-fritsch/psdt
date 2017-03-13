@@ -188,15 +188,16 @@
                menubarPath="debug">
          </action>
       </viewerContribution>
-      <viewerContribution
-         targetID="de.tfritsch.psdt.Postscript.EditorContext"
-         id="de.tfritsch.psdt.Postscript.ide.EditorPopupActions">
-         <action
-               class="org.eclipse.debug.ui.actions.RunToLineActionDelegate"
+   </extension>
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution
+           locationURI="popup:de.tfritsch.psdt.Postscript.EditorContext?before=additions">
+         <command
+               commandId="org.eclipse.debug.ui.commands.RunToLine"
                id="de.tfritsch.psdt.Postscript.ide.editorContextMenu.runToLineAction"
                label="Run to Line"
-               menubarPath="additions">
-         </action>
-      </viewerContribution>
+               style="push">
+         </command>     
+      </menuContribution>
    </extension>
 </plugin>
