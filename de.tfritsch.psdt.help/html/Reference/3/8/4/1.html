@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Creating Filters</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Creating Filters</h4>
+	<p>
+		Filter files are created by the <a href="../../../8/2/f/filter.html">filter</a>
+		operator <i>(LanguageLevel 2)</i>. The <a
+			href="../../../8/2/f/filter.html">filter</a> operator expects the
+		following operands in the order given:
+	</p>
+	<ol>
+		<li>A <i>data source</i> or <i>data target</i>. This is
+			ordinarily a file object that represents the underlying file the
+			filter is to read or write. However, it can also be a string or a
+			procedure. Details are provided in Section <a href="../../13/1.html">3.13.1,
+				"Data Sources and Targets."</a>
+		</li>
+		<li><i>Filter parameters.</i> All filters may take additional
+			parameters, and some require additional parameters, to control how
+			they operate. These parameters may be specified in a dictionary given
+			as an operand following the data source or target; in some cases,
+			required parameters must be given as operands following the data
+			source or target or following the dictionary operand, if any. The
+			dictionary operand may be omitted whenever all the
+			dictionary-supplied parameters have the corresponding default values
+			for that filter. Exactly which parameters and operands are required
+			for the various filters is described in Section <a
+			href="../../13.html">3.13, "Filtered Files Details."</a></li>
+		<li><i>Filter name.</i> This is a name object, such as <b>ASCIIHexDecode</b>,
+			that specifies the data transformation the filter is to perform. It
+			also determines how many parameters there are and how they are to be
+			interpreted.</li>
+	</ol>
+	<p>
+		The <a href="../../../8/2/f/filter.html">filter</a> operator returns a
+		new file object that represents the filtered file. For an encoding
+		filter, this is an output file, and for a decoding filter, an input
+		file. The direction of the underlying file&mdash;that is, its
+		read/write attribute&mdash;must match that of the filter. Filtered
+		files can be used just the same as other files; they are valid as
+		operands to file operators such as <a href="../../../8/2/r/read.html">read</a>,
+		<a href="../../../8/2/w/write.html">write</a>, <a
+			href="../../../8/2/r/readstring.html">readstring</a>, and <a
+			href="../../../8/2/w/writestring.html">writestring</a>. Input filters
+		are also valid as data sources for operators such as <a
+			href="../../../8/2/e/exec.html">exec</a> or <a
+			href="../../../8/2/i/image.html">image</a>.
+	</p>
+	<p>
+		Since a filter is itself a file, it can be used as the underlying file
+		for yet another filter. Filters can be cascaded to form a <i>pipeline</i>
+		that passes the data stream through two or more encoding or decoding
+		transformations in sequence. Example 3.5 illustrates the construction
+		of an input pipeline for decoding sampled image data that is embedded
+		in the program. The application has encoded the image data twice: once
+		using the <b>RunLengthEncode</b> method to compress the data, and then
+		using the <b>ASCII85Encode</b> method to represent the binary
+		compressed data as ASCII text.
+	</p>
+	<p>
+		<b>Example 5.5</b>
+	</p>
+	<pre>256 256 8 [256 0 0 -256 0 256]   % Other operands of the image operator
+currentfile
+/ASCII85Decode filter
+/RunLengthDecode filter
+image
+<i>... Encoded image data ...</i>
+~>                               % ASCII85 end-of-data marker</pre>
+	<p>
+		The <a href="../../../8/2/c/currentfile.html">currentfile</a> operator
+		returns the file object from which the PostScript interpreter is
+		currently executing. The first execution of <a
+			href="../../../8/2/f/filter.html">filter</a> creates an <b>ASCII85Decode</b>
+		filter whose underlying file is the one returned by <a
+			href="../../../8/2/c/currentfile.html">currentfile</a>. It pushes the
+		filter file object on the stack. The second execution of <a
+			href="../../../8/2/f/filter.html">filter</a> creates a <b>RunLengthDecode</b>
+		filter whose underlying file is the first filter file; it pushes the
+		new filter file object on the stack. Finally, the <a
+			href="../../../8/2/i/image.html">image</a> operator uses the second
+		filter file as its data source. As <a href="../../../8/2/i/image.html">image</a>
+		reads from its data source, the data is drawn from the underlying file
+		and transformed by the two filters in sequence.
+	</p>
+</body>
+</html>

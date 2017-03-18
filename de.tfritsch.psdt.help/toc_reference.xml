@@ -86,8 +86,8 @@
 			</topic>
 			<topic label="3.8.3 Special Files" href="html/Reference/3/8/3.html" />
 			<topic label="3.8.4 Filters" href="html/Reference/3/8/4.html">
-				<topic label="Creating Filters" href="html/Reference/3/8/4.html#1" />
-				<topic label="Standard Filters" href="html/Reference/3/8/4.html#2" />
+				<topic label="Creating Filters" href="html/Reference/3/8/4/1.html" />
+				<topic label="Standard Filters" href="html/Reference/3/8/4/2.html" />
 			</topic>
 			<topic label="3.8.5 Additional File Operators" href="html/Reference/3/8/5.html" />
 		</topic>
