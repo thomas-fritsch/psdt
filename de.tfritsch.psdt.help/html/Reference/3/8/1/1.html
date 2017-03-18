@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Standard Input and Output Files</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Standard Input and Output Files</h4>
+	<p>
+		All PostScript interpreters provide a <i>standard input file</i> and a
+		<i>standard output file</i>, which usually represent a real-time
+		communication channel to and from another computer. The standard input
+		and output files are always present; it is not necessary for a program
+		to create or close them.
+	</p>
+	<p>
+		The PostScript interpreter reads and interprets the standard input
+		file as PostScript program text. It sends error and status messages to
+		the standard output file. Also, a PostScript program may execute the <a
+			href="../../../8/2/p/print.html">print</a> operator to send arbitrary
+		data to the standard output file. Note that <a
+			href="../../../8/2/p/print.html">print</a> is a <i>file</i> operator;
+		it has nothing to do with placing text on a page or causing pages to
+		emerge from a printer.
+	</p>
+	<p>
+		It is seldom necessary for a PostScript program to deal explicitly
+		with file objects for the standard files, because the PostScript
+		interpreter reads the standard input file by default and the print
+		operator references the standard output file implicitly. Additionally,
+		the file currently being read by the PostScript interpreter is
+		available via the <a href="../../../8/2/c/currentfile.html">currentfile</a>
+		operator; this file need not be the standard input file. However, when
+		necessary, a program may apply the <a href="../../../8/2/f/file.html">file</a>
+		operator to the identifying strings %stdin or %stdout to obtain file
+		objects for the standard input and output files; see Section <a
+			href="../3.html">3.8.3, "Special Files."</a>
+	</p>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Communication Channel Behavior</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Communication Channel Behavior</h4>
+	<p>
+		Communications functions often usurp control characters. Control codes
+		are device-dependent and not part of the PostScript language. For
+		example, the serial communication protocol supported by many products
+		uses the Control-D character as an end-of-file indication. In this
+		case, Control-D is a communications function and not logically part of
+		a PostScript program. This applies specifically to the serial channel;
+		other channels, such as LocalTalk<sup>TM</sup> and Ethernet, have
+		different conventions for end-of-file and other control functions. <i>In
+			all cases, communication channel behavior is independent of the
+			actions of the PostScript interpreter.</i>
+	</p>
+	<p>
+		There are two levels of PostScript EOL translation: one in the
+		PostScript interpreter and one in the serial communication channel.
+		The previous description applies <i>only</i> to the EOL conventions at
+		the level of the PostScript interpreter. The purpose of the seemingly
+		redundant communication-level EOL translation is to maintain
+		compatibility with diverse host operating systems and communications
+		environments.
+	</p>
+	<p>
+		As discussed in Section <a href=../../2.html>3.2, "Syntax,"</a> the
+		ASCII encoding of the language is designed for maximum portability. It
+		avoids using control characters that might be preempted by operating
+		systems or communication channels. However, there are situations in
+		which transmission of arbitrary binary data is desirable. For example,
+		sampled images are represented by large quantities of binary data. The
+		PostScript language has an alternative binary encoding that is
+		advantageous in certain situations. There are two main ways to deal
+		with PostScript programs that contain binary information:
+	</p>
+	<ul>
+		<li>Communicate with the interpreter via binary channels
+			exclusively. Some channels, such as LocalTalk and Ethernet, are
+			binary by nature. They do not preempt any character codes, but
+			instead communicate control information separately from the data.
+			Other channels, such as serial channels, may support a binary
+			communication protocol that allows control characters to be quoted.
+			This approach presupposes a well-controlled environment. PostScript
+			programs produced in that environment may not be portable to other
+			environments.</li>
+		<li>Take advantage of filters for encoding binary data as ASCII
+			text. Filters are a LanguageLevel 2 feature, described in Section <a
+			href="../4.html">3.8.4, "Filters."</a> Programs represented in this
+			way do not include any control codes and are therefore portable to
+			any LanguageLevel 2 or 3 interpreter in any environment.
+		</li>
+	</ul>
+</body>
+</html>

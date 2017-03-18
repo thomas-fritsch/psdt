@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>End-of-Line Conventions</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>End-of-Line Conventions</h4>
+	<p>
+		The PostScript language scanner and the <a
+			href="../../../8/2/r/readline.html">readline</a> operator recognize
+		all three external forms of end-of-line (EOL)&mdash;CR alone, LF
+		alone, and the CR-LF pair&mdash; and treat them uniformly, translating
+		them as described below. The PostScript interpreter does not perform
+		any such translation when reading data by other means or when writing
+		data by any means.
+	</p>
+	<p>End-of-line sequences are recognized and treated specially in
+		the following situations:</p>
+	<ul>
+		<li>Any of the three forms of EOL appearing in a literal string
+			is converted to a single LF character in the resulting string object.
+			These three examples produce identical string objects, each with an
+			LF character following the second word in the string:<pre>
+(any text<sup>&lt;CR&gt;</sup>some more text)
+(any text<sup>&lt;LF&gt;</sup>some more text)
+(any text<sup>&lt;CR&gt;&lt;LF&gt;</sup>some more text)</pre>
+		</li>
+		<li>Any of the three forms of EOL appearing immediately after \
+			in a string is treated as a line continuation; both the \ and the EOL
+			are discarded. These four examples produce identical string objects:<pre>
+(any text \<sup>&lt;CR&gt;</sup>some more text)
+(any text \<sup>&lt;LF&gt;</sup>some more text)
+(any text \<sup>&lt;CR&gt;&lt;LF&gt;</sup>some more text)
+(any text some more text)</pre>
+		</li>
+		<li>Any of the three forms of EOL appearing outside a string is
+			treated as a single white-space character. Since the language treats
+			multiple white-space characters as a single white-space character,
+			the treatment of EOL is interesting only when a PostScript token is
+			followed by data to be read explicitly by one of the file operators.
+			The following three examples produce identical results: the operator
+			reads the character x from the current input file and leaves its
+			character code (the integer 120) on the stack. <pre>
+currentfile read<sup>&lt;CR&gt;</sup>x
+currentfile read<sup>&lt;LF&gt;</sup>
+currentfile read<sup>&lt;CR&gt;&lt;LF&gt;</sup>x</pre>
+		</li>
+		<li>The <a href="../../../8/2/r/readline.html">readline</a>
+			operator treats any of the three forms of EOL as the termination
+			condition.
+		</li>
+		<li>Data read by <a href="../../../8/2/r/read.html">read</a> and
+			<a href="../../../8/2/r/readstring.html">readstring</a> does not
+			undergo EOL translation: the PostScript interpreter reads whatever
+			characters were received from the channel. The same is true of data
+			written by <a href="../../../8/2/w/write.html">write</a> and <a
+			href="../../../8/2/w/writestring.html">writestring</a>: whatever
+			characters the interpreter provides are sent to the channel. However,
+			in either case the channel itself may perform some EOL translation,
+			as discussed below.
+		</li>
+	</ul>
+</body>
+</html>
