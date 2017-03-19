@@ -4,9 +4,9 @@
 #
 # @see https://bintray.com/docs/api/#_upload_content
 
-if [ $# != 3 -a $# != 4 ]
+if [ $# != 4 ]
 then
-  echo "Usage: $0 bt_owner bt_repo bt_package [bt_version]"
+  echo "Usage: $0 bt_owner bt_repo bt_package bt_version"
   exit 1
 fi
 
@@ -15,12 +15,6 @@ BT_OWNER=$1
 BT_REPO=$2
 BT_PACKAGE=$3
 BT_VERSION=$4
-
-if [ -z $BT_VERSION ]
-then
-  echo "No deploy"
-  exit 0
-fi
 
 echo "creating version $BT_VERSION ..."
 curl -X POST -u $BINTRAY_USER:$BINTRAY_API_KEY -H "Content-Type: application/json" -d "{\"name\":\"$BT_VERSION\",\"vcs_tag\":\"$BT_VERSION\",\"desc\":\"Created by Travis CI\"}" "https://api.bintray.com/packages/$BT_OWNER/$BT_REPO/$BT_PACKAGE/versions"
