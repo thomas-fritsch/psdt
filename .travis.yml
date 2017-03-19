@@ -15,6 +15,6 @@ before_script:
 script:
 - mvn verify
 after_success:
-- if [ -n $TRAVIS_TAG ]; then
+- if [ $TRAVIS_TAG ]; then
     sh deployToBintray.sh thomas-fritsch eclipse psdt $TRAVIS_TAG;
   fi
