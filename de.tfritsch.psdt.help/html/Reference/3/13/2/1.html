@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Decoding Filters</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Decoding Filters</h4>
+	<p>Before encountering EOD, a decoding filter reads an
+		unpredictable amount of data from its data source. However, when it
+		encounters EOD, it stops reading from its data source. If the data
+		source is a file, encoded data that is properly terminated by EOD can
+		be followed by additional unencoded data, which a program can then
+		read directly from that file.</p>
+	<p>
+		When a filter reaches EOD and all the decoded data has been read from
+		it, the filter file reaches EOF and is closed automatically. Automatic
+		closing of input files at EOF is a standard feature of <i>all</i> file
+		objects, not just of filters. (The <b>ReusableStreamDecode</b> filter
+		is an exception; see <a href="../3/9.html">"ReusableStreamDecode
+			Filter" on page 153</a>.) Unlike other file objects, a filter reaches EOF
+		and is closed immediately after the last data character is read from
+		it, rather than at the following attempt to read a character. A filter
+		also reaches EOF if its data source runs out of data by reaching EOF.
+	</p>
+	<p>
+		<i><b>Note:</b> Data for a filter must be terminated by an
+			explicit EOD, even if the program reading from the filter (executing
+			the <a href="../../../8/2/i/image.html">image</a> operator, for
+			example) reads only the exact amount of data that is present.</i>
+	</p>
+	<p>
+		Applying <a href="../../../8/2/f/flushfile.html">flushfile</a> to a
+		decoding filter causes data to be drawn from the data source until the
+		filter reaches EOD or the source runs out of data, whichever occurs
+		first. This operator can be used to flush the remainder of the encoded
+		data from the underlying file when the reading of filtered data must
+		be terminated prematurely. After the <a
+			href="../../../8/2/f/flushfile.html">flushfile</a> operation, the
+		underlying file is positioned so that the next read from that file
+		will begin immediately following the EOD of the encoded data. If a
+		program closes a decoding filter prematurely before it reaches EOD and
+		without explicitly flushing it, the data source will be in an
+		indeterminate state. Because of buffering, there is no dependable way
+		to predict how much data will have been consumed from the data source.
+	</p>
+</body>
+</html>

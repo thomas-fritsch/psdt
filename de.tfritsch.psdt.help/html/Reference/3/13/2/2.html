@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Encoding Filters</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Encoding Filters</h4>
+	<p>As stated earlier, writing to an encoding (output) filter causes
+		it to write encoded data to its data target. However, because of the
+		effects of buffering, the writes to the data target occur at
+		unpredictable times. The only way to ensure that all encoded data has
+		been written is to close the filter.</p>
+	<p>Most encoding filters can accept an indefinite amount of data to
+		be encoded. The amount usually is not specified in advance. Closing
+		the filter causes an EOD marker to be written to the data target at
+		the end of the encoded data. The nature of the EOD marker depends on
+		the filter being used; it is sometimes under the control of parameters
+		specified when the filter is created.</p>
+	<p>
+		The <b>DCTEncode</b> filter requires the amount of data to be
+		specified in advance, when the filter is created. When that amount of
+		data has been encoded, the filter reaches the EOD condition
+		automatically. Attempting to write additional data to the filter
+		causes an <a href="../../../8/2/i/ioerror.html">ioerror</a>, possibly
+		after some delay.
+	</p>
+	<p>
+		Some data targets can become unable to accept further data. For
+		instance, if the data target is a string, the string may become full.
+		If the data target is a file, the file may become closed. Attempting
+		to write to a filter whose data target cannot accept data causes an <a
+			href="../../../8/2/i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		Applying <a href="../../../8/2/f/flushfile.html">flushfile</a> to an
+		encoding filter file causes the filter to flush buffered data to its
+		data target to the extent possible. If the data target is a file, <a
+			href="../../../8/2/f/flushfile.html">flushfile</a> is also invoked
+		for it. The effect of <a href="../../../8/2/f/flushfile.html">flushfile</a>
+		will propagate all the way down a filter pipeline. However, because of
+		the nature of filter algorithms, it is not possible to guarantee that
+		all data stored as part of a filter's internal state will be flushed.
+	</p>
+	<p>
+		On the other hand, applying <a href="../../../8/2/c/closefile.html">closefile</a>
+		to an encoding filter flushes both the buffered data and the filter's
+		internal state. This causes all encoded data to be written to the data
+		target, followed by an EOD marker, if appropriate.
+	</p>
+	<p>When a program closes a pipeline consisting of two or more
+		encoding filters, it must close each component filter file in
+		sequence, starting with the one that was created last (in other words,
+		the one farthest upstream). This ensures that all buffered data and
+		all appropriate EOD markers are written in the proper order.</p>
+	<p>
+		If a filter file object is reclaimed by <a
+			href="../../../8/2/r/restore.html">restore</a> or garbage collection
+		before being closed, it is closed automatically (as is the case for
+		all file objects); however, no attempt is made to close a filter
+		pipeline in the correct order. Errors arising from closing in the
+		wrong order are ignored, and filter target procedures are not called.
+	</p>
+</body>
+</html>

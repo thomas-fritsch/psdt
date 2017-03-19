@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Files</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Files</h4>
+	<p>
+		A file is the most common data source or target for a filter. A file
+		used as a data source must be an input file, and one used as a data
+		target must be an output file; otherwise, an <a
+			href="../../../8/2/i/invalidaccess.html">invalidaccess</a> error
+		occurs.
+	</p>
+	<p>If a file is a data source for a decoding filter, the filter
+		reads from it as necessary to satisfy demands on the filter, until
+		either the filter reaches its end-of-data (EOD) condition or the data
+		source reaches end-of-file. If a file is a data target for an encoding
+		filter, the filter writes to it as necessary to dispose of data that
+		has been written to the filter and transformed.</p>
+	<p>
+		Closing a filter file does not close the underlying file, unless
+		explicitly directed by the <b>CloseSource</b> or <b>CloseTarget</b>
+		filter parameter <i>(LanguageLevel 3)</i>. A program typically creates
+		a decoding filter to process data embedded in the program file
+		itself&mdash; the one designated by <a
+			href="../../../8/2/c/currentfile.html">currentfile</a>. When the
+		filter reaches EOD, execution of the underlying file resumes.
+		Similarly, a program can embed the output of an encoding filter in the
+		middle of an arbitrary data stream being written to the underlying
+		output file.
+	</p>
+	<p>
+		Once a program has begun reading from or writing to a filter, it
+		should not attempt to access the underlying file in any way until the
+		filter has been closed. Doing so could interfere with the operation of
+		the filter and leave the underlying file in an unpredictable state.
+		However, it is safe to access the underlying file after execution of <a
+			href="../../../8/2/f/filter.html">filter</a> but before the first
+		read or write of the filter file, except in certain uses of the <b>ReusableStreamDecode</b>
+		filter. The method for establishing a filter pipeline in Example 3.5
+		on page 84 depends on this.
+	</p>
+</body>
+</html>

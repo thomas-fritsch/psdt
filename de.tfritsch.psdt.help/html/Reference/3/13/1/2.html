@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Procedures</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Procedures</h4>
+	<p>The data source or target can be a procedure. When the filter
+		file is read or written, it calls the procedure to obtain input data
+		to be decoded or to dispose of output data that has been encoded. This
+		enables the data to be supplied or consumed by an arbitrary program.</p>
+	<p>If a procedure is a data source, the filter calls it whenever it
+		needs to obtain input data. The procedure must return on the operand
+		stack a readable string containing any number of bytes of data. The
+		filter pops this string from the stack and uses its contents as input
+		to the filter. This process repeats until the filter encounters
+		end-of-data (EOD). Any leftover data in the final string is discarded.
+		The procedure can return a string of length 0 to indicate that no more
+		data is available.</p>
+	<p>If a procedure is a data target, the filter calls it whenever it
+		needs to dispose of output data. Before calling the procedure, it
+		pushes two operands on the stack: a string and a boolean flag. It
+		expects the procedure to consume these operands and return a string.
+		The filter calls the procedure in the following three situations:</p>
+	<ul>
+		<li>On the first write to the filter after the <a
+			href="../../../8/2/f/filter.html">filter</a> operator creates it, the
+			filter calls the data target procedure with an empty string and the
+			boolean value <i>true</i>. The procedure must return a writeable
+			string of nonzero length, into which the filter can write filtered
+			data.
+		</li>
+		<li>Whenever the filter needs to dispose of accumulated output
+			data, it calls the procedure again, passing it a string containing
+			the data and the boolean value <i>true</i>. This string is either the
+			same string that was returned from the previous call or a substring
+			of that string. The procedure must now do whatever is appropriate
+			with the data, then return either the same string or another string
+			into which the filter can write additional filtered data.
+		</li>
+		<li>When the filter file is closed, it calls the procedure a
+			final time, passing it a string or substring containing the remaining
+			output data, if any, and the boolean value <i>false</i>. The
+			procedure must now do whatever is appropriate with the data and
+			perform any required end-of-data actions, then return a string. Any
+			string (including one of length 0) is acceptable. The filter does not
+			use this string, but merely pops it off the stack.
+		</li>
+	</ul>
+	<p>It is normal for the data source or target procedure to return
+		the same string each time. The string is allocated once at the
+		beginning and serves simply as a buffer that is used repeatedly. Each
+		time a data source procedure is called, it fills the string with one
+		buffer's worth of data and returns it. Similarly, each time a data
+		target procedure is called, it first disposes of any buffered data
+		passed to it, then returns the original string for reuse.</p>
+	<p>
+		Between successive calls to the data source or target procedure, a
+		program should not do anything that would alter the contents of the
+		string returned by that procedure. The filter reads or writes the
+		string at unpredictable times, so altering it could disrupt the
+		operation of the filter. If the string returned by the procedure is
+		reclaimed by a <a href="../../../8/2/r/restore.html">restore</a>
+		operation before the filter becomes closed, the results are
+		unpredictable. Typically, an <a href="../../../8/2/i/ioerror.html">ioerror</a>
+		occurs.
+	</p>
+	<p>
+		<i><b>Note:</b> If a filter file object is reclaimed by <a
+			href="../../../8/2/r/restore.html">restore</a> or garbage collection
+			before being closed, it is closed automatically; however, the data
+			target procedure is not called. </i>
+	</p>
+	<p>One use of procedures as data sources or targets is to run
+		filters "backward." Filters are organized so that decoding filters are
+		input files and encoding filters are output files. Normally, a
+		PostScript program obtains encoded data from some external source,
+		decodes it, and uses the decoded data; or it generates some data,
+		encodes it, and sends it to some external destination. The
+		organization of filters supports this model. However, if a program
+		must provide the input to a decoding filter or consume the output of
+		an encoding filter, it can do so by using procedures as data sources
+		or targets.</p>
+</body>
+</html>

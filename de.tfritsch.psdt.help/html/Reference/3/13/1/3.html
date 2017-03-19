@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Strings</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>Strings</h4>
+	<p>If a string is a data source, the filter simply uses its
+		contents as data to be decoded. If the filter encounters EOD, it
+		ignores the remainder of the string. Otherwise, it continues until it
+		has exhausted the string data. Until the filter is closed, the string
+		should be treated as read-only. Writing into such a string will have
+		unpredictable consequences for the data read from the filter.</p>
+	<p>
+		If a string is a data target, the filter writes encoded data into it.
+		This continues until the filter is closed. The contents of the string
+		are not dependable until that time. If the filter exhausts the
+		capacity of the string, an <a href="../../../8/2/i/ioerror.html">ioerror</a>
+		occurs. There is no way to determine how much data the filter has
+		written into the string; if a program needs to know, it should use a
+		procedure as the data target.
+	</p>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>End-of-Data and End-of-File</title>
+<link rel="stylesheet" type="text/css" href="../../format.css" />
+</head>
+<body>
+	<h2>3.13.2 End-of-Data and End-of-File</h2>
+	<p>
+		A filter can reach a state in which it cannot continue filtering data.
+		This is called the <i>end-of-data</i> (EOD) condition. Most decoding
+		(input) filters can detect an EOD marker encoded in the data they are
+		reading. The nature of this marker depends on the filter. Most
+		encoding (output) filters append an EOD marker to the data they are
+		writing. This generally occurs automatically when the filter file is
+		closed. In a few instances, the EOD condition is based on
+		predetermined information, such as a byte count or a line count,
+		rather than on an explicit marker in the encoded data.
+	</p>
+	<p>
+		A file object, including a filter, can be closed at an arbitrary time,
+		and a readable file can run out of data. This is called the <i>end-of-file</i>
+		(EOF) condition. When a decoding filter detects EOD and all the
+		decoded data has been read, the filter reaches the EOF condition. The
+		underlying data source or target for a filter can itself reach EOF.
+		This usually results in the filter reaching EOF, perhaps after some
+		delay.
+	</p>
+	<p>For efficient operation, filters must be buffered. The
+		PostScript interpreter automatically provides buffering as part of the
+		filter file object. Because of the effects of buffering, the filter
+		reads from its data source or writes to its data target at irregular
+		times, not necessarily each time the filter file itself is read or
+		written. Also, many filtering algorithms require an unpredictable
+		amount of state to be held within the filter object.</p>
+</body>
+</html>

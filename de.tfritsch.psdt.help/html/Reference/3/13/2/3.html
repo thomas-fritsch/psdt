@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CloseSource and CloseTarget</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>CloseSource and CloseTarget</h4>
+	<p>
+		<b>CloseSource</b> and <b>CloseTarget</b> <i>(both LanguageLevel
+			3)</i> are optional boolean parameters in the parameter dictionary for
+		decoding and encoding filters, respectively. These parameters govern
+		the disposition of the filter's data source or target when the <a
+			href="../../../8/2/c/closefile.html">closefile</a> operator is
+		applied to the filter explicitly, or implicitly in one of the
+		following ways: by the <a href="../../../8/2/r/restore.html">restore</a>
+		operator, by garbage collection, or (except for the <b>ReusableStreamDecode</b>
+		filter) by reaching EOD.
+	</p>
+	<p>
+		If <b>CloseSource</b> or <b>CloseTarget</b> is <i>false</i> (as they
+		are by default), no additional action is taken on the data source or
+		target; this is the behavior in LanguageLevel 2. However, if the
+		parameter is <i>true</i>, then after <a
+			href="../../../8/2/c/closefile.html">closefile</a> has been applied
+		to the filter, it is also applied to the filter's data source or
+		target. This process propagates through an entire pipeline, unless a
+		filter is reached whose <b>CloseSource</b> or <b>CloseTarget</b>
+		parameter is <i>false</i>; that filter is closed, but its source or
+		target is not.
+	</p>
+</body>
+</html>
