@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SubFileDecode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>SubFileDecode Filter</h4>
+	<pre>source EODCount EODString /SubFileDecode filter
+source dictionary EODCount EODString /SubFileDecode filter
+source dictionary /SubFileDecode filter         <i>(LanguageLevel 3)</i>
+	</pre>
+	<p>
+		The <b>SubFileDecode</b> filter does not perform data transformation,
+		but it can detect an EOD condition. Its output is always identical to
+		its input, up to the point where EOD occurs. The data preceding the
+		EOD is called a <i>subfile</i> of the underlying data source.
+	</p>
+	<p>
+		The <b>SubFileDecode</b> filter can be used in a variety of ways:
+	</p>
+	<ul>
+		<li>A subfile can contain data that should be read or executed
+			conditionally, depending on information that is not known until
+			execution. If a program decides to ignore the information in a
+			subfile, it can easily skip to the end of the subfile by invoking <a
+			href="../../../8/2/f/flushfile.html">flushfile</a> on the filter
+			file.
+		</li>
+		<li>Subfiles can help recover from errors that occur in
+			encapsulated programs. If the encapsulated program is treated as a
+			subfile, the enclosing program can regain control if an error occurs,
+			flush to the end of the subfile, and resume execution from the
+			underlying data source. The application, not the PostScript
+			interpreter, must provide such error handling; it is not the default
+			error handling provided by the PostScript interpreter.</li>
+		<li>The <b>SubFileDecode</b> filter enables an arbitrary data
+			source (procedure or string) to be treated as an input file. This use
+			of subfiles does not require detection of an EOD marker.
+		</li>
+	</ul>
+	<p>
+		The <b>SubFileDecode</b> filter requires two parameters, <i>EODCount</i>
+		and <i>EODString</i>, which specify the condition under which the
+		filter is to recognize EOD. The filter will allow data to pass through
+		the filter until it has encountered exactly <i>EODCount</i> instances
+		of the <i>EODString</i>; then it will reach EOD.
+	</p>
+	<p>
+		In LanguageLevel 2, <i>EODCount</i> and <i>EODString</i> are specified
+		as operands on the stack. In LanguageLevel 3, they may alternatively
+		be specified in the <b>SubFileDecode</b> parameter dictionary (as
+		shown in Table 3.23). They must be specified in the parameter
+		dictionary if the <b>SubFileDecode</b> filter is used as one of the
+		filters in a <b>ReusableStreamDecode</b> filter (described in the next
+		section).
+	</p>
+	<table>
+		<caption>TABLE 3.23 Entries in a SubFileDecode parameter
+			dictionary (LanguageLevel 3)</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="EODCount">
+			<th>EODCount</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The number of occurrences of EODString
+				that will be passed through the filter and made available for
+				reading.</td>
+		</tr>
+		<tr id="EODString">
+			<th>EODString</th>
+			<td>string</td>
+			<td><i>(Required)</i> The end-of-data string.</td>
+		</tr>
+		<tr id="CloseSource">
+			<th>CloseSource</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag specifying whether closing the
+				filter should also close its data source. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+	<p>
+		<i>EODCount</i> must be a nonnegative integer. If it is greater than
+		0, all input data up to and including that many occurrences of <i>EODString</i>
+		will be passed through the filter and made available for reading. If <i>EODCount</i>
+		is 0, the first occurrence of <i>EODString</i> will be consumed by the
+		filter, but it will not be passed through the filter.
+	</p>
+	<p>
+		<i>EODString</i> is ordinarily a string of nonzero length. It is
+		compared with successive subsequences of the data read from the data
+		source. This comparison is based on equality of 8-bit character codes,
+		so matching is case-sensitive. Each occurrence of <i>EODString</i> in
+		the data is counted once. Overlapping instances of <i>EODString</i>
+		will not be recognized. For example, an <i>EODString</i> of eee will
+		be recognized only once in the input XeeeeX.
+	</p>
+	<p>
+		<i>EODString</i> may also be of length 0, in which case the <b>SubFileDecode</b>
+		filter will simply pass <i>EODCount</i> bytes of arbitrary data. This
+		is dependable only for binary data, when suitable precautions have
+		been taken to protect the data from any modification by communication
+		channels or operating systems. Ordinary ASCII text is subject to
+		modifications such as translation between different end-of-line
+		conventions, which can change the byte count in unpredictable ways.
+	</p>
+	<p>
+		A recommended value for <i>EODString</i> is a document structuring
+		comment, such as %%EndBinary. Including newline characters in <i>EODString</i>
+		is <i>not</i> recommended; translating the data between different
+		end-of-line conventions could subvert the string comparisons.
+	</p>
+	<p>
+		If <i>EODCount</i> is 0 and <i>EODString</i> is of length 0, detection
+		of EOD markers is disabled; the filter will not reach EOD. This is
+		useful primarily when using procedures or strings as data sources. <i>EODCount</i>
+		is not allowed to be negative.
+	</p>
+</body>
+</html>

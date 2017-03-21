@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>FlateDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">FlateDecode Filter</h4>
+	<pre>source /FlateDecode filter
+source dictionary /FlateDecode filter</pre>
+	<p>
+		The <b>FlateDecode</b> filter <i>(LanguageLevel 3)</i> decodes data
+		encoded in zlib/deflate compressed format. See the description of the
+		<b>FlateEncode</b> filter for details of the format.
+	</p>
+	<h4 id="2">FlateEncode Filter</h4>
+	<pre>target /FlateEncode filter
+target dictionary /FlateEncode filter</pre>
+	<p>
+		The <b>FlateEncode</b> filter <i>(LanguageLevel 3)</i> encodes ASCII
+		or binary data. Encoding is based on the public-domain zlib/deflate
+		compression method, which is a variable-length Lempel-Ziv adaptive
+		compression method cascaded with adaptive Huffman coding. This method
+		is referred to below as the Flate method. It is fully defined in
+		Internet Engineering Task Force Requests for Comments (IETF RFCs) 1950
+		and 1951. The output produced by the <b>FlateEncode</b> filter is
+		always binary, even if the input is ASCII text.
+	</p>
+	<p>
+		Flate compression can discover and exploit many patterns in its input
+		data. In its basic form, it is especially well suited to
+		natural-language and PostScriptlanguage text. The filter also supports
+		optional pretransformation by a predictor function, as described in
+		the section <a href="./???">"Predictor Functions" on page 139</a>;
+		this improves compression of sampled image data.
+	</p>
+	<p>
+		A <b>FlateDecode</b> or <b>FlateEncode</b> parameter dictionary may
+		contain any of the entries listed in Table 3.19. Unless otherwise
+		noted, a decoding filter's parameters must match the parameters used
+		by the encoding filter that generated its input data.
+	</p>
+	<table>
+		<caption>TABLE 3.19 Entries in a FlateEncode or FlateDecode
+			parameter dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="Effort">
+			<th>Effort</th>
+			<td>integer</td>
+			<td><i>(Optional; <b>FlateEncode</b> only)
+			</i> A code controlling the amount of memory used and the execution speed
+				for Flate compression. Allowed values range from -1 to 9. A value of
+				0 compresses rapidly but not tightly, using little auxiliary memory.
+				A value of 9 compresses slowly but as tightly as possible, using a
+				large amount of auxiliary memory. A value of -1 is mapped to a value
+				within the range 0 to 9 that is a "reasonable" default for the
+				implementation. Default value: -1.</td>
+		</tr>
+		<tr id="Predictor">
+			<th>Predictor</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="Columns">
+			<th>Columns</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="Colors">
+			<th>Colors</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="BitsPerComponent">
+			<th>BitsPerComponent</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="CloseSource">
+			<th>CloseSource</th>
+			<td>boolean</td>
+			<td><i>(Optional; <b>FlateDecode</b> only)
+			</i> A flag specifying whether closing the filter should also close its
+				data source. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="CloseTarget">
+			<th>CloseTarget</th>
+			<td>boolean</td>
+			<td><i>(Optional; <b>FlateEncode</b> only)
+			</i> A flag specifying whether closing the filter should also close its
+				data target. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -140,6 +140,25 @@
 				<topic label="Encoding Filters" href="html/Reference/3/13/2/2.html" />
 				<topic label="CloseSource and CloseTarget" href="html/Reference/3/13/2/3.html" />
 			</topic>
+			<topic label="3.13.3 Details of Individual Filters" href="html/Reference/3/13/3.html">
+				<topic label="ASCIIHexDecode Filter" href="html/Reference/3/13/3/1.html#1" />
+				<topic label="ASCIIHexEncode Filter" href="html/Reference/3/13/3/1.html#2" />
+				<topic label="ASCII85Decode Filter" href="html/Reference/3/13/3/2.html#1" />
+				<topic label="ASCII85Encode Filter" href="html/Reference/3/13/3/2.html#2" />
+				<topic label="LZWDecode Filter" href="html/Reference/3/13/3/3.html#1" />
+				<topic label="LZWEncode Filter" href="html/Reference/3/13/3/3.html#2" />
+				<topic label="FlateDecode Filter" href="html/Reference/3/13/3/4.html#1" />
+				<topic label="FlateEncode Filter" href="html/Reference/3/13/3/4.html#2" />
+				<topic label="RunLengthDecode Filter" href="html/Reference/3/13/3/5.html#1" />
+				<topic label="RunLengthEncode Filter" href="html/Reference/3/13/3/5.html#2" />
+				<topic label="CCITTFaxDecode Filter" href="html/Reference/3/13/3/6.html#1" />
+				<topic label="CCITTFaxEncode Filter" href="html/Reference/3/13/3/6.html#2" />
+				<topic label="DCTDecode Filter" href="html/Reference/3/13/3/7.html#1" />
+				<topic label="DCTEncode Filter" href="html/Reference/3/13/3/7.html#2" />
+				<topic label="SubFileDecode Filter" href="html/Reference/3/13/3/8.html" />
+				<topic label="ReusableStreamEncode Filter" href="html/Reference/3/13/3/9.html" />
+				<topic label="NullEncode Filter" href="html/Reference/3/13/3/10.html" />
+			</topic>
 		</topic>
 	</topic>
 	<topic label="4 Graphics">

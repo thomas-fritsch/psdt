@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ASCIIHexDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">ASCIIHexDecode Filter</h4>
+	<pre>source /ASCIIHexDecode filter
+source dictionary /ASCIIHexDecode filter</pre>
+	<p>
+		The <b>ASCIIHexDecode</b> filter decodes data encoded as ASCII
+		hexadecimal and produces binary data. For each pair of ASCII
+		hexadecimal digits (0-9 and either A-F or a-f), it produces one byte
+		of binary data. All white-space characters&mdash;space, tab, carriage
+		return, line feed, form feed, and null&mdash;are ignored. The
+		character > indicates EOD. Any other characters will cause an <a
+			href="../../../8/2/i/ioerror.html">ioerror</a>.
+	</p>
+	<p>If the filter encounters EOD when it has read an odd number of
+		hexadecimal digits, it will behave as if it had read an additional 0
+		digit.</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseSource</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+	<h4 id="2">ASCIIHexEncode Filter</h4>
+	<pre>target /ASCIIHexEncode filter
+target dictionary /ASCIIHexEncode filter</pre>
+	<p>
+		The <b>ASCIIHexEncode</b> filter encodes binary data as ASCII
+		hexadecimal. For each byte of binary data, it produces two ASCII
+		hexadecimal digits (0-9 and either A-F or a-f). It inserts a newline
+		in the encoded output at least once every 80 characters, thereby
+		limiting the lengths of lines.
+	</p>
+	<p>
+		When the <b>ASCIIHexEncode</b> filter is closed, it writes a >
+		character as an EOD marker.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseTarget</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ASCII85Decode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">ASCII85Decode Filter</h4>
+	<pre>source /ASCII85Decode filter
+source dictionary /ASCII85Decode filter</pre>
+	<p>
+		The <b>ASCII85Decode</b> filter decodes data encoded in the ASCII
+		base-85 encoding format and produces binary data. See the description
+		of the <b>ASCII85Encode</b> filter for a definition of the ASCII
+		base-85 encoding.
+	</p>
+	<p>
+		The ASCII base-85 data format uses the characters ! through u and the
+		character z. All white-space characters&mdash;space, tab, carriage
+		return, line feed, form feed, and null&mdash;are ignored. If the <b>ASCII85Decode</b>
+		filter encounters the character ~ in its input, the next character
+		must be > and the filter will reach EOD. Any other characters will
+		cause the filter to issue an <a href="../../../8/2/i/ioerror.html">ioerror</a>.
+		Also, any character sequences that represent impossible combinations
+		in the ASCII base-85 encoding will cause an <a
+			href="../../../8/2/i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseSource</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+	<h4 id="2">ASCII85Encode Filter</h4>
+	<pre>target /ASCII85Encode filter
+target dictionary /ASCII85Encode filter</pre>
+	<p>
+		The <b>ASCII85Encode</b> filter encodes binary data in the ASCII
+		base-85 encoding. Generally, for every 4 bytes of binary data, it
+		produces 5 ASCII printing characters in the range ! through u. It
+		inserts a newline in the encoded output at least once every 80
+		characters, thereby limiting the lengths of lines.
+	</p>
+	<p>
+		When the <b>ASCII85Encode</b> filter is closed, it writes the
+		2-character sequence ~> as an EOD marker.
+	</p>
+	<p>
+		Binary data bytes are encoded in 4-tuples (groups of 4). Each 4-tuple
+		is used to produce a 5-tuple of ASCII characters. If the binary
+		4-tuple is (<i>b</i><sub>1</sub> <i>b</i><sub>2</sub> <i>b</i><sub>3</sub>
+		<i>b</i><sub>4</sub>) and the encoded 5-tuple is (<i>c</i><sub>1</sub>
+		<i>c</i><sub>2</sub> <i>c</i><sub>3</sub> <i>c</i><sub>4</sub> <i>c</i><sub>5</sub>),
+		then the relation between them is
+	</p>
+	<pre>
+(<i>b</i><sub>1</sub> &times; 256<sup>3</sup>) + (<i>b</i><sub>2</sub> &times; 256<sup>2</sup>) + (<i>b</i><sub>3</sub> &times; 256<sup>1</sup>) + <i>b</i><sub>4</sub> =
+    (<i>c</i><sub>1</sub> &times; 85<sup>4</sup>) + (<i>c</i><sub>2</sub> &times; 85<sup>3</sup>) + (<i>c</i><sub>3</sub> &times; 85<sup>2</sup>) + (<i>c</i><sub>4</sub> &times; 85<sup>1</sup>) + <i>c</i><sub>5</sub>
+	</pre>
+	<p>
+		In other words, 4 bytes of binary data are interpreted as a base-256
+		number and then converted into a base-85 number. The five "digits" of
+		this number, (<i>c</i><sub>1</sub> <i>c</i><sub>2</sub> <i>c</i><sub>3</sub>
+		<i>c</i><sub>4</sub> <i>c</i><sub>5</sub>), are then converted into
+		ASCII characters by adding 33, which is the ASCII code for !, to each.
+		ASCII characters in the range ! to u are used, where ! represents the
+		value 0 and u represents the value 84. As a special case, if all five
+		digits are 0, they are represented by a single character z instead of
+		by !!!!!.
+	</p>
+	<p>
+		If the <b>ASCII85Encode</b> filter is closed when the number of
+		characters written to it is not a multiple of 4, it uses the
+		characters of the last, partial 4-tuple to produce a last, partial
+		5-tuple of output. Given <i>n</i> (1, 2, or 3) bytes of binary data,
+		it first appends 4 - <i>n</i> zero bytes to make a complete 4-tuple.
+		Then, it encodes the 4-tuple in the usual way, but without applying
+		the <i>z</i> special case. Finally, it writes the first <i>n</i> + 1
+		bytes of the resulting 5-tuple. Those bytes are followed immediately
+		by the ~> EOD marker. This information is sufficient to correctly
+		encode the number of final bytes and the values of those bytes.
+	</p>
+	<p>The following conditions constitute encoding violations:</p>
+	<ul>
+		<li>The value represented by a 5-tuple is greater than 2<sup>32</sup>
+			- 1.
+		</li>
+		<li>A <i>z</i> character occurs in the middle of a 5-tuple.
+		</li>
+		<li>A final partial 5-tuple contains only one character.</li>
+	</ul>
+	<p>
+		These conditions never occur in the output produced by the <b>ASCII85Encode</b>
+		filter. Their occurrence in the input to the <b>ASCII85Decode</b>
+		filter causes an <a href="../../../8/2/i/ioerror.html">ioerror</a>.
+	</p>
+	<p>
+		The ASCII base-85 encoding is similar to one used by the public domain
+		utilities <i>btoa</i> and <i>atob</i>, which are widely available on
+		workstations. However, it is not exactly the same; in particular, it
+		omits the begin-data and end-data marker lines, and it uses a
+		different convention for marking end-of-data.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseTarget</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>DCTDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">DCTDecode Filter</h4>
+	<pre>source /DCTDecode filter
+source dictionary /DCTDecode filter</pre>
+	<p>
+		The <b>DCTDecode</b> filter decodes grayscale or color image data in
+		JPEG baseline encoded format. The description of the <b>DCTEncode</b>
+		filter provides details of the format and the related filter
+		parameters. All of the <b>DCTEncode</b> parameters (except <b>CloseTarget</b>)
+		are allowed for <b>DCTDecode</b>; however, usually no parameters are
+		needed except <b>ColorTransform</b> (and possibly <b>CloseSource</b>,
+		in LanguageLevel 3), because all information required for decoding an
+		image is normally contained in the JPEG signalling parameters, which
+		accompany the encoded data in the compressed data stream.
+	</p>
+	<p>
+		The decoded data is a stream of image samples, each of which consists
+		of 1, 2, 3, or 4 color components, interleaved on a per-sample basis.
+		Each component value occupies one 8-bit byte. The dimensions of the
+		image and the number of components per sample depend on parameters
+		that were specified when the image was encoded. Given suitable
+		parameters, the <a href="../../../8/2/i/image.html">image</a> operator
+		can consume data directly from a <b>DCTDecode</b> filter.
+	</p>
+	<p>
+		<i><b>Note:</b> The JPEG standard also allows an image's
+			components to be sent as separate scans instead of interleaved;
+			however, that format is not useful with the <a
+			href="../../../8/2/i/image.html">image</a> operator, because <a
+			href="../../../8/2/i/image.html">image</a> requires that components
+			from separate sources be read in parallel.</i>
+	</p>
+	<h4 id="2">DCTEncode Filter</h4>
+	<pre>target /DCTEncode filter
+target dictionary /DCTEncode filter</pre>
+	<p>
+		The <b>DCTEncode</b> filter encodes grayscale or color image data in
+		JPEG baseline format. JPEG is the ISO Joint Photographic Experts
+		Group, an organization responsible for developing an international
+		standard for compression of color image data (see the Bibliography).
+		Another informal abbreviation for this standard is JFIF, for JPEG File
+		Interchange Format. DCT refers to the primary technique (discrete
+		cosine transform) used in the encoding and decoding algorithms. The
+		algorithm can achieve very impressive compression of color images. For
+		example, at a compression ratio of 10 to 1, there is little or no
+		perceptible degradation in quality.
+	</p>
+	<p>
+		<i><b>Note:</b> The compression algorithm is "lossy," meaning that
+			the data produced by the <b>DCTDecode</b> filter is not exactly the
+			same as the data originally encoded by the <b>DCTEncode</b> filter.
+			These filters are designed specifically for compression of sampled
+			continuous-tone images, not for general data compression.</i>
+	</p>
+	<p>
+		Input to the <b>DCTEncode</b> filter is a stream of image samples,
+		each of which consists of 1, 2, 3, or 4 color components, interleaved
+		on a per-sample basis. Each component value occupies one 8-bit byte.
+		The dimensions of the image and the number of components per sample
+		must be specified in the filter's parameter dictionary. The dictionary
+		can also contain other optional parameters that control the operation
+		of the encoding algorithm. Table 3.22 describes the contents of this
+		dictionary.
+	</p>
+	<table>
+		<caption>TABLE 3.22 Entries in a DCTEncode parameter
+			dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="Columns">
+			<th>Columns</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The width of the image in samples per scan
+				line.</td>
+		</tr>
+		<tr id="Rows">
+			<th>Rows</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The height of the image in scan lines.</td>
+		</tr>
+		<tr id="Colors">
+			<th>Colors</th>
+			<td>integer</td>
+			<td><i>(Required)</i> The number of color components in the
+				image; must be 1, 2, 3, or 4.</td>
+		</tr>
+		<tr id="HSamples">
+			<th>HSamples</th>
+			<td>array, packed array or string</td>
+			<td><i>(Optional)</i> A sequence of horizontal sampling factors
+				(one per color component). If <b>HSamples</b> is an array or a
+				packed array, the elements must be integers; if it is a string, the
+				elements are interpreted as integers in the range 0 to 255. The <i>i</i>th
+				element of the sequence specifies the sampling factor for the <i>i</i>th
+				color component. Allowed sampling factors are 1, 2, 3, and 4. The
+				default value is an array containing 1 for all components, meaning
+				that all components are to be sampled at the same rate.<br /> When
+				the sampling factors are not all the same, <b>DCTEncode</b>
+				subsamples the image for those components whose sampling factors are
+				less than the largest one. For example, if <b>HSamples</b> is [4 3 2
+				1] for a 4-color image, then for every 4 horizontal samples of the
+				first component, <b>DCTEncode</b> sends only 3 samples of the second
+				component, 2 of the third, and 1 of the fourth. However, <b>DCTDecode</b>
+				inverts this sampling process so that it produces the same amount of
+				data as was presented to <b>DCTEncode</b>. In other words, this
+				parameter affects only the encoded, and not the unencoded or
+				decoded, representation. The filters deal correctly with the
+				situation in which the width or height of the image is not a
+				multiple of the corresponding sampling factor.</td>
+		</tr>
+		<tr id="VSamples">
+			<th>VSamples</th>
+			<td>array, packed array or string</td>
+			<td><i>(Optional)</i> A sequence of vertical sampling factors
+				(one per color component). Interpretation and default value are the
+				same as for <b>HSamples</b>.<br />The JPEG standard imposes a
+				restriction on the values in the <b>HSamples</b> and <b>VSamples</b>
+				sequences, taken together: For each color component, multiply its <b>HSamples</b>
+				value by its <b>VSamples</b> value, then add all of the products
+				together. The result must not exceed 10.</td>
+		</tr>
+		<tr id="QuantTables">
+			<th>QuantTables</th>
+			<td>array or packed array</td>
+			<td><i>(Optional)</i> An array or packed array of quantization
+				tables (one per color component). The <i>i</i>th element of <b>QuantTables</b>
+				is the table to be used, after scaling by <b>QFactor</b>, for
+				quantization of the <i>i</i>th color component. As many as four
+				unique quantization tables can be specified, but several elements of
+				the <b>QuantTables</b> array can refer to the same table.<br />
+				Each table must be an array, a packed array, or a string. If it is
+				an array or a packed array, the elements must be numbers; if it is a
+				string, the elements are interpreted as integers in the range 0 to
+				255. In either case, each table must contain 64 numbers organized
+				according to the zigzag pattern defined by the JPEG standard. After
+				scaling by <b>QFactor</b>, every element is rounded to the nearest
+				integer in the range 1 to 255. Default value:
+				implementation-dependent.</td>
+		</tr>
+		<tr id="QFactor">
+			<th>QFactor</th>
+			<td>number</td>
+			<td><i>(Optional)</i> A scale factor applied to the elements of
+				QuantTables. This parameter enables straightforward adjustment of
+				the tradeoff between image compression and image quality without
+				respecifying the quantization tables. Valid values are in the range
+				0 to 1,000,000. A value less than 1 improves image quality but
+				decreases compression; a value greater than 1 increases compression
+				but degrades image quality. Default value: 1.0.</td>
+		</tr>
+		<tr id="HuffTables">
+			<th>HuffTables</th>
+			<td>array or packed array</td>
+			<td><i>(Optional)</i> An array or packed array of at least 2
+				&times; <b>Colors</b> encoding tables. The pair of tables at indices
+				2 &times; <i>i</i> and 2 &times; <i>i</i> + 1 in <b>HuffTables</b>
+				are used to construct Huffman tables for coding the <i>i</i>th color
+				component. The first table in each pair is used for the DC
+				coefficients, the second for the AC coefficients. At most two DC
+				tables and two AC tables can be specified, but several elements of
+				the <b>HuffTables</b> array can refer to the same tables. Default
+				value: implementation-dependent.<br /> Each table must be an array,
+				a packed array, or a string. If it is an array or a packed array,
+				the elements must be numbers; if it is a string, the elements are
+				interpreted as integers in the range 0 to 255. The first 16 values
+				specify the number of codes of each length from 1 to 16 bits. The
+				remaining values are the symbols corresponding to each code; they
+				are given in order of increasing code length. This information is
+				sufficient to construct a Huffman coding table according to an
+				algorithm given in the JPEG standard. A <b>QFactor</b> value other
+				than 1.0 may alter this computation.</td>
+		</tr>
+		<tr id="ColorTransform">
+			<th>ColorTransform</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> A code specifying a transformation to be
+				performed on the sample values:
+				<dl>
+					<dt>0</dt>
+					<dd>No transformation.</dd>
+					<dt>1</dt>
+					<dd>
+						If <b>Colors</b> is 3, transform RGB values to YUV before encoding
+						and from YUV to RGB after decoding. If <b>Colors</b> is 4,
+						transform CMYK values to YUVK before encoding and from YUVK to
+						CMYK after decoding. This option is ignored if <b>Colors</b> is 1
+						or 2.
+					</dd>
+				</dl> If performed, these transformations occur entirely within the <b>DCTEncode</b>
+				and <b>DCTDecode</b> filters. The RGB and YUV used here have nothing
+				to do with the color spaces defined as part of the Adobe imaging
+				model. The purpose of converting from RGB to YUV is to separate
+				luminance and chrominance information (see below).<br /> The
+				default value of <b>ColorTransform</b> is 1 if <b>Colors</b> is 3
+				and 0 otherwise. In other words, conversion between RGB and YUV is
+				performed for all three-component images unless explicitly disabled
+				by setting <b>ColorTransform</b> to 0. Additionally, the <b>DCTEncode</b>
+				filter inserts an Adobe-defined marker code in the encoded data
+				indicating the <b>ColorTransform</b> value used. If present, this
+				marker code overrides the <b>ColorTransform</b> value given to <b>DCTDecode</b>.
+				Thus it is necessary to specify <b>ColorTransform</b> only when
+				decoding data that does not contain the Adobe-defined marker code.</td>
+		</tr>
+		<tr id="CloseTarget">
+			<th>CloseTarget</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3)</i> A flag specifying whether
+				closing the filter should also close its data target. Default value:
+				<i>false</i>.</td>
+		</tr>
+	</table>
+	<p>
+		Specifying the optional parameters properly requires understanding the
+		details of the encoding algorithm, which is described in the JPEG
+		standard. The <b>DCTDecode</b> and <b>DCTEncode</b> filters do not
+		support certain features of the standard that are irrelevant to images
+		following PostScript language conventions; in particular, progressive
+		JPEG is not supported. Additionally, Adobe has made certain choices
+		regarding reserved marker codes and other optional features of the
+		standard; contact the Adobe Developers Association for further
+		information.
+	</p>
+	<p>
+		The default values for <b>QuantTables</b> and <b>HuffTables</b> in a <b>DCTEncode</b>
+		parameter dictionary are chosen without reference to the image color
+		space and without specifying any particular tradeoff between image
+		quality and compression. Although they will work, they will not
+		produce optimal results for most applications. For superior
+		compression, applications should provide custom <b>QuantTables</b> and
+		<b>HuffTables</b> arrays rather than relying on the default values.
+	</p>
+	<p>Better compression is often possible for color spaces that treat
+		luminance and chrominance separately than for those that do not. The
+		RGB to YUV conversion provided by the filters is one attempt to
+		separate luminance and chrominance; it conforms to CCIR recommendation
+		601-1. Other color spaces, such as the CIE 1976 L*a*b* space, may also
+		achieve this objective. The chrominance components can then be
+		compressed more than the luminance by using coarser sampling or
+		quantization, with no degradation in quality.</p>
+	<p>
+		Unlike other encoding filters, the <b>DCTEncode</b> filter requires
+		that a specific amount of data be written to it: <b>Columns</b>
+		&times; <b>Rows</b> samples of <b>Colors</b> bytes each. The filter
+		reaches EOD at that point. It cannot accept further data, so
+		attempting to write to it will cause an <a
+			href="../../../8/2/i/ioerror.html">ioerror</a>. The program must now
+		close the filter file to cause the buffered data and EOD marker to be
+		flushed to the data target.
+	</p>
+</body>
+</html>

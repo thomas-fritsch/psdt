@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CCITTFaxDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">CCITTFaxDecode Filter</h4>
+	<pre>source /CCITTFaxDecode filter
+source dictionary /CCITTFaxDecode filter</pre>
+	<p>
+		The <b>CCITTFaxDecode</b> filter decodes image data that has been
+		encoded according to the CCITT facsimile standard. See the description
+		of the <b>CCITTFaxEncode</b> filter for details of the filter
+		parameters.
+	</p>
+	<p>
+		If the <b>CCITTFaxDecode</b> filter encounters improperly encoded
+		source data, it will issue an <a href="../../../8/2/i/ioerror.html">ioerror</a>.
+		It will not perform any error correction or resynchronization, except
+		as noted for <b>DamagedRowsBeforeError</b> in Table 3.21.
+	</p>
+	<h4 id="2">CCITTFaxEncode Filter</h4>
+	<pre>target /CCITTFaxEncode filter
+target dictionary /CCITTFaxEncode filter</pre>
+	<p>
+		The <b>CCITTFaxEncode</b> filter encodes image data according to the
+		CCITT facsimile (fax) standard. This encoding is defined by an
+		international standards organization, the International
+		Telecommunication Union (ITU), formerly known as the Comit&eacute;
+		Consultatif International T&eacute;l&eacute;phonique et
+		T&eacute;l&eacute;graphique (International Coordinating Committee for
+		Telephony and Telegraphy). The encoding is designed to achieve
+		efficient compression of monochrome (1 bit per pixel) image data at
+		relatively low resolutions. The encoding algorithm is not described in
+		this book, but rather in the ITU standard (see the Bibliography). We
+		refer to that standard as the CCITT standard for historical reasons.
+	</p>
+	<p>
+		<i><b>Note:</b> PostScript language support for the CCITT standard
+			is limited to encoding and decoding of image data. It does not
+			include initial connection and handshaking protocols that would be
+			required to communicate with a fax machine. The purpose of these
+			filters is to enable efficient interchange of bilevel sampled images
+			between an application program and a PostScript interpreter.</i>
+	</p>
+	<p>
+		The <b>CCITTFaxDecode</b> and <b>CCITTFaxEncode</b> filters support
+		two encoding schemes, Group 3 and Group 4, and various optional
+		features of the CCITT standard. Table 3.21 describes the contents of
+		the parameter dictionary for these filters.
+	</p>
+	<table>
+		<caption>TABLE 3.21 Entries in a CCITTFaxEncode or
+			CCITTFaxDecode parameter dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="Uncompressed">
+			<th>Uncompressed</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether the <b>CCITTFaxEncode</b>
+				filter is permitted to use uncompressed encoding when advantageous.
+				Uncompressed encoding is an optional part of the CCITT fax encoding
+				standard. Its use can prevent significant data expansion when
+				encoding certain image data, but many fax machine manufacturers and
+				software vendors do not support it. The <b>CCITTFaxDecode</b> filter
+				always accepts uncompressed encoding. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="K">
+			<th>K</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> An integer that selects the encoding
+				scheme to be used:
+				<dl>
+					<dt>&lt; 0</dt>
+					<dd>Pure two-dimensional encoding (Group 4)</dd>
+					<dt>0</dt>
+					<dd>Pure one-dimensional encoding (Group 3, 1-D)</dd>
+					<dt>&gt; 0</dt>
+					<dd>
+						Mixed one- and two-dimensional encoding (Group 3, 2-D), in which a
+						line encoded one-dimensionally can be followed by at most <b>K</b>
+						- 1 lines encoded two-dimensionally
+					</dd>
+				</dl> The <b>CCITTFaxEncode</b> filter uses the value of <b>K</b> to
+				determine how to encode the data. The <b>CCITTFaxDecode</b> filter
+				distinguishes among negative, zero, and positive values of <b>K</b>
+				to determine how to interpret the encoded data; however, it does not
+				distinguish between different positive <b>K</b> values. Default
+				value: 0.</td>
+		</tr>
+		<tr id="EndOfLine">
+			<th>EndOfLine</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether the <b>CCITTFaxEncode</b>
+				filter prefixes an end-of-line bit pattern to each line of encoded
+				data. The <b>CCITTFaxDecode</b> filter always accepts end-of-line
+				bit patterns, but requires them to be present only if <b>EndOfLine</b>
+				is <i>true</i>. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="EncodedByteAlign">
+			<th>EncodedByteAlign</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether the <b>CCITTFaxEncode</b>
+				filter inserts extra 0 bits before each encoded line so that the
+				line begins on a byte boundary. If <i>true</i>, the <b>CCITTFaxDecode</b>
+				filter skips over encoded bits to begin decoding each line at a byte
+				boundary. If <i>false</i>, the filters neither generate nor expect
+				extra bits in the encoded representation. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="Columns">
+			<th>Columns</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> The width of the image in pixels. If <b>Columns</b>
+				is not a multiple of 8, the filters adjust the width of the
+				unencoded image to the next multiple of 8. This adjustment is
+				necessary for consistency with the <a
+				href="../../../8/2/i/image.html">image</a> operator, which requires
+				that each line of source data start on a byte boundary. Default
+				value: 1728.</td>
+		</tr>
+		<tr id="Rows">
+			<th>Rows</th>
+			<td>integer</td>
+			<td><i>(Optional; <b>CCITTFaxDecode</b> only)
+			</i> The height of the image in scan lines. If <b>Rows</b> is 0 or
+				absent, the image's height is not predetermined; the encoded data
+				must be terminated by an end-of-block bit pattern or by the end of
+				the filter's data source. Default value: 0.</td>
+		</tr>
+		<tr id="EndOfBlock">
+			<th>EndOfBlock</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether the <b>CCITTFaxEncode</b>
+				filter appends an end-of-block pattern to the encoded data. If <i>true</i>,
+				the <b>CCITTFaxDecode</b> filter expects the encoded data to be
+				terminated by end-of-block, overriding the <b>Rows</b> parameter. If
+				<i>false</i>, the <b>CCITTFaxDecode</b> filter stops when it has
+				decoded the number of lines indicated by <b>Rows</b> or when its
+				data source is exhausted, whichever happens first. Default value: <i>true</i>.<br />
+				The end-of-block pattern is the CCITT end-of-facsimile-block (EOFB)
+				or return-to-control (RTC) appropriate for the <b>K</b> parameter.</td>
+		</tr>
+		<tr id="BlackIs1">
+			<th>BlackIs1</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag indicating whether 1 bits are to be
+				interpreted as black pixels and 0 bits as white pixels, the reverse
+				of the normal Post- Script language convention for image data.
+				Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="DamagedRowsBeforeError">
+			<th>DamagedRowsBeforeError</th>
+			<td>integer</td>
+			<td><i>(Optional; <b>CCITTFaxDecode</b> only)
+			</i> The number of damaged rows of data to be tolerated before an <a
+				href="../../../8/2/i/ioerror.html">ioerror</a> is generated; applies
+				only if <b>EndOfLine</b> is <i>true</i> and <b>K</b> is nonnegative.
+				Tolerating a damaged row means locating its end in the encoded data
+				by searching for an <b>EndOfLine</b> pattern, then substituting
+				decoded data from the previous row if the previous row was not
+				damaged, or a white scan line if the previous row was also damaged.
+				Default value: 0.</td>
+		</tr>
+		<tr id="CloseSource">
+			<th>CloseSource</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3; <b>CCITTFaxDecode</b>
+					only)
+			</i> A flag specifying whether closing the filter should also close its
+				data source. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="CloseTarget">
+			<th>CloseTarget</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3; <b>CCITTFaxEncode</b>
+					only)
+			</i> A flag specifying whether closing the filter should also close its
+				data target. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+	<p>
+		The CCITT fax standard specifies a bilevel picture encoding in terms
+		of black and white pixels. It does not define a representation for the
+		unencoded image data in terms of 0 and 1 bits in memory. However, the
+		PostScript language (specifically, the <a
+			href="../../../8/2/i/image.html">image</a> operator) does impose a
+		convention: normally, 0 means black and 1 means white. Therefore, the
+		<b>CCITTFaxEncode</b> filter normally encodes 0 bits as black pixels
+		and 1 bits as white pixels. Similarly, the <b>CCITTFaxDecode</b>
+		filter normally produces 0 bits for black pixels and 1 bits for white
+		pixels. The <b>BlackIs1</b> parameter can be used to reverse this
+		convention if necessary.
+	</p>
+	<p>
+		The fax encoding method is bit-oriented, not byte-oriented. This means
+		that, in principle, encoded or decoded data might not end at a byte
+		boundary. The <b>CCITTFaxEncode</b> and <b>CCITTFaxDecode</b> filters
+		deal with this problem in the following ways:
+	</p>
+	<ul>
+		<li>Unencoded data is treated as complete scan lines, with unused
+			bits inserted at the end of each scan line to fill out the last byte.
+			This is compatible with the convention the <a
+			href="../../../8/2/i/image.html">image</a> operator uses.
+		</li>
+		<li>Encoded data is ordinarily treated as a continuous, unbroken
+			bit stream. The <b>EncodedByteAlign</b> parameter can be used to
+			cause each encoded scan line to be filled to a byte boundary; this
+			method is not prescribed by the CCITT standard, and fax machines
+			never do this, but some software packages find it convenient to
+			encode data this way.
+		</li>
+		<li>When a filter reaches EOD, it always skips to the next byte
+			boundary following the encoded data.</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LZWDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">LZWDecode Filter</h4>
+	<pre>source /LZWDecode filter
+source dictionary /LZWDecode filter</pre>
+	<p>
+		The <b>LZWDecode</b> filter decodes data that is encoded in a
+		Lempel-Ziv-Welch compressed format. See the description of the <b>LZWEncode</b>
+		filter for details of the format and a description of the filter
+		parameters.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseSource</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+	<h4 id="2">LZWEncode Filter</h4>
+	<pre>target /LZWEncode filter
+target dictionary /LZWEncode filter</pre>
+	<p>
+		The <b>LZWEncode</b> filter encodes ASCII or binary data according to
+		the basic LZW (Lempel-Ziv-Welch) data compression method. LZW is a
+		variable-length, adaptive compression method that has been adopted as
+		one of the standard compression methods in the <i>tag image file
+			format</i> (TIFF) standard. The output produced by the <b>LZWEncode</b>
+		filter is always binary, even if the input is ASCII text.
+	</p>
+	<p>
+		LZW compression can discover and exploit many patterns in its input
+		data. In its basic form, it is especially well suited to
+		natural-language and PostScriptlanguage text. The filter also supports
+		optional pretransformation by a predictor function, as described in
+		the section <a href="./???">"Predictor Functions" on page 139</a>;
+		this improves compression of sampled image data.
+	</p>
+	<p>
+		<i><b>Note:</b> The LZW compression method is the subject of
+			United States patent number 4,558,302 and corresponding foreign
+			patents owned by the Unisys Corporation. Adobe Systems has licensed
+			this patent for use in its products. Independent software vendors
+			(ISVs) may be required to license this patent to develop software
+			using the LZW method to compress PostScript programs or data for use
+			with Adobe products. Unisys has agreed that ISVs may obtain such a
+			license for a modest one-time fee. Additional information can be
+			obtained on the World Wide Web at <a
+			href="http: //www.unisys.com/LeadStory/lzwfaq.html">&lt;http:
+				//www.unisys.com/LeadStory/lzwfaq.html&gt;</a>.</i>
+	</p>
+	<p>
+		An <b>LZWDecode</b> or <b>LZWEncode</b> parameter dictionary may
+		contain any of the entries listed in Table 3.17. Unless otherwise
+		noted, a decoding filter's parameters must match the parameters used
+		by the encoding filter that generated its input data.
+	</p>
+	<table>
+		<caption>TABLE 3.17 Entries in an LZWEncode or LZWDecode
+			parameter dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="EarlyChange">
+			<th>EarlyChange</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> A code indicating when to increase the
+				code word length. The TIFF specification can be interpreted to imply
+				that code word length increases are postponed as long as possible.
+				However, some existing implementations of LZW increase the code word
+				length one code word earlier than necessary. The PostScript language
+				supports both interpretations. If <b>EarlyChange</b> is 0, code word
+				length increases are postponed as long as possible. If it is 1, they
+				occur one code word early. Default value: 1.</td>
+		</tr>
+		<tr id="UnitLength">
+			<th>UnitLength</th>
+			<td>integer</td>
+			<td><i>(Optional; LanguageLevel 3)</i> The size of the units
+				encoded, in bits. The allowed values are 3 through 8. See <a
+				href="./???">"UnitLength and LowBitFirst" on page 136</a>. Default
+				value: 8. A value other than the default is permitted only for <b>LZWDecode</b>
+				and should not be used in combination with a predictor (specified by
+				a <b>Predictor</b> value greater than 1; see Table 3.20).</td>
+		</tr>
+		<tr id="LowBitFirst">
+			<th>LowBitFirst</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3)</i> A flag that determines
+				whether the code words are packed into the encoded data stream
+				low-order bit first (<i>true</i>) or high-order bit first (<i>false</i>).
+				See <a href="./???">"UnitLength and LowBitFirst" on page 136</a>.
+				Default value: <i>false</i>. A value other than the default is
+				permitted only for <b>LZWDecode</b>.</td>
+		</tr>
+		<tr id="Predictor">
+			<th>Predictor</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="Columns">
+			<th>Columns</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="Colors">
+			<th>Colors</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="BitsPerComponent">
+			<th>BitsPerComponent</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> See Table 3.20 on page 141.</td>
+		</tr>
+		<tr id="CloseSource">
+			<th>CloseSource</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3; <b>LZWDecode</b> only)
+			</i> A flag specifying whether closing the filter should also close its
+				data source. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="CloseTarget">
+			<th>CloseTarget</th>
+			<td>boolean</td>
+			<td><i>(Optional; LanguageLevel 3; <b>LZWEncode</b> only)
+			</i> A flag specifying whether closing the filter should also close its
+				data target. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+	<p>
+		In LanguageLevel 3, the size of the units encoded is determined by the
+		optional <b>UnitLength</b> entry in the <b>LZWDecode</b> parameter
+		dictionary; its default value is 8. The following general discussion
+		of the encoding scheme refers to this LanguageLevel 3 parameter; for
+		LanguageLevel 2, assume a unit size of 8.
+	</p>
+	<p>
+		The encoded data consists of a sequence of codes that can be from (<b>UnitLength</b>
+		+ 1) to a maximum of 12 bits long. Each code denotes a single
+		character of input data (0 to 2<sup><b>UnitLength</b></sup> - 1), a
+		clear-table marker (2<sup><b>UnitLength</b></sup>), an EOD marker (2<sup><b>UnitLength</b></sup>
+		+ 1), or a table entry representing a multicharacter sequence that has
+		been encountered previously in the input (2<sup><b>UnitLength</b></sup>
+		+ 2 and greater). In the normal case where <b>UnitLength</b> is 8, the
+		clear-table marker is 256 and the EOD marker is 257.
+	</p>
+	<p>
+		Initially, the code length is (<b>UnitLength</b> + 1) bits and the
+		table contains only entries for the ((2<sup><b>UnitLength</b></sup> +
+		2) fixed codes. As encoding proceeds, entries are appended to the
+		table, associating new codes with longer and longer input character
+		sequences. The encoding and decoding filters maintain identical copies
+		of this table.
+	</p>
+	<p>
+		Whenever both the encoder and decoder independently (but
+		synchronously) realize that the current code length is no longer
+		sufficient to represent the number of entries in the table, they
+		increase the number of bits per code by 1. For a <b>UnitLength</b> of
+		8, the first output code that is 10 bits long is the one following the
+		creation of table entry 511, and so on for 11 (1023) and 12 (2047)
+		bits. Codes are never longer than 12 bits, so entry 4095 is the last
+		entry of the LZW table.
+	</p>
+	<p>The encoder executes the following sequence of steps to generate
+		each output code:</p>
+	<ol>
+		<li>Accumulate a sequence of one or more input characters
+			matching some sequence already present in the table. For maximum
+			compression, the encoder should find the longest such sequence.</li>
+		<li>Emit the code corresponding to that sequence.</li>
+		<li>Create a new table entry for the first unused code. Its value
+			is the sequence found in step 1 followed by the next input character.</li>
+	</ol>
+	<p>For example, suppose UnitLength is 8 and the input consists of
+		the following sequence of ASCII character codes:</p>
+	<pre>45 45 45 45 45 65 45 45 45 66</pre>
+	<p>Starting with an empty table, the encoder proceeds as shown in
+		Table 3.18.</p>
+	<table>
+		<caption>TABLE 3.18 Typical LZW encoding sequence</caption>
+		<tr>
+			<th>Input Sequence</th>
+			<th>Output Code</th>
+			<th>Code added to Table</th>
+			<th>Sequence represented<br />by new Code
+			</th>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>256 (clear-table)</td>
+			<td>-</td>
+			<td>-</td>
+		</tr>
+		<tr>
+			<td>45</td>
+			<td>45</td>
+			<td>258</td>
+			<td>45</td>
+		</tr>
+		<tr>
+			<td>45 45</td>
+			<td>258</td>
+			<td>259</td>
+			<td>45 45 45</td>
+		</tr>
+		<tr>
+			<td>45 45</td>
+			<td>258</td>
+			<td>260</td>
+			<td>45 45 65</td>
+		</tr>
+		<tr>
+			<td>65</td>
+			<td>65</td>
+			<td>261</td>
+			<td>65 45</td>
+		</tr>
+		<tr>
+			<td>45 45 45</td>
+			<td>259</td>
+			<td>262</td>
+			<td>45 45 45 66</td>
+		</tr>
+		<tr>
+			<td>-</td>
+			<td>257 (EOD)</td>
+			<td>-</td>
+			<td>-</td>
+		</tr>
+	</table>
+	<p>
+		Codes are packed into a continuous bit stream, high-order bit first
+		(assuming that <b>LowBitFirst</b> is <i>false</i>). This stream is
+		then divided into 8-bit bytes, high-order bit first. Thus, codes can
+		straddle byte boundaries arbitrarily. After the EOD marker (code value
+		of 257), any leftover bits in the final byte are set to 0.
+	</p>
+	<p>In the example above, all the output codes are 9 bits long; they
+		would pack into bytes as follows (represented in hexadecimal):</p>
+	<pre>80 0B 60 50 22 0C 0E 02</pre>
+	<p>To adapt to changing input sequences, the encoder may at any
+		point issue a clear-table code, which causes both the encoder and
+		decoder to restart with initial tables and 9-bit codes. By convention,
+		the encoder begins by issuing a clear-table code. It must issue a
+		clear-table code when the table becomes full; it may do so sooner.</p>
+</body>
+</html>

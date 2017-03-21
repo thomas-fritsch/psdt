@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RunLengthDecode and -Encode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4 id="1">RunLengthDecode Filter</h4>
+	<pre>source /RunLengthDecode filter
+source dictionary /RunLengthDecode filter</pre>
+	<p>
+		The <b>RunLengthDecode</b> filter decodes data encoded in the
+		run-length encoding format. The encoded data consist of pairs of
+		run-length bytes and data. See the description of the <b>RunLengthEncode</b>
+		filter for details of the format. A run length of 128 indicates EOD.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseSource</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+	<h4 id="2">RunLengthEncode Filter</h4>
+	<pre>target recordsize /RunLengthEncode filter
+target dictionary recordsize /RunLengthEncode filter</pre>
+	<p>
+		The <b>RunLengthEncode</b> filter encodes data in a simple
+		byte-oriented format based on run length. The compressed data format
+		is a sequence of runs, where each run consists of a <i>length</i> byte
+		followed by 1 to 128 bytes of data. If the <i>length</i> byte is in
+		the range 0 to 127, the following <i>length</i> + 1 bytes (1 to 128
+		bytes) are to be copied literally upon decompression. If <i>length</i>
+		is in the range 129 to 255, the following single byte is to be
+		replicated 257 - <i>length</i> times (2 to 128 times) upon
+		decompression.
+	</p>
+	<p>
+		When the <b>RunLengthEncode</b> filter is closed, it writes a final
+		byte, with value 128 as an EOD marker.
+	</p>
+	<p>
+		<i>recordsize</i> is a nonnegative integer specifying the number of
+		bytes in a "record" of source data. The <b>RunLengthEncode</b> filter
+		will not create a run that contains data from more than one source
+		record. If <i>recordsize</i> is 0, the filter does not treat its
+		source data as records. The notion of a "record" is irrelevant in the
+		context of the PostScript interpreter (in particular, the <a
+			href="../../../8/2/i/image.html">image</a> operator does not require
+		its data to be divided into records). A nonzero <i>recordsize</i> is
+		useful only if the encoded data is to be sent to some application
+		program that requires it.
+	</p>
+	<p>
+		This encoding is very similar to that used by the Apple<sup>&reg;</sup>
+		Macintosh<sup>&reg;</sup> PackBits routine and by TIFF Data
+		Compression scheme #32773. Output from PackBits is acceptable as input
+		to the <b>RunLengthDecode</b> filter if an EOD marker (byte value 128)
+		is appended to it. Output from the <b>RunLengthEncode</b> filter is
+		acceptable to UnpackBits if the <i>recordsize</i> parameter is equal
+		to the length of one scan line for the image being encoded.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseTarget</b>
+		parameter <i>(LanguageLevel 3)</i>. Note that there is no means for
+		specifying <i>recordsize</i> in the parameter dictionary; it must be
+		an explicit operand of the <b>RunLengthEncode</b> filter.
+	</p>
+</body>
+</html>

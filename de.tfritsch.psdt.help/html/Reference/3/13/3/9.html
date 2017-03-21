@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ReusableStreamDecode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>ReusableStreamDecode Filter</h4>
+	<pre>source /ReusableStreamDecode filter
+source dictionary /ReusableStreamDecode filter</pre>
+	<p>Certain PostScript features require that large blocks of data be
+		available, in their entirety, for use one or more times during the
+		invocation of those features. Examples of such data blocks include:</p>
+	<ul>
+		<li>Data for a sampled function (see Section <a
+			href="../../../3/10.html">3.10, "Functions"</a>)
+		</li>
+		<li>Image data or encapsulated PostScript (EPS) referenced from
+			the PaintProc procedure of a form dictionary (see Section <a
+			href="../../../4/7.html">4.7, "Forms"</a>)
+		</li>
+		<li>Mesh data for shading dictionaries (see Section <a
+			href="../../../4/9/3.html">4.9.3, "Shading Patterns"</a>)
+		</li>
+	</ul>
+	<p>
+		Such data can be stored in strings, but only if the amount of data is
+		less than the implementation limit imposed on string objects. (See
+		Appendix <a href="../../../B.html">B</a> for implementation limits.)
+		To overcome this limit, LanguageLevel 3 defines <i>reusable
+			streams</i>.
+	</p>
+	<p>
+		A reusable stream is a file object produced by a <b>ReusableStreamDecode</b>
+		filter. Conceptually, this filter consumes all of its source data at
+		the time the <a href="../../../8/2/f/filter.html">filter</a> operator
+		is invoked and then makes the data available as if it were contained
+		in a temporary file. The filter file can be positioned as if it were a
+		random-access disk file; its capacity is limited only by the amount of
+		storage available.
+	</p>
+	<p>
+		Except for <b>ReusableStreamDecode</b> filters, a decoding filter is
+		an input file that can be read only once. When it reaches EOF, it is
+		automatically closed, and no further data can be read from it. No data
+		is read from the filter's source during the execution of the <a
+			href="../../../8/2/f/filter.html">filter</a> operator.
+	</p>
+	<p>
+		In contrast, a <b>ReusableStreamDecode</b> filter is an input file
+		that can be read many times. When it reaches EOF, it does not
+		automatically close, but merely stays at EOF. It can be repositioned,
+		when it reaches EOF or at any other time, for further reading. In some
+		cases, <i>all</i> of the data is read from the filter's source during
+		the execution of the <a href="../../../8/2/f/filter.html">filter</a>
+		operator.
+	</p>
+	<p>
+		A reusable stream has a <i>length</i>, which is the total number of
+		bytes in its data source. The stream can be positioned anywhere from
+		0, which denotes the beginning of the stream, to <i>length</i>, which
+		denotes the EOF.
+	</p>
+	<p>When data is read from the filter's source, it may or may not be
+		buffered in memory or written to a temporary disk file, depending on
+		the type of data source, the availability of storage, and details of
+		the implementation and system memory management.</p>
+	<p>
+		The <b>AsyncRead</b> flag in the filter's parameter dictionary
+		specifies whether all of the data should be read from the data source
+		during the execution of the <a href="../../../8/2/f/filter.html">filter</a>
+		operator (<b>AsyncRead</b> <i>false</i>, the default), or whether this
+		may be postponed until the data is needed (<b>AsyncRead</b> <i>true</i>).
+		Asynchronous reading may require less memory or have better
+		performance, but caution is required: attempts to read from the same
+		data source through a separate stream may produce incorrect results.
+	</p>
+	<p>
+		Regardless of the value of <b>AsyncRead</b>, a string or file that is
+		used as the data source for a reusable stream, as for any other
+		decoding filter, should be considered read-only until the stream is
+		closed. Writing into such a string or file will have unpredictable
+		consequences for the data read from the stream.
+	</p>
+	<p>
+		A reusable stream's parameter dictionary can also specify additional
+		filters that are to be applied to the data source before it is read by
+		the <b>ReusableStreamDecode</b> filter. This has an effect equivalent
+		to supplying the same filter pipeline as the data source of the <b>ReusableStreamDecode</b>
+		filter. However, specifying those filters in the <b>ReusableStreamDecode</b>
+		filter dictionary can improve efficiency by allowing the
+		implementation more flexibility in determining how to read and buffer
+		the data.
+	</p>
+	<p>The following operators can be applied to a reusable stream:</p>
+	<ul>
+		<li><a href="../../../8/2/c/closefile.html">closefile</a> closes
+			the file. This occurs implicitly when the file is reclaimed by the <a
+			href="../../../8/2/r/restore.html">restore</a> operator or garbage
+			collection. Closing the file reclaims any temporary memory or disk
+			space that was used to buffer the file's contents.</li>
+		<li><a href="../../../8/2/f/fileposition.html">fileposition</a>
+			returns the current file position. The result is always in the range
+			0 to <i>length</i>.</li>
+		<li><a href="../../../8/2/s/setfileposition.html">setfileposition</a>
+			sets the file position to a value in the range 0 to <i>length</i>.</li>
+		<li><a href="../../../8/2/r/resetfile.html">resetfile</a> sets
+			the file position to 0.</li>
+		<li><a href="../../../8/2/f/flushfile.html">flushfile</a> sets
+			the file position to <i>length</i>.</li>
+		<li><a href="../../../8/2/b/bytesavailable.html">bytesavailable</a>
+			returns <i>length</i> minus the current file position.</li>
+	</ul>
+	<p>Table 3.24 lists the entries in the ReusableStreamDecode
+		parameter dictionary.</p>
+	<table>
+		<caption>TABLE 3.24 Entries in a ReusableStreamDecode
+			parameter dictionary</caption>
+		<tr>
+			<th>Key</th>
+			<th>Type</th>
+			<th>Value</th>
+		</tr>
+		<tr id="Filter">
+			<th>Filter</th>
+			<td>array or name</td>
+			<td><i>(Optional)</i> An array of names of decoding filters that
+				are to be applied before delivering data to the reader. The names
+				must be specified in the order they should be applied to decode the
+				data. For example, data encoded using LZW and then ASCII base-85
+				encoding filters should be decoded with the <b>Filter</b> value
+				[/ASCII85Decode /LZWDecode]. If only one filter is required, the
+				value of Filter may be the name of that filter.</td>
+		</tr>
+		<tr id="DecodeParms">
+			<th>DecodeParms</th>
+			<td>array or dictionary</td>
+			<td><i>(Optional)</i> An array of parameter dictionaries used by
+				the decoding filters dictionary that are specified by the Filter
+				parameter, listed in the same order. If a filter requires no
+				parameters, the corresponding item in the <b>DecodeParms</b> array
+				must be <b>null</b>. If the value of <b>Filter</b> is a name, <b>DecodeParms</b>
+				must be the parameter dictionary for that filter. If no parameters
+				are required for any of the decoding filters, <b>DecodeParms</b> may
+				be omitted.<br /> Note that the <b>SubFileDecode</b> filter
+				requires a parameter dictionary with entries for both <b>EODCount</b>
+				and <b>EODString</b>. <br />All occurrences of <b>CloseSource</b>
+				in the parameter dictionaries are ignored. When the reusable stream
+				is closed, all the filters are also closed, independent of the value
+				of <b>CloseSource</b> in the reusable stream itself. The original
+				source of the reusable stream is closed only if the value of <b>CloseSource</b>
+				in the reusable stream is <i>true</i>.</td>
+		</tr>
+		<tr id="Intent">
+			<th>Intent</th>
+			<td>integer</td>
+			<td><i>(Optional)</i> A code representing the intended use of
+				the reusable stream, which may help optimize the data storage or
+				caching strategy. If the value is omitted or is not one of the
+				following values, the default value of 0 is used.
+				<dl>
+					<dt>0</dt>
+					<dd>Image data</dd>
+					<dt>1</dt>
+					<dd>Image mask data</dd>
+					<dt>2</dt>
+					<dd>Sequentially accessed lookup table data (such as a
+						threshold array)</dd>
+					<dt>3</dt>
+					<dd>Randomly accessed lookup table data (such as the table of
+						values for a sampled function)</dd>
+				</dl></td>
+		</tr>
+		<tr id="AsyncRead">
+			<th>AsyncRead</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag that controls when data from the
+				source is to be read. If <i>false</i>, all the data from the source
+				is read when the filter is created. If <i>true</i>, data from the
+				source may or may not be read when the filter is created; reading
+				may be postponed until the data is needed. Any operation on the
+				filter may cause all of the data to be read. Default value: <i>false</i>.</td>
+		</tr>
+		<tr id="CloseSource">
+			<th>CloseSource</th>
+			<td>boolean</td>
+			<td><i>(Optional)</i> A flag specifying whether closing the
+				filter should also close its data source. Default value: <i>false</i>.</td>
+		</tr>
+	</table>
+</body>
+</html>

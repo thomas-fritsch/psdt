@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NullEncode Filter</title>
+<link rel="stylesheet" type="text/css" href="../../../format.css" />
+</head>
+<body>
+	<h4>NullEncode Filter</h4>
+	<pre>target /NullEncode filter
+target dictionary /NullEncode filter</pre>
+	<p>
+		The <b>NullEncodey</b> filter is an encoding filter that performs no
+		data transformation; its output is always identical to its input. The
+		purpose of this filter is to allow an arbitrary data target (procedure
+		or string) to be treated as an output file. as described in Section <a
+			href="../1.html">3.13.1, "Data Sources and Targets."</a> Note that
+		there is no <b>NullDecode</b> filter as such, because the <b>SubFileDecode</b>
+		filter can be configured to serve that function.
+	</p>
+	<p>
+		The parameter dictionary can be used to specify the <b>CloseTarget</b>
+		parameter <i>(LanguageLevel 3)</i>.
+	</p>
+</body>
+</html>
