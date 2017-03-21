@@ -410,6 +410,8 @@ CIEBasedABC
 CIEBasedDEF
 CIEBasedDEFG
 CMap
+CloseSource
+CloseTarget
 Collate
 ColorRendering
 ColorRenderingType

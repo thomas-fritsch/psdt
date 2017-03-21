@@ -1254,6 +1254,12 @@
 	<context id="CMap">
 		<topic label="Resource category" href="html/Reference/3/9/2.html#CMap" />
 	</context>
+	<context id="CloseSource">
+		<topic label="Entry in parameter dictionary of decoding filters" href="html/Reference/3/13/2/3.html" />
+	</context>
+	<context id="CloseTarget">
+		<topic label="Entry in parameter dictionary of encoding filters" href="html/Reference/3/13/2/3.html" />
+	</context>
 	<context id="Collate">
 		<topic label="Entry in page device dictionary" href="html/Reference/6/2/4.html#Collate" />
 	</context>
