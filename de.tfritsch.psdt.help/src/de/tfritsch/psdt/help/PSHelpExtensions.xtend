@@ -39,25 +39,33 @@ class PSHelpExtensions {
 		if (content === null)
 			return null
 		val posHash = href.indexOf('#')
-		if (posHash >= 0) {
-			val fragment = href.substring(posHash + 1)
-			val matcher = (".*(<tr>.*?</tr>).*(<tr id=\"" + fragment + "\">.*?</tr>).*").
-				compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
-			if (!matcher.matches)
-				return null
-			'''
-				<table border="1">
-				«matcher.group(1)»
-				«matcher.group(2)»
-				</table>
-				<br><br><br>
-			'''
-		} else {
-			val matcher = (".*<body>(.*)</body>.*").compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content)
-			if (!matcher.matches)
-				return null
-			matcher.group(1)
-		}
+		if (posHash >= 0)
+			content.getTableRowById(href.substring(posHash + 1))
+		else
+			content.body
+	}
+
+	def private static String getTableRowById(String content, String trId) {
+		val matcher = (".*(<tr>.*?</tr>).*(<tr id=\"" + trId + "\">.*?</tr>).*") //
+		.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)) //
+		.matcher(content)
+		if (!matcher.matches)
+			return null
+		'''
+			<table border="1">
+			«matcher.group(1)»
+			«matcher.group(2)»
+			</table>
+			<br><br><br>
+		'''
+	}
+
+	def private static String getBody(String content) {
+		val matcher = (".*<body>(.*)</body>.*") //
+		.compile(CASE_INSENSITIVE.bitwiseOr(DOTALL)).matcher(content) //
+		if (!matcher.matches)
+			return null
+		matcher.group(1)
 	}
 
 	@FinalFieldsConstructor
@@ -86,6 +94,6 @@ class PSHelpExtensions {
 	}
 
 	def private static IHelpResource[] getTopics(String name) {
-		("de.tfritsch.psdt.help." + name).context?.relatedTopics?:newArrayOfSize(0)
+		("de.tfritsch.psdt.help." + name).context?.relatedTopics ?: newArrayOfSize(0)
 	}
 }
