@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/thomas-fritsch/psdt.svg?branch=master)](https://travis-ci.org/thomas-fritsch/psdt)
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](http://www.gnu.org/licenses/gpl-3.0)
 [![Download](https://api.bintray.com/packages/thomas-fritsch/eclipse/psdt/images/download.svg)](https://bintray.com/thomas-fritsch/eclipse/psdt/_latestVersion)
+[![News Feed](rss-20.png "News Feed")](https://github.com/thomas-fritsch/psdt/releases.atom)
 [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag to your running Eclipse workspace to install PSDT")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=3162861)
 
 This project delivers a [PostScript](https://en.wikipedia.org/wiki/PostScript) Integrated Development Environment for
