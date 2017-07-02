@@ -6,6 +6,28 @@
 </head>
 <body>
 	<h3>6.2.4 Page Delivery</h3>
+	<p>
+		Just as a device can draw its input medium from one or more media
+		sources, it can have one or more <i>media destinations</i>, such as
+		output trays or collating bins, to which to deliver the finished
+		output. The selection of an output destination is similar to that of
+		an input source, as described above (see "Matching Requests with
+		Attributes" on page 403). In place of <b>InputAttributes</b>,
+		destination selection uses a device parameter named <b>OutputAttributes</b>
+		to describe the media destinations available on the device. This is a
+		dictionary similar in structure to <b>InputAttributes</b>, except that
+		the subdictionaries describing individual media destinations contain
+		only the single attribute <b>OutputType</b>. A page description can
+		request a specific value for this attribute, which <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> matches
+		against those of the available destinations to determine which
+		destination to select. <b>OutputAttributes</b> and <b>OutputType</b>
+		are supported only for those devices that provide multiple output
+		destinations. Table 6.5 summarizes these parameters, as well as others
+		pertaining to the disposition of output, such as the number of copies
+		to be printed and the direction in which printed pages are stacked in
+		the output tray.
+	</p>
 	<table>
 		<caption>TABLE 6.5 Page device parameters related to page
 			delivery</caption>
@@ -156,5 +178,30 @@
 			</td>
 		</tr>
 	</table>
+	<p>
+		One parameter in the table that is particularly worth noting is <b>Collate</b>.
+		When multiple copies of a document are requested (<b>NumCopies</b>
+		&gt; 1), pages are delivered to the output destination in <i>page
+			sets</i>. The boolean value of the <b>Collate</b> parameter determines
+		the makeup of these sets and thus the order in which the pages are
+		delivered:
+	</p>
+	<ul>
+		<li>When <b>Collate</b> is <i>true</i>, each page set consists of
+			one complete copy of the entire document&mdash;one copy of each page,
+			arranged in their correct order. The number of page sets delivered is
+			equal to the number of copies requested.
+		</li>
+		<li>When <b>Collate</b> is <i>false</i>, each page set consists
+			of the requested number of copies of a single page of the document.
+			The number of page sets delivered is equal to the number of pages in
+			the document.
+		</li>
+	</ul>
+	<p>
+		This notion of a page set is important because it affects the behavior
+		of several other page device parameters, such as <b>Jog</b> in Table
+		6.5 and <b>AdvanceMedia</b> and <b>CutMedia</b> in Table 6.3.
+	</p>
 </body>
 </html>

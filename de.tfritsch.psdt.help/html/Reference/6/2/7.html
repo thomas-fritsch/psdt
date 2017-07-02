@@ -6,6 +6,34 @@
 </head>
 <body>
 	<h3>6.2.7 Unsatisfied Parameter Requests</h3>
+	<p>
+		The <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		operator is not always able to satisfy a page description's requests
+		for particular settings of the page device parameters. It may be
+		unable to do so for either of two reasons:
+	</p>
+	<ul>
+		<li>The device does not support the requested parameter at all;
+			the PostScript interpreter has no idea what it means. For example, if
+			the page description attempts to set a value for the <b>Duplex</b>
+			parameter but that parameter is not defined in the page device
+			dictionary, <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+			treats it as a request for an unknown feature&mdash;even if the
+			requested value is false.
+		<li>The device supports the requested parameter but cannot
+			achieve the requested value at the moment&mdash;for example, an
+			A4-size page is requested when the A4 paper tray is not currently
+			installed.
+	</ul>
+	<p>
+		The interpreter can respond to such an unsatisfied parameter request
+		in a variety of ways, such as by ignoring it, raising a PostScript
+		error, or displaying a message on the front panel of the device
+		requesting intervention by the human operator. The <b>Policies</b>
+		page device parameter (Table 6.8) is a dictionary specifying which of
+		these actions to take, depending on the particular page device
+		parameter involved in the request.
+	</p>
 	<table>
 		<caption>TABLE 6.8 Page device parameter related to recovery
 			policies</caption>
@@ -32,7 +60,18 @@
 			</td>
 		</tr>
 	</table>
-	<p />
+	<p>
+		For most entries in the <b>Policies</b> dictionary, the key is the
+		name of a page device parameter; the corresponding value is an integer
+		code specifying the <i>recovery policy</i> for handling unsatisfied
+		requests for that parameter. For most parameters, there are three
+		policy choices: generate an error (<a
+			href="../../8/2/c/configurationerror.html">configurationerror</a>),
+		ignore the request, or interact with a human operator or a software
+		print manager. For <b>PageSize</b> requests, there are additional
+		policy choices. Table 6.9 describes the entries that can appear in the
+		<b>Policies</b> dictionary.
+	</p>
 	<table>
 		<caption>TABLE 6.9 Entries in the Policies dictionary</caption>
 		<tr>
@@ -144,7 +183,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>any feature name</td>
+			<td><i>any feature name</i></td>
 			<td></td>
 			<td>A code specifying the recovery policy to use when a
 				requested setting for the designated parameter cannot be satisfied.
@@ -175,5 +214,57 @@
 			</td>
 		</tr>
 	</table>
+	<p>
+		<i><b>Note:</b> In addition to generating a <a
+			href="../../8/2/c/configurationerror.html">configurationerror</a>,
+			the <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+			operator can also generate a <a href="../../8/2/t/typecheck.html">typecheck</a>,
+			<a href="../../8/2/r/rangecheck.html">rangecheck</a>, <a
+			href="../../8/2/u/undefined.html">undefined</a>, <a
+			href="../../8/2/l/limitcheck.html">limitcheck</a>, or <a
+			href="../../8/2/i/invalidaccess.html">invalidaccess</a> error; see
+			the descriptions of these errors in Chapter 8 for further
+			information.</i>
+	</p>
+	<p>
+		Because the <b>Policies</b> dictionary is itself a page device
+		parameter, it can be altered with <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> like any
+		other such parameter. Ordinarily, a page description composed by an
+		application program should not do this; recovery policies should be
+		changed only by a human operator or by system management software in
+		control of the physical device. However, if a user requests special
+		policies when submitting a print job, it is appropriate for the print
+		management software to insert a <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> command to
+		change the contents of the <b>Policies</b> dictionary at the beginning
+		of the page description. For example, the user might consider it
+		essential that a particular job use certain features; if they are not
+		available, the job should be rejected with a <a
+			href="../../8/2/c/configurationerror.html">configurationerror</a>
+		instead of being executed with the requests for those features
+		ignored.
+	</p>
+	<p>
+		Changes to the contents of the <b>Policies</b> dictionary are
+		cumulative. The <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		operator merges the entries in the request dictionary supplied to it
+		with those in the existing page device dictionary, replacing or adding
+		page device entries as appropriate. If a single invocation of <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> includes
+		changes to <b>Policies</b> as well as requests for other parameters,
+		the merging of <b>Policies</b> entries occurs before the processing of
+		the other parameters. Thus, the <i>revised</i> <b>Policies</b>
+		dictionary governs the recovery policy if one of the other parameter
+		requests cannot be satisfied. For example, the code
+	</p>
+	<pre>&lt;&lt;     /Duplex true
+       /Policies &lt;&lt; /Duplex 0 &gt;&gt;
+&gt;&gt; setpagedevice</pre>
+	<p>
+		requests duplex printing and generates a <a
+			href="../../8/2/c/configurationerror.html">configurationerror</a> if
+		the device does not support this feature.
+	</p>
 </body>
 </html>

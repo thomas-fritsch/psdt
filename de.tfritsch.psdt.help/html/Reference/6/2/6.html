@@ -6,6 +6,13 @@
 </head>
 <body>
 	<h3>6.2.6 Device Initialization and Page Setup</h3>
+	<p>The page device parameters shown in Table 6.7 are PostScript
+		procedures that are called by the interpreter at certain critical
+		times: at the beginning and end of each page of a document and
+		whenever the identity of the current page device changes. PostScript
+		programs can use these parameters to perform needed tasks such as
+		initializing the graphics state or painting recurrent elements that
+		appear on every page.</p>
 	<table>
 		<caption>TABLE 6.7 Page device parameters related to device
 			initialization and page setup</caption>
@@ -73,5 +80,209 @@
 			</td>
 		</tr>
 	</table>
+	<p>
+		Each time the <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+		operator is invoked, it calls the currently defined <b>Install</b>
+		procedure. This gives the PostScript program an opportunity to
+		initialize device-dependent graphics state parameters such as the
+		halftone screen, color rendering dictionary, and flatness tolerance
+		(see Table 4.2 on page 180). In general, the <b>Install</b> procedure
+		cannot usefully alter device-independent graphics state parameters
+		such as the current path or color (Table 4.1 on page 179), since these
+		are reinitialized with the <a href="../../8/2/i/initgraphics.html">initgraphics</a>
+		operator after the procedure is executed. An exception is the current
+		transformation matrix; any new CTM set by the Install procedure
+		becomes the default matrix for the device and will be used by <a
+			href="../../8/2/i/initgraphics.html">initgraphics</a> in
+		reinitializing the graphics state.
+	</p>
+	<p>
+		The PostScript interpreter calls the current device's <b>BeginPage</b>
+		and <b>EndPage</b> procedures, respectively, before beginning and
+		after completing the execution of each page description. With suitable
+		definitions, these procedures can:
+	</p>
+	<ul>
+		<li>Cause multiple virtual pages within a document to be printed
+			on a single physical page ("2-up" or "<i>n</i>-up" printing)
+		</li>
+		<li>Shift the positions of even- and odd-page images differently
+			for binding</li>
+		<li>Add marks to each page that either underlie or overprint the
+			material provided by the page description</li>
+	</ul>
+	<p>
+		<i><b>Note:</b> The use of <b>BeginPage</b> and <b>EndPage</b> to
+			achieve effects spanning multiple pages sacrifices any page
+			independence the document may have. In general, a page description
+			should not include definitions of <b>BeginPage</b> or <b>EndPage</b>
+			in its invocations of <a href="../../8/2/s/setpagedevice.html">setpagedevice</a>.
+			Instead, a software print manager should prepend such commands to the
+			page description when printing is requested.</i>
+	</p>
+	<p>
+		<i><b>Note:</b> The following descriptions refer to the <a
+			href="../../8/2/s/showpage.html">showpage</a> and <a
+			href="../../8/2/c/copypage.html">copypage</a> operators. The
+			distinction between those operators exists only in LanguageLevel 2;
+			in LanguageLevel 3, the effects of <a
+			href="../../8/2/c/copypage.html">copypage</a> on the device are the
+			same as those of <a href="../../8/2/s/showpage.html">showpage</a>.</i>
+	</p>
+	<p>
+		The <b>BeginPage</b> procedure is called at the beginning of each
+		page:
+	</p>
+	<ul>
+		<li><a href="../../8/2/s/setpagedevice.html">setpagedevice</a>
+			normally calls <b>BeginPage</b> as its last action before returning
+			(except for a possible call to the <b>PolicyReport</b> procedure, if
+			needed; see Section 6.2.7, "Unsatisfied Parameter Requests"). This
+			indicates the beginning of the first page to be rendered on the
+			device.</li>
+		<li><a href="../../8/2/s/showpage.html">showpage</a> and <a
+			href="../../8/2/c/copypage.html">copypage</a> call <b>BeginPage</b>
+			as their last action before returning. This indicates the beginning
+			of the next page, following the one that <a
+			href="../../8/2/s/showpage.html">showpage</a> or <a
+			href="../../8/2/c/copypage.html">copypage</a> has just ended.</li>
+		<li>Operators that reactivate an existing page device call <b>BeginPage</b>
+			as their last action before returning.
+		</li>
+	</ul>
+	<p>
+		When <b>BeginPage</b> is called, the graphics state has been
+		initialized and the current page erased, if appropriate, in
+		preparation for beginning the execution of the PostScript commands
+		describing a page. The operand stack contains an integer stating the
+		number of executions of <a href="../../8/2/s/showpage.html">showpage</a>
+		(but not <a href="../../8/2/c/copypage.html">copypage</a>) that have
+		occurred since the current device was activated; that is, the operand
+		is 0 at the first call to <b>BeginPage</b>, 1 at the call that occurs
+		during the first execution of <a href="../../8/2/s/showpage.html">showpage</a>,
+		and so on. The <b>BeginPage</b> procedure is expected to consume this
+		operand. The procedure is permitted to alter the graphics state and to
+		paint marks on the current page.
+	</p>
+	<p>
+		The <b>EndPage</b> procedure is called at the end of each page:
+	</p>
+	<ul>
+		<li><a href="../../8/2/s/showpage.html">showpage</a> and <a
+			href="../../8/2/c/copypage.html">copypage</a> call EndPage as their
+			first action. This indicates the end of the preceding page.</li>
+		<li>Operators that deactivate the page device call <b>EndPage</b>
+			as their first action.
+		</li>
+	</ul>
+	<p>
+		When <b>EndPage</b> is called, the PostScript commands describing the
+		preceding page have been completely executed, but the contents of
+		raster memory have not yet been transferred to the medium and the
+		graphics state is undisturbed. The operand stack contains two
+		integers:
+	</p>
+	<ul>
+		<li>The number of executions of <a
+			href="../../8/2/s/showpage.html">showpage</a> (but not <a
+			href="../../8/2/c/copypage.html">copypage</a>) that have occurred
+			since the device was activated, not including this one. That is, the
+			operand is 0 at the call to <b>EndPage</b> during the first execution
+			of <a href="../../8/2/s/showpage.html">showpage</a>, 1 during the
+			second execution of <a href="../../8/2/s/showpage.html">showpage</a>,
+			and so on.
+		</li>
+		<li>A reason code indicating the circumstances under which <b>EndPage</b>
+			is being called: 0 during <a href="../../8/2/s/showpage.html">showpage</a>,
+			1 during <a href="../../8/2/c/copypage.html">copypage</a>, 2 during
+			device deactivation.
+		</li>
+	</ul>
+	<p>
+		The <b>EndPage</b> procedure is expected to consume these operands.
+		The procedure is permitted to alter the graphics state and to paint
+		marks on the current page; such marks are added to the page just
+		completed.
+	</p>
+	<p>
+		<b>EndPage</b> must return a boolean result specifying the disposition
+		of the current page:
+	</p>
+	<ul>
+		<li>The value true means transfer the contents of raster memory
+			to the medium. Then, if <a href="../../8/2/s/showpage.html">showpage</a>
+			is being executed, execute the equivalent of <a
+			href="../../8/2/i/initgraphics.html">initgraphics</a> and <a
+			href="../../8/2/e/erasepage.html">erasepage</a> in preparation for
+			the next page. (The latter actions are not performed during <a
+			href="../../8/2/c/copypage.html">copypage</a>.)
+		</li>
+		<li>The value false means do not transfer the contents of raster
+			memory to the medium or erase the current page. (If <a
+			href="../../8/2/s/showpage.html">showpage</a> is being executed, <a
+			href="../../8/2/i/initgraphics.html">initgraphics</a> is still
+			performed; if the device is being deactivated, the page is still
+			erased.)
+		</li>
+	</ul>
+	<p>
+		The normal definition of <b>EndPage</b> returns true during <a
+			href="../../8/2/s/showpage.html">showpage</a> or <a
+			href="../../8/2/c/copypage.html">copypage</a> (reason code 0 or 1)
+		but false during device deactivation (reason code 2). That is,
+		normally every <a href="../../8/2/s/showpage.html">showpage</a> or <a
+			href="../../8/2/c/copypage.html">copypage</a> operation causes a
+		physical page to be produced, but an incomplete last page (not ended
+		by <a href="../../8/2/s/showpage.html">showpage</a> or <a
+			href="../../8/2/c/copypage.html">copypage</a>) produces no output.
+		Other behavior can be obtained by defining <b>EndPage</b> differently.
+	</p>
+	<p>
+		When <a href="../../8/2/s/setpagedevice.html">setpagedevice</a> is
+		executed or when <a href="../../8/2/r/restore.html">restore</a>, <a>grestore</a>,
+		<a href="../../8/2/g/grestoreall.html">grestoreall</a> or <a
+			href="../../8/2/s/setgstate.html">setgstate</a> causes a page device
+		to be deactivated and a different page device to be activated, the
+		interpreter takes the following actions:
+	</p>
+	<ol>
+		<li>Calls the <b>EndPage</b> procedure of the device being
+			deactivated, passing it a reason code of 2. At the time this call is
+			made, the current device in the graphics state is still the old
+			device. This enables any necessary cleanup actions to be performed,
+			such as printing an incomplete "<i>n</i>-up" page.
+		</li>
+		<li>Performs any actions needed on device deactivation, such as
+			those indicated by the <b>Jog</b>, <b>AdvanceMedia</b>, and <b>CutMedia</b>
+			page device parameters.
+		</li>
+		<li>If the <b>Duplex</b> page device parameter is <i>true</i> and
+			the last sheet has been printed on only one side, delivers this final
+			sheet.
+		</li>
+		<li>Calls the <b>BeginPage</b> procedure of the device being
+			activated. At the time this call is made, the current device in the
+			graphics state is the new one. Its count of previous <a
+			href="../../8/2/s/showpage.html">showpage</a> executions is reset to
+			0.
+		</li>
+	</ol>
+	<p>
+		With the exception of step 4 (which <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> always
+		performs), these actions occur only when switching from one page
+		device to another. They do not occur when the current device remains
+		unchanged or when switching to or from devices of other kinds, such as
+		the cache device or the null device set up by the <a
+			href="../../8/2/s/setcachedevice.html">setcachedevice</a> or
+		nulldevice operator. Usually, the latter devices are installed only
+		temporarily; for example, <a href="../../8/2/s/setcachedevice.html">setcachedevice</a>
+		and the operations for rendering a character into the font cache are
+		bracketed by <a href="../../8/2/g/gsave.html">gsave</a> and <a
+			href="../../8/2/g/grestore.html">grestore</a>, thereby reinstating
+		the page device that was previously in effect. The page device's <b>BeginPage</b>
+		and <b>EndPage</b> procedures are not called in such cases and the
+		current page is not erased or otherwise disturbed.
+	</p>
 </body>
 </html>

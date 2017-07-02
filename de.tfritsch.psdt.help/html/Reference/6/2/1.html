@@ -6,6 +6,53 @@
 </head>
 <body>
 	<h3>6.2.1 Media Selection</h3>
+	<p>
+		A given output device may support one or more physical sources for the
+		media on which PostScript page descriptions are rendered. These <i>media
+			sources</i> (often called trays or positions) are arbitrarily numbered by
+		small integer position numbers. A position number usually designates a
+		specific physical location in the hardware, though it may refer
+		instead to some logical capability such as a pair of trays that
+		contain the same medium and are used alternately. The correspondence
+		between position numbers and media sources is device-dependent; it is
+		not described in this book, but rather in individual product
+		documentation.
+	</p>
+	<p>
+		The page device parameters shown in Table 6.2 control the selection of
+		an input media source. Some of these parameters (<b>PageSize</b>, <b>MediaColor</b>,
+		<b>MediaWeight</b>, <b>MediaType</b>, <b>MediaClass</b>, <b>InsertSheet</b>)
+		are used by a page description to specify its media requirements. The
+		<b>InputAttributes</b> parameter describes the properties of the
+		physical media currently available on the device. The <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> operator uses
+		this information to match a page's requirements with the available
+		media and decide which physical media source to use for that page. The
+		remaining parameters in Table 6.2 specify additional requirements for
+		input media handling that may also influence the media selection
+		process.
+	</p>
+	<p>Media selection is performed according to one of two models:</p>
+	<ul>
+		<li><i>Immediate media selection.</i> All information about the
+			available media is present in the <b>InputAttributes</b> and other
+			page device parameters at the time <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> is invoked. <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> uses this
+			information, along with the policies established for handling
+			unsatisfied parameter requests, to select a media source. The outcome
+			of this decision is immediately visible to the PostScript program.</li>
+		<li><i>Deferred media selection.</i> Information about the
+			available media is not known at the time <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> is invoked.
+			Instead of selecting the media source immediately, <a
+			href="../../8/2/s/setpagedevice.html">setpagedevice</a> merely
+			collects the selection requests and saves them for use at some later
+			time when the page image is actually applied to the medium.</li>
+	</ul>
+	<p>Most of this section is devoted to describing the immediate
+		media selection process in detail. Deferred media selection is
+		discussed in “Deferred Media Selection” on page 411.</p>
 	<table>
 		<caption>TABLE 6.2 Page device parameters related to media
 			selection</caption>
