@@ -15,7 +15,7 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 script:
-- mvn verify
+- mvn -Dmaven.test.skip=true verify
 after_success:
 - if [ $TRAVIS_TAG ]; then
     sh deployToBintray.sh thomas-fritsch eclipse psdt $TRAVIS_TAG;
