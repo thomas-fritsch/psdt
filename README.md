@@ -95,6 +95,7 @@ Alternatively you can take an existing Eclipse instance and add the following co
 
 ## Release History
 
+* [1.0.5](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.5) - 03 Sep 2017
 * [1.0.4](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.4) - 24 Mar 2017
 * [1.0.3](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.3) - 21 Jan 2017
 * [1.0.2](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.2) - 13 Dec 2016

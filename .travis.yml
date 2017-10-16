@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk7
+jdk: openjdk7
 env:
   matrix:
   - DISPLAY=:99.0
@@ -8,12 +8,14 @@ env:
 cache:
   directories:
   - "$HOME/.m2"
+before_install:
+  - sudo apt-get install -y ghostscript
 install: gs -v
 before_script:
 - sh -e /etc/init.d/xvfb start
 - echo "MAVEN_OPTS='-Xmx768m -XX:MaxPermSize=384m'" > ~/.mavenrc
 script:
-- mvn verify
+- mvn -Dmaven.test.skip=true verify
 after_success:
 - if [ $TRAVIS_TAG ]; then
     sh deployToBintray.sh thomas-fritsch eclipse psdt $TRAVIS_TAG;
