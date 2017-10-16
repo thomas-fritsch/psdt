@@ -25,11 +25,15 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.IXtextEditorCallback;
 import org.eclipse.xtext.ui.editor.XtextEditor;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.hover.IEObjectHoverProvider;
 import org.eclipse.xtext.ui.editor.hyperlinking.IHyperlinkHelper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.validation.ValidatingEditorCallback;
+
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 
 import de.tfritsch.psdt.ui.autoedit.PostscriptAutoEditStrategyProvider;
 import de.tfritsch.psdt.ui.editor.PostscriptEditor;
@@ -46,6 +50,14 @@ import de.tfritsch.psdt.ui.syntaxcoloring.PostscriptHighlightingConfiguration;
 public class PostscriptUiModule extends AbstractPostscriptUiModule {
 	public PostscriptUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
+	}
+
+	@Override
+	public void configure(Binder binder) {
+		super.configure(binder);
+		binder.bind(String.class)
+		      .annotatedWith(Names.named(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))
+			  .toInstance("/");
 	}
 
 	public Class<? extends AbstractAntlrTokenToAttributeIdMapper> bindAbstractAntlrTokenToAttributeIdMapper() {
