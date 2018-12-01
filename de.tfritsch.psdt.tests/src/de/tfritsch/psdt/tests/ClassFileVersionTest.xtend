@@ -37,7 +37,7 @@ import static org.junit.Assert.assertEquals
 @FinalFieldsConstructor
 class ClassFileVersionTest {
 
-    static val JAVA_6_VERSION = "50.0"
+    static val JAVA_8_VERSION = "52.0"
 
 	@Parameterized.Parameters(name="{0}")
 	def static List<Object[]> getData() {
@@ -54,7 +54,7 @@ class ClassFileVersionTest {
 
 	@Test
 	def void testClassFileVersion() {
-		assertEquals(name, JAVA_6_VERSION, clazz.classFileVersion)
+		assertEquals(name, JAVA_8_VERSION, clazz.classFileVersion)
 	}
 
 	def private String getClassFileVersion(Class<?> clazz) {

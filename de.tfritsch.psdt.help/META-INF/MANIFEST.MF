@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: PostScript Help
 Bundle-SymbolicName: de.tfritsch.psdt.help;singleton:=true
 Bundle-Version: 1.1.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Eclipse-BundleShape: dir
 Require-Bundle: org.eclipse.equinox.common,
  org.eclipse.help,

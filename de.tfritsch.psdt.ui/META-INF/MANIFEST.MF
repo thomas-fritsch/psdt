@@ -20,7 +20,7 @@ Require-Bundle: de.tfritsch.psdt;visibility:=reexport,
  org.eclipse.xtext.xbase.lib
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: de.tfritsch.psdt.ui.quickfix,
  de.tfritsch.psdt.ui.contentassist,
  de.tfritsch.psdt.ui.contentassist.antlr,

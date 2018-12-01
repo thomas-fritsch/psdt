@@ -18,7 +18,7 @@ Require-Bundle: de.tfritsch.psdt.ui,
  org.eclipse.ui.ide,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.ui
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Export-Package: de.tfritsch.psdt.debug.core.model,
  de.tfritsch.psdt.debug.ui.breakpoints,

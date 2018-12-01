@@ -23,11 +23,11 @@
    </url>
 
    <requires>
-      <import feature="org.eclipse.xtext.ui" version="2.7" match="greaterOrEqual"/>
-      <import feature="org.eclipse.xtext.xbase.lib" version="2.7" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore" version="2.10" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.common" version="2.10" match="greaterOrEqual"/>
-      <import feature="org.eclipse.platform" version="4.3" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.ui" version="2.10" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.xbase.lib" version="2.10" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.ecore" version="2.12" match="greaterOrEqual"/>
+      <import feature="org.eclipse.emf.common" version="2.12" match="greaterOrEqual"/>
+      <import feature="org.eclipse.platform" version="4.6" match="greaterOrEqual"/>
    </requires>
 
    <plugin
