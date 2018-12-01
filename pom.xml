@@ -57,7 +57,7 @@
 	<properties>
 		<tycho-version>0.23.0</tycho-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<xtext.version>2.7.3</xtext.version>
+		<xtext.version>2.10.0</xtext.version>
 	</properties>
 
 	<build>
