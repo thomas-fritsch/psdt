@@ -71,7 +71,7 @@ class PSLaunchShortcut implements ILaunchShortcut {
 	}
 
 	override launch(IEditorPart editor, String mode) {
-		val file = editor.editorInput.getAdapter(IFile) as IFile
+		val file = editor.editorInput.getAdapter(IFile)
 		if (file !== null) {
 			file.launch(mode)
 			return

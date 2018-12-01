@@ -44,7 +44,7 @@ class PSOutputStreamMonitor implements IFlushableStreamMonitor {
 	@Accessors boolean buffered = true
 	StringBuilder contents = new StringBuilder
 	Thread thread
-	ListenerList listeners = new ListenerList
+	ListenerList<IStreamListener> listeners = new ListenerList
 	BufferedReader reader
 
 	/**

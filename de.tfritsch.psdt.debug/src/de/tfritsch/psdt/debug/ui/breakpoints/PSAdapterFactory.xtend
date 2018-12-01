@@ -31,15 +31,14 @@ class PSAdapterFactory implements IAdapterFactory {
 
 	@Inject IRunToLineTarget fRunToLineTarget
 
-	@SuppressWarnings("rawtypes")
-	override getAdapter(Object adaptableObject, Class adapterType) {
+	override <T> getAdapter(Object adaptableObject, Class<T> adapterType) {
 		switch (adapterType) {
 			case IToggleBreakpointsTarget:
 				if (adaptableObject instanceof ITextEditor)
-					return fToggleBreakpointsTarget
+					return fToggleBreakpointsTarget as T
 			case IRunToLineTarget:
 				if (adaptableObject instanceof ITextEditor)
-					return fRunToLineTarget
+					return fRunToLineTarget as T
 		}
 		null
 	}

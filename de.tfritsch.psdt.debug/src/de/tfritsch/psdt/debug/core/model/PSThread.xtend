@@ -42,11 +42,10 @@ class PSThread extends PSDebugElement implements IThread {
 		stackFrame = new PSStackFrame(this)
 	}
 
-	@SuppressWarnings("rawtypes")
-	override getAdapter(Class adapter) {
+	override <T> getAdapter(Class<T> adapter) {
 		switch (adapter) {
 			case IStackFrame:
-				topStackFrame
+				topStackFrame as T
 			default:
 				super.getAdapter(adapter)
 		}

@@ -27,5 +27,6 @@ Export-Package: de.tfritsch.psdt.ui.quickfix,
  de.tfritsch.psdt.ui.internal,
  de.tfritsch.psdt.ui.editor,
  de.tfritsch.psdt.ui.syntaxcoloring,
- de.tfritsch.psdt.ui.browser
+ de.tfritsch.psdt.ui.browser,
+ de.tfritsch.psdt.ui.contentassist.antlr.internal
 Bundle-Activator: de.tfritsch.psdt.ui.internal.PostscriptActivator

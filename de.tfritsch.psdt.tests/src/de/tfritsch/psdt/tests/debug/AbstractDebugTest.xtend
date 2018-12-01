@@ -95,7 +95,7 @@ abstract class AbstractDebugTest extends AbstractWorkbenchTestExtension {
 	}
 
 	private def <T> T getCurrent(Class<T> adapterType) {
-		debugContext?.getAdapter(adapterType) as T
+		debugContext?.getAdapter(adapterType)
 	}
 
 	protected def IStackFrame getCurrentStackFrame() {

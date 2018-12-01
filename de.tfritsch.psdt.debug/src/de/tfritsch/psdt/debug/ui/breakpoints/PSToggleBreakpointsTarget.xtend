@@ -37,8 +37,8 @@ class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 	@Inject IBreakpointManager breakpointManager
 
 	override toggleLineBreakpoints(IWorkbenchPart part, ISelection selection) throws CoreException {
-		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
-		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
+		val textEditor = part.getAdapter(ITextEditor)
+		val resource = textEditor.editorInput.getAdapter(IResource)
 		val lineNumber = (selection as ITextSelection).startLine
 		val breakpoints = breakpointManager.getBreakpoints(PSPlugin.ID)
 		for (breakpoint : breakpoints) {
@@ -58,8 +58,8 @@ class PSToggleBreakpointsTarget implements IToggleBreakpointsTarget {
 	}
 
 	override canToggleLineBreakpoints(IWorkbenchPart part, ISelection selection) {
-		val textEditor = part.getAdapter(ITextEditor) as ITextEditor
-		val resource = textEditor.editorInput.getAdapter(IResource) as IResource
+		val textEditor = part.getAdapter(ITextEditor)
+		val resource = textEditor.editorInput.getAdapter(IResource)
 		resource != null
 	}
 

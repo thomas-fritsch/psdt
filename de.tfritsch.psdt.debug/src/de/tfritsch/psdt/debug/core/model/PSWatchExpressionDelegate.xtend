@@ -33,7 +33,7 @@ import org.eclipse.debug.core.model.IWatchExpressionListener
 class PSWatchExpressionDelegate implements IWatchExpressionDelegate {
 
 	override evaluateExpression(String expression, IDebugElement context, IWatchExpressionListener listener) {
-		val stackFrame = context.getAdapter(IStackFrame) as IStackFrame
+		val stackFrame = context.getAdapter(IStackFrame)
 		switch (stackFrame) {
 			PSStackFrame:
 				stackFrame.evaluateExpression(expression, listener)
