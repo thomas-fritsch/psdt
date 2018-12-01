@@ -40,8 +40,8 @@ platform-independent way.
 
 #### Prerequisites
 
-* [Java](https://www.java.com/) (version 6 or higher).
-* [Eclipse](http://www.eclipse.org) (version 4.4 or higher).
+* [Java](https://www.java.com/) (version 8 or higher).
+* [Eclipse](http://www.eclipse.org) (version 4.6 or higher).
 * [Ghostscript](http://ghostscript.com/download/gsdnld.html) (any version).  
   Choose the flavor for your OS and follow the download/install instructions.
 
@@ -66,7 +66,7 @@ platform-independent way.
 
 #### Prerequisites
 
-* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/) (version 7 or higher).
+* [JDK](http://www.oracle.com/technetwork/java/javase/downloads/) (version 8 or higher).
 * [Maven](http://maven.apache.org/) (version 3).  
   Follow the instructions given in "Download, Install, Run Maven".
 
@@ -95,6 +95,7 @@ Alternatively you can take an existing Eclipse instance and add the following co
 
 ## Release History
 
+* [1.1.0](https://github.com/thomas-fritsch/psdt/releases/tag/1.1.0) - 02 Dec 2018
 * [1.0.5](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.5) - 03 Sep 2017
 * [1.0.4](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.4) - 24 Mar 2017
 * [1.0.3](https://github.com/thomas-fritsch/psdt/releases/tag/1.0.3) - 21 Jan 2017
