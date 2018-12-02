@@ -90,8 +90,8 @@ Alternatively you can take an existing Eclipse instance and add the following co
   [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Eclipse Xtend")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=148396)
 * [EGit - Git Integration for Eclipse](http://marketplace.eclipse.org/content/egit-git-integration-eclipse)
   [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install EGit - Git Integration for Eclipse")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1336)
-* [Maven Integration for Eclipse (Luna)](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna)
-  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Maven Integration for Eclipse (Luna)")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=1774116)
+* [Maven Integration for Eclipse (Luna and newer)](http://marketplace.eclipse.org/content/maven-integration-eclipse-luna-and-newer)
+  [![Install](http://marketplace.eclipse.org/misc/installbutton.png "Drag and drop into a running Eclipse workspace to install Maven Integration for Eclipse (Luna and newer)")](http://marketplace.eclipse.org/marketplace-client-intro?mpc_install=252)
 
 ## Release History
 
