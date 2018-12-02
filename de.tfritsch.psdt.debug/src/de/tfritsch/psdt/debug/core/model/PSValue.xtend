@@ -28,7 +28,8 @@ import org.eclipse.debug.core.model.IVariable
  */
 class PSValue extends PSDebugElement implements IValue {
 
-	static val Comparator<IVariable> VARIABLE_COMPARATOR = [a, b|a.name.compareToIgnoreCase(b.name)]
+	static val Comparator<IVariable> VARIABLE_COMPARATOR
+	    = Comparator.comparing[name.toLowerCase]
 
 	String valueString
 

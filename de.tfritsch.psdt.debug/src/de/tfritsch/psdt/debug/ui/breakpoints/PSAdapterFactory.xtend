@@ -43,7 +43,6 @@ class PSAdapterFactory implements IAdapterFactory {
 		null
 	}
 
-	@SuppressWarnings("rawtypes")
 	override getAdapterList() {
 		#[IToggleBreakpointsTarget, IRunToLineTarget]
 	}
