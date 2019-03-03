@@ -71,6 +71,8 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	@Inject IExpressionManager expressionManager
 	@Inject DebugPlugin debugPlugin
 	@Inject extension IStringVariableManager
+	extension StatusParser = new StatusParser(this)
+	@Inject extension ChangeMarker
 
 	/**
 	 * The ghostscript process
@@ -98,10 +100,6 @@ class PSDebugTarget extends PSDebugElement implements IDebugTarget, IExpressions
 	List<PSToken> sourceMapping
 
 	IPSDebugCommander debugCommander
-
-	extension StatusParser = new StatusParser(this)
-
-	extension ChangeMarker = new ChangeMarker
 
 	new() {
 		super(null)
