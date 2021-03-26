@@ -7,12 +7,12 @@
 		<property name="p2.timestamp" value="1543706987759" />
 	</properties>
 	<children size="7">
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.0/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.1/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.2/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.3/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.4/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.0.5/" />
-		<child location="http://dl.bintray.com/thomas-fritsch/eclipse/psdt/1.1.0/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.0/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.1/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.2/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.3/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.4/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.0.5/" />
+		<child location="http://thomas-fritsch.github.io/psdt/repository/1.1.0/" />
 	</children>
 </repository>
